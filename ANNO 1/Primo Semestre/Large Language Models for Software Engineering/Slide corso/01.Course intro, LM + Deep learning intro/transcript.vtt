@@ -1,0 +1,4187 @@
+WEBVTT
+
+00:04:59.000 --> 00:05:05.000
+Microwave hopefully. You will be able to hear me now. Yes, I would say that you will be able to hear me now.
+
+00:05:05.000 --> 00:05:12.000
+But you just missed some of the introductory stuff. You can read the slides no problem. So as I was mentioning.
+
+00:05:12.000 --> 00:05:23.000
+We expect you to have a basic understanding of machine learning. We will have a short recap on the topic of deep learning. Today most of you come, some of you come from.
+
+00:05:23.000 --> 00:05:33.000
+Other courses that are mainly focused on deep learning. Many of you will attend deep learning courses in this semester, so. This is mostly a.
+
+00:05:33.000 --> 00:05:35.000
+Catch up!
+
+00:05:35.000 --> 00:05:47.000
+That we do here. Just so you don't miss out on some of the terminology we would use. But then you will see some of these topics in much more detail in our courses. Okay.
+
+00:05:47.000 --> 00:06:00.000
+We expect you to know Python and some of the main libraries of Python. Very well. Why? Because there will be many applied workshops, many applied labs that we will do here.
+
+00:06:00.000 --> 00:06:10.000
+We will see there will be a project, and in the project you will be strongly encouraged to use Python, so we expect you to know Python, and if you don't know Python.
+
+00:06:10.000 --> 00:06:12.000
+Quite well.
+
+00:06:12.000 --> 00:06:14.000
+We recommend that you.
+
+00:06:14.000 --> 00:06:23.000
+Started a little bit of python and then get up to spin with the with the topic. Okay.
+
+00:06:23.000 --> 00:06:30.000
+Okay, yeah, we will use pytorque. But this is something that I will tell you later.
+
+00:06:30.000 --> 00:06:43.000
+Moving on time slots. You all made it here today. So it's fine, you know that today Mondays will be in room 8 here 8.3 0 to 1 1 dot 3 0 . By the way, it's not the.
+
+00:06:43.000 --> 00:06:58.000
+Ideal times, although I didn't choose it. So I don't put it on me. But that's what we got. Okay. So I already apologize for the early wakes. You will have to have to to be here in time.
+
+00:06:58.000 --> 00:07:05.000
+And then Wednesdays. They're a little bit better from 1130 to one room or one.
+
+00:07:05.000 --> 00:07:12.000
+And there's going to be the other slot. There is no predefined separation between.
+
+00:07:12.000 --> 00:07:23.000
+Labs, or anyway, more practical part of the course, which, by the way, is probably the next slide. Yes, and the lectures, we will use these 3 slots that we have available.
+
+00:07:23.000 --> 00:07:27.000
+Mandates use lots Wednesday. One slot.
+
+00:07:27.000 --> 00:07:40.000
+As we need. Okay, we will have most of the time lectures. There will be workshops in between. Sometimes the 1st workshop will be already on Wednesday and Wednesday. There will be the 1st lab.
+
+00:07:40.000 --> 00:07:51.000
+Which is going to be about Pytorch, so we will get you up to speed on the library, Pytorch, and so hopefully, you will be able to follow the rest of the course.
+
+00:07:51.000 --> 00:07:53.000
+Effectively.
+
+00:07:53.000 --> 00:08:02.000
+So as I told you, lectures, workshop, everything will be in these rooms. Okay? So you will bring your own laptop for the workshops.
+
+00:08:02.000 --> 00:08:07.000
+And you will follow along. Okay.
+
+00:08:07.000 --> 00:08:20.000
+Lectures are in a classic classic lectures where I say things. You listen to me. You ask questions hopefully. And we figure out things along the way.
+
+00:08:20.000 --> 00:08:27.000
+Let's come to the exam. Which is probably the interesting part that we should talk about.
+
+00:08:27.000 --> 00:08:30.000
+The exam is divided into 2 parts. Okay.
+
+00:08:30.000 --> 00:08:35.000
+I've written test and the project, the written test you do on your own.
+
+00:08:35.000 --> 00:08:38.000
+It is worth 18 points.
+
+00:08:38.000 --> 00:08:48.000
+It contains some questions. Typically it's around. 12 questions could be 10 could be 13. But around 12 questions.
+
+00:08:48.000 --> 00:08:55.000
+Some close attended, some often ended, covering all of the topics of the course. Okay.
+
+00:08:55.000 --> 00:09:00.000
+18 points mandatory to do that. 75 min total.
+
+00:09:00.000 --> 00:09:02.000
+The Medick Sound? Okay.
+
+00:09:02.000 --> 00:09:18.000
+I think that I mean there is also a minimum threshold for the sufficienti. I didn't put it in the slides. It should be 9 points, if I remember correctly, but the syllabus of the course contains the exact number, and that is what is the right correct number? Okay. So.
+
+00:09:18.000 --> 00:09:30.000
+Refer to the syllables of the course, if you want to know the exact number, and then there is a Group project which is mandatory. So to finish text on, you have to do both the written test.
+
+00:09:30.000 --> 00:09:32.000
+And the room project.
+
+00:09:32.000 --> 00:09:40.000
+It will be related to applications of language, large language models, so we will see in a few weeks.
+
+00:09:40.000 --> 00:09:47.000
+What we mean by that. So it would be a project it would be assigned with your group groups would be defined. Later, during the semester.
+
+00:09:47.000 --> 00:09:52.000
+Yeah, we work on the project. You will prepare a returned report.
+
+00:09:52.000 --> 00:10:01.000
+And the presentation, and then there would be a moment where you present your project to either me or Professor Coppola.
+
+00:10:01.000 --> 00:10:06.000
+And then you get your score out of 15 points. Okay.
+
+00:10:06.000 --> 00:10:10.000
+After you do both parts, it passes.
+
+00:10:10.000 --> 00:10:18.000
+Okay, the projects are assigned around mid semester. Okay, so you have time to work on it for the rest of the semester.
+
+00:10:18.000 --> 00:10:28.000
+You can deliver the project either in the winter session so January, February, and then discuss it January, February, and get your boat.
+
+00:10:28.000 --> 00:10:30.000
+January, February.
+
+00:10:30.000 --> 00:10:36.000
+Or in the summer session or in the fall session. Okay, so you get the same assignment.
+
+00:10:36.000 --> 00:10:40.000
+And then you can decide when to delivery.
+
+00:10:40.000 --> 00:10:46.000
+Just to be clear if you don't deliver it by fall.
+
+00:10:46.000 --> 00:10:50.000
+Of this year, so fall, 2027.
+
+00:10:50.000 --> 00:10:55.000
+And then you re-enroll. In this 1427, 28. You will have to redo the project.
+
+00:10:55.000 --> 00:10:58.000
+Okay. So all of the.
+
+00:10:58.000 --> 00:11:01.000
+Project Scores.
+
+00:11:01.000 --> 00:11:02.000
+Reset.
+
+00:11:02.000 --> 00:11:08.000
+At the end of the academic year. Okay, just to be clear.
+
+00:11:08.000 --> 00:11:25.000
+Office hours. There is no office hours officially, so you will not find us sitting in a room at some point waiting for someone to come. If you want to talk, if you want to discuss something, if you want to, whatever either before the lecture starts after the lecture ends during the breaks.
+
+00:11:25.000 --> 00:11:31.000
+You can talk to us. I mean me or Ricardo when Ricardo will be here.
+
+00:11:31.000 --> 00:11:45.000
+If you want to schedule an appointment, you can send us an email, an email. If we don't reply, you send us another email, another email, and where we reply. And then we set up an appointment. Okay.
+
+00:11:45.000 --> 00:11:47.000
+Course, material.
+
+00:11:47.000 --> 00:11:59.000
+For both parts of the course we will make available sites that we prepared on this course, so we summarized everything that is, you know that we believe is relevant for the course.
+
+00:11:59.000 --> 00:12:01.000
+In slides.
+
+00:12:01.000 --> 00:12:10.000
+They are available on the course website, which is linked there. And also there is a message on the portal della didattica, you will find the link there as well.
+
+00:12:10.000 --> 00:12:15.000
+We will make the slides available as we move on.
+
+00:12:15.000 --> 00:12:19.000
+With semester.
+
+00:12:19.000 --> 00:12:29.000
+And also you will have available the recordings of the lectures, as you know. As you see, we are recording the lecture. All of the lectures will be recorded.
+
+00:12:29.000 --> 00:12:38.000
+Except, you know, there are problems with the with zoom, with the infrastructure, whatever that has happened in the past. And there's nothing we can do about it. Unfortunate.
+
+00:12:38.000 --> 00:12:48.000
+I mean, you're likely because this is the 3rd year we're doing these calls. So if some of the lectures are missing. If something goes wrong with the recording, we can go back to the.
+
+00:12:48.000 --> 00:12:58.000
+Which are mostly what we we will discuss in the in this academic year.
+
+00:12:58.000 --> 00:13:04.000
+And I guess that's it. Okay. So this is the interest of the course. If you have questions about anything.
+
+00:13:04.000 --> 00:13:12.000
+Ask questions, otherwise we will move on to the next part.
+
+00:13:12.000 --> 00:13:22.000
+Any questions?
+
+00:13:22.000 --> 00:13:23.000
+Yeah.
+
+00:13:23.000 --> 00:13:30.000
+The groups for the project will be.
+
+00:13:30.000 --> 00:13:37.000
+Mostly hopefully chosen by you, so you will.
+
+00:13:37.000 --> 00:13:51.000
+Propose your fees, we will allow you to choose to make. Choose a fee for those of you who don't find a team we will assign, you know we will group people without the team together, and then the project will be.
+
+00:13:51.000 --> 00:14:04.000
+Assigned based on preferences. We will ask the team to select the top 3 projects they would like to work on to represent all the possible projects. We get a ranking.
+
+00:14:04.000 --> 00:14:16.000
+With your preferences, and then we try to assign you, all the projects according to the preferences. So sometimes multiple groups will work on the same project.
+
+00:14:16.000 --> 00:14:27.000
+But yes, we will try to follow your preferences in some to some degree. Of course, the 31 chooses just one project we'll have to do an interview.
+
+00:14:27.000 --> 00:14:42.000
+Those are times? The question often.
+
+00:14:42.000 --> 00:14:47.000
+In other questions.
+
+00:14:47.000 --> 00:15:04.000
+Okay is not let's move on to, as I told you, an introduction to language models. Okay, which is not an introduction to Chatgpt, or whatever language models we will see. Go way back. There is some more formal definition.
+
+00:15:04.000 --> 00:15:08.000
+And then we will see how we got to today.
+
+00:15:08.000 --> 00:15:10.000
+Okay.
+
+00:15:10.000 --> 00:15:18.000
+So what is a language model? Because we all talk about language model? We all hear this keyword,
+
+00:15:18.000 --> 00:15:31.000
+You know, Wix actually could be some kind of chart thing that talks to us. There is a very nice, very short definition of language model, which is a probabilistic model of a natural language.
+
+00:15:31.000 --> 00:15:32.000
+Okay.
+
+00:15:32.000 --> 00:15:37.000
+What is a probabilistic model of a natural language? It basically means that.
+
+00:15:37.000 --> 00:15:42.000
+Given a sentence any sentence we can think of. Okay.
+
+00:15:42.000 --> 00:15:50.000
+We can with this model. With this box we can estimate a probability that the sentence exists.
+
+00:15:50.000 --> 00:15:54.000
+Makes sense is something we find reasonable. Okay.
+
+00:15:54.000 --> 00:15:57.000
+So, in short.
+
+00:15:57.000 --> 00:15:59.000
+Not this one.
+
+00:15:59.000 --> 00:16:01.000
+In short, we are.
+
+00:16:01.000 --> 00:16:05.000
+Using this box. This language model.
+
+00:16:05.000 --> 00:16:12.000
+To preserbility of ascendants. What is a sentence? A sequence of words? Right.
+
+00:16:12.000 --> 00:16:17.000
+So we can use this box here to say what is the probability of the sentence.
+
+00:16:17.000 --> 00:16:19.000
+This is a reasonable sentence.
+
+00:16:19.000 --> 00:16:23.000
+0 point 1. That's a number. Okay.
+
+00:16:23.000 --> 00:16:38.000
+What is the probability of this? Is a purple sentence. Okay, this is something that we don't really expect to find in a language. It's not something you expect someone to pronounce. Okay, so lower probability. What is the probability of an incorrect sentence? These are.
+
+00:16:38.000 --> 00:16:47.000
+A reasonable sentence, which is, of course, wrong, even lower. So that means that if we have a good language model, we are capable.
+
+00:16:47.000 --> 00:16:56.000
+Of saying this is something that makes sense high probability. This is something that doesn't make sense low probability. Okay.
+
+00:16:56.000 --> 00:16:59.000
+So if we have this box, this function.
+
+00:16:59.000 --> 00:17:04.000
+We are capable of doing a bunch of nice things which we will see later.
+
+00:17:04.000 --> 00:17:15.000
+Of course, all of the probabilities overall all of the sentences we can read in a language with sum to one. So it makes sense, since its probabilities.
+
+00:17:15.000 --> 00:17:21.000
+We can think of this language modules as some kinds of function. Okay, which maps.
+
+00:17:21.000 --> 00:17:26.000
+The let's call it the natural language space, the space where all of the sentences live.
+
+00:17:26.000 --> 00:17:40.000
+It maps them to a number. Okay, some of the regions will be, let's call it high density regions, regions that make sense regions with sentences that we expect to find.
+
+00:17:40.000 --> 00:17:41.000
+Okay.
+
+00:17:41.000 --> 00:17:47.000
+The rest of the space will be low density regions. That is a regional space.
+
+00:17:47.000 --> 00:17:48.000
+Where there is.
+
+00:17:48.000 --> 00:17:57.000
+Incorrect sentences, unstructured sentences, sentences without a semantic meaning, sentences with dramatic errors, etcetera. Okay.
+
+00:17:57.000 --> 00:17:59.000
+Bunch of words.
+
+00:17:59.000 --> 00:18:08.000
+That make no sense whatsoever one after the other. If you think about it, most of the sentences we could create by adding a bunch of words one after another.
+
+00:18:08.000 --> 00:18:19.000
+Doesn't make sense right. There is only a very narrow regional space with sentences that actually make sense. So most of the sentences will be in low density. Regions.
+
+00:18:19.000 --> 00:18:23.000
+Doesn't make sense.
+
+00:18:23.000 --> 00:18:26.000
+If it does make sense, then.
+
+00:18:26.000 --> 00:18:35.000
+We can try to use what we call or we talked about so far. That is, we have a box that gives us this estimate.
+
+00:18:35.000 --> 00:18:38.000
+In some slightly more formal way.
+
+00:18:38.000 --> 00:18:41.000
+More specifically, we can.
+
+00:18:41.000 --> 00:18:49.000
+Provide the probability of a given sentence as the program of the probabilities of each piece of the sentence.
+
+00:18:49.000 --> 00:18:54.000
+Conditioning notice with the words that came before.
+
+00:18:54.000 --> 00:18:57.000
+Okay.
+
+00:18:57.000 --> 00:19:04.000
+What I'm saying is if I want to know the probability of the sentence. This is a reasonable sentence.
+
+00:19:04.000 --> 00:19:06.000
+I can write it.
+
+00:19:06.000 --> 00:19:10.000
+In this way I can.
+
+00:19:10.000 --> 00:19:16.000
+Starby, what's what's the probability of having a sentence starting with the word? Dist. Okay.
+
+00:19:16.000 --> 00:19:29.000
+And then I add all of the rest of the sentence with conditioning. I'm saying, what's the probability of having the word is follow the word this, so we condition. The probability of is.
+
+00:19:29.000 --> 00:19:34.000
+With the fact that the previous word was this.
+
+00:19:34.000 --> 00:19:41.000
+Probability of having the word a given the words, This is, etc, etc. Okay.
+
+00:19:41.000 --> 00:19:49.000
+So we're saying, okay, let's look at what happened before. Let's see what makes sense that happens after.
+
+00:19:49.000 --> 00:19:57.000
+So now we changed the problem from estimating the entire probability of the sentence into.
+
+00:19:57.000 --> 00:20:03.000
+Estimating the probability that we have a word. Let's call it Wt.
+
+00:20:03.000 --> 00:20:07.000
+Given. The words that came before were hidden.
+
+00:20:07.000 --> 00:20:12.000
+Okay. So given some input, let's call it a bunch of words.
+
+00:20:12.000 --> 00:20:15.000
+We want to say, Okay, what's the probability of having the next word.
+
+00:20:15.000 --> 00:20:20.000
+Which, if you think about it, is kind of a field-the-blank kind of problem.
+
+00:20:20.000 --> 00:20:32.000
+I gave you all of the words of a sentence, and then I give you a blank. Tell me what the word in the blank is okay. That's the problem that we are trying now.
+
+00:20:32.000 --> 00:20:33.000
+To solve.
+
+00:20:33.000 --> 00:20:39.000
+If you can predict the next word, then we have estimated this probability.
+
+00:20:39.000 --> 00:20:45.000
+And then we can plug this in here, and then we can estimate the probability of an entire sentence.
+
+00:20:45.000 --> 00:20:52.000
+This is what a language model does. Okay, nothing more, nothing less.
+
+00:20:52.000 --> 00:21:00.000
+Are you with me so far? Because this is what the main idea is of the entire course. After that we will see ways in which we can estimate those problems.
+
+00:21:00.000 --> 00:21:07.000
+But if you get this, then you understand what language models are, why they work, etc.
+
+00:21:07.000 --> 00:21:10.000
+Awesome.
+
+00:21:10.000 --> 00:21:13.000
+So let's start with.
+
+00:21:13.000 --> 00:21:24.000
+Some very stupid language models. Okay, this is not large language model. It is very stupid language models, which, were, you know the state-of-the-art in the eighties.
+
+00:21:24.000 --> 00:21:39.000
+So you can understand how poor they were. But they were still language models, okay? Because they were doing what we just said that a language model does that is estimating these probabilities.
+
+00:21:39.000 --> 00:21:45.000
+So we may be. We're going to mark assunction, and the market assunction makes the problem.
+
+00:21:45.000 --> 00:21:57.000
+Easier a lot easier. Remember, we said, Okay, we have to estimate this probability probability that we have a given word given all of the previous words.
+
+00:21:57.000 --> 00:22:13.000
+Markov says I mean the Markov assemption says, Okay, you don't really need to look at all of the words that came in for just look at the previous N. Words, n-one words, Okay, y minus one, because the nomenclature that was used back in the day.
+
+00:22:13.000 --> 00:22:20.000
+Used engrams for n minus one. But this is just a detail. So Markov says, Okay.
+
+00:22:20.000 --> 00:22:27.000
+Don't look at the entire sentence. Why? Because it becomes computationally incomputable.
+
+00:22:27.000 --> 00:22:32.000
+Verso computationally expanded, well expensive, not incomputable.
+
+00:22:32.000 --> 00:22:38.000
+Just focus on just a few words that came before the word that you want to fill. Okay.
+
+00:22:38.000 --> 00:22:46.000
+We call this bunch of words that came before the conflict. So we give some context, some information.
+
+00:22:46.000 --> 00:22:53.000
+And then we want to be able to estimate this probability. Here we just see, we assume to be.
+
+00:22:53.000 --> 00:23:01.000
+Approximate what we are looking for. It's not the same. Approximate what we're looking for.
+
+00:23:01.000 --> 00:23:05.000
+So if this works, if this approximation.
+
+00:23:05.000 --> 00:23:13.000
+Makes sense, it works. It is reasonable. That means that if N. The number of words that we look.
+
+00:23:13.000 --> 00:23:25.000
+Before our target. Word if n is very small, this becomes computationally, computationally feasible. Okay, that means that we can take.
+
+00:23:25.000 --> 00:23:27.000
+A bunch of text.
+
+00:23:27.000 --> 00:23:34.000
+From natural language, books, articles, whatever.
+
+00:23:34.000 --> 00:23:38.000
+We call these bunch of text corpus.
+
+00:23:38.000 --> 00:23:43.000
+And we can enterically measure the frequencies.
+
+00:23:43.000 --> 00:23:45.000
+That we have for each.
+
+00:23:45.000 --> 00:23:57.000
+Bunch of words and following words: Okay, that becomes our language model. We empirically estimate all of the probabilities. And then we use the table as a reference.
+
+00:23:57.000 --> 00:23:59.000
+We will have an example.
+
+00:23:59.000 --> 00:24:05.000
+In the next slide, so it will be hopefully a little bit easier to understand.
+
+00:24:05.000 --> 00:24:12.000
+More specifically, since we don't have days to send your computations.
+
+00:24:12.000 --> 00:24:17.000
+I will use a very simple case with diagrams. Okay, n. Equal to 2.
+
+00:24:17.000 --> 00:24:20.000
+As I told you, unequal to 2. That means.
+
+00:24:20.000 --> 00:24:25.000
+One word based on the previous word. Okay.
+
+00:24:25.000 --> 00:24:40.000
+I know it's confusing, because bygrams we assume that it is the previous 2 words, Okay, but based on the nomenclature that has been used in you know, in past days. We say Bigram. We used the previous word to predict the current word.
+
+00:24:40.000 --> 00:24:43.000
+Okay, so we just look at the previous word.
+
+00:24:43.000 --> 00:24:47.000
+And we try to estimate what the next word is right to be.
+
+00:24:47.000 --> 00:24:50.000
+Okay.
+
+00:24:50.000 --> 00:24:51.000
+These.
+
+00:24:51.000 --> 00:24:57.000
+Approximate equal to sine is doing a lot of work. Okay, it's a very
+
+00:24:57.000 --> 00:24:59.000
+Strong approximation.
+
+00:24:59.000 --> 00:25:01.000
+We are.
+
+00:25:01.000 --> 00:25:05.000
+Not even close to being close to this. Okay.
+
+00:25:05.000 --> 00:25:20.000
+But as an example, I will show you this big RAM situation, which, by the way, has been used in the past, so it's not like something I came up with. It's been used. It doesn't work very well, let me tell you this but it does produce something that.
+
+00:25:20.000 --> 00:25:23.000
+We call a language model, and that.
+
+00:25:23.000 --> 00:25:28.000
+Makes at least some kind of sense.
+
+00:25:28.000 --> 00:25:30.000
+So let's.
+
+00:25:30.000 --> 00:25:36.000
+Run an example. Okay, let's build this biggeram model together.
+
+00:25:36.000 --> 00:25:51.000
+What we will do is, we take all our corpus. In this case our corpus will be just 2 sentences, 2 very simple sentences: the god chased the mouse happily, and then the mouse ate the cheese. Okay.
+
+00:25:51.000 --> 00:26:03.000
+That's see, this is our knowledge of the world. This is it could be books, it could be sentences, articles. It could be the pages. We just have 2 sentences, because we don't have the whole day to spend filing.
+
+00:26:03.000 --> 00:26:09.000
+What we will do is we compute a table with all of the probabilities of.
+
+00:26:09.000 --> 00:26:24.000
+Even now worse. What word concepts? How do I compute it? Empirically? We sit down, and we compute all of the possible diagrams, and then we get. We get to the table. So this is the original table at the empty table.
+
+00:26:24.000 --> 00:26:30.000
+Notice that it has all of the possible words that we know about.
+
+00:26:30.000 --> 00:26:35.000
+On the rows and on the columns.
+
+00:26:35.000 --> 00:26:42.000
+We call this list of words our vocabulary. Okay, all of the words that we know best.
+
+00:26:42.000 --> 00:26:52.000
+In this case our corpus only contains 2 sentences, and what you find here is all of the words contained in those sentences.
+
+00:26:52.000 --> 00:27:02.000
+Of course you understand that if you have a much larger corpus, your vocabulary will also be quite hard.
+
+00:27:02.000 --> 00:27:13.000
+Same for the columns. What do we put in each of the cells here? We put the probability, the frequency actually, if we are putting frequency, the frequency with which.
+
+00:27:13.000 --> 00:27:16.000
+We find.
+
+00:27:16.000 --> 00:27:18.000
+A word.
+
+00:27:18.000 --> 00:27:19.000
+And then.
+
+00:27:19.000 --> 00:27:23.000
+The next word. Okay.
+
+00:27:23.000 --> 00:27:25.000
+Let me show you what I mean.
+
+00:27:25.000 --> 00:27:27.000
+We start with the 1st sentence.
+
+00:27:27.000 --> 00:27:33.000
+1st instance, we compute all of the possible diagrams. 1st diagram the head. Okay.
+
+00:27:33.000 --> 00:27:35.000
+The.
+
+00:27:35.000 --> 00:27:44.000
+Is the conditioning word cat is the following word: okay. So we say, Okay, we notice that at least once.
+
+00:27:44.000 --> 00:27:47.000
+We have the word cat.
+
+00:27:47.000 --> 00:27:53.000
+Whoops the word cat that follows the word duh. So we say, Okay, plus one.
+
+00:27:53.000 --> 00:27:58.000
+We move on to that chase. Okay.
+
+00:27:58.000 --> 00:28:01.000
+So we say, Okay, at least once we observe that the word.
+
+00:28:01.000 --> 00:28:04.000
+Chased.
+
+00:28:04.000 --> 00:28:07.000
+Is following the word cat.
+
+00:28:07.000 --> 00:28:09.000
+Plus one.
+
+00:28:09.000 --> 00:28:13.000
+Changed the so we say, Okay, we account changed.
+
+00:28:13.000 --> 00:28:16.000
+Is followed by the word at least once.
+
+00:28:16.000 --> 00:28:23.000
+The mouse mouse happily, and then we do the same with the second sentence. Okay.
+
+00:28:23.000 --> 00:28:30.000
+We do this, we get this table. Notice that we normalize each of the rows. We're saying, Okay.
+
+00:28:30.000 --> 00:28:33.000
+Autofolded times.
+
+00:28:33.000 --> 00:28:37.000
+That the word do is followed by something. What do we get.
+
+00:28:37.000 --> 00:28:40.000
+For the virtu, for instance.
+
+00:28:40.000 --> 00:28:54.000
+One in 4 times we get the word cat one in 4 times we get the word cheese, 2 in 4 times we get the word mouse. Okay? This is our empirical estimate of the probability that some word follows the word, the.
+
+00:28:54.000 --> 00:28:57.000
+Very simple, right? It's not.
+
+00:28:57.000 --> 00:29:07.000
+Rocket science. It's also done a very small corpus, so the table will necessarily be a naive table. Of course.
+
+00:29:07.000 --> 00:29:11.000
+But now, what can we do with disable.
+
+00:29:11.000 --> 00:29:13.000
+Which is.
+
+00:29:13.000 --> 00:29:19.000
+This is a language model, by the way. Okay, this is a language model which models the probability that.
+
+00:29:19.000 --> 00:29:24.000
+Some were followed a bunch of other words.
+
+00:29:24.000 --> 00:29:28.000
+Diagram. So a single word. But it's still a language model. Okay?
+
+00:29:28.000 --> 00:29:31.000
+What can we do with this language? Model.
+
+00:29:31.000 --> 00:29:39.000
+Many things the 2 interesting things that we will see, and that we will use even with bigger, nicer models.
+
+00:29:39.000 --> 00:29:44.000
+Is estimating probabilities, and then generating new sentences.
+
+00:29:44.000 --> 00:29:47.000
+Okay.
+
+00:29:47.000 --> 00:29:53.000
+Estimating probabilities, we can take a new sentence that we have never seen before.
+
+00:29:53.000 --> 00:29:58.000
+And we can use our language model. To say this is a sentence that.
+
+00:29:58.000 --> 00:30:00.000
+Makes sense is probable that it exists.
+
+00:30:00.000 --> 00:30:06.000
+Or not, so we can compute the probability of a new sentence with our language model.
+
+00:30:06.000 --> 00:30:08.000
+That's useful.
+
+00:30:08.000 --> 00:30:12.000
+When we see also why, in a few lectures.
+
+00:30:12.000 --> 00:30:23.000
+The other thing, which is even more interesting that we can do is we can generate new sentences. Okay, we know what the probability of having any word following some other word is.
+
+00:30:23.000 --> 00:30:27.000
+And so we can start with a single word.
+
+00:30:27.000 --> 00:30:34.000
+We know what all the possible words are that follow this word, for instance, we know all of the words.
+
+00:30:34.000 --> 00:30:39.000
+That are typically following the word. The here.
+
+00:30:39.000 --> 00:30:46.000
+That's a probability distribution. We can sample from that probability distribution, and we get.
+
+00:30:46.000 --> 00:30:47.000
+A new word.
+
+00:30:47.000 --> 00:30:57.000
+At this point we have a new word we can say, okay, we sampled. Let's say cheese. We have a new word we say, okay, what's the probability that some other word follows the word cheese.
+
+00:30:57.000 --> 00:31:04.000
+In this case 0 . So I mean, the sentence will end. Okay. But the word mouse.
+
+00:31:04.000 --> 00:31:13.000
+Is followed by either 8th or happily. Okay, so we will continue sampling from this probability distribution.
+
+00:31:13.000 --> 00:31:23.000
+This here is very naive. We can do it also with bigger, better, nicer, more, and that will produce more reasonable sentences.
+
+00:31:23.000 --> 00:31:31.000
+So we generate a new sentence one word at a time. We call this generation autoregressive, because we feed.
+
+00:31:31.000 --> 00:31:40.000
+What has been generated by the model to the model itself. You say, Okay, now give me the next work. Then give me the next word, then give me the next word, etc.
+
+00:31:40.000 --> 00:31:45.000
+We call it autoregressive generation.
+
+00:31:45.000 --> 00:31:57.000
+Let's say 2 examples. 2 very simple examples, of course, for the 2 use cases I told you about estimating probabilities. Let's say we have a new sentence. The cat chased the cheese.
+
+00:31:57.000 --> 00:32:07.000
+Weird status. Yes, but at least it is structured. Okay. So what's the probability? According to what we know about the world, which is.
+
+00:32:07.000 --> 00:32:13.000
+This table here. What's the probability that we have this sentence.
+
+00:32:13.000 --> 00:32:19.000
+If we go back a few slides, remember, we can break that probability into.
+
+00:32:19.000 --> 00:32:30.000
+All of those conditional probabilities, probability of the word, the times, probability of hitting the word cat afterward, etc, etc, etc.
+
+00:32:30.000 --> 00:32:31.000
+We make.
+
+00:32:31.000 --> 00:32:39.000
+Democraz. Markov assemption tells us, Look, don't bother with the entire.
+
+00:32:39.000 --> 00:32:50.000
+Sentence. Just take the previous word bygrams in this case. Okay, so just take the previous word and compute the probability so make this approximation.
+
+00:32:50.000 --> 00:32:55.000
+And so this probability here is the approximation of.
+
+00:32:55.000 --> 00:33:00.000
+This product of terms. Okay.
+
+00:33:00.000 --> 00:33:05.000
+How do we find all of these numbers? We have a table.
+
+00:33:05.000 --> 00:33:11.000
+Which we just filled. We can use that table to go find, for instance.
+
+00:33:11.000 --> 00:33:16.000
+The probability that the word cat follows the word chaste.
+
+00:33:16.000 --> 00:33:21.000
+Probability that the word.
+
+00:33:21.000 --> 00:33:25.000
+Can't follow the word. Chase is here.
+
+00:33:25.000 --> 00:33:29.000
+One. Why? Because we always have these.
+
+00:33:29.000 --> 00:33:42.000
+These relationship here. Let's, for example, more interesting. Water. Probability is the word cheese follows the word, the we go here. We find this term one in 4 times.
+
+00:33:42.000 --> 00:33:52.000
+Let's assume that, probability of adding the word the sentence starts with the word is one. Why? Because we always see that all the sentences start with the word, the.
+
+00:33:52.000 --> 00:34:06.000
+We get this approximation one in 16, that is the probability, according to our model, that these sentences, straight to number. We know it is not 0 . So it's not that the model is saying this sentence cannot exist.
+
+00:34:06.000 --> 00:34:08.000
+And so we estimate a number.
+
+00:34:08.000 --> 00:34:14.000
+Slightly more interesting. He is generating new sentences.
+
+00:34:14.000 --> 00:34:22.000
+We have to have some kind of starting word, some word that we say, this is the beginning of our sin.
+
+00:34:22.000 --> 00:34:37.000
+As we argued, the word does start of the sentence. In this case, we see that this is also a problem for large language models. So we have to figure out some kind of stark word.
+
+00:34:37.000 --> 00:34:44.000
+We take our table. We know that the word the is followed by.
+
+00:34:44.000 --> 00:34:52.000
+A bunch of other words. So we have a distribution of possible words that makes sense to have after a word, did.
+
+00:34:52.000 --> 00:35:00.000
+We get this distribution one in 4 times, cat, one in 4 times cheese, half the Times Mouse.
+
+00:35:00.000 --> 00:35:03.000
+This is a probability distribution. We can sample it.
+
+00:35:03.000 --> 00:35:07.000
+We sample it, and we pick the word mouse.
+
+00:35:07.000 --> 00:35:11.000
+So now this sentence becomes the mouse. Okay.
+
+00:35:11.000 --> 00:35:13.000
+We continue.
+
+00:35:13.000 --> 00:35:19.000
+We have the mouse diagram, so we just look at the last word of our sentence.
+
+00:35:19.000 --> 00:35:28.000
+What are the words that we know come afterward, mouse either 8 or happily. Okay.
+
+00:35:28.000 --> 00:35:35.000
+We sample from this distribution. 50 50. We get the word 8, the mouse 8.
+
+00:35:35.000 --> 00:35:43.000
+We look at the probabilities, what follows? 8. Always the word, the at least in our knowledge of the world.
+
+00:35:43.000 --> 00:35:44.000
+We sample.
+
+00:35:44.000 --> 00:35:48.000
+We get the word, the mouse, a.
+
+00:35:48.000 --> 00:35:54.000
+To continue, we sample once again what follows the word dude.
+
+00:35:54.000 --> 00:35:57.000
+We get the mouse. Okay? So the mouse ate the mouse.
+
+00:35:57.000 --> 00:36:06.000
+Tammybelism. Then we continue what happens out there? The word smouse. We go the sample. What happens? We find Hatler.
+
+00:36:06.000 --> 00:36:10.000
+The mouse ate the mouse happily. Okay.
+
+00:36:10.000 --> 00:36:15.000
+Then we continue what happens after. Happily, we find it happily, is never followed by any other word.
+
+00:36:15.000 --> 00:36:28.000
+Waiting more, or in some other special way. We say there is no no word, so it's end of sentence. But this is something we which we will see in a few weeks, days.
+
+00:36:28.000 --> 00:36:34.000
+So we finished the sentence. So we have generated a new sentence that didn't exist before.
+
+00:36:34.000 --> 00:36:36.000
+From our language, model.
+
+00:36:36.000 --> 00:36:52.000
+Okay, this might seem super trivial. But this is essentially what we do with any language model. We would see that even when we use llama when you use Gschargpt, whatever we will generate one sentence.
+
+00:36:52.000 --> 00:36:55.000
+Sorry one word at a time.
+
+00:36:55.000 --> 00:37:02.000
+So we will say, Okay, this is what you've generated so far. Give me the next word, then give me the next word, then give me the next word. Okay.
+
+00:37:02.000 --> 00:37:19.000
+Indeed, if you I mean if you look at when you Scholarsity, whatever you will see that you generate, I mean the text that you get as the output is a 1 word after the other. It is not just a gimmick to make it look like someone is writing it is also because the model is generating the sentence.
+
+00:37:19.000 --> 00:37:22.000
+On the job. Okay.
+
+00:37:22.000 --> 00:37:33.000
+So instead of waiting 1 min to get this full text, they show you what the model is generating along the way.
+
+00:37:33.000 --> 00:37:37.000
+Of course you will understand hopefully that.
+
+00:37:37.000 --> 00:37:44.000
+These Engram: language model has a few limitations. Okay.
+
+00:37:44.000 --> 00:37:48.000
+Obviously you thought about them even before I leased them here.
+
+00:37:48.000 --> 00:37:54.000
+The big one is data source fee. Okay, this thing, this model.
+
+00:37:54.000 --> 00:37:58.000
+Scales exponentially with the size.
+
+00:37:58.000 --> 00:38:04.000
+Of the angular, and we then just substantially
+
+00:38:04.000 --> 00:38:08.000
+Bygram. Vocabulary size V.
+
+00:38:08.000 --> 00:38:14.000
+Size of the diagram. The table we just discussed. V. By VV. Squared.
+
+00:38:14.000 --> 00:38:22.000
+And Gram V. To the power of N. Of course this is not something we can typically afford.
+
+00:38:22.000 --> 00:38:27.000
+Why? Because just looking at one word as the entire context.
+
+00:38:27.000 --> 00:38:34.000
+Is not enough of, course but, even looking at 3 4, 5, words you, understand it is not enough okay.
+
+00:38:34.000 --> 00:38:51.000
+Notice that V the vocabulary size is typically at least in the tens of thousands of words. Okay. So tens of thousands to the power of 1015, 20, not feasible.
+
+00:38:51.000 --> 00:38:55.000
+This is, of course.
+
+00:38:55.000 --> 00:39:01.000
+And our limitation the context that is okay. If we look at the previous 15 words.
+
+00:39:01.000 --> 00:39:10.000
+It's already a lot 15. Okay, we argue that 1520 is already something we cannot easily work with. But let's say, hey? Even 50 words, 20 words.
+
+00:39:10.000 --> 00:39:21.000
+Is that enough no? Of, course often, i Mean in most of our conversations in most of the books we're in most of whatever we actually do.
+
+00:39:21.000 --> 00:39:28.000
+We have some kind of memory. We remember something we said.
+
+00:39:28.000 --> 00:39:31.000
+2 min ago, not only 15 words ago. Okay, so.
+
+00:39:31.000 --> 00:39:39.000
+Even assuming that we can scale this end to 2030, 50. It's still, you know, 50 words ago.
+
+00:39:39.000 --> 00:39:49.000
+I assume that whatever I tell you now or next depends on more than the just version, the last 15 working towards the same. Okay, so.
+
+00:39:49.000 --> 00:39:52.000
+We will lose.
+
+00:39:52.000 --> 00:39:56.000
+Everything good. We will lose the context.
+
+00:39:56.000 --> 00:40:00.000
+The things that can be needed. Very early.
+
+00:40:00.000 --> 00:40:07.000
+So that's the second limitation. And then the lack of semantics. What do we mean by that? We mean that.
+
+00:40:07.000 --> 00:40:13.000
+Think about cinema. Okay? If we have 2 words that have the same meaning.
+
+00:40:13.000 --> 00:40:20.000
+We treated those 2 words as completely different from one another. If we use engrams.
+
+00:40:20.000 --> 00:40:22.000
+Okay.
+
+00:40:22.000 --> 00:40:27.000
+Or you are a mean. Similarly, we have the problem with words.
+
+00:40:27.000 --> 00:40:38.000
+I think it's called poly semanticity, whatever words with the same name. 2 different meanings. Think about the word bad that either the animal, the mammal.
+
+00:40:38.000 --> 00:40:44.000
+Or the we use in baseball. Okay? In that case we read the word pad.
+
+00:40:44.000 --> 00:40:46.000
+As the same thing.
+
+00:40:46.000 --> 00:40:58.000
+We don't differentiate between the 2. Okay, so we are not adding context enough there. We are treating synonyms differently so all of these are limitations that we have in these kinds of models.
+
+00:40:58.000 --> 00:41:00.000
+Which hopefully.
+
+00:41:00.000 --> 00:41:05.000
+Tell you why we're not using Chatgpt based on engrams.
+
+00:41:05.000 --> 00:41:07.000
+Okay.
+
+00:41:07.000 --> 00:41:23.000
+Then people in the nineties also figured out that bigrams, engrams, freegrams, were not a good solution, and so they started coming up with alternatives. Okay, in the nineties. There were some.
+
+00:41:23.000 --> 00:41:26.000
+Simple Machine Learning Algorithms.
+
+00:41:26.000 --> 00:41:32.000
+I mean neural networks already existed, but they were limited by computational complexity.
+
+00:41:32.000 --> 00:41:39.000
+That is, there was not enough hardware to run bigger networks so, it was still limited.
+
+00:41:39.000 --> 00:41:43.000
+But nonetheless.
+
+00:41:43.000 --> 00:41:48.000
+People working in the field of natural language, processing.
+
+00:41:48.000 --> 00:41:58.000
+Came up with other models here. This is a screenshot from a paper that was published in the Nineties. I think it was.
+
+00:41:58.000 --> 00:42:02.000
+1998. Okay.
+
+00:42:02.000 --> 00:42:04.000
+Where they show.
+
+00:42:04.000 --> 00:42:07.000
+Text-generated in.
+
+00:42:07.000 --> 00:42:17.000
+In pink text generated by a three-gram model. So 2 words as the input. One word is the output, and then they show.
+
+00:42:17.000 --> 00:42:33.000
+Something that is generated by a tree-based language model. Okay, once again you see that I mean, if you go through this you will see that it is not groundbreaking stuff. Okay, it still doesn't make a lot of sense still better than what we had with trigrams.
+
+00:42:33.000 --> 00:42:37.000
+Still far away from what we have today.
+
+00:42:37.000 --> 00:42:46.000
+Okay. But still there were steps in the right direction.
+
+00:42:46.000 --> 00:42:49.000
+Now.
+
+00:42:49.000 --> 00:42:53.000
+When we talked about this problem predicting.
+
+00:42:53.000 --> 00:42:55.000
+A word.
+
+00:42:55.000 --> 00:42:59.000
+From a bunch of input words.
+
+00:42:59.000 --> 00:43:11.000
+You may have thought about it, or you will now think about it as a classification problem. Okay, we want to build some kind of classification model that takes as input.
+
+00:43:11.000 --> 00:43:13.000
+The previous works.
+
+00:43:13.000 --> 00:43:20.000
+And produces a class prediction. The class will be the word that we want to predict. Okay.
+
+00:43:20.000 --> 00:43:23.000
+We know that most classification models.
+
+00:43:23.000 --> 00:43:26.000
+Will not only give us.
+
+00:43:26.000 --> 00:43:40.000
+Good predicted labels, they will give us a probability distribution across all the possible ratings in this case, across all the possible words that we have. Okay, which is precisely what we need to build this kind of prediction.
+
+00:43:40.000 --> 00:43:41.000
+Okay.
+
+00:43:41.000 --> 00:43:50.000
+So this is the framing that we can give the problem. We look at these as a classification problem. Tell me the class.
+
+00:43:50.000 --> 00:43:58.000
+Word label that follows these words: okay.
+
+00:43:58.000 --> 00:44:09.000
+As it turns out, neural networks. And this is something that in the early 2 thousands was starting to make a lot of sense. Neural networks were really good.
+
+00:44:09.000 --> 00:44:18.000
+Classification model. Okay? They gave us probability distributions, as we will see later today, for those of you who are not familiar with the concept.
+
+00:44:18.000 --> 00:44:21.000
+And so we could use.
+
+00:44:21.000 --> 00:44:25.000
+Neural networks as a way to predict.
+
+00:44:25.000 --> 00:44:26.000
+The next word.
+
+00:44:26.000 --> 00:44:31.000
+As such as a language, model.
+
+00:44:31.000 --> 00:44:35.000
+There are some works in the early 2 thousands that do this.
+
+00:44:35.000 --> 00:44:38.000
+By Joshua Banjo.
+
+00:44:38.000 --> 00:44:46.000
+Pretty relevant, Guy, even today you may, I mean, I hope you have heard of him, if not, look him up.
+
+00:44:46.000 --> 00:44:49.000
+And then.
+
+00:44:49.000 --> 00:45:00.000
+Mean we do, fast forward to it to 2019, not today. And then around 2019 18, we got to.
+
+00:45:00.000 --> 00:45:08.000
+Different types of neural network which we call transformers, which we will see in the account vectors.
+
+00:45:08.000 --> 00:45:13.000
+Steel neural networks so still used as a classification model.
+
+00:45:13.000 --> 00:45:20.000
+Turns out that by making those models bigger, and giving them more text and training them for longer.
+
+00:45:20.000 --> 00:45:34.000
+We could get to generated text, which looks much better than what we discussed so far. Okay, so we managed to build something that generates text, that makes sense.
+
+00:45:34.000 --> 00:45:44.000
+Okay? Which now is. Obviously, I mean, all of us expect this model to be able to generate checks in a way, it makes sense.
+
+00:45:44.000 --> 00:45:59.000
+It was not so obviously a few years ago. Okay, so this, maybe, is even low quality with the standards we have today. But in 2019 this was really good. Okay.
+
+00:45:59.000 --> 00:46:10.000
+And so I mean this was generated. I didn't mention this, but this was taken from the blog post that Openai made about Gpt-two. Okay.
+
+00:46:10.000 --> 00:46:16.000
+So 2019, before Chatgpt was released.
+
+00:46:16.000 --> 00:46:30.000
+Gpt-two. We will discuss it in detail in a few lectures, but it is, we call it a decoder-only transformer model. We will see what all of this means in a few lectures.
+
+00:46:30.000 --> 00:46:41.000
+The people from Openai realized that as they made those model bigger, they were getting better performance better results, etc. That's when the large.
+
+00:46:41.000 --> 00:46:46.000
+Trend of language models started. Okay.
+
+00:46:46.000 --> 00:46:51.000
+And this is the recipe that has been used in the past few years.
+
+00:46:51.000 --> 00:47:00.000
+In this direction. Okay, making models always larger, always bigger, with more data, with more training, more Gpus, etc.
+
+00:47:00.000 --> 00:47:16.000
+Here. It's a classic plot. We see where we have a logarithmic scale on the y-axis, and we see the size of models. How it increased exponentially over the past few years. Okay, we will also discuss the fact.
+
+00:47:16.000 --> 00:47:26.000
+That at some point people realized that just scaling the size of the model was not enough and. Then there was I mean this curve here did not.
+
+00:47:26.000 --> 00:47:33.000
+Follow in 2024, 2526. Okay, it kind of plateaued here.
+
+00:47:33.000 --> 00:47:40.000
+Because people realize that we didn't just need to make those morals bigger. We had to do something else.
+
+00:47:40.000 --> 00:47:45.000
+But we will come to this in a few weeks.
+
+00:47:45.000 --> 00:47:55.000
+So what have we learned today? Language models are probabilistic models of some language we can generate.
+
+00:47:55.000 --> 00:48:08.000
+New sentences with a language model. We can estimate probabilities. What we used to use as language model was not really good so we kind of had to discard it.
+
+00:48:08.000 --> 00:48:20.000
+We learned that it makes sense to use neural networks. Okay, specifically, we will see Transformer-based architecture work very well, and then the bigger the models we make, the better the performance we get.
+
+00:48:20.000 --> 00:48:26.000
+So this is a very short summary of language models. Okay.
+
+00:48:26.000 --> 00:48:32.000
+Hopefully. I covered a few of the things that we will discuss in the next few lectures.
+
+00:48:32.000 --> 00:48:35.000
+Do you have questions about this.
+
+00:48:35.000 --> 00:48:41.000
+Feel free to ask what I switch presentations.
+
+00:48:41.000 --> 00:48:46.000
+We will have a break in 30 min or so.
+
+00:48:46.000 --> 00:48:50.000
+So you will also be able to ask questions at that point.
+
+00:48:50.000 --> 00:49:01.000
+But if you have questions right now about any of the things we discussed so far feel free to ask. Excuse me. Yeah. What do you mean by the raising the side of the auto tool?
+
+00:49:01.000 --> 00:49:06.000
+That is a very good question.
+
+00:49:06.000 --> 00:49:14.000
+We will discuss it in this set of slides. But essentially, we will see that neural networks have some.
+
+00:49:14.000 --> 00:49:27.000
+Values weight star meters in golden, which allow us to make predictions. We will see it's I mean, we will see it right here already. It's this purple.
+
+00:49:27.000 --> 00:49:45.000
+Numbers, the weights, these are numbers that we can change. Okay? And the more of these numbers we have the more of these weights we have, the bigger the network. The network is. So what I mean by making the model bigger. I mean, having more ways.
+
+00:49:45.000 --> 00:49:56.000
+Yes, yeah, layer is a way which we can increase. Parameters. Yes, absolutely so. A bigger model, with more weight, with more numbers that we can tune.
+
+00:49:56.000 --> 00:50:05.000
+Okay, but I hope it will be clearer when we finish this presentation. If not, you can come back and ask me, and then I will explain this. Okay, thank you.
+
+00:50:05.000 --> 00:50:21.000
+Yes, sir. So now our thinking valley is that we are.
+
+00:50:21.000 --> 00:50:30.000
+Not really, because if you look at the let me go back to the to the slides.
+
+00:50:30.000 --> 00:50:33.000
+If you look at this definition here.
+
+00:50:33.000 --> 00:50:34.000
+Okay.
+
+00:50:34.000 --> 00:50:40.000
+It's conditioned. Yes.
+
+00:50:40.000 --> 00:50:55.000
+I mean after you condition for the previous word, then it is independent, but independent of word, of nothing, because the dependence is already included in the conditioning. Okay, so yes. You're saying that.
+
+00:50:55.000 --> 00:50:57.000
+This term.
+
+00:50:57.000 --> 00:51:14.000
+By the way, here, I think there's a p missing, anyway, I will fix it this term, and this term. They are independent in a sense, because they are. We multiplied them together. So they are independent. But the this is A is already included here. So there is a dependence between all of the probabilities. Okay, so I mean.
+
+00:51:14.000 --> 00:51:22.000
+Yeah, each term is independent of the others, but the term already embeds the dependency from previous words does make sense.
+
+00:51:22.000 --> 00:51:29.000
+Awesome.
+
+00:51:29.000 --> 00:51:33.000
+Other questions, no perfect.
+
+00:51:33.000 --> 00:51:50.000
+So let's start with let's start. We will also be interested. The introduction to this virgin. I hope this will, as I mentioned, get you up to speed with some of the terminology. Some of the concepts that we will use it is by no means a full course on deep learning. For that you can reference.
+
+00:51:50.000 --> 00:51:55.000
+All of the other courses that existed polytechnical.
+
+00:51:55.000 --> 00:51:56.000
+So like.
+
+00:51:56.000 --> 00:51:59.000
+Pretty much all other courses.
+
+00:51:59.000 --> 00:52:09.000
+They talk about deep learning. We start with the perception, the smallest possible neural network we can produce.
+
+00:52:09.000 --> 00:52:12.000
+What is a perception.
+
+00:52:12.000 --> 00:52:16.000
+It is a model, so a box that.
+
+00:52:16.000 --> 00:52:22.000
+Takes something as input, produces something as output.
+
+00:52:22.000 --> 00:52:32.000
+And it is very simple. Okay, the model, this box, this perception, takes an input, some features, multiple features, potential.
+
+00:52:32.000 --> 00:52:34.000
+And produces.
+
+00:52:34.000 --> 00:52:44.000
+A single scalar output. Okay, we use the classic nomenclature X for the inputs Y for the output.
+
+00:52:44.000 --> 00:52:48.000
+The perception does something very safe.
+
+00:52:48.000 --> 00:52:50.000
+Takes all of the inputs.
+
+00:52:50.000 --> 00:52:52.000
+Multiplies.
+
+00:52:52.000 --> 00:52:55.000
+Weights. Each of the input.
+
+00:52:55.000 --> 00:53:01.000
+Buy some number by some scholar value which we call weight. Okay.
+
+00:53:01.000 --> 00:53:06.000
+w. 1 w. 2 W. 3.
+
+00:53:06.000 --> 00:53:10.000
+We summed all of this weighted terms.
+
+00:53:10.000 --> 00:53:14.000
+Okay. And then we pass the result.
+
+00:53:14.000 --> 00:53:17.000
+This number that we get by doing these.
+
+00:53:17.000 --> 00:53:22.000
+Addition of weighted terms through what we call an activation path.
+
+00:53:22.000 --> 00:53:25.000
+Some kind of function that.
+
+00:53:25.000 --> 00:53:34.000
+Modifies the input. So this will map to some number. We take some function. We will see what kind of functions we can use.
+
+00:53:34.000 --> 00:53:42.000
+And what we get is the output of the activation. Function is the result. The output of the perception.
+
+00:53:42.000 --> 00:53:44.000
+Very simple. Okay.
+
+00:53:44.000 --> 00:53:46.000
+I haven't told you yet. Where do we.
+
+00:53:46.000 --> 00:53:56.000
+Take these weights from. But for now we don't need to worry about that. Okay? Someone told us the weights. It's fine.
+
+00:53:56.000 --> 00:54:06.000
+This is the typical graphical representation that we have for research terms. Okay, some input. We place it on the left-hand side of the.
+
+00:54:06.000 --> 00:54:08.000
+Of the diagram.
+
+00:54:08.000 --> 00:54:16.000
+Each of the inputs x. 1 x 2, x 3, 4, 5 is weighted by some kind of weight, w. 1 w, 2 W. 3 W. 4.
+
+00:54:16.000 --> 00:54:18.000
+We compute the weighted sum.
+
+00:54:18.000 --> 00:54:23.000
+Notice. We add this term W. 0 . We call it a bias.
+
+00:54:23.000 --> 00:54:29.000
+He intercept an offset, call it whatever you want. It's a constant term that we add.
+
+00:54:29.000 --> 00:54:39.000
+Which make which it gives us some nice properties, tells us that we can recreate a bunch of functions. Let's no worry about that. It's just a number we add.
+
+00:54:39.000 --> 00:54:44.000
+And then we pass everything through the activation function. Okay.
+
+00:54:44.000 --> 00:54:54.000
+So this is the graphical way we typically see it this way on a book in the 1st slide. Whatever we can summarize it as this.
+
+00:54:54.000 --> 00:54:59.000
+Farms apply to the weight sound of all of the inputs.
+
+00:54:59.000 --> 00:55:02.000
+Or even nicer, even more compact.
+
+00:55:02.000 --> 00:55:06.000
+We take all of the weights that we use.
+
+00:55:06.000 --> 00:55:23.000
+By the way, I think the colors here are switched. I would also have to fix this I tried to use conceit colors for all of the parts, so weight should be purple. Input should be yellow. I will fix it no worry so we take a vector with all of the weights.
+
+00:55:23.000 --> 00:55:29.000
+Okay. Of our model. W: 1, 2, 3, 4, 5.
+
+00:55:29.000 --> 00:55:42.000
+We prepend the W. 0 we set x 0 to one. This is just a trick to make everything fit inside of a scalar dot product, and then we compute the dot product between Darling and x.
+
+00:55:42.000 --> 00:55:53.000
+Data transpose text. Okay, this is exactly the same as this weighted sum, which is exactly the same as this diagram here, which is exactly the same as this sum of terms. Okay.
+
+00:55:53.000 --> 00:55:57.000
+Just different ways in which you will find.
+
+00:55:57.000 --> 00:56:02.000
+This kind of model, trained as.
+
+00:56:02.000 --> 00:56:09.000
+This is everything we already discussed. Notice that this model here, if we set.
+
+00:56:09.000 --> 00:56:14.000
+The activation function to the identity function. Y good wax.
+
+00:56:14.000 --> 00:56:29.000
+These is a linear regression. Okay, which you definitely have seen in some previous quotes. Okay, if we said this activation function to the sigmoid function. This is the logistic regression which you may have seen in some course.
+
+00:56:29.000 --> 00:56:32.000
+It's a very simple classifier. Okay.
+
+00:56:32.000 --> 00:56:42.000
+So the perception is a more general form of this very simple model, with a bunch of inputs and a single output.
+
+00:56:42.000 --> 00:56:58.000
+Yes, I mean x. 1 x, 2, 8, 3, 4. They are all the features of the same sample.
+
+00:56:58.000 --> 00:57:13.000
+Okay, you have one sample, which is in our case. For instance, one sentence. This is the 1st word of the sentence. Second word of the sentence. 3rd word of the sentence. 4th word of the sentence, and then we produce some kind of output. Okay, that is the strength word of the sentence.
+
+00:57:13.000 --> 00:57:20.000
+So it's still the same sentence. We are not talking about multiple samples, multiple sentences.
+
+00:57:20.000 --> 00:57:25.000
+This is a single sentence. Okay.
+
+00:57:25.000 --> 00:57:28.000
+Okay.
+
+00:57:28.000 --> 00:57:29.000
+Let's.
+
+00:57:29.000 --> 00:57:42.000
+Make it even easier this model. Let's place the activation function as identity function. So whatever comes as the way that sum of the inputs becomes the output. Okay.
+
+00:57:42.000 --> 00:57:48.000
+At this point we understand that this is our model. This is what the perception that we're talking about.
+
+00:57:48.000 --> 00:57:50.000
+This is what it looks like.
+
+00:57:50.000 --> 00:57:53.000
+And we see that this model.
+
+00:57:53.000 --> 00:57:55.000
+We call it.
+
+00:57:55.000 --> 00:58:12.000
+We say that it can represent a family of functions? Why a family of functions? Because based on what we choose. SW: one w. 2 W. 0 : we can have different functions. Okay. And here what you see here is a very simple animation where I.
+
+00:58:12.000 --> 00:58:23.000
+They find that a spectrum. And then I added some sliders that let us change the value of w. 1, w. 2 W. 0 . And you see that as we change.
+
+00:58:23.000 --> 00:58:28.000
+These weights, these parameters, we get different functions.
+
+00:58:28.000 --> 00:58:39.000
+So the perception can represent affamity of functions. When we fix, when we select the weights that the 0 1, 2 we are identifying a single function.
+
+00:58:39.000 --> 00:58:42.000
+Among the family of available functions.
+
+00:58:42.000 --> 00:58:44.000
+Okay.
+
+00:58:44.000 --> 00:58:45.000
+So there is a.
+
+00:58:45.000 --> 00:58:56.000
+Small difference between the model which can represent a lot of functions and the specific choice of waves that we make to represent a specific single function.
+
+00:58:56.000 --> 00:59:13.000
+Okay. I even told you yet how we choose the weights. This is something that will be quite interesting, and we will discuss later. For now we know that we can either have a family of functions, or, if we choose, the specific weights, a single function.
+
+00:59:13.000 --> 00:59:23.000
+Doesn't make sense, by the way, because this is a difference that sometimes is not as clearly defined, but hopefully it makes sense. Now.
+
+00:59:23.000 --> 00:59:32.000
+So activation functions. I told you in the previous slide. Let's ignore the activation function. So now let's just talk about activation functions.
+
+00:59:32.000 --> 00:59:38.000
+They are aztology functions which we apply to the weighted sum of the inputs.
+
+00:59:38.000 --> 00:59:52.000
+And we use them for a bunch of reasons, really, but 2 main reasons. Then the red will be, let's say secondary reasons, but we have 2 main very interesting reasons why we use them.
+
+00:59:52.000 --> 00:59:55.000
+And the first one.
+
+00:59:55.000 --> 00:59:58.000
+Is that they help us.
+
+00:59:58.000 --> 01:00:04.000
+Introduce force some properties on the outputs of the model.
+
+01:00:04.000 --> 01:00:09.000
+We will see some examples. For instance, we want the output of the model to be.
+
+01:00:09.000 --> 01:00:17.000
+The output of a classifier. So we had to have some specific properties. How do we enforce them with activation functions.
+
+01:00:17.000 --> 01:00:19.000
+We will see examples later. Of course.
+
+01:00:19.000 --> 01:00:24.000
+The second example. The second reason is that we use.
+
+01:00:24.000 --> 01:00:26.000
+Dysfunctions, to.
+
+01:00:26.000 --> 01:00:32.000
+Introduce. We call it non-linearity in the model. We make the model non-linear.
+
+01:00:32.000 --> 01:00:40.000
+Once again we will see why this is useful in a few slides, for now remember that we have 2 reasons why we want to have.
+
+01:00:40.000 --> 01:00:43.000
+Nonlinear activation functions.
+
+01:00:43.000 --> 01:00:53.000
+Now, what do we use as activation functions? There is a whole literature that talks about what is the best activation function for each case.
+
+01:00:53.000 --> 01:01:07.000
+Typically, you will see a good default acculation function, the red function this thing here flat for negative numbers, identity function for positive numbers. Okay.
+
+01:01:07.000 --> 01:01:20.000
+Anyway. The what matters really here is that these functions are not linear. If our function was a linear function, it will be useless. Okay, blue CY. Later.
+
+01:01:20.000 --> 01:01:36.000
+But anyway, people tried to figure out what is the best way to make the model convert faster, train faster, be more performance, etc. And everyone says their own opinion on the matter, but still Relus are typically good-performing result. Good-performing units.
+
+01:01:36.000 --> 01:01:39.000
+Functions.
+
+01:01:39.000 --> 01:01:42.000
+So let's go back. One slide.
+
+01:01:42.000 --> 01:01:55.000
+Remember 2 purposes now we will talk about the 1st one, then we will do a small digression on another topic, and then we will come to why we need the second functionality.
+
+01:01:55.000 --> 01:01:58.000
+So first.
+
+01:01:58.000 --> 01:02:01.000
+Reason I told you.
+
+01:02:01.000 --> 01:02:09.000
+And 4th thing, some kind of property on the output of the perception.
+
+01:02:09.000 --> 01:02:13.000
+Remember perception y equal to function, applied to some input.
+
+01:02:13.000 --> 01:02:16.000
+Let's say we have.
+
+01:02:16.000 --> 01:02:21.000
+And we get to a practical problem, not practical, I mean, concrete problem, at least.
+
+01:02:21.000 --> 01:02:36.000
+A problem where we have 2 classes binary classification problem. Okay, we have the let me assume this. We have the the blue circles, and then we have the yellow songs. We want to build some kind of classification function.
+
+01:02:36.000 --> 01:02:41.000
+That separates blue circles from yellow stars. Okay.
+
+01:02:41.000 --> 01:02:52.000
+Of course. It's a binary problem. That means that we will need a prediction for the positive class and for the negative class.
+
+01:02:52.000 --> 01:02:58.000
+Since it is binary. If we know one probability, we can figure out the other as one minus.
+
+01:02:58.000 --> 01:03:10.000
+The probability right? So here it's summarized. We have 2 classes. We have a point X in this space, in this two-dimensional space x 1 x 2.
+
+01:03:10.000 --> 01:03:15.000
+The perception can be used to predict the probability that we have a.
+
+01:03:15.000 --> 01:03:24.000
+Yellowstar. Given the point right. This is what a classifier does, tells us. What's the probability of having the positive class.
+
+01:03:24.000 --> 01:03:35.000
+Of course, we can figure out the probability of the negative class as one minus the positive class, since it is a binary problem.
+
+01:03:35.000 --> 01:03:39.000
+So it's all kind of simple right? The only.
+
+01:03:39.000 --> 01:03:44.000
+Problem. The only thing we need to address is the fact that.
+
+01:03:44.000 --> 01:03:54.000
+The probability that the perceptron produces for the positive class must be a valid probability, that is, it must be a positive number between 0 and one.
+
+01:03:54.000 --> 01:03:57.000
+Okay, that's the only constraint we have.
+
+01:03:57.000 --> 01:03:59.000
+For a valid probability.
+
+01:03:59.000 --> 01:04:08.000
+Then, of course, we will know that the sum of all of the probabilities will be one, because we compute the probability of negative plus accordingly.
+
+01:04:08.000 --> 01:04:25.000
+So how do we guarantee that our perceptron, which remember, doesn't know anything about classification? The perceptron is just a function applied to a weighted sum. How do we make sure that the perceptron produces a valid probability? That is a number between 0 and one.
+
+01:04:25.000 --> 01:04:28.000
+We choose an activation function.
+
+01:04:28.000 --> 01:04:33.000
+That squashes, that limits the resolve.
+
+01:04:33.000 --> 01:04:40.000
+Of the model between 0 and one. So the weighted sum can sum, can go from minus infinity to plus infinity.
+
+01:04:40.000 --> 01:04:46.000
+We need to squash those minus infinity plus infinity values to the 0 . One range.
+
+01:04:46.000 --> 01:04:48.000
+And so typically.
+
+01:04:48.000 --> 01:04:50.000
+We use.
+
+01:04:50.000 --> 01:05:00.000
+Let me go back one slide. Here. We use a sigmoid function this function here. Okay, notice, this is a function.
+
+01:05:00.000 --> 01:05:09.000
+That for minus infinity goes to 0 , for plus infinity goes to one and only has in-between values.
+
+01:05:09.000 --> 01:05:15.000
+For all other real numbers. Okay, so this is precisely something we could care about.
+
+01:05:15.000 --> 01:05:20.000
+If the weighted sum is very small.
+
+01:05:20.000 --> 01:05:36.000
+We get as close to 0 number. If the weighted sum is very large, we get a close to one number. So just applying a sigmoid function to the output of the weight and sun gives us a nice property that what we get as the output.
+
+01:05:36.000 --> 01:05:41.000
+Is a valid probability, that is, is between 0 and one.
+
+01:05:41.000 --> 01:05:51.000
+And this is precisely what I'm saying here that if we choose that F. Activation phantom to be the sigmoid, we are guaranteed that.
+
+01:05:51.000 --> 01:05:54.000
+The perception that we have.
+
+01:05:54.000 --> 01:06:03.000
+Is a valid, binary classifier. Okay, is it a good classifier? We don't know. It depends, as you see, from this animation here.
+
+01:06:03.000 --> 01:06:12.000
+It depends on the weight that we choose. If we choose good weights. For instance, this value here in this configuration, notice that.
+
+01:06:12.000 --> 01:06:14.000
+We are splitting.
+
+01:06:14.000 --> 01:06:26.000
+Whoops we are splitting the space decently. Well, by the way, what is the colors that you're seeing? It's basically taking any point in this two-dimensional space.
+
+01:06:26.000 --> 01:06:37.000
+So x. 1 x 2. Any possible coordinate pair of coordinates, and passing that coordinate to the function, and we get a probability right? So of course, we want.
+
+01:06:37.000 --> 01:06:50.000
+Probabilities in this regional space here to be high high probability of being Yellow Star. We want probabilities in this region of space to be low, low probability of being a yellow star.
+
+01:06:50.000 --> 01:06:52.000
+Okay.
+
+01:06:52.000 --> 01:06:54.000
+So notice that.
+
+01:06:54.000 --> 01:06:56.000
+The perception.
+
+01:06:56.000 --> 01:06:58.000
+As ecologies are paying their fund.
+
+01:06:58.000 --> 01:07:05.000
+Some of those functions, so some of those choices of weights will be awful classifiers.
+
+01:07:05.000 --> 01:07:20.000
+For instance, I mean, this is already. This. This year is an awful classifier, always tells us 0 point 5 some choices of weight will be good classifiers. For instance, this year is a good choice for a classifier. Okay, so depending on.
+
+01:07:20.000 --> 01:07:23.000
+The weight specific as we choose.
+
+01:07:23.000 --> 01:07:29.000
+Defined of functions becomes one function that is good, one function that is not good.
+
+01:07:29.000 --> 01:07:43.000
+But still we have all of the means, the model to make valid predictions. This is what matters, and this is what is being given to us by adding the sigmoid function as an activation function.
+
+01:07:43.000 --> 01:07:50.000
+So reason number one, as I told you, enforcing properties on the output of the model.
+
+01:07:50.000 --> 01:07:55.000
+Without the Sigmod. We couldn't be doing this.
+
+01:07:55.000 --> 01:07:57.000
+Okay.
+
+01:07:57.000 --> 01:08:03.000
+Before I come to the second reason why we do this short progression. As I told you.
+
+01:08:03.000 --> 01:08:07.000
+Because one thing that we can think about doing.
+
+01:08:07.000 --> 01:08:15.000
+Is having multiple perceptions like, why stop to one perception? We can have multiple ones right.
+
+01:08:15.000 --> 01:08:19.000
+We can have the perceptrum that we had before.
+
+01:08:19.000 --> 01:08:22.000
+This one here, which produces its own output.
+
+01:08:22.000 --> 01:08:28.000
+We can say, Okay, let's add a new perception. Let's add a new one with a second output.
+
+01:08:28.000 --> 01:08:34.000
+Why? Because in many cases we may want to have molds for love.
+
+01:08:34.000 --> 01:08:37.000
+This here that we just defined.
+
+01:08:37.000 --> 01:08:46.000
+We call it a fully connected layer. Why? Fully connected? Because, all of the inputs are connected to all of the.
+
+01:08:46.000 --> 01:08:50.000
+Perceptionist. Okay.
+
+01:08:50.000 --> 01:08:57.000
+Notice that the 1st perception and the second perception have different sets of ways.
+
+01:08:57.000 --> 01:09:03.000
+The 1st perceptron has weights, w. 0 w. 1, w. 2.
+
+01:09:03.000 --> 01:09:11.000
+That is 0 w 0 . The second perception is q. 0 . q. 1. h. So now we just doubled the size of the moon.
+
+01:09:11.000 --> 01:09:18.000
+Okay. So adding new perceptions is one way in which we make a model bigger.
+
+01:09:18.000 --> 01:09:32.000
+And, by the way, notice that we can write y. 1, as I told you, as the function applied to W. Transposed XY. 2. As acute, transpose dex. We can take all of this, put it into a single matrix.
+
+01:09:32.000 --> 01:09:46.000
+We stack diws and Qs, and we can write the entire model that we have here as capital. W. This matrix here transposed. X: Okay.
+
+01:09:46.000 --> 01:09:54.000
+So we are moving from a single perception to a bunch of perceptions, all working together to produce multiple outputs.
+
+01:09:54.000 --> 01:09:56.000
+Okay.
+
+01:09:56.000 --> 01:10:01.000
+This year. This model has 6 parameters.
+
+01:10:01.000 --> 01:10:13.000
+So it's a six-parameter model. When we talk about transformers we see that we talk about billions of parameters. So when we counter the parameters we are counting how many weights.
+
+01:10:13.000 --> 01:10:15.000
+Do we have in the model.
+
+01:10:15.000 --> 01:10:26.000
+This year 16 model. There are 6 parameters. We will typically work with 16 parameters. That's a bit larger than this.
+
+01:10:26.000 --> 01:10:28.000
+Doesn't make sense, so far.
+
+01:10:28.000 --> 01:10:30.000
+Awesome.
+
+01:10:30.000 --> 01:10:32.000
+The next thing we can do.
+
+01:10:32.000 --> 01:10:42.000
+We said, Okay, let's add a few perceptions. We can also think about adding a few lawyers right? A few more levels of perceptions. Right.
+
+01:10:42.000 --> 01:10:48.000
+This year was the output of the 1st perception. This year was the output of the second perception.
+
+01:10:48.000 --> 01:10:49.000
+But.
+
+01:10:49.000 --> 01:11:03.000
+Nothing stops us from saying, Okay, let's make those outputs the input to a new perception. Okay, so we create a new perception here different set of weights, s. 0 s. 1 s. 2.
+
+01:11:03.000 --> 01:11:06.000
+They take his input.
+
+01:11:06.000 --> 01:11:10.000
+The output of the previous layer.
+
+01:11:10.000 --> 01:11:18.000
+And produces a new output. Z: Ok. So Z. Here is.
+
+01:11:18.000 --> 01:11:22.000
+The composition of a bunch of perceptions.
+
+01:11:22.000 --> 01:11:26.000
+Written here W. Transposed. X.
+
+01:11:26.000 --> 01:11:33.000
+Is the output. Here we apply. Sorry. Here we apply the non-linear activation function.
+
+01:11:33.000 --> 01:11:35.000
+Here.
+
+01:11:35.000 --> 01:11:45.000
+We get the result. The output and we apply weights. As 0 is, one is 2, so s. Front post the output of the previous layer.
+
+01:11:45.000 --> 01:11:50.000
+We applied a new activation function and we get Z. Okay, notice how we are.
+
+01:11:50.000 --> 01:12:01.000
+Adding multiple players. This will be called a multi multi-layer perception. Okay, because we have multiple lays of perceptions. So it's not.
+
+01:12:01.000 --> 01:12:05.000
+That far-fetched to call it that.
+
+01:12:05.000 --> 01:12:09.000
+Again. We have this pattern that we will see very often.
+
+01:12:09.000 --> 01:12:20.000
+Linear layer, non-activation, touch, linear layer, non-activation function. We can go very deep with this. Okay?
+
+01:12:20.000 --> 01:12:26.000
+So now we go back to the second reason why I told you we need.
+
+01:12:26.000 --> 01:12:29.000
+Nonlinear activation functions.
+
+01:12:29.000 --> 01:12:37.000
+Before it even makes sense to talk about it. Now that we know that we can have multiple lays of perceptions.
+
+01:12:37.000 --> 01:12:39.000
+I can tell you that.
+
+01:12:39.000 --> 01:12:51.000
+If we add non-linear activation functions, those multi-layer perception functions because they are functions, become non-linear.
+
+01:12:51.000 --> 01:12:57.000
+Or to to give you the alternative. If we didn't have.
+
+01:12:57.000 --> 01:13:04.000
+A non-linear activation function. So if the activation function was the identity function listed here.
+
+01:13:04.000 --> 01:13:07.000
+If you go back to.
+
+01:13:07.000 --> 01:13:11.000
+Formula to these representation.
+
+01:13:11.000 --> 01:13:20.000
+I told you F is identity function, so we get rid of it becomes z equal to S. Transpose W. Transposed. X: Okay.
+
+01:13:20.000 --> 01:13:23.000
+We removed the non-linearities.
+
+01:13:23.000 --> 01:13:26.000
+Which is what we have. Whoops.
+
+01:13:26.000 --> 01:13:27.000
+What we have.
+
+01:13:27.000 --> 01:13:29.000
+Here right.
+
+01:13:29.000 --> 01:13:31.000
+But here.
+
+01:13:31.000 --> 01:13:33.000
+The problem now is that.
+
+01:13:33.000 --> 01:13:36.000
+S. Transposed, W. Transposed.
+
+01:13:36.000 --> 01:13:41.000
+Is nothing other than some other matrix. W. Prime.
+
+01:13:41.000 --> 01:13:50.000
+Equal to W. Times S. Transposed: okay. We take this. We transpose this and this big. This can be replaced with a single matrix.
+
+01:13:50.000 --> 01:14:01.000
+So this means that instead of having 2 layer of perceptions, we could have used a single layer of perceptions. Okay. So adding: the second layer was not useful.
+
+01:14:01.000 --> 01:14:03.000
+And this is true.
+
+01:14:03.000 --> 01:14:07.000
+As many times as you want. You can have 20.
+
+01:14:07.000 --> 01:14:11.000
+Linear measures, one after the other.
+
+01:14:11.000 --> 01:14:22.000
+Without any non-linearity in between, and you could collapse that entire 20 matrices into a single matrix and get the same results.
+
+01:14:22.000 --> 01:14:36.000
+So what am I saying here? I'm saying that if we don't have non-linear activation functions in between each layer, then there is no sense, no need to have deeper networks. Okay. Because a single layer.
+
+01:14:36.000 --> 01:14:42.000
+Of perceptions could be enough could be replacing what we had before.
+
+01:14:42.000 --> 01:14:43.000
+Okay.
+
+01:14:43.000 --> 01:14:49.000
+Doesn't make sense.
+
+01:14:49.000 --> 01:14:50.000
+Awesome.
+
+01:14:50.000 --> 01:14:56.000
+So that's the reason. The second reason why we need non-linear activation functions.
+
+01:14:56.000 --> 01:15:00.000
+And this is the let's say.
+
+01:15:00.000 --> 01:15:03.000
+Practical example. I took 2.
+
+01:15:03.000 --> 01:15:09.000
+Plus there's a point with, 2 distinct classes. Once again blue circles.
+
+01:15:09.000 --> 01:15:12.000
+Yellow stars.
+
+01:15:12.000 --> 01:15:19.000
+Notice that these are not linearly separable, because not they have a line that separates the 2 classes.
+
+01:15:19.000 --> 01:15:22.000
+And they can try to have either.
+
+01:15:22.000 --> 01:15:30.000
+This function here. So 2 layer of perceptions without an activation function.
+
+01:15:30.000 --> 01:15:47.000
+And even in the best of cases this is the best I could do. I train the model to do this. The separation between the 2 classes is a line which is not good enough right because we are not adding any non-linearity.
+
+01:15:47.000 --> 01:15:49.000
+If we add.
+
+01:15:49.000 --> 01:15:52.000
+For instance, a relief.
+
+01:15:52.000 --> 01:15:56.000
+Activation function. So this becomes the model.
+
+01:15:56.000 --> 01:15:59.000
+Notice how now.
+
+01:15:59.000 --> 01:16:05.000
+We can find a set of weights that 1, 2, 3, 4, whatever that.
+
+01:16:05.000 --> 01:16:09.000
+Separates. Well, the 2 classes. Okay.
+
+01:16:09.000 --> 01:16:13.000
+The only difference here between the 2 is that one time I used.
+
+01:16:13.000 --> 01:16:19.000
+A non-linear activation function. The other time I did not.
+
+01:16:19.000 --> 01:16:25.000
+This is precisely what you would get at the top. What you would get.
+
+01:16:25.000 --> 01:16:32.000
+We're a single layer. Okay? So a single perception that tries to separate the 2 classes.
+
+01:16:32.000 --> 01:16:36.000
+There's below is something a little bit better.
+
+01:16:36.000 --> 01:16:41.000
+Okay, non-linear. Separator.
+
+01:16:41.000 --> 01:16:43.000
+So if that makes sense
+
+01:16:43.000 --> 01:16:52.000
+And this is where we will stop for the break. We can now talk about multi-layer perceptions. Mlps: Okay, in short.
+
+01:16:52.000 --> 01:17:01.000
+Mlps are a stack of letters. So we put layer nonlinearity, layer, nonlinearity, layer, nonlinearity.
+
+01:17:01.000 --> 01:17:16.000
+A bunch of time each of these layer in in between. We call them hidden layer. What goes in in the beginning is what we call the input layer, which received as the input, the inputs of the model. What we get.
+
+01:17:16.000 --> 01:17:23.000
+From the model is called the output. What produces the output is called the output layer. Okay.
+
+01:17:23.000 --> 01:17:27.000
+Now the nice thing about.
+
+01:17:27.000 --> 01:17:35.000
+Multi-layer perceptions is that there is a theorem, the universal Approximation theorem that tells us that.
+
+01:17:35.000 --> 01:17:39.000
+A neural network built in this way.
+
+01:17:39.000 --> 01:17:55.000
+With some caveats, with some constraints, can represent a I mean any with some constraints function. So we can use a multilayer perception to approximate any possible function that is, sentinels blah blah, blah.
+
+01:17:55.000 --> 01:18:03.000
+This is an interesting theorem, which tells us that whatever function we may need, we may approximate it with a neural network.
+
+01:18:03.000 --> 01:18:15.000
+It also tells us that the neural network could be a single layer, a single hidden layer neural network. Okay, so it doesn't have to have 2040, 60.
+
+01:18:15.000 --> 01:18:20.000
+Of perceptions. Just a single layer of perceptions is enough.
+
+01:18:20.000 --> 01:18:28.000
+And so we had the the guarantee that anything any function we care about, continues blah blah, blah.
+
+01:18:28.000 --> 01:18:31.000
+Could be represented. Okay.
+
+01:18:31.000 --> 01:18:39.000
+So it's not like there is some limitation to what we can represent with multi-layer perceptions. We can represent anything.
+
+01:18:39.000 --> 01:18:42.000
+With the caveats.
+
+01:18:42.000 --> 01:18:44.000
+The.
+
+01:18:44.000 --> 01:18:56.000
+The downside, not downside. But the thing that this theorem doesn't give us is 1st of all, how big the network should be, what weights we should have.
+
+01:18:56.000 --> 01:18:59.000
+Okay, so we don't know that.
+
+01:18:59.000 --> 01:19:16.000
+Additionally, the size of the network that can represent any function could be arbitrarily large, could be very, very big, so intractable with current computers. So we know that any function can be approximated.
+
+01:19:16.000 --> 01:19:22.000
+We don't know what weight was reduced and how big the network should be. Okay.
+
+01:19:22.000 --> 01:19:26.000
+And it turns out, yeah.
+
+01:19:26.000 --> 01:19:33.000
+You'll need wider than deep.
+
+01:19:33.000 --> 01:19:36.000
+So okay. In the theorem, I'm just saying.
+
+01:19:36.000 --> 01:19:48.000
+Wiser in the theorem, says one single ether layer with a lot of perceptions. We don't know how many could be bilions, trillions. Okay, we don't know how many we need. But.
+
+01:19:48.000 --> 01:19:53.000
+A single neural network with that architecture could represent any function.
+
+01:19:53.000 --> 01:20:00.000
+Any function that t is continuous. That has, some kind of.
+
+01:20:00.000 --> 01:20:07.000
+Yeah, that's where I'm coming from. I started with saying.
+
+01:20:07.000 --> 01:20:18.000
+Manufacturer with a single layer. Okay, but this single layer could be very big billions, trillions of weights. So instead.
+
+01:20:18.000 --> 01:20:33.000
+What is, typically done, and it works just as well. It can still represent the infrastructure. The other option is to go deeper, so, having multiple players, one after the other, each layer small.
+
+01:20:33.000 --> 01:20:48.000
+Okay, so if each layer is small, but we have multiple of them, we get the same properties of universal approximation. Okay, so this is why we go deeper, because we typically don't have to have as many neurons as we would have to have.
+
+01:20:48.000 --> 01:20:52.000
+If we had a single very wide label.
+
+01:20:52.000 --> 01:20:56.000
+Okay. So basically the reason why we go deep.
+
+01:20:56.000 --> 01:21:03.000
+So deep learning means because we stock multiple laws one after the other. The reason we do that is because.
+
+01:21:03.000 --> 01:21:12.000
+These makes the total number of weights that we use typically smaller than the number of weights we would have to have in a single layer.
+
+01:21:12.000 --> 01:21:15.000
+Neural network.
+
+01:21:15.000 --> 01:21:33.000
+I thought the function would be more precise if you add more lives no, not more precise, because you can approximate. Given the theorem any function to an arbitrary degree of procedure.
+
+01:21:33.000 --> 01:21:46.000
+These amazing. So it's not that multiple layer make a more precise approximation, because you already know that if you have enough preceptors in a single layer you. Could approximate any function.
+
+01:21:46.000 --> 01:21:52.000
+Do we need any precision? Okay, so do we need any precision? Epsilon.
+
+01:21:52.000 --> 01:22:04.000
+But that number of perceptions you would need would be quite large. So instead of being quite large, we build deeper networks to make the model smaller.
+
+01:22:04.000 --> 01:22:16.000
+Okay, because otherwise we we could. I mean yes, you could approximate any function, but it could be trillions of parameters, which is not something that any computer can do.
+
+01:22:16.000 --> 01:22:25.000
+Brilliance we are getting there, I mean, we are kind of there with clusters of gpus, but quadrilians, whatever.
+
+01:22:25.000 --> 01:22:30.000
+Okay? Other questions about this.
+
+01:22:30.000 --> 01:22:33.000
+If not, it's 10.
+
+01:22:33.000 --> 01:23:03.000
+Sharp. We can have a ten-minute spray. So a 10 past 10 we will resume. Okay, thank you.
+
+01:23:03.000 --> 01:23:11.000
+Yes, so no worry.
+
+01:23:11.000 --> 01:23:28.000
+Different neurons. It doesn't matter actually.
+
+01:23:28.000 --> 01:23:44.000
+Dozen different differentiate, with adding neural on the next layer. No, yeah, it does make a difference, because this neuron has its own weights. Right weights. Yeah, this neuron has its own weights. Yes.
+
+01:23:44.000 --> 01:23:50.000
+This one has its own weights. This one has its own weight. Okay, so by doing this.
+
+01:23:50.000 --> 01:24:04.000
+Basically, if you have 2 neurons here, that means that you have 2 outputs. So these these neurons here get 2 outputs each. If you only add one neuron, you would do add one output, and so each of these would get a single output in each.
+
+01:24:04.000 --> 01:24:21.000
+Yes, but in general this word okay. Then in the discreet I mean, assume you have 3 layer with metrics we have here. w. 1: i mean, this is the the metrics. Yeah, between the 2. Yes.
+
+01:24:21.000 --> 01:24:40.000
+This is deadly true. Yes, that's true. I mean, excuse me no, no, yeah, no, no, yeah, no. It's operate. If we add these narrows in the 1st layer, it doesn't differentiate with the adding actually, I mean they are different models they are, they have different capabilities.
+
+01:24:40.000 --> 01:24:47.000
+They are different. What is the difference in terms of capitalism? Well, here you have.
+
+01:24:47.000 --> 01:24:55.000
+Why, I mean, if you have a single layer with that, you don't have the non-linearities that we talked about. Okay, so just that is already a difference.
+
+01:24:55.000 --> 01:25:10.000
+the nonetheless he's because between these 2 and these 2 you have, the non-linear activation function. If you have only a single, a big, a single big matrix. You only have one nonlinear functional. For example, assume you have 2 players.
+
+01:25:10.000 --> 01:25:16.000
+What's the difference between them? If you have?
+
+01:25:16.000 --> 01:25:33.000
+Actually, 2, 2 layer or one needed lawyer. You can implement any factoring you want, of course. So what's the benefit of adding more lies in my implementation. Yeah, that's what I kind of told you before, because it's not like, if you have a ten-way 10 parameters 0 and 10 fear.
+
+01:25:33.000 --> 01:25:49.000
+You get the same result with 20 in a single layer. Okay, it could be that if you have 1010 you get some functions. If you have a single layer it could have to be a billiard, maybe. Okay. So having multiple layer, allows you to.
+
+01:25:49.000 --> 01:26:04.000
+Reduce the total number of parameters that you have. So if you have multiple layer 1010, you could represent the same thing as 1 billion, for instance, not 1 billion, but no 2,000. But there was an assertion in my mind that, for example.
+
+01:26:04.000 --> 01:26:19.000
+Pitcherland Gematrist. So this is another, actually respectful. We can combine them within, adding more layer. I mean, if you want to distinguish this this area.
+
+01:26:19.000 --> 01:26:37.000
+Also we have this area together. I mean, there are 4, yeah, 4 perception together, and we distinguish this part of the area. So if you want to, okay, excuse me if you want to, actually detect the area better and more precise.
+
+01:26:37.000 --> 01:26:52.000
+You see. Why not? Assumed? We have to add more liner. I mean in this, actually, if you have some lights. I mean 2 layeres. We can find this area, but if we.
+
+01:26:52.000 --> 01:27:08.000
+Add more lies. It could be more precise, I mean, not necessarily. I mean you could. You can try this actually, you can. If you know some pytorch, you can try and use one model with multiple layer, and force the model to learn.
+
+01:27:08.000 --> 01:27:25.000
+This area here. Okay? And you will see that as you increase the number of letters, you get a more precise area. No, no, it's right, I mean, if you add more, it will be more precise. But you can also try to make a single model with.
+
+01:27:25.000 --> 01:27:40.000
+One input layer, one hidden layer, one output layer, and then you increase the size of the hidden layer, and you will see that you get also better precision. There, you can try it. It's an experiment. You can try it so kind of 3rd enough.
+
+01:27:40.000 --> 01:28:05.000
+It's a strategy, I mean, you get the same results, but with multiple players each of the layer has to be very small, can be very small. Thank you very. Much. You're very welcome, Hi, Abraham, I'm good. How are you nice to meet you. I was thinking about you this morning because I wanted to talk about the talk that you will have on Friday, also to the students of this course, because I think it makes sense we're going to attend.
+
+01:28:05.000 --> 01:28:21.000
+So I was thinking about maybe sending a message on the on the course page to connection. So I think I already have the all of the material because you sent it today for the technical email, etcetera. I think I remember there was also a Pdf Version.
+
+01:28:21.000 --> 01:28:38.000
+yeah, right, yeah, I continue to use. Yeah. Okay. Because he also reflected, all of the legend outside. I'm excited about this one. Yes, until we understand also. I will. Yes, I may have to leave. I mean.
+
+01:28:38.000 --> 01:28:56.000
+After the event, so I may not be there for the apertative, but I was thinking that we can try to have an aperture, you know, tomorrow or on Thursday. Hopefully, I may have the service. Yeah, it's fine, or I can send you on. I mean, either way. Yeah, yeah, I know. I know the email. He's coming tomorrow right.
+
+01:28:56.000 --> 01:29:25.000
+No, no, she's already. she's an already interim. Okay, okay, yeah. Her son was starting in Forito. Gotcha: Yeah, okay, that's fine. She's listening awesome. Yeah, I love that awesome. Yeah. And I will ask you about the Budget office. I said, though, yeah, no, I did not. Sorry. Yeah, there's the goals. Okay? So you could check out perfect I will. Yeah, yeah, yeah. After that we could like.
+
+01:29:25.000 --> 01:29:43.000
+I could also send like the emails and all of the like images. No, no. Okay, I will look at that. Yeah, yeah. Okay, for the appear to be instant or ratings. Yeah, perfect. Okay. Okay. See you hike. And also before.
+
+01:29:43.000 --> 01:30:13.000
+Yeah, of course I mean, do you have the slides? Do you have something that I can show? Yeah, but the slides are like, obviously in the next like, Yeah, yeah, it's fine absolutely okay. Maybe afi. Maybe on Wednesday. Yes, you can have. Maybe talk about a little a few words about Malto and the malto as well, so maybe I have a couple of slides ready, and then you can talk about it for a few months awesome. You're very welcome.
+
+01:30:13.000 --> 01:30:23.000
+The same person.
+
+01:30:23.000 --> 01:30:35.000
+Yeah, he's the director of our department of Secret food. You should wait for him to approve it before you can submit the refund. No, it's fine I mean
+
+01:30:35.000 --> 01:30:41.000
+It will. It will happen probably this week. So after you can, you can do that.
+
+01:30:41.000 --> 01:30:51.000
+It takes, I mean there's no hurry. I mean they. The only requirement you have is to request for the reimbursement by the end of school year. You know a lot of times.
+
+01:30:51.000 --> 01:31:21.000
+So it will be a few days after we approve it, and then, you can do the.
+
+01:36:19.000 --> 01:36:21.000
+So.
+
+01:36:21.000 --> 01:36:25.000
+We discussed so far.
+
+01:36:25.000 --> 01:36:26.000
+About.
+
+01:36:26.000 --> 01:36:32.000
+The perception how we put more of them together into a.
+
+01:36:32.000 --> 01:36:39.000
+Single layer, how we put multiple players together into a multi-layer perception model.
+
+01:36:39.000 --> 01:36:42.000
+Now let's build on top of this.
+
+01:36:42.000 --> 01:36:47.000
+To add some nomenclature, some concepts, some ideas to what we've discussed so far.
+
+01:36:47.000 --> 01:36:54.000
+And also, you know, start talking about what it is that we will work with.
+
+01:36:54.000 --> 01:36:57.000
+In later lectures. Okay.
+
+01:36:57.000 --> 01:37:09.000
+So so far, all that we did with this multilayer perceptions was, let's call it regression. Okay? We said, Okay, we can predict a scholar.
+
+01:37:09.000 --> 01:37:16.000
+Minus 50 plus infinity. We did cover briefly the binary classification case.
+
+01:37:16.000 --> 01:37:18.000
+Remember that.
+
+01:37:18.000 --> 01:37:32.000
+At the beginning of today's lecture I told you we can think about language models as classifying with a large number of classes, one class for each word that we are considering.
+
+01:37:32.000 --> 01:37:36.000
+Sorry it makes sense that we also talk about how we can use.
+
+01:37:36.000 --> 01:37:38.000
+Neural networks.
+
+01:37:38.000 --> 01:37:45.000
+To classy into multiple classes. Okay.
+
+01:37:45.000 --> 01:37:48.000
+And typically what we do.
+
+01:37:48.000 --> 01:37:50.000
+To make.
+
+01:37:50.000 --> 01:37:58.000
+A classifier out of a neural network is adding a very specific type of output layer.
+
+01:37:58.000 --> 01:38:01.000
+Which, by the way, we will typically call.
+
+01:38:01.000 --> 01:38:15.000
+The head of the model. The head of the model is the output layer, plus some activation function which produces the output that we care about that's sitting in the head of the model.
+
+01:38:15.000 --> 01:38:28.000
+We will see what the activation function is that we will use. It will be called okay. Either the sigmoid or binary classification, or the softmax for multi-class class classification.
+
+01:38:28.000 --> 01:38:30.000
+What I want you to.
+
+01:38:30.000 --> 01:38:33.000
+No care about understand is that.
+
+01:38:33.000 --> 01:38:38.000
+Before we apply this function. What the model produces.
+
+01:38:38.000 --> 01:38:47.000
+As always, is some unbounded numbers. Okay, numbers from minus infinity to plus infinity.
+
+01:38:47.000 --> 01:38:49.000
+Ideally.
+
+01:38:49.000 --> 01:38:52.000
+Those numbers.
+
+01:38:52.000 --> 01:39:00.000
+Should be reflected into probabilities should be looked at as probabilities. Okay, so if.
+
+01:39:00.000 --> 01:39:04.000
+We have a problem with 10 classes.
+
+01:39:04.000 --> 01:39:11.000
+The model should produce 10 outputs right? One output for each probability.
+
+01:39:11.000 --> 01:39:15.000
+And ideally the output of the model.
+
+01:39:15.000 --> 01:39:17.000
+It'll be probabilities. So.
+
+01:39:17.000 --> 01:39:28.000
+The probabilities should all be between 0 and one, and they should sum to one. Okay, that is what gives us a valid probability.
+
+01:39:28.000 --> 01:39:35.000
+So we're saying that the activation function that we place here should give us those guarantees.
+
+01:39:35.000 --> 01:39:40.000
+Between 0 and one, and sum to one.
+
+01:39:40.000 --> 01:39:44.000
+So that means that before.
+
+01:39:44.000 --> 01:39:46.000
+The activation, function.
+
+01:39:46.000 --> 01:39:58.000
+We have some numbers that are in some way related to probabilities. Okay, so there should be still 10 numbers if we have 10 classes.
+
+01:39:58.000 --> 01:40:03.000
+Those numbers. We call them logics. Okay.
+
+01:40:03.000 --> 01:40:13.000
+Logistic units. I think it's called yes, logistic units. They are typically called unnormalized probabilities.
+
+01:40:13.000 --> 01:40:30.000
+What do we mean? A normalized probability? It means that they are related to probabilities, so they will. They will not be probabilities, they will not sum to one, they will not be between 0 and one, but they are related to them. They are unnormalized, so they don't sum to one. They are not between 0 and one.
+
+01:40:30.000 --> 01:40:33.000
+But still, when those numbers are large.
+
+01:40:33.000 --> 01:40:39.000
+We would like the probability to be high when those numbers are low, we would like probability to be low.
+
+01:40:39.000 --> 01:40:45.000
+That is exactly what we did with the sigmoid, if you think about it. I told you.
+
+01:40:45.000 --> 01:40:52.000
+The output of the weighted sum is a number minus a 20 plus infinity. Okay.
+
+01:40:52.000 --> 01:40:56.000
+What we have on the X-axis here.
+
+01:40:56.000 --> 01:41:03.000
+After we apply the sigmode we get a number that is applying probability, so that we get some from before.
+
+01:41:03.000 --> 01:41:09.000
+Was a logic, was an unnormalized probability. It was a number that if it was very low.
+
+01:41:09.000 --> 01:41:17.000
+The resulting probability was almost 0 . If it was very large, the probability was very high. Okay.
+
+01:41:17.000 --> 01:41:20.000
+Here we would like to have the same.
+
+01:41:20.000 --> 01:41:23.000
+Not tears.
+
+01:41:23.000 --> 01:41:26.000
+Here we would like to have the same constant.
+
+01:41:26.000 --> 01:41:31.000
+But not personal class for multiple classes. Okay.
+
+01:41:31.000 --> 01:41:40.000
+We would see what I mean by this afterwards. Okay, for now just know that the output of the model.
+
+01:41:40.000 --> 01:41:48.000
+Before we applied. The non-linear functions are called logits, or unnormalized probabilities.
+
+01:41:48.000 --> 01:41:58.000
+Those are names now, nomenclature that we will use extensively throughout the course. Okay, so logits or animals probabilities are.
+
+01:41:58.000 --> 01:42:04.000
+Related to probabilities, so one for each of the words that we produce each of the classes.
+
+01:42:04.000 --> 01:42:10.000
+But they're not bounded 0 1, and they do not sum to one.
+
+01:42:10.000 --> 01:42:14.000
+So for the binary case we already covered this.
+
+01:42:14.000 --> 01:42:18.000
+I would say extensively, Okay, I told you if we add.
+
+01:42:18.000 --> 01:42:20.000
+2 glasses.
+
+01:42:20.000 --> 01:42:22.000
+Will seem to predict.
+
+01:42:22.000 --> 01:42:28.000
+Probability of one of the classes, for instance, probability of the positive class.
+
+01:42:28.000 --> 01:42:32.000
+We know, because we apply the sigmoid function.
+
+01:42:32.000 --> 01:42:34.000
+That's the output.
+
+01:42:34.000 --> 01:42:44.000
+Of the model will be between 0 and one, because the sigmoid function only produces value between values between 0 and one.
+
+01:42:44.000 --> 01:42:50.000
+So 1st guarantee it works because we are guaranteed that.
+
+01:42:50.000 --> 01:42:58.000
+It's in 0 1. The second thing we need that is the sum of all the probabilities is one.
+
+01:42:58.000 --> 01:43:09.000
+Is given by construction, because we said that we compute the probability of the negative class as one minus the probability of the positive class right so by construction, if.
+
+01:43:09.000 --> 01:43:18.000
+This probability is between 0 and one also minus managed, probability will be between 0 and one, and so we have all the properties we care about.
+
+01:43:18.000 --> 01:43:27.000
+Probability positive plus between 0 and one probability, and everything plus between 0 and one sum of the 2 probabilities. One. So it's a valid probability. Distribution.
+
+01:43:27.000 --> 01:43:32.000
+This is for the binary classification case.
+
+01:43:32.000 --> 01:43:46.000
+You understand hopefully that we cannot use the same idea with multiple classes. Right? If we have 10 classes, we cannot apply the Sigmod to the 10 outputs of the model.
+
+01:43:46.000 --> 01:43:54.000
+Because yes, all of them would be between 0 and one, but they would not sum to one right, because each sigmoid is independent of the others, so we cannot.
+
+01:43:54.000 --> 01:44:00.000
+State that the probability was sum to one. Okay. So instead.
+
+01:44:00.000 --> 01:44:07.000
+We use a different but similar, related in some way approach.
+
+01:44:07.000 --> 01:44:17.000
+Let's say we have n classes. Okay, 10 classes from before or given this example. Here, let's say 4 classes. We want to predict whether, let's say an image.
+
+01:44:17.000 --> 01:44:23.000
+Of something is a doll, a cat, a bird, or a turtle. Okay.
+
+01:44:23.000 --> 01:44:28.000
+Classification Problem 4 Classes. Okay.
+
+01:44:28.000 --> 01:44:33.000
+So in this case Ann will be equal to 4.
+
+01:44:33.000 --> 01:44:40.000
+What we do is we 1st get the output of the model. Remember the output of the model before.
+
+01:44:40.000 --> 01:44:51.000
+The activation function is what we call the Logits the unnormalized probabilities. So in this case our model will produce.
+
+01:44:51.000 --> 01:45:01.000
+Logits and normalized probabilities. It means that the model has 4 perceptions at the end this year this model here will finish.
+
+01:45:01.000 --> 01:45:07.000
+With 4 perceptions. Okay, it will have whatever here we don't care about it.
+
+01:45:07.000 --> 01:45:13.000
+It will have at the end 4 perceptions. Each one produces a scholar value.
+
+01:45:13.000 --> 01:45:18.000
+We put all of them together. We get this vector.
+
+01:45:18.000 --> 01:45:20.000
+Z, 1, 2, 3, 4.
+
+01:45:20.000 --> 01:45:25.000
+Of unnormalized probabilities of Lockheads. Okay.
+
+01:45:25.000 --> 01:45:35.000
+Could be anything minus 80, plus 2 plus 45 minus 160. Okay, so it's 4 numbers, because it's a 4 classes broader.
+
+01:45:35.000 --> 01:45:37.000
+At this point.
+
+01:45:37.000 --> 01:45:39.000
+The last step.
+
+01:45:39.000 --> 01:45:55.000
+Is to go from those unnormalized probabilities to valid class probabilities. Okay, so we want to compute the probability of class one class 2, class 3, class 4. So what is the probability that this picture is a picture of a doll? What is the probability that this picture is a picture of a cat.
+
+01:45:55.000 --> 01:46:01.000
+Of a bird of a turtle. Okay, so we want to create these.
+
+01:46:01.000 --> 01:46:05.000
+Probability. Chart: okay.
+
+01:46:05.000 --> 01:46:17.000
+Remember we have 2 properties that we care about to make sure that those 4 probabilities are valid probabilities. 1st one they should sum to one second one, they should be between 0 and one.
+
+01:46:17.000 --> 01:46:27.000
+I will cut short. I will not go through all of the reasons why we use this, but we use what we call the softmax activation path.
+
+01:46:27.000 --> 01:46:31.000
+Activation function. It's a function that takes as input.
+
+01:46:31.000 --> 01:46:36.000
+A bunch of values n values in this case, for let's say.
+
+01:46:36.000 --> 01:46:40.000
+And for each of the values for each of the classes.
+
+01:46:40.000 --> 01:46:42.000
+It produces.
+
+01:46:42.000 --> 01:46:50.000
+A valid probability. How, 1st of all, we take the corresponding Logit, the corresponding anormalized probability.
+
+01:46:50.000 --> 01:46:58.000
+And we exponentiate it. Okay, let's say that a dogg was assigned a probability of 80.
+
+01:46:58.000 --> 01:47:09.000
+A non-normalized probability of 80. What do we do? We compute? E. To da. Okay, that's the numerator. The denominator contains the sum.
+
+01:47:09.000 --> 01:47:19.000
+Of the exponentiations of all of the Logits. So we take all of the logics. 4 logits. In this case we exponentiate each of them.
+
+01:47:19.000 --> 01:47:24.000
+We summed them. And that's the denominator. Okay.
+
+01:47:24.000 --> 01:47:32.000
+And that's how we compute probability of class one dot probability of class 2, cat, etc, etc, etc.
+
+01:47:32.000 --> 01:47:34.000
+Now.
+
+01:47:34.000 --> 01:47:36.000
+I will not go through.
+
+01:47:36.000 --> 01:47:41.000
+The proof that this is the case, but it can be very easily shown that.
+
+01:47:41.000 --> 01:47:43.000
+These 2 properties hold.
+
+01:47:43.000 --> 01:47:48.000
+Probability of each of the classes is between 0 and one.
+
+01:47:48.000 --> 01:47:52.000
+Well, it's actually pretty simple. Okay, you know that.
+
+01:47:52.000 --> 01:47:58.000
+Exponentiation always gives us positive numbers. We know that the denominator.
+
+01:47:58.000 --> 01:48:09.000
+Is, the sum of the numerator plus something else. So it will definitely be positive, because it's positive divided by positive. It's definitely.
+
+01:48:09.000 --> 01:48:13.000
+Less than or equal to one, because the denominator is always.
+
+01:48:13.000 --> 01:48:23.000
+Bigger than or in the extreme case equal to the numerator. And so this is true for each of the classes, and then the sum of all of the.
+
+01:48:23.000 --> 01:48:33.000
+Of the probabilities of all the classes, Sam's to one by construction, because, the denominator that we use for each of the classes.
+
+01:48:33.000 --> 01:48:45.000
+Is the sum of the exponentiations, and sorry if we sum e to the dogg divided by this plus e to the probability cat, divided by this, plus whatever.
+
+01:48:45.000 --> 01:48:51.000
+At the end of the day the numerator will be the same of the denominator, and so it will be one.
+
+01:48:51.000 --> 01:48:55.000
+Okay. So this function here the softmax function.
+
+01:48:55.000 --> 01:49:03.000
+Is a way, is the most common and open way to go from unnormalized probability. Logits.
+
+01:49:03.000 --> 01:49:09.000
+2 valid probabilities. Okay. So every time you see a softmax, it's because.
+
+01:49:09.000 --> 01:49:20.000
+You are in a classification problem, and you have some output of a Moro that you want to transform into a valid probability distribution.
+
+01:49:20.000 --> 01:49:24.000
+Questions about this doesn't make sense.
+
+01:49:24.000 --> 01:49:25.000
+Yes, now.
+
+01:49:25.000 --> 01:49:29.000
+Yes.
+
+01:49:29.000 --> 01:49:42.000
+Okay. And then for completeness, for regression problems which we will not cover in this course, but for regression problems. Typically, we just use an integration function looming of punct.
+
+01:49:42.000 --> 01:49:46.000
+Okay. We just say, Okay,
+
+01:49:46.000 --> 01:49:51.000
+The model. The perceptron already produces a weighted sum of something.
+
+01:49:51.000 --> 01:50:00.000
+Which ranges from minus the v To plus infinity we. Want to produce a real-value output because, we are in a regression setting.
+
+01:50:00.000 --> 01:50:05.000
+Let's note add any activation function. Okay, let's use a linear activation function.
+
+01:50:05.000 --> 01:50:09.000
+This is fine, I mean, this is the only case.
+
+01:50:09.000 --> 01:50:13.000
+In which it makes fans who have a linear activation function.
+
+01:50:13.000 --> 01:50:16.000
+Okay? As the output.
+
+01:50:16.000 --> 01:50:20.000
+Of our regression, model.
+
+01:50:20.000 --> 01:50:36.000
+Okay. Now, if you don't have questions about this, you need to do. Yeah, because you've got our sub next question. Yeah, it's only at the end of the land of the landwork. Yes.
+
+01:50:36.000 --> 01:50:38.000
+It doesn't make sense.
+
+01:50:38.000 --> 01:50:50.000
+To have soft maxies in any of these places. Okay, there we always use other activation functions could be reloot delux or leaky relu. Whatever.
+
+01:50:50.000 --> 01:51:08.000
+Are safe people gave the radio function. Okay, the one that is the simplest one, the one that is often used. Then you can argue that some people say no, the gel is better or not, the legal is better results.
+
+01:51:08.000 --> 01:51:12.000
+It's all
+
+01:51:12.000 --> 01:51:29.000
+It's I mean, it's all within some percentage, few percentage points or performance. So there is no one single perfect activation function. Okay, you can find the data set for which the gel works better, the data set for which the red works better, etc, etc.
+
+01:51:29.000 --> 01:51:34.000
+It depends on the application, but it is
+
+01:51:34.000 --> 01:51:50.000
+Somewhat, you know, empirical in the sense that you cannot say, Okay, I have a financial problem financial data set. I will use juju. I have health data set I will use rel. It's not that you can figure it out. It's you try.
+
+01:51:50.000 --> 01:51:58.000
+And to see what what works best. Okay, it's part of the model selection process.
+
+01:51:58.000 --> 01:52:10.000
+High-performing, the tuning, choosing gut connectors, etc. So it's part of the things you can change to see if a Moral Works Better or not? Okay.
+
+01:52:10.000 --> 01:52:13.000
+Okay.
+
+01:52:13.000 --> 01:52:20.000
+So if it all works for you. If it all makes sense, let's move on to something that.
+
+01:52:20.000 --> 01:52:28.000
+I haven't told you much about Venicol. Yes, with a model. Yes, we have terminative functions. I have not told you yet.
+
+01:52:28.000 --> 01:52:31.000
+How do we choose the weights.
+
+01:52:31.000 --> 01:52:35.000
+Offer the function right? I told you we have a bunch of weights.
+
+01:52:35.000 --> 01:52:50.000
+Each of the perceptions has some weight, we have multiple perceptions multiple layer, so we have a lot of weights, right these weights are. Let's call them some sliders that we saw before. Some knobs call them whatever you want. They are some numbers that.
+
+01:52:50.000 --> 01:52:53.000
+We can choose in some way.
+
+01:52:53.000 --> 01:53:04.000
+To make the function work. Well, okay, remember, the the model itself is a family of functions could be any function, because we can have.
+
+01:53:04.000 --> 01:53:10.000
+We have the University urin, and we can choose any of those weights.
+
+01:53:10.000 --> 01:53:21.000
+But now we have to choose the specific ways. We want to have right otherwise we don't have a single model to use. We have an obstruction.
+
+01:53:21.000 --> 01:53:37.000
+So how do we choose the weights manually not feasible. Okay, I show you. I showed you the example with 3 sliders, and we could change the 3 parameters works well up to let's say 5 parameters. Okay, then we can go from 5 to billions.
+
+01:53:37.000 --> 01:53:39.000
+Doesn't really work.
+
+01:53:39.000 --> 01:53:45.000
+So we have to figure out some automated way to find those weights. Okay.
+
+01:53:45.000 --> 01:53:58.000
+And the one thing that we need, I mean, we will need a few things we will say, but the most important. The starting point of this identification of the best weights of the good ways.
+
+01:53:58.000 --> 01:54:06.000
+Is having some kind of. We call it a loss function, or an objective function.
+
+01:54:06.000 --> 01:54:09.000
+What is a loss function, or an objective.
+
+01:54:09.000 --> 01:54:16.000
+We typically use indicated with an LL of theta. Okay.
+
+01:54:16.000 --> 01:54:22.000
+What is data? It is the weight that we have in a model. Okay.
+
+01:54:22.000 --> 01:54:39.000
+So before we add w hue whatever. Let's put all of them together, and let's call them Theta, that Theta is our model, our parameters of the model. So the loss function, this function here that we are introducing now is some kind of function that looks at a model.
+
+01:54:39.000 --> 01:54:42.000
+Looks at the weights of the model.
+
+01:54:42.000 --> 01:54:54.000
+And gives us as the result of the looking at the weights. It gives us a number. Okay, if the number is low. That means that the model is good in some way.
+
+01:54:54.000 --> 01:54:58.000
+If the number is high, it means that the model is 4.
+
+01:54:58.000 --> 01:55:01.000
+That's what.
+
+01:55:01.000 --> 01:55:14.000
+The essence of all those functioning is a function that looks at the model so takes as input a model, and gives us its output a scalar value, a number that tells us good model, bad model.
+
+01:55:14.000 --> 01:55:23.000
+You are already familiar with those markets. If you ever looked at a linear regression, okay, linear regression.
+
+01:55:23.000 --> 01:55:39.000
+We say, Okay, we have the weight beta 0 beta, one. Beta, 2. Beta, 3. We have a data set of points of observations x, 1, 2, 3, 4, and we have the desired observed, Output y. 1, where 2 y. 3 y. 4.
+
+01:55:39.000 --> 01:55:46.000
+In that case we say, Okay, let's minimize the mean for a error.
+
+01:55:46.000 --> 01:55:57.000
+What does minimizing the means? Whatever mean? It means that we have a function, the mean squared error which tells us how good each of the predictions of the model is.
+
+01:55:57.000 --> 01:56:05.000
+For each of the points that we collected with respect to each of the targets that we know, we want to predict.
+
+01:56:05.000 --> 01:56:10.000
+We compute it in this way, for instance, the mean of the squared errors.
+
+01:56:10.000 --> 01:56:18.000
+The errors are the differences between what we want to have, why and what the model predicts.
+
+01:56:18.000 --> 01:56:22.000
+Theta transpose X for linear models.
+
+01:56:22.000 --> 01:56:31.000
+We take the error, we square it, and we compute the mean, okay, that is one example of objective function.
+
+01:56:31.000 --> 01:56:34.000
+A function that looks at the model.
+
+01:56:34.000 --> 01:56:36.000
+Looks at the Theta.
+
+01:56:36.000 --> 01:56:47.000
+It also looks at the data set. Of course we have to have a data set for the evaluation, but the data set is fixed. Okay, it doesn't change. We can only change the model. So we say, we look at the model.
+
+01:56:47.000 --> 01:56:54.000
+The data is fixed, X and y. They are fixed. It is the data that we have available and gives us a number.
+
+01:56:54.000 --> 01:57:02.000
+Low number. Low means whatever means good model. Why? Because, it means that the errors are, on average, quite small.
+
+01:57:02.000 --> 01:57:10.000
+High number bed model. Why? Because it means that the predictions are far away from the targets. Okay.
+
+01:57:10.000 --> 01:57:25.000
+So after we define the loss function which, as I told you, for linear regression or for regression in general, it is the Mse. It's fine the choice for classification. We will see other types of sloss function at the end of the lecture.
+
+01:57:25.000 --> 01:57:30.000
+And after we define a loss function, we have to find.
+
+01:57:30.000 --> 01:57:33.000
+A value of Theta.
+
+01:57:33.000 --> 01:57:41.000
+A model that minimizes that has low values for the loss function. So the loss function is, the judge tells us.
+
+01:57:41.000 --> 01:57:47.000
+You have a good mode, or you're a bad model. And then we changed the model. We changed the weights in some way.
+
+01:57:47.000 --> 01:57:54.000
+To make the loss function go down to make the judge tell us we have a good model.
+
+01:57:54.000 --> 01:57:59.000
+Doesn't make sense.
+
+01:57:59.000 --> 01:58:02.000
+Yes, no. Feedback.
+
+01:58:02.000 --> 01:58:05.000
+Someone nods. So I'm gonna say yes.
+
+01:58:05.000 --> 01:58:16.000
+Okay, let's start with something. We are familiar with linear regression. Okay, for linear regression. It's a simple case. We have a simple model, right? Because it's
+
+01:58:16.000 --> 01:58:21.000
+Waited some of elements.
+
+01:58:21.000 --> 01:58:23.000
+We have a simple loss function.
+
+01:58:23.000 --> 01:58:40.000
+And so the way in which we solve the linear regression problem is in closed form. We say, Okay, we know the Los Santos, we can compute the derivative of the lost function with respect to the weight that we care about.
+
+01:58:40.000 --> 01:58:53.000
+We find that that is a quadratic function, because the loss function is quadratic. And so we have a quadratic situation. The model is very simple. And so, since it's quadratic, it only has one minimum. It can be shown it only has one minimum.
+
+01:58:53.000 --> 01:59:02.000
+We find the weight for which the derivative of the loss function is 0 . That is where we have the only minimum.
+
+01:59:02.000 --> 01:59:05.000
+Of that problem.
+
+01:59:05.000 --> 01:59:06.000
+This is.
+
+01:59:06.000 --> 01:59:15.000
+How we solve this, then we find that the best data is excellent for the X inverse times. X trans. Plus y.
+
+01:59:15.000 --> 01:59:21.000
+And that is done in closed form. Because it's a very simple problem. Okay.
+
+01:59:21.000 --> 01:59:34.000
+If we didn't know anything about calculus, if we forgot how to do derivatives, how to compute this stuff, we didn't know that it could be done in that way. We could use a different approach. We could say.
+
+01:59:34.000 --> 01:59:44.000
+Okay, I have one. Let's say, Okay, very simple case. I have only one parameter. That is Beta one: okay, the coefficient for a single bed.
+
+01:59:44.000 --> 01:59:46.000
+For a single, dimension.
+
+01:59:46.000 --> 01:59:56.000
+I said, Okay, I'm gonna try a bunch of bellies of paper, and I'm gonna take the value of Theta, plug it into the loss function.
+
+01:59:56.000 --> 02:00:06.000
+And compute the value. Okay. So, for instance, here this is what I'm doing right. I'm saying, Okay, let's take different data. Different data means different angles.
+
+02:00:06.000 --> 02:00:08.000
+Of the.
+
+02:00:08.000 --> 02:00:10.000
+Linear regression line.
+
+02:00:10.000 --> 02:00:21.000
+I compute the mean squared error, that is, I compute the distance between each point and the line. This black dashed lines.
+
+02:00:21.000 --> 02:00:24.000
+At that point, I can tell you.
+
+02:00:24.000 --> 02:00:33.000
+The mean squared error and plot it here I can say, Okay, fine, let's take the mean squared error for Theta, equal to 60.
+
+02:00:33.000 --> 02:00:44.000
+I find a value. Let's take the mean squared error for Theta equal to 75. I compute the error for 20, for 10, for 2.
+
+02:00:44.000 --> 02:00:47.000
+I get these quadratic.
+
+02:00:47.000 --> 02:00:48.000
+Function.
+
+02:00:48.000 --> 02:01:00.000
+Which is not a big surprise, because we know that we mentioned this before, and we also showed this in this slide we know that the mean squared error is quadratic in Theta.
+
+02:01:00.000 --> 02:01:03.000
+So it's not a big surprise.
+
+02:01:03.000 --> 02:01:04.000
+That we get.
+
+02:01:04.000 --> 02:01:07.000
+These
+
+02:01:07.000 --> 02:01:10.000
+These quadratic shape.
+
+02:01:10.000 --> 02:01:15.000
+And they look at where the minimum is the the lowest point that I can find here.
+
+02:01:15.000 --> 02:01:20.000
+That's how I would solve this problem if I didn't know anything about calculus right.
+
+02:01:20.000 --> 02:01:28.000
+Of course it's very stupid to do it in this way for inner regression, because we know how to solve the problem in closed form.
+
+02:01:28.000 --> 02:01:34.000
+But we can take the same idea or a similar idea, and apply it to.
+
+02:01:34.000 --> 02:01:46.000
+Different, more complex situations. Okay, remember that for linear regression I told you. Linear model, simple, quadratic activation. Loss function.
+
+02:01:46.000 --> 02:01:51.000
+If the loss function is, more complex, or if the model is more complex.
+
+02:01:51.000 --> 02:02:02.000
+In many cases we would not be able to solve directly well, to have a single minimum and to find the global minimum directly. So instead.
+
+02:02:02.000 --> 02:02:03.000
+What we do.
+
+02:02:03.000 --> 02:02:08.000
+Is used. The second approach that is, we try to change Theta a little bit.
+
+02:02:08.000 --> 02:02:10.000
+And we see.
+
+02:02:10.000 --> 02:02:14.000
+We try to find a minimum of the loss function.
+
+02:02:14.000 --> 02:02:17.000
+Okay.
+
+02:02:17.000 --> 02:02:28.000
+This is the approach we use. We evaluate loss of data for a bunch of patents, and we stop when we find something new.
+
+02:02:28.000 --> 02:02:39.000
+This is the algorithm we will use. Okay? The algorithm I mean written in this way looks very stupid, but we will see it's what we call gradient design. Okay.
+
+02:02:39.000 --> 02:02:49.000
+We do an iterative approach where we start with a random value of data we. Say okay, let's, start with some random value let's. Start.
+
+02:02:49.000 --> 02:02:53.000
+Let's go back to the beginning of the animation. Let's start here right.
+
+02:02:53.000 --> 02:03:08.000
+Let's starting this place, and then let's move around. Let's try some solder value of Theta. Some larger value of Theta, not completely, randomly but, according to some policy some, indication that tells us where.
+
+02:03:08.000 --> 02:03:19.000
+Lower values of Theta could be okay. So we don't blindly try the entire domain of values for Theta, because for a single value.
+
+02:03:19.000 --> 02:03:29.000
+Still feasible. Please scan all of the values from understanding the possibility with some interval, and we could get a good result. But if we have.
+
+02:03:29.000 --> 02:03:39.000
+2, 3, 4, 5, 100, a billion parameters. We can no longer explore the entire grid of values exhaustively. Right.
+
+02:03:39.000 --> 02:03:44.000
+So instead, we have to have some kind of policy, some kind of.
+
+02:03:44.000 --> 02:03:52.000
+Ideas and kind of guide that tells us, try those that way. Try, go this way.
+
+02:03:52.000 --> 02:04:00.000
+Okay, and what you get will be something that looks like this. Right? You are sampling the domain of Theta in a bunch of places.
+
+02:04:00.000 --> 02:04:05.000
+For each of the samples, for each of the values of things that you get.
+
+02:04:05.000 --> 02:04:08.000
+You compute the loss, function.
+
+02:04:08.000 --> 02:04:16.000
+And then you decide where the lowest value is. You find where the lowest value is that you tried, and that's going to be a good model.
+
+02:04:16.000 --> 02:04:20.000
+Hopefully. Right?
+
+02:04:20.000 --> 02:04:28.000
+Now the previous audio we move around according to some policy, is a bit vague. I understand it.
+
+02:04:28.000 --> 02:04:34.000
+So let's try to add some a little bit of.
+
+02:04:34.000 --> 02:04:40.000
+Concreteness to the to the sentence. When I say we move around, I mean that.
+
+02:04:40.000 --> 02:04:56.000
+We incrementally change data. Okay, so we don't jump from theta one to Theta 1,000. Okay, we incrementally add something to Theta. So we say, okay. At this set I tried Theta 5.
+
+02:04:56.000 --> 02:05:14.000
+Let's incrementally move to whatever 5.1. Okay, so it's an incremental change. It is not jumping around in the space of Beta. Okay, why? Because if we have a billion dimensions and we jump around randomly we. Sample mostly garbage okay. Instead.
+
+02:05:14.000 --> 02:05:20.000
+If we are going in a direction where Theta kind of makes sense. If we move around.
+
+02:05:20.000 --> 02:05:26.000
+That zone of the space we get. Probably good models.
+
+02:05:26.000 --> 02:05:32.000
+So the 1st thing is that every time we update we change data.
+
+02:05:32.000 --> 02:05:37.000
+So Theta at p plus one. So the next update of Theta will be.
+
+02:05:37.000 --> 02:05:40.000
+The current data. So the current model.
+
+02:05:40.000 --> 02:05:49.000
+With some update, with some incremental change. When I say incremental, it means that the update is added to Theta. It is not completely new.
+
+02:05:49.000 --> 02:05:51.000
+Okay.
+
+02:05:51.000 --> 02:05:55.000
+When I say, according to some policy, I mean that we pay.
+
+02:05:55.000 --> 02:05:59.000
+As more flare has more update to theta.
+
+02:05:59.000 --> 02:06:04.000
+In a very specific direction, the direction in which.
+
+02:06:04.000 --> 02:06:08.000
+We know, we assume, we know.
+
+02:06:08.000 --> 02:06:16.000
+And there is a big asterisk here that should be discussed. We know. Let's say that the function decreases in that direction.
+
+02:06:16.000 --> 02:06:18.000
+Okay.
+
+02:06:18.000 --> 02:06:25.000
+How do we know that the function decreases in our direction, or another direction?
+
+02:06:25.000 --> 02:06:36.000
+Let's use the one-dimensional case and the one-dimensional case. You will remember from your days in calculus that you can approximate locally a function.
+
+02:06:36.000 --> 02:06:51.000
+With a line okay, with a linear model. You're here, for instance, you say, Okay, this is a weird function. But locally here we can approximate it with a line. Okay, you compute the derivative of the function in that file.
+
+02:06:51.000 --> 02:06:57.000
+The derivative will be the slope of that line in that point, for that factor right.
+
+02:06:57.000 --> 02:07:04.000
+And so if we look at the line, we know where the line decreases, where the line increases right.
+
+02:07:04.000 --> 02:07:10.000
+If the slope is negative, that means that for smaller values of Theta.
+
+02:07:10.000 --> 02:07:23.000
+The function increases for larger values of data, the line decreases and vice versa. If the line has a positive slope for larger values of Theta. The line increases for lower values of Theta. The line increases right.
+
+02:07:23.000 --> 02:07:25.000
+So if we look at the derivative.
+
+02:07:25.000 --> 02:07:28.000
+Of our one-dimensional function here.
+
+02:07:28.000 --> 02:07:31.000
+We get a slow.
+
+02:07:31.000 --> 02:07:36.000
+And then, if we walk in the direction opposite of the slope.
+
+02:07:36.000 --> 02:07:38.000
+We make.
+
+02:07:38.000 --> 02:07:46.000
+The approximation of the function decrees. So if the approximation with the derivative is good also, the original function will decrease.
+
+02:07:46.000 --> 02:07:49.000
+Okay.
+
+02:07:49.000 --> 02:08:00.000
+This is true for the one-dimensional case. And dimensional case, the member's data is not a symbol number typically, Theta is a vector with hundreds millions billions of parameters.
+
+02:08:00.000 --> 02:08:16.000
+Instead of computing the derivative winter factor, we compute the gradient, which is the bunch of derivatives with respect to each of the inputs. Okay, to put it in a very blunt way.
+
+02:08:16.000 --> 02:08:23.000
+The gradient. We show it with the with the Nabla symbol, Nabla of Theta. Okay.
+
+02:08:23.000 --> 02:08:31.000
+For the loss function computed in Theta at the current, sorry at the current, Theta.
+
+02:08:31.000 --> 02:08:41.000
+So these is the update that we apply. We say, Okay, we know that the gradient gives us the direction in which the function increases.
+
+02:08:41.000 --> 02:08:50.000
+Okay, we want to decrease the function. So we take a step in the direction opposite to the gradient.
+
+02:08:50.000 --> 02:08:52.000
+Opposite.
+
+02:08:52.000 --> 02:08:57.000
+Minus sign. Okay. Direction of the gradient.
+
+02:08:57.000 --> 02:09:07.000
+Given by the derivative with respect to each of the partial thetas, Theta, one delivery profile.
+
+02:09:07.000 --> 02:09:10.000
+The one thing I haven't mentioned yet is that we take.
+
+02:09:10.000 --> 02:09:20.000
+I say here, a small set. Okay. If the gradient tells us if the function is decreasing, very sharp.
+
+02:09:20.000 --> 02:09:27.000
+For instance, here the the gradient is very sharp, okay? The derivative is very sharp.
+
+02:09:27.000 --> 02:09:29.000
+If we didn't.
+
+02:09:29.000 --> 02:09:32.000
+Scales down the step.
+
+02:09:32.000 --> 02:09:36.000
+If the function is very sharp, we will take a very big step. Okay.
+
+02:09:36.000 --> 02:09:52.000
+So the function changes abruptly. We take a big step. That's unfortunate, okay? Because if the function changes abruptly, probably the linear approximation is not gonna be a good one. Okay.
+
+02:09:52.000 --> 02:10:03.000
+So if we're here we have to take a big step. We say, Okay, go 10 steps ahead of Theta. So we go up here, for instance.
+
+02:10:03.000 --> 02:10:19.000
+Here. The approximation that we used to get here is no longer valid, this approximation here. So we took whoops. This approximation here. So we took a very big step. So instead, since we are using approximations, since the gradient is an approximation.
+
+02:10:19.000 --> 02:10:31.000
+Of the behavior of the of the function. Instead of taking a big step, we say, Okay, let's take a smaller step. So we add this term alpha, which we call the learning rate.
+
+02:10:31.000 --> 02:10:36.000
+Which is a small number 10 to the minus 3, 4, 5. Okay.
+
+02:10:36.000 --> 02:10:38.000
+Which.
+
+02:10:38.000 --> 02:10:54.000
+Reduces the size of the step division. Okay, instead of taking a big step because the gradient told us to take a big step, because, okay, big gradient. Let's you know. Let's not make huge changes to the model. Let's take small steps.
+
+02:10:54.000 --> 02:11:04.000
+And here what you see in this, in this animation here is precisely how bright and descent would find the minimum in dysfunction.
+
+02:11:04.000 --> 02:11:16.000
+Notice that we start from here. Then we take us small steps, more steps, more step always following the grade out. In this case the delivery, okay. Always following.
+
+02:11:16.000 --> 02:11:20.000
+The direction opposite to where.
+
+02:11:20.000 --> 02:11:22.000
+The function increases.
+
+02:11:22.000 --> 02:11:24.000
+When we are here.
+
+02:11:24.000 --> 02:11:30.000
+This is the sorry when we are here. This is the slope right.
+
+02:11:30.000 --> 02:11:44.000
+It's a negative slope, tells us that for smaller value the function increases for larger value, the function increases. So we say, Okay, let's go in. The direction opposite to the slope slope is negative, so we take positive steps. So we take a little bit of a step.
+
+02:11:44.000 --> 02:11:46.000
+To the right.
+
+02:11:46.000 --> 02:11:49.000
+So we get here.
+
+02:11:49.000 --> 02:12:04.000
+We compute the derivative here. Okay, it's still negative. So still we need to take steps to the right to reduce the function. We take a step here, and then we compute the derivative, and then we take a step here, derivative step, derivative step, derivative step.
+
+02:12:04.000 --> 02:12:08.000
+Until some point here where we take a step.
+
+02:12:08.000 --> 02:12:12.000
+Direction, and the loss increases if the loss increases.
+
+02:12:12.000 --> 02:12:17.000
+We go there we compute the loss, and now.
+
+02:12:17.000 --> 02:12:25.000
+Say we got to this point here. Now this lobe will be positive. That means that the function decreases when we take a step to the left, right.
+
+02:12:25.000 --> 02:12:32.000
+And so, after some convergence, we reach the bottom of the function.
+
+02:12:32.000 --> 02:12:34.000
+Okay.
+
+02:12:34.000 --> 02:12:39.000
+Doesn't make sense. It is not supposed to be a.
+
+02:12:39.000 --> 02:12:54.000
+A full introduction to credit descent. I just need to understand that there are some procedures that lead us to finding the minimum of a function and defining the minimum of a function, gives us a boot model.
+
+02:12:54.000 --> 02:12:59.000
+Is it the best model? Not necessarily.
+
+02:12:59.000 --> 02:13:07.000
+Why? Because the loss function has many minimums. We will typically find a local minimum not guaranteed to be the global minimum.
+
+02:13:07.000 --> 02:13:19.000
+But you know, it's a complex function. So we are typically satisfied with a local minimum as long as it's not awful.
+
+02:13:19.000 --> 02:13:32.000
+For linear regression. Yeah, no, it's I mean linear regression is solved with a closed form. Right? So.
+
+02:13:32.000 --> 02:13:50.000
+We don't need to take eye therapy steps predicent is, you know, it's good because it gives us a minimum, but it requires taking multiple steps, so it's more expensive instead within a regression we already know in closed form what is the best solution, so for renal regression, we use the closed form.
+
+02:13:50.000 --> 02:13:58.000
+You could do it with, with creating the same force, but you would get an approximation, and it would take you more population on all the cost.
+
+02:13:58.000 --> 02:14:04.000
+So for the linear regression case, since it's very simple, we use the closed form.
+
+02:14:04.000 --> 02:14:15.000
+When we had more complex functions and losses, we used bloodline descent because we don't know how to compute the the optimal data in close 4.
+
+02:14:15.000 --> 02:14:25.000
+Absolutely. Yes.
+
+02:14:25.000 --> 02:14:28.000
+You're welcome.
+
+02:14:28.000 --> 02:14:33.000
+Limitations of readiness. Hand. So readiness hand is a nice idea.
+
+02:14:33.000 --> 02:14:45.000
+It has many limitations. One of them. The simplest one I can show you is that it is very sensive to initializations. I told you we start from a random theta okay.
+
+02:14:45.000 --> 02:14:46.000
+If we are lucky.
+
+02:14:46.000 --> 02:14:52.000
+We initialize data here we follow the gradient and we get.
+
+02:14:52.000 --> 02:14:58.000
+To a nice minimum. Okay, if we're unlucky, and we start with Theta here.
+
+02:14:58.000 --> 02:15:04.000
+What happens to your gradient? Derivative, positive, slow. Let's go.
+
+02:15:04.000 --> 02:15:07.000
+To the left. Okay, so we reach.
+
+02:15:07.000 --> 02:15:17.000
+A local minimum, which is nowhere near as good as the global minimum that we could have found if we had a different initialisation. So.
+
+02:15:17.000 --> 02:15:25.000
+Classic rodent descent has some limitations. For instance, this one.
+
+02:15:25.000 --> 02:15:44.000
+The other problem is that once we reach a local minimum there is no way to reach. Okay, the Friday descent. The vanilla, the classic guardian descent will always get stuck in local minima. Okay, there is no way for the algorithm to say, okay, no, let's try to jump out of this minimum.
+
+02:15:44.000 --> 02:15:51.000
+And let's try to find something else. So what you will find is that in literature many researchers that propose.
+
+02:15:51.000 --> 02:16:07.000
+Alternative still based on the idea of grading descent, but they try to introduce ways in which we can mitigate those problems. For instance, momentum momentum is something we use to get out of local minimum. And then, having learning rates that.
+
+02:16:07.000 --> 02:16:16.000
+With that. Okay, so not always. Take a small step 10 to the minus 4, but some way to regulate how big of a step, how small of a step we take.
+
+02:16:16.000 --> 02:16:20.000
+And so you will find many of those in literature.
+
+02:16:20.000 --> 02:16:26.000
+They are all based on right in the set at the end of the day. Okay, that's what matters.
+
+02:16:26.000 --> 02:16:28.000
+Questions about that.
+
+02:16:28.000 --> 02:16:30.000
+Yes.
+
+02:16:30.000 --> 02:16:36.000
+What momentum! Momentum!
+
+02:16:36.000 --> 02:16:38.000
+No momentum is,
+
+02:16:38.000 --> 02:16:41.000
+It's basically,
+
+02:16:41.000 --> 02:16:48.000
+It's a technique sorry when say, adding, I mean introducing to the gradient descent rule.
+
+02:16:48.000 --> 02:16:52.000
+A term that is called the momentum, which.
+
+02:16:52.000 --> 02:16:55.000
+Basically, it does the model look. Don't.
+
+02:16:55.000 --> 02:17:05.000
+On this top here, try to go a little bit further, even if that is not the optimal minimum that you would find. So it's a term.
+
+02:17:05.000 --> 02:17:18.000
+Which is I mean if you want to quantify it, you could say you plus something, and the something is of the same shape as Theta, so it has, one update for each of the Thetas.
+
+02:17:18.000 --> 02:17:26.000
+So it's a vector that you add in the gradient descend step.
+
+02:17:26.000 --> 02:17:31.000
+Other questions?
+
+02:17:31.000 --> 02:17:34.000
+Okay.
+
+02:17:34.000 --> 02:17:37.000
+If not.
+
+02:17:37.000 --> 02:17:39.000
+Now we have to ask.
+
+02:17:39.000 --> 02:17:43.000
+Ourselves another question, because now we know.
+
+02:17:43.000 --> 02:17:49.000
+How we find the minimum right? We take iterative steps.
+
+02:17:49.000 --> 02:17:53.000
+We each step we update the model.
+
+02:17:53.000 --> 02:18:01.000
+Until we reach a minimum. Right? So the training step makes sense. We do it that way.
+
+02:18:01.000 --> 02:18:13.000
+The only thing that is left for us to I mean, I mean, let's look at the formula here Theta T. We said we initialized this randomly so, we have access to these learning rate we. Said
+
+02:18:13.000 --> 02:18:16.000
+It's a small number we choose.
+
+02:18:16.000 --> 02:18:23.000
+What we are missing here is, how do we compute the gradient right.
+
+02:18:23.000 --> 02:18:28.000
+We have not discussed how a computer gradient just yet.
+
+02:18:28.000 --> 02:18:32.000
+And that's a problem, right? Because.
+
+02:18:32.000 --> 02:18:40.000
+Ideally, we don't want to have to sit down every single time and manually compute the gradient.
+
+02:18:40.000 --> 02:18:46.000
+For each of our weights. Right? Because if you're a small model, 10 parameters.
+
+02:18:46.000 --> 02:18:55.000
+We fixed the architecture, we say, Okay, this is our model. We will never change it. We can see chances. Okay, let's compute manually to the gradient.
+
+02:18:55.000 --> 02:19:00.000
+Of the loss function with respect to weight, one weight 2 weight, 3 weight, 10.
+
+02:19:00.000 --> 02:19:09.000
+We do it once the law, the gradient is always put it in that way, and so we can simply use the gradient that we computed.
+
+02:19:09.000 --> 02:19:11.000
+Except these.
+
+02:19:11.000 --> 02:19:22.000
+Doesn't scale you easily understand hopefully, we cannot have a fixed way in which we compute the gradient for a single model scale to another model.
+
+02:19:22.000 --> 02:19:28.000
+So we have to have some automated way to compute gradients.
+
+02:19:28.000 --> 02:19:32.000
+Brilliant floral.
+
+02:19:32.000 --> 02:19:43.000
+How do we do this? We use an approach, a technique which we call back propagation? What is bank propagation? It is computing gradients.
+
+02:19:43.000 --> 02:19:50.000
+From something we will call a computational graph one step at a time.
+
+02:19:50.000 --> 02:19:56.000
+Until we manage to compute the gradient of the lost function. With respect to the weights we care about.
+
+02:19:56.000 --> 02:19:59.000
+And when I say big propagation.
+
+02:19:59.000 --> 02:20:05.000
+We receive. It's just a nice way of saying we use the chain rule of calculus. Okay.
+
+02:20:05.000 --> 02:20:18.000
+So now we will get to what I'm talking about. I always tell you what the chain rule is. If you don't remember it, and I will tell you what a computational graph is, and then we'll see an example where we compute a gradient in that way.
+
+02:20:18.000 --> 02:20:23.000
+So the chain rule the chain rule going back to calculus once.
+
+02:20:23.000 --> 02:20:27.000
+You will remember how to compute.
+
+02:20:27.000 --> 02:20:29.000
+The derivative.
+
+02:20:29.000 --> 02:20:34.000
+Of this kind of function. Okay. F. Of G. Of X.
+
+02:20:34.000 --> 02:20:46.000
+You probably saw it in this way. This is the alternative way in which we can write it. We're saying that the derivative of a composed function F. Of Jobex is given by the derivative of X. Of F.
+
+02:20:46.000 --> 02:20:50.000
+Computed in G of X times, the derivative of.
+
+02:20:50.000 --> 02:20:53.000
+Okay. Completed for X.
+
+02:20:53.000 --> 02:20:54.000
+Which is.
+
+02:20:54.000 --> 02:21:01.000
+The same, exactly the same as saying that derivative of F. With respect to X.
+
+02:21:01.000 --> 02:21:06.000
+Is given by the derivative of F. With respect to G. This 1st term.
+
+02:21:06.000 --> 02:21:12.000
+Times the derivative of G. With respect to X. Okay, the second term.
+
+02:21:12.000 --> 02:21:17.000
+Here in the second formulation, we are ignoring the.
+
+02:21:17.000 --> 02:21:22.000
+With respect to what we are computing, the derivatives.
+
+02:21:22.000 --> 02:21:23.000
+But same idea. Okay.
+
+02:21:23.000 --> 02:21:36.000
+So this rule here that is something that all of you I am 100% confident, is very much familiar with is the only thing we need to do grading this to do backpropagation. Okay.
+
+02:21:36.000 --> 02:21:39.000
+When, where, and when do we apply?
+
+02:21:39.000 --> 02:21:43.000
+The general, we applied.
+
+02:21:43.000 --> 02:21:48.000
+From the end to the beginning of what we call a computational graph.
+
+02:21:48.000 --> 02:21:51.000
+Okay.
+
+02:21:51.000 --> 02:21:58.000
+From the end to the beginning. So we go backwards. Hence the name, badge, propagation, but we will see what it is right now.
+
+02:21:58.000 --> 02:22:09.000
+First, st of course, we need to say what is a computational graph, and it is a computational graph is a directed graph.
+
+02:22:09.000 --> 02:22:11.000
+As shown, for instance, here.
+
+02:22:11.000 --> 02:22:17.000
+That we can use to represent any kind of computation we compute with our.
+
+02:22:17.000 --> 02:22:19.000
+Computers. Right.
+
+02:22:19.000 --> 02:22:36.000
+It's a graph that tells us which operations are performed, and in this case each node of the graph represents an operation, and each of the edges in the computer graphs represent, let's call it the flow of data from one operation to another.
+
+02:22:36.000 --> 02:22:45.000
+Okay, which seems like offensive thing that we have to build. I will give you these very simple example on how we compute a computational graph.
+
+02:22:45.000 --> 02:22:48.000
+On a simple case. Let's say we have this.
+
+02:22:48.000 --> 02:22:58.000
+Simple operation we want to improve and performance value times x plus y plus. Q. In this case.
+
+02:22:58.000 --> 02:23:00.000
+We start.
+
+02:23:00.000 --> 02:23:05.000
+It's it's very simple, right? So we start with the.
+
+02:23:05.000 --> 02:23:08.000
+Variables that we are talking about.
+
+02:23:08.000 --> 02:23:14.000
+They are the let's call them the leftmost operators in this, in this graph.
+
+02:23:14.000 --> 02:23:16.000
+W. X and Q.
+
+02:23:16.000 --> 02:23:24.000
+We start with that, I said, Okay, what is the order of tuberculation variable? First, st we multiplied W. And X. Together.
+
+02:23:24.000 --> 02:23:27.000
+So the next node here.
+
+02:23:27.000 --> 02:23:32.000
+This is an intermediate node. Let's call it a an intermediate node.
+
+02:23:32.000 --> 02:23:38.000
+It's an operation that includes the product of 2 inputs x and.
+
+02:23:38.000 --> 02:23:45.000
+Perfect. We compute these intermediate operator, then the next step is.
+
+02:23:45.000 --> 02:23:47.000
+Adding.
+
+02:23:47.000 --> 02:23:54.000
+A. The intermediate operation to Q. Another input, so the inputs will be a. And Q.
+
+02:23:54.000 --> 02:24:00.000
+The operation is an addition, and so the output of this.
+
+02:24:00.000 --> 02:24:04.000
+Second step is why.
+
+02:24:04.000 --> 02:24:17.000
+Okay, this. We can look at this, which is no less intuative. We can look at these. It's the same thing. Okay? This is just a formal way of looking at any kind of operation.
+
+02:24:17.000 --> 02:24:20.000
+Okay? Very simple. Nothing too weird.
+
+02:24:20.000 --> 02:24:23.000
+Now let's see how we can.
+
+02:24:23.000 --> 02:24:30.000
+Apply the chain rule to that kind of computational graph to compute the gradient.
+
+02:24:30.000 --> 02:24:35.000
+Of any parameter. With respect to Theta.
+
+02:24:35.000 --> 02:24:40.000
+We respect, sorry of the loss with respect to any parameter. Theta.
+
+02:24:40.000 --> 02:24:52.000
+And that hope is clear. Okay, why do we want to do all of this? Because we want to compute the derivative of the loss function that function we want to minimize with respect.
+
+02:24:52.000 --> 02:25:04.000
+To any parameter of the model data wanted that Utah data 3, data 4. What we want to do this because we saw that if we know the derivative of the loss function with respect to Theta.
+
+02:25:04.000 --> 02:25:15.000
+For any data we can update with gradient descent the data in such a way that we decrease the loss function. Okay, so all of this is to.
+
+02:25:15.000 --> 02:25:18.000
+Compute.
+
+02:25:18.000 --> 02:25:22.000
+This thing here. Okay? To update our model.
+
+02:25:22.000 --> 02:25:26.000
+So gradient descent tells us how to update the model.
+
+02:25:26.000 --> 02:25:35.000
+Backpropagation tells us how to compute this term. To be then able to update the model.
+
+02:25:35.000 --> 02:25:39.000
+And, as I told you, I will show you an example. Now.
+
+02:25:39.000 --> 02:25:45.000
+The example would be very simple once again. We don't want to spend the entire day standing here.
+
+02:25:45.000 --> 02:25:53.000
+Let's say we have a very simple problem with a data set with a single entry. And next.
+
+02:25:53.000 --> 02:25:55.000
+And the desired.
+
+02:25:55.000 --> 02:25:59.000
+Output y: Ok. Xy is our data set.
+
+02:25:59.000 --> 02:26:07.000
+Let's say we have a simple model, a bit stupid, but it's a simple model with 2 parameters, Theta one Theta, 2.
+
+02:26:07.000 --> 02:26:12.000
+In the model is simply.
+
+02:26:12.000 --> 02:26:26.000
+Prediction of theta one times theta 2 times x: Okay, very simple model takes 2. Sorry. Takes one input, has 2 parameters produces as the prediction the multiplication of the 3 values. Okay.
+
+02:26:26.000 --> 02:26:30.000
+And let's say that we want to.
+
+02:26:30.000 --> 02:26:44.000
+Compute the quality of our model. With this loss function the loss will be predicted. Value minus target value squared. So it's a squared error loss, function.
+
+02:26:44.000 --> 02:26:48.000
+Okay.
+
+02:26:48.000 --> 02:26:59.000
+The 1st thing we need to do, and this is exactly what Pytorch does when we want to compute a loss function and do the training of a model. And this is something you will see on Wednesday.
+
+02:26:59.000 --> 02:27:03.000
+We have to compute the computational graph.
+
+02:27:03.000 --> 02:27:05.000
+For these.
+
+02:27:05.000 --> 02:27:11.000
+Operation here for computing the loss.
+
+02:27:11.000 --> 02:27:24.000
+How do we compute the computational graph to compute the loss? We use all of the intermediate steps that we need so 1st intermediate step a. A is equal to Theta one times theta, 2.
+
+02:27:24.000 --> 02:27:25.000
+Covered.
+
+02:27:25.000 --> 02:27:33.000
+Second intermediate value B is equal to a times x. So theta one times theta, 2, which is a times x.
+
+02:27:33.000 --> 02:27:35.000
+Second term.
+
+02:27:35.000 --> 02:27:47.000
+3rd intermediate step C which is B minus y what is BB is, as I told you, this whole thing y is this thing here? So C. Is equal to all of these, which is.
+
+02:27:47.000 --> 02:28:03.000
+Here and then finally, the loss is C squared. Notice how we are breaking down the entire greeting into small, simple units. Okay, C. Squared. So B minus y squared. That is, ax minus y squared. Which is this.
+
+02:28:03.000 --> 02:28:05.000
+Okay.
+
+02:28:05.000 --> 02:28:11.000
+We put it into computational graph form, and this is exactly what I just described.
+
+02:28:11.000 --> 02:28:15.000
+Notice on the left. We have all of the inputs.
+
+02:28:15.000 --> 02:28:24.000
+Of the computational graph. Notice that of these inputs. QR: the data set. So we have a data set, and we have also.
+
+02:28:24.000 --> 02:28:30.000
+The parameters right? All of these are inputs to our model.
+
+02:28:30.000 --> 02:28:32.000
+Okay.
+
+02:28:32.000 --> 02:28:37.000
+The intermediate steps are what we discussed so far A, BC. And then the loss.
+
+02:28:37.000 --> 02:28:41.000
+Now our question is.
+
+02:28:41.000 --> 02:28:44.000
+What is the derivative.
+
+02:28:44.000 --> 02:28:46.000
+Of the loss.
+
+02:28:46.000 --> 02:28:49.000
+With respect to Theta, one and Theta, 2.
+
+02:28:49.000 --> 02:28:55.000
+Once again, what do we need this? Because then we will be able to update Theta one and Theta 2.
+
+02:28:55.000 --> 02:29:07.000
+To produce better predictions. Okay, once we are able to compute the derivative of the loss with respect to Theta one, and with respect, sir, one.
+
+02:29:07.000 --> 02:29:19.000
+And to those derivatives will allow us to update the model, the one to the 2 to make better predictions. So we want to go from.
+
+02:29:19.000 --> 02:29:25.000
+This to compute derivatives of these 2 guys here.
+
+02:29:25.000 --> 02:29:28.000
+Okay, I know, of course, that.
+
+02:29:28.000 --> 02:29:32.000
+Each of you can sit down. Take this formulation of the loss.
+
+02:29:32.000 --> 02:29:53.000
+And compute manually the derivative with respect to Theta one with respect to Theta 2. But of course you have to go back to our Assange from initially that is, we cannot do this for billions of our meters. We have to have some way in which we don't have a person that computes the derivatives, and instead have an algorithm that should do this for us.
+
+02:29:53.000 --> 02:30:01.000
+Okay. So for now let's assume that we cannot directly compute the derivative of this immediately.
+
+02:30:01.000 --> 02:30:05.000
+So what do we do? We apply.
+
+02:30:05.000 --> 02:30:08.000
+Backpropagation. So we say, Okay.
+
+02:30:08.000 --> 02:30:16.000
+Let's not start computing immediately the derivative of the loss with respect to this. But let's only take one step back.
+
+02:30:16.000 --> 02:30:19.000
+Okay. Once the back means.
+
+02:30:19.000 --> 02:30:25.000
+What is the derivative of the laws? Which is this here? With respect to C.
+
+02:30:25.000 --> 02:30:30.000
+Which is the only input that we have in that operation.
+
+02:30:30.000 --> 02:30:36.000
+We know that the loss is C. Squared. So squaring something is a simple operation.
+
+02:30:36.000 --> 02:30:45.000
+The derivative of the simple operation is 2 times the something we got as the input. Okay? So derivative of the loss with respect to.
+
+02:30:45.000 --> 02:30:50.000
+Which is this year is going to be 2 c. 2 times the input.
+
+02:30:50.000 --> 02:30:52.000
+Notice that.
+
+02:30:52.000 --> 02:31:02.000
+We have to be able to compute the derivative of each of these blocks. Okay. But since each of these blocks is a very simple operation. We know how to compute.
+
+02:31:02.000 --> 02:31:05.000
+The derivative of each of the blocks.
+
+02:31:05.000 --> 02:31:11.000
+So, for now we just computed the derivative of the loss with respect to C. Is this something we need.
+
+02:31:11.000 --> 02:31:22.000
+Not free because we want. We just like to filter one. But it is a step back. Okay? It is a step back toward what we care about.
+
+02:31:22.000 --> 02:31:24.000
+So it took the 1st step.
+
+02:31:24.000 --> 02:31:28.000
+Now we take one further. Step back.
+
+02:31:28.000 --> 02:31:36.000
+And we say, Okay, now, what is the derivative of the loss with respect to this other block? To B. Ok.
+
+02:31:36.000 --> 02:31:39.000
+Well we know.
+
+02:31:39.000 --> 02:31:42.000
+We only know the loss with respect to C.
+
+02:31:42.000 --> 02:31:47.000
+But we also know the chain rule right. The chain rule tells us exactly.
+
+02:31:47.000 --> 02:31:51.000
+This thing derivative of the laws. With respect to.
+
+02:31:51.000 --> 02:32:00.000
+We break it down into derivative of the loss. With respect to C times derivative of C. With respect to B. Right. This is the chain rule we discussed before.
+
+02:32:00.000 --> 02:32:03.000
+The first part.
+
+02:32:03.000 --> 02:32:07.000
+We know it. We just computed it one step back. Okay.
+
+02:32:07.000 --> 02:32:13.000
+The second one is a derivative of C. With respect to B. We know that this is.
+
+02:32:13.000 --> 02:32:17.000
+C is the subtraction operation takes 2 inputs.
+
+02:32:17.000 --> 02:32:20.000
+In this case B and y.
+
+02:32:20.000 --> 02:32:25.000
+We know quite easily how to compute the derivative with respect to B.
+
+02:32:25.000 --> 02:32:30.000
+Derivative of C. With respect to B is going to be one right.
+
+02:32:30.000 --> 02:32:34.000
+Because B is here.
+
+02:32:34.000 --> 02:32:44.000
+So we can put this thing here we multiplied. This is, of course, as I told you, one, the derivative of the loss with respect to B is 2 times C.
+
+02:32:44.000 --> 02:32:45.000
+I believe.
+
+02:32:45.000 --> 02:32:54.000
+Are we there? Did we get to the point where we wanted to get no so we take one further step back.
+
+02:32:54.000 --> 02:32:57.000
+We get to the block a.
+
+02:32:57.000 --> 02:33:03.000
+How do we compute the derivative of the loss with respect to 8? We don't know it immediately, but.
+
+02:33:03.000 --> 02:33:13.000
+We know the chain rule. The chain rule tells us, Okay, you want this. Yes, you can compute the derivative of the loss with respect to B. Times derivative of the loss.
+
+02:33:13.000 --> 02:33:18.000
+Thanks sorry with respect to a.
+
+02:33:18.000 --> 02:33:23.000
+And quite nicely. This one is what we just computed right.
+
+02:33:23.000 --> 02:33:28.000
+So we simply need this second derivative.
+
+02:33:28.000 --> 02:33:36.000
+How do we compute it? We know that B is equal to a times X. So it's a multiplication operation.
+
+02:33:36.000 --> 02:33:37.000
+So the result.
+
+02:33:37.000 --> 02:33:42.000
+Of the relative of P. With respect to A is going to be X.
+
+02:33:42.000 --> 02:33:47.000
+Right, we multiplied 2 terms. We want the derivative of a we get x.
+
+02:33:47.000 --> 02:33:52.000
+Which is what we get here, which is 2 times Z times x.
+
+02:33:52.000 --> 02:33:57.000
+Are we there at what we want to get? Not yet.
+
+02:33:57.000 --> 02:34:10.000
+We take one step back now finally, we ask ourselves, What's the derivative of the loss with respect to Theta one which is precisely what we want. We wanted that derivative to be able to compute.
+
+02:34:10.000 --> 02:34:11.000
+The gradient.
+
+02:34:11.000 --> 02:34:16.000
+Sorry. Don't be a gradient to then do the Grudian descent.
+
+02:34:16.000 --> 02:34:18.000
+But now.
+
+02:34:18.000 --> 02:34:22.000
+We apply the chain rule. Once again we look at the 1st term.
+
+02:34:22.000 --> 02:34:25.000
+Derivative of the loss with respect to a.
+
+02:34:25.000 --> 02:34:30.000
+Incidentally, we just computed this one. So we're good.
+
+02:34:30.000 --> 02:34:36.000
+Derivative of a with respect to Theta one. Once again, this is a multiplication operation.
+
+02:34:36.000 --> 02:34:41.000
+So this derivative, simple approach. It's Theta 2 right.
+
+02:34:41.000 --> 02:34:56.000
+So we have all of these. So this here 2 times C. Times x times Theta. 2 H. To the relative of the loss function. What we had at the end of the computational graph with respect to Theta, one. What we had in the beginning of the graph.
+
+02:34:56.000 --> 02:35:07.000
+Okay. We did this by taking simple steps, and each of the steps back was something we could do easily. Okay. We compiled it all together, and we get it.
+
+02:35:07.000 --> 02:35:10.000
+Celebrated we care about.
+
+02:35:10.000 --> 02:35:14.000
+This is backpropagation. Notice. We started from the.
+
+02:35:14.000 --> 02:35:18.000
+And and we moved backwards to the beginning.
+
+02:35:18.000 --> 02:35:23.000
+Similarly, of course, we can compute the derivative of the loss with respect to pay 0 2.
+
+02:35:23.000 --> 02:35:26.000
+We get this data, rizzo.
+
+02:35:26.000 --> 02:35:29.000
+And that's it. Okay.
+
+02:35:29.000 --> 02:35:34.000
+We, of course we replace C with the definition of A. C.
+
+02:35:34.000 --> 02:35:45.000
+And now we completed this 2. You could, of course, once again go back compute directly derivative of the loss with respect to Theta, one to the 2, but that approach would not scale.
+
+02:35:45.000 --> 02:35:51.000
+Whereas this approach we discussed can be scaled to any model of any science.
+
+02:35:51.000 --> 02:35:58.000
+Or any complexity, because here we just use the multiplications and the subtractions and additions you could have.
+
+02:35:58.000 --> 02:36:07.000
+Nonlinear passions, weird accusations, you could add many parameters, lost functions with logarithms, sines, cosines, whatever.
+
+02:36:07.000 --> 02:36:10.000
+As long as we know how to derive.
+
+02:36:10.000 --> 02:36:13.000
+Each unit, each operation.
+
+02:36:13.000 --> 02:36:17.000
+That composes the computational graph.
+
+02:36:17.000 --> 02:36:24.000
+As long as we do that we can better differentiate or derive any of these functions. Okay.
+
+02:36:24.000 --> 02:36:29.000
+Here as a as a recap, I reported all of the steps we took.
+
+02:36:29.000 --> 02:36:38.000
+In the forward step that is, we just computed the loss with all of the inputs, and then all of the derivatives we computed.
+
+02:36:38.000 --> 02:36:46.000
+Any questions about this? Does it make sense? Is this something you already knew? Is this something you found out for the 1st time.
+
+02:36:46.000 --> 02:36:54.000
+I assume that if you already knew this nothing new, if this this is the 1st time, maybe it's you know, weird to look at this, and then.
+
+02:36:54.000 --> 02:37:01.000
+We'll definitely understand all of the steps that we need to take.
+
+02:37:01.000 --> 02:37:11.000
+And why wouldn't you take them? I care more about the why wouldn't take them than the Whatsapp with it?
+
+02:37:11.000 --> 02:37:14.000
+Okay. If not, let's.
+
+02:37:14.000 --> 02:37:16.000
+Move on to the.
+
+02:37:16.000 --> 02:37:26.000
+Last, but probably more interesting topic here for today. That is what loss functions do we use.
+
+02:37:26.000 --> 02:37:35.000
+And the answer is, it depends on the thrown that we're facing.
+
+02:37:35.000 --> 02:37:37.000
+If we have.
+
+02:37:37.000 --> 02:37:40.000
+Regression problems.
+
+02:37:40.000 --> 02:37:45.000
+Well, we learned from linear regression that the means for whatever.
+
+02:37:45.000 --> 02:37:56.000
+Is a good loss function, I mean absolute error, etc. Okay, so in that case you use those functionary sign.
+
+02:37:56.000 --> 02:38:02.000
+If we have classification, we have to come up with some other loss function.
+
+02:38:02.000 --> 02:38:03.000
+So, some other.
+
+02:38:03.000 --> 02:38:17.000
+Function that looks at our model's prediction looks at what the model should have predicted, and gives us a number that is low if the prediction is good high, if the prediction is bad.
+
+02:38:17.000 --> 02:38:30.000
+So we distinguish between binary and then multiplath plus presentation problems. Okay, we will see the binary, and then we will see that the multi-class is simply an extension of the binary case.
+
+02:38:30.000 --> 02:38:37.000
+So for the binary case we use what we call the binary cross entropy.
+
+02:38:37.000 --> 02:38:39.000
+The binonecrosentropy.
+
+02:38:39.000 --> 02:38:43.000
+Is a loss function. So it takes an input, a model.
+
+02:38:43.000 --> 02:38:45.000
+And assumes that.
+
+02:38:45.000 --> 02:38:57.000
+The ground fruit value that we want to predict is either 0 or one ok. Binary problems. We map one class to 0 , one class to one.
+
+02:38:57.000 --> 02:39:00.000
+So that's the ground route. What we should predict.
+
+02:39:00.000 --> 02:39:05.000
+And assumes that the model produces a value. Let's call it y-hat.
+
+02:39:05.000 --> 02:39:08.000
+That is between 0 and one.
+
+02:39:08.000 --> 02:39:12.000
+So not just 0 , not just one a number between 0 and one.
+
+02:39:12.000 --> 02:39:19.000
+Much like, Remember the sigmoids function. The sigmoid function, I told you, is apparently going from 0 to one.
+
+02:39:19.000 --> 02:39:26.000
+And the Moroccan protect any value between 0 and one, which is the probability with which the model.
+
+02:39:26.000 --> 02:39:30.000
+Predict class one, for instance.
+
+02:39:30.000 --> 02:39:32.000
+Okay, so we have these 2 values. Why?
+
+02:39:32.000 --> 02:39:36.000
+Binary either 0 or one, and y hat.
+
+02:39:36.000 --> 02:39:39.000
+Scholar between 0 and one.
+
+02:39:39.000 --> 02:39:44.000
+The binary prosentropy is formulated.
+
+02:39:44.000 --> 02:40:00.000
+Like this this weird thing with minus y log y hat plus. I mean this case minus one minus y sometimes written as plus y minus one log of one minus y hat.
+
+02:40:00.000 --> 02:40:06.000
+Which looks kind of weird. Okay, it's not super intuative what this is doing.
+
+02:40:06.000 --> 02:40:09.000
+We have to remember that y.
+
+02:40:09.000 --> 02:40:15.000
+Remember 0 or one easy phase works as a selector.
+
+02:40:15.000 --> 02:40:18.000
+Why is a selector? Because when Y is equal to one.
+
+02:40:18.000 --> 02:40:21.000
+These will be non- 0 .
+
+02:40:21.000 --> 02:40:25.000
+And this thing here will be 0 . So this whole thing will go away.
+
+02:40:25.000 --> 02:40:28.000
+When y is equal to 0 .
+
+02:40:28.000 --> 02:40:36.000
+This will be one, so non 0 . So it stays. This Y is going to be 0 . So this goes away.
+
+02:40:36.000 --> 02:40:43.000
+So 1st of all, why act as a selector of one of the 2 terms? So if we want to predict.
+
+02:40:43.000 --> 02:40:54.000
+Our goal is predicting one. We activate part of the loss function. If our goal is 0 , we activate the other part of the loss function.
+
+02:40:54.000 --> 02:40:58.000
+Okay.
+
+02:40:58.000 --> 02:41:04.000
+So after we apply the selector, the loss becomes minus log y hat.
+
+02:41:04.000 --> 02:41:07.000
+If we want to predict y equal to one.
+
+02:41:07.000 --> 02:41:13.000
+Minus log of one minus y hat. If we want to predict 0 .
+
+02:41:13.000 --> 02:41:20.000
+What is the log minus log of y hat? I added. The plot one here and one here.
+
+02:41:20.000 --> 02:41:29.000
+Let's look at minus logo for hat. So remember this case here only when we want the model 3 1. So.
+
+02:41:29.000 --> 02:41:35.000
+The closer the model is to one the better the model right.
+
+02:41:35.000 --> 02:41:40.000
+And indeed, if you look at the logarithm minus logarithm of wi-hat.
+
+02:41:40.000 --> 02:41:42.000
+Going from 0 to one.
+
+02:41:42.000 --> 02:41:46.000
+When we are here, the model Y hat.
+
+02:41:46.000 --> 02:42:02.000
+Predicted a value that is, one or very close to one. And indeed, notice that minus log of that is a value that is 0 , or anyway, very small. Okay. So when the model says, Okay, 0 point 8, okay.
+
+02:42:02.000 --> 02:42:08.000
+It through the predicted one. It's kind of close, and so the loss, the penalty that we have is.
+
+02:42:08.000 --> 02:42:11.000
+Whatever 0 point 2. Something very low.
+
+02:42:11.000 --> 02:42:15.000
+If the moral says 0 point 1.
+
+02:42:15.000 --> 02:42:22.000
+And it should have predicted one. So the model makes a very poor prediction. The loss function.
+
+02:42:22.000 --> 02:42:30.000
+Is quite large, let's say 2, 3, approximably.
+
+02:42:30.000 --> 02:42:46.000
+So this is how the binary cross entropy works. Okay, of course, in one case in the other y equal to 0 . If we have values close to 0 , we simply flip the logarithm. So if the values are close to 0 , low penalty.
+
+02:42:46.000 --> 02:42:52.000
+If the bets are close to one, that is, the model is very far away from what it should predict. High penalty.
+
+02:42:52.000 --> 02:42:53.000
+Okay.
+
+02:42:53.000 --> 02:42:58.000
+This is how the environmental refrastrum works.
+
+02:42:58.000 --> 02:43:10.000
+And it's a very simple after we look at how it's composed. If you look at this in this way, it's not very intuative, but after we break it down it kind of makes sense right.
+
+02:43:10.000 --> 02:43:17.000
+Awesome. Last thing. Let's move to multi-class class classification.
+
+02:43:17.000 --> 02:43:35.000
+And in multi-class classification we take the same idea we used for binary classification, and we move it to the case with multiple classes. Okay, so we use what we call the cross entropy before. It was the binary cross-entropy, because we had a binary problem. Here we use the cross entropy. We have a multi-class problem.
+
+02:43:35.000 --> 02:43:38.000
+It's a generalisation of BC.
+
+02:43:38.000 --> 02:43:40.000
+In this case.
+
+02:43:40.000 --> 02:43:49.000
+We work in the same way as before. Okay, we use why the ground truth as the selector.
+
+02:43:49.000 --> 02:43:59.000
+And then we use the logarithm of the prediction as the scale of the entity.
+
+02:43:59.000 --> 02:44:02.000
+The only thing we need to care about here is that.
+
+02:44:02.000 --> 02:44:08.000
+For a wide loft as a selector we cannot have. Why.
+
+02:44:08.000 --> 02:44:18.000
+Equals t01234512345. Let's say 1, 2, 3, 4. If we have 4 classes, because we cannot multiplay y.
+
+02:44:18.000 --> 02:44:19.000
+Here.
+
+02:44:19.000 --> 02:44:24.000
+Times 1, 2, 3, 4. Instead, we have to reframe the label.
+
+02:44:24.000 --> 02:44:30.000
+As what we call a 1-off encoder links. Okay. So as a vector of 4 entries.
+
+02:44:30.000 --> 02:44:37.000
+All zeros except for one entry which will be set to one. So if we want to predict class one.
+
+02:44:37.000 --> 02:44:44.000
+We specify the label as this vector 1,000. If you want to predict label 2.
+
+02:44:44.000 --> 02:44:47.000
+We use this label here.
+
+02:44:47.000 --> 02:44:51.000
+For 3 or 4. Don't make me write all of this with Minecraft.
+
+02:44:51.000 --> 02:44:56.000
+The idea is that now.
+
+02:44:56.000 --> 02:45:02.000
+These laws the cross entropy with or not, whatever.
+
+02:45:02.000 --> 02:45:08.000
+Can we undo this? Probably in some way, but
+
+02:45:08.000 --> 02:45:13.000
+Well, it's gone forever. It's no problem.
+
+02:45:13.000 --> 02:45:16.000
+The idea is that now the submission here.
+
+02:45:16.000 --> 02:45:22.000
+Goes through all of the classes, plus 1, 2, and 3, 4.
+
+02:45:22.000 --> 02:45:33.000
+We multiplied with yi, which will be one for the correct class 0 non ladder cases. So when it is 0 . The term is cancelled.
+
+02:45:33.000 --> 02:45:39.000
+When it is one. We consider the logarithm of the corresponding prediction of the model.
+
+02:45:39.000 --> 02:45:47.000
+Okay, so it's the same idea as before. Basically here. What we're doing is, we are.
+
+02:45:47.000 --> 02:46:02.000
+Develop. We are building the entire submission. This could be also written as the sommation of why going from 0 to one of yi times the logarithm of y hat. Okay, same as here, except since now it's only 2 terms. We just.
+
+02:46:02.000 --> 02:46:04.000
+Both terms one and 2.
+
+02:46:04.000 --> 02:46:11.000
+Here instead, since it could be 10 fire, 1015, 100 Amiu classes. We just write the submission.
+
+02:46:11.000 --> 02:46:16.000
+But the idea is exactly the same. This term will only be non- 0 .
+
+02:46:16.000 --> 02:46:21.000
+For the term that corresponds to the correct class.
+
+02:46:21.000 --> 02:46:26.000
+And the term of the penalty will be given by the logarithm.
+
+02:46:26.000 --> 02:46:35.000
+Of the probability prediction by the model for that class. Okay. So if the model has high probability for the predicted class, sorry for the correct class.
+
+02:46:35.000 --> 02:46:44.000
+It will be a low loss function. If the prediction is very different for the predicted class, it will be a high-loss function question.
+
+02:46:44.000 --> 02:46:46.000
+It's a what.
+
+02:46:46.000 --> 02:47:01.000
+Yeah, absolutely. I'm talking about the loss function. But loss cost objective. It's all synonyms absolutely. Yeah. Yeah. See maybe if you saw this call the false function, it's the same thing. Objective function, same thing lost function. Same thing. Typically.
+
+02:47:01.000 --> 02:47:10.000
+In machine learning, in deep learning we call it a loss function, but in other places we call it different ways, absolutely.
+
+02:47:10.000 --> 02:47:12.000
+I do questions about this.
+
+02:47:12.000 --> 02:47:15.000
+Doesn't make sense that we use.
+
+02:47:15.000 --> 02:47:20.000
+The ground route is the selector, and then the logarithm.
+
+02:47:20.000 --> 02:47:23.000
+In this way as the penalty.
+
+02:47:23.000 --> 02:47:40.000
+Because this year is exactly how Ukraine models to predict the right words frankly to say Okay, model, you should predict the word ephol. Okay, so across the whole vocabulary the write-on, for example, engine prompt.
+
+02:47:40.000 --> 02:47:48.000
+So you should put high probability of the word. Okay? And so that's how we teach models to to say words.
+
+02:47:48.000 --> 02:47:51.000
+Okay by making them
+
+02:47:51.000 --> 02:48:01.000
+Classifi make a prediction. This is a classification. And then using Acrosentropy to tell them what they did right and what they did wrong.
+
+02:48:01.000 --> 02:48:02.000
+Okay.
+
+02:48:02.000 --> 02:48:05.000
+Our questions.
+
+02:48:05.000 --> 02:48:09.000
+Okay, if not, I will.
+
+02:48:09.000 --> 02:48:38.000
+No, I'm not sure with you on on Wednesday there should be my assistant, Claire. And he will do the final doors introduction. So I'm going to. I will see you next Monday that we won't see particular. Thank you.
+

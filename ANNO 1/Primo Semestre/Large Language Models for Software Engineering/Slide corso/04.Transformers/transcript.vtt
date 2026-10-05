@@ -1,0 +1,1718 @@
+WEBVTT
+
+00:01:03.000 --> 00:01:09.000
+blank words so that the neural network understands what kind of
+
+00:01:09.000 --> 00:01:13.000
+Romantic relationships exist among words.
+
+00:01:13.000 --> 00:01:15.000
+And then we discussed.
+
+00:01:15.000 --> 00:01:19.000
+recurrent neural networks, which is a type of neural network.
+
+00:01:19.000 --> 00:01:21.000
+.
+
+00:01:21.000 --> 00:01:31.000
+Can handle, can manage sequences of something, okay? Our topic we discussed about sequences of words.
+
+00:01:31.000 --> 00:01:38.000
+We discussed some of the limitations of RNNs, and that's why they are not the state-of-the-art today.
+
+00:01:38.000 --> 00:01:41.000
+There are some limitations in terms of…
+
+00:01:41.000 --> 00:01:54.000
+training problems, we discussed vanishing and exploding gradients. We discussed problems with long-term dependencies because remember, we always collapse.
+
+00:01:54.000 --> 00:02:00.000
+the history of whatever we saw up until a certain point into a single vector.
+
+00:02:00.000 --> 00:02:07.000
+And then we discussed some problems with scalability, okay? Because we saw that RNNs are not.
+
+00:02:07.000 --> 00:02:09.000
+parallelizable.
+
+00:02:09.000 --> 00:02:15.000
+Morning.
+
+00:02:15.000 --> 00:02:22.000
+We discussed two different approaches, glass science, in which we can use RNNs to predict.
+
+00:02:22.000 --> 00:02:31.000
+a sequence as the output, given a sequence as the input, which, remember, we call sequence to sequence or C2C problems.
+
+00:02:31.000 --> 00:02:47.000
+We saw one case which we call the one-to-one mapping, in which we take one input element of the sequence and we produce one output element of the output sequence. We saw that that approach has some kind of limitations.
+
+00:02:47.000 --> 00:02:59.000
+And so we landed to something slightly different, which we called Encoder/decoder architecture. An encoder/decoder architecture. Let me remind you, is an architecture in which we have
+
+00:02:59.000 --> 00:03:08.000
+two modules, an encoder module, a decoder module. The encoder module takes the input sequence as the input.
+
+00:03:08.000 --> 00:03:12.000
+some kind of, we call it a state.
+
+00:03:12.000 --> 00:03:21.000
+which is the nodes that the model takes about the input sequence. So the model now remembers what happened in the input sequence.
+
+00:03:21.000 --> 00:03:37.000
+And that state becomes the input of the decoder, which is the second module, takes as input the state, that is a summarization, a summary of the input sequence with only the interesting parts.
+
+00:03:37.000 --> 00:03:46.000
+We have to pass, remember, a special beginning word. We call it a beginning of sequence or POS.
+
+00:03:46.000 --> 00:03:53.000
+Why? Because we have to give something as the second input to whatever model is in here.
+
+00:03:53.000 --> 00:03:59.000
+The decoder looks at the state, looks at the beginning of the sequence, and says, okay, I'm going to start producing.
+
+00:03:59.000 --> 00:04:11.000
+Okay, I'm going to stop using the next word and then the next word and then the next word and then the next word, okay? So each of the output we saw became the input.
+
+00:04:11.000 --> 00:04:24.000
+the next generation step. We will still cover this once again after we talk about transformers, but this was the same approach that we also discussed using for LSTMs, okay?
+
+00:04:24.000 --> 00:04:25.000
+Now…
+
+00:04:25.000 --> 00:04:41.000
+Let's take this encoder-recorder architecture, let's kind of reframe it. Okay, we're only changing the shapes, right? We're not saying we changed something. Still same idea, encoder produces a state, input to the decoder.
+
+00:04:41.000 --> 00:04:43.000
+And if we go Luke,
+
+00:04:43.000 --> 00:04:45.000
+inside.
+
+00:04:45.000 --> 00:04:56.000
+possible different architecture we can add. Remember last time here we had LSTMs, here we had LSTMs.
+
+00:04:56.000 --> 00:05:08.000
+But nothing prevents us from doing something else, okay? And this picture, this is a kind of famous picture, okay? You will find it in the paper that first introduced transformers.
+
+00:05:08.000 --> 00:05:15.000
+This is the architecture that we have for the transformer models. Okay.
+
+00:05:15.000 --> 00:05:32.000
+It's a bit messy, right? But we will, I hope, by the end of, well, not today's lecture, but by the end of next week, I hope all of these will be very much clear to you what everything is doing and why we need each of the pieces, okay?
+
+00:05:32.000 --> 00:05:45.000
+So the transformer, the transformer is a type of neural network architecture proposed in 2017 in a paper by Vaswani et al, people from Google.
+
+00:05:45.000 --> 00:05:46.000
+The paper…
+
+00:05:46.000 --> 00:05:56.000
+Very famous. It's linked here at the bottom. The paper is called attention. Okay, it's a paper in which they show this new architecture.
+
+00:05:56.000 --> 00:06:04.000
+Which handles sequence-to-sequence tasks, so exactly what we are trying to solve.
+
+00:06:04.000 --> 00:06:10.000
+It proposes that architecture that we just described, that we just saw called transformation.
+
+00:06:10.000 --> 00:06:19.000
+It is comprised of an encoder and a decoder, so we call it an encoder-decoder architecture. We will see
+
+00:06:19.000 --> 00:06:27.000
+that we don't always need to have both an encoder and a decoder, okay? We will see that.
+
+00:06:27.000 --> 00:06:33.000
+Starting from the transformer architecture, someone came up with encoder-only models.
+
+00:06:33.000 --> 00:06:40.000
+So we throw away the decoder part. Why? Because in some cases, we just care about encoding something.
+
+00:06:40.000 --> 00:06:47.000
+In other cases, we throw away the encoding part. We just keep the decoder part of the architecture.
+
+00:06:47.000 --> 00:06:53.000
+You will see that most models that we use today, most generative models, are
+
+00:06:53.000 --> 00:07:03.000
+Decoder only. Okay, we don't have an encoder part. Everything is being done by the decoder. But we will see how it works and how it makes sense later next time.
+
+00:07:03.000 --> 00:07:07.000
+street.
+
+00:07:07.000 --> 00:07:14.000
+The interesting part about transformers is that it is no longer based on recurrent neural networks.
+
+00:07:14.000 --> 00:07:16.000
+Interestingly,
+
+00:07:16.000 --> 00:07:20.000
+Remember, with RNNs, we had to unfold.
+
+00:07:20.000 --> 00:07:26.000
+execution of the model onto a sequence by
+
+00:07:26.000 --> 00:07:39.000
+executing the RNN one step at a time. So we had to show the RNN one element of the symbols at a time. And that we discussed, introduced some problems with long-term dependencies.
+
+00:07:39.000 --> 00:07:42.000
+We will see with transformers.
+
+00:07:42.000 --> 00:07:53.000
+We don't have that. We don't show the model one element at a time. We show the model the entire sequence all at the same time. So the model can look at the entire sequence.
+
+00:07:53.000 --> 00:08:08.000
+Simultaneously, that will be, on the one hand, very interesting, very powerful. On the other, we will see it's going to be a little bit more expensive, a little bit. I mean, it's quadratic, okay, in the length of the sequence.
+
+00:08:08.000 --> 00:08:12.000
+Quite more expensive, except…
+
+00:08:12.000 --> 00:08:15.000
+We pay the price, but we get…
+
+00:08:15.000 --> 00:08:23.000
+No more problems in terms of long-term dependencies, okay? We kind of solved that problem. And we will see that.
+
+00:08:23.000 --> 00:08:27.000
+Since we show the model, the entire sequence.
+
+00:08:27.000 --> 00:08:46.000
+Simultaneously, we no longer have to wait for the model to generate the output one step at a time. We can immediately let the model generate, well, look at the entire sequence all at the same time so we can parallelize the training of the model.
+
+00:08:46.000 --> 00:08:55.000
+The paper is attention is already the paper is quite interesting. It's quite a long read, I would say, but still very much recommended.
+
+00:08:55.000 --> 00:08:57.000
+It introduces a bunch
+
+00:08:57.000 --> 00:09:07.000
+of interesting aspects, okay? Not all of them are new, not all of them are something the authors came up with. Most of them were things that already existed in the past.
+
+00:09:07.000 --> 00:09:18.000
+The authors of attention is that you need took all of those things that already existed and put them together to build the transformer architecture. Okay.
+
+00:09:18.000 --> 00:09:28.000
+things that we will care about, and that we will look at in more detail include tokenization. Okay, that's what we will discuss today after we look at the.
+
+00:09:28.000 --> 00:09:32.000
+architecture, positional encoding is
+
+00:09:32.000 --> 00:09:37.000
+an approach that the authors use.
+
+00:09:37.000 --> 00:09:48.000
+to convey part of the order of the sequence, okay, we will see that attention by itself cannot look at order of sequences, so we have to have some other way
+
+00:09:48.000 --> 00:09:58.000
+To tell the model what is the order of the elements of the sequence, and that's going to be positional encoding. And then, quite interestingly, but by the way, not the
+
+00:09:58.000 --> 00:10:03.000
+contribution, again, this attention was already existing before.
+
+00:10:03.000 --> 00:10:18.000
+The attention mechanism. Okay, the attention mechanism we will see is what makes the transformer so powerful. We will see that we have multiple types of attention. Specifically, we will refer to self-attention and cross-attention.
+
+00:10:18.000 --> 00:10:21.000
+They are two different types.
+
+00:10:21.000 --> 00:10:25.000
+attention. What is attention? We will see
+
+00:10:25.000 --> 00:10:41.000
+Next week, what it actually means. In short, it means that the model can look at the entire sequence, but can decide what to focus on. It doesn't have to look at the entire sequence, always giving the same importance to all of the parts of the sequence.
+
+00:10:41.000 --> 00:10:46.000
+Google can decide which parts of the sequence are interesting, should be more
+
+00:10:46.000 --> 00:11:01.000
+Uh, more… more relevant, that is, the model puts more attention to them, and which parts of the sequence are not as interesting, so the model does not give as much attention to that, okay? But all of these will be
+
+00:11:01.000 --> 00:11:05.000
+The topic for another lecture.
+
+00:11:05.000 --> 00:11:12.000
+But for now, let's focus on the general architecture because we go through the paper, you look at these.
+
+00:11:12.000 --> 00:11:14.000
+Imagine.
+
+00:11:14.000 --> 00:11:20.000
+You may be quite confused, right? Because you see many blocks, many different colors, many terms, many…
+
+00:11:20.000 --> 00:11:34.000
+arrows that connect everything. So it might look a bit confusing, right? So first of all, what I want to do is I want to simplify the architecture a little bit, okay? Remove what is not essential.
+
+00:11:34.000 --> 00:11:45.000
+I mean, I said, it is essential because without all of the parts, it would not work, but quintessentially, they're not that interesting. So we will briefly discuss
+
+00:11:45.000 --> 00:11:52.000
+some parts later. For now, let's try to make it simpler. First of all, you will see all of these red
+
+00:11:52.000 --> 00:11:53.000
+arrows.
+
+00:11:53.000 --> 00:11:56.000
+connect each block.
+
+00:11:56.000 --> 00:12:12.000
+with the output of each of the blocks. They are called residual or skip connections. They are very useful, but they are not a central focus of the transformer architecture. So for now let's get rid of them, okay?
+
+00:12:12.000 --> 00:12:15.000
+Then remember,
+
+00:12:15.000 --> 00:12:27.000
+The original architecture I showed you had some input sequence and some output sequence. Here there are weird things like input embeddings, positional encodings, output probabilities, softmax linear.
+
+00:12:27.000 --> 00:12:35.000
+For now, let's just say that we give the model something as input, the yellow rectangles.
+
+00:12:35.000 --> 00:12:49.000
+The model produces something as the output, the green rectangles, okay? Those are, you can think about them as words. We will call them tokens, but they are words pretty much, okay?
+
+00:12:49.000 --> 00:12:54.000
+So that makes it a little bit simpler for us to look at the architecture in this way.
+
+00:12:54.000 --> 00:13:05.000
+Then we have all of these blocks, the add in norm, add and norm are blocks that will have their own contribution. If you remove them from the
+
+00:13:05.000 --> 00:13:08.000
+Architecture, they will…
+
+00:13:08.000 --> 00:13:17.000
+of break the model, but still they're not super interesting. They do something very, very simple. So for now, let's get rid of them as well. Okay.
+
+00:13:17.000 --> 00:13:25.000
+So when you look at this architecture, that's much simpler. Okay, we have some block here.
+
+00:13:25.000 --> 00:13:31.000
+that takes as input the input sequence, some block here that takes as input.
+
+00:13:31.000 --> 00:13:34.000
+something that comes out of the encoder.
+
+00:13:34.000 --> 00:13:41.000
+something that comes out as the output sequence and produces the output result, okay?
+
+00:13:41.000 --> 00:13:51.000
+We have two types of blocks, okay? After we remove all of the other noisy dark that we just discussed.
+
+00:13:51.000 --> 00:14:05.000
+One type of block is the feed-forward neural network. That type of block we are already familiar with. We know what it does, takes an input something, produces output something else. So something is a vector, an input, vector, output, right?
+
+00:14:05.000 --> 00:14:10.000
+What we are left is, is what we are left with is
+
+00:14:10.000 --> 00:14:17.000
+These three blocks and they are all, we call them attention blocks. Both ahead, let me say what it means.
+
+00:14:17.000 --> 00:14:21.000
+blocks.
+
+00:14:21.000 --> 00:14:29.000
+With some caveats, some differences, ok, this one, for instance, we will call it a cross attention. This one we call it a masked attention.
+
+00:14:29.000 --> 00:14:32.000
+This one we will call it a self-attention, okay?
+
+00:14:32.000 --> 00:14:39.000
+We will discuss once again all of them. What matters is that
+
+00:14:39.000 --> 00:14:47.000
+You should notice that each of these blocks takes as input three things, okay, three arrows.
+
+00:14:47.000 --> 00:14:52.000
+and produces one thing, okay, one arrow.
+
+00:14:52.000 --> 00:14:59.000
+What the inputs and the outputs are is going to be the topic of the next lecture.
+
+00:14:59.000 --> 00:15:04.000
+For now, I hope that this is somewhat clear to you.
+
+00:15:04.000 --> 00:15:23.000
+At least at a very high level. I mean, I want to just show you that it is nothing too weird, okay? It is just an architecture, like many others you may have already seen, and we can figure out what each of the blocks does, and then the whole architecture is going to make sense, okay?
+
+00:15:23.000 --> 00:15:31.000
+Now, before we move on to the first part of the let's say, the details,
+
+00:15:31.000 --> 00:15:36.000
+That is tokenization. I wanted to show you how we produce.
+
+00:15:36.000 --> 00:15:44.000
+A sequence is the output given a sequence as the input, okay? Because this is the generation process that is going to be.
+
+00:15:44.000 --> 00:15:51.000
+let's say the cornerstone based on which we build the entire generation.
+
+00:15:51.000 --> 00:15:55.000
+capabilities of these models. Okay.
+
+00:15:55.000 --> 00:16:00.000
+This is our architecture. Let's say we have no let's go here.
+
+00:16:00.000 --> 00:16:06.000
+Let's say we have an input sequence. Remember, our problem is typically sequence to sequence, so far.
+
+00:16:06.000 --> 00:16:16.000
+I have a sentence in English, I want to translate it into Italian, for instance.
+
+00:16:16.000 --> 00:16:25.000
+So here I will have the input sequence, which is going to be the words of the English sentence.
+
+00:16:25.000 --> 00:16:37.000
+The first thing we do with that transformer, with a decoder decoder transformer, is take the input sequence, pass it through the encoder that the model of the transformer.
+
+00:16:37.000 --> 00:16:54.000
+What we will get as the output is going to be our code, okay? And differently from LSTMs, remember LSTMs had a fixed size code. Fully should I mention 64 dimensions, whatever many dimensions. It was a fixed number of dimensions, okay?
+
+00:16:54.000 --> 00:16:57.000
+Here, the interesting part is that the
+
+00:16:57.000 --> 00:17:01.000
+The encoder does not produce a fixed
+
+00:17:01.000 --> 00:17:07.000
+It produces one vector,
+
+00:17:07.000 --> 00:17:17.000
+For each of the words, or we will call them tokens that we provide as the input. So if the input sequence was five tokens, five words, we would
+
+00:17:17.000 --> 00:17:33.000
+You get five vectors as the output. If it was 10 inputs, 10 outputs, etc. This is a property of the attention layer. The attention layer produces one better output for each vectoring input.
+
+00:17:33.000 --> 00:17:39.000
+Okay, filmmakers need Mr. Zach. Okay.
+
+00:17:39.000 --> 00:17:52.000
+So this is already quite useful because we don't have to compress all of these into a single vector. If we have to compress all of these into a single vector, we lose information necessarily because if we had a book full of
+
+00:17:52.000 --> 00:18:04.000
+you know, words, and you have to summarize it into a single page, you have to lose information. Here, instead, we have as many paintings, as many vectors in the output as we have in the input. So we…
+
+00:18:04.000 --> 00:18:18.000
+Don't have to lose information. Of course, if this is garbage, if this is a garbage encoder, we could still lose information, right? But we don't have to lose information now.
+
+00:18:18.000 --> 00:18:20.000
+What will this…
+
+00:18:20.000 --> 00:18:25.000
+Outputs contain, they will contain, let's say, a string
+
+00:18:25.000 --> 00:18:38.000
+We'll see the attention mechanisms will mix and match all of these vectors during the input to produce output vectors that are.
+
+00:18:38.000 --> 00:18:42.000
+than what we had in the input. Okay.
+
+00:18:42.000 --> 00:18:50.000
+But we will understand a little bit more about what's in those states later next week.
+
+00:18:50.000 --> 00:18:56.000
+Then comes the decoder part, right? The decoder, remember, takes as input.
+
+00:18:56.000 --> 00:19:01.000
+The state and notice that the state here.
+
+00:19:01.000 --> 00:19:07.000
+goes to the input of what we call the cross-attention module.
+
+00:19:07.000 --> 00:19:11.000
+Right.
+
+00:19:11.000 --> 00:19:15.000
+And then we have to remember, specify.
+
+00:19:15.000 --> 00:19:18.000
+A starting point, right?
+
+00:19:18.000 --> 00:19:23.000
+If we don't specify anything as the input, we don't get anything as the output, right?
+
+00:19:23.000 --> 00:19:40.000
+Because remember, attention modules take one vector as input, produce one vector as output, 10 vectors as input, 10 vectors as output. So zero vectors as input, zero vectors as output, right? So we have to give a starting vector to the model.
+
+00:19:40.000 --> 00:19:43.000
+We give it, remember,
+
+00:19:43.000 --> 00:19:58.000
+These spatial vector, the beginning of sequence vector. I will give you one vector as equal. This is a vector that is special. How do you know it's special model? Because you saw it in training.
+
+00:19:58.000 --> 00:20:05.000
+The model looks at the vector, says, okay, this is the beginning of sequence vector. I have to start producing the output.
+
+00:20:05.000 --> 00:20:07.000
+How do I decide?
+
+00:20:07.000 --> 00:20:14.000
+What do I produce as the output? I look at the first vector, so I have to start. I look at…
+
+00:20:14.000 --> 00:20:18.000
+The code that is the input that
+
+00:20:18.000 --> 00:20:21.000
+I received from the encoder.
+
+00:20:21.000 --> 00:20:24.000
+And I produce…
+
+00:20:24.000 --> 00:20:28.000
+One output. Remember, one input, one output.
+
+00:20:28.000 --> 00:20:36.000
+I tell the model, start generating something, the model generates the first word of the output, the first token of the output.
+
+00:20:36.000 --> 00:20:37.000
+Okay.
+
+00:20:37.000 --> 00:20:41.000
+Now, to be more precise,
+
+00:20:41.000 --> 00:20:46.000
+Here we also have a sampling process, okay? Because the model
+
+00:20:46.000 --> 00:20:50.000
+This decoder does not produce a single token.
+
+00:20:50.000 --> 00:20:59.000
+is a classifier. Remember, we always say that predicting a word means solving a classification problem. I have to choose.
+
+00:20:59.000 --> 00:21:04.000
+the correct word, so I have to give the correct, the most reasonable.
+
+00:21:04.000 --> 00:21:13.000
+Output for high probability, but it is still a probability. So what the model produces here is not.
+
+00:21:13.000 --> 00:21:27.000
+First word, it is a probability distribution across all the possible words in the vocabulary, and then in some way, we sample the distribution, we take the highest probability word, we do something, okay, so we convert.
+
+00:21:27.000 --> 00:21:30.000
+probability distribution into
+
+00:21:30.000 --> 00:21:36.000
+the first output word or the first output token, okay?
+
+00:21:36.000 --> 00:21:39.000
+So you should always remember that.
+
+00:21:39.000 --> 00:21:50.000
+When we say the model produces an output token. we're saying the model has a probability distribution from that we sample one word.
+
+00:21:50.000 --> 00:21:54.000
+And what do we do with this word? Well, first, it's going to be the first
+
+00:21:54.000 --> 00:22:02.000
+part that the model produces, but then we take that word and that word becomes
+
+00:22:02.000 --> 00:22:04.000
+The second input.
+
+00:22:04.000 --> 00:22:18.000
+the decoder, right? We want the model to generate the next word. So if we want the model to produce two words as the output, we have to pass two words as the input, right? So we take what the model has produced.
+
+00:22:18.000 --> 00:22:26.000
+In the previous step, and we put it back here after the beginning of sequence token.
+
+00:22:26.000 --> 00:22:37.000
+Okay, yes, question. So basically the token is, let's say the part of the translation of the word.
+
+00:22:37.000 --> 00:22:46.000
+The token is, we will discuss this later. We have an entire chapter of these slides about tokenization, but the token is.
+
+00:22:46.000 --> 00:22:59.000
+Either typically a word or a subword, and it's going to be a word or a subword of the translated output. So if the model knows how to translate sentences from English to Italian,
+
+00:22:59.000 --> 00:23:11.000
+The first word produced by the decoder model is the output would be the first part of the translation of the input we provided. So, for example, if we have a full sentence, yes.
+
+00:23:11.000 --> 00:23:20.000
+Total norm basically can be the work of the English channel. Exactly. Yes, yes.
+
+00:23:20.000 --> 00:23:31.000
+After we do this process of decoding model, the entire English sentence is put again for decoding.
+
+00:23:31.000 --> 00:23:44.000
+or just the remaining part? No, okay, so let's assume we said English as the input, right? English as the input, Italian as the output, right?
+
+00:23:44.000 --> 00:23:53.000
+Let's do this kind of task. So Italian.
+
+00:23:53.000 --> 00:24:10.000
+The English sentence, we already have it available in its entirety, right? We already know the full English sentence we want to translate, correct? So we take the English sentence, we break it up into tokens, easy words, okay, and those becomes
+
+00:24:10.000 --> 00:24:27.000
+the inputs of the encoder, okay? So we only run the encoder once in the beginning. The encoder takes all of these tokens, produces for each input token, a corresponding output token, vector, of course, it's going to be a vector.
+
+00:24:27.000 --> 00:24:29.000
+Those vectors…
+
+00:24:29.000 --> 00:24:35.000
+contain, you know, in some way the meaning of the input sentence in English, right?
+
+00:24:35.000 --> 00:24:38.000
+The decoder.
+
+00:24:38.000 --> 00:24:49.000
+We'll always look at the entire sentence at all times. It will always look at the entire code, because the code we already generated it, okay, so it's everything is available.
+
+00:24:49.000 --> 00:25:00.000
+looks at what we are passing as the input, say we are just passing the beginning of sequence token, looks at the input, a single token, beginning of sequence, looks at the code.
+
+00:25:00.000 --> 00:25:09.000
+entire English sentence, the model has been trained to do translation, so it means that it knows that
+
+00:25:09.000 --> 00:25:11.000
+tokens.
+
+00:25:11.000 --> 00:25:21.000
+in the code have some meaning, and so it knows it should give more probability to the correct words, okay, in Italian.
+
+00:25:21.000 --> 00:25:25.000
+And so it produces the first token, which is going to be a token.
+
+00:25:25.000 --> 00:25:34.000
+Italian language, so a word in Italian language, if you will, that corresponds to the beginning of the sequence.
+
+00:25:34.000 --> 00:25:47.000
+That the model sees in the code part. So the model looks at this and says, okay, this sentence talks about, today is a sunny day, the example we used last time, right?
+
+00:25:47.000 --> 00:26:01.000
+The output here will be related to the fact that today's a sunny day, but in Italian, so it will know that the first word should be ode, the Italian version of today, okay?
+
+00:26:01.000 --> 00:26:10.000
+So the model says, okay, I'm just going to produce the first word, and I don't have to produce the entire sentence right now. I will just produce the first word.
+
+00:26:10.000 --> 00:26:17.000
+produces the first word here, token1, oji, which is today, you know, in Italian.
+
+00:26:17.000 --> 00:26:31.000
+This becomes the second input that the model receives. Okay, so now you pass beginning of sequence and then the word oji, the token ogi. So the model looks at it and says, okay, I'm being given.
+
+00:26:31.000 --> 00:26:42.000
+being given the word oji that means that someone, I, the moral could say I previously translated oji of this entire English sentence.
+
+00:26:42.000 --> 00:26:45.000
+What do I have to predict next?
+
+00:26:45.000 --> 00:26:49.000
+Takes as input, beginning and og today.
+
+00:26:49.000 --> 00:27:02.000
+looks at the entire sentence, it's talking about the weather today, and so produces e, is. Okay, so I say, okay, oh gee, today is. So, and then it goes on.
+
+00:27:02.000 --> 00:27:04.000
+Does it make sense?
+
+00:27:04.000 --> 00:27:08.000
+Was that the question you had? Okay, perfect.
+
+00:27:08.000 --> 00:27:10.000
+Any other questions?
+
+00:27:10.000 --> 00:27:13.000
+process of generation.
+
+00:27:13.000 --> 00:27:17.000
+This is something that you will implement
+
+00:27:17.000 --> 00:27:29.000
+with, of course, decoder-only models in a few labs. Okay, so you would actually write out the generation loop that goes on to generate sentences.
+
+00:27:29.000 --> 00:27:37.000
+When do we stop? At some point, the model will take, okay, a bunch of tokens that are what the model has produced in the past.
+
+00:27:37.000 --> 00:27:39.000
+It will…
+
+00:27:39.000 --> 00:27:48.000
+know what it has produced in the past. It will know what the contents of the code are, so it knows both.
+
+00:27:48.000 --> 00:27:55.000
+English sentence, the original sentence was, it knows what it produced so far in Italian, for instance.
+
+00:27:55.000 --> 00:28:04.000
+At some point, it will say, okay, I don't have anything else to produce. So it will produce what we call the end of sequence token.
+
+00:28:04.000 --> 00:28:19.000
+How does he know it has to produce the token? Because during training, the model was shown that after producing the entire translation, it should produce the end of sequence token. So it was trained to, at some point, produce end of sequence.
+
+00:28:19.000 --> 00:28:23.000
+So when the model produces end of sequence,
+
+00:28:23.000 --> 00:28:34.000
+You look at what the model produced. Remember, it will always be a probability distribution, so it will be high probability on the end of sequence token, low probability anywhere else.
+
+00:28:34.000 --> 00:28:50.000
+So the model is saying, I don't think I should be producing anything else. When the model says that, you, person who wrote the while loop that does the generation, it's okay, do this generation process.
+
+00:28:50.000 --> 00:29:01.000
+Until the model produces the end of sequence token. When the model produces the end of sequence token, we stop asking the model to generate something, okay?
+
+00:29:01.000 --> 00:29:05.000
+And that's when we finish generating.
+
+00:29:05.000 --> 00:29:09.000
+Does it make sense?
+
+00:29:09.000 --> 00:29:18.000
+Okay, here in the notes, we mentioned the fact that the model always produces
+
+00:29:18.000 --> 00:29:25.000
+I don't remember what it says. Uh, no, yeah, this is a different thing.
+
+00:29:25.000 --> 00:29:32.000
+It's a different thing. I mean, you can read it, it's fine. Basically, what you will see is that
+
+00:29:32.000 --> 00:29:43.000
+This is a bit premature, maybe we will have to discuss it when we talk about masking. Anyway, what this is saying is that the first token.
+
+00:29:43.000 --> 00:29:56.000
+Remember I told you, one input vector, one output vector, two input vectors, two output vectors, okay? So that means that even after a pass, beginning of sequence and token one, the model will still produce
+
+00:29:56.000 --> 00:30:04.000
+Token1 and token2. So it will be somewhat, let's say, a little bit redundant, let me put it this way, because it will still generate.
+
+00:30:04.000 --> 00:30:12.000
+it once, even at the second step. Why? Because it has to produce two outputs.
+
+00:30:12.000 --> 00:30:26.000
+How can we make sure that this token here always stays the same? Well, we'll see. We will introduce what we call causality masking, a masking that tells us you can only look at previous tokens, not at the current token. Okay.
+
+00:30:26.000 --> 00:30:29.000
+And then, of course, um…
+
+00:30:29.000 --> 00:30:34.000
+This is exactly what it's saying, the decoder will not produce one
+
+00:30:34.000 --> 00:30:54.000
+token at a time for each of the input tokens. And then we mostly care about the last token because the previous ones will be the same as what the model has already generated in the previous steps. So it's not really all that interesting.
+
+00:30:54.000 --> 00:30:57.000
+So, any questions about…
+
+00:30:57.000 --> 00:31:04.000
+of this bar. I hope this time you visit the high level transformers. Okay.
+
+00:31:04.000 --> 00:31:08.000
+Any questions about any of this?
+
+00:31:08.000 --> 00:31:12.000
+If not, we are going to start talking about
+
+00:31:12.000 --> 00:31:17.000
+Organization. So the first step we have to take
+
+00:31:17.000 --> 00:31:23.000
+To make it so that these models, these transformers can take
+
+00:31:23.000 --> 00:31:37.000
+sentences as input. Because so far we always talk about passing words. Sometimes I started talking about tokens a bit in a bit of a fuzzy way.
+
+00:31:37.000 --> 00:31:54.000
+Let's see in more detail what tokens are, what tokenization means, and what are some algorithms, well, one algorithm at will I will cover, at least I will cover that talks about how we do tokenization, how we choose which tokens to produce.
+
+00:31:54.000 --> 00:32:10.000
+So, okay, of course, I hope this is clear to process natural language, we have to pass sentences. Sentences should be broken down into smaller chunks. We cannot pass an entire sentence as the input without breaking the sentence into smaller
+
+00:32:10.000 --> 00:32:16.000
+units, okay? Those units, those small pieces that we create that
+
+00:32:16.000 --> 00:32:28.000
+A sentence, we call them tokens, okay? And so the process of converting a sentence into smaller pieces is called tokenization.
+
+00:32:28.000 --> 00:32:34.000
+This is not something new, okay? We have last week, this week already talked about
+
+00:32:34.000 --> 00:32:44.000
+tokenization without actually calling it tokenization. We saw, for instance, remember character level tokenization. Remember when we had the
+
+00:32:44.000 --> 00:32:59.000
+Correct pays for all of them, which we discussed later on Monday. I told you we passed one character at a time. I was implicitly saying, for us, each character is going to be its own token, its own element.
+
+00:32:59.000 --> 00:33:06.000
+And so that was character level. Then we did also talk about word level. I told you we get paid.
+
+00:33:06.000 --> 00:33:17.000
+bank or anything else that produces one vector for each word. So you have to implicitly break the sentence down into words.
+
+00:33:17.000 --> 00:33:33.000
+What was the problem with the word2vec? One of the problems. It was that it could not handle out-of-vocabulary words, right? Because if you hadn't learned a vector for a specific word, you could not say, okay, I'm gonna come up with some other way to represent
+
+00:33:33.000 --> 00:33:38.000
+It was not possible, okay? And that's…
+
+00:33:38.000 --> 00:33:42.000
+The same problem that we will see happens with tokenization here.
+
+00:33:42.000 --> 00:33:51.000
+And then we also have software level documentation. We can call it sub-level documentation, but we said, remember, fast text.
+
+00:33:51.000 --> 00:33:53.000
+We can break
+
+00:33:53.000 --> 00:34:07.000
+a word into smaller chunks in such a way that I can rebuild vectors for any word because I know the vectors for the subwords. Okay, so we can break.
+
+00:34:07.000 --> 00:34:19.000
+Any sentence into subwords, and then we reconstruct the vector for that sentence, for that word, for that whatever, by knowing the vectors for the sub words, okay? And that's a way.
+
+00:34:19.000 --> 00:34:24.000
+of saying subword level.
+
+00:34:24.000 --> 00:34:26.000
+Okay.
+
+00:34:26.000 --> 00:34:29.000
+Now, let's consider then.
+
+00:34:29.000 --> 00:34:39.000
+Here, in this situation, character level. And here I added a sentence, Mrs. Rockcastle was downstairs, I had an admirable opportunity.
+
+00:34:39.000 --> 00:34:43.000
+Here in colors, you see what carbon
+
+00:34:43.000 --> 00:34:58.000
+It takes into character of the input sequence and assigns one token to it. So the space is a token, the D is a token, the O is a token, W is a token, etc. Okay.
+
+00:34:58.000 --> 00:35:06.000
+Very simple to implement, right? So you take the sentence, you break it down into characters, each of those is your token.
+
+00:35:06.000 --> 00:35:18.000
+So very easy, one of the pros. I learned Green Pro is that you don't have any out of vocabulary issues, because if you can represent each token.
+
+00:35:18.000 --> 00:35:26.000
+token is a character that means that you can build any sequence of characters. So any sequence of token will always be.
+
+00:35:26.000 --> 00:35:30.000
+Understood. No.
+
+00:35:30.000 --> 00:35:39.000
+By the way, super simple spoiler that then we will discuss later, but what do we do with tokens? We do something similar to our advantage. We will associate.
+
+00:35:39.000 --> 00:35:44.000
+One day, one vector to each of them okay that's what
+
+00:35:44.000 --> 00:35:52.000
+to be what will happen next. But for now, we still have to figure out what constitutes a token. What is a token?
+
+00:35:52.000 --> 00:35:55.000
+And so here we say, okay, a token is a character.
+
+00:35:55.000 --> 00:35:57.000
+Very simple.
+
+00:35:57.000 --> 00:36:02.000
+to misspellings and variations. What does it mean? It means that
+
+00:36:02.000 --> 00:36:18.000
+Sometimes it will benefit, people will write sentences with some titles, with some spellings, with some variations of the spelling of a word, might still be a correct spelling, you know, British versus American English, for instance.
+
+00:36:18.000 --> 00:36:20.000
+Unless…
+
+00:36:20.000 --> 00:36:29.000
+You have ways of handling typos, misspellings, variations of the spelling of a word.
+
+00:36:29.000 --> 00:36:39.000
+their problems, right? Because you cannot possibly think about all of the possible ways in which anyone can possibly missite our word.
+
+00:36:39.000 --> 00:36:46.000
+Here, with character-level tokenization, we don't have this problem because…
+
+00:36:46.000 --> 00:37:02.000
+Each character is its own token. So we will never have out of vocabulary programs, even if a person writes our word incorrectly, there still going to be a bunch of characters and still a bunch of tokens. So we solve all of these problems.
+
+00:37:02.000 --> 00:37:12.000
+Of course, there are some problems. And do not have any other.
+
+00:37:12.000 --> 00:37:24.000
+Anything else to talk about? What problems do we have? First of all, having this kind of tokenization will make our sequences much longer. Remember, we pass the sequence.
+
+00:37:24.000 --> 00:37:30.000
+is our sequence of tokens. So if we have one character per token,
+
+00:37:30.000 --> 00:37:36.000
+The sequence will be much longer than, for instance, imagine word levels tokenization.
+
+00:37:36.000 --> 00:37:44.000
+That's a problem. Why? Because we already started talking about the fact that transformers attention mechanisms.
+
+00:37:44.000 --> 00:37:46.000
+in cost.
+
+00:37:46.000 --> 00:37:54.000
+it in the land of the sequence. So a sequence of 10 characters or 10 tokens, or a sequence of
+
+00:37:54.000 --> 00:38:03.000
+100 characters, that's gonna be upper graphic difference, so that's expensive. Okay, so having norm sequences, not ideal.
+
+00:38:03.000 --> 00:38:08.000
+As a consequence, the train will be slower, of course.
+
+00:38:08.000 --> 00:38:13.000
+Something else we are kind of throwing away is the fact that
+
+00:38:13.000 --> 00:38:26.000
+We miss out or we lose some semantic meaning. Why? Because if we have a token, imagine a token for the entire world downstairs, there's going to be one vector associated with the word downstairs.
+
+00:38:26.000 --> 00:38:35.000
+And that's going to have some specific meaning. We can assign a specific vector to the word downstairs.
+
+00:38:35.000 --> 00:38:47.000
+That's going to be it. We're going to have conveyed the meaning of the concept downstairs in a single vector. Instead, if we break it down into a vector for D, vector for O, vector for W, vector for N, et cetera.
+
+00:38:47.000 --> 00:38:51.000
+That means that we have to figure out some way in which the
+
+00:38:51.000 --> 00:38:59.000
+vector for D helps convey the meaning of the word dancer, which is kind of difficult, okay?
+
+00:38:59.000 --> 00:39:12.000
+It can work and you will, I mean, next, no, next slide, some other slide, we will mention an example of a model called CarverBERT, which uses.
+
+00:39:12.000 --> 00:39:15.000
+character-level tokenization, but that's…
+
+00:39:15.000 --> 00:39:22.000
+Kind of rare, okay? So if you do training, etc., it will somewhat figure something out, but it is not awful.
+
+00:39:22.000 --> 00:39:29.000
+But it's much harder to make those kinds of models work.
+
+00:39:29.000 --> 00:39:32.000
+And so we will not use it. Okay.
+
+00:39:32.000 --> 00:39:44.000
+inefficient for common words, once again, the word downstairs is a pretty common word, right? It's not like something mind-blowingly weird. And we are still spending.
+
+00:39:44.000 --> 00:39:51.000
+that nine, ten characters tokens to represent
+
+00:39:51.000 --> 00:40:01.000
+So 10 vectors, if it's 10, if it's nine, it's nine, to represent a single word. So it's an efficient. We have many words that are very common and that are…
+
+00:40:01.000 --> 00:40:08.000
+possibly very long, meaning that we are wasting a lot of
+
+00:40:08.000 --> 00:40:14.000
+positions, a lot of tokens, a lot of vectors, for things that are actually quite common. Okay.
+
+00:40:14.000 --> 00:40:19.000
+solution, second solution, world-level tokenization. Once again, same sentence.
+
+00:40:19.000 --> 00:40:29.000
+I have controllers based on words. Okay, so now notice that we have very many fewer tokens.
+
+00:40:29.000 --> 00:40:35.000
+Token for misses, one token for the period, one token for a castle, one token for walls, etc.
+
+00:40:35.000 --> 00:40:38.000
+Hopefully, it's kind of clear.
+
+00:40:38.000 --> 00:40:43.000
+This is, let's say, the opposite of what we just did because we now have
+
+00:40:43.000 --> 00:40:54.000
+Each vector associated with one specific token associated with one specific vector. So one word with one specific vector. And so we can convey the, let's say.
+
+00:40:54.000 --> 00:40:59.000
+exact meaning of the word with a single vector, which is great.
+
+00:40:59.000 --> 00:41:02.000
+It produces shorter sequences of
+
+00:41:02.000 --> 00:41:08.000
+Tokens because we now have one word per token and not five.
+
+00:41:08.000 --> 00:41:11.000
+Tokens per word.
+
+00:41:11.000 --> 00:41:28.000
+And, you know, you look at this and say, okay, this makes sense, this is what I would expect a model to be able to process. I expect a model that talks, that generates words to talking words, to generate words one at a time. So that's what makes sense to us, right?
+
+00:41:28.000 --> 00:41:37.000
+Except, as you already know, we first of all have problems with autofocabulary words because if a word is not seen
+
+00:41:37.000 --> 00:41:39.000
+And we build the model.
+
+00:41:39.000 --> 00:41:48.000
+that word for the model doesn't exist, and so defining that word anywhere else, the model doesn't know what we're talking about. Okay.
+
+00:41:48.000 --> 00:41:51.000
+It considers all words as being…
+
+00:41:51.000 --> 00:42:03.000
+somewhat different from one another, so we cannot leverage the fact that some words have some common prefixes, some common suffixes, and so that's something that we lose along the way.
+
+00:42:03.000 --> 00:42:10.000
+We have to have a large vocabulary, potentially, because we have to account for one
+
+00:42:10.000 --> 00:42:23.000
+vector one token for each possible word, meaning, for instance, that the word Rockcastle, which is a last name, which is probably not a very common one, still takes up one spot, one token, right?
+
+00:42:23.000 --> 00:42:33.000
+So that means that my vocabulary has to have one entry for Rockcastle, one entry for Mrs, one entry for Woz, one entry for downstairs, etc.
+
+00:42:33.000 --> 00:42:36.000
+And then, as a consequence of this, we have
+
+00:42:36.000 --> 00:42:38.000
+some vectors of
+
+00:42:38.000 --> 00:42:42.000
+Very uncommon words that are…
+
+00:42:42.000 --> 00:42:57.000
+Kind of vague, kind of not very clear, because what does Rockcastle mean? Uh, that's not a very clear definition, so having to train a vector to represent the concept of Rockcastle for a world that appears
+
+00:42:57.000 --> 00:43:10.000
+Very, very sparsely. That's not going to be an easy task. And so those vectors will be trained, let's say, less. They will get fewer updates during the training process.
+
+00:43:10.000 --> 00:43:24.000
+Finally, and you can probably guess that this is the most reasonable approach, the spread of the two worlds. We have what we call subword-level tokenization. Okay, same example as before, same sentence.
+
+00:43:24.000 --> 00:43:31.000
+Except now it's broken down into notice misses, Rowcast also notice its broken into four tokens.
+
+00:43:31.000 --> 00:43:47.000
+was downstairs so I had an admirable admirable word that may be a little bit less common than others, broken down into three tokens, add, mer, above okay opportunity.
+
+00:43:47.000 --> 00:43:54.000
+Common words, one talk, one token, yes.
+
+00:43:54.000 --> 00:44:00.000
+So some word now, we break the sentence down into.
+
+00:44:00.000 --> 00:44:07.000
+Typically, there will be pieces that can be used to comprise to build entire works.
+
+00:44:07.000 --> 00:44:22.000
+We saw one very simple example with FastText. FastText was using n grams of fixed length for each of the subwords. We will see other approaches, more specifically the one we will focus on is going to be called 5-pair encoding.
+
+00:44:22.000 --> 00:44:26.000
+BPE.
+
+00:44:26.000 --> 00:44:34.000
+It gives us the nicest trade-off of pros and cons, right? Because, okay, we have length.
+
+00:44:34.000 --> 00:44:39.000
+or in between character level and token level and word level.
+
+00:44:39.000 --> 00:44:42.000
+If our…
+
+00:44:42.000 --> 00:44:45.000
+Tokens include
+
+00:44:45.000 --> 00:44:55.000
+Each possible character, so at least, I say each other six characters. That means that there will always be at least one way in which we can
+
+00:44:55.000 --> 00:45:04.000
+represent as tokens any possible word, okay? Of course, if you don't have the token A or the token X.
+
+00:45:04.000 --> 00:45:11.000
+Then there could be sentences that you cannot represent. But if you have at least 256 tokens,
+
+00:45:11.000 --> 00:45:20.000
+version of 56 bytes ASCII characters, then there is at least one way in which you can represent S tokens any.
+
+00:45:20.000 --> 00:45:31.000
+possible sentence, right? Because worst case, you represent everything as single characters. So you have a fallback plan. So out of vocabulary no longer a problem.
+
+00:45:31.000 --> 00:45:39.000
+If we build our tokens, if we choose reasonable tokens in our list of tokens,
+
+00:45:39.000 --> 00:45:47.000
+We can be efficient. That is, we can assign tokens to common words and then say, okay.
+
+00:45:47.000 --> 00:45:57.000
+less common words. I'm okay with breaking them into multiple sub words, okay? So, if I have a clever way to produce these tokens, and we will see.
+
+00:45:57.000 --> 00:46:00.000
+One such algorithm, BPE.
+
+00:46:00.000 --> 00:46:14.000
+to get assigned regularly worse to single buildings. In frequent words we say okay no it can break it down into three, four, five, whatever, many samples. Okay, so it gives us a nice trade-off.
+
+00:46:14.000 --> 00:46:24.000
+The cons are that we have an uneven number of tokens that we use to represent each word, common words, fewer tokens, uncommon words
+
+00:46:24.000 --> 00:46:29.000
+more tokens. Okay, so it's not fair to all of the words.
+
+00:46:29.000 --> 00:46:32.000
+We have to define
+
+00:46:32.000 --> 00:46:35.000
+Some way in which we define subwords.
+
+00:46:35.000 --> 00:46:51.000
+Before character level, it was obvious. Word level, it was obvious. Now we have to decide what constitutes a token. Not all the words will be tokens. Some of them will be such words.
+
+00:46:51.000 --> 00:47:07.000
+And then as a consequence of the fact that we have to decide some policies to define subwords, that policy might be somewhat computationally expensive to compute. And so we have an additional overhead that we have to run.
+
+00:47:07.000 --> 00:47:09.000
+in the beginning.
+
+00:47:09.000 --> 00:47:14.000
+So it's going to be a small computational cost. We take it, we do it.
+
+00:47:14.000 --> 00:47:16.000
+And then we have
+
+00:47:16.000 --> 00:47:20.000
+subword-level tokens.
+
+00:47:20.000 --> 00:47:32.000
+By the way, this tokenization here, I have done it using the tokenizer from the BERT-based model. When we talk about encoder-only models, we talk about BERT, the type of model.
+
+00:47:32.000 --> 00:47:33.000
+Ah, brother.
+
+00:47:33.000 --> 00:47:40.000
+model that has an encoder-only architecture. And during the labs, during the exercises, you will see
+
+00:47:40.000 --> 00:47:52.000
+using these tokenizer to do tokenization. So at that point, you will be able to take the BERT tokenizer and tokenize these or any other sentence you want to work with.
+
+00:47:52.000 --> 00:47:59.000
+Any questions so far?
+
+00:47:59.000 --> 00:48:03.000
+Okay, if if not,
+
+00:48:03.000 --> 00:48:09.000
+you can get, I mean, as I already told you, subord level is what we typically use.
+
+00:48:09.000 --> 00:48:14.000
+Some exception, as I mentioned, Carbert, for instance.
+
+00:48:14.000 --> 00:48:30.000
+Some exceptions use other types of tokenization, but they are quite rare. I mean, this paper was from 2020 and it's, I mean, it has been used, it has still been used in some classification, but it's not like it is a groundbreaking.
+
+00:48:30.000 --> 00:48:38.000
+work that has changed the way in which we look at this. So this is an exception. Typically, we work on subword level.
+
+00:48:38.000 --> 00:48:42.000
+One algorithm we will see to define
+
+00:48:42.000 --> 00:49:00.000
+decide which tokens we should use is called BFE backpair encoding. We will now discuss what it looks like, what it does. Know that it is not the only algorithmic function. There are other algorithms that you can use for tokenizations, wordpies, centerpiece, for instance, are also quite commonly used.
+
+00:49:00.000 --> 00:49:11.000
+more faster, not as much use, I would say, but it's still another option. And then new algorithms that someone can come up with from time to time.
+
+00:49:11.000 --> 00:49:15.000
+So, byte pair encoding.
+
+00:49:15.000 --> 00:49:19.000
+We said it's an algorithm that allows us to decide which.
+
+00:49:19.000 --> 00:49:22.000
+tokens we should create.
+
+00:49:22.000 --> 00:49:29.000
+Because we don't have an exact policy otherwise. What do we want from this algorithm?
+
+00:49:29.000 --> 00:49:44.000
+Well, first of all, we don't want to sit down and assign manually all of the tokens, right? We almost say, uh, Rocastal doesn't sure replace the token. Otherwise, we spend our lives doing this. So, not a deal.
+
+00:49:44.000 --> 00:49:56.000
+So the best approach is probably something that is going to be data-driven. We have some data, we have some text. Remember, we call it corpus, our collection of texts.
+
+00:49:56.000 --> 00:50:04.000
+It should be a good corpus, so it should cover many topics, potentially many languages. It should be a good sentence.
+
+00:50:04.000 --> 00:50:12.000
+example of what we want to work with in terms of language, okay?
+
+00:50:12.000 --> 00:50:17.000
+And ideally, this algorithm should do the following things.
+
+00:50:17.000 --> 00:50:24.000
+If we have worked sequences of characters that are common in our corpus, we want
+
+00:50:24.000 --> 00:50:29.000
+represent those words with fewer tokens, maybe just one token.
+
+00:50:29.000 --> 00:50:44.000
+If we have words that are very uncommon, that are not commonly found, we want… we can say, okay, fine, you can split it into multiple tokens. It's gonna be a rare instance, so it's fine to break it down into multiple tokens.
+
+00:50:44.000 --> 00:50:53.000
+So, common words, rare sequences, and then, of course, you want to be able to decide how many tokens that we want.
+
+00:50:53.000 --> 00:50:57.000
+We don't let…
+
+00:50:57.000 --> 00:51:12.000
+The algorithm decide how many tokens we want, we say, okay, Jen, give me the 10,000 most reasonable tokens. And so the algorithm runs and produces 10,000 tokens. If tomorrow I wake up, I say, no, I can double that, let's do 20,000.
+
+00:51:12.000 --> 00:51:16.000
+We'll rerun the algorithm, the algorithm that, okay, this is 20,000. Okay.
+
+00:51:16.000 --> 00:51:22.000
+But we have to specify how many tokens do we want.
+
+00:51:22.000 --> 00:51:30.000
+Now, the algorithm is quite simple. I summarized it into, I guess it's four or five steps.
+
+00:51:30.000 --> 00:51:39.000
+And we start with something very, very simple. We first say, okay, take your text, take your corpus, your collection of documents.
+
+00:51:39.000 --> 00:51:42.000
+First of all,
+
+00:51:42.000 --> 00:51:45.000
+Assign.
+
+00:51:45.000 --> 00:51:49.000
+Well, convert your text, your corpus into
+
+00:51:49.000 --> 00:51:52.000
+tokens.
+
+00:51:52.000 --> 00:52:02.000
+So the first 256 tokens are already defined. They are the first, well, they are the 256 ASCII characters. Okay.
+
+00:52:02.000 --> 00:52:12.000
+In this way, we can represent any possible text in the corpus in tokens, with one token equal to one byte.
+
+00:52:12.000 --> 00:52:27.000
+Of course, if you have text that is non-ASCII, you can use UTF-8, which is a way in which we can represent any Unicode character into one or two or three or four bytes, okay? So you can convert any text into bytes.
+
+00:52:27.000 --> 00:52:34.000
+Okay, that's what matters.
+
+00:52:34.000 --> 00:52:35.000
+Next.
+
+00:52:35.000 --> 00:52:37.000
+Remember, we have…
+
+00:52:37.000 --> 00:52:40.000
+A corpus that is already talking.
+
+00:52:40.000 --> 00:52:50.000
+Nice, using only 256 tokens. So all the sequences, all the sequences in the corpus will be very long, okay?
+
+00:52:50.000 --> 00:52:52.000
+Next, we count.
+
+00:52:52.000 --> 00:52:58.000
+The frequency of each pair of subsequent tokens.
+
+00:52:58.000 --> 00:53:07.000
+in the corpus. I say, okay, let's count how many times these two tokens appear one after the other. Let's count how many times these other two tokens appear one after the other.
+
+00:53:07.000 --> 00:53:11.000
+I count throughout the corpus.
+
+00:53:11.000 --> 00:53:26.000
+And I get a table that tells me this sequence, the AB tokens appear one after the other in 7 million cases. The sequence AX appears 70 times, etc.
+
+00:53:26.000 --> 00:53:28.000
+So you have discounts.
+
+00:53:28.000 --> 00:53:37.000
+At this point you take this table, this count. What is the highest frequency pair of tokens that would be a pair of tokens.
+
+00:53:37.000 --> 00:53:43.000
+as the highest frequency that appears the highest number of times in your corpus, right?
+
+00:53:43.000 --> 00:53:48.000
+You can have ties, maybe, but then you just perform the case.
+
+00:53:48.000 --> 00:53:54.000
+Perfect. You take the highest frequency pair of tokens, subsequent tokens, remember?
+
+00:53:54.000 --> 00:54:08.000
+And you say, okay, this is a frequent pair of tokens. Let's make it shorter by assigning a new token to that sequence of two tokens. Okay, so if F1, F2 appear very often together, one after the other.
+
+00:54:08.000 --> 00:54:14.000
+will say, okay, F1 is 2, let's call it T, new token. And let's replace
+
+00:54:14.000 --> 00:54:22.000
+all the occurrences of F1 and F2 in your corpus with the new token we just generated P.
+
+00:54:22.000 --> 00:54:28.000
+Okay, in this way, you are making this sequence of two tokens.
+
+00:54:28.000 --> 00:54:35.000
+Only one token long, so you're making it shorter. So what is more frequent becomes a little bit shorter.
+
+00:54:35.000 --> 00:54:37.000
+Then…
+
+00:54:37.000 --> 00:54:48.000
+By the way, this means that you introduced one new token. Initially, you had 256 tokens. You added T. So now 257.
+
+00:54:48.000 --> 00:55:04.000
+So at each of these iterations, then you come back here, you recount the frequencies, you recount who's the most frequent, you re-replace the two most frequent tokens with the new token. Each time you do one of these loops, you add one token to your library of tokens, right?
+
+00:55:04.000 --> 00:55:06.000
+Okay.
+
+00:55:06.000 --> 00:55:24.000
+So you repeat all of these steps, two, three, four, two, three, four, two, three, four, until you reach the number of tokens you desire. I want 10,000 tokens. I add one token at a time. At some point I will reach 10,000 tokens in my library of tokens, and that's when I finish.
+
+00:55:24.000 --> 00:55:27.000
+Okay?
+
+00:55:27.000 --> 00:55:30.000
+Kind of straightforward.
+
+00:55:30.000 --> 00:55:36.000
+Let's see an example. Why not? So it's maybe a little bit clearer.
+
+00:55:36.000 --> 00:55:51.000
+Let's say that this input sentence. Let's say this is our corpus. It's a very short corpus, of course, but I don't want to spend my rest of the year doing this. So let's take a single sentence.
+
+00:55:51.000 --> 00:55:55.000
+Chuck Wood.
+
+00:55:55.000 --> 00:55:57.000
+Step 1.
+
+00:55:57.000 --> 00:56:02.000
+Well, first of all, let's identify our initial tokens. It should be 256.
+
+00:56:02.000 --> 00:56:18.000
+Now for ease of reading, I only included the bytes, the token, the characters that actually appear in this sentence. It should be 256, but for now, let's make it simpler. So the space.
+
+00:56:18.000 --> 00:56:21.000
+some of the letters of the alphabet.
+
+00:56:21.000 --> 00:56:25.000
+So step one, remember, let's convert.
+
+00:56:25.000 --> 00:56:32.000
+Our purpose is to do topics with the initial tokens each one being one byte long.
+
+00:56:32.000 --> 00:56:47.000
+So I added these vertical pipes to separate each of the tokens. Okay, so W is the first token, O is second token, U third token, etc. So we tokenize this sentence with our initial set of tokens.
+
+00:56:47.000 --> 00:56:52.000
+This sentence is 28 tokens long. Okay.
+
+00:56:52.000 --> 00:56:59.000
+Step two, remember I told you, let's count the number of times each pair of tokens appears in the corpus.
+
+00:56:59.000 --> 00:57:03.000
+So we say, okay, let's start with the first.
+
+00:57:03.000 --> 00:57:13.000
+With the first pair of tokens W. How many times does WO appear subsequently in our corpus?
+
+00:57:13.000 --> 00:57:22.000
+Okay, okay, in this case, I'm doing something slightly different, which is a slightly more efficient, so I keep track of how all the times each of the…
+
+00:57:22.000 --> 00:57:36.000
+pairs of tokens appears, so OU appears once, UL appears once, LD once, etc. Okay, so I do this, I keep track of this in a table, this is a rather efficient process, and if you have a map with this key and this value.
+
+00:57:36.000 --> 00:57:38.000
+you…
+
+00:57:38.000 --> 00:57:55.000
+over the entire corpus, and then you get a table that looks like this. In which you can say, okay, w appears subsequently three times. Space W appears subsequently two times, etc, etc, etc.
+
+00:57:55.000 --> 00:58:00.000
+This is step two. I count the frequency of each pair of subsequent tokens.
+
+00:58:00.000 --> 00:58:02.000
+Step 3.
+
+00:58:02.000 --> 00:58:07.000
+I look at this table, I say, what is the most frequent pair of tokens that appears?
+
+00:58:07.000 --> 00:58:10.000
+You're welcome.
+
+00:58:10.000 --> 00:58:21.000
+I search through all of the values, I find that 3 times we have the sequence W followed by O. Those are the two most commonly appearing
+
+00:58:21.000 --> 00:58:24.000
+pair of tokens.
+
+00:58:24.000 --> 00:58:39.000
+So what do I do with the most frequent pair of tokens? I told you, we assign a new token to this sequence of two tokens. So instead of calling them token W, token O, one after the other, we say, okay, let's create a new token, whoa.
+
+00:58:39.000 --> 00:58:47.000
+And this token here becomes my new token for this operation.
+
+00:58:47.000 --> 00:58:50.000
+Okay.
+
+00:58:50.000 --> 00:58:58.000
+So, my list of tokens here will have all of the previous ones, plus W.
+
+00:58:58.000 --> 00:59:04.000
+Step 4, I replace, remember, all of the existing
+
+00:59:04.000 --> 00:59:15.000
+pairs of tokens that we just replaced with the new version of the token. So before we had WO, WO, WO three times, as we just counted.
+
+00:59:15.000 --> 00:59:24.000
+replace each of them with the corresponding new token Wolf, let's call it.
+
+00:59:24.000 --> 00:59:26.000
+Then…
+
+00:59:26.000 --> 00:59:42.000
+Did we reach the total number of tokens we wish to have? We didn't define a number. Let's say it was 50, so we haven't reached it yet. We continue second iteration, we count all of the frequencies. We find that space W is
+
+00:59:42.000 --> 00:59:51.000
+the most frequent pair of tokens. As I mentioned, I mean, if you do all of the computations yourself, you will find that there are other.
+
+00:59:51.000 --> 01:00:01.000
+pairs of tokens with the same frequency, as I told you, pick one, okay? You pick one then, and then next time you will pick the other, and then the other, and then the other.
+
+01:00:01.000 --> 01:00:07.000
+So you merge space WO into a single token here, and that becomes your next word.
+
+01:00:07.000 --> 01:00:20.000
+And then you continue. You do this with first iteration, second, third, fourth, fifth, and then at some point you will decide to stop. Let's say you decide to stop here. You have tokens whoa.
+
+01:00:20.000 --> 01:00:25.000
+LD space wood chuck as a token, etc.
+
+01:00:25.000 --> 01:00:27.000
+Okay, so…
+
+01:00:27.000 --> 01:00:37.000
+By doing this multiple times, you will end up merging the sequences of token that appear the most often.
+
+01:00:37.000 --> 01:00:39.000
+Doesn't make sense.
+
+01:00:39.000 --> 01:00:46.000
+Do you have any questions about this?
+
+01:00:46.000 --> 01:00:48.000
+Now, what do we get?
+
+01:00:48.000 --> 01:00:52.000
+As a result, okay, we get a list of tokens.
+
+01:00:52.000 --> 01:00:54.000
+What we observed,
+
+01:00:54.000 --> 01:00:59.000
+empirically, because it's based on the way in which languages are built.
+
+01:00:59.000 --> 01:01:06.000
+Of course, of course, this is obvious. As we increase the number of tokens that we allow.
+
+01:01:06.000 --> 01:01:19.000
+model to have, we reduce the number of tokens it takes to represent the entire corpus that makes obvious sense, okay? This is the trend we observe. Notice that this is
+
+01:01:19.000 --> 01:01:22.000
+How many tokens do we have?
+
+01:01:22.000 --> 01:01:23.000
+Do we introduce?
+
+01:01:23.000 --> 01:01:28.000
+And how long is the corpus in tokens?
+
+01:01:28.000 --> 01:01:38.000
+After we use that many tokens to represent something, we see this kind of trend, okay? This is called the Zips low tells us that
+
+01:01:38.000 --> 01:01:49.000
+And this is important to it based on the way we define languages tells us that there is a limited number, a small number of very high frequency.
+
+01:01:49.000 --> 01:01:54.000
+tokens, words, which is, you know, normal for us.
+
+01:01:54.000 --> 01:02:01.000
+articles, some adjectives, some conjunctions, etc.
+
+01:02:01.000 --> 01:02:05.000
+And that's summarized in the initial few.
+
+01:02:05.000 --> 01:02:16.000
+tokens, right? Those are the ones that appear very often in our corpus. So, introducing just these will give us a nice drop in length, because it appears so many times that
+
+01:02:16.000 --> 01:02:30.000
+We have a big effect until the main events when we use those tokens. And then there is the long tail of less frequent words, tokens. It appears here.
+
+01:02:30.000 --> 01:02:33.000
+How many tokens do we typically use?
+
+01:02:33.000 --> 01:02:42.000
+You will find that most models use somewhere near the tens of thousands, sometimes hundreds of thousands, no more than that.
+
+01:02:42.000 --> 01:02:58.000
+less than that. Why not less than that? Because otherwise we have too many words that are still fragmented, even frequent words still getting fragmented. No more than this, otherwise we kind of start modeling weird stuff like multiple words in the same token.
+
+01:02:58.000 --> 01:03:15.000
+of potentially even sentences in the same token, because as you increase the number of tokens you can have, you increase how specific your token will be to the corpus you use for the training. Okay.
+
+01:03:15.000 --> 01:03:20.000
+And this is what is being said here.
+
+01:03:20.000 --> 01:03:22.000
+Next.
+
+01:03:22.000 --> 01:03:36.000
+So we define our tokens, 10,000 tokens. We will see. Well, we already started seeing, but we will keep seeing that then we introduce some special effects.
+
+01:03:36.000 --> 01:03:42.000
+extra tokens, okay, that we need for some operations.
+
+01:03:42.000 --> 01:03:51.000
+For instance, we already discussed these two tokens, BOS, EOS, beginning of sequence, end of sequence. Those tokens are…
+
+01:03:51.000 --> 01:03:54.000
+special tokens that we
+
+01:03:54.000 --> 01:04:09.000
+used during the training and that the model learned that they have a specific meaning. The model always says POS at the beginning of each of the frequencies and always sees that sentences finish with the EOS token, okay?
+
+01:04:09.000 --> 01:04:16.000
+So that means that we produce something that is not work. They are not words.
+
+01:04:16.000 --> 01:04:33.000
+But we still show them the model of these tokens because we need the model to have some specific behaviors when it finds those tokens. POS start producing EOS stop producing, for instance.
+
+01:04:33.000 --> 01:04:38.000
+And this is a general token. Then we will see we will have some other…
+
+01:04:38.000 --> 01:04:42.000
+let's say task-specific, model-specific tokens, what you
+
+01:04:42.000 --> 01:04:51.000
+will learn is that each model you will use has some specific custom tokens. For instance, for BERT.
+
+01:04:51.000 --> 01:04:56.000
+As I told you. The encoder-only model we will discuss next week.
+
+01:04:56.000 --> 01:05:03.000
+Remember, we had some special tokens, the CLS token, for instance, the classification token.
+
+01:05:03.000 --> 01:05:10.000
+Which we will use in a way that is similar to BOS, that is, it's always found at the beginning of the sequence.
+
+01:05:10.000 --> 01:05:17.000
+has one special purpose. The purpose is doing classification on sentences.
+
+01:05:17.000 --> 01:05:19.000
+separator token.
+
+01:05:19.000 --> 01:05:32.000
+again used in BERT to separate two species of text inside of the same sentence. For instance, I may have a sentence that includes a question and an answer.
+
+01:05:32.000 --> 01:05:40.000
+I want BERT to understand that those are different parts of the text. And so I want BERT to separate.
+
+01:05:40.000 --> 01:05:45.000
+between what comes before SEP, what comes after set.
+
+01:05:45.000 --> 01:05:49.000
+Once again, we will see them in action next week.
+
+01:05:49.000 --> 01:06:06.000
+Now, I will just start talking about positional encoding, okay, just to tell you why we need positional encoding and what is the main idea behind it. Then I will next week, because today is Wednesday, next week we will…
+
+01:06:06.000 --> 01:06:12.000
+talk a little bit more about what it is, how it works, and what are some ways in which we can do that. Okay.
+
+01:06:12.000 --> 01:06:19.000
+By the way, any questions about any of these so far before we move on to the next part?
+
+01:06:19.000 --> 01:06:30.000
+Okay, if not, let me just give you some explanation for what positional encoding is and why we need it.
+
+01:06:30.000 --> 01:06:32.000
+First,
+
+01:06:32.000 --> 01:06:36.000
+Let me remind you, I told you this, uh…
+
+01:06:36.000 --> 01:06:41.000
+30 minutes ago, probably, but it's, you know, a kind reminder that…
+
+01:06:41.000 --> 01:06:46.000
+Every time we have a token, every time we produce a token after tokenization,
+
+01:06:46.000 --> 01:07:04.000
+The token will be associated to a vector, okay? The transformer, but nothing can process the symbols themselves. Nothing can process the word specific. The word hello, the word whatever, okay? We need to convert each of the tokens into vectors.
+
+01:07:04.000 --> 01:07:11.000
+We said we passed the token to the moral, we mean we pass the vector associated with the token to the model.
+
+01:07:11.000 --> 01:07:24.000
+And these vectors, they are nothing other than weights that can be learned by the model, okay? Remember, each model has weights for parameters that we can train with writing the same.
+
+01:07:24.000 --> 01:07:28.000
+What we're doing here is we are…
+
+01:07:28.000 --> 01:07:39.000
+Starting with random vectors, okay, each token will be associated initially to a random vector, and the random vector will be trained, will be tuned to minimize
+
+01:07:39.000 --> 01:07:48.000
+loss function through regen descent. Okay, that's what happens when we do training.
+
+01:07:48.000 --> 01:08:03.000
+Now, the thing we already know expect to happen is that if we have the same token and now we talk about tokens no longer about words, if we have the same token appearing.
+
+01:08:03.000 --> 01:08:10.000
+multiple times in a sentence or in different sentences.
+
+01:08:10.000 --> 01:08:15.000
+We have no way of distinguishing where
+
+01:08:15.000 --> 01:08:21.000
+The token actually is. So if the token appears in the beginning or in the middle of a sentence, or at the end of the sentence, we
+
+01:08:21.000 --> 01:08:33.000
+just the token embedding. So with just a vector associated to a token, we cannot represent this idea, the fact that the token appears in different parts of the sentence, right?
+
+01:08:33.000 --> 01:08:42.000
+And of course, you understand that the place in which a token appears inside of a sentence is somewhat important, right?
+
+01:08:42.000 --> 01:08:45.000
+Additionally,
+
+01:08:45.000 --> 01:08:52.000
+Okay, okay, this is not ideal, so what I just told you. Additionally, we will see that
+
+01:08:52.000 --> 01:09:03.000
+The rest of the model that we will use, the attention mechanism and the feedforward tenders, they don't understand order, okay?
+
+01:09:03.000 --> 01:09:11.000
+These operations, especially attention, cannot understand that we are passing.
+
+01:09:11.000 --> 01:09:23.000
+I ordered sequence of elements. The attention treats the sequence of elements as a set of elements, okay? It does not care about the order of the elements. It's going to be weighted sums, okay? So we cannot say.
+
+01:09:23.000 --> 01:09:27.000
+a specific order in this weighted sum.
+
+01:09:27.000 --> 01:09:30.000
+So we have to figure out some way to
+
+01:09:30.000 --> 01:09:34.000
+Introduce, to inject information about.
+
+01:09:34.000 --> 01:09:38.000
+the position, the order of the tokens.
+
+01:09:38.000 --> 01:09:47.000
+Before we pass the sequence of tokens, the sequence of vectors to the transformer, okay? And this way in which we inject.
+
+01:09:47.000 --> 01:09:55.000
+information about the position of each of the tokens is called positional encodings.
+
+01:09:55.000 --> 01:09:57.000
+Okay.
+
+01:09:57.000 --> 01:10:07.000
+And it's what in the plot looks like this. But general encoding being injected, notice, being added, it's going to be something we add before we pass.
+
+01:10:07.000 --> 01:10:10.000
+the sequence to the model.
+
+01:10:10.000 --> 01:10:18.000
+And let me give you, and then that's where I'm gonna finish today. Let me give you an example. Say
+
+01:10:18.000 --> 01:10:19.000
+This is my token.
+
+01:10:19.000 --> 01:10:27.000
+documenting okay I learned that there are four words in my vocabulary.
+
+01:10:27.000 --> 01:10:36.000
+For example, AI, each of these words or tokens is associated with a vector, okay, as we always discussed.
+
+01:10:36.000 --> 01:10:39.000
+And say you have two sentences.
+
+01:10:39.000 --> 01:10:51.000
+I ate an apple, which you can represent as four vectors i vector A vector and vector apple vector. And let's say I have an apple IA.
+
+01:10:51.000 --> 01:11:00.000
+Same words, same tokens, in a different order. But if I represent them in this way, we are mapping both sentences.
+
+01:11:00.000 --> 01:11:09.000
+the same set of vectors. Then remember, attention does not understand order, and so for attention.
+
+01:11:09.000 --> 01:11:22.000
+And for the transformer, these two sentences would be pretty much the same thing. Even though for us there is a clear difference. If I say one or the other.
+
+01:11:22.000 --> 01:11:30.000
+So how do we include the information about the position? We introduce positional encodings. Positional encodings is nothing other than saying.
+
+01:11:30.000 --> 01:11:33.000
+Okay, and with that.
+
+01:11:33.000 --> 01:11:37.000
+introduce some vectors.
+
+01:11:37.000 --> 01:11:41.000
+vector not for each word, but one vector for each position.
+
+01:11:41.000 --> 01:11:54.000
+So on top of my token embeddings up here, I introduce what I call positional, we call it encoding, okay? Sometimes we'll see this called positional embeddings. We will see the difference next time.
+
+01:11:54.000 --> 01:12:02.000
+So positional encoding tells us, look, take positions, first word, second word, third word, fourth word, word.
+
+01:12:02.000 --> 01:12:10.000
+assigned to each of them one vector. How do we choose these vectors? Many ways. We don't care about it now.
+
+01:12:10.000 --> 01:12:16.000
+And then add to each position, so to each word that you have in your sentence.
+
+01:12:16.000 --> 01:12:20.000
+Also, the vector of the corresponding position.
+
+01:12:20.000 --> 01:12:21.000
+Okay.
+
+01:12:21.000 --> 01:12:30.000
+So now we had this juice, so I added two first, eight added to second and added to third, et cetera.
+
+01:12:30.000 --> 01:12:38.000
+will get maybe these representation, which is a vector.
+
+01:12:38.000 --> 01:12:45.000
+For the first token, it's going to be a combination of the token i and the token first position.
+
+01:12:45.000 --> 01:12:59.000
+For the second vector, it's going to be a combination of the word A and the concept second position, etc. And if I do this for the second sentence, I will get also
+
+01:12:59.000 --> 01:13:06.000
+New versions, new vectors associated to each of the words, to each of the tokens.
+
+01:13:06.000 --> 01:13:11.000
+But including the fact that N was in the first position.
+
+01:13:11.000 --> 01:13:17.000
+Paul was in the second position, I was in the third position, 8 was in the fourth position.
+
+01:13:17.000 --> 01:13:26.000
+Okay, so now we no longer have this issue we just discussed here. Same for vectors.
+
+01:13:26.000 --> 01:13:30.000
+Or two different sentences, we will have…
+
+01:13:30.000 --> 01:13:33.000
+differing two vectors because
+
+01:13:33.000 --> 01:13:38.000
+Because now we're adding some notion of where the token is found.
+
+01:13:38.000 --> 01:13:40.000
+Okay.
+
+01:13:40.000 --> 01:13:51.000
+Next week, that's where I'm going to start from, that is specifying knowing that we need positional encodings and we will see how in the original paper we choose.
+
+01:13:51.000 --> 01:13:56.000
+These encodings and how it can also be done in other ways. Okay.
+
+01:13:56.000 --> 01:14:07.000
+I would say, yeah, that's not enough for today. Thank you for being here and I'll see you next week.
+

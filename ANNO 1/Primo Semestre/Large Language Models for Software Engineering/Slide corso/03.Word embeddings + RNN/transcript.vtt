@@ -1,0 +1,2093 @@
+WEBVTT
+
+00:15:45.000 --> 00:15:48.000
+Okay. As always, the.
+
+00:15:48.000 --> 00:15:54.000
+Your right-hand side projector is not working so you know.
+
+00:15:54.000 --> 00:15:57.000
+I guess.
+
+00:15:57.000 --> 00:16:05.000
+Look at the left.
+
+00:16:05.000 --> 00:16:20.000
+Am I sharing the screen? No, I'm not.
+
+00:16:20.000 --> 00:16:27.000
+For some reason I have this all full resolution. We could spend time figures this out, but.
+
+00:16:27.000 --> 00:16:33.000
+You know, I don't want to waste too much time over that, so I guess you can all see fine.
+
+00:16:33.000 --> 00:16:37.000
+And that's gonna be good for me.
+
+00:16:37.000 --> 00:16:50.000
+Okay. So the second okay. 1st part of today's lecture. We try to with all of the problems that Polytechnica could throw at us. We try to talk about word embeddings, what they are.
+
+00:16:50.000 --> 00:16:57.000
+Why we need them. What are the useful meters that we find inward embeddings.
+
+00:16:57.000 --> 00:16:58.000
+And we will see that.
+
+00:16:58.000 --> 00:17:02.000
+Some of those key ideas will come back.
+
+00:17:02.000 --> 00:17:04.000
+In transformers.
+
+00:17:04.000 --> 00:17:09.000
+Some of the key limitations will be addressed by transformers.
+
+00:17:09.000 --> 00:17:11.000
+Now we talk about.
+
+00:17:11.000 --> 00:17:15.000
+Another technology, architecture.
+
+00:17:15.000 --> 00:17:18.000
+That.
+
+00:17:18.000 --> 00:17:29.000
+Confirm your report, platformer: okay, and that allows us to do to process sequences of text.
+
+00:17:29.000 --> 00:17:35.000
+Their technology is recurrent. Neural networks.
+
+00:17:35.000 --> 00:17:47.000
+So before we start talking about referring to a networks, let's talk about why we need that. Why, we need something new other than what we already discussed last time.
+
+00:17:47.000 --> 00:17:50.000
+Last Monday. Remember.
+
+00:17:50.000 --> 00:17:53.000
+We had a brief introduction to.
+
+00:17:53.000 --> 00:17:57.000
+Neural networks. Specifically, we talked about.
+
+00:17:57.000 --> 00:18:00.000
+Fully Connected Neural Networks. Okay.
+
+00:18:00.000 --> 00:18:04.000
+And we saw what they are, what they can do.
+
+00:18:04.000 --> 00:18:12.000
+Let's see some of the limitations of fully connected neural networks.
+
+00:18:12.000 --> 00:18:15.000
+Remember, by the way, fully connecting neural networks.
+
+00:18:15.000 --> 00:18:18.000
+Looks something like this: we have some kind of input.
+
+00:18:18.000 --> 00:18:23.000
+We have a bunch of matrices, a bunch of letters.
+
+00:18:23.000 --> 00:18:32.000
+After the input we typically have some input layer, hidden layer, output, layer.
+
+00:18:32.000 --> 00:18:40.000
+Interleave with non-linear argoments, some relatives, some sigmaid functions, some whatever. Okay.
+
+00:18:40.000 --> 00:18:45.000
+That produces our output.
+
+00:18:45.000 --> 00:18:51.000
+Perfect. So we can say, this F of X. This is our F.
+
+00:18:51.000 --> 00:19:00.000
+Activation function applied to linear layer applied effective. Okay.
+
+00:19:00.000 --> 00:19:04.000
+Now this is all very nice and.
+
+00:19:04.000 --> 00:19:07.000
+You know, somewhat working. They do.
+
+00:19:07.000 --> 00:19:17.000
+Political connection. Layer networks have some limitations, otherwise we will not be talking about other types of networks. The 1st one.
+
+00:19:17.000 --> 00:19:20.000
+I mean, there are many. Okay.
+
+00:19:20.000 --> 00:19:25.000
+I would just discuss 3. That will be somewhat address. The 1st one is that.
+
+00:19:25.000 --> 00:19:29.000
+Based on the framing that we had of.
+
+00:19:29.000 --> 00:19:31.000
+These models.
+
+00:19:31.000 --> 00:19:50.000
+These models expect the input to always have the same signs. Okay, we cannot pass one row with 10 inputs, 10 features, another row with 20 features, another row with only 2 features. Okay, all of the inputs have to have the same size. Why? Because, as we discussed.
+
+00:19:50.000 --> 00:19:52.000
+Each of the.
+
+00:19:52.000 --> 00:19:56.000
+New rooms for set rooms in each of the layer.
+
+00:19:56.000 --> 00:20:06.000
+Has a specific set of weights, and so expect a specific number of inputs. We cannot change the number of inputs randomly.
+
+00:20:06.000 --> 00:20:09.000
+The second problem is that.
+
+00:20:09.000 --> 00:20:11.000
+Each.
+
+00:20:11.000 --> 00:20:15.000
+Of the input that we passed the model.
+
+00:20:15.000 --> 00:20:19.000
+Each of the features that we pass to a model.
+
+00:20:19.000 --> 00:20:32.000
+Is associated with one specific set of weights. Okay, if you think about the diagram with the perceptions multiple perceptrons, each one received a bunch of inputs.
+
+00:20:32.000 --> 00:20:37.000
+If a 3 perceptions and this input here, this input goes. Here goes! Here goes! Here.
+
+00:20:37.000 --> 00:20:46.000
+This input here is associated with 3 specific waves. Okay, so the model learns a set of waves.
+
+00:20:46.000 --> 00:20:49.000
+For each of the inputs.
+
+00:20:49.000 --> 00:21:03.000
+So they're not interchangeable. I cannot switch one input with another and expect the model to still figure out what's going on. Okay. Each input. Each specific entry of the input is associated with a specific set of weights.
+
+00:21:03.000 --> 00:21:15.000
+And we will see this is not very ideal in many cases, and then similarly to the 1st problem, the second problem. The 3rd problem is that the outputs of a neural network fully connected.
+
+00:21:15.000 --> 00:21:19.000
+Are expected to be always of the same size.
+
+00:21:19.000 --> 00:21:27.000
+We cannot have one time, 10 outputs, one time, one output, one time, 5 outputs. Okay.
+
+00:21:27.000 --> 00:21:36.000
+The fully connect neural network always produces the same number of outputs. Why? Because the output layer this matrix out up here.
+
+00:21:36.000 --> 00:21:46.000
+Has one specific number of rows or columns depend on the way in which you look at the matrix, and that's it. That's the number of outputs you get.
+
+00:21:46.000 --> 00:21:56.000
+Let's look at each of the 3 problems in a little bit more detail. Okay, so that we can further expand on why we need to overcome these problems.
+
+00:21:56.000 --> 00:22:01.000
+So 1st problem I told you Input expected to be a fixed size. Why, as I told you.
+
+00:22:01.000 --> 00:22:06.000
+Because the matrix W. In has a fixed number of columns.
+
+00:22:06.000 --> 00:22:11.000
+And so it expects to receive a vector of some specific tool.
+
+00:22:11.000 --> 00:22:16.000
+Science. Okay? If it's not that size, we have a problem.
+
+00:22:16.000 --> 00:22:29.000
+Now this is typically okay. In many cases, when we have structured data when our input is a table, for instance, the table has the X-specific number of columns. Okay.
+
+00:22:29.000 --> 00:22:34.000
+It has 10 columns. It's always going to be 10 columns. So if the data is structured.
+
+00:22:34.000 --> 00:22:41.000
+A table, for instance. That's okay. Polymernetic networks will work fine.
+
+00:22:41.000 --> 00:22:52.000
+Of course, if we have some missing values, we have to figure something out. But other than the managing of missing values which we can do at the data level. The model is fine.
+
+00:22:52.000 --> 00:22:54.000
+However.
+
+00:22:54.000 --> 00:22:58.000
+When we have data that is not structured. Okay.
+
+00:22:58.000 --> 00:23:12.000
+Or semi-structure. Think about images, think about audio files, think about text. Think about anything. All of those unstructured data types will have typically varying sizes. Okay.
+
+00:23:12.000 --> 00:23:15.000
+For instance, I may have one picture.
+
+00:23:15.000 --> 00:23:21.000
+With this resolution, this height, this way, this width.
+
+00:23:21.000 --> 00:23:31.000
+How do I pass this image to a neural network? Typically, I will flatten the image into a vector of pixels. Okay, and that's going to be the input.
+
+00:23:31.000 --> 00:23:32.000
+If I have.
+
+00:23:32.000 --> 00:23:44.000
+Some height and some width. This will be height, times width times, maybe 3, because we have 3 channels fine, but if I have a different picture, with a different resolution, different, weight, different height.
+
+00:23:44.000 --> 00:23:55.000
+The size of the other input will be, of course, different. So even 2 pictures already we have a problem. We cannot pass these 2 pictures to the same model.
+
+00:23:55.000 --> 00:23:59.000
+Because these 2 pictures have different.
+
+00:23:59.000 --> 00:24:01.000
+Numbers of.
+
+00:24:01.000 --> 00:24:03.000
+Features in the input. Right.
+
+00:24:03.000 --> 00:24:05.000
+And that's the same with.
+
+00:24:05.000 --> 00:24:21.000
+Recordings. If they have a recording of one second, there's gonna be some size. If we have a recording of 1 h it's gonna be a different size. And of course, what we care about here that's the same with text. Okay, with text, we will have one text that is.
+
+00:24:21.000 --> 00:24:28.000
+One thing. So one Texas is one paragraph chapter book long: okay.
+
+00:24:28.000 --> 00:24:30.000
+So once again.
+
+00:24:30.000 --> 00:24:35.000
+Probably not ideal to have a fixed size input.
+
+00:24:35.000 --> 00:24:39.000
+1st problem. Second problem is that.
+
+00:24:39.000 --> 00:24:41.000
+Hello! Saying each of the inputs.
+
+00:24:41.000 --> 00:24:44.000
+Or fully connected networks.
+
+00:24:44.000 --> 00:24:48.000
+Is associated with its own set of weights.
+
+00:24:48.000 --> 00:24:54.000
+That's not ideal right? Because in many cases the patterns that we want the model to learn.
+
+00:24:54.000 --> 00:24:56.000
+Are.
+
+00:24:56.000 --> 00:25:00.000
+Independent of the position in which they occur.
+
+00:25:00.000 --> 00:25:04.000
+Typically through for unstructured data.
+
+00:25:04.000 --> 00:25:14.000
+For instance, I have. I could have potential this input with a dogs standing on the left-hand side of the input.
+
+00:25:14.000 --> 00:25:22.000
+Which, if we take it, we flatten it. The door will be some pixels, maybe around here. Okay, so it's in that part of the.
+
+00:25:22.000 --> 00:25:35.000
+If I have a very similar picture with the Dogg may be standing on the right-hand side of the picture. Those, let's call them are going to be sitting here right.
+
+00:25:35.000 --> 00:25:37.000
+So that means that in the same.
+
+00:25:37.000 --> 00:25:43.000
+Safe size. The input is same resolution, same high, same width.
+
+00:25:43.000 --> 00:25:48.000
+The pattern. Dogs once appears here once appears here.
+
+00:25:48.000 --> 00:25:53.000
+If we want the model to learn that there is a.
+
+00:25:53.000 --> 00:26:00.000
+Well, Amoral, that only sees inputs in this way a fully connected model that sees the inputs in this way.
+
+00:26:00.000 --> 00:26:07.000
+Has to learn what it means to be a dogg on the left, what it means to be a Dogg on the right. Okay.
+
+00:26:07.000 --> 00:26:16.000
+The model associates some pattern found in specific parts of the input. As I told you, each input.
+
+00:26:16.000 --> 00:26:26.000
+He associated with his own set of weights, that is, at the top on the left, for the Moro will be different from a dogg on the right.
+
+00:26:26.000 --> 00:26:37.000
+We understand this is not ideal. If a model learns the concept of dogs, it should be able to reason, understand that the doggy is a doctor, regardless of where it is. Okay. So.
+
+00:26:37.000 --> 00:26:44.000
+Here we have some problem. If we have this kind of situation, it means that we probably will have to have.
+
+00:26:44.000 --> 00:26:58.000
+A lot more data. Why? Because instead of learning this is the idea of a Doc. We have to teach a model, a fully connected model. This is a blog on the left. This is a blog on the right. This is a dogg at the top dock at the bottom, etc. Okay, so it's very inconvenient.
+
+00:26:58.000 --> 00:27:02.000
+Let's call it inefficient, even. Okay.
+
+00:27:02.000 --> 00:27:12.000
+3rd problem, and this is the same as well similar to what we discussed for the 1st problem. The output is expected to be of a fixed size.
+
+00:27:12.000 --> 00:27:17.000
+Because it is bounded by the number of frozen in W out.
+
+00:27:17.000 --> 00:27:24.000
+In some tasks that we can have. Instead, we may want the output to be of.
+
+00:27:24.000 --> 00:27:36.000
+Non-fish size. Okay, let's say we want to segment this picture saying, This is a this: pixel is a dock. This pixel is not a dogg. This is called segmentation of objects.
+
+00:27:36.000 --> 00:27:37.000
+In this case.
+
+00:27:37.000 --> 00:27:41.000
+You understand that an input of this size.
+
+00:27:41.000 --> 00:27:46.000
+Must produce an output of the same size. If we have a smaller.
+
+00:27:46.000 --> 00:27:52.000
+For larger input. We have to have, accordingly, a smaller or larger output.
+
+00:27:52.000 --> 00:28:05.000
+And in some cases I mean in this case at least, the input size and the output size are the same. Okay? In some cases that's not even the case. Think about, translation task. I have a sentence in English.
+
+00:28:05.000 --> 00:28:13.000
+I want translative sentence to a sentence in Italian. Okay, that's going to be different lengths of the 2 sentences.
+
+00:28:13.000 --> 00:28:20.000
+All of these cases are not covered by full connected language.
+
+00:28:20.000 --> 00:28:22.000
+So what can we do.
+
+00:28:22.000 --> 00:28:37.000
+Well in literature, as you probably know, there have been many different ways in which we cannot directly find the problems. If you attended courses on computer vision, you've probably discussed Cnn's convolutional neural networks.
+
+00:28:37.000 --> 00:28:42.000
+Here we will talk about today. Rnns: recurrent neural networks. Okay.
+
+00:28:42.000 --> 00:28:56.000
+Rnames are a type of network which we will see. Underwood is a bunch of fully connected delayed. Okay, it's not like a completely different paradigm. It's just a different way in which we use those networks.
+
+00:28:56.000 --> 00:29:10.000
+So errands are a type of neural network designed to handle data that comes in sequences. Okay, what can be a sequence anything, a bunch of events happening one after the other.
+
+00:29:10.000 --> 00:29:20.000
+Of course, it's flexible enough that it can receive sequences as input it can produce it. Doesn't have to but, it can produce sequences as output.
+
+00:29:20.000 --> 00:29:32.000
+And the nice thing. What we will very much care about is that these sequences can be of varying sites. We can have different length in the input and in the output.
+
+00:29:32.000 --> 00:29:36.000
+As I told you, the network, the Rnn.
+
+00:29:36.000 --> 00:29:40.000
+Received a bunch of elements, one after the other.
+
+00:29:40.000 --> 00:29:47.000
+The nice thing about Darren N. Is that birth heat processes one element at a time. So it looks at.
+
+00:29:47.000 --> 00:29:57.000
+One element could be. One word could be one character could be one measurement, one sounding of a sequence looks at one element at a time.
+
+00:29:57.000 --> 00:29:59.000
+And then.
+
+00:29:59.000 --> 00:30:13.000
+And this allows us to process. However many elements we want right, we do one at a time, so we don't have to have a model that scales in size we apply the same model. One element is another.
+
+00:30:13.000 --> 00:30:17.000
+And then, in order for the model to remember.
+
+00:30:17.000 --> 00:30:19.000
+What it has seen in the past.
+
+00:30:19.000 --> 00:30:25.000
+We let the model have some kind of internal state, some kind of.
+
+00:30:25.000 --> 00:30:41.000
+Notes that the model face that's worth that heathlon state because we don't look at it biblically. The hidden state preserves includes all of the information that the model has seen in the not all the important parts that the model has seen in the past.
+
+00:30:41.000 --> 00:30:49.000
+So it's a it's let's call it a summary, a note of what the model has seen in the past. The big phase is going to be useful.
+
+00:30:49.000 --> 00:30:55.000
+Give us an example. Okay, but the idea is that the model with these 2 things.
+
+00:30:55.000 --> 00:31:02.000
+Piece of paper on which the model can break down the useful stuff, and then, seeing one step at a time.
+
+00:31:02.000 --> 00:31:07.000
+We can process sequences of values.
+
+00:31:07.000 --> 00:31:15.000
+This year. On the on the right, is the typical representation that we use for Rns.
+
+00:31:15.000 --> 00:31:18.000
+Did. We showed our ancest. This box.
+
+00:31:18.000 --> 00:31:21.000
+That takes 2 inputs.
+
+00:31:21.000 --> 00:31:29.000
+Look at the bottom 2 inputs, one and 2, and produces 2 outputs. Okay.
+
+00:31:29.000 --> 00:31:33.000
+The 2 inputs are.
+
+00:31:33.000 --> 00:31:40.000
+This current element, the curriculum set of the sequence that the model is processing.
+
+00:31:40.000 --> 00:31:42.000
+1st input here.
+
+00:31:42.000 --> 00:31:45.000
+The second input is going to be.
+
+00:31:45.000 --> 00:31:52.000
+The state, the notes, the summary that the model had produced in the previous step.
+
+00:31:52.000 --> 00:32:00.000
+Okay, so it's the notes that the model remembers what the model knows about what happened in the past. Okay.
+
+00:32:00.000 --> 00:32:02.000
+These are the 2 inputs.
+
+00:32:02.000 --> 00:32:06.000
+Then the model produces 2 outputs. One output is the.
+
+00:32:06.000 --> 00:32:13.000
+Output that the model introduces for each step. Think about the translation task.
+
+00:32:13.000 --> 00:32:16.000
+Think about the transmission task.
+
+00:32:16.000 --> 00:32:32.000
+For each input word we produce an output word. So when output is the output that the model produces at each step. Then we will see that. Okay, it's not really this way: okay? Translation is not translating one word at a time.
+
+00:32:32.000 --> 00:32:36.000
+One-to-one. But this is a topic for later.
+
+00:32:36.000 --> 00:32:45.000
+The ground up, and then the second output that the model produces is the next state. The next knows what the model will pass.
+
+00:32:45.000 --> 00:33:00.000
+Onto itself in the future. Okay, so it's basically the updated summary of everything that the model cares about. Okay. So the model has a piece of paper, writes down the useful stuff, and then this piece of paper is passed.
+
+00:33:00.000 --> 00:33:10.000
+To the model itself to process the next input. Okay, so this is the way in which the model keeps track of what's going on.
+
+00:33:10.000 --> 00:33:13.000
+Doesn't make sense.
+
+00:33:13.000 --> 00:33:14.000
+Now.
+
+00:33:14.000 --> 00:33:23.000
+Before we look at what's inside of this box, because, of course, we have to figure out what's inside of the box that makes the model work.
+
+00:33:23.000 --> 00:33:35.000
+Let's look at an example. Okay? The example is a simple, a toy example, very naive. But we will see with some interesting aspects.
+
+00:33:35.000 --> 00:33:39.000
+Let's frame a problem where we have.
+
+00:33:39.000 --> 00:33:43.000
+And input. That is, a sequence of characters.
+
+00:33:43.000 --> 00:33:47.000
+A sentence. Okay, split into characters.
+
+00:33:47.000 --> 00:33:57.000
+And let's say that the input sentence is all lowercase. Okay, all of the sentences lowercase. And we want the model Brnend.
+
+00:33:57.000 --> 00:34:03.000
+We want people to give us the correct detailed version of sends. Okay.
+
+00:34:03.000 --> 00:34:15.000
+So, for instance, we would use this recurring example sentence is taken from the adventure of hero combs for instance, the input could be. You're very kind, Mr. Holmes, but I cannot do that. Okay.
+
+00:34:15.000 --> 00:34:18.000
+All lowercase we expect.
+
+00:34:18.000 --> 00:34:30.000
+The output of this model to be the correctly cased version of the sentence, that is, the Y, for instance, is u to be capitalized? Y is because it's at the beginning of a sentence.
+
+00:34:30.000 --> 00:34:35.000
+How do we know it? Because we have double? Quotes Mr. Holmes, capitalized.
+
+00:34:35.000 --> 00:34:41.000
+I cannot do that, I capitalized. Okay, so we expect.
+
+00:34:41.000 --> 00:34:49.000
+These to be the output we should get starting from the input. This is a typical, very simple case in which we are.
+
+00:34:49.000 --> 00:34:52.000
+Once he once he does the input.
+
+00:34:52.000 --> 00:35:01.000
+Sequence of characters, for instance, by the way, we can represent each of the characters as an Ascii character, of course, so it's a vector.
+
+00:35:01.000 --> 00:35:06.000
+And then one sequence, as the output, that is, for each.
+
+00:35:06.000 --> 00:35:10.000
+Character in input we decide if that character should be.
+
+00:35:10.000 --> 00:35:16.000
+Capitalized, not capitalized, or anything else.
+
+00:35:16.000 --> 00:35:23.000
+Okay, let's see how the Rnn works in this case. So the sequence remember.
+
+00:35:23.000 --> 00:35:37.000
+Is this: you are very kind, Mr. Robes. Okay, so first, st character double quotes second character, y ou u space, etcetera. Okay.
+
+00:35:37.000 --> 00:35:49.000
+This is what the unfolding of the Rna looks like unfolding meaning. We see what each application of the Rnn. Looks like.
+
+00:35:49.000 --> 00:35:55.000
+We start with. Remember, we have a state right. This state here.
+
+00:35:55.000 --> 00:36:02.000
+We have to have an initial state something that says, Look, this is the the blank piece of paper. Okay.
+
+00:36:02.000 --> 00:36:10.000
+Could be whatever. Let's say we start with all zeros. A vector of all this is a vector, by the way, a vector of all zeros.
+
+00:36:10.000 --> 00:36:19.000
+We passed our box, our Rnn. The 1st character open, quotes.
+
+00:36:19.000 --> 00:36:25.000
+The model produces. Remember, 2 outputs. First, st output is the.
+
+00:36:25.000 --> 00:36:40.000
+Output element in this case, if the model knows what to do, the model will produce the same double products right, because it's not that character to be capitalized or the model says, Okay, not to be capitalized. Let's just repeat it verbatim as is okay.
+
+00:36:40.000 --> 00:36:46.000
+So it produces double quotes. And then the second thing the model produces.
+
+00:36:46.000 --> 00:36:50.000
+Is the state. After seeing the 1st input.
+
+00:36:50.000 --> 00:36:54.000
+What does the State contain after seeing the 1st input.
+
+00:36:54.000 --> 00:36:59.000
+It's not that true? Okay? So it's not a sentence like this, but probably.
+
+00:36:59.000 --> 00:37:03.000
+If we could translate it into a sentence, it would be something like.
+
+00:37:03.000 --> 00:37:17.000
+We just saw the open double quotes: Okay, so probably what will come next is part of a dialogue. And so the 1st character that comes next should probably be capitalized. Okay, this is what the vector contains.
+
+00:37:17.000 --> 00:37:28.000
+Perfect. Then we said, we apply one step at a time, so second step we passed the 1st character of U. The Y.
+
+00:37:28.000 --> 00:37:40.000
+The model here sees the previous state, which was remembered that the next character should be capitalized, and sees the current state sorry the current element the Y.
+
+00:37:40.000 --> 00:37:48.000
+The model produces the capitalized version of Y, because this state reminded the model that it should capitalize the next.
+
+00:37:48.000 --> 00:37:51.000
+Character right?
+
+00:37:51.000 --> 00:37:57.000
+The model produces 2 output capitalized character, and then the new state, the new state.
+
+00:37:57.000 --> 00:38:04.000
+Probably contains something like, Okay, you just reduce the capitalized letter as a part of the beginning of the dialogue.
+
+00:38:04.000 --> 00:38:11.000
+So probably what will come next is going to be a lowercase character right.
+
+00:38:11.000 --> 00:38:13.000
+And indeed.
+
+00:38:13.000 --> 00:38:14.000
+If we continue.
+
+00:38:14.000 --> 00:38:25.000
+We passed the O. The model looks at the previous state, which was: Remember that you just capitalize a letter, probably the next one should be lowercase.
+
+00:38:25.000 --> 00:38:30.000
+Produces the same character, lowercase, etc, etc.
+
+00:38:30.000 --> 00:38:44.000
+Okay, so this is how we apply the same model multiple times over the entire sequence, one step at a time with the State, detects as the summary as the nodes, that the model takes.
+
+00:38:44.000 --> 00:38:46.000
+Okay.
+
+00:38:46.000 --> 00:38:50.000
+So now let's look at what's inside of Brnn.
+
+00:38:50.000 --> 00:38:53.000
+And it's actually a bunch of.
+
+00:38:53.000 --> 00:38:55.000
+Public connected networks.
+
+00:38:55.000 --> 00:38:59.000
+That do different things. Okay.
+
+00:38:59.000 --> 00:39:15.000
+This is the simplest starting end we can have. Then there are more sophisticated versions. We will quickly talk about Lstms, which is a nicer fancier type of Rnn: but this is the basic Rnn unit. Okay.
+
+00:39:15.000 --> 00:39:26.000
+What do we have? We have 3 letters. Each layer is a dense classic neural network. Okay, we have the input layer.
+
+00:39:26.000 --> 00:39:29.000
+Down here, which processes.
+
+00:39:29.000 --> 00:39:33.000
+The input. The input is a vector, of course.
+
+00:39:33.000 --> 00:39:42.000
+This input layer takes the input, transforms it in some way, for instance, rotates, translates whatever.
+
+00:39:42.000 --> 00:39:56.000
+And it makes sure that the output here has the same dimensionality as the State, because potential, the state and the input could have different sizes. It makes sense right if I'm reading a page at a time of a book.
+
+00:39:56.000 --> 00:40:03.000
+My state my notes could be a notebook could be a piece of paper could be anything, so they can have different sizes.
+
+00:40:03.000 --> 00:40:06.000
+The input layer makes sure that.
+
+00:40:06.000 --> 00:40:11.000
+This output here and this state have the same.
+
+00:40:11.000 --> 00:40:15.000
+Number of dimensions. Why? Because then the next step is.
+
+00:40:15.000 --> 00:40:17.000
+Adding.
+
+00:40:17.000 --> 00:40:20.000
+The state and the input.
+
+00:40:20.000 --> 00:40:29.000
+Why? Because in this way we produce a vector that contains both information from the state and information from the input.
+
+00:40:29.000 --> 00:40:36.000
+That's what we mean when we say that the Rnn. Looks at the state and looks at the input. Ok.
+
+00:40:36.000 --> 00:40:48.000
+Similarly, we have a state layer which does some processing of the state couldn't change the functionality could project rotate whatever. Okay.
+
+00:40:48.000 --> 00:40:54.000
+Then we summed them. We add some non-linearity, because, remember, non-linearity is something we add.
+
+00:40:54.000 --> 00:40:58.000
+Here and there to make the model more flexible.
+
+00:40:58.000 --> 00:41:03.000
+And then we produce 2 outputs. One output is the state right.
+
+00:41:03.000 --> 00:41:13.000
+That's it. We just summed the let's say, the scrambled versions of input and the previous state, and we produce the output state. One thing.
+
+00:41:13.000 --> 00:41:15.000
+The second output.
+
+00:41:15.000 --> 00:41:20.000
+Go away. The second output.
+
+00:41:20.000 --> 00:41:27.000
+Is further protest, with another neural network, another output layer.
+
+00:41:27.000 --> 00:41:36.000
+Non-linearity, and that produces the second output of the model. Ok, notice that this box here is exactly what we had before.
+
+00:41:36.000 --> 00:41:41.000
+This day there was an arrow going from here to here.
+
+00:41:41.000 --> 00:41:52.000
+But there was it 2 inputs, 2 outputs now we just look at what's going on inside of the box, which is not much. Really, it's just a bunch of transformation being applied to vectors.
+
+00:41:52.000 --> 00:41:54.000
+That's it.
+
+00:41:54.000 --> 00:42:16.000
+Yes. Question.
+
+00:42:16.000 --> 00:42:24.000
+What do you mean? Grows in terms of I mean, the dimensionality is the number of elements in the vectors. Right.
+
+00:42:24.000 --> 00:42:28.000
+Was that cool.
+
+00:42:28.000 --> 00:42:34.000
+Why slowdown.
+
+00:42:34.000 --> 00:42:50.000
+No, I mean the dimensionality is something that we decide in the beginning. We say, Okay, let's have 32 dimensions for the state. Okay, and that's fixed. Okay, then the input will be.
+
+00:42:50.000 --> 00:43:03.000
+One character, one character. Let's say it's represented on 8 beats because it's an Ascii character. So it's a 1 Byte. Okay, so 8 dimensions one not encoded.
+
+00:43:03.000 --> 00:43:18.000
+At that point the input layer transforms the 8 dimensions into 32 dimensions, because we want to align that size with 32 that comes from the state, and then we sum the 2 together. Okay, so it's a sum of 2 30 two-dimensional vectors.
+
+00:43:18.000 --> 00:43:25.000
+And that's it. I mean, you can have a billion characters, but you do it one at a time. Okay? Doesn't make sense.
+
+00:43:25.000 --> 00:43:32.000
+Awesome. Other questions.
+
+00:43:32.000 --> 00:43:37.000
+Okay, okay, I'll put layer. Okay? The nice thing about this, the nice thing that we get.
+
+00:43:37.000 --> 00:43:49.000
+From this model is that that single Rnn. That single state input and output layer. They are applied all the time to the sequence. Okay, so we are not having.
+
+00:43:49.000 --> 00:43:51.000
+A separate.
+
+00:43:51.000 --> 00:43:56.000
+Set of weights for each step. Okay, each step.
+
+00:43:56.000 --> 00:43:59.000
+Is applied to the same network.
+
+00:43:59.000 --> 00:44:11.000
+As we just discussed. This is the same Rnn: We are not changing weights. Okay? That means that the same weights are reapplied every single time. That means that if we have.
+
+00:44:11.000 --> 00:44:16.000
+The same or similar state and similar input.
+
+00:44:16.000 --> 00:44:21.000
+The Rnn. Will behave in the same way, or in a similar way. Okay.
+
+00:44:21.000 --> 00:44:24.000
+This is useful.
+
+00:44:24.000 --> 00:44:43.000
+And not at all the case that we had with fully connected networks. Remember, before fully connected, I told you if you don't run the red or the dogs on the right, we have to learn that 2 times people were saying, if you see, similar inputs in different parts of the sequence. Okay.
+
+00:44:43.000 --> 00:44:46.000
+But if you have a similar input in a similar state.
+
+00:44:46.000 --> 00:44:58.000
+The weights are the same. So they're locked in the same way. Okay, this is what we mean by weight sharing weight. Sharing means that we are reusing the same weights, the same patterns that the model has learned.
+
+00:44:58.000 --> 00:45:14.000
+Regardless of where we are. Okay. This is the same for Cnn's, for instance, if you know anything about them, you will know that you have those kernels that you use to do the convolution over the image, and then those kernels will find specific patterns throughout the image.
+
+00:45:14.000 --> 00:45:24.000
+Here. It's kind of the same. We apply the same weights to the entire sequence. That means that if you have the same input, same context. Same you know what happened before.
+
+00:45:24.000 --> 00:45:32.000
+You reuse the knowledge you already have, that is, if you have a sentence that begins with,
+
+00:45:32.000 --> 00:45:39.000
+The quotation. The double quotes this can be in the beginning of the sentence in the middle of the sentence, at the end of the sentence.
+
+00:45:39.000 --> 00:45:55.000
+Still the model learns that after the beginning of ascent the beginning of the quotation marks, you should have a capitalized letter. Ok, it doesn't have to learn that if the second word is starting with a double quotation mark.
+
+00:45:55.000 --> 00:46:02.000
+Then you have to capitalize it. If the 3rd word starts with that, you have to capitalize it. Instead, we reuse what we acquired.
+
+00:46:02.000 --> 00:46:05.000
+Throughout the model.
+
+00:46:05.000 --> 00:46:07.000
+Okay.
+
+00:46:07.000 --> 00:46:18.000
+So this is a useful let's say summarisation ring usage, recycling of patterns that are learned by the model.
+
+00:46:18.000 --> 00:46:27.000
+Now very quickly, because we're a bit short on time, and I wanted to cover a few other things, and this is not strictly necessary.
+
+00:46:27.000 --> 00:46:43.000
+For the part that you will discuss next, but I think it's useful. It's also very for some of you. It will be the only time you will see this discussed. How we do backpropagation with these kinds of models. Okay, you know how we do backpropagation typically because we discussed it last week. That is, we.
+
+00:46:43.000 --> 00:46:50.000
+Start from the output, the loss function, and then we recompute all of the gradients all the way to the beginning.
+
+00:46:50.000 --> 00:47:06.000
+When we have Rnns We have to do what we call back propagation through time. Okay, that is, we have to deck, propagate the information, not only to the original weights, but also to each of the iterations that we did with the Rna.
+
+00:47:06.000 --> 00:47:15.000
+Let me show you what I mean with that simple example. Okay, let's say that this is our unfolding of the entire.
+
+00:47:15.000 --> 00:47:21.000
+Application of Jr. And process. Okay, remember, we have an input.
+
+00:47:21.000 --> 00:47:25.000
+Rnn. 3 layer produces an output.
+
+00:47:25.000 --> 00:47:33.000
+Secondly, input, second, output, 3, rd input, 3, rd output, 4, th input, 3, rd outputs. Okay. This is the unfolded version of the Rnn: that is, we apply.
+
+00:47:33.000 --> 00:47:38.000
+Over the entire sequence. The Rna.
+
+00:47:38.000 --> 00:47:40.000
+Of course.
+
+00:47:40.000 --> 00:47:51.000
+During the training week we've had for each of the outputs produced by the model. We also asked what the model should produce the ground roof right for each step.
+
+00:47:51.000 --> 00:47:57.000
+This means that for each of the generated steps we can compute a loss.
+
+00:47:57.000 --> 00:48:06.000
+If this is a predict, the character that should go there, it will be predicted, character expected, character.
+
+00:48:06.000 --> 00:48:12.000
+This. Yes, this is here. This is a probability distribution. Whatever we can compute a loss.
+
+00:48:12.000 --> 00:48:15.000
+Proscentric pillow sprain.
+
+00:48:15.000 --> 00:48:24.000
+That's the number that tells us how good the model was at predicting the 1st character, the second character, the 3rd character, the 4th character. Okay.
+
+00:48:24.000 --> 00:48:27.000
+Now we do.
+
+00:48:27.000 --> 00:48:30.000
+Backpropagation. Okay.
+
+00:48:30.000 --> 00:48:37.000
+What does l 0 the 1st loss for the 1st character depend on it, depends on.
+
+00:48:37.000 --> 00:48:44.000
+The weight that we used here right because it only depends on the input. The initial state.
+
+00:48:44.000 --> 00:48:48.000
+And then the weights that produced that 1st output.
+
+00:48:48.000 --> 00:48:55.000
+Easy enough what. Does l 1. Depend on l 1. Depends. On the weights that we used.
+
+00:48:55.000 --> 00:48:59.000
+In the current iteration, because it received the current input.
+
+00:48:59.000 --> 00:49:11.000
+And it was processed through these layer. But it also depends on the stage the 0 that you just received from the past step. That means that also.
+
+00:49:11.000 --> 00:49:14.000
+Those same weights of the Rnn.
+
+00:49:14.000 --> 00:49:29.000
+Were used to influence l. 1 right, because the state depended also on the weights that we applied in the 1st step, which are, by the way, the same that we use now, but with a different influence, with a different effect.
+
+00:49:29.000 --> 00:49:31.000
+So, l. One.
+
+00:49:31.000 --> 00:49:33.000
+Has.
+
+00:49:33.000 --> 00:49:45.000
+Some single, some gradient. Let's say that also depends on this 1st application of the model. So the state, the output and the input layer.
+
+00:49:45.000 --> 00:49:48.000
+Had 2 effects on the output.
+
+00:49:48.000 --> 00:49:52.000
+For L. 2. It they have 3 effects on the output, because.
+
+00:49:52.000 --> 00:49:58.000
+Current application previous date, previous previous state. Right.
+
+00:49:58.000 --> 00:50:08.000
+Previous state affacted by t. 1 previous previous State, T. 0 , etc. L. 3. Was affect in 4 different ways by the ways.
+
+00:50:08.000 --> 00:50:12.000
+Okay, so we have 4 different gradients. We can compute.
+
+00:50:12.000 --> 00:50:16.000
+So this means that.
+
+00:50:16.000 --> 00:50:18.000
+Each of the layer.
+
+00:50:18.000 --> 00:50:24.000
+At each step in time has had some effect on each of the outputs. Okay.
+
+00:50:24.000 --> 00:50:29.000
+So that means that all of those gradients within a compute.
+
+00:50:29.000 --> 00:50:32.000
+Have an effect on.
+
+00:50:32.000 --> 00:50:33.000
+The.
+
+00:50:33.000 --> 00:50:35.000
+Gradient Descent.
+
+00:50:35.000 --> 00:50:38.000
+That is, if we have all of these gradients.
+
+00:50:38.000 --> 00:50:45.000
+That are accumulated. We take them, we sum them, and that's going to be the final gradient we use to do gradient descent.
+
+00:50:45.000 --> 00:50:51.000
+With this. First, st we have to unfold the entire generation process of the output.
+
+00:50:51.000 --> 00:50:57.000
+Then we look at how each of the losses for each of the generated steps.
+
+00:50:57.000 --> 00:51:12.000
+Has been affacted by the the various lairs. We sum all of the contributions that each of the layer has had on the output, and on that gradient we apply gradient ascent.
+
+00:51:12.000 --> 00:51:14.000
+Okay.
+
+00:51:14.000 --> 00:51:20.000
+I care that you understand that there is this dependencies from past.
+
+00:51:20.000 --> 00:51:32.000
+Executions of the Rema, not only on the current execution, with the classic Fcma fully connected neural networks, you only add one forward, pass.
+
+00:51:32.000 --> 00:51:44.000
+Here we have a forward pass that propagates in time, and so to do the back propagation. We have to back, propagate back through time. Where time is the steps that you take.
+
+00:51:44.000 --> 00:51:51.000
+From the 1st element, second, element, 3rd element for 3rd element. Okay, that's what I mean by through time.
+
+00:51:51.000 --> 00:51:58.000
+Doesn't make sense, at least the intuition.
+
+00:51:58.000 --> 00:52:00.000
+Okay.
+
+00:52:00.000 --> 00:52:05.000
+So let's go back to our example. The one I told you about before the.
+
+00:52:05.000 --> 00:52:10.000
+Paid correction. Golden.
+
+00:52:10.000 --> 00:52:16.000
+Remember I told you we take a data set in this case. The Adventures of Sherlock Holmes.
+
+00:52:16.000 --> 00:52:27.000
+We take sentences from from the data set. Okay, the inputs become the lowercase version of those sentences.
+
+00:52:27.000 --> 00:52:36.000
+And we train the model with a cross-entropylus function to predict the correctly tased version of those sentences. Okay.
+
+00:52:36.000 --> 00:52:45.000
+In this case the granularity of the sequencing would be a single character. So we showed the model a single character at a time.
+
+00:52:45.000 --> 00:52:49.000
+And the model decides what to produce as the output.
+
+00:52:49.000 --> 00:52:53.000
+For each of the inputs. Okay.
+
+00:52:53.000 --> 00:53:06.000
+Notice that we are using Ascii character. So the input and outputs would be 256 dimensional. So a 1 not encoded version of the Asci characters.
+
+00:53:06.000 --> 00:53:12.000
+We use as the model as a very simple Rnn. With what with the 30 two-dimensional hidden state.
+
+00:53:12.000 --> 00:53:20.000
+So the piece of paper that we use for the notes is thirty-dimensional. We start with all zeros because we have to start with something.
+
+00:53:20.000 --> 00:53:24.000
+Some information about the training we used. The add-ons denizel, which is a.
+
+00:53:24.000 --> 00:53:34.000
+Facial cytoscriton descent, an interesting approach to retin descent, which we have not discussed, but that you can easily find, and that it's 1 of the most commonly adopted ones.
+
+00:53:34.000 --> 00:53:38.000
+Are learning rate. We have to choose it. Okay.
+
+00:53:38.000 --> 00:53:40.000
+Plus function.
+
+00:53:40.000 --> 00:53:50.000
+It's a classification problem right? We have to predict one character out of 256. So there's a classification problem. So we use a cross entropy loss function.
+
+00:53:50.000 --> 00:54:01.000
+Between what between the probability distribution produced by the model, the model will say 90% probability of letter, a 1% probability letter P. Whatever. Okay.
+
+00:54:01.000 --> 00:54:10.000
+That's a property distribution. And then we know the correct answer. The ground trick so we can cope with the cross entropy plus function.
+
+00:54:10.000 --> 00:54:19.000
+We train this for a bunch of epochs batch size whatever. This is all to give you enough information if. You want to replicate this result.
+
+00:54:19.000 --> 00:54:21.000
+Now.
+
+00:54:21.000 --> 00:54:25.000
+1st of all, this is what the laws.
+
+00:54:25.000 --> 00:54:30.000
+Looks like throughout the training. Okay, we said 10 epochs.
+
+00:54:30.000 --> 00:54:39.000
+This is the loss that is the cross-entropy loss. Notice how we have this drop-in loss. In the beginning the model is awful, and then it improves.
+
+00:54:39.000 --> 00:54:44.000
+Until we plateau here. Okay? At this point the model.
+
+00:54:44.000 --> 00:54:50.000
+Has almost 0 loss. That means that we can expect the model to be doing decently.
+
+00:54:50.000 --> 00:54:58.000
+Doesn't reach 0 , meaning that sometimes the model gets something wrong. Okay.
+
+00:54:58.000 --> 00:55:02.000
+To show you in more detail.
+
+00:55:02.000 --> 00:55:08.000
+With some practical examples what the model is doing. We take this sentence.
+
+00:55:08.000 --> 00:55:19.000
+This is the input. So the lowercase version it's a snippet of a sentence taken from those books upon the spell face. It may be served. It may not, may, Sir Roms, she said. Here, etc, etc.
+
+00:55:19.000 --> 00:55:25.000
+This is the expected output that is the correctly cased version of that same.
+
+00:55:25.000 --> 00:55:35.000
+Same sentence. Notice that the I in it is capitalized. Why? Because it's in the beginning of a sentence pronounced by someone.
+
+00:55:35.000 --> 00:55:44.000
+Notice that the am in Mister and the age in homes are capitalized because they are nouns.
+
+00:55:44.000 --> 00:55:53.000
+This B. Here is not capitalized because it is the continuation of a sentence that was being pronounced before. Okay. So it is not capitalized.
+
+00:55:53.000 --> 00:56:06.000
+This year is what the model has produced over the 10 epochs that is, after each of the epochs. I looked at the output of the model for this sentence, and I show it here. Okay.
+
+00:56:06.000 --> 00:56:21.000
+In the beginning the model is kind of awful. These X is here. I use them as a replacement for the null pike, the 0 Byte, which the model was very much liking to produce. Why? Because the model during training uses.
+
+00:56:21.000 --> 00:56:34.000
+The 0 Byte as the padding byte. So the model says, Okay, I'm seeing a lot of 0 Byte because all of the sentences are being padded with this character. So I'm gonna just repeat this character, which is, of course, wrong.
+
+00:56:34.000 --> 00:56:39.000
+And the loss tells us that this is wrong. It's a very high loss.
+
+00:56:39.000 --> 00:56:53.000
+After a bunch of epochs after 3 epochs. Notice that the model and I'm gonna zoom this. So it's a little bit clearer. Notice that the model starts to produce the letter EA. Bunch of times okay. The model is still kind of dump, of course, but.
+
+00:56:53.000 --> 00:57:06.000
+It sees. By the way, the letter E is the most common letter in the English alphabet that we find more frequently in in the English alphabet, in the English language. So the molest is okay. I have to guess.
+
+00:57:06.000 --> 00:57:23.000
+The characters. I don't know anything about what is being asked of me, because I am still not, very clever, but I see that there are lots of ease in the output of the model in the expected output that someone is showing me. So I'm going to repeat the word EA bunch of times.
+
+00:57:23.000 --> 00:57:26.000
+And notice that they're mostly wrong.
+
+00:57:26.000 --> 00:57:33.000
+It also figures out spaces. By the way, it figures out that when there is a space it should be repeated.
+
+00:57:33.000 --> 00:57:40.000
+And this already gives us an improvement in loss notice. We go from 3 to 2.
+
+00:57:40.000 --> 00:57:42.000
+And then to 1.7.
+
+00:57:42.000 --> 00:57:49.000
+Then notice here the drop from 1.7 to 0 point 9 5 comma whoops.
+
+00:57:49.000 --> 00:57:52.000
+The model figures out that.
+
+00:57:52.000 --> 00:57:57.000
+Most of the outputs are just the inputted in the same way.
+
+00:57:57.000 --> 00:58:12.000
+Okay. Most of the time the model just needs to repeat the same input that is given to the model as the output. And this gives us this significant drop in loss right from 1.7 to 0 dot 9 5.
+
+00:58:12.000 --> 00:58:25.000
+It is still getting all of the capitalizations wrong? Right? The I in it is wrong. The M. In Mister is wrong, etc.
+
+00:58:25.000 --> 00:58:26.000
+And we continue.
+
+00:58:26.000 --> 00:58:29.000
+Notice that after a while.
+
+00:58:29.000 --> 00:58:32.000
+Epoch 7.
+
+00:58:32.000 --> 00:58:43.000
+The model figures out some additional rules, that is the eye. The fit should be capitalized because it follows the double quotes. So there's the beginning of a sentence.
+
+00:58:43.000 --> 00:58:53.000
+The model has just seen the beginning of a sentence being pronounced by someone, adds the capitalized version of the letter. Did you have a question.
+
+00:58:53.000 --> 00:59:07.000
+So we didn't teach him.
+
+00:59:07.000 --> 00:59:10.000
+Explicitly. We just gave the model.
+
+00:59:10.000 --> 00:59:24.000
+Many sentences that had at some point the quotation mark. Okay. And so the model. Every time the model produces a prediction. That is, for instance, here the model produces the lowercase. I okay.
+
+00:59:24.000 --> 00:59:29.000
+And we tell the model look. No, you're wrong. The loss is gonna be high for this character.
+
+00:59:29.000 --> 00:59:45.000
+To minimize the loss for that character, we will see that the model will put more will need to put more probability on the uppercase version of the letter. I okay. So the model change I mean gradient ascent changes the weight of the model.
+
+00:59:45.000 --> 00:59:55.000
+In such a way that next time that it is given this situation, the model will give more probability to the uppercase letter i: Okay.
+
+00:59:55.000 --> 01:00:03.000
+And so this is a pattern. Okay? Every time the model sees the open quotes it will.
+
+01:00:03.000 --> 01:00:15.000
+Give more probability to decapitalized version of the letter. Okay, that's a pattern that we don't explicitly teach the model. But at the model by seeing all of these examples, and every time it gets penalized.
+
+01:00:15.000 --> 01:00:26.000
+If it does not produce the correct answer. By doing this the model will start putting more probability on the uppercase version of those characters. But this is just by seeing.
+
+01:00:26.000 --> 01:00:32.000
+Thousands and thousands and thousands of examples. Okay, it's a pattern that occur.
+
+01:00:32.000 --> 01:00:34.000
+Yes, I have a question.
+
+01:00:34.000 --> 01:00:41.000
+But the loss increases.
+
+01:00:41.000 --> 01:01:04.000
+Because this year is a single sentence, the loss is computed over an entire test set. Okay, so it's thousands of sentences. So maybe here we don't see the improvement, of course, because it's a single sentence with some specific, weird cases. Okay, in general, the model will probably be improving, so that this number is not computed on this sentence. It's computed over an entire test set. Okay.
+
+01:01:04.000 --> 01:01:20.000
+So of course I chose this sentence because it had some interesting things that were happening the average sentence probably improved because maybe it was not capitalizing. Some words it was capitalizing some others, and so it was improving. We just did not see it in this.
+
+01:01:20.000 --> 01:01:24.000
+Pacific Base.
+
+01:01:24.000 --> 01:01:32.000
+Okay. So after a while, as we mentioned, the model starts, figures out that the I need should be capitalized.
+
+01:01:32.000 --> 01:01:37.000
+It also figures out that after Mr. There's an age.
+
+01:01:37.000 --> 01:01:49.000
+Well, the model here realizes that it should capitalize homes. But the model doesn't know that the H. Stands for homes, because the model remembers these one character at a time from the past.
+
+01:01:49.000 --> 01:01:56.000
+Okay. The model only sees the sentence up until this point. Here.
+
+01:01:56.000 --> 01:02:00.000
+Up until this point here. Right? So the model says.
+
+01:02:00.000 --> 01:02:14.000
+Mr. Of Mister sees the period, and so it figures out that probably either after a period you should capitalize letters. That's 1 explanation for what's happening. The other is that the model? Says, Mr. And it says, Okay, if there's mister, then the next.
+
+01:02:14.000 --> 01:02:24.000
+Words should be capitalized. So it's either of these 2 things that the model realizes. And so that's why it figures out that the age of homes should be capitalized.
+
+01:02:24.000 --> 01:02:35.000
+Notice that the model never realizes how to capitalize the Mister word right? Why? Because the model just is it may be, sir, or it may not.
+
+01:02:35.000 --> 01:02:42.000
+When the model decides. If the amp should be capitalized or not, it only sees the previous part.
+
+01:02:42.000 --> 01:02:48.000
+And then I mean, imagine yourself sitting down, having to decide if the M. That you see here.
+
+01:02:48.000 --> 01:02:52.000
+Should be capitalized or not. You only see what happened before.
+
+01:02:52.000 --> 01:02:58.000
+Typically, it will not be capitalized right? Because there are many words that are being offered by capitalized.
+
+01:02:58.000 --> 01:03:02.000
+If this was my my dear friend.
+
+01:03:02.000 --> 01:03:06.000
+DM. Should not be capitalized. So the model needs to decide.
+
+01:03:06.000 --> 01:03:14.000
+If this should be capitalized or not based only on what it says. Up until this point, and up until this point the model probably.
+
+01:03:14.000 --> 01:03:28.000
+Has seen many more words that start with an N. That should not be capitalized, and sometimes the M. Of mister that should be capitalized, but most of the time the word the model will say lowercase. M.
+
+01:03:28.000 --> 01:03:31.000
+Okay. So that's why it doesn't figure this out.
+
+01:03:31.000 --> 01:03:37.000
+Okay. Yes.
+
+01:03:37.000 --> 01:03:39.000
+Thank you. Drive.
+
+01:03:39.000 --> 01:03:49.000
+Like there is absolutely yeah, yeah.
+
+01:03:49.000 --> 01:04:01.000
+Exactly. So basically here it's a cross-entropy loss. Cross-entropy loss penalizes in the same way the fact that we have a lowercase n. Or any other letter. That is not the correct answer. Okay.
+
+01:04:01.000 --> 01:04:16.000
+There are some fancier losses that have some kind of you know, keeping in mind that you were semantically closer. So you should be penalized less. But the cross entropy does not do that. The local cross entropy just says, Okay, no, you're wrong you should not predict them. So you get.
+
+01:04:16.000 --> 01:04:30.000
+Penalized a lot the model tries its best, right? Because, you know, if you get an M. And 90% of the time it is lowercase and 10%. It is uppercase. It will put high probability on the lowercase version. Of course.
+
+01:04:30.000 --> 01:04:41.000
+The useful thing is that this is a probability distribution, so it does not only get penalized for the lowercase. N. If the model says, Okay.
+
+01:04:41.000 --> 01:04:56.000
+80% lowercase, 15% uppercase M. And then the rest spread out on the other garbage character. The penalisation will be proportional to that 15%. So if the model gives some probability to the correct answer, that is non- 0 .
+
+01:04:56.000 --> 01:05:11.000
+It will be penalized less than if it predicted. You know 0 probability. Here we are looking at one at the highest probability answer of the model. But the cross entropy is always performed on the probability distribution. Okay.
+
+01:05:11.000 --> 01:05:12.000
+You're welcome.
+
+01:05:12.000 --> 01:05:16.000
+Other questions about this.
+
+01:05:16.000 --> 01:05:22.000
+Yeah.
+
+01:05:22.000 --> 01:05:27.000
+What do you think?
+
+01:05:27.000 --> 01:05:29.000
+Why?
+
+01:05:29.000 --> 01:05:41.000
+I mean, if yeah, but if I ask you if I give you a thousand books, okay? And they ask you to solve this problem.
+
+01:05:41.000 --> 01:05:50.000
+And I only show you, and we will come to this later. So that's why I'm asking you this now. I always show you only the letters you saw up until this point.
+
+01:05:50.000 --> 01:06:02.000
+And then I show you this sentence, and they tell you, Okay, is the you don't know what happens then you don't know that there's the homes after that. Okay? So you just know that it may be sorry it may not.
+
+01:06:02.000 --> 01:06:03.000
+N.
+
+01:06:03.000 --> 01:06:18.000
+This is a new sentence you've never seen before, because this is a test sentence. Of course you're not being trained on this one. If you just see this DM. Could be a million no, not a million, but it could be hundreds of different words right could be, my dear, it could be
+
+01:06:18.000 --> 01:06:31.000
+Whatever I you know you can come up with many words. Let's all with them that would suit here right and only a small fraction of those words would be capitalized. M's right. So most of the time.
+
+01:06:31.000 --> 01:06:34.000
+You would expect a pretty lower exam.
+
+01:06:34.000 --> 01:06:41.000
+Because you don't know what happens next. Okay, this is the important part, because if you knew the entire sentence.
+
+01:06:41.000 --> 01:06:51.000
+Before you made a decision you would say, Ok, that's Mr. And then, Holmes, Okay, I know what's the entire sentence.
+
+01:06:51.000 --> 01:07:05.000
+I can figure out that the next word DM. Should be capitalized, and that, we will see will be a key difference between this kind of architecture and other kinds of architecture, seeing everything of the input before making a decision. Okay.
+
+01:07:05.000 --> 01:07:16.000
+If you don't see the entire input, if you don't see the entire lowercase sentence here, I would argue that you would never figure this out.
+
+01:07:16.000 --> 01:07:24.000
+Doesn't change much until we change the amp.
+
+01:07:24.000 --> 01:07:40.000
+Shouldn't. He tried to change the words like, try all different letters, all different things. And Ashi characters. Yeah, but if you're dealing times. But yes, but if your text only contains.
+
+01:07:40.000 --> 01:07:51.000
+Misters as the next word. It would figure out that Mister should be capitalized because it sees the amp says, okay, this is mister definitely. But if the training data has.
+
+01:07:51.000 --> 01:07:59.000
+10,000 times lowercase letters, and 10 times you have the Mister, or something that should be capitalized.
+
+01:07:59.000 --> 01:08:12.000
+If that is your distribution of the data, the model will say, Okay, most of the time the lowercase n is the right answer. Okay, there is no way to make an exception for this based on what you're seeing. So far. Okay.
+
+01:08:12.000 --> 01:08:21.000
+Because the model can only repeat the patterns it sees in the training data. So either you have a training data set with only.
+
+01:08:21.000 --> 01:08:24.000
+M. Letters that are capitalized.
+
+01:08:24.000 --> 01:08:28.000
+And then the model easily figures out that it should be capitalized. But if.
+
+01:08:28.000 --> 01:08:33.000
+MW: words are typically lower case and you don't see what happens next.
+
+01:08:33.000 --> 01:08:51.000
+You cannot say definitely, that's going to be capitalized. Why? Because you don't know what happens next. And you learn from training data that I mean words, unless there is some period, some open quotation, some end of sentence, with another period.
+
+01:08:51.000 --> 01:08:53.000
+The words should not be capitalized.
+
+01:08:53.000 --> 01:09:01.000
+Okay. So that's the the pattern you see in the training data and the fact that you cannot see the entire sentence.
+
+01:09:01.000 --> 01:09:06.000
+Your question.
+
+01:09:06.000 --> 01:09:19.000
+Capitalized after that period.
+
+01:09:19.000 --> 01:09:25.000
+So if we run a lot, probably once inside the capitalized and.
+
+01:09:25.000 --> 01:09:30.000
+But you mean, in the generation part, or in the in which step.
+
+01:09:30.000 --> 01:09:45.000
+Okay. Because here what is being shown here, the sentence being produced here is basically taking the for each letter. The highest probability answered of the model. Okay, in this case, yes, I'm gonna take the highest probability. Answer. Because the model says, Okay, 90% lowercase N.
+
+01:09:45.000 --> 01:10:02.000
+1%, 9% something else. Okay, so what I do here I just sample the highest probability answer. So that means that yes, if you resampled with other strategies, you might get the uppercase n. But the model still produces the same probability. Distribution.
+
+01:10:02.000 --> 01:10:07.000
+Okay, it's just that. We sample it in different ways. You get different different transfers.
+
+01:10:07.000 --> 01:10:12.000
+Yes. Question.
+
+01:10:12.000 --> 01:10:26.000
+Okay. But then, how do you give the sentence in reverse? You mean just in reverse.
+
+01:10:26.000 --> 01:10:32.000
+And how do you combine them.
+
+01:10:32.000 --> 01:10:47.000
+No I mean, that's 1 way in which you could say, Okay, my model should also see what happens next, because that's the input. I want the model to see the entire input, then reverse. Non-reverse doesn't really matter right.
+
+01:10:47.000 --> 01:10:53.000
+And we will see that that's exactly what we do. This is one type of architecture. We can build.
+
+01:10:53.000 --> 01:11:12.000
+Which has this limitation that doesn't. If the model doesn't see the entire sequence, we can build other types of architectures. And that's exactly where we're going with this conversation. Okay, so we will see next how we can do something like that in a meaningful way, without having to think about reversing something, or whatever it just give the entire center. Stimmo.
+
+01:11:12.000 --> 01:11:16.000
+We will see this in a couple slides first.st
+
+01:11:16.000 --> 01:11:18.000
+A bunch of problems that.
+
+01:11:18.000 --> 01:11:36.000
+Rms as models that they have very quickly once again, because, as I mentioned, we didn't get that much time today unfortunate, 2 to various problems. So we'll kind of go a little bit faster on this part, which is problems of Ournanz. Hopefully, I will still give you the ideas, and then I will upload.
+
+01:11:36.000 --> 01:11:46.000
+Previous year's lectures that are a little bit slower on this part. Not that much, but still so 1st problem we have. We have slides for each of these. Okay? But 1st one we have is that.
+
+01:11:46.000 --> 01:11:49.000
+During the deck propagation step.
+
+01:11:49.000 --> 01:11:52.000
+Sometimes we have this problem that we call.
+
+01:11:52.000 --> 01:12:03.000
+Either vanishing gradients or exploding gradients. Okay, why? Because when we do this kind of unfolding of the model over multiple steps.
+
+01:12:03.000 --> 01:12:21.000
+When we do the big propagation, we are multipling a lot of terms together, once multiplied by the other. Okay, and then we will see that those terms, if we have very long multiplications, may collapse to very small values, or can explode to very large values. 1st problem. The second problem is that.
+
+01:12:21.000 --> 01:12:25.000
+These kinds of models have what we call the long-term.
+
+01:12:25.000 --> 01:12:40.000
+Memory losses, long-term dependency issues. It's called here. Basically technically, the model should be able to remember everything it saw in the past, because it has this piece of paper where the model can remember everything that happened.
+
+01:12:40.000 --> 01:12:53.000
+Except the state is finite. Okay, it is a limited number of dimensions. It is limited in size, and so the model. After a while it starts to forget what happened in the earlier path.
+
+01:12:53.000 --> 01:13:03.000
+It remembers what happened very early. Sorry, very very recently. Doesn't remember what happened very early on. Okay.
+
+01:13:03.000 --> 01:13:10.000
+3rd problem. This is more of that nuance, more something like that. That's not really amazing. But it's not really.
+
+01:13:10.000 --> 01:13:12.000
+To limiting the fact that.
+
+01:13:12.000 --> 01:13:25.000
+These models are very magnification computationally, especially the fact that we cannot parallelize the generation of the outputs of this kind of model right? Because.
+
+01:13:25.000 --> 01:13:29.000
+Let's take an example. Here.
+
+01:13:29.000 --> 01:13:46.000
+Summer. Each of the steps we have to take depends on the previous steps, so we cannot parallelize the generation across multiple Gpus, for instance, because we have to wait for the model to finish generating the current state before we can generate the next.
+
+01:13:46.000 --> 01:13:47.000
+State.
+
+01:13:47.000 --> 01:13:51.000
+Which is kind of disappointing. Okay.
+
+01:13:51.000 --> 01:14:05.000
+Very quickly vanishing and exploding gradients, as I told you, depends on the fact that in backpropagation, if you remember, I told you we apply the chain rule. The chain rule means we multiplied a bunch of terms together. Okay.
+
+01:14:05.000 --> 01:14:14.000
+So if we have to backpropagate through time, as I told you before, we have to backpropagate that is multiplied a bunch of terms.
+
+01:14:14.000 --> 01:14:30.000
+That follow the unfolding of the Rnn: Okay, so if we have a 50 element sequence, we have to multiplied at least those 50 terms, then, by multiplied by the number of steps we take within each model.
+
+01:14:30.000 --> 01:14:34.000
+Long story short, if we multiplied a bunch of terms.
+
+01:14:34.000 --> 01:14:44.000
+5,100 terms, and each of the terms is, let's say, slightly, very slightly, even smaller than one.
+
+01:14:44.000 --> 01:15:02.000
+0 point 9, for instance, to the power of 50 that is, we multiplied 50 times numbers. Close to that number we have a final signal, a final gradient that reaches the the parameter that is close to 0 . Ok, why? Because 0 point 9 times something to 0 point 9 times 0 point 9, etc.
+
+01:15:02.000 --> 01:15:13.000
+So the gradient, the signal, what we should use to update the model goes to 0 . So if the gradient goes to 0 . Also the update we apply to the model would be close to 0 , right.
+
+01:15:13.000 --> 01:15:21.000
+One problem, then, of course, some activation functions do exacerbate the problem because we have other functions that have.
+
+01:15:21.000 --> 01:15:27.000
+Saturated gradients that, you know, lose some signal.
+
+01:15:27.000 --> 01:15:35.000
+The opposite problem is also true. If all the gradients are in magnitude even slightly bigger than one.
+
+01:15:35.000 --> 01:15:42.000
+1.1, for instance, and we multiplied all of these terms together to produce the gradient.
+
+01:15:42.000 --> 01:16:00.000
+What happens is that the this, magnitude compens over time over steps, and we get what we call exploding gradients, that is, the gradients get very large, and so the updates we apply to the model are, you know, kind of garbage.
+
+01:16:00.000 --> 01:16:07.000
+That's a well-known problem that we typically have in this deeper models. Okay.
+
+01:16:07.000 --> 01:16:19.000
+There are some solutions, for instance, in convolutional networks they introduced skipped skip connections that allow us to skip some of these intermediate steps.
+
+01:16:19.000 --> 01:16:23.000
+But they are still a problem. Okay.
+
+01:16:23.000 --> 01:16:38.000
+We will see what happens 4 h of morals, and how we avoid this handle problem with other architectures. The other problem is with long-term dependencies. And this is what I already mentioned. If we have long sentences, if we have very long.
+
+01:16:38.000 --> 01:16:54.000
+Text that we provide to the model. The model will typically have a state that gets overwritten over time because the size of the state is finite. So we don't have infinite space to write everything down. And so the model typically only preserves.
+
+01:16:54.000 --> 01:17:00.000
+Information about the last few elements of the sequence itself. Okay.
+
+01:17:00.000 --> 01:17:10.000
+Ideally to do everything you should keep. You should remember all the important stuff in practice. Newer information overrides all the information.
+
+01:17:10.000 --> 01:17:25.000
+Okay, this is an example. If we have a very long sentence in which the subjects the mouse was getting chased by the calf or the big house. After a long chase, the catf finally managed to catch the and we want to ask the model, what is the the next word? Here the model.
+
+01:17:25.000 --> 01:17:42.000
+If it had a good memory. If it remembered what happened early on in the sentence, should answer the mouse. The problem is that these kinds of models, after a while we override what they saw in the past, and so the model may have lost all the information it had about the fact that we were talking about a mouse.
+
+01:17:42.000 --> 01:17:47.000
+Okay, this is a naive example.
+
+01:17:47.000 --> 01:17:49.000
+A solution.
+
+01:17:49.000 --> 01:18:00.000
+That kind of addresses these 1st 2 problems, that is, long-term dependency issues and the gradient tissues are what we call gated Rnns.
+
+01:18:00.000 --> 01:18:13.000
+2 types of Katrns are the Lstms, the long, short-term memory, and the Grus, the gated, recurrent hearings occasion. There are 2 ways in which we try to limit the amount of.
+
+01:18:13.000 --> 01:18:20.000
+The amount of memory that the model changes. Each step.
+
+01:18:20.000 --> 01:18:35.000
+We will. Okay. Now let's skip this part. And let's focus on this part. This is what the architecture of an Lstm. Looks like notice that it is somewhat similar to an rmets. We have this single cell, the single element, with some inputs.
+
+01:18:35.000 --> 01:18:46.000
+2 inputs here. Okay, technically, it's 3 inputs. I will tell you why later. And then the outputs here. Okay.
+
+01:18:46.000 --> 01:18:56.000
+The model now has 2 ways in which it remembers things. It has a meeting state, and it has what we call a cell state.
+
+01:18:56.000 --> 01:19:07.000
+The sale state is what we can consider as a let's call it, a long-term memory, a kind of memory that the model uses to remember things that happened.
+
+01:19:07.000 --> 01:19:16.000
+A lot of time ago. Okay, the hidden state is the more recent, more relevant part that is happening, you know, in the short term.
+
+01:19:16.000 --> 01:19:24.000
+And we would say that this kind of architecture I mean, we will see it very briefly, because this is not the focus of the course, but this kind of architecture.
+
+01:19:24.000 --> 01:19:26.000
+Tries to change.
+
+01:19:26.000 --> 01:19:42.000
+Just a little the sale state that is the long-term part that is, it only changes if something meaningful happens, whereas the hidden state changes more quickly, that is, it received more significant updates at each step.
+
+01:19:42.000 --> 01:19:50.000
+How do we do it? We use 3 types of we call them gates, 3 pieces of the architecture.
+
+01:19:50.000 --> 01:19:54.000
+What we call the Forget Gate, the input gate and the output gate.
+
+01:19:54.000 --> 01:19:57.000
+I'm gonna put it very.
+
+01:19:57.000 --> 01:20:10.000
+Straightforwardly. I will not go into the details what I care about is that the forget gate is a part of the network part of the Lstm. That focuses on deciding how much.
+
+01:20:10.000 --> 01:20:15.000
+Of the current cell state, the model should preserve.
+
+01:20:15.000 --> 01:20:22.000
+Or, similarly, how much of the cells that the model should forget. Okay.
+
+01:20:22.000 --> 01:20:26.000
+Notice that. Look at this gate. Here we multiplied.
+
+01:20:26.000 --> 01:20:42.000
+The current sale State with the Gated. What do you mean by gated this box? Here? We call it a gated unit, a gated layer that is, a layer that produces an output between 0 and one which tells us how much we should remember.
+
+01:20:42.000 --> 01:20:44.000
+Or forget.
+
+01:20:44.000 --> 01:20:46.000
+It's it's.
+
+01:20:46.000 --> 01:20:48.000
+It's a scalar number.
+
+01:20:48.000 --> 01:20:54.000
+For each of the dimension that tells us you should remember this match or forget this match. Okay.
+
+01:20:54.000 --> 01:20:58.000
+And this is a layer that is piloted by the previous.
+
+01:20:58.000 --> 01:21:01.000
+Hidden state, and the current input.
+
+01:21:01.000 --> 01:21:07.000
+Then we have the input gate, which decides how much the current input should have an effect.
+
+01:21:07.000 --> 01:21:20.000
+On the he did say, and then we have the output gate, which decides how much of the hidden state should be affacted by the cell state.
+
+01:21:20.000 --> 01:21:23.000
+Here.
+
+01:21:23.000 --> 01:21:26.000
+What they care about is that when you look at this kind of.
+
+01:21:26.000 --> 01:21:36.000
+Diagram. You understand that, I mean if you look at this without the colors, just that you just look at the gates. Here, at the multiplication operations.
+
+01:21:36.000 --> 01:21:43.000
+It probably doesn't make much sense. Okay? If you already look at this with splits, you understand that this part is focused on forgetting something.
+
+01:21:43.000 --> 01:22:00.000
+From the sales State. This part is focused on updating the sale State. This part is focused on updating the output the hidden state of the model. Okay? And then notice the other thing I care about, which is something you may use in other cases.
+
+01:22:00.000 --> 01:22:05.000
+That every time we need to choose.
+
+01:22:05.000 --> 01:22:11.000
+I understand 2 weeks we want to do an update, a degree of an update. We pass.
+
+01:22:11.000 --> 01:22:27.000
+Through a sigmoid function. Remember, sigmoid function goes from 0 to one, so it can give us a degree to which we want to do something the output is 0 . We want to do that operation none at all. The output is one we do the operation.
+
+01:22:27.000 --> 01:22:32.000
+To its full extent. Okay. So, for instance, forget Gate.
+
+01:22:32.000 --> 01:22:41.000
+As a sigmoid function which decides you should forget everything 0 , or you should forget nothing. One: okay.
+
+01:22:41.000 --> 01:22:45.000
+And notice, indeed, that this number is multiplied by.
+
+01:22:45.000 --> 01:23:03.000
+For instance, the sale State. Here the sigmoid is used as a scalar to decide how much we should affect the output here the sigmoid is used to decide how much we should affect the hidden state. So what I care about here is this nice pattern is having a Sigmod.
+
+01:23:03.000 --> 01:23:11.000
+That controls states things vectors. Okay.
+
+01:23:11.000 --> 01:23:17.000
+Okay, as I told you, I don't really have that much time for this part, but.
+
+01:23:17.000 --> 01:23:25.000
+I want to reach 1 point specifically, and to reach that point we 1st have to add some nomenclature to the, to the table.
+
+01:23:25.000 --> 01:23:34.000
+Specifically all of these tasks that we discussed so far, in which we have one input sequence of.
+
+01:23:34.000 --> 01:23:40.000
+There's words whatever, and a corresponding output sequence.
+
+01:23:40.000 --> 01:23:45.000
+Translated version, capitalized version, whatever we call them.
+
+01:23:45.000 --> 01:23:49.000
+Sequence to sequence or seek-to-seek tasks. Okay.
+
+01:23:49.000 --> 01:23:51.000
+And typically.
+
+01:23:51.000 --> 01:23:56.000
+We can have one of 2 approaches to address these kinds of tasks.
+
+01:23:56.000 --> 01:23:58.000
+The one we discussed.
+
+01:23:58.000 --> 01:24:08.000
+Is what we call one to one mapping. Okay, one-to-one mapping is the kind of solution that that's the only solution. We saw this far, in which we have one input.
+
+01:24:08.000 --> 01:24:17.000
+We produce one output. So we see the sequence one element at a time, and after we see the current element we have to produce the corresponding output. Okay.
+
+01:24:17.000 --> 01:24:21.000
+One-to-one mapping. We map each input to an output.
+
+01:24:21.000 --> 01:24:24.000
+One input, one output.
+
+01:24:24.000 --> 01:24:39.000
+This is, for instance, the the problem just solved on casing. Right? I told you I give you one character, and then based on the current character. And yeah, okay, fine. Everything you saw this far, you produce the output for the current character.
+
+01:24:39.000 --> 01:24:43.000
+Okay, that's 1-to-one mapping. We map one input to an output.
+
+01:24:43.000 --> 01:24:46.000
+This kind of approach is.
+
+01:24:46.000 --> 01:24:56.000
+If you already started going out limited right? There are specifically, there are 2 limitations that should be quite obviously the 1st one.
+
+01:24:56.000 --> 01:25:02.000
+Is based on the fact that many, if not most sequence-to-sequent tasks.
+
+01:25:02.000 --> 01:25:08.000
+May have different lengths of the inputs and outputs. Right? Think about translation tasks.
+
+01:25:08.000 --> 01:25:11.000
+We don't have.
+
+01:25:11.000 --> 01:25:24.000
+a 1-to-one mapping in terms of input words and output words. Think about translating, say English to Italian, okay, it is indeed a sunny day today. It is indeed sunny today. Okay.
+
+01:25:24.000 --> 01:25:27.000
+4 words.
+
+01:25:27.000 --> 01:25:30.000
+The Italian version.
+
+01:25:30.000 --> 01:25:47.000
+Boils down to just forwards right? So if we want to produce one output for each input, it maps to something it maps to something whatever. Then we get today, the model still has to produce something cannot produce anything right doesn't have anything else to say.
+
+01:25:47.000 --> 01:25:54.000
+Same goes the other way around. If we had 4 words as the input and the model actually thinks it should be translated into 5 words.
+
+01:25:54.000 --> 01:26:02.000
+We don't have the corresponding input to provide to the model. And so this is a problem the second, even worse problem.
+
+01:26:02.000 --> 01:26:04.000
+Is that.
+
+01:26:04.000 --> 01:26:07.000
+It is something your colleague already started pointing out.
+
+01:26:07.000 --> 01:26:11.000
+We may not have all the necessary information.
+
+01:26:11.000 --> 01:26:22.000
+Say in the beginning of the generation to produce the corresponding, the correct word right? Say I provide. It is indeed signed today. It.
+
+01:26:22.000 --> 01:26:32.000
+And then the Italian version should start with effective amend. Okay, how can the model know, based only on the word eat that it should predict effective, or today.
+
+01:26:32.000 --> 01:26:35.000
+Oggi.
+
+01:26:35.000 --> 01:26:47.000
+The model has not yet seen those parts of the sentence, so the model doesn't know yet what will happen in the future, what will be the next sentence? The next words in the sentence, so it cannot produce.
+
+01:26:47.000 --> 01:26:56.000
+A reasonable output with the information available so far. Okay. So one-to-one mapping is somewhat limited.
+
+01:26:56.000 --> 01:27:01.000
+To overcome limitation. One.
+
+01:27:01.000 --> 01:27:05.000
+Classic typical. What we will focus on.
+
+01:27:05.000 --> 01:27:06.000
+For part of the course.
+
+01:27:06.000 --> 01:27:11.000
+Architecture is what we call the encoder-decoder architecture. Okay.
+
+01:27:11.000 --> 01:27:16.000
+Which is, I think, something you some of you may already have heard of.
+
+01:27:16.000 --> 01:27:21.000
+Encode record. Architecture is a kind of architecture in which.
+
+01:27:21.000 --> 01:27:22.000
+We have 2 elements.
+
+01:27:22.000 --> 01:27:24.000
+One we call it the Encoder.
+
+01:27:24.000 --> 01:27:30.000
+The encoder looks at the entire input, the full sequence.
+
+01:27:30.000 --> 01:27:31.000
+In the April.
+
+01:27:31.000 --> 01:27:35.000
+And produces some kind of summary, some kind of.
+
+01:27:35.000 --> 01:27:42.000
+Vector a state vector. Let's call it. That summarizes the entire contents of the input.
+
+01:27:42.000 --> 01:27:55.000
+Before we even generate anything. Okay, before the model starts saying any word on in the output, we 1st ask the encoder to take the entire input sequence. In this case. This, let's say, 5.
+
+01:27:55.000 --> 01:27:57.000
+Words.
+
+01:27:57.000 --> 01:28:02.000
+And produce a summarized version of Edith. Okay.
+
+01:28:02.000 --> 01:28:05.000
+Which is a vector, for instance.
+
+01:28:05.000 --> 01:28:13.000
+Then we take this State, and these States goes to what we call the decoder. The decoder takes as input a state.
+
+01:28:13.000 --> 01:28:25.000
+Takes as input notice. We have to give it some input to start with. Okay, we will see why later, but we give it what we call the Bos. The beginning of the sequence.
+
+01:28:25.000 --> 01:28:37.000
+And the model looks at the state, looks at the 1st stock and says, Okay, I have to start generating the answer, the reply, the product, the output for this state, and this beginning sequence.
+
+01:28:37.000 --> 01:28:42.000
+Produces a word, we take the word we pass it back to the decoder.
+
+01:28:42.000 --> 01:28:59.000
+We make the model produced the rest of the sequence until, when, until the model says, Ok, I don't think I have anything else to produce at the output. I think I've given you everything I needed to give you. So now I will tell you that I'm done by producing a special word which we call the end of sequence.
+
+01:28:59.000 --> 01:29:03.000
+Which tells us, look, the moral thinks there is nothing else to produce.
+
+01:29:03.000 --> 01:29:08.000
+Okay. So the encoder compresses the input.
+
+01:29:08.000 --> 01:29:17.000
+Provides the compressed version of the full input. That's the nice part, because we can 1st see the full input. Now, before we make a choice.
+
+01:29:17.000 --> 01:29:20.000
+The decoder.
+
+01:29:20.000 --> 01:29:25.000
+Solves the task we want to solve by looking at the compressed version of the input.
+
+01:29:25.000 --> 01:29:31.000
+Okay. So if we go back to the same task as before, that is translating.
+
+01:29:31.000 --> 01:29:36.000
+This English sentence into the Italian counterpart.
+
+01:29:36.000 --> 01:29:41.000
+We can first.st And let's still use. Lstms: Okay, so let's still. Use Rnns: If it's fine.
+
+01:29:41.000 --> 01:29:43.000
+We can 1st take.
+
+01:29:43.000 --> 01:29:47.000
+The sentence one word at a time.
+
+01:29:47.000 --> 01:29:52.000
+Remember here we start with the empty, with the 0 state.
+
+01:29:52.000 --> 01:30:01.000
+The model produces a state after the 1st a state after a second, a state, a state, a state, the final state of the Lstm.
+
+01:30:01.000 --> 01:30:06.000
+After we process, the entire input will be the state vector.
+
+01:30:06.000 --> 01:30:08.000
+That will become.
+
+01:30:08.000 --> 01:30:13.000
+The input state for the decoder part.
+
+01:30:13.000 --> 01:30:16.000
+So instead here, instead of starting with.
+
+01:30:16.000 --> 01:30:21.000
+And Nbc. As 0 vector of Theta, we start with the output state.
+
+01:30:21.000 --> 01:30:26.000
+Of the encoder, so we already know what.
+
+01:30:26.000 --> 01:30:32.000
+The key ideas of the input sentence are: okay.
+
+01:30:32.000 --> 01:30:39.000
+And then, of course, remember, the Lstms. Needs to have 2 inputs. I mean, like all Rns, needs to have 2 inputs.
+
+01:30:39.000 --> 01:30:42.000
+The current.
+
+01:30:42.000 --> 01:30:49.000
+Word, the current part of the sentence and the previous state right.
+
+01:30:49.000 --> 01:30:53.000
+But now the decoder does not have anything to start with right, because.
+
+01:30:53.000 --> 01:31:06.000
+The input was already processed by the encoder, but the decoder has not generated anything yet. So what do we do we pass as the input a special token, a special word we call it the beginning of the sequence word.
+
+01:31:06.000 --> 01:31:17.000
+The model sees the beginning of the sequence, understands, understands, I mean, after being trained for millions of sentences. It understands that when the first.st
+
+01:31:17.000 --> 01:31:24.000
+Token is the beginning of sequence. It has to produce the 1st word of the sentence, and so it looks at.
+
+01:31:24.000 --> 01:31:33.000
+These say, Ok, I have to begin looks at the state the State already contains the compressed version of the entire sentence.
+
+01:31:33.000 --> 01:31:45.000
+It knows what it should produce. First, st the word effectivenly indeed, okay. So the model already knows, indeed, why? Because it is encoded in the State. The State contains information about the fact that the word.
+
+01:31:45.000 --> 01:31:51.000
+Indeed, is contained in here. It was not possible with one-to-one mapping, because we only see the word. Indeed.
+
+01:31:51.000 --> 01:31:58.000
+At the end of the sentence here this state already saw the word indeed, and it is compressed in here.
+
+01:31:58.000 --> 01:32:06.000
+Then what do we do? We do something we call autoregressive generation, that is, we take the word generated by the model.
+
+01:32:06.000 --> 01:32:09.000
+That word becomes the second.
+
+01:32:09.000 --> 01:32:24.000
+Word of the input right, we give the word effetivamente to the lstm. We take the hidden state from the previous from the previous generation. We generate the second word. Okay, then, we take the second word. We pass it back to the Lstm.
+
+01:32:24.000 --> 01:32:28.000
+Generates 3rd word, 4, th word.
+
+01:32:28.000 --> 01:32:33.000
+And then, after a while, okay, we passed the sunny soleggiato word to the Lstm.
+
+01:32:33.000 --> 01:32:35.000
+Lstm. Looks at.
+
+01:32:35.000 --> 01:32:37.000
+The State.
+
+01:32:37.000 --> 01:32:45.000
+The last word it generated. It says, Okay, I don't have anything new to to say, because the sentence already contains everything I need.
+
+01:32:45.000 --> 01:32:51.000
+And so it says, Okay, I'm gonna generate this special word end of sequence, word.
+
+01:32:51.000 --> 01:33:02.000
+Which basically says, Okay, the model no longer has anything to say. So you can stop the generation. And so we see that the model generates this, and so we finish generating.
+
+01:33:02.000 --> 01:33:05.000
+Okay, doesn't make sense.
+
+01:33:05.000 --> 01:33:06.000
+Yes.
+
+01:33:06.000 --> 01:33:14.000
+Yes, the 1st the encoder is different from the 3rd one. Yes, absolutely.
+
+01:33:14.000 --> 01:33:36.000
+Capture the house without the translational workwealth is not just the way. Yes, but of course the outputs. We introduce an organization state that it will encode the police. Yes, so we should backpropagate all the way to the end absolutely. And this is a problem. That's the only way. Of course, that's a problem as always, because we have a very long chain of backpropagation.
+
+01:33:36.000 --> 01:33:46.000
+But from a theoretical perspective. Yes, that's exactly what we should do. We have the loss for each of these tokens right for each of these words.
+
+01:33:46.000 --> 01:33:59.000
+We beg propagate this year, since the loss also depends on the State, we can continue backpropagating all the way to the Lstm. That encodes right.
+
+01:33:59.000 --> 01:34:09.000
+Indeed, these lesions potential very long, especially for long sequences. Okay, we have not solved the great interval in the gradient yet.
+
+01:34:09.000 --> 01:34:12.000
+But yes, that's indeed what they should happen.
+
+01:34:12.000 --> 01:34:14.000
+Okay.
+
+01:34:14.000 --> 01:34:17.000
+We will see that we have other approaches to do this.
+
+01:34:17.000 --> 01:34:22.000
+I've seen that.
+
+01:34:22.000 --> 01:34:29.000
+Absolutely. It has limitations, but it works to some extent, okay, especially for shorter sequences.
+
+01:34:29.000 --> 01:34:43.000
+And this was state of the art until a decade ago. Okay, so it's not like, it's from the 19 hundreds. It's you know, 10 years ago it was state of the art, and then came the transformer, which we will study on on Wednesday.
+
+01:34:43.000 --> 01:34:56.000
+So now we have 2 different approaches, one-to-one mapping encoder-decoder. Let's go back to our task. We had before right the capitalisation task.
+
+01:34:56.000 --> 01:35:01.000
+Let's look at this sentence. Indeed, Ianne Faircol, okay.
+
+01:35:01.000 --> 01:35:08.000
+We have some interesting aspects of the capitalisation problem here. Okay, we have the eye of indeed.
+
+01:35:08.000 --> 01:35:17.000
+That should be capitalized. Why? Because it's at the beginning of a sentence we have the eye of I which should be capitalized because it is the eye of I.
+
+01:35:17.000 --> 01:35:27.000
+Yes, of Sherlock and the H. Of Holmes should be capitalized because they are the name of the character right.
+
+01:35:27.000 --> 01:35:29.000
+Out of these 4.
+
+01:35:29.000 --> 01:35:31.000
+Which ones can we expect.
+
+01:35:31.000 --> 01:35:34.000
+We sold. We want one Netflix.
+
+01:35:34.000 --> 01:35:42.000
+Well, the eye of indeed! Do you think it should be? I mean it's written in the slide. But do you think it will be capitalized correctly by the model.
+
+01:35:42.000 --> 01:35:53.000
+Reasonably because we have this queue here the open quotation that tells this model to what comes naturally utilized. And so we already saw that this works.
+
+01:35:53.000 --> 01:35:58.000
+The eye of I. Do you think this one will work for the model.
+
+01:35:58.000 --> 01:36:12.000
+No, I agree with you. Why? Because when the model sees just the I the overth is I? It cannot know if it's going to be the I of I, or the Ir of Indeed, or Di of anything else right? So that means that the model.
+
+01:36:12.000 --> 01:36:20.000
+If it only sees what happened in the past, it will not be able to say, This is the eye of I, and so it should be characterized.
+
+01:36:20.000 --> 01:36:28.000
+Then the ace of Sherlock. What do you think about the S. Of Sherlock? Should it work.
+
+01:36:28.000 --> 01:36:42.000
+This would be argue the model could figure out that every time there is, if the text contains a lot of time. I am Sherlock. Okay? The model May figure out that after it says I am. What comes next should be our.
+
+01:36:42.000 --> 01:36:45.000
+Name of a character, so it should be capitalized.
+
+01:36:45.000 --> 01:37:02.000
+But it depends, let's say, on the distribution of the data set. I will argue that it should not work. Why? Because IM could be a thousand different things, and so only a limited number of 12,000 different things will be, capitalized names.
+
+01:37:02.000 --> 01:37:04.000
+And then the atrial forms.
+
+01:37:04.000 --> 01:37:09.000
+What do you think?
+
+01:37:09.000 --> 01:37:15.000
+It might work, I agree, because if we train this model on just text from Sherlock Holmes.
+
+01:37:15.000 --> 01:37:31.000
+From the adventures of Sherlock Holmes, for instance, it will see Sherlock Age a lot of times, and that age will typically be capitalized, because that's the full name of the main character. Right? So I expect potential that after Sherlock.
+
+01:37:31.000 --> 01:37:38.000
+Dh: If the model says Dh. It will think that it should be capitalized, which you know is a reasonable assunction.
+
+01:37:38.000 --> 01:37:49.000
+Let's see what happens. One-to-one mapping. This is what happens. Okay, same idea as before. We look at the loss, which goes from a large number to a very small number.
+
+01:37:49.000 --> 01:38:02.000
+Notice that indeed it works. It figures out as expected, the eye of IM not capitalized, because there is no way the model can figure out that the I is of IM.
+
+01:38:02.000 --> 01:38:17.000
+The ace of Sherlock as pretty as you correctly predicted, not capitalized, because the model says, I am 2, 7, whatever could be anything right doesn't have to be Sherlock, so the model does not figure it out.
+
+01:38:17.000 --> 01:38:21.000
+And then notice how, after a while.
+
+01:38:21.000 --> 01:38:35.000
+The motor figures out that the H. Of homes should be capitalized. Why? Because it keeps saying Sherlock uppercase H. Sherlock uppercase H. Sherlock, uppercase H. At some point it says, Ok, look, I'm gonna see an H. I'm going to capitalize it.
+
+01:38:35.000 --> 01:38:41.000
+Awesome. What about and color, decoder? Do you think it will work on all of these cases?
+
+01:38:41.000 --> 01:38:46.000
+Or not.
+
+01:38:46.000 --> 01:38:52.000
+Why not right? Why not? I mean the model sees the entire sentence.
+
+01:38:52.000 --> 01:38:54.000
+Understands that.
+
+01:38:54.000 --> 01:39:06.000
+Indeed I mean, indeed, it's an easy one knows that the I of IM is the eye of IM. So it should be capitalized because it sees the eye that is isolated from the rest. So it says, Okay, that's definitely to be capitalized.
+
+01:39:06.000 --> 01:39:20.000
+Sees the s know that Ds is going to be Ds of Sherlock C. Is dh: the H. Is going to be the H. Of Holmes. And so, indeed, after a while it figures it all out. Okay? Because now the model sees everything.
+
+01:39:20.000 --> 01:39:30.000
+Before it even starts producing something. Okay, that's the power of the encoder. Decoder. Approach. Yes, question.
+
+01:39:30.000 --> 01:39:41.000
+Yes, I mean, this is what we.
+
+01:39:41.000 --> 01:39:51.000
+We were not very much focused on this. But it's you know, overfeeding, overfeeding is when you start learning by heart. The answer of the.
+
+01:39:51.000 --> 01:40:01.000
+Of the of the training data. And so you kind of start out underperforming on new data. Okay, this is as always.
+
+01:40:01.000 --> 01:40:04.000
+A loss function computed on.
+
+01:40:04.000 --> 01:40:17.000
+Test data that is, data never shown to the model. That means that after a while the model learns a little bit too much. Maybe. Remember the DM. Of Mister before right, that if the model sees a lot of time the M. Of Mister.
+
+01:40:17.000 --> 01:40:38.000
+In the train data. It will learn by heart that when it sees an M. It should be capitalized, for instance, and then sees an M. In the test data which is not related to Mister, and said, Okay, that's definitely the M. Of mister, so it will say that so it will be the wrong answer, and so it will. It will have learned a little bit too well the training data and it will not generalize well to test data. That's the definition that we have.
+
+01:40:38.000 --> 01:40:51.000
+Of overfeeding. Okay, so it is to be expected. It is not too warring here. I mean, I could have stopped here, and then, you know, get the same pretty much result most of the time.
+
+01:40:51.000 --> 01:40:54.000
+So encoder decoder.
+
+01:40:54.000 --> 01:40:58.000
+Solves the problem. So that means that probably it's an interesting architecture.
+
+01:40:58.000 --> 01:41:01.000
+We will discuss the fact that.
+
+01:41:01.000 --> 01:41:08.000
+Transformers are at the end of the day encoder decoder architectures which we can then play with.
+
+01:41:08.000 --> 01:41:16.000
+Let me just point out some limitations of these Rnns with Gates, because it told you. Okay, let's use gated Rnns to solve problems.
+
+01:41:16.000 --> 01:41:34.000
+Turns out that we are not really solving all that much, because, okay, the model still has limitations. They are just a little less worse limitations with long sequences. The gradients still sometimes disappear, the gradients still sometimes.
+
+01:41:34.000 --> 01:41:35.000
+Explode.
+
+01:41:35.000 --> 01:41:46.000
+We are making the model more complex. We are adding those gates with a bunch of different operational methods. So it's we are complicating the architecture a little bit.
+
+01:41:46.000 --> 01:42:02.000
+And we are still not capable of parallelizing any of this. That means that we are still inefficient in the training. And so it turns out that we will need some new architecture to solve all of these problems which is going to be what we will talk about on Wednesday that is, transformers.
+
+01:42:02.000 --> 01:42:10.000
+Okay, thank you. And I will see you on Wednesday. Have a good day.
+
