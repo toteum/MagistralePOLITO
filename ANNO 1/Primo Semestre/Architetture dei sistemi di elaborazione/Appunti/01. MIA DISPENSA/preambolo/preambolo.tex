@@ -1,0 +1,52 @@
+% Lingua, codifica e impaginazione
+\usepackage[italian]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[a4paper,margin=2.8cm]{geometry}
+\usepackage{microtype}
+
+% Matematica, codice e figure
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{siunitx}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{float}
+
+% Collegamenti e indice
+\usepackage[hidelinks]{hyperref}
+\usepackage{bookmark}
+
+% Ambienti per definizioni e osservazioni
+\usepackage{amsthm}
+\newtheorem{definizione}{Definizione}[chapter]
+\newtheorem{teorema}{Teorema}[chapter]
+\newtheorem{esempio}{Esempio}[chapter]
+\theoremstyle{remark}
+\newtheorem*{osservazione}{Osservazione}
+
+% Stile del codice
+\lstset{
+	basicstyle=\ttfamily\small,
+	frame=single,
+	breaklines=true,
+	columns=fullflexible,
+	numbers=left,
+	numberstyle=\tiny\color{gray},
+	keywordstyle=\color{blue!70!black},
+	commentstyle=\color{green!40!black},
+	showstringspaces=false
+}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definizione}[chapter]
+\newtheorem{example}{Esempio}[chapter]
+
+\theoremstyle{remark}
+\newtheorem{remark}{Osservazione}[chapter]

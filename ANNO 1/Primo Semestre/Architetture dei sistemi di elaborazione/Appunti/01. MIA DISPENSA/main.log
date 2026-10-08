@@ -1,0 +1,1044 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.6.16)  8 OCT 2026 19:05
+entering extended mode
+ restricted \write18 enabled.
+ file:line:error style messages enabled.
+ %&-line parsing enabled.
+**"c:/Users/toteu/Documents/POLITO/ANNO 1/Primo Semestre/Architetture dei sistemi di elaborazione/Appunti/01. MIA DISPENSA/main.tex"
+(c:/Users/toteu/Documents/POLITO/ANNO 1/Primo Semestre/Architetture dei sistemi di elaborazione/Appunti/01. MIA DISPENSA/main.tex
+LaTeX2e <2025-11-01>
+L3 programming layer <2025-12-24>
+(C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex/latex/base\report.cls
+Document Class: report 2025/01/22 v1.4n Standard LaTeX document class
+(C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex/latex/base\size11.clo
+File: size11.clo 2025/01/22 v1.4n Standard LaTeX file (size option)
+)
+\c@part=\count275
+\c@chapter=\count276
+\c@section=\count277
+\c@subsection=\count278
+\c@subsubsection=\count279
+\c@paragraph=\count280
+\c@subparagraph=\count281
+\c@figure=\count282
+\c@table=\count283
+\abovecaptionskip=\skip49
+\belowcaptionskip=\skip50
+\bibindent=\dimen148
+) (preambolo/preambolo.tex (C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex/generic/babel\babel.sty
+Package: babel 2025/12/11 v25.17 The multilingual framework for LuaLaTeX, pdfLaTeX and XeLaTeX
+\babel@savecnt=\count284
+LaTeX Encoding Info:    Redeclaring text command \ij (encoding OT1) on input line 2068.
+LaTeX Encoding Info:    Redeclaring text command \IJ (encoding OT1) on input line 2070.
+LaTeX Encoding Info:    Redeclaring text command \ij (encoding T1) on input line 2072.
+LaTeX Encoding Info:    Redeclaring text command \IJ (encoding T1) on input line 2073.
+LaTeX Encoding Info:    Ignoring declaration for text command \ij (encoding ?) on input line 2074.
+LaTeX Encoding Info:    Ignoring declaration for text command \IJ (encoding ?) on input line 2076.
+LaTeX Encoding Info:    Ignoring declaration for text command \SS (encoding ?) on input line 2101.
+\U@D=\dimen149
+\l@unhyphenated=\language79
+ (C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex/generic/babel\txtbabel.def)
+\bbl@readstream=\read2
+\bbl@dirlevel=\count285
+Package babel Info: Configuration files are deprecated, as
+(babel)             they can break document portability.
+(babel)             Reported on input line 4196.
+
+*************************************
+* Local config file bblopts.cfg used
+*
+(C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex/latex/arabi\bblopts.cfg
+File: bblopts.cfg 2005/09/08 v0.1 add Arabic and Farsi to "declared" options of babel
+) (C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex/generic/babel/locale/it\babel-italian.tex)
+Package babel Info: Importing font and identification data for italian
+(babel)             from babel-it.ini. Reported on input line 4320.
+ (C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex/latex/babel-italian\italian.ldf
+Language: italian 2026/01/13 v.1.5.02 Italian support for the babel system
+\it@lettering=\count286
+\it@doublequoteactive=\count287
+\it@ISOcompliance=\count288
+)) (C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex/latex/etoolbox\etoolbox.sty
+Package: etoolbox 2025/10/02 v2.5m e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count289
+) (C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex/latex/base\fontenc.sty
+Package: fontenc 2025/07/18 v2.1d Standard LaTeX package
+) (C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex/latex/base\inputenc.sty
+Package: inputenc 2024/02/08 v1.3d Input encoding file
+\inpenc@prehook=\toks17
+\inpenc@posthook=\toks18
+) (C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex/latex/lm\lmodern.sty
+Package: lmodern 2015/05/01 v1.6.1 Latin Modern Fonts
+LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
+(Font)                  OT1/cmr/m/n --> OT1/lmr/m/n on input line 22.
+LaTeX Font Info:    Overwriting symbol font `letters' in version `normal'
+(Font)                  OML/cmm/m/it --> OML/lmm/m/it on input line 23.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `normal'
+(Font)                  OMS/cmsy/m/n --> OMS/lmsy/m/n on input line 24.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
+(Font)                  OMX/cmex/m/n --> OMX/lmex/m/n on input line 25.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
+(Font)                  OT1/cmr/bx/n --> OT1/lmr/bx/n on input line 26.
+LaTeX Font Info:    Overwriting symbol font `letters' in version `bold'
+(Font)                  OML/cmm/b/it --> OML/lmm/b/it on input line 27.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
+(Font)                  OMS/cmsy/b/n --> OMS/lmsy/b/n on input line 28.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
+(Font)                  OMX/cmex/m/n --> OMX/lmex/m/n on input line 29.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
+(Font)                  OT1/cmr/bx/n --> OT1/lmr/bx/n on input line 31.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
+(Font)                  OT1/cmss/m/n --> OT1/lmss/m/n on input line 32.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
+(Font)                  OT1/cmr/m/it --> OT1/lmr/m/it on input line 33.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
+(Font)                  OT1/cmtt/m/n --> OT1/lmtt/m/n on input line 34.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
+(Font)                  OT1/cmr/bx/n --> OT1/lmr/bx/n on input line 35.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
+(Font)                  OT1/cmss/bx/n --> OT1/lmss/bx/n on input line 36.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
+(Font)                  OT1/cmr/bx/it --> OT1/lmr/bx/it on input line 37.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
+(Font)                  OT1/cmtt/m/n --> OT1/lmtt/m/n on input line 38.
+) (C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.sty
+Package: geometry 2026/03/07 v6.0 Page Geometry
+ (C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval.sty
+Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
+\KV@toks@=\toks19
+) (C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex/generic/iftex\ifvtex.sty
+Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
+ (C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex/generic/iftex\iftex.sty
+Package: iftex 2024/12/12 v1.0g TeX engine tests
+))
+\Gm@cnth=\count290
+\Gm@cntv=\count291
+\c@Gm@tempcnt=\count292
+\Gm@bindingoffset=\dimen150
+\Gm@wd@mp=\dimen151
+\Gm@odd@mp=\dimen152
+\Gm@even@mp=\dimen153
+\Gm@layoutwidth=\dimen154
+\Gm@layoutheight=\dimen155
+\Gm@layouthoffset=\dimen156
+\Gm@layoutvoffset=\dimen157
+\Gm@dimlist=\toks20
+ (C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.cfg)) (C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex/latex/microtype\microtype.sty
+Package: microtype 2026/03/01 v3.2d Micro-typographical refinements (RS)
+\MT@toks=\toks21
+\MT@tempbox=\box53
+\MT@count=\count293
+LaTeX Info: Redefining \noprotrusionifhmode on input line 1084.
+LaTeX Info: Redefining \leftprotrusion on input line 1085.
+\MT@prot@toks=\toks22
+LaTeX Info: Redefining \rightprotrusion on input line 1104.
+LaTeX Info: Redefining \textls on input line 1449.
+\MT@outer@kern=\dimen158
+LaTeX Info: Redefining \microtypecontext on input line 2053.
+LaTeX Info: Redefining \textmicrotypecontext on input line 2070.
+\MT@listname@count=\count294
+ (C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex/latex/microtype\microtype-pdftex.def
+File: microtype-pdftex.def 2026/03/01 v3.2d Definitions specific to pdftex (RS)
+LaTeX Info: Redefining \lsstyle on input line 944.
+LaTeX Info: Redefining \lslig on input line 944.
+\MT@outer@space=\skip51
+)
+Package microtype Info: Loading configuration file microtype.cfg.
+ (C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex/latex/microtype\microtype.cfg
+File: microtype.cfg 2026/03/01 v3.2d microtype main configuration file (RS)
+)
+LaTeX Info: Redefining \microtypesetup on input line 3065.
+) (C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsmath.sty
+Package: amsmath 2025/07/09 v2.17z AMS math features
+\@mathmargin=\skip52
+
+For additional information on amsmath, use the `?' option.
+(C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amstext.sty
+Package: amstext 2024/11/17 v2.01 AMS text
+ (C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks23
+\ex@=\dimen159
+)) (C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen160
+) (C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsopn.sty
+Package: amsopn 2022/04/08 v2.04 operator names
+)
+\inf@bad=\count295
+LaTeX Info: Redefining \frac on input line 233.
+\uproot@=\count296
+\leftroot@=\count297
+LaTeX Info: Redefining \overline on input line 398.
+LaTeX Info: Redefining \colon on input line 409.
+\classnum@=\count298
+\DOTSCASE@=\count299
+LaTeX Info: Redefining \ldots on input line 495.
+LaTeX Info: Redefining \dots on input line 498.
+LaTeX Info: Redefining \cdots on input line 619.
+\Mathstrutbox@=\box54
+\strutbox@=\box55
+LaTeX Info: Redefining \big on input line 721.
+LaTeX Info: Redefining \Big on input line 722.
+LaTeX Info: Redefining \bigg on input line 723.
+LaTeX Info: Redefining \Bigg on input line 724.
+\big@size=\dimen161
+LaTeX Font Info:    Redeclaring font encoding OML on input line 742.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 743.
+\macc@depth=\count300
+LaTeX Info: Redefining \bmod on input line 904.
+LaTeX Info: Redefining \pmod on input line 909.
+LaTeX Info: Redefining \smash on input line 939.
+LaTeX Info: Redefining \relbar on input line 969.
+LaTeX Info: Redefining \Relbar on input line 970.
+\c@MaxMatrixCols=\count301
+\dotsspace@=\muskip17
+\c@parentequation=\count302
+\dspbrk@lvl=\count303
+\tag@help=\toks24
+\row@=\count304
+\column@=\count305
+\maxfields@=\count306
+\andhelp@=\toks25
+\eqnshift@=\dimen162
+\alignsep@=\dimen163
+\tagshift@=\dimen164
+\tagwidth@=\dimen165
+\totwidth@=\dimen166
+\lineht@=\dimen167
+\@envbody=\toks26
+\multlinegap=\skip53
+\multlinetaggap=\skip54
+\mathdisplay@stack=\toks27
+LaTeX Info: Redefining \[ on input line 2950.
+LaTeX Info: Redefining \] on input line 2951.
+) (C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+ (C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+)) (C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphicx.sty
+Package: graphicx 2024/12/31 v1.2e Enhanced LaTeX Graphics (DPC,SPQR)
+ (C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphics.sty
+Package: graphics 2024/08/06 v1.4g Standard LaTeX Graphics (DPC,SPQR)
+ (C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex/latex/graphics\trig.sty
+Package: trig 2023/12/02 v1.11 sin cos tan (DPC)
+) (C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 106.
+ (C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\pdftex.def
+File: pdftex.def 2025/09/29 v1.2d Graphics/color driver for pdftex
+))
+\Gin@req@height=\dimen168
+\Gin@req@width=\dimen169
+) (C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex/latex/booktabs\booktabs.sty
+Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
+\heavyrulewidth=\dimen170
+\lightrulewidth=\dimen171
+\cmidrulewidth=\dimen172
+\belowrulesep=\dimen173
+\belowbottomsep=\dimen174
+\aboverulesep=\dimen175
+\abovetopsep=\dimen176
+\cmidrulesep=\dimen177
+\cmidrulekern=\dimen178
+\defaultaddspace=\dimen179
+\@cmidla=\count307
+\@cmidlb=\count308
+\@aboverulesep=\dimen180
+\@belowrulesep=\dimen181
+\@thisruleclass=\count309
+\@lastruleclass=\count310
+\@thisrulewidth=\dimen182
+) (C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex/latex/siunitx\siunitx.sty
+Package: siunitx 2026-09-18 v3.6.2 A comprehensive (SI) units package
+\l__siunitx_number_uncert_offset_int=\count311
+\l__siunitx_number_exponent_fixed_int=\count312
+\l__siunitx_number_min_decimal_int=\count313
+\l__siunitx_number_min_integer_int=\count314
+\l__siunitx_number_round_precision_int=\count315
+\l__siunitx_number_lower_threshold_int=\count316
+\l__siunitx_number_upper_threshold_int=\count317
+\l__siunitx_number_group_first_int=\count318
+\l__siunitx_number_group_size_int=\count319
+\l__siunitx_number_group_min_int=\count320
+\l__siunitx_number_group_minimum_int=\count321
+\l__siunitx_compound_count_int=\count322
+ (C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex/latex/translations\translations.sty
+Package: translations 2022/02/05 v1.12 internationalization of LaTeX2e packages (CN)
+ (C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex/generic/pdftexcmds\pdftexcmds.sty
+Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO)
+ (C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex/generic/infwarerr\infwarerr.sty
+Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
+) (C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex/generic/ltxcmds\ltxcmds.sty
+Package: ltxcmds 2023-12-04 v1.26 LaTeX kernel commands for general use (HO)
+)
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+))
+Include code introduced on 2026-09-12
+\l__siunitx_table_tmp_box=\box56
+\l__siunitx_table_tmp_dim=\dimen183
+\l__siunitx_table_column_width_dim=\dimen184
+\l__siunitx_table_integer_box=\box57
+\l__siunitx_table_decimal_box=\box58
+\l__siunitx_table_uncert_box=\box59
+\l__siunitx_table_before_box=\box60
+\l__siunitx_table_after_box=\box61
+\l__siunitx_table_before_dim=\dimen185
+\l__siunitx_table_carry_dim=\dimen186
+\l__siunitx_unit_tmp_int=\count323
+\l__siunitx_unit_position_int=\count324
+\l__siunitx_unit_total_int=\count325
+\l__siunitx_sexagesimal_tmp_dim=\dimen187
+\l__siunitx_sexagesimal_marker_box=\box62
+\l__siunitx_sexagesimal_unit_box=\box63
+(C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex/latex/tools\array.sty
+Package: array 2025/09/25 v2.6n Tabular extension package (FMi)
+\col@sep=\dimen188
+\ar@mcellbox=\box64
+\extrarowheight=\dimen189
+\NC@list=\toks28
+\extratabsurround=\skip55
+\backup@length=\skip56
+\ar@cellbox=\box65
+)) (C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex/latex/xcolor\xcolor.sty
+Package: xcolor 2024/09/29 v3.02 LaTeX color extensions (UK)
+ (C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 274.
+ (C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex/latex/graphics\mathcolor.ltx)
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1349.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1353.
+Package xcolor Info: Model `RGB' extended on input line 1365.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1367.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1370.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1371.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1372.
+) (C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex/latex/listings\listings.sty
+\lst@mode=\count326
+\lst@gtempboxa=\box66
+\lst@token=\toks29
+\lst@length=\count327
+\lst@currlwidth=\dimen190
+\lst@column=\count328
+\lst@pos=\count329
+\lst@lostspace=\dimen191
+\lst@width=\dimen192
+\lst@newlines=\count330
+\lst@lineno=\count331
+\lst@maxwidth=\dimen193
+ (C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstpatch.sty
+File: lstpatch.sty 2025/11/14 1.11b (Carsten Heinz)
+) (C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstmisc.sty
+File: lstmisc.sty 2025/11/14 1.11b (Carsten Heinz)
+\c@lstnumber=\count332
+\lst@skipnumbers=\count333
+\lst@framebox=\box67
+) (C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex/latex/listings\listings.cfg
+File: listings.cfg 2025/11/14 1.11b listings configuration
+))
+Package: listings 2025/11/14 1.11b (Carsten Heinz)
+
+==> First Aid for listings.sty no longer applied!
+    Expected:
+        2024/09/23 1.10c (Carsten Heinz)
+    but found:
+        2025/11/14 1.11b (Carsten Heinz)
+    so I'm assuming it got fixed.
+(C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex/latex/float\float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count334
+\float@exts=\toks30
+\float@box=\box68
+\@float@everytoks=\toks31
+\@floatcapt=\box69
+) (C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hyperref.sty
+Package: hyperref 2025-07-12 v7.01o Hypertext links for LaTeX
+ (C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex/latex/kvsetkeys\kvsetkeys.sty
+Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
+) (C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex/generic/kvdefinekeys\kvdefinekeys.sty
+Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
+) (C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex/generic/pdfescape\pdfescape.sty
+Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
+) (C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex/latex/hycolor\hycolor.sty
+Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
+) (C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\nameref.sty
+Package: nameref 2025-06-21 v2.57 Cross-referencing by name of section
+ (C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex/latex/refcount\refcount.sty
+Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
+) (C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex/generic/gettitlestring\gettitlestring.sty
+Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
+ (C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex/latex/kvoptions\kvoptions.sty
+Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
+))
+\c@section@level=\count335
+) (C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex/generic/stringenc\stringenc.sty
+Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO)
+)
+\@linkdim=\dimen194
+\Hy@linkcounter=\count336
+\Hy@pagecounter=\count337
+ (C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\pd1enc.def
+File: pd1enc.def 2025-07-12 v7.01o Hyperref: PDFDocEncoding definition (HO)
+Now handling font encoding PD1 ...
+... no UTF-8 mapping file for font encoding PD1
+) (C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex/generic/intcalc\intcalc.sty
+Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
+)
+\Hy@SavedSpaceFactor=\count338
+ (C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\puenc.def
+File: puenc.def 2025-07-12 v7.01o Hyperref: PDF Unicode definition (HO)
+Now handling font encoding PU ...
+... no UTF-8 mapping file for font encoding PU
+)
+Package hyperref Info: Hyper figures OFF on input line 4195.
+Package hyperref Info: Link nesting OFF on input line 4200.
+Package hyperref Info: Hyper index ON on input line 4203.
+Package hyperref Info: Plain pages OFF on input line 4210.
+Package hyperref Info: Backreferencing OFF on input line 4215.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4462.
+\c@Hy@tempcnt=\count339
+ (C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex/latex/url\url.sty
+\Urlmuskip=\muskip18
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+LaTeX Info: Redefining \url on input line 4801.
+\XeTeXLinkMargin=\dimen195
+ (C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex/generic/bitset\bitset.sty
+Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
+ (C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex/generic/bigintcalc\bigintcalc.sty
+Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO)
+))
+\Fld@menulength=\count340
+\Field@Width=\dimen196
+\Fld@charsize=\dimen197
+Package hyperref Info: Hyper figures OFF on input line 6078.
+Package hyperref Info: Link nesting OFF on input line 6083.
+Package hyperref Info: Hyper index ON on input line 6086.
+Package hyperref Info: backreferencing OFF on input line 6093.
+Package hyperref Info: Link coloring OFF on input line 6098.
+Package hyperref Info: Link coloring with OCG OFF on input line 6103.
+Package hyperref Info: PDF/A mode OFF on input line 6108.
+\Hy@abspage=\count341
+\c@Item=\count342
+\c@Hfootnote=\count343
+)
+Package hyperref Info: Driver (autodetected): hpdftex.
+ (C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hpdftex.def
+File: hpdftex.def 2025-07-12 v7.01o Hyperref driver for pdfTeX
+\Fld@listcount=\count344
+\c@bookmark@seq@number=\count345
+ (C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex/latex/rerunfilecheck\rerunfilecheck.sty
+Package: rerunfilecheck 2025-06-21 v1.11 Rerun checks for auxiliary files (HO)
+ (C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex/generic/uniquecounter\uniquecounter.sty
+Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
+)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 284.
+)
+\Hy@SectionHShift=\skip57
+) (C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex/latex/bookmark\bookmark.sty
+Package: bookmark 2026-05-21 v1.32 PDF bookmarks (HO)
+ (C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdftex.def
+File: l3backend-pdftex.def 2025-10-09 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count346
+) (C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex/latex/bookmark\bkm-pdftex.def
+File: bkm-pdftex.def 2026-05-21 v1.32 bookmark driver for pdfTeX (HO)
+\BKM@id=\count347
+)) (C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex/latex/amscls\amsthm.sty
+Package: amsthm 2020/05/29 v2.20.6
+\thm@style=\toks32
+\thm@bodyfont=\toks33
+\thm@headfont=\toks34
+\thm@notefont=\toks35
+\thm@headpunct=\toks36
+\thm@preskip=\skip58
+\thm@postskip=\skip59
+\thm@headsep=\skip60
+\dth@everypar=\toks37
+)
+\c@definizione=\count348
+\c@teorema=\count349
+\c@esempio=\count350
+ (C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex/latex/base\fontenc.sty
+Package: fontenc 2025/07/18 v2.1d Standard LaTeX package
+LaTeX Font Info:    Trying to load font information for T1+lmr on input line 116.
+ (C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmr.fd
+File: t1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+))
+\c@definition=\count351
+\c@example=\count352
+\c@remark=\count353
+) (main.aux (capitoli/introduzione/introduzione.aux) (capitoli/01_computer_design_introduction/01_computer_design_introduction.aux) (capitoli/02_intro_to_instruction-set/02_intro_to_instruction-set.aux) (capitoli/03_RISC-V_Introduction/03_RISC-V_Introduction.aux) (capitoli/04_gem5/04_gem5.aux) (capitoli/05_pipelining_base/05_pipelining_base.aux) (capitoli/06_pipelining_multicycle/06_pipelining_multicycle.aux) (capitoli/07_pipelining_exceptions/07_pipelining_exceptions.aux) (capitoli/08_ILP/08_ILP.aux) (capitoli/09_cache_memories/09_cache_memories.aux) (capitoli/10_branch_prediction/10_branch_prediction.aux) (capitoli/11_dyn_scheduling/11_dyn_scheduling.aux) (capitoli/12_hdwr_speculation/12_hdwr_speculation.aux) (capitoli/13_mult_issue_proc/13_mult_issue_proc.aux) (capitoli/14_Exmpl_i7_A8/14_Exmpl_i7_A8.aux) (capitoli/15_vliw/15_vliw.aux) (capitoli/16_tlp/16_tlp.aux))
+\openout1 = `main.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Info: Redefining \it@ocap on input line 7.
+LaTeX Info: Redefining \it@ccap on input line 7.
+
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: a4paper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(79.6678pt, 438.17227pt, 79.6678pt)
+* v-part:(T,H,B)=(79.6678pt, 685.71124pt, 79.6678pt)
+* \paperwidth=597.50787pt
+* \paperheight=845.04684pt
+* \textwidth=438.17227pt
+* \textheight=685.71124pt
+* \oddsidemargin=7.39781pt
+* \evensidemargin=7.39781pt
+* \topmargin=-29.60219pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=11.0pt
+* \footskip=30.0pt
+* \marginparwidth=50.0pt
+* \marginparsep=10.0pt
+* \columnsep=10.0pt
+* \skip\footins=10.0pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+LaTeX Info: Redefining \microtypecontext on input line 7.
+Package microtype Info: Applying patch `item' on input line 7.
+Package microtype Info: Applying patch `toc' on input line 7.
+Package microtype Info: Applying patch `eqnum' on input line 7.
+Package microtype Info: Applying patch `footnote' on input line 7.
+Package microtype Info: Applying patch `verbatim' on input line 7.
+LaTeX Info: Redefining \microtypesetup on input line 7.
+Package microtype Info: Generating PDF output.
+Package microtype Info: Character protrusion enabled (level 2).
+Package microtype Info: Using default protrusion set `alltext'.
+Package microtype Info: Automatic font expansion enabled (level 2),
+(microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
+Package microtype Info: Using default expansion set `alltext-nott'.
+Package microtype Info: Patching command `\showhyphens'.
+Package microtype Info: No adjustment of tracking.
+Package microtype Info: No adjustment of interword spacing.
+Package microtype Info: No adjustment of character kerning.
+(C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-cmr.cfg
+File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman (RS)
+) (C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count354
+\scratchdimen=\dimen198
+\scratchbox=\box70
+\nofMPsegments=\count355
+\nofMParguments=\count356
+\everyMPshowfont=\toks38
+\MPscratchCnt=\count357
+\MPscratchDim=\dimen199
+\MPnumerator=\count358
+\makeMPintoPDFobject=\count359
+\everyMPtoPDFconversion=\toks39
+) (C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-base.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+ (C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex/latex/grfext\grfext.sty
+Package: grfext 2019/12/03 v1.3 Manage graphics extensions (HO)
+)
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
+Package grfext Info: Graphics extension search list:
+(grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 504.
+ (C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
+))
+Package translations Info: no dictionary file `translations-basic-dictionary-italian.trsl' found. on input line 7.
+\c@lstlisting=\count360
+Package hyperref Info: Link coloring OFF on input line 7.
+ (copertina/copertina.tex)
+LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 9.
+ (C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex/latex/lm\ot1lmr.fd
+File: ot1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 9.
+ (C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex/latex/lm\omllmm.fd
+File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 9.
+ (C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex/latex/lm\omslmsy.fd
+File: omslmsy.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 9.
+ (C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex/latex/lm\omxlmex.fd
+File: omxlmex.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <12> on input line 9.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <8> on input line 9.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <6> on input line 9.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 9.
+ (C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+) (C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-msa.cfg
+File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 9.
+ (C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+) (C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-msb.cfg
+File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
+) [1
+
+{C:/Users/toteu/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc}] (main.toc
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10.95> on input line 4.
+
+pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.43 ...e Complemento a Due}{20}{subsection.3.2.1}
+                                                  % [1
+
+]
+LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 64.
+ (C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmtt.fd
+File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+Package microtype Info: Loading generic protrusion settings for font family
+(microtype)             `lmtt' (encoding: T1).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+ [2])
+\tf@toc=\write3
+\openout3 = `main.toc'.
+
+ [3]
+\openout2 = `capitoli/introduzione/introduzione.aux'.
+
+ (capitoli/introduzione/introduzione.tex
+LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 9.
+ (C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex/latex/lm\ts1lmr.fd
+File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+) [4
+
+
+{C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ts1.enc}{C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc}{C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc}{C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}]) [5]
+\openout2 = `capitoli/01_computer_design_introduction/01_computer_design_introduction.aux'.
+
+ (capitoli/01_computer_design_introduction/01_computer_design_introduction.tex
+Capitolo 1.
+[6
+
+
+
+
+]
+<capitoli/01_computer_design_introduction/images/image.png, id=286, 1395.2125pt x 961.5925pt>
+File: capitoli/01_computer_design_introduction/images/image.png Graphic file (type png)
+<use capitoli/01_computer_design_introduction/images/image.png>
+Package pdftex.def Info: capitoli/01_computer_design_introduction/images/image.png  used on input line 49.
+(pdftex.def)             Requested size: 394.35236pt x 271.78244pt.
+ [7 <./capitoli/01_computer_design_introduction/images/image.png (PNG copy)>]
+<capitoli/01_computer_design_introduction/images/bathtube.png, id=296, 858.70813pt x 507.8975pt>
+File: capitoli/01_computer_design_introduction/images/bathtube.png Graphic file (type png)
+<use capitoli/01_computer_design_introduction/images/bathtube.png>
+Package pdftex.def Info: capitoli/01_computer_design_introduction/images/bathtube.png  used on input line 79.
+(pdftex.def)             Requested size: 262.90604pt x 155.50137pt.
+ [8 <./capitoli/01_computer_design_introduction/images/bathtube.png>] [9] [10{C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathex.enc}] [11]) [12]
+\openout2 = `capitoli/02_intro_to_instruction-set/02_intro_to_instruction-set.aux'.
+
+ (capitoli/02_intro_to_instruction-set/02_intro_to_instruction-set.tex
+Capitolo 2.
+[13
+
+
+
+
+]
+Overfull \hbox (3.62091pt too wide) in paragraph at lines 36--37
+[]\T1/lmr/bx/n/10.95 (-20) Registro-Registro (Load-Store)\T1/lmr/m/n/10.95 (-20) : \T1/lmtt/m/n/10.95 load R1, A\T1/lmr/m/n/10.95 (-20) , \T1/lmtt/m/n/10.95 load R2, B\T1/lmr/m/n/10.95 (-20) , \T1/lmtt/m/n/10.95 add R3, R1, R2\T1/lmr/m/n/10.95 (-20) , \T1/lmtt/m/n/10.95 store
+ []
+
+[14]
+Overfull \hbox (24.27786pt too wide) in paragraph at lines 65--74
+ [][] 
+ []
+
+[15]
+Underfull \hbox (badness 10000) in paragraph at lines 111--111
+[]|\T1/lmr/bx/n/10.95 (+20) Compare and
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 111--111
+[]|\T1/lmr/m/n/10.95 (+20) RISC-V, PA-
+ []
+
+<capitoli/02_intro_to_instruction-set/images/data.png, id=361, 909.89937pt x 465.23813pt>
+File: capitoli/02_intro_to_instruction-set/images/data.png Graphic file (type png)
+<use capitoli/02_intro_to_instruction-set/images/data.png>
+Package pdftex.def Info: capitoli/02_intro_to_instruction-set/images/data.png  used on input line 142.
+(pdftex.def)             Requested size: 350.53915pt x 179.23436pt.
+[16] [17 <./capitoli/02_intro_to_instruction-set/images/data.png>]
+<capitoli/02_intro_to_instruction-set/images/image.png, id=375, 749.80125pt x 494.34688pt>
+File: capitoli/02_intro_to_instruction-set/images/image.png Graphic file (type png)
+<use capitoli/02_intro_to_instruction-set/images/image.png>
+Package pdftex.def Info: capitoli/02_intro_to_instruction-set/images/image.png  used on input line 178.
+(pdftex.def)             Requested size: 394.35236pt x 260.00366pt.
+) [18 <./capitoli/02_intro_to_instruction-set/images/image.png>]
+\openout2 = `capitoli/03_RISC-V_Introduction/03_RISC-V_Introduction.aux'.
+
+ (capitoli/03_RISC-V_Introduction/03_RISC-V_Introduction.tex
+Capitolo 3.
+[19
+
+
+
+
+]
+<capitoli/03_RISC-V_Introduction/images/riscv_length.png, id=391, 858.20625pt x 157.08687pt>
+File: capitoli/03_RISC-V_Introduction/images/riscv_length.png Graphic file (type png)
+<use capitoli/03_RISC-V_Introduction/images/riscv_length.png>
+Package pdftex.def Info: capitoli/03_RISC-V_Introduction/images/riscv_length.png  used on input line 51.
+(pdftex.def)             Requested size: 306.71924pt x 56.14134pt.
+<capitoli/03_RISC-V_Introduction/images/complemento_due.png, id=392, 1563.8425pt x 581.17125pt>
+File: capitoli/03_RISC-V_Introduction/images/complemento_due.png Graphic file (type png)
+<use capitoli/03_RISC-V_Introduction/images/complemento_due.png>
+Package pdftex.def Info: capitoli/03_RISC-V_Introduction/images/complemento_due.png  used on input line 72.
+(pdftex.def)             Requested size: 350.53915pt x 130.27014pt.
+ [20 <./capitoli/03_RISC-V_Introduction/images/riscv_length.png>]
+<capitoli/03_RISC-V_Introduction/images/ieee754_format.png, id=400, 682.04813pt x 490.83376pt>
+File: capitoli/03_RISC-V_Introduction/images/ieee754_format.png Graphic file (type png)
+<use capitoli/03_RISC-V_Introduction/images/ieee754_format.png>
+Package pdftex.def Info: capitoli/03_RISC-V_Introduction/images/ieee754_format.png  used on input line 90.
+(pdftex.def)             Requested size: 219.08614pt x 157.66168pt.
+<capitoli/03_RISC-V_Introduction/images/riscv_extensions_table.png, id=401, 635.87563pt x 650.43pt>
+File: capitoli/03_RISC-V_Introduction/images/riscv_extensions_table.png Graphic file (type png)
+<use capitoli/03_RISC-V_Introduction/images/riscv_extensions_table.png>
+Package pdftex.def Info: capitoli/03_RISC-V_Introduction/images/riscv_extensions_table.png  used on input line 110.
+(pdftex.def)             Requested size: 306.71924pt x 313.75111pt.
+ [21 <./capitoli/03_RISC-V_Introduction/images/complemento_due.png (PNG copy)> <./capitoli/03_RISC-V_Introduction/images/ieee754_format.png>]
+LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10.95> not available
+(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 118.
+<capitoli/03_RISC-V_Introduction/images/riscv_registers_abi.png, id=409, 1087.06125pt x 481.8pt>
+File: capitoli/03_RISC-V_Introduction/images/riscv_registers_abi.png Graphic file (type png)
+<use capitoli/03_RISC-V_Introduction/images/riscv_registers_abi.png>
+Package pdftex.def Info: capitoli/03_RISC-V_Introduction/images/riscv_registers_abi.png  used on input line 132.
+(pdftex.def)             Requested size: 394.35236pt x 174.78586pt.
+ [22 <./capitoli/03_RISC-V_Introduction/images/riscv_extensions_table.png>] [23 <./capitoli/03_RISC-V_Introduction/images/riscv_registers_abi.png>]
+<capitoli/03_RISC-V_Introduction/images/riscv_formats.png, id=427, 820.56563pt x 218.8175pt>
+File: capitoli/03_RISC-V_Introduction/images/riscv_formats.png Graphic file (type png)
+<use capitoli/03_RISC-V_Introduction/images/riscv_formats.png>
+Package pdftex.def Info: capitoli/03_RISC-V_Introduction/images/riscv_formats.png  used on input line 169.
+(pdftex.def)             Requested size: 394.35236pt x 105.15808pt.
+ [24 <./capitoli/03_RISC-V_Introduction/images/riscv_formats.png>]) [25]
+\openout2 = `capitoli/04_gem5/04_gem5.aux'.
+
+ (capitoli/04_gem5/04_gem5.tex
+Capitolo 4.
+<capitoli/04_gem5/images/riscv_pipeline.png, id=447, 772.8875pt x 650.43pt>
+File: capitoli/04_gem5/images/riscv_pipeline.png Graphic file (type png)
+<use capitoli/04_gem5/images/riscv_pipeline.png>
+Package pdftex.def Info: capitoli/04_gem5/images/riscv_pipeline.png  used on input line 29.
+(pdftex.def)             Requested size: 262.90604pt x 221.25244pt.
+[26
+
+
+
+
+]
+<capitoli/04_gem5/images/riscv_vs_8086.png, id=458, 729.22438pt x 393.47pt>
+File: capitoli/04_gem5/images/riscv_vs_8086.png Graphic file (type png)
+<use capitoli/04_gem5/images/riscv_vs_8086.png>
+Package pdftex.def Info: capitoli/04_gem5/images/riscv_vs_8086.png  used on input line 56.
+(pdftex.def)             Requested size: 350.53915pt x 189.13962pt.
+ [27 <./capitoli/04_gem5/images/riscv_pipeline.png>]
+<capitoli/04_gem5/images/ase_studio_interface.png, id=467, 926.46124pt x 418.56375pt>
+File: capitoli/04_gem5/images/ase_studio_interface.png Graphic file (type png)
+<use capitoli/04_gem5/images/ase_studio_interface.png>
+Package pdftex.def Info: capitoli/04_gem5/images/ase_studio_interface.png  used on input line 99.
+(pdftex.def)             Requested size: 394.35236pt x 178.16505pt.
+ [28 <./capitoli/04_gem5/images/riscv_vs_8086.png>]
+LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <12> not available
+(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 116.
+ [29 <./capitoli/04_gem5/images/ase_studio_interface.png>]) [30]
+\openout2 = `capitoli/05_pipelining_base/05_pipelining_base.aux'.
+
+ (capitoli/05_pipelining_base/05_pipelining_base.tex
+Capitolo 5.
+<capitoli/05_pipelining_base/images/overlapping_fdew.png, id=492, 1205.50375pt x 696.6025pt>
+File: capitoli/05_pipelining_base/images/overlapping_fdew.png Graphic file (type png)
+<use capitoli/05_pipelining_base/images/overlapping_fdew.png>
+Package pdftex.def Info: capitoli/05_pipelining_base/images/overlapping_fdew.png  used on input line 12.
+(pdftex.def)             Requested size: 219.08614pt x 126.59477pt.
+[31
+
+
+
+
+ <./capitoli/05_pipelining_base/images/overlapping_fdew.png (PNG copy)>]
+<capitoli/05_pipelining_base/images/datapath_unpipelined.png, id=499, 799.98875pt x 456.70625pt>
+File: capitoli/05_pipelining_base/images/datapath_unpipelined.png Graphic file (type png)
+<use capitoli/05_pipelining_base/images/datapath_unpipelined.png>
+Package pdftex.def Info: capitoli/05_pipelining_base/images/datapath_unpipelined.png  used on input line 56.
+(pdftex.def)             Requested size: 394.35236pt x 225.13298pt.
+ [32]
+<capitoli/05_pipelining_base/images/datapath_pipelined.png, id=509, 768.37062pt x 397.98688pt>
+File: capitoli/05_pipelining_base/images/datapath_pipelined.png Graphic file (type png)
+<use capitoli/05_pipelining_base/images/datapath_pipelined.png>
+Package pdftex.def Info: capitoli/05_pipelining_base/images/datapath_pipelined.png  used on input line 91.
+(pdftex.def)             Requested size: 394.35236pt x 204.26411pt.
+ [33 <./capitoli/05_pipelining_base/images/datapath_unpipelined.png>]
+<capitoli/05_pipelining_base/images/evolution_in_time.png, id=517, 672.01062pt x 410.03188pt>
+File: capitoli/05_pipelining_base/images/evolution_in_time.png Graphic file (type png)
+<use capitoli/05_pipelining_base/images/evolution_in_time.png>
+Package pdftex.def Info: capitoli/05_pipelining_base/images/evolution_in_time.png  used on input line 101.
+(pdftex.def)             Requested size: 394.35236pt x 240.61534pt.
+ [34 <./capitoli/05_pipelining_base/images/datapath_pipelined.png> <./capitoli/05_pipelining_base/images/evolution_in_time.png>]
+<capitoli/05_pipelining_base/images/impossible_forwarding.png, id=527, 1503.6175pt x 937.5025pt>
+File: capitoli/05_pipelining_base/images/impossible_forwarding.png Graphic file (type png)
+<use capitoli/05_pipelining_base/images/impossible_forwarding.png>
+Package pdftex.def Info: capitoli/05_pipelining_base/images/impossible_forwarding.png  used on input line 136.
+(pdftex.def)             Requested size: 262.90604pt x 163.92233pt.
+<capitoli/05_pipelining_base/images/bubble_stall.png, id=528, 787.44188pt x 416.05438pt>
+File: capitoli/05_pipelining_base/images/bubble_stall.png Graphic file (type png)
+<use capitoli/05_pipelining_base/images/bubble_stall.png>
+Package pdftex.def Info: capitoli/05_pipelining_base/images/bubble_stall.png  used on input line 137.
+(pdftex.def)             Requested size: 262.90604pt x 138.90453pt.
+ [35]
+<capitoli/05_pipelining_base/images/lost_cycles.png, id=538, 780.41562pt x 296.60812pt>
+File: capitoli/05_pipelining_base/images/lost_cycles.png Graphic file (type png)
+<use capitoli/05_pipelining_base/images/lost_cycles.png>
+Package pdftex.def Info: capitoli/05_pipelining_base/images/lost_cycles.png  used on input line 148.
+(pdftex.def)             Requested size: 262.90604pt x 99.92213pt.
+ [36 <./capitoli/05_pipelining_base/images/impossible_forwarding.png> <./capitoli/05_pipelining_base/images/bubble_stall.png> <./capitoli/05_pipelining_base/images/lost_cycles.png>]
+<capitoli/05_pipelining_base/images/early_branch.png, id=548, 772.8875pt x 431.11063pt>
+File: capitoli/05_pipelining_base/images/early_branch.png Graphic file (type png)
+<use capitoli/05_pipelining_base/images/early_branch.png>
+Package pdftex.def Info: capitoli/05_pipelining_base/images/early_branch.png  used on input line 167.
+(pdftex.def)             Requested size: 262.90604pt x 146.64803pt.
+) [37 <./capitoli/05_pipelining_base/images/early_branch.png>]
+\openout2 = `capitoli/06_pipelining_multicycle/06_pipelining_multicycle.aux'.
+
+ (capitoli/06_pipelining_multicycle/06_pipelining_multicycle.tex
+Capitolo 6.
+<capitoli/06_pipelining_multicycle/images/fp_pipeline_extension.png, id=557, 568.1225pt x 381.425pt>
+File: capitoli/06_pipelining_multicycle/images/fp_pipeline_extension.png Graphic file (type png)
+<use capitoli/06_pipelining_multicycle/images/fp_pipeline_extension.png>
+Package pdftex.def Info: capitoli/06_pipelining_multicycle/images/fp_pipeline_extension.png  used on input line 26.
+(pdftex.def)             Requested size: 350.53915pt x 235.35196pt.
+[38
+
+
+
+
+] [39 <./capitoli/06_pipelining_multicycle/images/fp_pipeline_extension.png>]
+<capitoli/06_pipelining_multicycle/images/fp_pipelined_units.png, id=572, 766.865pt x 399.4925pt>
+File: capitoli/06_pipelining_multicycle/images/fp_pipelined_units.png Graphic file (type png)
+<use capitoli/06_pipelining_multicycle/images/fp_pipelined_units.png>
+Package pdftex.def Info: capitoli/06_pipelining_multicycle/images/fp_pipelined_units.png  used on input line 79.
+(pdftex.def)             Requested size: 394.35236pt x 205.4392pt.
+ [40 <./capitoli/06_pipelining_multicycle/images/fp_pipelined_units.png>]
+<capitoli/06_pipelining_multicycle/images/register_file_hazards.png, id=580, 1590.94376pt x 702.625pt>
+File: capitoli/06_pipelining_multicycle/images/register_file_hazards.png Graphic file (type png)
+<use capitoli/06_pipelining_multicycle/images/register_file_hazards.png>
+Package pdftex.def Info: capitoli/06_pipelining_multicycle/images/register_file_hazards.png  used on input line 96.
+(pdftex.def)             Requested size: 350.53915pt x 154.80312pt.
+ [41 <./capitoli/06_pipelining_multicycle/images/register_file_hazards.png (PNG copy)>]) [42]
+\openout2 = `capitoli/07_pipelining_exceptions/07_pipelining_exceptions.aux'.
+
+ (capitoli/07_pipelining_exceptions/07_pipelining_exceptions.tex
+Capitolo 7.
+[43
+
+
+
+
+] [44] [45]
+Overfull \hbox (39.55151pt too wide) in paragraph at lines 123--132
+ [][] 
+ []
+
+<capitoli/07_pipelining_exceptions/images/contemporary_exceptions.png, id=626, 655.44875pt x 224.33812pt>
+File: capitoli/07_pipelining_exceptions/images/contemporary_exceptions.png Graphic file (type png)
+<use capitoli/07_pipelining_exceptions/images/contemporary_exceptions.png>
+Package pdftex.def Info: capitoli/07_pipelining_exceptions/images/contemporary_exceptions.png  used on input line 144.
+(pdftex.def)             Requested size: 350.53915pt x 119.97691pt.
+[46]
+<capitoli/07_pipelining_exceptions/images/exception_order.png, id=633, 578.66188pt x 127.97812pt>
+File: capitoli/07_pipelining_exceptions/images/exception_order.png Graphic file (type png)
+<use capitoli/07_pipelining_exceptions/images/exception_order.png>
+Package pdftex.def Info: capitoli/07_pipelining_exceptions/images/exception_order.png  used on input line 157.
+(pdftex.def)             Requested size: 350.53915pt x 77.5256pt.
+ [47 <./capitoli/07_pipelining_exceptions/images/contemporary_exceptions.png> <./capitoli/07_pipelining_exceptions/images/exception_order.png>]) [48]
+\openout2 = `capitoli/08_ILP/08_ILP.aux'.
+
+ (capitoli/08_ILP/08_ILP.tex
+Capitolo 8.
+<capitoli/08_ILP/images/basic_block_generic.png, id=647, 313.67188pt x 129.98563pt>
+File: capitoli/08_ILP/images/basic_block_generic.png Graphic file (type png)
+<use capitoli/08_ILP/images/basic_block_generic.png>
+Package pdftex.def Info: capitoli/08_ILP/images/basic_block_generic.png  used on input line 33.
+(pdftex.def)             Requested size: 175.26622pt x 72.63277pt.
+[49
+
+
+
+
+]
+<capitoli/08_ILP/images/basic_block_example.png, id=653, 665.48625pt x 453.19313pt>
+File: capitoli/08_ILP/images/basic_block_example.png Graphic file (type png)
+<use capitoli/08_ILP/images/basic_block_example.png>
+Package pdftex.def Info: capitoli/08_ILP/images/basic_block_example.png  used on input line 52.
+(pdftex.def)             Requested size: 306.71924pt x 208.87936pt.
+ [50 <./capitoli/08_ILP/images/basic_block_generic.png> <./capitoli/08_ILP/images/basic_block_example.png>]
+<capitoli/08_ILP/images/non_rescheduling_example.png, id=664, 1526.70375pt x 662.475pt>
+File: capitoli/08_ILP/images/non_rescheduling_example.png Graphic file (type png)
+<use capitoli/08_ILP/images/non_rescheduling_example.png>
+Package pdftex.def Info: capitoli/08_ILP/images/non_rescheduling_example.png  used on input line 107.
+(pdftex.def)             Requested size: 219.08614pt x 95.06071pt.
+<capitoli/08_ILP/images/rescheduling_example.png, id=665, 652.4375pt x 303.1325pt>
+File: capitoli/08_ILP/images/rescheduling_example.png Graphic file (type png)
+<use capitoli/08_ILP/images/rescheduling_example.png>
+Package pdftex.def Info: capitoli/08_ILP/images/rescheduling_example.png  used on input line 108.
+(pdftex.def)             Requested size: 219.08614pt x 101.79169pt.
+ [51] [52 <./capitoli/08_ILP/images/non_rescheduling_example.png (PNG copy)> <./capitoli/08_ILP/images/rescheduling_example.png>] [53]
+Overfull \hbox (21.72641pt too wide) in paragraph at lines 196--196
+[]\T1/lmtt/m/n/10.95 fadd.d f6, f0, f8   <-- Legge f6 per future operazioni (Output dep.) e lo scrive[] 
+ []
+
+
+Overfull \hbox (10.22894pt too wide) in paragraph at lines 196--196
+[]\T1/lmtt/m/n/10.95 fmul.d f6, f10, f8  <-- Antidipendenza su f8 (letto sopra) e Output dep. su f6[] 
+ []
+
+) [54]
+\openout2 = `capitoli/09_cache_memories/09_cache_memories.aux'.
+
+ (capitoli/09_cache_memories/09_cache_memories.tex
+Capitolo 9.
+) [55
+
+
+
+
+]
+\openout2 = `capitoli/10_branch_prediction/10_branch_prediction.aux'.
+
+ (capitoli/10_branch_prediction/10_branch_prediction.tex
+Capitolo 10.
+) [56
+
+
+
+
+]
+\openout2 = `capitoli/11_dyn_scheduling/11_dyn_scheduling.aux'.
+
+ (capitoli/11_dyn_scheduling/11_dyn_scheduling.tex
+Capitolo 11.
+) [57
+
+
+
+
+]
+\openout2 = `capitoli/12_hdwr_speculation/12_hdwr_speculation.aux'.
+
+ (capitoli/12_hdwr_speculation/12_hdwr_speculation.tex
+Capitolo 12.
+) [58
+
+
+
+
+]
+\openout2 = `capitoli/13_mult_issue_proc/13_mult_issue_proc.aux'.
+
+ (capitoli/13_mult_issue_proc/13_mult_issue_proc.tex
+Capitolo 13.
+) [59
+
+
+
+
+]
+\openout2 = `capitoli/14_Exmpl_i7_A8/14_Exmpl_i7_A8.aux'.
+
+ (capitoli/14_Exmpl_i7_A8/14_Exmpl_i7_A8.tex
+Capitolo 14.
+) [60
+
+
+
+
+]
+\openout2 = `capitoli/15_vliw/15_vliw.aux'.
+
+ (capitoli/15_vliw/15_vliw.tex
+Capitolo 15.
+) [61
+
+
+
+
+]
+\openout2 = `capitoli/16_tlp/16_tlp.aux'.
+
+ (capitoli/16_tlp/16_tlp.tex
+Capitolo 16.
+) [62
+
+
+
+
+] (main.aux (capitoli/introduzione/introduzione.aux) (capitoli/01_computer_design_introduction/01_computer_design_introduction.aux) (capitoli/02_intro_to_instruction-set/02_intro_to_instruction-set.aux) (capitoli/03_RISC-V_Introduction/03_RISC-V_Introduction.aux) (capitoli/04_gem5/04_gem5.aux) (capitoli/05_pipelining_base/05_pipelining_base.aux) (capitoli/06_pipelining_multicycle/06_pipelining_multicycle.aux) (capitoli/07_pipelining_exceptions/07_pipelining_exceptions.aux) (capitoli/08_ILP/08_ILP.aux) (capitoli/09_cache_memories/09_cache_memories.aux) (capitoli/10_branch_prediction/10_branch_prediction.aux) (capitoli/11_dyn_scheduling/11_dyn_scheduling.aux) (capitoli/12_hdwr_speculation/12_hdwr_speculation.aux) (capitoli/13_mult_issue_proc/13_mult_issue_proc.aux) (capitoli/14_Exmpl_i7_A8/14_Exmpl_i7_A8.aux) (capitoli/15_vliw/15_vliw.aux) (capitoli/16_tlp/16_tlp.aux))
+ ***********
+LaTeX2e <2025-11-01>
+L3 programming layer <2025-12-24>
+ ***********
+ ) 
+Here is how much of TeX's memory you used:
+ 21436 strings out of 467871
+ 429397 string characters out of 5418376
+ 829247 words of memory out of 5000000
+ 49272 multiletter control sequences out of 15000+600000
+ 707233 words of font info for 230 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 80i,11n,83p,1123b,1402s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx10.pfb><C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx8.pfb><C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmex10.pfb><C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi10.pfb><C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi8.pfb><C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr12.pfb><C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr17.pfb><C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr6.pfb><C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr8.pfb><C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri10.pfb><C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtk10.pfb><C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb>
+Output written on main.pdf (63 pages, 6857989 bytes).
+PDF statistics:
+ 1240 PDF objects out of 1440 (max. 8388607)
+ 338 named destinations out of 1000 (max. 500000)
+ 44623 words of extra memory for PDF output out of 51595 (max. 10000000)
+

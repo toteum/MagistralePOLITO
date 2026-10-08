@@ -1,0 +1,133 @@
+\babel@toc {italian}{}\relax 
+\babel@toc {italian}{}\relax 
+\contentsline {chapter}{Introduzione al Corso e Modalità d'Esame}{4}{chapter*.2}%
+\contentsline {section}{Di cosa tratta la materia}{4}{section*.3}%
+\contentsline {section}{Come è strutturato l'esame}{4}{section*.4}%
+\contentsline {chapter}{\numberline {1}Introduction to Computer Design}{6}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Sistemi Embedded e Classi di Parallelismo}{6}{section.1.1}%
+\contentsline {subsection}{\numberline {1.1.1}Classi di Parallelismo}{6}{subsection.1.1.1}%
+\contentsline {section}{\numberline {1.2}Architettura dei Calcolatori e Requisiti}{7}{section.1.2}%
+\contentsline {subsection}{\numberline {1.2.1}La Legge di Moore}{7}{subsection.1.2.1}%
+\contentsline {section}{\numberline {1.3}Affidabilità (Dependability) e Sicurezza}{8}{section.1.3}%
+\contentsline {subsection}{\numberline {1.3.1}Metriche di Affidabilità}{8}{subsection.1.3.1}%
+\contentsline {subsection}{\numberline {1.3.2}La Curva a Vasca (Bathtub Curve) e il Burn-in}{8}{subsection.1.3.2}%
+\contentsline {section}{\numberline {1.4}Valutazione delle Prestazioni (Performance Evaluation)}{9}{section.1.4}%
+\contentsline {subsection}{\numberline {1.4.1}I Benchmark}{9}{subsection.1.4.1}%
+\contentsline {subsection}{\numberline {1.4.2}Metriche di Confronto: Media Aritmetica e Pesata}{10}{subsection.1.4.2}%
+\contentsline {paragraph}{Caso \(W_1\): pesi 0.50 e 0.50.}{10}{section*.5}%
+\contentsline {paragraph}{Caso \(W_3\): pesi 0.999 e 0.001.}{10}{section*.6}%
+\contentsline {section}{\numberline {1.5}Miglioramenti Architetturali}{11}{section.1.5}%
+\contentsline {subsection}{\numberline {1.5.1}La Legge di Amdahl}{11}{subsection.1.5.1}%
+\contentsline {subsection}{\numberline {1.5.2}Equazione delle prestazioni della CPU}{11}{subsection.1.5.2}%
+\contentsline {chapter}{\numberline {2}Instruction Set Principles}{13}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Introduzione all'Instruction Set Architecture (ISA)}{13}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Modelli di Memorizzazione Interna}{13}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Organizzazione della Memoria e Accesso ai Dati}{14}{section.2.3}%
+\contentsline {section}{\numberline {2.4}Modi di Indirizzamento (Addressing Modes)}{14}{section.2.4}%
+\contentsline {section}{\numberline {2.5}Operazioni nell'Instruction Set e Frequenze d'Uso}{15}{section.2.5}%
+\contentsline {section}{\numberline {2.6}Istruzioni di Controllo del Flusso (Control Flow)}{15}{section.2.6}%
+\contentsline {subsection}{\numberline {2.6.1}L'indirizzo di Destinazione (Destination Address)}{15}{subsection.2.6.1}%
+\contentsline {subsection}{\numberline {2.6.2}Salti a Registro (Register Indirect Jumps) e Procedure}{15}{subsection.2.6.2}%
+\contentsline {subsection}{\numberline {2.6.3}Valutazione delle Condizioni}{16}{subsection.2.6.3}%
+\contentsline {subsection}{\numberline {2.6.4}Gestione delle Procedure (Procedure Calls)}{16}{subsection.2.6.4}%
+\contentsline {section}{\numberline {2.7}Tipi e Dimensioni degli Operandi}{16}{section.2.7}%
+\contentsline {section}{\numberline {2.8}Codifica dell'Instruction Set (Instruction Set Encoding)}{17}{section.2.8}%
+\contentsline {subsection}{\numberline {2.8.1}Codifica Variabile (Es. Intel 80x86, VAX)}{17}{subsection.2.8.1}%
+\contentsline {subsection}{\numberline {2.8.2}Codifica Fissa (Es. RISC-V, ARM, MIPS)}{17}{subsection.2.8.2}%
+\contentsline {subsection}{\numberline {2.8.3}Codifica Ibrida (Es. RISC-V Compressed, ARM Thumb-2)}{18}{subsection.2.8.3}%
+\contentsline {chapter}{\numberline {3}Introduzione a RISC-V}{19}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Storia e Caratteristiche Generali}{19}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}L'Architettura Load-Store}{19}{subsection.3.1.1}%
+\contentsline {subsection}{\numberline {3.1.2}Tipi di Dati e Formato delle Istruzioni}{20}{subsection.3.1.2}%
+\contentsline {section}{\numberline {3.2}Rappresentazione dei Dati}{20}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Interi e Complemento a Due}{20}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}Floating-Point (IEEE 754)}{21}{subsection.3.2.2}%
+\contentsline {section}{\numberline {3.3}Organizzazione dell'Instruction Set e Registri}{21}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}I Registri}{22}{subsection.3.3.1}%
+\contentsline {section}{\numberline {3.4}Modi di Indirizzamento}{23}{section.3.4}%
+\contentsline {section}{\numberline {3.5}Formato delle Istruzioni}{23}{section.3.5}%
+\contentsline {section}{\numberline {3.6}Analisi delle Istruzioni Base}{24}{section.3.6}%
+\contentsline {subsection}{\numberline {3.6.1}Load e Store}{24}{subsection.3.6.1}%
+\contentsline {subsubsection}{Caricamento di indirizzi e pseudo-istruzione LA}{24}{section*.7}%
+\contentsline {subsection}{\numberline {3.6.2}Operazioni Aritmetico-Logiche (ALU)}{25}{subsection.3.6.2}%
+\contentsline {subsection}{\numberline {3.6.3}Salti e Diramazioni (Branches e Jumps)}{25}{subsection.3.6.3}%
+\contentsline {subsubsection}{Salti Incondizionati}{25}{section*.8}%
+\contentsline {subsubsection}{Salti Condizionati (Branches)}{25}{section*.9}%
+\contentsline {chapter}{\numberline {4}Introduzione a gem5 e RISC-V}{26}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Il Simulatore gem5}{26}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}La Pipeline a 5 Stadi}{26}{subsection.4.1.1}%
+\contentsline {section}{\numberline {4.2}Struttura dei Programmi in Assembly}{27}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Confronto Prestazionale: RISC vs CISC}{27}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Ambiente di Sviluppo e Simulazione}{28}{section.4.4}%
+\contentsline {section}{\numberline {4.5}Stesura di un Programma: Pratiche Fondamentali}{29}{section.4.5}%
+\contentsline {subsection}{\numberline {4.5.1}Il problema del Cache Miss iniziale}{29}{subsection.4.5.1}%
+\contentsline {subsection}{\numberline {4.5.2}L'etichetta \texttt {\_start} e la struttura del codice}{29}{subsection.4.5.2}%
+\contentsline {chapter}{\numberline {5}Pipelining}{31}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Introduzione e Concetti Base}{31}{section.5.1}%
+\contentsline {subsection}{\numberline {5.1.1}Definizioni Fondamentali}{31}{subsection.5.1.1}%
+\contentsline {subsection}{\numberline {5.1.2}Pipeline Ideale}{32}{subsection.5.1.2}%
+\contentsline {section}{\numberline {5.2}Il Datapath Unpipelined (5 Stadi)}{32}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Transizione all'Architettura Pipelined}{33}{section.5.3}%
+\contentsline {section}{\numberline {5.4}Pipeline Hazards (Conflitti)}{34}{section.5.4}%
+\contentsline {subsection}{\numberline {5.4.1}Data Hazards (Conflitti sui Dati)}{35}{subsection.5.4.1}%
+\contentsline {subsubsection}{Soluzioni ai Data Hazards}{35}{section*.10}%
+\contentsline {subsection}{\numberline {5.4.2}Control Hazards (Conflitti di Controllo)}{36}{subsection.5.4.2}%
+\contentsline {subsubsection}{Soluzioni ai Control Hazards}{37}{section*.11}%
+\contentsline {chapter}{\numberline {6}Operazioni Multiciclo (Multicycle Operations)}{38}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Introduzione alle Operazioni Floating-Point}{38}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Estensione della Pipeline per il Floating-Point}{38}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Latenza e Intervallo di Inizializzazione}{39}{section.6.3}%
+\contentsline {subsection}{\numberline {6.3.1}Unità Pipelined e Non Pipelined}{40}{subsection.6.3.1}%
+\contentsline {section}{\numberline {6.4}Conflitti (Hazards) nelle Pipeline Multiciclo}{40}{section.6.4}%
+\contentsline {subsection}{\numberline {6.4.1}Conflitti Strutturali (Structural Hazards)}{41}{subsection.6.4.1}%
+\contentsline {subsection}{\numberline {6.4.2}Conflitti Dati e Forwarding}{41}{subsection.6.4.2}%
+\contentsline {section}{\numberline {6.5}Moduli e Fasi Operative del Floating-Point}{42}{section.6.5}%
+\contentsline {section}{\numberline {6.6}Prestazioni (Performance)}{42}{section.6.6}%
+\contentsline {chapter}{\numberline {7}Exceptions and Interrupts in Pipelined Processors}{43}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Distinzione tra Eccezione e Interruzione}{43}{section.7.1}%
+\contentsline {section}{\numberline {7.2}Classificazione delle Eccezioni}{43}{section.7.2}%
+\contentsline {subsection}{\numberline {7.2.1}Sincrone vs. Asincrone}{44}{subsection.7.2.1}%
+\contentsline {subsection}{\numberline {7.2.2}User Requested vs. Coerced (Richieste vs. Forzate)}{44}{subsection.7.2.2}%
+\contentsline {subsection}{\numberline {7.2.3}Maskable vs. Non-maskable (Mascherabili vs. Non mascherabili)}{44}{subsection.7.2.3}%
+\contentsline {subsection}{\numberline {7.2.4}Within vs. Between Instructions (All'interno vs. Tra le istruzioni)}{44}{subsection.7.2.4}%
+\contentsline {subsection}{\numberline {7.2.5}Resume vs. Terminate (Ripresa vs. Terminazione)}{44}{subsection.7.2.5}%
+\contentsline {section}{\numberline {7.3}Meccanismo di Gestione nella Pipeline}{44}{section.7.3}%
+\contentsline {subsection}{\numberline {7.3.1}Protocolli di Interruzione a confronto}{45}{subsection.7.3.1}%
+\contentsline {subsubsection}{Architettura 80x86 (Hardware Vectoring)}{45}{section*.12}%
+\contentsline {subsubsection}{Architettura ARM}{45}{section*.13}%
+\contentsline {subsubsection}{Architettura RISC-V}{45}{section*.14}%
+\contentsline {section}{\numberline {7.4}Eccezioni Precise e Imprecise}{45}{section.7.4}%
+\contentsline {section}{\numberline {7.5}Complicazioni nella Pipeline e Ordine delle Eccezioni}{46}{section.7.5}%
+\contentsline {subsection}{\numberline {7.5.1}Eccezioni Contemporanee}{46}{subsection.7.5.1}%
+\contentsline {subsection}{\numberline {7.5.2}Eccezioni in ordine inverso}{47}{subsection.7.5.2}%
+\contentsline {subsection}{\numberline {7.5.3}Altre Complicazioni del Set di Istruzioni}{47}{subsection.7.5.3}%
+\contentsline {chapter}{\numberline {8}Instruction Level Parallelism (ILP)}{49}{chapter.8}%
+\contentsline {section}{\numberline {8.1}Introduzione}{49}{section.8.1}%
+\contentsline {section}{\numberline {8.2}Approcci allo sfruttamento dell'ILP}{49}{section.8.2}%
+\contentsline {section}{\numberline {8.3}Parallelismo nei Basic Block}{49}{section.8.3}%
+\contentsline {section}{\numberline {8.4}Tecniche di Ottimizzazione Statica (Software)}{50}{section.8.4}%
+\contentsline {subsection}{\numberline {8.4.1}Rescheduling (Rischedulazione)}{50}{subsection.8.4.1}%
+\contentsline {subsection}{\numberline {8.4.2}Loop-Level Parallelism e Loop Unrolling}{52}{subsection.8.4.2}%
+\contentsline {section}{\numberline {8.5}Dipendenze e Hazard}{53}{section.8.5}%
+\contentsline {subsection}{\numberline {8.5.1}Dipendenze di Dato (Data Dependencies - RAW)}{53}{subsection.8.5.1}%
+\contentsline {subsection}{\numberline {8.5.2}Dipendenze di Nome (Name Dependencies)}{53}{subsection.8.5.2}%
+\contentsline {subsubsection}{Antidipendenza (WAR - Write After Read)}{53}{section*.15}%
+\contentsline {subsubsection}{Output Dependence (WAW - Write After Write)}{53}{section*.16}%
+\contentsline {subsection}{\numberline {8.5.3}Register Renaming (Rinominazione dei registri)}{54}{subsection.8.5.3}%
+\contentsline {subsection}{\numberline {8.5.4}Dipendenze di Controllo}{54}{subsection.8.5.4}%
+\contentsline {chapter}{\numberline {9}Gerarchia di memoria}{55}{chapter.9}%
+\contentsline {section}{\numberline {9.1}Memoria cache}{55}{section.9.1}%
+\contentsline {section}{\numberline {9.2}Memoria virtuale}{55}{section.9.2}%
+\contentsline {section}{\numberline {9.3}Memoria principale e secondaria}{55}{section.9.3}%
+\contentsline {chapter}{\numberline {10}Branch prediction}{56}{chapter.10}%
+\contentsline {chapter}{\numberline {11}Dynamic scheduling}{57}{chapter.11}%
+\contentsline {chapter}{\numberline {12}Hardware speculation}{58}{chapter.12}%
+\contentsline {chapter}{\numberline {13}Sistemi di ingresso e uscita}{59}{chapter.13}%
+\contentsline {section}{\numberline {13.1}Periferiche}{59}{section.13.1}%
+\contentsline {section}{\numberline {13.2}Interrupt}{59}{section.13.2}%
+\contentsline {section}{\numberline {13.3}Accesso diretto alla memoria}{59}{section.13.3}%
+\contentsline {chapter}{\numberline {14}Esercizi}{60}{chapter.14}%
+\contentsline {section}{\numberline {14.1}Esercizi svolti}{60}{section.14.1}%
+\contentsline {section}{\numberline {14.2}Esercizi da svolgere}{60}{section.14.2}%
+\contentsline {chapter}{\numberline {15}VLIW}{61}{chapter.15}%
+\contentsline {chapter}{\numberline {16}Riepilogo}{62}{chapter.16}%

@@ -1,0 +1,30 @@
+\chapter*{Introduzione al Corso e Modalità d'Esame}
+\addcontentsline{toc}{chapter}{Introduzione al Corso e Modalità d'Esame}
+\section*{Di cosa tratta la materia}
+\addcontentsline{toc}{section}{Di cosa tratta la materia}
+Il corso di Architetture dei Sistemi di Elaborazione è un insegnamento obbligatorio del primo anno per la Laurea Magistrale in Ingegneria Informatica. L'obiettivo principale della materia è fornire agli studenti una conoscenza di base sull'architettura dei moderni sistemi basati su microprocessore, con particolare attenzione al core del processore. Il corso analizza le diverse componenti di un sistema di elaborazione, partendo dall'architettura interna dei microprocessori fino ad arrivare alla gestione delle periferiche.
+
+Il programma è strutturato in due macro-blocchi principali:
+\begin{itemize}
+    \item \textbf{Architettura dei processori moderni:} questa parte include un'introduzione al design dei computer e analizza l'architettura, il comportamento e le prestazioni dei processori RISC, CISC e superscalari. Vengono inoltre approfonditi temi fondamentali come le memorie cache, la memoria virtuale, le pipeline, gli hazard e le tecniche di ottimizzazione statica e dinamica.
+    
+    \item \textbf{Sistemi basati su ARM:} questa sezione si concentra sull'architettura di base dei processori ARM, sul linguaggio Assembly e sui sistemi di emulazione. Gli studenti imparano il flusso di sviluppo per sistemi embedded utilizzando schede di sviluppo come la board Landtiger basata su System-on-Chip ARM Cortex-M3 (tramite l'ambiente Keil $\mu$Vision). Le lezioni coprono tecniche avanzate di programmazione in C e Assembly (cross-compilation), oltre alla gestione di interrupt, timer, GPIO e vari dispositivi di I/O (LED, pulsanti, display, speaker, ecc.).
+\end{itemize}
+
+\section*{Come è strutturato l'esame}
+\addcontentsline{toc}{section}{Come è strutturato l'esame}
+L'esame finale si svolge in presenza presso i laboratori LABINF ed è costituito da una prova pratica/scritta e da una prova orale opzionale. La prova al computer è articolata in due parti, le quali devono essere superate singolarmente nel medesimo appello (il non superamento di una sola parte obbliga a ripetere l'intero esame).
+
+\begin{itemize}
+    \item \textbf{Parte 1 (Esercizi e Teoria sull'Architettura):} Questa fase consiste in domande aperte ed esercizi pratici da svolgere a mano su foglio, riguardanti gli argomenti delle lezioni, come la valutazione dei costi hardware, le tempistiche e l'ottimizzazione del codice Assembly per architetture moderne. Ha una durata di 1 ora e non è consentito consultare appunti o libri di testo. È necessario ottenere un voto sufficiente ($\geq 18/30$) in questa sezione per poter accedere alla valutazione della seconda parte.
+    
+    \item \textbf{Parte 2 (Programmazione su scheda ARM):} Questa prova richiede di scrivere al PC un programma funzionante in linguaggio C e Assembly ARM per la board di riferimento. Il codice deve includere la gestione di temporizzazioni, interrupt e funzionalità di output. Durante questa parte è consentito consultare libri, appunti e materiale didattico, ma il progetto verrà valutato solo se la Parte 1 è sufficiente e se il codice compila senza errori.
+    
+    \item \textbf{Valutazione e Punteggio:} Il voto della prova scritta è calcolato come media matematica delle due parti, a patto che entrambe raggiungano la sufficienza ($\geq 18/30$). Il punteggio massimo è di 30/30; se il punteggio totale raggiunge o supera il 32.5, viene assegnata la lode.
+    
+    \item \textbf{Punti Extra (Progetto Finale):} Gli studenti che consegnano in orario le soluzioni di almeno 9 laboratori su 10 si qualificano per sviluppare un progetto finale (assegnato nelle ultime due settimane di laboratorio). Questo progetto può portare fino a 4 punti extra, che vengono sommati al voto dell'esame (se positivo e $\geq 18$) e hanno una validità di un anno accademico (4 sessioni).
+    
+    \item \textbf{Prova Orale:} Il docente mantiene sempre il diritto di procedere con un esame orale, indipendentemente dalla decisione dello studente, nel caso in cui ritenga necessario valutare la preparazione in modo più approfondito.
+    
+    \item \textbf{Esonero Totale (Progetto Speciale):} È prevista l'opzione di candidarsi (entro il 17 Gennaio 2027) per un progetto speciale che sostituisce interamente l'esame. Per essere idonei, bisogna frequentare il corso per la prima volta, aver consegnato tutti i laboratori (incluso il progetto finale) nei tempi prestabiliti e superare un colloquio con i professori.
+\end{itemize}
