@@ -1,0 +1,1785 @@
+
+01:31:13.000 --> 01:31:21.000
+So that's all for the first introduction to the challenges that we need to address when we want to analyze big amount of data.
+
+01:31:21.000 --> 01:31:23.000
+But the main…
+
+01:31:23.000 --> 01:31:26.000
+Important aspect is that
+
+01:31:26.000 --> 01:31:32.000
+We must split data, store them in different servers, and we must be able to analyze in parallel these.
+
+01:31:32.000 --> 01:31:34.000
+portion of the data independently.
+
+01:31:34.000 --> 01:31:39.000
+And then intermediate results are aggregated by someone.
+
+01:31:39.000 --> 01:31:41.000
+Or by a server in this case.
+
+01:31:41.000 --> 01:31:44.000
+To compute the final result, okay?
+
+01:31:44.000 --> 01:31:48.000
+Now, uh, before starting with the ADUP system.
+
+01:31:48.000 --> 01:31:51.000
+Let me discuss…
+
+01:31:51.000 --> 01:31:57.000
+The main big data architecture that is used to analyze big amounts, to manage and analyze big amount of data.
+
+01:31:57.000 --> 01:31:59.000
+That is the Lambda architecture.
+
+01:31:59.000 --> 01:32:02.000
+In general, a big data architecture.
+
+01:32:02.000 --> 01:32:07.000
+An information system that is used to analyze big amounts of data, to manage big amount of data.
+
+01:32:07.000 --> 01:32:10.000
+Must be able to manage.
+
+01:32:10.000 --> 01:32:15.000
+Best processing.
+
+01:32:15.000 --> 01:32:19.000
+That means analyzing big amounts of data offline.
+
+01:32:19.000 --> 01:32:22.000
+But usually you also
+
+01:32:22.000 --> 01:32:27.000
+Need sometimes to analyze a stream of data, so we need also to be able to
+
+01:32:27.000 --> 01:32:40.000
+Perform real-time analytics is not really 100% real-time, usually is, uh,
+
+01:32:40.000 --> 01:32:43.000
+Not a…
+
+01:32:43.000 --> 01:32:45.000
+Now, I don't have the…
+
+01:32:45.000 --> 01:32:50.000
+It's not real-time, usually, but it's near real time.
+
+01:32:50.000 --> 01:32:56.000
+Okay, that means that you react quickly, but not in a few milliseconds, but maybe in a few seconds.
+
+01:32:56.000 --> 01:32:58.000
+Okay.
+
+01:32:58.000 --> 01:33:07.000
+Then sometimes you need to have an interactive approach to explore your data, so you execute a query on your big amount of data, you obtain a result.
+
+01:33:07.000 --> 01:33:11.000
+And then you write another query based on the output of the first one.
+
+01:33:11.000 --> 01:33:16.000
+to obtain another result related to the analysis that you are interested in.
+
+01:33:16.000 --> 01:33:18.000
+And finally,
+
+01:33:18.000 --> 01:33:26.000
+Frequently you want also to apply machine learning algorithms. Usually, you don't train machine learning algorithms on big amount of data.
+
+01:33:26.000 --> 01:33:28.000
+Using a big data framework.
+
+01:33:28.000 --> 01:33:34.000
+You use other approaches, but frequently you apply machine learning algorithms to perform a prediction.
+
+01:33:34.000 --> 01:33:39.000
+For instance, very, very quickly on large amount of debt.
+
+01:33:39.000 --> 01:33:42.000
+So the main aspects are
+
+01:33:42.000 --> 01:33:44.000
+The fact that we are managing.
+
+01:33:44.000 --> 01:33:50.000
+Big amount of data, so we need distributed file systems specifically designed for
+
+01:33:50.000 --> 01:33:55.000
+this type of data. So the traditional databases are not adequate.
+
+01:33:55.000 --> 01:34:00.000
+When I should consider a built-based architecture.
+
+01:34:00.000 --> 01:34:04.000
+If a traditional database is not a good fit for your
+
+01:34:04.000 --> 01:34:07.000
+Data based on the volume.
+
+01:34:07.000 --> 01:34:12.000
+If you need to manage something that is not a traditional relational database.
+
+01:34:12.000 --> 01:34:15.000
+relational table.
+
+01:34:15.000 --> 01:34:20.000
+And if you need to analyze a stream of data.
+
+01:34:20.000 --> 01:34:24.000
+If you don't need to manage one of these use cases.
+
+01:34:24.000 --> 01:34:28.000
+It means that probably a big data framework.
+
+01:34:28.000 --> 01:34:30.000
+It's something that you don't need.
+
+01:34:30.000 --> 01:34:37.000
+Okay, please pay attention, you are engineers or you will be engineers, it depends if in the bachelor you already obtain a
+
+01:34:37.000 --> 01:34:39.000
+a bachelor in engineering or not, but
+
+01:34:39.000 --> 01:34:43.000
+You must use the correct solution for the task that you have to solve.
+
+01:34:43.000 --> 01:34:50.000
+You must not do something like everybody is using a big data framework, so I must use big data framework even if I have only
+
+01:34:50.000 --> 01:34:52.000
+10 megabytes of data.
+
+01:34:52.000 --> 01:34:56.000
+Okay, and also you must not say.
+
+01:34:56.000 --> 01:35:01.000
+Okay, I will use large language models because nowadays everybody is using large language model.
+
+01:35:01.000 --> 01:35:06.000
+If you have to simply select the records where you have the word people.
+
+01:35:06.000 --> 01:35:08.000
+Okay, so use the correct
+
+01:35:08.000 --> 01:35:11.000
+framework and the correct system.
+
+01:35:11.000 --> 01:35:15.000
+For the task that you have to solve.
+
+01:35:15.000 --> 01:35:18.000
+When I will submit my first
+
+01:35:18.000 --> 01:35:21.000
+Big data, MapReduce-based application.
+
+01:35:21.000 --> 01:35:24.000
+I will show you that if you run that application,
+
+01:35:24.000 --> 01:35:26.000
+On a small file,
+
+01:35:26.000 --> 01:35:31.000
+Probably for better, the execution time of this MapReduce application is
+
+01:35:31.000 --> 01:35:34.000
+At least one order of money to greater than,
+
+01:35:34.000 --> 01:35:39.000
+Decentralized application written in Python using one single server.
+
+01:35:39.000 --> 01:35:47.000
+Because when you have to execute in a distributed environment your application, at the beginning, you have to select the servers that are used to run your application.
+
+01:35:47.000 --> 01:35:53.000
+Then the system sends to each node that is involved in this execution the code.
+
+01:35:53.000 --> 01:35:57.000
+And then E7 runs on a small amount of data.
+
+01:35:57.000 --> 01:36:00.000
+the application, and then sends the result back.
+
+01:36:00.000 --> 01:36:02.000
+And the overhead is greater than.
+
+01:36:02.000 --> 01:36:05.000
+The advantage given by the parallelization in that case.
+
+01:36:05.000 --> 01:36:10.000
+Hey, so please pay attention. You are engineers. You must select the correct
+
+01:36:10.000 --> 01:36:13.000
+solution for your tasks.
+
+01:36:13.000 --> 01:36:21.000
+Then probably in a company, your boss will tell you, you must use this specific technology because nowadays everybody is using this technology.
+
+01:36:21.000 --> 01:36:23.000
+But please pay attention that sometimes
+
+01:36:23.000 --> 01:36:26.000
+Your boss is not providing you the…
+
+01:36:26.000 --> 01:36:29.000
+The correct information. You must use the framework that is.
+
+01:36:29.000 --> 01:36:31.000
+usual for your task.
+
+01:36:31.000 --> 01:36:36.000
+And here, if you don't have one of these issues, if you don't need to manage one of these
+
+01:36:36.000 --> 01:36:38.000
+Uh, use cases.
+
+01:36:38.000 --> 01:36:41.000
+You don't need a big data plan.
+
+01:36:41.000 --> 01:36:45.000
+Otherwise, you are wasting time and resources.
+
+01:36:45.000 --> 01:36:51.000
+The most frequently used architecture in the big data domain is called the Lambda architecture.
+
+01:36:51.000 --> 01:36:53.000
+It was proposed, the
+
+01:36:53.000 --> 01:36:57.000
+15 years ago,
+
+01:36:57.000 --> 01:36:59.000
+It's based on a very simple.
+
+01:36:59.000 --> 01:37:03.000
+Ideas, but also very effective and efficient.
+
+01:37:03.000 --> 01:37:08.000
+Here I reported some definitions. The first one is the definition provided by
+
+01:37:08.000 --> 01:37:11.000
+Not on Mars, the…
+
+01:37:11.000 --> 01:37:14.000
+Researcher will propose this architecture.
+
+01:37:14.000 --> 01:37:17.000
+The Islammed architecture.
+
+01:37:17.000 --> 01:37:20.000
+Um, 4K, 15 years ago.
+
+01:37:20.000 --> 01:37:23.000
+We already had systems like Hadoop.
+
+01:37:23.000 --> 01:37:25.000
+And also NoSQL databases.
+
+01:37:25.000 --> 01:37:27.000
+Okay, but…
+
+01:37:27.000 --> 01:37:29.000
+These specific systems.
+
+01:37:29.000 --> 01:37:35.000
+Hadoop, NoSQL databases.
+
+01:37:35.000 --> 01:37:44.000
+If you use only one of these systems, one of these systems, you are not able to manage all the challenges that we mentioned before.
+
+01:37:44.000 --> 01:37:49.000
+Okay. For instance, with Hadoop,
+
+01:37:49.000 --> 01:37:55.000
+You can analyze in parallel big amounts of data, but the latency is very high.
+
+01:37:55.000 --> 01:38:02.000
+So, if you want to analyze a stream of data, and every 10 seconds you want to print on the standard… sorry, print on a dashboard.
+
+01:38:02.000 --> 01:38:07.000
+Uh, how many times Polito is mentioned in the input stream of tweets.
+
+01:38:07.000 --> 01:38:09.000
+You cannot use adult.
+
+01:38:09.000 --> 01:38:15.000
+Because Adopa is able to analyze terabytes and petabytes of data offline.
+
+01:38:15.000 --> 01:38:17.000
+But usually you need, uh…
+
+01:38:17.000 --> 01:38:23.000
+Hours or days, it depends on the amount of data that you're analyzing.
+
+01:38:23.000 --> 01:38:27.000
+So for this reason, for instance, Hadoop is not able to manage the
+
+01:38:27.000 --> 01:38:31.000
+input stream to analyze input streams efficiently.
+
+01:38:31.000 --> 01:38:35.000
+So we don't have the real-time.
+
+01:38:35.000 --> 01:38:38.000
+As the velocity B associated with big data.
+
+01:38:38.000 --> 01:38:41.000
+If you use a NoSQL database,
+
+01:38:41.000 --> 01:38:44.000
+You can query.
+
+01:38:44.000 --> 01:38:46.000
+Also, big amount of data.
+
+01:38:46.000 --> 01:38:51.000
+But you have a language that is not equivalent to the SQL language, and so.
+
+01:38:51.000 --> 01:38:55.000
+Usually you cannot easily write your programs.
+
+01:38:55.000 --> 01:38:58.000
+Or at least you don't have all the functionalities provided by the SQL language.
+
+01:38:58.000 --> 01:39:01.000
+And moreover, a database
+
+01:39:01.000 --> 01:39:03.000
+is by definition mutable.
+
+01:39:03.000 --> 01:39:08.000
+You can update a record or you can update a document in a NoSQL
+
+01:39:08.000 --> 01:39:11.000
+DB, and the…
+
+01:39:11.000 --> 01:39:16.000
+If you can change something, if something is mutable, you can easily introduce
+
+01:39:16.000 --> 01:39:18.000
+Errors in your results.
+
+01:39:18.000 --> 01:39:22.000
+Okay.
+
+01:39:22.000 --> 01:39:30.000
+So the basic idea is that each of these tools is useful for solving one of the use case scenarios that I mentioned before, one of the.
+
+01:39:30.000 --> 01:39:36.000
+Use cases, we need an architecture that combines all these different.
+
+01:39:36.000 --> 01:39:39.000
+Frameworks and systems together.
+
+01:39:39.000 --> 01:39:44.000
+To address all the challenges that I mentioned before and all the use cases that I mentioned before.
+
+01:39:44.000 --> 01:39:46.000
+Okay.
+
+01:39:46.000 --> 01:39:55.000
+The Lambda architecture is used to perform this operation. It is an architecture that allows you to analyze a stream of data in real time or in near real time.
+
+01:39:55.000 --> 01:40:00.000
+But at the same time, it allows you also to analyze big amount of data using a better approach.
+
+01:40:00.000 --> 01:40:08.000
+Or you can combine the output of the batch analysis with the analysis of the input stream together to compute a final result.
+
+01:40:08.000 --> 01:40:11.000
+Considering all the input data that you have.
+
+01:40:11.000 --> 01:40:17.000
+The ones that you have already stored in the databases and the one that you are receiving from the input stream.
+
+01:40:17.000 --> 01:40:20.000
+This is the basic idea of the Lambda architecture.
+
+01:40:20.000 --> 01:40:26.000
+Uh, here another definition from Databricks. Databricks is one of the most famous companies nowadays.
+
+01:40:26.000 --> 01:40:34.000
+Managing big data and providing a platform, an online platform nowadays that is integrated also in Azure.
+
+01:40:34.000 --> 01:40:36.000
+And in, uh…
+
+01:40:36.000 --> 01:40:41.000
+Amazon AVUF.
+
+01:40:41.000 --> 01:40:45.000
+Also here we have again some of the terms that I already mentioned before.
+
+01:40:45.000 --> 01:40:48.000
+We need to be able to perform batch processing.
+
+01:40:48.000 --> 01:40:51.000
+On big amount of data, but we are also interested in
+
+01:40:51.000 --> 01:40:53.000
+Analyzing stream of data.
+
+01:40:53.000 --> 01:40:57.000
+Um…
+
+01:40:57.000 --> 01:41:01.000
+A third definition from Wikipedia.
+
+01:41:01.000 --> 01:41:03.000
+But also here,
+
+01:41:03.000 --> 01:41:10.000
+Large amount of data, massive amount of data, batch processing and stream processing.
+
+01:41:10.000 --> 01:41:14.000
+We want to balance the latency and the throughput.
+
+01:41:14.000 --> 01:41:17.000
+That is something that is also mentioned in the first definition.
+
+01:41:17.000 --> 01:41:21.000
+More importantly, we need something that is
+
+01:41:21.000 --> 01:41:24.000
+Able to manage both.
+
+01:41:24.000 --> 01:41:27.000
+And this was also mentioned in the first definition, in the first definition.
+
+01:41:27.000 --> 01:41:31.000
+I wrote, if you use a NoSQL database or better.
+
+01:41:31.000 --> 01:41:35.000
+The person who proposed the Lambda architecture route.
+
+01:41:35.000 --> 01:41:41.000
+If you use a NodeSQL database, in that case, something that is mutable can be associated with failures.
+
+01:41:41.000 --> 01:41:45.000
+So we need a system that is able to manage failure independently.
+
+01:41:45.000 --> 01:41:48.000
+In the gain batch.
+
+01:41:48.000 --> 01:41:52.000
+end stream. Okay?
+
+01:41:52.000 --> 01:41:55.000
+The Lambda architecture is based.
+
+01:41:55.000 --> 01:41:58.000
+On some basic concepts. The first one is…
+
+01:41:58.000 --> 01:42:02.000
+The data model is based on an append-only approach.
+
+01:42:02.000 --> 01:42:08.000
+So you will never update a record. You will never delete a record or an object that you collected.
+
+01:42:08.000 --> 01:42:11.000
+You will always append at the end.
+
+01:42:11.000 --> 01:42:13.000
+of a file or something else.
+
+01:42:13.000 --> 01:42:18.000
+The new records. In this way, you are sure that you are not losing data.
+
+01:42:18.000 --> 01:42:22.000
+Okay, you collect all the data using an append-only approach.
+
+01:42:22.000 --> 01:42:27.000
+And this is associated also with the immutable data source ID.
+
+01:42:27.000 --> 01:42:33.000
+You cannot update the input records. You cannot delete the input records. You can only use an append-only approach.
+
+01:42:33.000 --> 01:42:36.000
+This also means that your input data set
+
+01:42:36.000 --> 01:42:39.000
+is immutable. In the Lambda architecture,
+
+01:42:39.000 --> 01:42:43.000
+You cannot change the content of the input data. You can only
+
+01:42:43.000 --> 01:42:48.000
+add new data, you can append new data, but you cannot change
+
+01:42:48.000 --> 01:42:52.000
+the input data.
+
+01:42:52.000 --> 01:42:54.000
+Uh, the Lambda architecture.
+
+01:42:54.000 --> 01:43:03.000
+is fault tolerant against hardware failures or also theoretical human errors, it depends on the type of human errors. If there is an error in your program.
+
+01:43:03.000 --> 01:43:05.000
+The system is not able to manage that.
+
+01:43:05.000 --> 01:43:07.000
+Hey.
+
+01:43:07.000 --> 01:43:11.000
+Then you can manage different use cases.
+
+01:43:11.000 --> 01:43:19.000
+Some characterized by a low latency requirement, some other characterized by the fact that you want to analyze big amount of data.
+
+01:43:19.000 --> 01:43:27.000
+Uh, the architecture is able to apply the scale-out scalability that I mentioned before because it's based on frameworks.
+
+01:43:27.000 --> 01:43:30.000
+that implement the, um…
+
+01:43:30.000 --> 01:43:32.000
+Scale out.
+
+01:43:32.000 --> 01:43:38.000
+scalability approach. So we use NoSQL databases that are by definition based on the scale-out approach.
+
+01:43:38.000 --> 01:43:42.000
+We use the Adu for the Spark framework that are also based.
+
+01:43:42.000 --> 01:43:44.000
+on the scale-out approach, okay?
+
+01:43:44.000 --> 01:43:49.000
+And then, theoretically, the Lambda architecture is extensible so you can manage
+
+01:43:49.000 --> 01:43:52.000
+New features and new use cases. This is not…
+
+01:43:52.000 --> 01:43:55.000
+100% correct from my point of view.
+
+01:43:55.000 --> 01:43:59.000
+The other requirements are satisfied, but this one is not 100%.
+
+01:43:59.000 --> 01:44:01.000
+satisfy.
+
+01:44:01.000 --> 01:44:08.000
+Everything in the Lambda architecture is based on functions.
+
+01:44:08.000 --> 01:44:11.000
+And the idea is that you apply a function on all data,
+
+01:44:11.000 --> 01:44:13.000
+To obtain the result,
+
+01:44:13.000 --> 01:44:18.000
+that you are interested in. The query is a function applied on the data.
+
+01:44:18.000 --> 01:44:22.000
+Okay, is I also show at the end of the previous block of slides.
+
+01:44:22.000 --> 01:44:28.000
+In a big data application, usually you scan the content of the
+
+01:44:28.000 --> 01:44:32.000
+The whole collection, analyzing one record at a time, and you obtain a result.
+
+01:44:32.000 --> 01:44:36.000
+You apply a full scan. And this is what is represented also here.
+
+01:44:36.000 --> 01:44:39.000
+The input is the…
+
+01:44:39.000 --> 01:44:43.000
+Input collection. All the data that you have in your input collection.
+
+01:44:43.000 --> 01:44:46.000
+And you apply a function, and the result is
+
+01:44:46.000 --> 01:44:50.000
+the result of this function, ok.
+
+01:44:50.000 --> 01:44:54.000
+This is also associated with functional programming.
+
+01:44:54.000 --> 01:44:56.000
+Probably you have never wrote a
+
+01:44:56.000 --> 01:45:02.000
+An application based on functional programming or better in Java nowadays, there is something associated with the stream, so probably.
+
+01:45:02.000 --> 01:45:04.000
+The idea of functional programming is
+
+01:45:04.000 --> 01:45:07.000
+Something that you already used.
+
+01:45:07.000 --> 01:45:10.000
+During the object-oriented programming course.
+
+01:45:10.000 --> 01:45:13.000
+But I think that you have never used Scala.
+
+01:45:13.000 --> 01:45:19.000
+or other languages, programming languages that are focused on functional programming, only functional programming.
+
+01:45:19.000 --> 01:45:26.000
+But the basic idea in functional programming is that you have data, you apply a function, you obtain a result, you fly another function.
+
+01:45:26.000 --> 01:45:30.000
+Not the traditional function of Java or Python, but
+
+01:45:30.000 --> 01:45:35.000
+Uh, mathematical function that analyzes more data, return the result.
+
+01:45:35.000 --> 01:45:38.000
+Um, okay.
+
+01:45:38.000 --> 01:45:43.000
+All these queries or functions are characterized by some properties.
+
+01:45:43.000 --> 01:45:46.000
+That are important when you want to analyze the efficiency.
+
+01:45:46.000 --> 01:45:51.000
+of your application, but also if you are satisfying the constraint that you have.
+
+01:45:51.000 --> 01:45:54.000
+Latency. Latency is the time it is needed.
+
+01:45:54.000 --> 01:45:58.000
+By the system, in this case, the implementation of the Lambda architecture.
+
+01:45:58.000 --> 01:46:00.000
+To return the result.
+
+01:46:00.000 --> 01:46:05.000
+If you need to obtain a result in few milliseconds, you need
+
+01:46:05.000 --> 01:46:08.000
+I can say that is less than few milliseconds.
+
+01:46:08.000 --> 01:46:14.000
+If you need to analyze big amount of debt offline and you don't need a result in few milliseconds.
+
+01:46:14.000 --> 01:46:18.000
+That's not an issue, the latency is something that you don't care about.
+
+01:46:18.000 --> 01:46:20.000
+Okay.
+
+01:46:20.000 --> 01:46:26.000
+Timeliness. This is associated with the freshness and the consistency
+
+01:46:26.000 --> 01:46:29.000
+Of the alternate result.
+
+01:46:29.000 --> 01:46:34.000
+Um,
+
+01:46:34.000 --> 01:46:38.000
+Okay, for this, unfortunately, you have not already
+
+01:46:38.000 --> 01:46:45.000
+Analyze the data warehouses, because you are attending the data science and database technology course.
+
+01:46:45.000 --> 01:46:48.000
+Null. But…
+
+01:46:48.000 --> 01:46:51.000
+Support that.
+
+01:46:51.000 --> 01:46:53.000
+Every night,
+
+01:46:53.000 --> 01:46:56.000
+You run an application.
+
+01:46:56.000 --> 01:46:59.000
+And this application analyzes the data that you collected.
+
+01:46:59.000 --> 01:47:02.000
+During the previous day.
+
+01:47:02.000 --> 01:47:04.000
+Okay?
+
+01:47:04.000 --> 01:47:06.000
+The result that you obtain.
+
+01:47:06.000 --> 01:47:10.000
+is associated with the data that you collect during the day.
+
+01:47:10.000 --> 01:47:15.000
+But also during the night, you are still receiving new data that you are storing somewhere.
+
+01:47:15.000 --> 01:47:19.000
+The result that you obtain running your function.
+
+01:47:19.000 --> 01:47:21.000
+On the data that you collect during the day,
+
+01:47:21.000 --> 01:47:25.000
+Without considering the data that you are receiving during the night.
+
+01:47:25.000 --> 01:47:29.000
+Is not associated with a timeliness and a freshness equal to
+
+01:47:29.000 --> 01:47:33.000
+100%. Because you are considering
+
+01:47:33.000 --> 01:47:38.000
+The data that you will receive during the day, but you are not considering the data that you are receiving during the night.
+
+01:47:38.000 --> 01:47:43.000
+Okay, so the timeliness or the freshness and the consistency.
+
+01:47:43.000 --> 01:47:53.000
+Means is the result that I'm returning associated with all the data that I received so far, or only with historical data?
+
+01:47:53.000 --> 01:47:55.000
+If it is associated with
+
+01:47:55.000 --> 01:47:59.000
+Historical data, the data that you receive, for instance, during the day,
+
+01:47:59.000 --> 01:48:01.000
+In that case, the…
+
+01:48:01.000 --> 01:48:04.000
+Timeliness is not the maximum one.
+
+01:48:04.000 --> 01:48:07.000
+Sometimes we don't care about this.
+
+01:48:07.000 --> 01:48:12.000
+If you need to understand what is the product that is more frequently purchased by your customer,
+
+01:48:12.000 --> 01:48:16.000
+During the summer season.
+
+01:48:16.000 --> 01:48:20.000
+Even if you are not considering the purchases of the last
+
+01:48:20.000 --> 01:48:23.000
+day is not an issue, probably.
+
+01:48:23.000 --> 01:48:27.000
+The most frequently purchased product is always the same.
+
+01:48:27.000 --> 01:48:30.000
+Even if the timeliness is not the maximum one.
+
+01:48:30.000 --> 01:48:34.000
+Okay, depending on the type of analysis that we are interested in,
+
+01:48:34.000 --> 01:48:37.000
+This property can be.
+
+01:48:37.000 --> 01:48:39.000
+Important or not.
+
+01:48:39.000 --> 01:48:42.000
+Relevant or not. Accuracy.
+
+01:48:42.000 --> 01:48:46.000
+Accuracy means is the returned result.
+
+01:48:46.000 --> 01:48:48.000
+Accurate?
+
+01:48:48.000 --> 01:48:51.000
+Exact.
+
+01:48:51.000 --> 01:48:55.000
+You have your input data, support that you have all the data available.
+
+01:48:55.000 --> 01:48:58.000
+The timeliness is 100%.
+
+01:48:58.000 --> 01:49:02.000
+But you apply a program that for some reasons.
+
+01:49:02.000 --> 01:49:04.000
+Mainly to return the result more quickly.
+
+01:49:04.000 --> 01:49:07.000
+Apply some approximations.
+
+01:49:07.000 --> 01:49:13.000
+In that case, the final result is characterized by an accuracy that is not 100%.
+
+01:49:13.000 --> 01:49:16.000
+Because you have some approximation in your
+
+01:49:16.000 --> 01:49:20.000
+application, but you obtain the result more quickly.
+
+01:49:20.000 --> 01:49:23.000
+And in some use cases,
+
+01:49:23.000 --> 01:49:26.000
+An approximate result is sufficient.
+
+01:49:26.000 --> 01:49:28.000
+But you want to obtain the result.
+
+01:49:28.000 --> 01:49:30.000
+Very, very quickly, okay?
+
+01:49:30.000 --> 01:49:35.000
+So you need to consider these three properties depending on your use case.
+
+01:49:35.000 --> 01:49:41.000
+And the constraints that you have. Sometimes you have applications that are characterized by a very low latency.
+
+01:49:41.000 --> 01:49:44.000
+They are characterized by the maximum timeliness,
+
+01:49:44.000 --> 01:49:46.000
+And the maximum accuracy. But usually,
+
+01:49:46.000 --> 01:49:51.000
+You select only some of these properties, usually only 2.
+
+01:49:51.000 --> 01:49:55.000
+of these three problems, okay?
+
+01:49:55.000 --> 01:49:57.000
+Okay, how can we…
+
+01:49:57.000 --> 01:50:02.000
+Um, analyze big amount of data using a batch approach.
+
+01:50:02.000 --> 01:50:04.000
+Analyze a stream of data,
+
+01:50:04.000 --> 01:50:08.000
+Very efficiently with a low latency using the Lambda architecture.
+
+01:50:08.000 --> 01:50:11.000
+The Lambda architecture is based on this.
+
+01:50:11.000 --> 01:50:13.000
+Structure, this architecture.
+
+01:50:13.000 --> 01:50:15.000
+We have the input data.
+
+01:50:15.000 --> 01:50:17.000
+Every time that a new
+
+01:50:17.000 --> 01:50:22.000
+Input record, a new input object is collected.
+
+01:50:22.000 --> 01:50:24.000
+This input object is sent.
+
+01:50:24.000 --> 01:50:28.000
+to two layers. The best layer and the speed layer.
+
+01:50:28.000 --> 01:50:31.000
+Let us start with the batch layer.
+
+01:50:31.000 --> 01:50:36.000
+In the base layer, we have this input report. This input record is sent to the base layer.
+
+01:50:36.000 --> 01:50:40.000
+And it is a store in a master dataset.
+
+01:50:40.000 --> 01:50:45.000
+Usually, this master dataset is a distributed file system. For instance, the distributed file system of Ado.
+
+01:50:45.000 --> 01:50:48.000
+Every time that you collect a new object.
+
+01:50:48.000 --> 01:50:51.000
+Using the append-only approach that I mentioned before.
+
+01:50:51.000 --> 01:50:55.000
+We append this new object, this new record, this new line, this new file.
+
+01:50:55.000 --> 01:50:58.000
+In the distributed file system of Hadoop. Inside the
+
+01:50:58.000 --> 01:51:02.000
+Master that. In the master dataset, every time that you append a new object,
+
+01:51:02.000 --> 01:51:05.000
+You have this new objects available, but you cannot delete
+
+01:51:05.000 --> 01:51:08.000
+Or you should not delete.
+
+01:51:08.000 --> 01:51:12.000
+Previous objects, you must not update previous objects.
+
+01:51:12.000 --> 01:51:15.000
+Okay, so the master…
+
+01:51:15.000 --> 01:51:20.000
+Uh, dataset is based on
+
+01:51:20.000 --> 01:51:24.000
+And append only and immutable approach.
+
+01:51:24.000 --> 01:51:28.000
+Here we have all the input data.
+
+01:51:28.000 --> 01:51:34.000
+Nothing else here.
+
+01:51:34.000 --> 01:51:37.000
+Then we have the…
+
+01:51:37.000 --> 01:51:42.000
+Serving layer. The serving layer is used to answer to some queries,
+
+01:51:42.000 --> 01:51:44.000
+Did they use our, uh…
+
+01:51:44.000 --> 01:51:48.000
+runs. These queries…
+
+01:51:48.000 --> 01:51:53.000
+are executed on batch views.
+
+01:51:53.000 --> 01:51:58.000
+Do you remember the concept of a view in a database?
+
+01:51:58.000 --> 01:52:02.000
+You associate an SQL query to a name.
+
+01:52:02.000 --> 01:52:04.000
+And this is, uh…
+
+01:52:04.000 --> 01:52:06.000
+A name that you can use to have you.
+
+01:52:06.000 --> 01:52:08.000
+Associated with the result of the query.
+
+01:52:08.000 --> 01:52:12.000
+You can also apply something that is called materialized view.
+
+01:52:12.000 --> 01:52:16.000
+So, you can ask to the system to run your query on your data.
+
+01:52:16.000 --> 01:52:21.000
+and store the result of the square associated with a view in a temporary table.
+
+01:52:21.000 --> 01:52:27.000
+In the Lambda architecture, this is associated with the serving.
+
+01:52:27.000 --> 01:52:30.000
+layer. So the system.
+
+01:52:30.000 --> 01:52:35.000
+Automatically execute the queries that you already defined in the past.
+
+01:52:35.000 --> 01:52:38.000
+On the…
+
+01:52:38.000 --> 01:52:40.000
+Master dataset on all data.
+
+01:52:40.000 --> 01:52:46.000
+And store the result in these batch views, in this pre-computed batch views.
+
+01:52:46.000 --> 01:52:48.000
+Okay.
+
+01:52:48.000 --> 01:52:51.000
+Them.
+
+01:52:51.000 --> 01:52:54.000
+Every time that the user executes a new query.
+
+01:52:54.000 --> 01:53:00.000
+The system can use the content of the batch views.
+
+01:53:00.000 --> 01:53:03.000
+To answer to the query of the user.
+
+01:53:03.000 --> 01:53:07.000
+These best views are updated periodically.
+
+01:53:07.000 --> 01:53:13.000
+So, every time that you receive a new record, the system does not automatically update immediately the bad news.
+
+01:53:13.000 --> 01:53:17.000
+But usually every day or every 12 hours.
+
+01:53:17.000 --> 01:53:23.000
+You update the content of the batch views associated with the new data that you received in the last hour, on the last day.
+
+01:53:23.000 --> 01:53:27.000
+But this means that what is the timeliness.
+
+01:53:27.000 --> 01:53:32.000
+Associated with the best views. Is the maximum one or not?
+
+01:53:32.000 --> 01:53:37.000
+Based on this definition that I showed you before.
+
+01:53:37.000 --> 01:53:42.000
+If I update the content of the best views every 2 hours.
+
+01:53:42.000 --> 01:53:47.000
+It means that, okay, when I run my application,
+
+01:53:47.000 --> 01:53:49.000
+when I update the best view,
+
+01:53:49.000 --> 01:53:53.000
+At the end, the timeliness is the maximum one, but after
+
+01:53:53.000 --> 01:53:55.000
+2 minutes, 3 minutes.
+
+01:53:55.000 --> 01:53:58.000
+The timeliness will no longer be the maximum one.
+
+01:53:58.000 --> 01:54:01.000
+So here, the timeliness.
+
+01:54:01.000 --> 01:54:03.000
+is not the maximum one.
+
+01:54:03.000 --> 01:54:12.000
+But if you need to make a decision, an high-level decision, as I mentioned before, what is the most frequently purchased product in the summer season?
+
+01:54:12.000 --> 01:54:18.000
+Even if you don't have in the best views the data associated with the purchases of the last 2 days.
+
+01:54:18.000 --> 01:54:20.000
+Probably the final decision.
+
+01:54:20.000 --> 01:54:22.000
+Would not change.
+
+01:54:22.000 --> 01:54:26.000
+Okay, this part is used to
+
+01:54:26.000 --> 01:54:33.000
+Implement the best processing part of the Lambda architecture. So when you want to analyze big amount of data.
+
+01:54:33.000 --> 01:54:38.000
+You use the best layer combined with the serving layer.
+
+01:54:38.000 --> 01:54:42.000
+What happens when you want to analyze, uh,
+
+01:54:42.000 --> 01:54:44.000
+Stream of data in real time or in real time.
+
+01:54:44.000 --> 01:54:50.000
+The input record that we receive here is sent to the master dataset to have a copy.
+
+01:54:50.000 --> 01:54:52.000
+Permanent copy in the master dataset.
+
+01:54:52.000 --> 01:54:56.000
+But the same object is sent also directly to the speed layer.
+
+01:54:56.000 --> 01:54:59.000
+In the speed layer, as you can see, we don't have a…
+
+01:54:59.000 --> 01:55:02.000
+a dataset or a database.
+
+01:55:02.000 --> 01:55:07.000
+Quora distributed file system. We have indirectly
+
+01:55:07.000 --> 01:55:12.000
+They are real-time news. The real-time views can be used to store
+
+01:55:12.000 --> 01:55:14.000
+some values, some results.
+
+01:55:14.000 --> 01:55:17.000
+But not big amount of data.
+
+01:55:17.000 --> 01:55:20.000
+Only few basic statistics.
+
+01:55:20.000 --> 01:55:25.000
+that usually are stored in the main memory of the servers that we are using to run our application.
+
+01:55:25.000 --> 01:55:32.000
+Okay? But the main goal of the speed layer is the following. Every time that a new record is received, a new object is received,
+
+01:55:32.000 --> 01:55:36.000
+Process it immediately, so apply my program on this, uh,
+
+01:55:36.000 --> 01:55:41.000
+Input record immediately and update the local result.
+
+01:55:41.000 --> 01:55:46.000
+that we store in the small amount of main memory that we have available.
+
+01:55:46.000 --> 01:55:50.000
+In the speed layer. Okay.
+
+01:55:50.000 --> 01:55:53.000
+Again, the user can execute queries.
+
+01:55:53.000 --> 01:55:58.000
+If the query are based on the content of the real-time views, obviously the system used the
+
+01:55:58.000 --> 01:56:00.000
+Real-time view.
+
+01:56:00.000 --> 01:56:03.000
+Otherwise, if you need
+
+01:56:03.000 --> 01:56:06.000
+The result of the batch processing.
+
+01:56:06.000 --> 01:56:08.000
+You use the best views.
+
+01:56:08.000 --> 01:56:12.000
+But, as you can see here.
+
+01:56:12.000 --> 01:56:15.000
+Some queries are considering
+
+01:56:15.000 --> 01:56:19.000
+This real-time views and
+
+01:56:19.000 --> 01:56:24.000
+the best views. Sometimes you need to combine them together.
+
+01:56:24.000 --> 01:56:26.000
+Let me analyze a very
+
+01:56:26.000 --> 01:56:28.000
+Simple example.
+
+01:56:28.000 --> 01:56:30.000
+Suppose that we have an input stream.
+
+01:56:30.000 --> 01:56:34.000
+And this input stream is associated with some tweets.
+
+01:56:34.000 --> 01:56:44.000
+Okay, so the input.
+
+01:56:44.000 --> 01:56:47.000
+Input.
+
+01:56:47.000 --> 01:56:51.000
+A stream of tweets.
+
+01:56:51.000 --> 01:56:55.000
+And also…
+
+01:56:55.000 --> 01:57:03.000
+Historical.
+
+01:57:03.000 --> 01:57:06.000
+Suppose the…
+
+01:57:06.000 --> 01:57:11.000
+The last…
+
+01:57:11.000 --> 01:57:13.000
+20 years of
+
+01:57:13.000 --> 01:57:15.000
+Please.
+
+01:57:15.000 --> 01:57:17.000
+Hey.
+
+01:57:17.000 --> 01:57:23.000
+Let us suppose that the historical data are already in the master dataset.
+
+01:57:23.000 --> 01:57:26.000
+So here in the master dataset, we already have
+
+01:57:26.000 --> 01:57:32.000
+The historical
+
+01:57:32.000 --> 01:57:40.000
+tweets. And suppose that we already apply something.
+
+01:57:40.000 --> 01:57:43.000
+To compute the content of the best views. And now we will discuss
+
+01:57:43.000 --> 01:57:48.000
+What is the content of this program that we already analyzing?
+
+01:57:48.000 --> 01:57:51.000
+Then, now we are receiving new data.
+
+01:57:51.000 --> 01:57:54.000
+So, in the input here,
+
+01:57:54.000 --> 01:57:56.000
+We have new data.
+
+01:57:56.000 --> 01:57:58.000
+Associated with the input string.
+
+01:57:58.000 --> 01:58:03.000
+And the goal is the following.
+
+01:58:03.000 --> 01:58:06.000
+Every time…
+
+01:58:06.000 --> 01:58:09.000
+There are new
+
+01:58:09.000 --> 01:58:11.000
+Wait.
+
+01:58:11.000 --> 01:58:14.000
+He is collected.
+
+01:58:14.000 --> 01:58:22.000
+All received?
+
+01:58:22.000 --> 01:58:31.000
+Print the number of occurrences.
+
+01:58:31.000 --> 01:58:35.000
+Of the term.
+
+01:58:35.000 --> 01:58:41.000
+Polito?
+
+01:58:41.000 --> 01:58:46.000
+I mean, right from day 0, day 0 means all historical data.
+
+01:58:46.000 --> 01:58:48.000
+Plus the new data.
+
+01:58:48.000 --> 01:58:55.000
+that we receive, okay?
+
+01:58:55.000 --> 01:58:58.000
+How can we solve this task using this architecture?
+
+01:58:58.000 --> 01:59:02.000
+First question, what is the content of the batch views?
+
+01:59:02.000 --> 01:59:04.000
+We already have the historical data.
+
+01:59:04.000 --> 01:59:06.000
+We run a program.
+
+01:59:06.000 --> 01:59:11.000
+To pre-compute in the best view, something that is useful to solve the final task.
+
+01:59:11.000 --> 01:59:14.000
+What is the content of the batch views?
+
+01:59:14.000 --> 01:59:16.000
+If I want to…
+
+01:59:16.000 --> 01:59:21.000
+print the number of occurrences of the term polito, considering.
+
+01:59:21.000 --> 01:59:23.000
+All the data that we have.
+
+01:59:23.000 --> 01:59:27.000
+Here we are considering the historical data.
+
+01:59:27.000 --> 01:59:30.000
+What is the…
+
+01:59:30.000 --> 01:59:34.000
+We need to analyze all the twists that we have in the historical dataset.
+
+01:59:34.000 --> 01:59:38.000
+And the value that we need to store in the base view is…
+
+01:59:38.000 --> 01:59:43.000
+How many numbers?
+
+01:59:43.000 --> 01:59:50.000
+I want to print on the standard output the number of occurrences of Polito. I don't want the original tweets, I want only
+
+01:59:50.000 --> 01:59:52.000
+The number of occurrences of Polita.
+
+01:59:52.000 --> 01:59:59.000
+So what is the content of the batch feed?
+
+01:59:59.000 --> 02:00:02.000
+The number of occurrences of polytham.
+
+02:00:02.000 --> 02:00:07.000
+One single number associated with the number of punisher politics. Suppose that in the historical data we have, uh,
+
+02:00:07.000 --> 02:00:10.000
+1,000 occurrences of Polito.
+
+02:00:10.000 --> 02:00:15.000
+In this batch view, that is small. In this case, we have one number.
+
+02:00:15.000 --> 02:00:17.000
+It is 1000.
+
+02:00:17.000 --> 02:00:20.000
+Okay?
+
+02:00:20.000 --> 02:00:26.000
+So, we need to write a program that scans the content of the historical data.
+
+02:00:26.000 --> 02:00:31.000
+And counts the number of occurrences of polio time.
+
+02:00:31.000 --> 02:00:34.000
+Now, here we are receiving the tweets.
+
+02:00:34.000 --> 02:00:36.000
+And suppose that I receive a new tweet.
+
+02:00:36.000 --> 02:00:42.000
+with this is Polito.
+
+02:00:42.000 --> 02:00:45.000
+What do you need to do in the speed layer?
+
+02:00:45.000 --> 02:00:51.000
+In the speed layer, I told you that every time if you receive a new object, a new tweet in this case.
+
+02:00:51.000 --> 02:00:53.000
+We need to update a local.
+
+02:00:53.000 --> 02:00:59.000
+Result. At the beginning, when we start our.
+
+02:00:59.000 --> 02:01:01.000
+Application associated with the speed layer.
+
+02:01:01.000 --> 02:01:06.000
+We have a number that is equal to 0.
+
+02:01:06.000 --> 02:01:10.000
+If I receive a new tweet, and in this new tweet we have the word.
+
+02:01:10.000 --> 02:01:13.000
+The term Polito, we simply update this value.
+
+02:01:13.000 --> 02:01:15.000
+And this value now is 1?
+
+02:01:15.000 --> 02:01:19.000
+So, in other words, also here in the real-time views, we have
+
+02:01:19.000 --> 02:01:24.000
+One number. And this is the number of occurrences of poly associated with the
+
+02:01:24.000 --> 02:01:26.000
+tweets that I received using
+
+02:01:26.000 --> 02:01:30.000
+Analyzing the input stream.
+
+02:01:30.000 --> 02:01:34.000
+What is the result of the query executed by the user?
+
+02:01:34.000 --> 02:01:39.000
+1,000…
+
+02:01:39.000 --> 02:01:43.000
+One or something else.
+
+02:01:43.000 --> 02:01:48.000
+I want to consider historical data, plus the new data, so the final result must be
+
+02:01:48.000 --> 02:01:50.000
+1001.
+
+02:01:50.000 --> 02:01:52.000
+Okay.
+
+02:01:52.000 --> 02:02:01.000
+Yeah.
+
+02:02:01.000 --> 02:02:04.000
+We're always stated.
+
+02:02:04.000 --> 02:02:09.000
+The divine state. Okay, so the question is,
+
+02:02:09.000 --> 02:02:12.000
+We have this one number in the real-time view.
+
+02:02:12.000 --> 02:02:14.000
+Uh, how long are…
+
+02:02:14.000 --> 02:02:17.000
+This value will stay there.
+
+02:02:17.000 --> 02:02:19.000
+Okay, um…
+
+02:02:19.000 --> 02:02:21.000
+Option number one…
+
+02:02:21.000 --> 02:02:27.000
+You run the application associated with the historical data all in once.
+
+02:02:27.000 --> 02:02:32.000
+In that case, you will never move this number.
+
+02:02:32.000 --> 02:02:35.000
+From the speed layer to the base layer.
+
+02:02:35.000 --> 02:02:39.000
+You will simply store this value forever in the
+
+02:02:39.000 --> 02:02:42.000
+speed layer, and we will update it every time that you receive one.
+
+02:02:42.000 --> 02:02:44.000
+A new, um…
+
+02:02:44.000 --> 02:02:46.000
+A new tweet associated with Polito.
+
+02:02:46.000 --> 02:02:49.000
+Option number one.
+
+02:02:49.000 --> 02:02:51.000
+Option number two, every night.
+
+02:02:51.000 --> 02:02:54.000
+You update the content of the…
+
+02:02:54.000 --> 02:03:03.000
+Best views, analyzing the new data that you receive in the previous day. In that case, at the end of the recomputation.
+
+02:03:03.000 --> 02:03:09.000
+of the batch view, you reset to zero, the number that you have in the speed layer.
+
+02:03:09.000 --> 02:03:11.000
+And that's all.
+
+02:03:11.000 --> 02:03:15.000
+Okay. Or even more efficiently,
+
+02:03:15.000 --> 02:03:19.000
+Every night, you read the value that you have here.
+
+02:03:19.000 --> 02:03:22.000
+You simply update the number that you have in the real-time view.
+
+02:03:22.000 --> 02:03:26.000
+Without reanalyzing the new data that you receive.
+
+02:03:26.000 --> 02:03:38.000
+And that's all. But also, in that case, then you reset this badge.
+
+02:03:38.000 --> 02:03:44.000
+So the question is, what happens if the parameters we want to apply is not characterized by some properties like the…
+
+02:03:44.000 --> 02:03:46.000
+A commutative or the distributed
+
+02:03:46.000 --> 02:03:50.000
+Community or associative approach.
+
+02:03:50.000 --> 02:03:55.000
+In that case, you cannot use this approach, or at least you cannot obtain the
+
+02:03:55.000 --> 02:03:58.000
+accurate… the accuracy equal to 100%.
+
+02:03:58.000 --> 02:04:00.000
+So, the basic idea here is that
+
+02:04:00.000 --> 02:04:05.000
+If you pay attention to what we are doing in the base layer and what we are executing in the speed layer,
+
+02:04:05.000 --> 02:04:07.000
+The programs are doing the same thing.
+
+02:04:07.000 --> 02:04:10.000
+They are analyzing one tweet at a time.
+
+02:04:10.000 --> 02:04:12.000
+And they are updating a local
+
+02:04:12.000 --> 02:04:18.000
+A number, a local integer, every time that you have a new occurrence of Pluto, increment the value.
+
+02:04:18.000 --> 02:04:21.000
+So, the code is the same. In the serving layer.
+
+02:04:21.000 --> 02:04:23.000
+And in the speed layer.
+
+02:04:23.000 --> 02:04:26.000
+It is executed on different data.
+
+02:04:26.000 --> 02:04:32.000
+In the upper part, we are analyzing the historical data. In the lower part, we are analyzing.
+
+02:04:32.000 --> 02:04:36.000
+the new stream. But then at the end, I told you, what is the value? The value is
+
+02:04:36.000 --> 02:04:40.000
+1,001, because I applied the function.
+
+02:04:40.000 --> 02:04:43.000
+To aggregate true intermediate results.
+
+02:04:43.000 --> 02:04:46.000
+I simply apply.
+
+02:04:46.000 --> 02:04:48.000
+Plus, okay?
+
+02:04:48.000 --> 02:04:53.000
+The sum operation, the sum function is associative and commutative.
+
+02:04:53.000 --> 02:04:55.000
+And so, you can use this approach.
+
+02:04:55.000 --> 02:04:58.000
+If the function is not associative and commutative,
+
+02:04:58.000 --> 02:05:00.000
+Or if it is not at least associative,
+
+02:05:00.000 --> 02:05:06.000
+Uh, you need to introduce some approximations or maybe that you cannot use.
+
+02:05:06.000 --> 02:05:10.000
+A big data friend. The big data frames and the Lambda architecture.
+
+02:05:10.000 --> 02:05:17.000
+Work well if the function that you are applying, the function that I mentioned here.
+
+02:05:17.000 --> 02:05:19.000
+When I define the queries,
+
+02:05:19.000 --> 02:05:21.000
+Is associative and committed?
+
+02:05:21.000 --> 02:05:26.000
+Or at least a subsidy. If this is not true,
+
+02:05:26.000 --> 02:05:30.000
+You need to use something else.
+
+02:05:30.000 --> 02:05:32.000
+Yes, or you need to change the task.
+
+02:05:32.000 --> 02:05:36.000
+For instance, one of the tasks that we will solve, uh,
+
+02:05:36.000 --> 02:05:39.000
+In the next week is to compute the average.
+
+02:05:39.000 --> 02:05:45.000
+If you compute the average using a parallelized approach,
+
+02:05:45.000 --> 02:05:47.000
+If you compute the average,
+
+02:05:47.000 --> 02:05:49.000
+In one partition,
+
+02:05:49.000 --> 02:05:55.000
+And the average in another partition, and then you compute the average of the average. The result is not equal to compute the average.
+
+02:05:55.000 --> 02:05:57.000
+On all day. But if you…
+
+02:05:57.000 --> 02:06:01.000
+Transform the function, and instead of computing the average,
+
+02:06:01.000 --> 02:06:08.000
+You compute the sum of the values and the number of values that you are considering. In that way, you have two functions that are associative and commutative.
+
+02:06:08.000 --> 02:06:13.000
+And you can compute the correct value of the average using a distributed approach.
+
+02:06:13.000 --> 02:06:17.000
+Yeah, so in that case, you need to understand how to transform your function.
+
+02:06:17.000 --> 02:06:21.000
+into something else that is characterized by the properties that you're interested in.
+
+02:06:21.000 --> 02:06:25.000
+Frequently, you can do something like that, but sometimes you cannot.
+
+02:06:25.000 --> 02:06:30.000
+When you cannot do that, you cannot use the big data frameworks and the big data.
+
+02:06:30.000 --> 02:06:33.000
+parallelization idea.
+
+02:06:33.000 --> 02:06:36.000
+Okay, you're welcome.
+
+02:06:36.000 --> 02:06:38.000
+Um,
+
+02:06:38.000 --> 02:06:42.000
+Okay, here, how can we implement the different, uh,
+
+02:06:42.000 --> 02:06:44.000
+parts that we have in this architecture.
+
+02:06:44.000 --> 02:06:47.000
+Here, one possible option.
+
+02:06:47.000 --> 02:06:50.000
+For the master dataset, the immutable.
+
+02:06:50.000 --> 02:06:53.000
+Append-only data set, usually we use
+
+02:06:53.000 --> 02:06:56.000
+The distributed file system of adult.
+
+02:06:56.000 --> 02:07:04.000
+Nowadays, frequently you don't use Hadoop to run your applications for better to, you don't use the MapReduce approach.
+
+02:07:04.000 --> 02:07:05.000
+Who write MapReduce application.
+
+02:07:05.000 --> 02:07:10.000
+But we still use the distributed file system of Hadoop because it's very efficient.
+
+02:07:10.000 --> 02:07:13.000
+When you want to store a big amount of data.
+
+02:07:13.000 --> 02:07:19.000
+For the best processing part to compute the result that you want to store in the batch views.
+
+02:07:19.000 --> 02:07:22.000
+You can use Hadoop, you can use Spark,
+
+02:07:22.000 --> 02:07:26.000
+Hadoop can be used only to analyze batch.
+
+02:07:26.000 --> 02:07:30.000
+A big amount of data using the batch approach. Spark can be used
+
+02:07:30.000 --> 02:07:32.000
+To perform the best analysis.
+
+02:07:32.000 --> 02:07:35.000
+But also to implement the speed lane.
+
+02:07:35.000 --> 02:07:40.000
+Uh, the output of these analyses are stored in the serving layer.
+
+02:07:40.000 --> 02:07:45.000
+And here, for instance, you can use IV. IV is a distributed.
+
+02:07:45.000 --> 02:07:48.000
+Relational database.
+
+02:07:48.000 --> 02:07:53.000
+data stores data using distributed file system of Ado.
+
+02:07:53.000 --> 02:07:55.000
+Um,
+
+02:07:55.000 --> 02:08:00.000
+In this feed layer, you have more options. You can use Spark again with the Spark streaming component.
+
+02:08:00.000 --> 02:08:03.000
+Or you can use Apache Storm.
+
+02:08:03.000 --> 02:08:06.000
+It is specifically designed to analyze a stream of data.
+
+02:08:06.000 --> 02:08:12.000
+Or Apache Flink, that is again another framework that is designed to analyze big amounts of data.
+
+02:08:12.000 --> 02:08:16.000
+using analyzing a stream of data efficiently.
+
+02:08:16.000 --> 02:08:19.000
+And then the result.
+
+02:08:19.000 --> 02:08:30.000
+Sometimes, uh, you use IBE also for this part. Sometimes you use a NoSQL database. It depends on the characteristics of the data that you want to store. If you have something that can be represented by means of relational table.
+
+02:08:30.000 --> 02:08:32.000
+You can use eyeballs of here.
+
+02:08:32.000 --> 02:08:34.000
+If you need, uh…
+
+02:08:34.000 --> 02:08:37.000
+RDB to store documents.
+
+02:08:37.000 --> 02:08:41.000
+You use a MongoDB or another NoSQL database.
+
+02:08:41.000 --> 02:08:44.000
+Okay, and finally, usually the input.
+
+02:08:44.000 --> 02:08:48.000
+You have these input stream that is sent to the base layer and also to the speed layer.
+
+02:08:48.000 --> 02:08:52.000
+Usually you have Kafka at the beginning. Kafka is a framework.
+
+02:08:52.000 --> 02:08:55.000
+That is used to manage the input streams.
+
+02:08:55.000 --> 02:09:03.000
+And it's also used usually to clean the data that you are receiving on the stream, a very initial preprocessing step is implemented in Kafka.
+
+02:09:03.000 --> 02:09:05.000
+And then Kafka sends the data.
+
+02:09:05.000 --> 02:09:07.000
+To both layers.
+
+02:09:07.000 --> 02:09:14.000
+If there is a failure on the network during the collection of the data, Kafka is also able to retrieve the data.
+
+02:09:14.000 --> 02:09:17.000
+Uh, that, uh…
+
+02:09:17.000 --> 02:09:21.000
+We are lost based on the failure of the network.
+
+02:09:21.000 --> 02:09:23.000
+Okay.
+
+02:09:23.000 --> 02:09:28.000
+This is one possible implementation. You can also use different frameworks, but the basic idea is that
+
+02:09:28.000 --> 02:09:34.000
+You have these layers, and for each layer, you have a different framework that is used to implement.
+
+02:09:34.000 --> 02:09:37.000
+Get a specific layer or that a specific part.
+
+02:09:37.000 --> 02:09:44.000
+Okay, that's all for the Lambda architecture. There are also other architectures, but the Lambda architecture is the one that is
+
+02:09:44.000 --> 02:09:49.000
+more frequently used. So in IP, 9% of the
+
+02:09:49.000 --> 02:09:53.000
+Systems based on big data frameworks.
+
+02:09:53.000 --> 02:09:56.000
+The architecture is the Lambda architecture.
+
+02:09:56.000 --> 02:09:58.000
+Okay.
+
+02:09:58.000 --> 02:10:02.000
+Okay, any other question about this part, ground architecture?
+
+02:10:02.000 --> 02:10:09.000
+No? Okay.

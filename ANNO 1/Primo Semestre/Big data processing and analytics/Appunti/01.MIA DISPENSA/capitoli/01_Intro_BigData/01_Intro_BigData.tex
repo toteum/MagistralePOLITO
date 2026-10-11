@@ -1,0 +1,102 @@
+\chapter{Introduzione ai Big Data}
+
+\section{Che cosa sono i Big Data?}
+Il termine \textbf{Big Data} è generalmente associato a enormi quantità di dati ("petabytes") raccolte in grandi collezioni. Tuttavia, il concetto non si limita alla sola quantità, ma coinvolge diverse dimensioni fondamentali:
+\begin{itemize}
+    \item \textbf{Storage}: i dati devono essere memorizzati utilizzando approcci efficienti ed efficaci. Spesso non si utilizzano i tradizionali database relazionali, ma ci si affida a \textit{distributed file system} o database NoSQL.
+    \item \textbf{Analytics}: l'obiettivo finale è estrarre conoscenza e valore dai dati attraverso metodologie di analisi.
+    \item \textbf{Technologies}: sono necessarie nuove tecnologie e framework per elaborare e analizzare questi dati in modo scalabile.
+\end{itemize}
+
+Inizialmente, i framework per i Big Data sono stati sviluppati dalle grandi aziende di internet (le "Big Tech" come Google e Meta). Oggi, tuttavia, la necessità di analizzare enormi moli di dati riguarda qualsiasi settore, dalle banche agli impianti industriali.
+
+\begin{remark}
+\textbf{Sfruttare i dati esistenti per nuovi task}\\
+Il professore sottolinea che un buon \textit{data scientist} o \textit{data engineer} deve saper utilizzare i dati già a disposizione per risolvere nuovi problemi. Ad esempio, Google ha iniziato a raccogliere le query degli utenti per fornire risposte migliori, ma ha poi utilizzato gli stessi dati per fare \textit{nowcasting} (previsione a brevissimo termine), stimando in tempo reale quante persone fossero affette da influenza in una determinata area.
+\end{remark}
+
+\section{Fonti e Generatori di Big Data}
+Esistono diverse fonti in grado di generare enormi quantità di dati, che tipicamente vengono poi convogliate e memorizzate in un singolo Data Center. Le principali categorie includono:
+
+\begin{enumerate}
+    \item \textbf{User Generated Content (Web \& Mobile)}: contenuti generati dagli utenti su piattaforme come Facebook, Instagram, Yelp, TripAdvisor, Twitter e YouTube.
+    
+% FIGURA DA INSERIRE QUI
+% Fonte: Slide 6 (BD - Cap 1)
+% Descrizione: Dispositivi mobile, loghi dei social media e un carretto pieno di icone social.
+
+    \item \textbf{Health and scientific computing}: dati ad alta risoluzione provenienti dal settore medico, immagini satellitari (utili ad esempio per identificare aree allagate o bruciate), microscopi e telescopi.
+    
+% FIGURA DA INSERIRE QUI
+% Fonte: Slide 6 (BD - Cap 1)
+% Descrizione: Immagini di un microscopio, un telescopio e un satellite spaziale.
+
+
+    \item \textbf{Log files}: file di testo generati da web server o sistemi automatici che tracciano eventi e accessi.
+    
+    \item \textbf{Internet Of Things (IoT)}: reti di sensori (\textit{Sensor networks}), RFID e \textit{smart meters}. Anche se ogni singolo sensore invia una quantità minuscola di dati, l'aggregazione di miliardi di sensori genera moli di dati enormi.
+\end{enumerate}
+
+\section{Le "V" dei Big Data}
+Il contesto dei Big Data è tradizionalmente descritto attraverso le \textbf{3V}:
+\begin{itemize}
+    \item \textbf{Volume (Scale of data)}: la scala dimensionale dei dati. L'unità di misura tipica entra nell'ordine dei Petabyte (PB). Intorno al 2012, Google processava oltre 100 PB di dati al giorno, mentre Facebook oltre 10 PB.
+    \item \textbf{Variety (Different forms of data)}: l'eterogeneità dei dati in ingresso. Un sistema Big Data dovrebbe poter gestire testo, immagini, grafi e log.
+    \item \textbf{Velocity (Analysis of streaming data)}: la velocità con cui i dati vengono generati e la necessità di analizzare flussi di dati continui (stream) elaborando milioni di eventi in pochi millisecondi.
+\end{itemize}
+
+A queste, nel tempo, sono state aggiunte altre due dimensioni:
+\begin{itemize}
+    \item \textbf{Veracity (Uncertainty of data)}: la qualità dei dati.
+    \item \textbf{Value}: la capacità di estrarre informazioni utili dal dato.
+\end{itemize}
+
+\begin{remark}
+\textbf{Veracity e qualità del dato}\\
+Il professore ricorda il principio \textit{"Garbage in, garbage out"}: se l'input è rumoroso o di scarsa qualità, anche l'output degli algoritmi di Machine Learning sarà pessimo. Inoltre, i dati grezzi raramente sono pronti per l'analisi: in una tipica pipeline di Data Science, dal 60\% al 70\% del tempo è dedicato alla pulizia del dato (\textit{data cleaning}) e alla sua trasformazione in vettori o matrici.
+\end{remark}
+
+\section{Framework Big Data: Motivazioni e Sfide}
+
+\subsection{Perché abbiamo bisogno di nuovi framework?}
+Nel passato avevamo già a disposizione database relazionali efficienti, sistemi NoSQL e l'High-Performance Computing (HPC). Tuttavia, questi sistemi mostrano dei limiti con moli di dati eccezionali. Ad esempio, per indicizzare 10 miliardi di pagine web (da circa 20 KB l'una), un \textit{full scan} sequenziale su un disco rigido tradizionale o l'estrazione a blocchi nella memoria RAM (come nel classico \textit{Data Mining}) richiederebbe un tempo inaccettabile. 
+
+Occorreva passare da un'architettura a nodo singolo (\textit{single-node architecture}) a un approccio fortemente distribuito.
+
+\subsection{Il principio della Data Locality}
+Il concetto base sviluppato da Google per i framework Big Data è la \textbf{Data Locality}. 
+\begin{definition}[Data Locality]
+Invece di inviare enormi quantità di dati attraverso la rete verso i server che contengono il codice da eseguire, si invia il codice (che è di dimensioni molto ridotte) direttamente ai server in cui i dati sono fisicamente memorizzati.
+\end{definition}
+Inviare troppi dati sulla rete crea dei colli di bottiglia (\textit{network bottleneck}) che rendono l'applicazione lentissima. 
+
+\subsection{Architettura dei Data Center e Scalabilità}
+I sistemi Big Data utilizzano \textbf{commodity hardware}, ovvero server standard, economici e facilmente sostituibili in caso di guasto. Questi server sono raggruppati in rack e interconnessi tramite switch di rete. 
+
+\begin{remark}
+\textbf{High-Performance Computing (HPC) vs Big Data Framework}\\
+L'HPC è indicato per compiti intensivi dal punto di vista computazionale (es. calcolare miliardi di operazioni in virgola mobile al secondo su un set di dati relativamente piccolo) e si basa sulla \textit{scalabilità verticale}. I framework Big Data (come Hadoop o Spark) sono invece adatti a carichi di lavoro \textbf{data-intensive} e si basano sulla \textbf{scalabilità orizzontale}, dove la metrica principale è quanti dati il sistema riesce ad analizzare in un certo lasso di tempo.
+\end{remark}
+
+\subsection{Le sfide tecniche}
+Secondo le slide, le principali sfide affrontate dai framework Big Data sono:
+\begin{itemize}
+    \item Calcolo distribuito e parallelizzazione;
+    \item Storage distribuito di dataset di dimensioni enormi (Terabyte, Petabyte);
+    \item Gestione dei guasti dei nodi (\textit{Node failure management});
+    \item Colli di bottiglia della rete (\textit{Network bottleneck});
+    \item Formati di input eterogenei (\textit{Data diversity \& heterogeneity}).
+\end{itemize}
+Il vantaggio dell'utilizzo di framework come Spark è che lo sviluppatore non deve occuparsi direttamente dello scheduling dell'applicazione, della gestione della rete o dei fallimenti hardware, poiché vengono gestiti automaticamente dal framework.
+
+\subsection{Il problema tipico nei Big Data}
+Non tutti i problemi possono essere risolti efficientemente con un approccio Big Data (ad esempio, quando è necessaria una visione "globale" immediata dei dati per prendere una decisione). 
+Inoltre, le funzioni applicate ai dati distribuiti devono soddisfare specifici vincoli matematici: devono essere \textbf{commutative} e \textbf{associative}.
+
+Un problema tipico che ben si adatta a questi framework segue questo schema operativo:
+\begin{enumerate}
+    \item Iterare su una quantità enorme di record/oggetti;
+    \item Estrarre l'informazione di interesse da ogni record (\textit{Map});
+    \item Aggregare i risultati intermedi (\textit{Reduce});
+    \item Generare l'output finale / risultato globale.
+\end{enumerate}

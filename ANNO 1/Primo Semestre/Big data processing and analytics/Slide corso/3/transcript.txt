@@ -1,0 +1,2486 @@
+
+02:10:09.000 --> 02:10:13.000
+The next part, Adop and MapReduce.
+
+02:10:13.000 --> 02:10:17.000
+Today, we are not going to write code, but from next lecture.
+
+02:10:17.000 --> 02:10:20.000
+We will start also writing code.
+
+02:10:20.000 --> 02:10:27.000
+Okay. The Adook framework was proposed many years ago.
+
+02:10:27.000 --> 02:10:29.000
+It's characterized by
+
+02:10:29.000 --> 02:10:34.000
+Several components.
+
+02:10:34.000 --> 02:10:37.000
+The distributed file system of Hadoop.
+
+02:10:37.000 --> 02:10:41.000
+The one associated with the distributed data storage.
+
+02:10:41.000 --> 02:10:45.000
+So Hadoop allows you to store using several server in a distributed approach.
+
+02:10:45.000 --> 02:10:47.000
+The big amount of data that you are
+
+02:10:47.000 --> 02:10:50.000
+Starting in an analysis.
+
+02:10:50.000 --> 02:10:53.000
+But also distributed data processing. It means that in each server.
+
+02:10:53.000 --> 02:11:00.000
+You run an application to process part of your data, and then this intermediate result, as I already mentioned frequently today.
+
+02:11:00.000 --> 02:11:03.000
+is sent on the network to someone else that compute
+
+02:11:03.000 --> 02:11:06.000
+It computes the final result.
+
+02:11:06.000 --> 02:11:10.000
+It's based on the Google file system.
+
+02:11:10.000 --> 02:11:13.000
+And mainly on the paper that some researcher.
+
+02:11:13.000 --> 02:11:17.000
+At Google published more than 20 years ago.
+
+02:11:17.000 --> 02:11:21.000
+But Apache Loop is nowaday.
+
+02:11:21.000 --> 02:11:25.000
+an open source framework, an open source system.
+
+02:11:25.000 --> 02:11:28.000
+Okay.
+
+02:11:28.000 --> 02:11:30.000
+There are different, uh,
+
+02:11:30.000 --> 02:11:35.000
+Commercial implementation. Nowadays we have also only cloud data because Cloudera.
+
+02:11:35.000 --> 02:11:39.000
+Acquired Orthow works and map art was
+
+02:11:39.000 --> 02:11:42.000
+Previously acquired by another company.
+
+02:11:42.000 --> 02:11:50.000
+The Google file system or better, the paper associated with the Google file system was published in.
+
+02:11:50.000 --> 02:11:52.000
+24.
+
+02:11:52.000 --> 02:11:55.000
+So 2004, sorry.
+
+02:11:55.000 --> 02:11:57.000
+So…
+
+02:11:57.000 --> 02:12:00.000
+22 years ago.
+
+02:12:00.000 --> 02:12:06.000
+Many years ago.
+
+02:12:06.000 --> 02:12:09.000
+I was thinking that many of you.
+
+02:12:09.000 --> 02:12:10.000
+Probably as, uh…
+
+02:12:10.000 --> 02:12:13.000
+22 or 23 years.
+
+02:12:13.000 --> 02:12:15.000
+Okay.
+
+02:12:15.000 --> 02:12:18.000
+So…
+
+02:12:18.000 --> 02:12:25.000
+Probably when the Google file system was proposed and implemented in Google,
+
+02:12:25.000 --> 02:12:27.000
+You are not already here.
+
+02:12:27.000 --> 02:12:31.000
+Because they published the paper in this, uh, here, but…
+
+02:12:31.000 --> 02:12:33.000
+They were already using
+
+02:12:33.000 --> 02:12:37.000
+The Google file system from at least two years.
+
+02:12:37.000 --> 02:12:42.000
+Okay, then someone decided that, oh, this is a good idea, let us implement an open source version.
+
+02:12:42.000 --> 02:12:50.000
+And here you have some information about the timeline. Yahoo decided to try to use this.
+
+02:12:50.000 --> 02:12:54.000
+Open architecture, then this open architecture and framework.
+
+02:12:54.000 --> 02:12:57.000
+was included in the Apache ecosystem.
+
+02:12:57.000 --> 02:12:59.000
+And blah, blah, blah.
+
+02:12:59.000 --> 02:13:04.000
+And finally, someone started using also this.
+
+02:13:04.000 --> 02:13:06.000
+Adopt system.
+
+02:13:06.000 --> 02:13:08.000
+In the next years, okay?
+
+02:13:08.000 --> 02:13:12.000
+Who uses…
+
+02:13:12.000 --> 02:13:19.000
+Or use Hadoop, ok, all these companies used Hadoop in the past.
+
+02:13:19.000 --> 02:13:26.000
+Many of them are still using part of Hadoop nowadays and mainly the distributed file system of Hadoop.
+
+02:13:26.000 --> 02:13:31.000
+Okay, because again, if you collect.
+
+02:13:31.000 --> 02:13:34.000
+100 petabytes of data every day,
+
+02:13:34.000 --> 02:13:37.000
+And you store this data.
+
+02:13:37.000 --> 02:13:42.000
+For the last 20 years in the distributed file system of Hadoop.
+
+02:13:42.000 --> 02:13:45.000
+You cannot decide today to switch to another distributed file system.
+
+02:13:45.000 --> 02:13:50.000
+Because otherwise to transfer the data from the distributed file system of Hadoop.
+
+02:13:50.000 --> 02:13:53.000
+To the new file system, you need.
+
+02:13:53.000 --> 02:13:57.000
+Probably ears, okay?
+
+02:13:57.000 --> 02:14:04.000
+Two years ago, we had a crash in the distributed file system of the big data cluster that we have here at Polito.
+
+02:14:04.000 --> 02:14:06.000
+And the administrator needed, uh,
+
+02:14:06.000 --> 02:14:10.000
+One month to transfer the data,
+
+02:14:10.000 --> 02:14:15.000
+From the previous version of the distributed physicist system of Hadoop to the new
+
+02:14:15.000 --> 02:14:20.000
+Clean one. And there we had only data associated with students.
+
+02:14:20.000 --> 02:14:23.000
+And some researchers.
+
+02:14:23.000 --> 02:14:26.000
+But we already need a lot of time, okay?
+
+02:14:26.000 --> 02:14:31.000
+Moreover, the distributed phase system of Hadoop is very, very efficient when you want to store big amount of data.
+
+02:14:31.000 --> 02:14:34.000
+So, also for this reason.
+
+02:14:34.000 --> 02:14:39.000
+is still used nowadays in this company and more or less.
+
+02:14:39.000 --> 02:14:43.000
+In all the companies that are used at big amounts of data.
+
+02:14:43.000 --> 02:14:45.000
+Okay, here I also…
+
+02:14:45.000 --> 02:14:48.000
+published a job posted by OpenAI.
+
+02:14:48.000 --> 02:14:50.000
+Three years ago.
+
+02:14:50.000 --> 02:14:55.000
+At least nowadays, I don't know if they are still looking for someone with this, uh…
+
+02:14:55.000 --> 02:14:58.000
+knowledge, but in a…
+
+02:14:58.000 --> 02:15:01.000
+September 2023.
+
+02:15:01.000 --> 02:15:03.000
+They were looking for someone that is
+
+02:15:03.000 --> 02:15:07.000
+Proficient with Hadoop, the distributed file system of Hadoop.
+
+02:15:07.000 --> 02:15:11.000
+Spark, and also MapReduce application.
+
+02:15:11.000 --> 02:15:13.000
+Okay.
+
+02:15:13.000 --> 02:15:15.000
+So even if Hadoop is no longer…
+
+02:15:15.000 --> 02:15:18.000
+The best framework for big data.
+
+02:15:18.000 --> 02:15:20.000
+Some basic concepts are still useful.
+
+02:15:20.000 --> 02:15:23.000
+Okay.
+
+02:15:23.000 --> 02:15:29.000
+In a company that is not based on a big data frameworks, big data, but not big data frameworks.
+
+02:15:29.000 --> 02:15:34.000
+Okay, Adop versus high-performance Computing.
+
+02:15:34.000 --> 02:15:38.000
+Hadoop is specifically designed for data-intensive workload. Big amount of data.
+
+02:15:38.000 --> 02:15:41.000
+To analyze, to be analyzed.
+
+02:15:41.000 --> 02:15:43.000
+The high-performance computing.
+
+02:15:43.000 --> 02:15:45.000
+Very CPU-intensive tasks.
+
+02:15:45.000 --> 02:15:48.000
+If you need to analyze big amounts of data, Hadoop.
+
+02:15:48.000 --> 02:15:53.000
+If you need to perform many floating point operation per second, analyzing,
+
+02:15:53.000 --> 02:15:55.000
+relatively small amounts of data.
+
+02:15:55.000 --> 02:15:57.000
+High-performance computing.
+
+02:15:57.000 --> 02:16:01.000
+The core components are those that I already mentioned before.
+
+02:16:01.000 --> 02:16:07.000
+A distributed processing approach. So the system is able to run your application using a parallel approach.
+
+02:16:07.000 --> 02:16:09.000
+And we'll analyze it better later.
+
+02:16:09.000 --> 02:16:11.000
+And the distributed phi system of adult.
+
+02:16:11.000 --> 02:16:16.000
+The distributed by system of fadoop is characterized by a high availability.
+
+02:16:16.000 --> 02:16:18.000
+And is able to manage.
+
+02:16:18.000 --> 02:16:23.000
+Also, the distributed programming part manages faults.
+
+02:16:23.000 --> 02:16:29.000
+This means that, as I mentioned before, you don't need to care about failures in your hardware.
+
+02:16:29.000 --> 02:16:32.000
+If there is a failure, the system manages automatically.
+
+02:16:32.000 --> 02:16:36.000
+These issues. Let us analyze.
+
+02:16:36.000 --> 02:16:38.000
+How with words?
+
+02:16:38.000 --> 02:16:41.000
+Suppose that we have these servers.
+
+02:16:41.000 --> 02:16:46.000
+Using the RDs that you have in the servers, the system.
+
+02:16:46.000 --> 02:16:49.000
+Implements the distributed file system of ADU.
+
+02:16:49.000 --> 02:16:51.000
+It means that you have a…
+
+02:16:51.000 --> 02:16:57.000
+A layer, a distributed layer associated with the distributed file system of Hadoop.
+
+02:16:57.000 --> 02:17:04.000
+Uh, in each disk of each server, you have part of the data.
+
+02:17:04.000 --> 02:17:08.000
+And usually you have several blocks, like in a traditional file system.
+
+02:17:08.000 --> 02:17:11.000
+Okay.
+
+02:17:11.000 --> 02:17:14.000
+Then, in each server, we have also
+
+02:17:14.000 --> 02:17:17.000
+The main memory that is used to process the local data.
+
+02:17:17.000 --> 02:17:25.000
+And a CPU that is used to process the data locally.
+
+02:17:25.000 --> 02:17:28.000
+When you write a MapReduce application,
+
+02:17:28.000 --> 02:17:34.000
+You don't care about how the system runs your application. You don't care about how the system manage the failures.
+
+02:17:34.000 --> 02:17:37.000
+You focus on, you should focus only on the what.
+
+02:17:37.000 --> 02:17:43.000
+What you are interested in, you write a program to specify which are the analyses that you want to apply.
+
+02:17:43.000 --> 02:17:48.000
+I want to filter the data, I want to apply these specific transformation on each record, and so on and so forth.
+
+02:17:48.000 --> 02:17:52.000
+And then the system manages how to run it.
+
+02:17:52.000 --> 02:17:54.000
+efficiently.
+
+02:17:54.000 --> 02:17:56.000
+And also how to manage the failure.
+
+02:17:56.000 --> 02:18:03.000
+Okay, but a good idea, a good knowledge about how the system runs your application is useful to understand.
+
+02:18:03.000 --> 02:18:06.000
+If your application will be efficient or not.
+
+02:18:06.000 --> 02:18:10.000
+If you don't pay attention to the amount of data that you're sending on the network.
+
+02:18:10.000 --> 02:18:12.000
+Your application will be very slow, for instance.
+
+02:18:12.000 --> 02:18:15.000
+Okay, so also knowledge of the
+
+02:18:15.000 --> 02:18:17.000
+Implementation of the…
+
+02:18:17.000 --> 02:18:20.000
+Hadoop system is relevant.
+
+02:18:20.000 --> 02:18:23.000
+Let us start with the, um…
+
+02:18:23.000 --> 02:18:27.000
+Adop distributed persistent.
+
+02:18:27.000 --> 02:18:32.000
+It is specifically designed to store big amount of data.
+
+02:18:32.000 --> 02:18:36.000
+And it is also specifically designed to manage failures.
+
+02:18:36.000 --> 02:18:40.000
+Usually, you store in this distributed phase system.
+
+02:18:40.000 --> 02:18:42.000
+files that are at least some gigabytes.
+
+02:18:42.000 --> 02:18:47.000
+If you store many small files, each one with two kilobytes.
+
+02:18:47.000 --> 02:18:51.000
+You are not using the distributed file system of Adoo.
+
+02:18:51.000 --> 02:18:55.000
+in the correct way. And you have an overhead that is very, very high.
+
+02:18:55.000 --> 02:18:57.000
+And now I will clarify this.
+
+02:18:57.000 --> 02:19:02.000
+Then the idea is that usually the data stored using an append-only approach.
+
+02:19:02.000 --> 02:19:05.000
+So here I wrote data is rarely updated.
+
+02:19:05.000 --> 02:19:08.000
+Usually…
+
+02:19:08.000 --> 02:19:10.000
+Or better, I should write…
+
+02:19:10.000 --> 02:19:14.000
+The data must never be updated.
+
+02:19:14.000 --> 02:19:19.000
+Okay, because I want to use a distributed pie system of Hadoop to implement.
+
+02:19:19.000 --> 02:19:21.000
+The immutable append only,
+
+02:19:21.000 --> 02:19:27.000
+Master beta space.
+
+02:19:27.000 --> 02:19:33.000
+So, read operations are common, and append operations are common, but usually you don't read.
+
+02:19:33.000 --> 02:19:35.000
+Record number 10…
+
+02:19:35.000 --> 02:19:40.000
+And record number 15. Usually, you read all records, all data.
+
+02:19:40.000 --> 02:19:50.000
+A full scan. This is the use case scenario in which big data frameworks are used and the distributed per system of Hadoop is used.
+
+02:19:50.000 --> 02:19:53.000
+Each split or each block.
+
+02:19:53.000 --> 02:19:57.000
+associated with the input files is usually stored in
+
+02:19:57.000 --> 02:20:01.000
+More than one server, usually in three servers.
+
+02:20:01.000 --> 02:20:03.000
+Okay?
+
+02:20:03.000 --> 02:20:06.000
+And each block
+
+02:20:06.000 --> 02:20:09.000
+That you have in the distributed first system is at least.
+
+02:20:09.000 --> 02:20:17.000
+64, or usually even more, 128 megabytes.
+
+02:20:17.000 --> 02:20:20.000
+What happens when we store a new file?
+
+02:20:20.000 --> 02:20:22.000
+In the distributed file system of Hadoop.
+
+02:20:22.000 --> 02:20:29.000
+Suppose that we have an input file.
+
+02:20:29.000 --> 02:20:34.000
+129 megabytes.
+
+02:20:34.000 --> 02:20:36.000
+Uh, the block side…
+
+02:20:36.000 --> 02:20:41.000
+That is used in the PI system, the distributed system of Hadoop is.
+
+02:20:41.000 --> 02:20:46.000
+128 megabytes.
+
+02:20:46.000 --> 02:20:48.000
+Multiple church on the exam.
+
+02:20:48.000 --> 02:20:51.000
+How many blocks are used to store
+
+02:20:51.000 --> 02:20:54.000
+This input file in the distributed file system of Hadoop.
+
+02:20:54.000 --> 02:20:56.000
+Two blocks, because…
+
+02:20:56.000 --> 02:20:59.000
+129 is greater than 128.
+
+02:20:59.000 --> 02:21:10.000
+So in this case, the system receive as input this file.
+
+02:21:10.000 --> 02:21:13.000
+Here we have the first 128 megabytes.
+
+02:21:13.000 --> 02:21:16.000
+And then here we use only one megabyte.
+
+02:21:16.000 --> 02:21:19.000
+To store the last part of the file.
+
+02:21:19.000 --> 02:21:22.000
+We have these two blocks.
+
+02:21:22.000 --> 02:21:26.000
+Support that these are C0,
+
+02:21:26.000 --> 02:21:32.000
+If you want, the system creates a copy of C0 in a server.
+
+02:21:32.000 --> 02:21:34.000
+And another copy of C0 in another cell.
+
+02:21:34.000 --> 02:21:40.000
+It is a small running example, it supports that we have only two copies for each block, but usually,
+
+02:21:40.000 --> 02:21:42.000
+In our real system, we have three hopes.
+
+02:21:42.000 --> 02:21:46.000
+At the same time, the system stores also
+
+02:21:46.000 --> 02:21:48.000
+Two copies of C1,
+
+02:21:48.000 --> 02:21:50.000
+into servers.
+
+02:21:50.000 --> 02:21:53.000
+Okay? The system sends the data on the network.
+
+02:21:53.000 --> 02:21:55.000
+Because we need to send it on the network in this case.
+
+02:21:55.000 --> 02:21:59.000
+And two servers are used to store
+
+02:21:59.000 --> 02:22:02.000
+The 2 copies of each of these blocks.
+
+02:22:02.000 --> 02:22:12.000
+Okay, the next step, we receive another file.
+
+02:22:12.000 --> 02:22:16.000
+File number two.
+
+02:22:16.000 --> 02:22:19.000
+24 megabytes.
+
+02:22:19.000 --> 02:22:23.000
+Okay.
+
+02:22:23.000 --> 02:22:25.000
+How many blocks are needed to store?
+
+02:22:25.000 --> 02:22:29.000
+In the distributed file system of Hadoop, file number two.
+
+02:22:29.000 --> 02:22:33.000
+One block.
+
+02:22:33.000 --> 02:22:35.000
+Next step.
+
+02:22:35.000 --> 02:22:37.000
+In C1,
+
+02:22:37.000 --> 02:22:41.000
+I still have 24 megabytes, even more than 24 megabytes.
+
+02:22:41.000 --> 02:22:44.000
+Can I use?
+
+02:22:44.000 --> 02:22:49.000
+This part of the block C1 to store the second file.
+
+02:22:49.000 --> 02:22:53.000
+And the answer is, if you're using a distributed fast system photo, you cannot use it.
+
+02:22:53.000 --> 02:22:55.000
+So this means that the system.
+
+02:22:55.000 --> 02:22:59.000
+To store the content of the second file,
+
+02:22:59.000 --> 02:23:01.000
+Creates or uses.
+
+02:23:01.000 --> 02:23:03.000
+Another block.
+
+02:23:03.000 --> 02:23:06.000
+situ, for instance, and we'll use only
+
+02:23:06.000 --> 02:23:09.000
+The first.
+
+02:23:09.000 --> 02:23:11.000
+24 megabytes of this block.
+
+02:23:11.000 --> 02:23:16.000
+And also for C2, we have two copies.
+
+02:23:16.000 --> 02:23:21.000
+Okay. Why the system.
+
+02:23:21.000 --> 02:23:25.000
+does not allow me to use C1.
+
+02:23:25.000 --> 02:23:32.000
+Because otherwise we need to have synchronization between the different cells. You need to lock.
+
+02:23:32.000 --> 02:23:34.000
+The use of the block.
+
+02:23:34.000 --> 02:23:40.000
+For this reason, you cannot have the content of two files in the same block.
+
+02:23:40.000 --> 02:23:43.000
+Okay, pay attention to this. In this case.
+
+02:23:43.000 --> 02:23:45.000
+Even if overall we have
+
+02:23:45.000 --> 02:23:50.000
+An amount of megabytes that is smaller than two blocks.
+
+02:23:50.000 --> 02:23:52.000
+Seems we have two different files.
+
+02:23:52.000 --> 02:23:54.000
+The system needs 3 blocks.
+
+02:23:54.000 --> 02:23:58.000
+times 2, because we have two copies also of each block.
+
+02:23:58.000 --> 02:24:02.000
+Okay.
+
+02:24:02.000 --> 02:24:04.000
+What happens if you have
+
+02:24:04.000 --> 02:24:09.000
+Something like this.
+
+02:24:09.000 --> 02:24:12.000
+Input 1000 files.
+
+02:24:12.000 --> 02:24:15.000
+One megabyte
+
+02:24:15.000 --> 02:24:21.000
+Per file. And the block size.
+
+02:24:21.000 --> 02:24:23.000
+Is, uh…
+
+02:24:23.000 --> 02:24:27.000
+128 megabytes.
+
+02:24:27.000 --> 02:24:31.000
+How many blocks are needed by the system without considering the
+
+02:24:31.000 --> 02:24:34.000
+multiple copies that we have.
+
+02:24:34.000 --> 02:24:39.000
+I have 1,000 files, each one characterized by a size equal to 1 megabyte.
+
+02:24:39.000 --> 02:24:42.000
+And the block size is 128 megabytes.
+
+02:24:42.000 --> 02:24:47.000
+1000 blocks times the number of replicas.
+
+02:24:47.000 --> 02:24:49.000
+And moreover,
+
+02:24:49.000 --> 02:24:54.000
+Somewhere you have also the information about the position of each file and the blocks of each file.
+
+02:24:54.000 --> 02:24:58.000
+In this case, you have 1,000 entries.
+
+02:24:58.000 --> 02:25:00.000
+Okay?
+
+02:25:00.000 --> 02:25:03.000
+Pay attention that the distributed file system of Hadoop.
+
+02:25:03.000 --> 02:25:08.000
+As I reported here.
+
+02:25:08.000 --> 02:25:11.000
+somewhere.
+
+02:25:11.000 --> 02:25:13.000
+It's typically used…
+
+02:25:13.000 --> 02:25:15.000
+In design, to…
+
+02:25:15.000 --> 02:25:19.000
+Store and manage huge files.
+
+02:25:19.000 --> 02:25:24.000
+If you have many small files, like in this example that I reported here.
+
+02:25:24.000 --> 02:25:26.000
+Pay attention, Dad!
+
+02:25:26.000 --> 02:25:29.000
+Before storing the data in a distributed file system of Hadoop.
+
+02:25:29.000 --> 02:25:34.000
+I kind of suggest you to merge together to concatenate the small input class.
+
+02:25:34.000 --> 02:25:38.000
+Otherwise, you will waste a lot of.
+
+02:25:38.000 --> 02:25:44.000
+space in their disk, and moreover, your application will be over… also slower.
+
+02:25:44.000 --> 02:25:46.000
+Because you need to read.
+
+02:25:46.000 --> 02:25:48.000
+The blocks, 1,000 blocks.
+
+02:25:48.000 --> 02:25:51.000
+Even if then you need only the first megabyte of each block.
+
+02:25:51.000 --> 02:25:54.000
+Okay.
+
+02:25:54.000 --> 02:25:58.000
+A PhD of the group in which I'm involved.
+
+02:25:58.000 --> 02:26:00.000
+15 years ago.
+
+02:26:00.000 --> 02:26:05.000
+Uh, implementing a MapReduce application for Hadoop,
+
+02:26:05.000 --> 02:26:09.000
+And the application works very, very slow.
+
+02:26:09.000 --> 02:26:16.000
+And he understood at the end that the issue was with the input because he had many, many small input files.
+
+02:26:16.000 --> 02:26:19.000
+And the system to read these small input files needed.
+
+02:26:19.000 --> 02:26:22.000
+Many, many hours. Then, simply.
+
+02:26:22.000 --> 02:26:26.000
+concatenate everything, and then in few seconds,
+
+02:26:26.000 --> 02:26:31.000
+He was able to obtain the result. So pay attention that if you have many small files.
+
+02:26:31.000 --> 02:26:35.000
+Before using the distributed file system of Hadoop, you must somehow
+
+02:26:35.000 --> 02:26:55.000
+put them all together.
+
+02:26:55.000 --> 02:26:57.000
+Okay, I think that…
+
+02:26:57.000 --> 02:27:00.000
+If we go, sometimes we can…
+
+02:27:00.000 --> 02:27:02.000
+I would manage…
+
+02:27:02.000 --> 02:27:10.000
+Then there are laws containing the correct observations of my other function can work so obviously, because
+
+02:27:10.000 --> 02:27:22.000
+Okay, so that the question is, what happens if I combine together these blocks? Does it impact somehow on the spin layer and on the order of the data that I want to analyze somehow?
+
+02:27:22.000 --> 02:27:25.000
+But pay attention to one thing, the speed layer.
+
+02:27:25.000 --> 02:27:29.000
+does not read data from the master darts.
+
+02:27:29.000 --> 02:27:33.000
+All the input data sent to the master dataset and to the speed layer.
+
+02:27:33.000 --> 02:27:36.000
+But the speed layer does not read data from the
+
+02:27:36.000 --> 02:27:39.000
+master data set here.
+
+02:27:39.000 --> 02:27:44.000
+The distributed file system of Hadoop is used to store the historical data in the master dataset.
+
+02:27:44.000 --> 02:27:50.000
+Then you run your MapReduce application or your batch approach on all data.
+
+02:27:50.000 --> 02:27:57.000
+So the fact that you organize data in 1,000 files, or in one single big file that then is splitting partition,
+
+02:27:57.000 --> 02:27:59.000
+does not impart on the final result.
+
+02:27:59.000 --> 02:28:02.000
+Okay?
+
+02:28:02.000 --> 02:28:05.000
+Okay.
+
+02:28:05.000 --> 02:28:10.000
+So, first thing to remember, if you have a small file size, you must not use this approach.
+
+02:28:10.000 --> 02:28:13.000
+First, you need to
+
+02:28:13.000 --> 02:28:18.000
+put together all the data to obtain big files, and then you can use this approach.
+
+02:28:18.000 --> 02:28:21.000
+What happens about the failures? I'm running my application.
+
+02:28:21.000 --> 02:28:51.000
+And suppose that in my application I'm using
+
+02:29:01.000 --> 02:29:03.000
+Suppose that I'm running an application.
+
+02:29:03.000 --> 02:29:09.000
+And this application analyzes the content of the blocks C0,
+
+02:29:09.000 --> 02:29:13.000
+NC1.
+
+02:29:13.000 --> 02:29:16.000
+Okay. I submit my job.
+
+02:29:16.000 --> 02:29:21.000
+I run my application and support that the system decides to use the
+
+02:29:21.000 --> 02:29:23.000
+A copy of C0.
+
+02:29:23.000 --> 02:29:25.000
+That is in server N.
+
+02:29:25.000 --> 02:29:27.000
+And the copy of C1 that is in server.
+
+02:29:27.000 --> 02:29:32.000
+n minus 1. So this means that the system sends a copy of my code here.
+
+02:29:32.000 --> 02:29:35.000
+And the copy of my code in this cell.
+
+02:29:35.000 --> 02:29:38.000
+Okay, I'm running my application.
+
+02:29:38.000 --> 02:29:43.000
+And suppose that there is a failure in server N during the execution of my application.
+
+02:29:43.000 --> 02:29:45.000
+So, there is a failure.
+
+02:29:45.000 --> 02:29:47.000
+And I need to use something else.
+
+02:29:47.000 --> 02:29:50.000
+How can I compute the final result?
+
+02:29:50.000 --> 02:29:53.000
+If this server is no longer available.
+
+02:29:53.000 --> 02:29:55.000
+I can consider
+
+02:29:55.000 --> 02:29:58.000
+The second copy of C0 that we have in server one.
+
+02:29:58.000 --> 02:30:03.000
+Okay, and the system performs this operation automatically.
+
+02:30:03.000 --> 02:30:07.000
+How many failures at the same time?
+
+02:30:07.000 --> 02:30:10.000
+The Hadoop system is able to manage.
+
+02:30:10.000 --> 02:30:12.000
+In this case, I support that I have
+
+02:30:12.000 --> 02:30:20.000
+Two copies of each block. How many failures at the same time you can manage?
+
+02:30:20.000 --> 02:30:25.000
+0, 1, 2, 3, 4.
+
+02:30:25.000 --> 02:30:27.000
+And most one failure.
+
+02:30:27.000 --> 02:30:34.000
+Okay, what happens when you have a failure in a cell? The system reassigned the task to the other server.
+
+02:30:34.000 --> 02:30:37.000
+But the system, um…
+
+02:30:37.000 --> 02:30:39.000
+Iran's also another operation.
+
+02:30:39.000 --> 02:30:43.000
+The system creates immediately a new copy of C0.
+
+02:30:43.000 --> 02:30:46.000
+In this case, into another server, for instance,
+
+02:30:46.000 --> 02:30:48.000
+In the server number 2.
+
+02:30:48.000 --> 02:30:50.000
+In this way, in a few
+
+02:30:50.000 --> 02:30:54.000
+seconds, or in a few minutes, it depends on the size of the block.
+
+02:30:54.000 --> 02:30:57.000
+Uh, you have again a new copy of the block.
+
+02:30:57.000 --> 02:30:59.000
+And you are ready to manage a new failure.
+
+02:30:59.000 --> 02:31:06.000
+If you have a new file. Usually the number of repetitions, the number of replicas.
+
+02:31:06.000 --> 02:31:11.000
+Is set for 3 then means that you can manage how many failures at the same time.
+
+02:31:11.000 --> 02:31:14.000
+Sure. The number of failures that you can manage.
+
+02:31:14.000 --> 02:31:17.000
+At the same time, it's always equal to the number of copies minus 1.
+
+02:31:17.000 --> 02:31:23.000
+Okay, 3 is a good trade-off between the amount of this that you need.
+
+02:31:23.000 --> 02:31:27.000
+Because if you need to store.
+
+02:31:27.000 --> 02:31:32.000
+petabytes of data, you store three times these petabytes of data.
+
+02:31:32.000 --> 02:31:37.000
+It's something that can be reasonable if you store four times the…
+
+02:31:37.000 --> 02:31:39.000
+petabytes and petabytes of data that you have.
+
+02:31:39.000 --> 02:31:44.000
+As a course that so you don't like it, okay? So, 3 is a good trade-off between the number of
+
+02:31:44.000 --> 02:31:49.000
+status that you can manage, and the amount of this that you are wasting somehow.
+
+02:31:49.000 --> 02:31:51.000
+Okay.
+
+02:31:51.000 --> 02:31:53.000
+Um…
+
+02:31:53.000 --> 02:31:59.000
+Having multiple copies of the same block in different servers can also be used by the
+
+02:31:59.000 --> 02:32:03.000
+Hadoop system in a speculative way.
+
+02:32:03.000 --> 02:32:07.000
+The system can decide that suppose that both server N and server 1.
+
+02:32:07.000 --> 02:32:10.000
+are currently not used by
+
+02:32:10.000 --> 02:32:15.000
+By a bit. The system can decide to assign the same task
+
+02:32:15.000 --> 02:32:19.000
+To what WAP servers to analyze C0 in WAP servers.
+
+02:32:19.000 --> 02:32:24.000
+And then the first one that returns the result will be used to copy the final result.
+
+02:32:24.000 --> 02:32:26.000
+And moreover, in a speculative way,
+
+02:32:26.000 --> 02:32:32.000
+If there is a failure in one of the two servers during the execution, you already have the result in the other one without
+
+02:32:32.000 --> 02:32:34.000
+waiting to resubmit the job, okay?
+
+02:32:34.000 --> 02:32:36.000
+So this is something that…
+
+02:32:36.000 --> 02:32:38.000
+Hadoop is also able to…
+
+02:32:38.000 --> 02:32:42.000
+to do to execute for it.
+
+02:32:42.000 --> 02:32:44.000
+Um…
+
+02:32:44.000 --> 02:32:46.000
+There is one server,
+
+02:32:46.000 --> 02:32:51.000
+In your data center that is called the master node.
+
+02:32:51.000 --> 02:32:57.000
+That is the one in which you have all the metadata about the distributed file system of Adobe. The name of the input files.
+
+02:32:57.000 --> 02:33:03.000
+The name of the stored file, the position of the blocks associated with each file.
+
+02:33:03.000 --> 02:33:05.000
+And this is the one that is…
+
+02:33:05.000 --> 02:33:08.000
+The query by the system every time that we need to understand.
+
+02:33:08.000 --> 02:33:11.000
+Where are the data that I want to know?
+
+02:33:11.000 --> 02:33:16.000
+Usually, you have one copy of this, uh,
+
+02:33:16.000 --> 02:33:21.000
+Information in the master node in one of the servers, and usually you have another copy.
+
+02:33:21.000 --> 02:33:27.000
+a shadow copy in another server that will be used if there is a failure in the master node. Otherwise,
+
+02:33:27.000 --> 02:33:29.000
+You have a single point of failure of that.
+
+02:33:29.000 --> 02:33:33.000
+He's not good for adults.
+
+02:33:33.000 --> 02:33:35.000
+And…
+
+02:33:35.000 --> 02:33:38.000
+There are many projects associated with Hadoop.
+
+02:33:38.000 --> 02:33:44.000
+I is a distributed relational database that uses MapReduce application in Hadoop to
+
+02:33:44.000 --> 02:33:50.000
+Store data in a distributed by system of Hadoop and execute in a parallel way SQL queries.
+
+02:33:50.000 --> 02:33:52.000
+Hbay is another.
+
+02:33:52.000 --> 02:33:57.000
+Distributed database, but in this case is a column-oriented database.
+
+02:33:57.000 --> 02:34:00.000
+And there are many, many other.
+
+02:34:00.000 --> 02:34:04.000
+Components and projects associated with that.
+
+02:34:04.000 --> 02:34:07.000
+But these components, these projects,
+
+02:34:07.000 --> 02:34:12.000
+are not in the core components of Adobe. This means that
+
+02:34:12.000 --> 02:34:17.000
+If you buy a new version of Hadoop, you don't have this component included.
+
+02:34:17.000 --> 02:34:24.000
+Okay?
+
+02:34:24.000 --> 02:34:26.000
+3 more minutes, and then we will…
+
+02:34:26.000 --> 02:34:29.000
+Conclude the lecture.
+
+02:34:29.000 --> 02:34:34.000
+The yellow word example associated with MapReduce.
+
+02:34:34.000 --> 02:34:36.000
+The workout problem.
+
+02:34:36.000 --> 02:34:40.000
+You have an input file, a big input file,
+
+02:34:40.000 --> 02:34:46.000
+The problem is count the number of occurrences of each word.
+
+02:34:46.000 --> 02:34:48.000
+In this big input file.
+
+02:34:48.000 --> 02:34:51.000
+The output is a list of pairs.
+
+02:34:51.000 --> 02:34:55.000
+Word, number of appointments.
+
+02:34:55.000 --> 02:34:58.000
+Option number one, the input file.
+
+02:34:58.000 --> 02:35:03.000
+Fields in the main memory of one single cell.
+
+02:35:03.000 --> 02:35:11.000
+If you use a MapReduce, an Hadoop framework or a big data framework to solve this task.
+
+02:35:11.000 --> 02:35:14.000
+I will not hire you, ok.
+
+02:35:14.000 --> 02:35:17.000
+I will fire you if I'm your, your boss.
+
+02:35:17.000 --> 02:35:21.000
+Because in this case, you have an overhead.
+
+02:35:21.000 --> 02:35:26.000
+For solving something that you can solve very efficiently with one single cell.
+
+02:35:26.000 --> 02:35:32.000
+Suppose that you cannot store it in the main memory of one single sub. In this case, you need to define
+
+02:35:32.000 --> 02:35:36.000
+Some independent tasks, each one in charge of analyzing.
+
+02:35:36.000 --> 02:35:40.000
+Part of the data.
+
+02:35:40.000 --> 02:35:43.000
+A very simple.
+
+02:35:43.000 --> 02:35:47.000
+Running example. I support that I have only 3 servers,
+
+02:35:47.000 --> 02:35:51.000
+And the big input file is this one.
+
+02:35:51.000 --> 02:35:54.000
+That is stored in 2 blocks.
+
+02:35:54.000 --> 02:35:57.000
+The first block contains toy example file 4.
+
+02:35:57.000 --> 02:36:01.000
+And the second block contains Hadoop, Hadoop running extension.
+
+02:36:01.000 --> 02:36:04.000
+So we have two servers in which we have the historical data.
+
+02:36:04.000 --> 02:36:06.000
+They are already stored in two blocks.
+
+02:36:06.000 --> 02:36:09.000
+And the final goal is to obtain something like…
+
+02:36:09.000 --> 02:36:11.000
+At the end, toy1.
+
+02:36:11.000 --> 02:36:21.000
+Example true because we have 2 occurrences of example file 1, Adupt 2, and so on and so forth.
+
+02:36:21.000 --> 02:36:27.000
+What is the output that the first server must return? If I ask you
+
+02:36:27.000 --> 02:36:29.000
+What is the output expected?
+
+02:36:29.000 --> 02:36:32.000
+by server number 1.
+
+02:36:32.000 --> 02:36:38.000
+I want at the end to obtain the total number of occurrences of each word considering the
+
+02:36:38.000 --> 02:36:42.000
+Input file. But first you need to assign a task to each cell.
+
+02:36:42.000 --> 02:36:45.000
+What is the task that you assign to server one?
+
+02:36:45.000 --> 02:36:48.000
+And what is the task that you assign to server?
+
+02:36:48.000 --> 02:36:50.000
+Or in other words, what is the
+
+02:36:50.000 --> 02:36:55.000
+Local output that server 1 must return. And what is the local output that
+
+02:36:55.000 --> 02:37:01.000
+Several tumors with them.
+
+02:37:01.000 --> 02:37:07.000
+The question is simple.
+
+02:37:07.000 --> 02:37:10.000
+For instance, for toy example 54.
+
+02:37:10.000 --> 02:37:13.000
+What is the output that server 1 must return?
+
+02:37:13.000 --> 02:37:15.000
+The intermediate result.
+
+02:37:15.000 --> 02:37:17.000
+The pairs.
+
+02:37:17.000 --> 02:37:20.000
+File 1
+
+02:37:20.000 --> 02:37:24.000
+Example.
+
+02:37:24.000 --> 02:37:27.000
+Juan?
+
+02:37:27.000 --> 02:37:32.000
+The final one.
+
+02:37:32.000 --> 02:37:35.000
+And 4, 1.
+
+02:37:35.000 --> 02:37:37.000
+What is the output of the second server?
+
+02:37:37.000 --> 02:37:44.000
+The same output associated with the second block, so Hadoop2 running one example one.
+
+02:37:44.000 --> 02:37:49.000
+Okay.
+
+02:37:49.000 --> 02:37:52.000
+If you need to provide the problem specification.
+
+02:37:52.000 --> 02:37:56.000
+For this task. What is the…
+
+02:37:56.000 --> 02:38:02.000
+The problem specification associated with the task executed by server one.
+
+02:38:02.000 --> 02:38:06.000
+Count, the number of occurrences of each word.
+
+02:38:06.000 --> 02:38:08.000
+In your input block.
+
+02:38:08.000 --> 02:38:12.000
+Do you see any similarities with
+
+02:38:12.000 --> 02:38:18.000
+They work on problem that I defined at the beginning.
+
+02:38:18.000 --> 02:38:21.000
+Count the number of occurrences of each word.
+
+02:38:21.000 --> 02:38:24.000
+Considering all that. But the task is the same.
+
+02:38:24.000 --> 02:38:27.000
+We are changing only the input.
+
+02:38:27.000 --> 02:38:32.000
+Okay.
+
+02:38:32.000 --> 02:38:42.000
+So, each server that contains part of the data that you are interested in runs the same application independently of the other servers.
+
+02:38:42.000 --> 02:38:48.000
+What do we need to do at the end? At the end, we need to combine together these intermediate results.
+
+02:38:48.000 --> 02:38:52.000
+So we need to send this data to another server.
+
+02:38:52.000 --> 02:38:55.000
+That is in charge of computing the final result.
+
+02:38:55.000 --> 02:38:58.000
+In this case, we simply need to sum the values associated with the same.
+
+02:38:58.000 --> 02:39:01.000
+Key part of the key value pairs.
+
+02:39:01.000 --> 02:39:06.000
+Again, this function is associative and commutative, so we can compute the final result easily.
+
+02:39:06.000 --> 02:39:10.000
+Okay, one final question.
+
+02:39:10.000 --> 02:39:12.000
+To compute the
+
+02:39:12.000 --> 02:39:14.000
+Intermediate results in each server.
+
+02:39:14.000 --> 02:39:17.000
+Do you need to send it on the network?
+
+02:39:17.000 --> 02:39:19.000
+So, in the first step, this one,
+
+02:39:19.000 --> 02:39:21.000
+Do you need to send that on the network?
+
+02:39:21.000 --> 02:39:26.000
+No, each error computes its local result.
+
+02:39:26.000 --> 02:39:28.000
+without sending it on the net.
+
+02:39:28.000 --> 02:39:35.000
+To compute the final result, do we need to send it on the network? Yes, because we need to put together all the key-value pairs associated with the same.
+
+02:39:35.000 --> 02:39:37.000
+Key. Okay?
+
+02:39:37.000 --> 02:39:40.000
+So, the amount of data that we are sending on the network.
+
+02:39:40.000 --> 02:39:44.000
+Is related to the output of the first step.
+
+02:39:44.000 --> 02:39:49.000
+Now we need a small running example, the amount of pair that we're sending on the network is larger than
+
+02:39:49.000 --> 02:39:51.000
+the size of the input file.
+
+02:39:51.000 --> 02:39:55.000
+But if you consider a big data input file,
+
+02:39:55.000 --> 02:39:57.000
+We will analyze better next week.
+
+02:39:57.000 --> 02:40:03.000
+that the amount of data that you're sending on the network is order of money to smaller than.
+
+02:40:03.000 --> 02:40:06.000
+The amount of bias that you have in the English.
+
+02:40:06.000 --> 02:40:11.000
+Okay, that's all for today. We will meet again next Friday.
+
+02:40:11.000 --> 02:40:15.000
+Have a nice weekend.
+
+02:40:15.000 --> 02:40:25.000
+If tomorrow decide that you want no longer use the cobalt procedure, and you.
+
+WEBVTT
+
+00:05:04.000 --> 00:05:07.000
+Let us support that we have, uh,
+
+00:05:07.000 --> 00:05:10.000
+1,000 distinct words?
+
+00:05:10.000 --> 00:05:15.000
+In this example, in the worst case scenario, that is not really realistic, but in the worst-case scenario,
+
+00:05:15.000 --> 00:05:17.000
+Each server returns
+
+00:05:17.000 --> 00:05:19.000
+1,000 pairs.
+
+00:05:19.000 --> 00:05:25.000
+And so overall, if you have 100 servers that are used to analyze the data,
+
+00:05:25.000 --> 00:05:30.000
+The amount of data that the system sends on the network is equal to 1,000 times.
+
+00:05:30.000 --> 00:05:34.000
+100. And each of these pair is a string,
+
+00:05:34.000 --> 00:05:37.000
+Award and an integer. So, overall.
+
+00:05:37.000 --> 00:05:40.000
+few megabytes. So in this case, it is more realistic.
+
+00:05:40.000 --> 00:05:46.000
+The input 100 gigabytes, the amount of data that you're sending on the network, few megabytes.
+
+00:05:46.000 --> 00:05:52.000
+I told you during the previous lecture that the amount of data that you're sending on the network impacts significantly.
+
+00:05:52.000 --> 00:05:55.000
+On the execution time of your application.
+
+00:05:55.000 --> 00:05:59.000
+So, you must try to reduce as much as possible the amount of data that you're sending on the name.
+
+00:05:59.000 --> 00:06:02.000
+And if you implement a MapReduce application.
+
+00:06:02.000 --> 00:06:07.000
+And the amount of data that you're sending on the network is comparable with the amount of data that you have as input,
+
+00:06:07.000 --> 00:06:15.000
+It means that your application is not well written, first option, or data specific task cannot be easily parallelized using this approach.
+
+00:06:15.000 --> 00:06:20.000
+Because MapReduce combined with Hadoop cannot be used to sort everything.
+
+00:06:20.000 --> 00:06:27.000
+It depends on the parallelization of the application based on this split-based approach.
+
+00:06:27.000 --> 00:06:31.000
+Okay?
+
+00:06:31.000 --> 00:06:42.000
+Also today, when I ran our first MapReduce application, I will show you some statistics to check how many pairs and how many bytes are sent on the net.
+
+00:06:42.000 --> 00:06:49.000
+If we use this approach, we can scale using the scale out approach that I mentioned during the previous lecture.
+
+00:06:49.000 --> 00:06:52.000
+So suppose that you increase the amount of data.
+
+00:06:52.000 --> 00:06:55.000
+The same number of servers, 100 servers,
+
+00:06:55.000 --> 00:06:57.000
+And you double.
+
+00:06:57.000 --> 00:07:00.000
+You twice the amount of data that you want to analyze.
+
+00:07:00.000 --> 00:07:06.000
+You can predict that the amount of time that you need is the previous one times 3.
+
+00:07:06.000 --> 00:07:08.000
+If you want to analyze
+
+00:07:08.000 --> 00:07:14.000
+More data, again, instead of 100 gigabytes, you want to analyze 200 gigabytes.
+
+00:07:14.000 --> 00:07:18.000
+But you want to obtain the result in the same amount of time.
+
+00:07:18.000 --> 00:07:21.000
+How can you solve this using the horizontal scalability?
+
+00:07:21.000 --> 00:07:24.000
+Instead of using 100 servers, you use
+
+00:07:24.000 --> 00:07:27.000
+200 servers, okay?
+
+00:07:27.000 --> 00:07:33.000
+Obviously, if you are using in the cloud, you can more easily switch from 100 servers to
+
+00:07:33.000 --> 00:07:36.000
+200 servers.
+
+00:07:36.000 --> 00:07:38.000
+If you have your data center, you cannot easily
+
+00:07:38.000 --> 00:07:43.000
+move from 100 servers to 200 servers is not in few seconds, okay?
+
+00:07:43.000 --> 00:07:46.000
+But, using this approach and scale.
+
+00:07:46.000 --> 00:07:49.000
+Linearly with the number of data that you want to analyze.
+
+00:07:49.000 --> 00:07:57.000
+And with the number of servers that you are using.
+
+00:07:57.000 --> 00:07:59.000
+So we use our…
+
+00:07:59.000 --> 00:08:02.000
+scale-out approach, not the scale-out one.
+
+00:08:02.000 --> 00:08:04.000
+And we move…
+
+00:08:04.000 --> 00:08:12.000
+code to the data and not vice versa. So again, as I already mentioned during the previous lecture, we exploit data locality.
+
+00:08:12.000 --> 00:08:18.000
+So the system analyzes the data, the big amount of data that we have as input, in the service in which we have the data.
+
+00:08:18.000 --> 00:08:23.000
+And then only the intermediate results are sent in the net.
+
+00:08:23.000 --> 00:08:28.000
+So compared to a traditional distributed system like high-performance computing.
+
+00:08:28.000 --> 00:08:30.000
+We send data,
+
+00:08:30.000 --> 00:08:38.000
+So we send code to the server, to the location where we have the data and not vice versa.
+
+00:08:38.000 --> 00:08:42.000
+Okay, support that we want to implement, um,
+
+00:08:42.000 --> 00:08:45.000
+MapReduce application to solve a specific task.
+
+00:08:45.000 --> 00:08:48.000
+There are several tasks that can be…
+
+00:08:48.000 --> 00:08:54.000
+Solve using MapReduce combined with Hadoop. Here I mentioned only some of them, for instance.
+
+00:08:54.000 --> 00:08:56.000
+You can compute the page rank value.
+
+00:08:56.000 --> 00:09:02.000
+I don't know if you have any idea about what is the page rank?
+
+00:09:02.000 --> 00:09:06.000
+Many, many years ago when Google was founded.
+
+00:09:06.000 --> 00:09:09.000
+Larry Page proposed an algorithm.
+
+00:09:09.000 --> 00:09:12.000
+And this algorithm is called the page rank algorithm.
+
+00:09:12.000 --> 00:09:17.000
+that is used to compute the relevance of a web page.
+
+00:09:17.000 --> 00:09:22.000
+Based on the number of in-links and outlinks, this algorithm computes a number.
+
+00:09:22.000 --> 00:09:24.000
+The eigenvalue value of this number.
+
+00:09:24.000 --> 00:09:30.000
+The more important, uh, web page is. This is the basic idea.
+
+00:09:30.000 --> 00:09:33.000
+That was exploited by Larry Page.
+
+00:09:33.000 --> 00:09:35.000
+And the brain.
+
+00:09:35.000 --> 00:09:40.000
+When they decided to implement the first version of the Google search engine.
+
+00:09:40.000 --> 00:09:44.000
+Okay. And the name of the algorithm is.
+
+00:09:44.000 --> 00:09:48.000
+PageRank, not because it is used to rank web pages,
+
+00:09:48.000 --> 00:09:53.000
+But because the person who proposed this algorithm is Larry Page.
+
+00:09:53.000 --> 00:09:57.000
+And so the name of the algorithm is phase rank for the solution.
+
+00:09:57.000 --> 00:10:01.000
+Nowadays we have more advanced techniques to decide which are the best.
+
+00:10:01.000 --> 00:10:04.000
+Web pages associated with your query.
+
+00:10:04.000 --> 00:10:09.000
+But the page rank algorithm is still somehow useful also to obtain better results.
+
+00:10:09.000 --> 00:10:16.000
+Okay, we can use MapReduce algorithm to identify
+
+00:10:16.000 --> 00:10:20.000
+Connected subgraphs to identify potential friends.
+
+00:10:20.000 --> 00:10:22.000
+Oh, someone else in a social network.
+
+00:10:22.000 --> 00:10:25.000
+We can perform a log analysis in general.
+
+00:10:25.000 --> 00:10:30.000
+So there are many applications that can be solved using MapReduce combined with Adobe.
+
+00:10:30.000 --> 00:10:34.000
+But as I already mentioned during the previous lecture, you cannot solve everything.
+
+00:10:34.000 --> 00:10:39.000
+With market use and dude. So usually, MapReduce…
+
+00:10:39.000 --> 00:10:42.000
+Combine it with Hadoop is a good idea to solve your task if
+
+00:10:42.000 --> 00:10:47.000
+You need to iterate over all data.
+
+00:10:47.000 --> 00:10:51.000
+You scan all data and from each record you return.
+
+00:10:51.000 --> 00:10:53.000
+Okay?
+
+00:10:53.000 --> 00:10:57.000
+You must not use this approach, MapReduce, when you need
+
+00:10:57.000 --> 00:11:00.000
+A recursive problem.
+
+00:11:00.000 --> 00:11:02.000
+It does not work.
+
+00:11:02.000 --> 00:11:08.000
+If you have to iterate multiple times on your data, it's not really efficient. We will see that.
+
+00:11:08.000 --> 00:11:10.000
+Spark is more efficient.
+
+00:11:10.000 --> 00:11:14.000
+Okay, if you have to scan pull data only once,
+
+00:11:14.000 --> 00:11:20.000
+That is the good solution. If the input is a big deficit, but if you have to iterate multiple times on the same data.
+
+00:11:20.000 --> 00:11:22.000
+It's not very efficient.
+
+00:11:22.000 --> 00:11:27.000
+Then you cannot analyze the stream of data efficiently using MapReduce combined with Hadoop.
+
+00:11:27.000 --> 00:11:30.000
+You can only solve batch tasks.
+
+00:11:30.000 --> 00:11:35.000
+And so combine it with this, also real-time processing is something that you cannot
+
+00:11:35.000 --> 00:11:40.000
+solve using Hadoop, okay?
+
+00:11:40.000 --> 00:11:42.000
+Okay, um…
+
+00:11:42.000 --> 00:11:44.000
+So, when you want to use Hadoop,
+
+00:11:44.000 --> 00:11:50.000
+You need to write a program using the MapReduce programming part.
+
+00:11:50.000 --> 00:11:54.000
+The basic idea is inspired from functional programming.
+
+00:11:54.000 --> 00:11:57.000
+And as we are going to see in a few slides.
+
+00:11:57.000 --> 00:12:02.000
+You have only two functions that must be implemented, map and reduce.
+
+00:12:02.000 --> 00:12:04.000
+And using these two building blocks.
+
+00:12:04.000 --> 00:12:06.000
+You must solve your task.
+
+00:12:06.000 --> 00:12:13.000
+Okay, so from one side, it is easy because you have to implement only two functions.
+
+00:12:13.000 --> 00:12:18.000
+But from the other side, using only these two function, these two building blocks to solve the task.
+
+00:12:18.000 --> 00:12:20.000
+If the task is complex,
+
+00:12:20.000 --> 00:12:30.000
+in the not an easy task. Okay, you can have also jobs on force of more than one MapReduce application. So you can have a MapReduce.
+
+00:12:30.000 --> 00:12:37.000
+job to solve the first part of the task and then the output of the first job is the input of another MapReduce application.
+
+00:12:37.000 --> 00:12:39.000
+But each building, uh,
+
+00:12:39.000 --> 00:12:45.000
+Each basic application is based only on map and reduce.
+
+00:12:45.000 --> 00:12:55.000
+As I already mentioned, I can skip this slide. You can solve many real problems. You can compute phase rank, log analysis, you can solve many, many tasks. Not all tasks, but many, many tasks.
+
+00:12:55.000 --> 00:12:59.000
+So everything is based on these two functions, map and reduce.
+
+00:12:59.000 --> 00:13:02.000
+The math function is used to transform your input data.
+
+00:13:02.000 --> 00:13:06.000
+Each input record, each input object is analyzed one time.
+
+00:13:06.000 --> 00:13:16.000
+At the time by the mock method, and the mock method returns intermediate results. The key-value pairs that I showed you before when I show you the solution of the workout problem.
+
+00:13:16.000 --> 00:13:19.000
+The intermediate results.
+
+00:13:19.000 --> 00:13:22.000
+Then we have the reduced space. The reduced space is in charge of
+
+00:13:22.000 --> 00:13:26.000
+Combining together all the values associated with the same key.
+
+00:13:26.000 --> 00:13:28.000
+And compute the final result for each key.
+
+00:13:28.000 --> 00:13:31.000
+So, it is used to define the groups and
+
+00:13:31.000 --> 00:13:34.000
+Compute a final result for each group.
+
+00:13:34.000 --> 00:13:36.000
+In the example that I showed you before,
+
+00:13:36.000 --> 00:13:41.000
+There are just faces in charge of computing the total number of occurrences for each one.
+
+00:13:41.000 --> 00:13:45.000
+Okay? And the reduce method is invoked once.
+
+00:13:45.000 --> 00:13:49.000
+For each distinct key.
+
+00:13:49.000 --> 00:13:53.000
+Also, the reduced function returns key-value pairs, so
+
+00:13:53.000 --> 00:13:58.000
+Also, the final result is a set of key-value pairs.
+
+00:13:58.000 --> 00:14:03.000
+In the example that I showed you before, the input is a textual file with a list of words.
+
+00:14:03.000 --> 00:14:07.000
+And the problem is, count the number of times each distinct work
+
+00:14:07.000 --> 00:14:10.000
+occurs in the input file, and the output is
+
+00:14:10.000 --> 00:14:20.000
+key value pairs, where the key is the word, and value is the number of occurrences. In the output, we have a number of key-value pairs equal to the number of distinct words that we have.
+
+00:14:20.000 --> 00:14:26.000
+Indeed. So in this case, support that I represent the input element, the input.
+
+00:14:26.000 --> 00:14:28.000
+File as a list.
+
+00:14:28.000 --> 00:14:34.000
+In the list, we have the words, the same word can occur more than 1 time.
+
+00:14:34.000 --> 00:14:40.000
+The first step associated with the map function is the one in which we transform each input element.
+
+00:14:40.000 --> 00:14:43.000
+into an intermediate result.
+
+00:14:43.000 --> 00:14:48.000
+are key-value pairs. In this example, each input word is associated with
+
+00:14:48.000 --> 00:14:50.000
+One single key-value pair,
+
+00:14:50.000 --> 00:14:55.000
+There are other use cases in which each input element can be mapped to many key-value bits.
+
+00:14:55.000 --> 00:14:58.000
+Okay? But in this example,
+
+00:14:58.000 --> 00:15:03.000
+One word at a time is mapped to a key-value pair with word plus one.
+
+00:15:03.000 --> 00:15:06.000
+1 plus 1, word plus one.
+
+00:15:06.000 --> 00:15:09.000
+Then we need to define the groups.
+
+00:15:09.000 --> 00:15:14.000
+All the values associated with the same key must be combined together to compute the final result.
+
+00:15:14.000 --> 00:15:17.000
+But before performing the reduced phase,
+
+00:15:17.000 --> 00:15:23.000
+We need to send all the values associated with the same key to the same server, the one that is in charge of computing
+
+00:15:23.000 --> 00:15:25.000
+Define the result for a specific…
+
+00:15:25.000 --> 00:15:29.000
+And finally, we apply the reduce function.
+
+00:15:29.000 --> 00:15:37.000
+That is in charge of analyzing all values associated with a specific key to compute the final result.
+
+00:15:37.000 --> 00:15:41.000
+So the first phase is called the mock phase.
+
+00:15:41.000 --> 00:15:43.000
+The last phase is called the reduced phase.
+
+00:15:43.000 --> 00:15:49.000
+And the one that you have in the middle, this one, is called shuffled and sort base.
+
+00:15:49.000 --> 00:15:51.000
+is the one that is used to define the groups.
+
+00:15:51.000 --> 00:15:56.000
+And here is also the step that is used by the system.
+
+00:15:56.000 --> 00:16:00.000
+To send the data to the reduced space, so this is when.
+
+00:16:00.000 --> 00:16:04.000
+The system sends that on the net.
+
+00:16:04.000 --> 00:16:06.000
+The system…
+
+00:16:06.000 --> 00:16:10.000
+creates local groups for each listing key locally.
+
+00:16:10.000 --> 00:16:13.000
+But then this data must be sent on the network.
+
+00:16:13.000 --> 00:16:15.000
+To compute the final result.
+
+00:16:15.000 --> 00:16:18.000
+Okay, let us suppose that we have, uh…
+
+00:16:18.000 --> 00:16:23.000
+True input blocks, this is the chunk number one or block number one.
+
+00:16:23.000 --> 00:16:26.000
+With the first three words, and then we have block.
+
+00:16:26.000 --> 00:16:29.000
+Number 2.
+
+00:16:29.000 --> 00:16:33.000
+These two blocks are stored in two different servers, server one.
+
+00:16:33.000 --> 00:16:37.000
+In server shoe.
+
+00:16:37.000 --> 00:16:42.000
+Each server applies the mob method.
+
+00:16:42.000 --> 00:16:45.000
+Considering one word at a time, locally.
+
+00:16:45.000 --> 00:16:49.000
+And then these values, these key value pairs are sent on the net.
+
+00:16:49.000 --> 00:16:51.000
+Okay.
+
+00:16:51.000 --> 00:16:55.000
+The system applies an ash function.
+
+00:16:55.000 --> 00:16:59.000
+In order to send all the key-value pairs.
+
+00:16:59.000 --> 00:17:05.000
+to the same server, based on the key part. So the system apply an hash function on toy.
+
+00:17:05.000 --> 00:17:11.000
+This ash function returns a number. Let us suppose that we want to use two servers to implement the reduced phase.
+
+00:17:11.000 --> 00:17:14.000
+The system returns 0 or 1.
+
+00:17:14.000 --> 00:17:18.000
+If applying the hash function on toy, the system returns
+
+00:17:18.000 --> 00:17:20.000
+The hash function returns 0.
+
+00:17:20.000 --> 00:17:24.000
+Then this key-value pairs is sent to server 1.
+
+00:17:24.000 --> 00:17:28.000
+Sorry, let me call it server 3.
+
+00:17:28.000 --> 00:17:32.000
+Every time if you apply the hash function, obviously.
+
+00:17:32.000 --> 00:17:36.000
+If you apply the hash function on the same key.
+
+00:17:36.000 --> 00:17:38.000
+The pair is sent to the same cell.
+
+00:17:38.000 --> 00:17:41.000
+So these two key value pairs are sent to
+
+00:17:41.000 --> 00:17:43.000
+Server 3.
+
+00:17:43.000 --> 00:17:49.000
+Then, let us suppose that applying the hash function on example, the system returns 1.
+
+00:17:49.000 --> 00:17:53.000
+So this means that the server that is in charge of managing.
+
+00:17:53.000 --> 00:17:59.000
+The key example is the second server that I used to implement the reduced phase. Let me call it
+
+00:17:59.000 --> 00:18:02.000
+Server 4.
+
+00:18:02.000 --> 00:18:05.000
+So, all the key-value pairs associated with example.
+
+00:18:05.000 --> 00:18:08.000
+Are sent to…
+
+00:18:08.000 --> 00:18:10.000
+Server 4.
+
+00:18:10.000 --> 00:18:13.000
+And so the content of example,
+
+00:18:13.000 --> 00:18:16.000
+Plus 1, plus 1 is stored in server.
+
+00:18:16.000 --> 00:18:18.000
+4. In Server 3 we have toy.
+
+00:18:18.000 --> 00:18:24.000
+plus 1 plus 1. Independently of the server that analyzes the.
+
+00:18:24.000 --> 00:18:30.000
+Occurances of example or the key-value pairs associated with example are sent to the same cell.
+
+00:18:30.000 --> 00:18:33.000
+This is mandatory to obtain the correct final result.
+
+00:18:33.000 --> 00:18:36.000
+And then similarly, the system will apply.
+
+00:18:36.000 --> 00:18:41.000
+The hash function also nadu, let us suppose that the hash function returns 1.
+
+00:18:41.000 --> 00:18:44.000
+So also a do plus one is managed by…
+
+00:18:44.000 --> 00:18:47.000
+Server 4. Then inside this server,
+
+00:18:47.000 --> 00:18:51.000
+We have all the information that is needed to compute the result.
+
+00:18:51.000 --> 00:18:54.000
+For the keys managed by that specific cell.
+
+00:18:54.000 --> 00:18:59.000
+So in server 3, the system scans the plus 1 values associated with toy.
+
+00:18:59.000 --> 00:19:01.000
+And can compute the final result.
+
+00:19:01.000 --> 00:19:06.000
+Toy 1. At the same time, in parallel in Server 4,
+
+00:19:06.000 --> 00:19:10.000
+Server for analyzes all the values associated with the example.
+
+00:19:10.000 --> 00:19:13.000
+The system sums this value and returns.
+
+00:19:13.000 --> 00:19:15.000
+Example.
+
+00:19:15.000 --> 00:19:20.000
+Sure. And then server 4 is also in charge of managing Hadoop.
+
+00:19:20.000 --> 00:19:27.000
+It scans the values associated with a dupe, in this case only 1 occurrence is 1, and computes also.
+
+00:19:27.000 --> 00:19:31.000
+Okay, so we can parallelize.
+
+00:19:31.000 --> 00:19:36.000
+The map phase, but we can parallelize also the reduced phase.
+
+00:19:36.000 --> 00:19:42.000
+But the important thing is that each server that you use to implement the reduce phase.
+
+00:19:42.000 --> 00:19:46.000
+He's in charge of managing a specific subset of keys.
+
+00:19:46.000 --> 00:19:51.000
+And all the key-value pairs associated with a specific key must be managed by one single cell.
+
+00:19:51.000 --> 00:19:53.000
+Otherwise, if you can send
+
+00:19:53.000 --> 00:19:59.000
+And the other occurrence of toy1 to server 4.
+
+00:19:59.000 --> 00:20:01.000
+The two servers need to…
+
+00:20:01.000 --> 00:20:08.000
+share some information to compute the final results. And we don't want to do that, because we want to parallelize also the reduced phase.
+
+00:20:08.000 --> 00:20:12.000
+So we parallelize the map phase, but also the reduced phase.
+
+00:20:12.000 --> 00:20:16.000
+If it is feasible, we want to parallelize also the space.
+
+00:20:16.000 --> 00:20:18.000
+Okay.
+
+00:20:18.000 --> 00:20:24.000
+Now, when we will solve exercises in the next lectures and the next lab activities,
+
+00:20:24.000 --> 00:20:28.000
+I will always ask you, can we parallelize the reduced phase?
+
+00:20:28.000 --> 00:20:34.000
+Because the map phase can always be parallelized, the reduced phase sometimes cannot be parallelized.
+
+00:20:34.000 --> 00:20:36.000
+It depends on the…
+
+00:20:36.000 --> 00:20:40.000
+Information that you need to compute the final result.
+
+00:20:40.000 --> 00:20:42.000
+But usually,
+
+00:20:42.000 --> 00:20:48.000
+We want to parallelize also the radio space if it is feasible.
+
+00:20:48.000 --> 00:20:55.000
+One single map phase, one single reduced phase for each MapReduce application, or for each job associated with a MapReduce application.
+
+00:20:55.000 --> 00:20:58.000
+In other systems, for instance, in the
+
+00:20:58.000 --> 00:21:00.000
+NoSQL database, MongoDB.
+
+00:21:00.000 --> 00:21:06.000
+You can have come up phase followed by a reduced phase, and then another reduced phase.
+
+00:21:06.000 --> 00:21:08.000
+In MapReduce for Hadoop,
+
+00:21:08.000 --> 00:21:11.000
+No, map and reduce.
+
+00:21:11.000 --> 00:21:16.000
+Her job. Then, if you need to perform some other analysis, another map, and another reduced phase.
+
+00:21:16.000 --> 00:21:19.000
+But you cannot have…
+
+00:21:19.000 --> 00:21:22.000
+Something called revenues.
+
+00:21:22.000 --> 00:21:26.000
+Okay, map and reduce.
+
+00:21:26.000 --> 00:21:30.000
+You must focus only on these two steps. You implement the map function.
+
+00:21:30.000 --> 00:21:32.000
+You implement the reduce function.
+
+00:21:32.000 --> 00:21:39.000
+You don't need to implement the shuffle and sort phase, because the shuffle and sort phase is performing always the same operation.
+
+00:21:39.000 --> 00:21:44.000
+Put together all the values, all the key-value pairs associated with the same key.
+
+00:21:44.000 --> 00:21:50.000
+And this operation is efficiently implemented in Hadoop. You don't need to write it by yourself.
+
+00:21:50.000 --> 00:21:52.000
+Okay?
+
+00:21:52.000 --> 00:21:59.000
+Okay, here I wrote the goal, the mob function in this case simply returns a key value pairs word plus 1.
+
+00:21:59.000 --> 00:22:04.000
+And the reduce function sums the values associated with each.
+
+00:22:04.000 --> 00:22:06.000
+Okay.
+
+00:22:06.000 --> 00:22:11.000
+So, the mob function is used to transform your input elements.
+
+00:22:11.000 --> 00:22:16.000
+In the intermediate key-value pairs that are needed to compute, then the final result.
+
+00:22:16.000 --> 00:22:22.000
+This operation can be executed in parallel using several servers, each one in charge of analyzing.
+
+00:22:22.000 --> 00:22:25.000
+Part of the input data.
+
+00:22:25.000 --> 00:22:27.000
+The reduced phase,
+
+00:22:27.000 --> 00:22:30.000
+is associated with the computation of the final result.
+
+00:22:30.000 --> 00:22:34.000
+It is invoked one time for each thinking.
+
+00:22:34.000 --> 00:22:41.000
+It receives all the values associated with this invocation of the reduce method is managed.
+
+00:22:41.000 --> 00:22:47.000
+Okay, and returns the final result.
+
+00:22:47.000 --> 00:22:51.000
+So multiple choice question at the exam.
+
+00:22:51.000 --> 00:22:56.000
+The number of invocation of the map method is equal to the number of input elements.
+
+00:22:56.000 --> 00:22:58.000
+Input objects, input records.
+
+00:22:58.000 --> 00:23:00.000
+So if you have…
+
+00:23:00.000 --> 00:23:02.000
+For instance, in this example,
+
+00:23:02.000 --> 00:23:07.000
+four input words, the system invokes the overall, the map function.
+
+00:23:07.000 --> 00:23:10.000
+4,000.
+
+00:23:10.000 --> 00:23:12.000
+The number of locations of the reduce method.
+
+00:23:12.000 --> 00:23:20.000
+is not related to the number of input lines or the input elements that you have, input records.
+
+00:23:20.000 --> 00:23:24.000
+The reduced method, the invocation of the reduced method is associated with the number of distinct keys.
+
+00:23:24.000 --> 00:23:28.000
+generated by an object.
+
+00:23:28.000 --> 00:23:36.000
+Also, this operation can be executed in isolation, as I mentioned before, because all the key value pairs associated with the same key.
+
+00:23:36.000 --> 00:23:38.000
+are sent to the same cell.
+
+00:23:38.000 --> 00:23:45.000
+That is in charge of computing the final result for that key in the reduced phase. So we can parallelize also this step, usually.
+
+00:23:45.000 --> 00:23:49.000
+Okay.
+
+00:23:49.000 --> 00:23:51.000
+The basic data structure.
+
+00:23:51.000 --> 00:23:55.000
+using MapReduce or Hadoop is the key-value pair.
+
+00:23:55.000 --> 00:23:58.000
+data structure. I already showed you that the map phase
+
+00:23:58.000 --> 00:24:00.000
+Returns key value pairs.
+
+00:24:00.000 --> 00:24:03.000
+And also the reduced phase returns key-value pairs.
+
+00:24:03.000 --> 00:24:12.000
+But we need also to provide as input something that is associated with key-value pairs. And now we will show you how you can transform something that is not a key-value pair
+
+00:24:12.000 --> 00:24:18.000
+Into an input key-value pair. There are some specific classes that are used to read your data.
+
+00:24:18.000 --> 00:24:20.000
+and transform a textual document, or…
+
+00:24:20.000 --> 00:24:25.000
+Any other input into a set of key value pairs.
+
+00:24:25.000 --> 00:24:30.000
+So the example that I show you here is not 100% consistent with the expected input.
+
+00:24:30.000 --> 00:24:33.000
+of a MapReduce application for Hadoop.
+
+00:24:33.000 --> 00:24:35.000
+Because the input cannot be simply
+
+00:24:35.000 --> 00:24:47.000
+A list of words. Also, the input must be somehow represented by means of key-value pairs.
+
+00:24:47.000 --> 00:24:51.000
+So we need to transform.
+
+00:24:51.000 --> 00:24:58.000
+The input also in a set of key value pairs, for instance, support that we are analyzing web pages and we want to count the number of occurrences.
+
+00:24:58.000 --> 00:25:01.000
+of the words inside these web pages.
+
+00:25:01.000 --> 00:25:06.000
+The input, in this case probably will be a key-value pair where the key is the URL.
+
+00:25:06.000 --> 00:25:08.000
+And the value is…
+
+00:25:08.000 --> 00:25:14.000
+the content of the web page, or the words that you have in the webpage.
+
+00:25:14.000 --> 00:25:18.000
+Then, we focus on the map and the reduce phase.
+
+00:25:18.000 --> 00:25:23.000
+The Mob method, as I mentioned, is invoked one time for each input pair.
+
+00:25:23.000 --> 00:25:25.000
+And returns.
+
+00:25:25.000 --> 00:25:29.000
+A list of key-value pairs.
+
+00:25:29.000 --> 00:25:32.000
+Pay attention that the map method can return.
+
+00:25:32.000 --> 00:25:36.000
+More than one key-value pair for each input key value pair.
+
+00:25:36.000 --> 00:25:40.000
+Okay? In this example that I showed you before, this is not true.
+
+00:25:40.000 --> 00:25:46.000
+Each word is associated with one single word plus one, one single key value pair.
+
+00:25:46.000 --> 00:25:49.000
+But depending on the application that you are
+
+00:25:49.000 --> 00:25:55.000
+Implementing, the mop method given one input key-value pair at a time can return.
+
+00:25:55.000 --> 00:25:58.000
+From zero to many key value pairs.
+
+00:25:58.000 --> 00:26:01.000
+Okay, sometimes this result can also be M.
+
+00:26:01.000 --> 00:26:06.000
+For instance, if we are applying an application to filter our data.
+
+00:26:06.000 --> 00:26:12.000
+Depending on the characteristics of the input pair that you are analyzing with a specific invocation of the map method.
+
+00:26:12.000 --> 00:26:15.000
+The system will return data-specific key-value pair.
+
+00:26:15.000 --> 00:26:20.000
+Or we'll return nothing if that record is not
+
+00:26:20.000 --> 00:26:28.000
+Selected, must not be selected by our application, ok, so pay attention here, I use the square bracket, that means a list of key-value pairs.
+
+00:26:28.000 --> 00:26:30.000
+And this list can be also empty.
+
+00:26:30.000 --> 00:26:33.000
+Then the signature of the reduced methods.
+
+00:26:33.000 --> 00:26:37.000
+The system receive again an input key-value pair.
+
+00:26:37.000 --> 00:26:39.000
+But pay attention that in this case, the key part
+
+00:26:39.000 --> 00:26:42.000
+is one single key for each invocation with our use method.
+
+00:26:42.000 --> 00:26:48.000
+The value part is a list of values. All the values associated with that specific key.
+
+00:26:48.000 --> 00:26:53.000
+Their use method is invoked, inside the reduce method, we iterate over.
+
+00:26:53.000 --> 00:27:00.000
+The list of values, we compute the final result, and the final result is returned as a list of key-value pair again.
+
+00:27:00.000 --> 00:27:05.000
+This list can be again empty or can be associated with one single pair or many pairs.
+
+00:27:05.000 --> 00:27:08.000
+Okay.
+
+00:27:08.000 --> 00:27:13.000
+But since the input of the map method is a list of key-value pairs.
+
+00:27:13.000 --> 00:27:15.000
+We need also to understand how to
+
+00:27:15.000 --> 00:27:22.000
+represent the input data as key-value pairs, okay?
+
+00:27:22.000 --> 00:27:26.000
+Okay, here we have a summary of what I already mentioned in the previous slide.
+
+00:27:26.000 --> 00:27:29.000
+So, pay attention that, given an input pair.
+
+00:27:29.000 --> 00:27:33.000
+The system returns when the system invoke the mob method.
+
+00:27:33.000 --> 00:27:36.000
+A list of key value pairs. This is the intermediate result.
+
+00:27:36.000 --> 00:27:41.000
+And this is also the set of pairs that are sent on the net.
+
+00:27:41.000 --> 00:27:44.000
+Okay?
+
+00:27:44.000 --> 00:27:49.000
+For the reduce method, the reduce method is invoked one time for each distinct key.
+
+00:27:49.000 --> 00:27:52.000
+And every time the reduce method is involved.
+
+00:27:52.000 --> 00:27:54.000
+It receives as input a key.
+
+00:27:54.000 --> 00:27:57.000
+And all values associated with that key.
+
+00:27:57.000 --> 00:28:04.000
+In return, the final result that we are interested in.
+
+00:28:04.000 --> 00:28:12.000
+Okay, in many applications, the key part associated with the input key value pairs is useless. For instance, if you want to count the number of occurrences of each word,
+
+00:28:12.000 --> 00:28:14.000
+In the web pages.
+
+00:28:14.000 --> 00:28:18.000
+Usually the key part is associated with the URL, as I mentioned before, but
+
+00:28:18.000 --> 00:28:24.000
+We don't care about the URL to compute the number of occurrences of the words that we have inside the webpages.
+
+00:28:24.000 --> 00:28:27.000
+Okay, so very, very frequently,
+
+00:28:27.000 --> 00:28:34.000
+We provide as input something represented by means of a key-value pair, because this is the constraint that we have.
+
+00:28:34.000 --> 00:28:37.000
+But frequently, we don't care about the key part.
+
+00:28:37.000 --> 00:28:40.000
+Okay, in the map, in the invocation of the map method.
+
+00:28:40.000 --> 00:28:46.000
+In the reduced phase, the key part is fundamental.
+
+00:28:46.000 --> 00:28:54.000
+Okay, here are a high-level description of the solution of the work arm problem using MapReduce product.
+
+00:28:54.000 --> 00:28:57.000
+In this case, I suppose that
+
+00:28:57.000 --> 00:29:00.000
+The input is a textual document.
+
+00:29:00.000 --> 00:29:04.000
+I suppose that in each line of this test file document, you have one single word.
+
+00:29:04.000 --> 00:29:10.000
+And the mod method invisible running example is invoked one time for each input line. That means
+
+00:29:10.000 --> 00:29:12.000
+For each input world.
+
+00:29:12.000 --> 00:29:17.000
+So, given one word at a time, the key is the offset of the line,
+
+00:29:17.000 --> 00:29:21.000
+N value is the content of the lines of the words that we are interested in.
+
+00:29:21.000 --> 00:29:23.000
+The system returns.
+
+00:29:23.000 --> 00:29:26.000
+One pair for each input line.
+
+00:29:26.000 --> 00:29:32.000
+Where the key is the value part for the word and the value is plus 1. As you can see in this example.
+
+00:29:32.000 --> 00:29:37.000
+We don't care about the heat. We have the offset of the line, but we don't care about the offset of the line.
+
+00:29:37.000 --> 00:29:39.000
+to compute the final result.
+
+00:29:39.000 --> 00:29:44.000
+Then the reduced method is invoked one time for each distinct key, so for each distinct word in this case.
+
+00:29:44.000 --> 00:29:47.000
+Here, I iterate over the values.
+
+00:29:47.000 --> 00:29:49.000
+And I simply sum them.
+
+00:29:49.000 --> 00:29:52.000
+And at the end of this iteration of this loop.
+
+00:29:52.000 --> 00:29:56.000
+I'm ready to return the result for this specific key, for this specific word.
+
+00:29:56.000 --> 00:30:02.000
+And I return a p-value pair, in this case, again, one single key value pair for each invocation of the reduce method.
+
+00:30:02.000 --> 00:30:05.000
+Word, number of courses, global number of courses.
+
+00:30:05.000 --> 00:30:14.000
+Okay, so this is the high level description of the solution based on MapReduce if you want to solve the work-down problem.

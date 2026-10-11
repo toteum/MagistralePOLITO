@@ -1,0 +1,141 @@
+\chapter{Progettazione del Data Warehouse}
+
+La progettazione di un data warehouse per il supporto strategico aziendale richiede un'architettura che mantenga separati i sistemi di supporto decisionale rispetto ai tradizionali DBMS utilizzati per la gestione ordinaria (sistemi OLTP). L'obiettivo non è riversare tutti i dati aziendali nel data warehouse, ma estrarre dalle sorgenti unicamente i dati utili per le analisi di interesse, creando una visione d'insieme uniforme.
+
+\section{Fattori di rischio}
+La realizzazione di un data warehouse è un progetto complesso che espone l'azienda a diversi fattori di rischio[cite: 1]:
+\begin{itemize}
+    \item \textbf{Aspettative elevate degli utenti:} il data warehouse viene spesso visto, erroneamente, come la soluzione magica a tutti i problemi aziendali.
+    \item \textbf{Qualità dei dati e dei processi OLTP di partenza:} la presenza di dati incompleti o inaffidabili, unita a processi aziendali non integrati o non ottimizzati, si ripercuote sulla qualità del data warehouse.
+    \item \textbf{Gestione "politica" del progetto:} è fondamentale la collaborazione con i "detentori" delle informazioni nei vari reparti e l'accettazione del nuovo sistema da parte degli utenti finali.
+\end{itemize}
+
+\section{Approcci alla progettazione}
+Esistono due filosofie principali per la progettazione di un data warehouse[cite: 1]:
+
+\begin{itemize}
+    \item \textbf{Approccio top-down (Inmon):} Prevede la realizzazione di un data warehouse centralizzato che fornisca una visione globale e completa di tutti i dati aziendali. Questo approccio comporta costi significativi, tempi di realizzazione lunghi e una fase di analisi e progettazione estremamente complessa.
+    \item \textbf{Approccio bottom-up (Kimball):} Prevede una realizzazione incrementale. Si parte creando singoli \textit{data mart} definiti su settori o processi aziendali specifici (es. vendite, acquisti). Ha il vantaggio di mantenere contenuti sia i costi che i tempi di consegna.
+\end{itemize}
+
+\section{Ciclo di vita della progettazione di un Data Mart}
+La progettazione di un data mart si articola in diverse fasi metodologiche[cite: 1]:
+
+% FIGURA DA INSERIRE QUI
+% Fonte: Slide 4
+% Descrizione: Schema a blocchi che illustra le fasi della progettazione di un data mart (Analisi dei requisiti, Progettazione concettuale, logica, fisica e dell'alimentazione) e i flussi di dati (schema logico, fisico, riconciliato).
+\begin{figure}[H]
+    \centering
+    % \includegraphics[width=0.8\textwidth]{fasi_progettazione_datamart}
+    \caption{Fasi della progettazione di un data mart.}
+    \label{fig:fasi_progettazione}
+\end{figure}
+
+\subsection{Analisi dei requisiti}
+L'analisi dei requisiti è il punto di partenza e serve a raccogliere[cite: 1]:
+\begin{itemize}
+    \item Le esigenze di analisi dei dati che il data mart dovrà soddisfare.
+    \item I vincoli realizzativi imposti dai sistemi informativi esistenti (scegliendo se creare data mart dipendenti o indipendenti).
+    \item La pianificazione del \textit{deployment}, ovvero le fasi di avviamento e di formazione degli utenti.
+\end{itemize}
+
+\subsection{Progettazione concettuale}
+A differenza delle basi di dati relazionali, nel data warehouse non esiste un formalismo di modellazione concettuale comunemente accettato[cite: 1]. Il tradizionale Modello Entità-Relazione (ER) non è adatto a rappresentare nativamente i concetti multidimensionali. 
+
+\begin{remark}
+Se si provasse a rappresentare uno schema multidimensionale in forma normalizzata (come nell'ER), si creerebbe una struttura in cui tutte le dipendenze funzionali sono frammentate in tabelle separate. Durante le interrogazioni (analisi), questo richiederebbe l'esecuzione di un numero elevatissimo di \texttt{JOIN}, degradando in modo inaccettabile le prestazioni.
+\end{remark}
+
+Per questo motivo, si adotta il \textbf{Dimensional Fact Model (DFM)} (Golfarelli, Rizzi). Questo modello definisce, per uno specifico fatto aziendale (es. la vendita), uno schema concettuale basato su:
+\begin{itemize}
+    \item \textbf{Fatto:} l'evento di interesse da analizzare.
+    \item \textbf{Misure:} gli attributi quantitativi del fatto (es. quantità venduta, incasso).
+    \item \textbf{Dimensioni:} le prospettive di analisi (es. prodotto, negozio, data).
+    \item \textbf{Gerarchie:} i livelli di aggregazione lungo le dimensioni.
+\end{itemize}
+
+% FIGURA DA INSERIRE QUI
+% Fonte: Slide 8
+% Descrizione: Esempio base di Dimensional Fact Model (DFM) per il fatto "VENDITA" con le dimensioni prodotto, negozio, data e relative gerarchie.
+\begin{figure}[H]
+    \centering
+    % \includegraphics[width=0.8\textwidth]{dfm_base}
+    \caption{Esempio di Dimensional Fact Model per le vendite.}
+    \label{fig:dfm_base}
+\end{figure}
+
+\subsubsection{DFM: Costrutti avanzati}
+Il DFM permette di gestire situazioni reali più complesse tramite costrutti avanzati[cite: 1]:
+
+\begin{itemize}
+    \item \textbf{Dimensione opzionale, non-additività e convergenza:} Gestione di attributi non sempre presenti, misure non sommabili (es. prezzi unitari) e percorsi gerarchici che si ricongiungono.
+    \item \textbf{Gerarchia condivisa e Ruolo:} Quando una dimensione gioca più ruoli nello stesso fatto (es. in una chiamata telefonica abbiamo "distretto chiamante" e "distretto chiamato", che attingono alla stessa gerarchia spaziale).
+    \item \textbf{Arco multiplo (Relazioni molti-a-molti):} Nella maggior parte dei casi, lungo una gerarchia le relazioni sono 1 a N (dipendenze funzionali). Tuttavia, esistono contesti in cui si ha una relazione N a N. 
+\end{itemize}
+
+\begin{example}
+\textbf{Esempio di Arco Multiplo:} Il professore evidenzia il caso di un Fatto relativo alla vendita di libri. Un libro può essere scritto da \textit{più} autori. In questo caso non c'è una semplice dipendenza funzionale Libro $\rightarrow$ Autore, ma una relazione molti-a-molti che va esplicitata chiaramente nel modello concettuale tramite un arco multiplo. Un altro classico esempio medico è il Fatto RICOVERO: un ricovero può avere associato a sé \textit{molteplici} diagnosi (gruppo di diagnosi).
+\end{example}
+
+% FIGURA DA INSERIRE QUI
+% Fonte: Slide 12
+% Descrizione: DFM illustrante gli archi multipli, in particolare l'esempio "autore-libro" e "diagnosi-ricovero".
+\begin{figure}[H]
+    \centering
+    % \includegraphics[width=0.8\textwidth]{dfm_arco_multiplo}
+    \caption{Costrutti avanzati: rappresentazione dell'arco multiplo nel DFM.}
+    \label{fig:dfm_arco_multiplo}
+\end{figure}
+
+\subsection{Sparsità dei dati}
+Un fenomeno da tenere in considerazione è la sparsità del cubo multidimensionale. La sparsità si riduce al crescere del livello di aggregazione dei dati[cite: 1]. Un'alta sparsità può ridurre l'affidabilità delle stime di cardinalità quando si estraggono dati molto aggregati.
+
+\subsection{Progettazione logica e ROLAP}
+Terminata la progettazione concettuale, si procede alla progettazione logica relazionale (\textbf{ROLAP} - Relational OLAP). Come sottolineato dal professore, il modello multidimensionale è ottimo per ragionare e visualizzare, ma per memorizzare i dati su disco si utilizza il modello relazionale \textit{fortemente denormalizzato}.
+
+Gli \textbf{input} della progettazione logica sono[cite: 1]:
+\begin{itemize}
+    \item Schema di fatto concettuale.
+    \item Carico di lavoro (stimato in base a quante query verranno fatte, con quale frequenza e quali report/dashboard dovranno essere alimentati).
+    \item Volume dei dati.
+    \item Vincoli di sistema.
+\end{itemize}
+L'\textbf{output} è lo schema logico relazionale del data warehouse[cite: 1].
+
+La progettazione logica dei data warehouse si basa su principi opposti rispetto alle basi di dati tradizionali: si accetta deliberatamente la \textbf{ridondanza dei dati} e si applica la \textbf{denormalizzazione delle tabelle} per ottimizzare i tempi di lettura[cite: 1].
+
+\subsubsection{Schema a stella (Star Schema)}
+Nello schema a stella si ha[cite: 1]:
+\begin{itemize}
+    \item Una singola tabella centrale dei Fatti.
+    \item \textbf{Una sola tabella per ogni dimensione}, fortemente denormalizzata (es. la tabella Negozio conterrà colonne per Negozio, Città e Stato ridondando i dati geografici).
+    \item L'uso di chiavi primarie generate artificialmente (\textit{surrogate keys}) per le dimensioni.
+\end{itemize}
+
+% FIGURA DA INSERIRE QUI
+% Fonte: Slide 16
+% Descrizione: Rappresentazione logica di uno schema a stella con la tabella dei fatti (Vendite) al centro e le tabelle dimensionali (Negozi, Mese, Prodotti) attorno.
+\begin{figure}[H]
+    \centering
+    % \includegraphics[width=0.8\textwidth]{star_schema}
+    \caption{Schema a stella (Star Schema).}
+    \label{fig:star_schema}
+\end{figure}
+
+\subsubsection{Schema a fiocco di neve (Snowflake Schema)}
+Nello schema snowflake si separano alcune dipendenze funzionali, normalizzando parzialmente le dimensioni. I dati di una dimensione vengono frazionati in più tabelle creando delle ramificazioni[cite: 1] (es. la tabella Prodotti punta a una tabella separata Tipi).
+
+\begin{remark}
+\textbf{Quale scegliere?} Lo schema snowflake è normalmente \textbf{sconsigliato}. La normalizzazione permette di risparmiare spazio su disco, ma in ambito data warehouse questo beneficio è del tutto trascurabile, mentre il costo computazionale per eseguire i numerosi \texttt{JOIN} addizionali penalizza pesantemente le prestazioni delle query analitiche[cite: 1].
+\end{remark}
+
+\subsubsection{Implementazione logica degli archi multipli}
+Per tradurre un arco multiplo (es. ordini $\rightarrow$ più città di spedizione/competenza o fatturazioni) dallo schema concettuale a quello logico, esistono due strade[cite: 1]:
+\begin{itemize}
+    \item \textbf{Bridge Table:} Si esplicita la relazione N:M creando una tabella ponte (bridge) che contiene anche eventuali pesi associati alla relazione.
+    \item \textbf{Push down:} Si integra la risoluzione del molti-a-molti spingendo (push down) le informazioni direttamente nella tabella dei fatti, pesando le misure. 
+\end{itemize}
+Tuttavia, il push down presenta grosse problematiche: rende difficile eseguire interrogazioni d'impatto, richiede di pre-calcolare i pesi durante la fase di alimentazione (ETL), rende ardue le modifiche successive ai dati storicizzati e introduce una forte ridondanza direttamente nella tabella dei fatti[cite: 1].
+
+\subsection{Progettazione fisica}
+La \textbf{progettazione fisica} è l'ultimo step e decide esattamente \textit{come} i dati devono essere memorizzati fisicamente sui dischi e come verranno effettuate le operazioni di accesso (creazione di indici, partizionamento, ecc.)[cite: 1]. Come ricordato dal professore, siccome le query nel data warehouse estraggono enormi volumi di dati, questa fase è di vitale importanza per garantire che il sistema risponda in tempi utili.

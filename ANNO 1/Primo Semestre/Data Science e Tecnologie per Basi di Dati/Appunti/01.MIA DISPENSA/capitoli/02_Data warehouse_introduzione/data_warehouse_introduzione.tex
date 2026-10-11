@@ -1,0 +1,143 @@
+\chapter{Data Warehouse: Introduzione e Architetture}
+
+\section{Supporto alle decisioni aziendali}
+
+La maggior parte delle aziende, non solo di grandi dimensioni ma oggi anche quelle più piccole, è dotata di un proprio sistema informatico (database operazionale). Questi sistemi informativi sono progettati per garantire e gestire l'operatività quotidiana (ad esempio, le transazioni di un'assicurazione o le vendite in un negozio) e costituiscono una potenziale miniera di informazioni utili.
+
+Tuttavia, esiste una netta distinzione tra i sistemi per la gestione ordinaria e i sistemi decisionali. Secondo W. H. Inmon (1992), i \textbf{sistemi per il supporto alle decisioni (DSS - Decision Support Systems)} permettono di analizzare lo stato dell'azienda per \textit{prendere decisioni rapide e migliori}. 
+
+\subsection{Perché mantenere i dati separati?}
+Per fare analisi avanzate, non si interroga direttamente il database operativo, ma si utilizza un \textbf{Data Warehouse (DW)}, un ambiente separato. Questa separazione è motivata da due ragioni principali:
+\begin{itemize}
+    \item \textbf{Prestazioni:} Le query di analisi (ricerche complesse) sono onerose e ridurrebbero drasticamente le prestazioni delle transazioni operative quotidiane. Inoltre, i due sistemi richiedono metodi di accesso ai dati diversi a livello fisico.
+    \item \textbf{Gestione dei dati:} I database operazionali spesso non mantengono lo storico (informazioni mancanti nel tempo). Un DW permette il consolidamento dei dati storici e risolve problemi di qualità, eliminando le inconsistenze che possono essere presenti nei sistemi operativi.
+\end{itemize}
+
+\begin{remark}[Il Data Warehouse è solo una vista?]
+Durante la lezione è emersa una domanda: \textit{"Il Data Warehouse si può definire come una vista elaborata della base di dati già esistente?"} \\
+Concettualmente, l'intuizione è corretta: può essere visto come una prima vista molto elaborata su cui poi se ne creano altre per ottimizzare le query. Tuttavia, fisicamente e operativamente, \textbf{è quasi sempre un DB separato}. Questo perché il DW non si limita a riproporre i dati aziendali, ma spesso integra dati provenienti da sorgenti esterne diverse, richiedendo un processo di integrazione molto più articolato rispetto a una semplice `VIEW` in SQL.
+\end{remark}
+
+\section{Struttura e analisi dei dati}
+
+\subsection{Rappresentazione multidimensionale}
+Nel Data Warehouse, l'informazione viene modellata in ottica analitica. I dati vengono rappresentati concettualmente come un \textbf{(iper)cubo} con tre o più dimensioni. 
+Gli elementi fondamentali di questo modello sono:
+\begin{itemize}
+    \item \textbf{Dimensioni (Assi dimensionali):} Descrivono il contesto dell'analisi (es. tempo, prodotto, negozio).
+    \item \textbf{Misure:} Sono gli elementi numerici individuati all'intersezione delle dimensioni, sui quali si eseguono effettivamente i calcoli e le analisi (es. quantità venduta, importo).
+\end{itemize}
+
+% FIGURA DA INSERIRE QUI
+% Fonte: Slide 6
+% Descrizione: Rappresentazione visiva del cubo multidimensionale con l'intersezione tra le dimensioni (tempo, prodotto, negozio) che individua una specifica misura (es. vendita di 3 latti il 2-3-2001 al SupShop).
+\begin{figure}[H]
+    \centering
+    % \includegraphics[width=0.6\textwidth]{cubo_multidimensionale}
+    \caption{Rappresentazione logica del dato multidimensionale nel Data Warehouse.}
+    \label{fig:dw_cubo}
+\end{figure}
+
+\subsection{Rappresentazione relazionale: Il Modello a Stella}
+Se vogliamo tradurre questo ipercubo logico in un modello relazionale fisico (su un RDBMS), utilizziamo il cosiddetto \textbf{modello a stella}.
+
+\begin{definition}[Modello a Stella]
+Modello di progettazione fisica in cui:
+\begin{itemize}
+    \item Le \textbf{misure numeriche} (i fatti) vengono memorizzate all'interno di una tabella centrale chiamata \textit{Tabella dei Fatti}.
+    \item Le \textbf{dimensioni di analisi} sono memorizzate in tabelle esterne collegate alla tabella centrale, e contengono gli attributi descrittivi che caratterizzano i fatti.
+\end{itemize}
+\end{definition}
+
+Facendo un parallelo con la progettazione relazionale classica studiata nel corso di Basi di Dati: avremo un'entità per il Negozio, una per il Tempo e una per il Prodotto. L'evento della "Vendita" è caratterizzato dalle chiavi esterne verso queste dimensioni e dai rispettivi valori numerici (quantità e importo).
+Sebbene si usino le stesse strutture (tabelle), nel DW queste tabelle subiscono un processo di \textbf{denormalizzazione} per semplificare e velocizzare le operazioni di lettura e analisi. "Più che una differenza nel \textit{cosa}, c'è una differenza nel \textit{perché} utilizzo A e \textit{perché} utilizzo B", sottolinea il professore.
+
+% FIGURA DA INSERIRE QUI
+% Fonte: Slide 8
+% Descrizione: Schema relazionale del modello a stella con la tabella dei fatti (Vendite) al centro e le tabelle dimensionali (Negozi, Prodotti, Tempo) disposte a raggiera.
+\begin{figure}[H]
+    \centering
+    % \includegraphics[width=0.7\textwidth]{modello_stella}
+    \caption{Esempio di modello a stella per l'analisi delle vendite in una catena di supermercati.}
+    \label{fig:dw_stella}
+\end{figure}
+
+\begin{example}[Dimensione del Data Warehouse]
+Per comprendere il volume di dati gestito, consideriamo un esempio per l'analisi delle vendite di una catena di supermercati:
+\begin{itemize}
+    \item Dimensione tempo: 2 anni = \(730\) giorni
+    \item Dimensione negozio: \(300\) negozi
+    \item Dimensione prodotto: \(30.000\) prodotti a catalogo. Supponiamo che \(3.000\) prodotti vengano venduti ogni giorno in ogni negozio.
+\end{itemize}
+Il numero di righe nella tabella dei fatti per questo intervallo temporale sarà:
+\[ 730 \times 300 \times 3000 = 657.000.000 \text{ (657 milioni di righe)} \]
+\end{example}
+
+\section{Architetture per Data Warehouse}
+
+Per evitare colli di bottiglia, si evita tassativamente un'architettura a livello singolo (un unico DB per operazioni e analisi). Si adottano invece architetture a due o più livelli che separano i dati in ingresso dal carico analitico, rendendo il sistema fortemente scalabile.
+
+\subsection{Elementi costitutivi}
+Il processo che porta i dati dalle \textbf{sorgenti (operative ed esterne)} al supporto decisionale è gestito da diversi componenti:
+
+\begin{enumerate}
+    \item \textbf{Strumenti ETL (Extraction, Transformation, Loading):} Procedure responsabili dell'estrazione dei dati dalle sorgenti, della loro pulizia, rielaborazione e integrazione (Transformation), e infine del caricamento (Loading) nel Data Warehouse.
+    \item \textbf{Data Warehouse / Data Marts:} I repository dove i dati analitici vengono fisicamente memorizzati.
+    \item \textbf{OLAP Servers:} Motori (Online Analytical Processing) che permettono di effettuare in modo efficace le query sul Data Warehouse.
+    \item \textbf{Strumenti di Visualizzazione e Analisi:} Strumenti finali utilizzati dall'utente. La visualizzazione è cruciale: un grafico offre un'intuizione molto più immediata rispetto a una tabella numerica. I grafici devono inoltre essere \textit{navigabili} (es. permettere operazioni di approfondimento come il \textit{drill-down} per cercare motivazioni dietro ai dati).
+\end{enumerate}
+
+\begin{definition}[Metadati]
+I metadati sono "dati sui dati", ovvero informazioni essenziali per il funzionamento e l'interrogazione del Data Warehouse. Si dividono in:
+\begin{itemize}
+    \item \textbf{Metadati per ETL:} Descrivono i dati sorgente (dove recuperarli, in che formato, qual è il periodo di riferimento, le variazioni storiche) e le trasformazioni necessarie. (Esiste uno standard OMG chiamato \textit{CWMI - Common Warehouse Metadata Initiative} per l'interscambio di questi metadati).
+    \item \textbf{Metadati per la gestione dei dati:} Descrivono lo schema logico del Data Warehouse e la struttura dei dati derivati (es. viste materializzate).
+    \item \textbf{Metadati per la gestione delle query:} Contengono il codice SQL, i piani di esecuzione e statistiche di monitoraggio (uso di RAM e CPU).
+\end{itemize}
+\end{definition}
+
+\subsection{Tipologie di Server OLAP}
+Esistono diverse tecnologie per i server OLAP a supporto del DW:
+\begin{itemize}
+    \item \textbf{ROLAP (Relational OLAP):} Si basa su DBMS relazionali estesi. Offre una rappresentazione compatta per dati sparsi (matrici con molti zeri) e possiede estensioni SQL e metodi di accesso speciali per gli aggregati.
+    \item \textbf{MOLAP (Multidimensional OLAP):} I dati sono memorizzati direttamente in un formato matriciale multidimensionale proprietario. Poiché i dati reali sono molto "sparsi", questa architettura richiede pesanti tecniche di compressione. Offre primitive OLAP speciali molto efficienti.
+    \item \textbf{HOLAP (Hybrid OLAP):} Un approccio ibrido che sfrutta i vantaggi di entrambe le tecnologie precedenti.
+\end{itemize}
+
+\subsection{Architettura a due livelli}
+In un'architettura a due livelli abbiamo: il livello delle sorgenti e il livello del Data Warehouse. 
+In questo modello, le operazioni ETL avvengono tipicamente \textit{"al volo" (on the fly)} durante il passaggio dalle sorgenti al DW. 
+Questa architettura permette:
+\begin{itemize}
+    \item Il disaccoppiamento dalle sorgenti e la gestione di dati esterni all'OLTP.
+    \item Una modellazione fisica dei dati mirata esclusivamente al carico analitico (OLAP).
+    \item La facilità di gestire granularità temporali differenti tra i dati operativi e quelli analitici.
+\end{itemize}
+
+% FIGURA DA INSERIRE QUI
+% Fonte: Slide 15
+% Descrizione: Diagramma a blocchi dell'architettura a due livelli (Sorgenti -> DW con ETL e Metadati -> Analisi dei dati).
+\begin{figure}[H]
+    \centering
+    % \includegraphics[width=0.7\textwidth]{arch_2_livelli}
+    \caption{Architettura Data Warehouse a due livelli.}
+    \label{fig:dw_2_tier}
+\end{figure}
+
+\subsection{Architettura a tre livelli}
+L'architettura a tre livelli introduce un elemento intermedio fondamentale per gestire flussi dati più complessi e disaccoppiare ulteriormente il caricamento dall'analisi:
+\begin{enumerate}
+    \item Livello delle sorgenti.
+    \item \textbf{Livello di alimentazione (Staging Area):} Un'area di transito o "parcheggio" temporaneo in cui i dati estratti dalle sorgenti vengono depositati e processati (trasformati, puliti e integrati) dagli strumenti ETL prima del caricamento definitivo.
+    \item Livello del Data Warehouse.
+\end{enumerate}
+
+% FIGURA DA INSERIRE QUI
+% Fonte: Slide 17
+% Descrizione: Diagramma a blocchi dell'architettura a tre livelli, con l'aggiunta esplicita della Staging Area tra le sorgenti e il DW.
+\begin{figure}[H]
+    \centering
+    % \includegraphics[width=0.8\textwidth]{arch_3_livelli}
+    \caption{Architettura Data Warehouse a tre livelli con Staging Area.}
+    \label{fig:dw_3_tier}
+\end{figure}

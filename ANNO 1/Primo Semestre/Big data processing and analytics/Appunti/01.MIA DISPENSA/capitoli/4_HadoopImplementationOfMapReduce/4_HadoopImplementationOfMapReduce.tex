@@ -1,0 +1,228 @@
+\chapter{Sviluppo di Applicazioni MapReduce in Hadoop}
+\label{cap:mapreduce-sviluppo}
+
+Per implementare ed eseguire un'applicazione basata sul paradigma MapReduce all'interno dell'ecosistema Hadoop, è necessario utilizzare il linguaggio di programmazione Java e interfacciarsi con le API (Application Programming Interface) fornite dal framework. 
+Lo sviluppo di un programma MapReduce richiede la definizione di tre componenti fondamentali, ciascuna implementata attraverso una specifica classe Java: la classe Driver, la classe Mapper e la classe Reducer.
+
+\section{Il Ruolo del Framework e dello Sviluppatore}
+\label{sec:framework-developer}
+
+Nello sviluppo di applicazioni MapReduce, vi è una netta separazione delle responsabilità tra lo sviluppatore e il framework Hadoop. 
+Il compito principale dei progettisti e degli sviluppatori è concentrarsi esclusivamente sulla definizione della logica applicativa, ovvero sull'implementazione delle funzioni di Map e di Reduce (spesso indicate come $m$ e $r$). 
+
+Lo sviluppatore \textbf{non deve gestire in alcun modo l'esecuzione distribuita}. È il framework Hadoop a coordinare in totale autonomia l'intera esecuzione del programma MapReduce. Nello specifico, Hadoop si occupa di:
+\begin{itemize}
+    \item Gestire l'esecuzione parallela delle fasi di map e di reduce.
+    \item Eseguire automaticamente la fase intermedia di \emph{shuffle and sort}.
+    \item Gestire lo scheduling dei vari subtask sui nodi del cluster.
+    \item Occuparsi della sincronizzazione tra i processi.
+\end{itemize}
+
+\section{Architettura di un Programma MapReduce}
+
+Il framework impone una precisa distinzione terminologica e concettuale tra le classi (che definiscono la logica del programma) e le loro istanze (gli oggetti effettivamente eseguiti in parallelo sul cluster).
+
+\subsection{Definizione delle Classi}
+\begin{itemize}
+    \item \textbf{Driver class:} È la classe principale (spesso contenente il metodo \texttt{main}) in cui si forniscono le informazioni relative al flusso di lavoro (workflow) dell'applicazione. Al suo interno viene configurato il \emph{Job} MapReduce, specificando quali classi utilizzare per le fasi di map e reduce, i percorsi dei dati di input e output e altre proprietà di esecuzione.
+    \item \textbf{Mapper class:} È la classe dedicata all'implementazione della \emph{map phase}. Lo sviluppatore deve scrivere la logica di elaborazione all'interno del metodo \texttt{map}.
+    \item \textbf{Reducer class:} È la classe dedicata all'implementazione della \emph{reduce phase}. La logica di aggregazione viene definita sovrascrivendo il metodo \texttt{reduce}.
+\end{itemize}
+
+\subsection{Istanze e Terminologia}
+Quando il codice viene mandato in esecuzione, il sistema crea diverse istanze di queste classi. Nel gergo di Hadoop:
+\begin{itemize}
+    \item Il termine \textbf{Driver} si riferisce all'oggetto istanziato dalla Driver class.
+    \item Il termine \textbf{Mapper} (senza ulteriori specificazioni) indica un'istanza della Mapper class. Ogni Mapper è incaricato di analizzare una specifica porzione dei dati di input.
+    \item Il termine \textbf{Reducer} indica un'istanza della Reducer class. Ciascun Reducer gestisce la fase di aggregazione per uno specifico sottoinsieme di chiavi generate dalla fase di map.
+\end{itemize}
+Infine, un \textbf{Job} rappresenta l'esecuzione vera e propria (la \emph{run}) dell'applicazione MapReduce sul cluster Hadoop.
+
+\subsection{Il Driver come Entry Point}
+La classe Driver contiene il metodo \texttt{main()}, che accetta gli argomenti passati da riga di comando. Esso rappresenta l'\emph{entry point} (punto di ingresso) dell'applicazione. All'interno del Driver, il codice configura il Job e, infine, lo sottomette al cluster Hadoop per l'esecuzione effettiva.
+
+\section{Gestione dell'Output Intermedio e Finale}
+
+Durante l'esecuzione delle fasi di MapReduce, vi è una profonda differenza nel modo in cui vengono memorizzati i risultati generati dai Mapper e quelli generati dai Reducer.
+
+\subsection{Dati Intermedi (Transient Data)}
+Il metodo map del Mapper viene invocato su ogni singola coppia chiave-valore di input e genera un insieme di coppie chiave-valore intermedie. È fondamentale notare che questi risultati intermedi \textbf{sono transitori e non vengono salvati sull'HDFS}. Essi vengono memorizzati esclusivamente sul \emph{file system locale} del nodo (computing server) che li ha prodotti o elaborati.
+Successivamente, questi dati intermedi vengono aggregati tramite la procedura di \emph{shuffle and sort}, che genera per ogni singola chiave distinta una coppia formata dalla chiave stessa e dalla relativa lista di valori: \texttt{(key, [list of values])}.
+
+\subsection{Dati Finali}
+Il metodo reduce viene applicato proprio su queste coppie \texttt{(key, [list of values])} aggregate. Al contrario dei dati intermedi, le coppie chiave-valore emesse in output dai Reducer rappresentano il risultato finale dell'applicazione MapReduce e \textbf{vengono memorizzate in modo permanente all'interno dell'HDFS}.
+
+\section{Lettura dei Dati: La classe InputFormat}
+\label{sec:inputformat}
+
+Il punto di partenza di un programma MapReduce è l'acquisizione dei dati in ingresso. L'input dell'applicazione è solitamente costituito da un file (o da un'intera cartella) residente all'interno dell'HDFS (Hadoop Distributed File System). Tuttavia, il metodo map del Mapper non legge file testuali grezzi, ma richiede in ingresso un flusso strutturato come un insieme di coppie chiave-valore \texttt{(key, value)}.
+
+Per colmare questa distanza interviene la classe astratta \texttt{org.apache.hadoop.mapreduce.InputFormat}. Le classi che estendono \texttt{InputFormat} hanno un duplice compito:
+\begin{enumerate}
+    \item Descrivere le specifiche del formato di input per l'applicazione MapReduce e processare i file di ingresso.
+    \item Leggere i dati di input e \textbf{"trasformare logicamente"} il file HDFS in un insieme di coppie chiave-valore che possano essere fornite direttamente alle istanze dei Mapper.
+\end{enumerate}
+
+\section{Parallelismo ed Esecuzione: Task e Input Split}
+
+Per comprendere come Hadoop parallelizza l'elaborazione, è fondamentale introdurre il concetto di \textbf{Input Split}. 
+Quando si elabora un dataset di grandi dimensioni, questo non viene letto per intero da un singolo processo. Il dataset (memorizzato nell'HDFS - Hadoop Distributed File System) è fisicamente suddiviso in blocchi (Data Blocks). 
+
+L'Input Split è una partizione logica dei dati di input che deve essere elaborata da una singola istanza Mapper. Generalmente, vi è una corrispondenza uno-a-uno tra un Input Split e un blocco fisico memorizzato nel file system distribuito.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{capitoli/4_HadoopImplementationOfMapReduce/images/mapreduce-architecture.png}
+    \caption{Architettura di un'applicazione MapReduce in Hadoop.}
+\end{figure}
+
+\subsection{Grado di Parallelismo della fase di Map}
+Il numero di istanze della classe Mapper (ovvero il numero di task di map) che il sistema crea in parallelo è esattamente \textbf{uguale al numero di Input Split}.
+Se, ad esempio, il file di input è suddiviso logicamente in 10 blocchi, il sistema istanzierà 10 Mapper. Ognuna di queste istanze prenderà in carico uno split. 
+
+Questo rappresenta il \textbf{massimo parallelismo ottenibile senza dover inviare dati attraverso la rete} (network shuffle). L'elaborazione in questa fase è puramente locale al nodo che detiene il blocco di dati. Ciascun task analizza un sottoinsieme delle coppie chiave-valore di input e genera un sottoinsieme delle coppie chiave-valore intermedie.
+
+
+
+\section{Tipi di Dato in MapReduce}
+
+Le coppie chiave-valore scambiate tra Mapper e Reducer non utilizzano i tipi di dato base standard di Java (come \texttt{String}, \texttt{Integer}, ecc.). Hadoop definisce dei propri tipi di dato di base, ottimizzati per la \textbf{serializzazione di rete} (network serialization), poiché i dati intermedi devono viaggiare attraverso il cluster.
+
+Tra i tipi principali (che implementano l'interfaccia \texttt{Writable}) troviamo:
+\begin{itemize}
+    \item \texttt{org.apache.hadoop.io.Text}: l'equivalente della classe \texttt{String} in Java.
+    \item \texttt{org.apache.hadoop.io.IntWritable}: l'equivalente della classe \texttt{Integer}.
+    \item \texttt{org.apache.hadoop.io.LongWritable}: l'equivalente della classe \texttt{Long}.
+    \item \texttt{org.apache.hadoop.io.FloatWritable}: l'equivalente della classe \texttt{Float}.
+\end{itemize}
+
+\subsection{Tipi di Dato Personalizzati (Personalized Data Types)}
+A volte i tipi di dato base non sono sufficienti a modellare l'informazione. Ad esempio, si potrebbe voler trasmettere come valore non un singolo intero, ma una struttura complessa composta da una coppia di numeri, coordinate o altri dati aggregati. In questi casi, il framework permette allo sviluppatore di definire \textbf{tipi di dato personalizzati}, creando classi apposite che implementano i meccanismi di serializzazione richiesti da Hadoop.
+
+\subsection{Tipi di Dato Personalizzati (Personalized Data Types)}
+
+Oltre ai tipi predefiniti da Hadoop (come \texttt{Text} o \texttt{IntWritable}, ottimizzati per la serializzazione di rete), gli sviluppatori hanno la possibilità di definire nuovi \textbf{tipi di dato personalizzati} per modellare informazioni e strutture complesse.
+
+Ciò si ottiene creando classi che implementano le interfacce \texttt{org.apache.hadoop.io.Writable} e/o \texttt{org.apache.hadoop.io.WritableComparable}. 
+A questo proposito, il professore evidenzia un requisito tecnico vitale e categorico: se il tipo di dato personalizzato deve essere utilizzato \textbf{come chiave} (key part), non basta estendere la semplice interfaccia \texttt{Writable}, ma \textbf{è obbligatorio implementare anche i metodi associati a \texttt{WritableComparable}}.
+Se si omette l'implementazione di questi due metodi di comparazione, il sistema non è in grado di gestire i dati e genererà un errore a runtime durante l'esecuzione. Il framework vi avviserà indicando l'impossibilità di calcolare l'hash della chiave (``\emph{I don't know how to hash the key}'') e di memorizzare correttamente le coppie chiave-valore (``\emph{I don't know how to store the pairs}'').
+
+\section{Implementazione del Reducer}
+
+La classe che implementa il Reducer deve estendere la classe generica \texttt{org.apache.hadoop.mapreduce.Reducer}. Questa classe richiede la definizione di quattro parametri di tipo (generics) che corrispondono alle firme dei dati in ingresso e in uscita:
+\begin{enumerate}
+    \item \texttt{Input key type} (Tipo della chiave intermedia proveniente dal Mapper).
+    \item \texttt{Input value type} (Tipo del valore intermedio).
+    \item \texttt{Output key type} (Tipo della chiave finale emessa).
+    \item \texttt{Output value type} (Tipo del valore finale emesso).
+\end{enumerate}
+
+Lo sviluppatore deve sovrascrivere il metodo \texttt{reduce(...)}. Questo metodo viene chiamato \textbf{automaticamente dal framework per ogni singola chiave} e per la relativa lista di valori generata dall'aggregazione degli output di tutti i Mapper.
+Il metodo processa i dati usando codice Java standard e, al termine dell'aggregazione, emette le coppie chiave-valore finali utilizzando l'oggetto \texttt{Context} tramite il metodo \texttt{context.write(key, value)}.
+
+\subsection{Esempio: Word Count Reducer}
+Di seguito è illustrata l'implementazione del metodo \texttt{reduce} per il classico problema del Word Count:
+
+\begin{lstlisting}[language=Java, caption={Implementazione del metodo reduce per il Word Count}, label={lst:wordcount-reducer}]
+/* Implementazione del metodo reduce */
+protected void reduce(
+    Text key, // Input key type (la parola)
+    Iterable<IntWritable> values, // Input value type (lista di occorrenze)
+    Context context) throws IOException, InterruptedException {
+    
+    int occurrences = 0;
+    
+    // Itera sull'insieme dei valori e li somma
+    for (IntWritable value : values) {
+        occurrences = occurrences + value.get();
+    }
+    
+    // Emette il numero totale di occorrenze per la parola corrente
+    context.write(key, new IntWritable(occurrences));
+} // Fine metodo reduce
+\end{lstlisting}
+Come si evince dal codice, per ogni parola (la \texttt{key}), il framework fornisce un iteratore ai valori (gli "1" emessi dai mapper). Il reducer li somma e produce il totale finale.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{capitoli/4_HadoopImplementationOfMapReduce/images/reduce-phase.png}
+    \caption{Esecuzione della fase di reduce.}
+\end{figure}
+
+\section{L'Uso esclusivo del Map: Map-Only Job}
+
+Esistono applicazioni pratiche in cui l'aggregazione dei dati (fase di reduce) non è necessaria. L'obiettivo potrebbe essere semplicemente quello di filtrare dati, pulire un dataset o trasformare i record riga per riga. 
+
+Il professore illustra un caso d'uso: supponiamo di avere un file di log proveniente da sensori, con il formato \texttt{<sensor\_ID> <date>}. Tuttavia, il dataset è sporco e alcune righe presentano formati errati (es. solo l'ID del sensore senza la data, oppure un'anomalia come "Paolo 50").
+Se la riga è corretta o utile ai fini della nostra analisi (es. fa parte del risultato che vogliamo conservare), dobbiamo emetterla così com'è. Se la riga è malformata o inutile, la ignoriamo non restituendo nulla.
+
+In questo scenario, non stiamo aggregando valori considerando più righe contemporaneamente. Stiamo solo decidendo, riga per riga, se un dato è utile o meno. Per questo scopo è sufficiente un \textbf{Map-Only Job}.
+In un Map-Only Job viene eseguita esclusivamente la fase di map; il framework salta del tutto le fasi di shuffle, sort e reduce. L'output generato dalle istanze dei Mapper viene scritto direttamente nella cartella di destinazione (output folder).
+Questo approccio ottimizza notevolmente l'esecuzione, poiché \textbf{evita di inviare enormi moli di dati sulla rete} (network traffic) verso Reducer che, di fatto, non dovrebbero compiere alcuna aggregazione.
+
+\section{Ottimizzazione del Traffico di Rete: Il Combiner}
+
+Durante l'esecuzione standard di un programma MapReduce, tutte le coppie emesse dai Mapper vengono inviate via rete ai Reducer. Se consideriamo il problema del Word Count su un testo enorme, l'invio di innumerevoli coppie del tipo \texttt{("parola", 1)} genererà una pesante congestione della rete. 
+
+Come si può ridurre la mole di dati scambiata sulla rete? La soluzione offerta da Hadoop è il \textbf{Combiner}. 
+Il Combiner agisce come un "Mini-Reducer" locale. Viene eseguito sullo stesso nodo del Mapper e aggrega preliminarmente l'output del Mapper *prima* che questo venga trasmesso sulla rete. Nel Word Count, invece di mandare cento coppie \texttt{("parola", 1)}, il Combiner le sommerà localmente inviando alla rete una singola coppia \texttt{("parola", 100)}. L'informazione semantica resta la medesima, ma il traffico di rete viene drasticamente ridotto, incrementando l'efficienza.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{capitoli/4_HadoopImplementationOfMapReduce/images/combiner.png}
+    \caption{Esecuzione del Combiner per ridurre il traffico di rete.}
+\end{figure}
+
+\subsection{Implementazione del Combiner}
+Spesso, la logica di aggregazione del Combiner è identica a quella del Reducer. Nel caso del Word Count, non è necessario scrivere due classi diverse. Si può istruire il Driver a usare la classe del Reducer anche come Combiner tramite il comando:
+\begin{lstlisting}[language=Java]
+job.setCombinerClass(WordCountReducer.class);
+\end{lstlisting}
+Nella stragrande maggioranza dei casi (il 99\% delle applicazioni Hadoop), la medesima classe implementa in modo sicuro ed efficiente sia il Combiner che il Reducer (a patto che l'operazione matematica sottostante sia commutativa e associativa).
+
+\section{Ottimizzazione Avanzata: L'In-Mapper Combiner}
+
+Un'ulteriore evoluzione, volta a ottimizzare in maniera ancor più aggressiva l'esecuzione, è rappresentata dall'approccio \textbf{In-Mapper Combiner}. 
+L'idea alla base è quella di eseguire l'aggregazione direttamente all'interno della logica del Mapper, sfruttando variabili di stato interne (in-mapper variables).
+
+Per implementare questa logica si sfruttano due metodi accessori della classe Mapper (e Reducer):
+\begin{itemize}
+    \item \texttt{setup(...)}: Metodo invocato dal framework \textbf{una sola volta} per ciascun task, prima che inizino le ripetute chiamate al metodo \texttt{map}/\texttt{reduce}.
+    \item \texttt{cleanup(...)}: Metodo invocato dal framework \textbf{una sola volta} per ciascun task, dopo che tutti i record di input sono stati processati.
+\end{itemize}
+
+\subsection{Workflow dell'In-Mapper Combiner}
+Il flusso di lavoro si sviluppa come segue:
+\begin{enumerate}
+    \item \textbf{Inizializzazione}: Nel metodo \texttt{setup} del Mapper, si inizializzano delle strutture dati locali (es. una mappa in memoria o delle \emph{in-mapper variables}) per mantenere le statistiche o le aggregazioni parziali.
+    \item \textbf{Aggiornamento}: Nel metodo \texttt{map}, invece di emettere le coppie con \texttt{context.write}, si aggiornano semplicemente le strutture dati interne. In questa fase, \textbf{nessuna coppia viene emessa}.
+    \item \textbf{Emissione finale}: Una volta elaborati tutti i record di competenza del Mapper, il framework chiama il metodo \texttt{cleanup}. Al suo interno, si leggono i risultati aggregati presenti nelle variabili locali e li si emette sotto forma di coppie chiave-valore.
+\end{enumerate}
+
+\subsection{Considerazioni Critiche sulle Prestazioni e Memoria Principale}
+Sebbene l'In-Mapper Combiner consenta di migliorare sensibilmente le prestazioni globali dell'applicazione (evitando l'istanziazione continua di oggetti e chiamate ripetute all'API di emissione), introduce una limitazione fondamentale sollevata dal professore: \textbf{il consumo della memoria principale (RAM)}.
+
+A ogni task Mapper è allocata una quantità limitata e predefinita di memoria principale. Poiché le variabili interne di aggregazione crescono a mano a mano che vengono scoperte nuove chiavi, \textbf{le strutture dati in-mapper devono rimanere di dimensioni ridotte}. Se lo spazio occupato dalle variabili locali supera il limite massimo di RAM assegnato al task Mapper, si causerà un errore di tipo Out-Of-Memory, provocando il fallimento del task. 
+
+\section{Gestione del Contesto e Statistiche}
+
+\subsection{Condivisione di Parametri globali}
+In alcuni casi, è necessario condividere piccoli parametri o proprietà di configurazione che rimangono costanti durante tutta l'esecuzione del programma. Questo si ottiene definendo coppie \texttt{(property-name, property-value)}.
+\begin{itemize}
+    \item \textbf{Nel Driver:} Lo sviluppatore recupera l'oggetto di configurazione e imposta le proprietà:
+    \begin{lstlisting}[language=Java]
+Configuration conf = this.getConf();
+conf.set("property-name", "value");
+    \end{lstlisting}
+    \item \textbf{Nel Mapper/Reducer:} L'oggetto \texttt{Context} permette di accedere in sola lettura a queste proprietà:
+    \begin{lstlisting}[language=Java]
+String val = context.getConfiguration().get("property-name");
+    \end{lstlisting}
+\end{itemize}
+È fondamentale notare che i Mapper e i Reducer \textbf{non possono modificare} i valori di queste proprietà durante l'esecuzione.
+
+\subsection{Contatori (Counters)}
+I Counters sono numeri interi gestiti direttamente dal framework, utili per raccogliere ed esporre statistiche diagnostiche sull'andamento dei Job, Mappers e Reducers. 
+Hadoop fornisce una serie di \textbf{built-in counters} (contatori predefiniti) che tracciano metriche base (es. record in lettura, byte scritti).
+
+Inoltre, lo sviluppatore può definire \textbf{contatori personalizzati} per tenere traccia di logiche di business specifiche. Riprendendo l'esempio dei file di log dei sensori malformati discusso dal professore, se incontriamo una riga incompleta (senza la data), potremmo non solo scartarla, ma anche incrementare un contatore personalizzato (es. "Linee Malformate"). A fine elaborazione, potremo leggere questo contatore per calcolare semplici statistiche sulla qualità dei dati di input.

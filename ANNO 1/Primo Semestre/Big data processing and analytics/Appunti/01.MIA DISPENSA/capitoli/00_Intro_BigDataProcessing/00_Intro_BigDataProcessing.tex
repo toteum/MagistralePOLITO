@@ -1,0 +1,59 @@
+\chapter*{Introduzione al Corso e Modalità
+d’Esame}
+
+\section*{Informazioni Generali sul Corso}
+Il corso affronta le sfide e le opportunità legate all'analisi e alla gestione di enormi quantità di dati (Big Data). Vengono introdotti non solo modelli di dati per l'archiviazione (database relazionali e non relazionali scalabili), ma soprattutto i nuovi paradigmi di programmazione e i framework distribuiti necessari per l'elaborazione dei dati, come Hadoop e Spark.
+
+\subsection*{Docenti e Materiale Didattico}
+I docenti del corso sono Paolo Garza, Hadi Ibrahim e Lorenzo Innocenti. Per eventuali dubbi, i docenti sono a disposizione durante le pause o al termine della lezione, oppure tramite appuntamento via email.
+
+Tutto il materiale di riferimento (slide, esercizi, attività di laboratorio ed esami passati) è disponibile sulla pagina web dedicata del corso su \texttt{minds.polito.it}. Le videolezioni sono rese disponibili sul Portale della Didattica. Sebbene vi siano dei libri di testo suggeriti (come \textit{Spark: The Definitive Guide} o \textit{Hadoop, The Definitive Guide}), le slide e gli esercizi forniti sono considerati sufficienti per l'apprendimento e il superamento dell'esame.
+
+\begin{remark}[Metodo di studio]
+L'impegno stimato per il corso prevede che per ogni credito formativo (CFU) si dedichino circa 10 ore in aula/laboratorio e 15 ore di studio personale (in totale 25 ore per CFU). 
+Il professore consiglia vivamente di provare a risolvere gli esercizi e le attività di laboratorio in autonomia \textit{prima} di consultare le soluzioni, al fine di assimilare i "pattern" fondamentali di risoluzione, necessari per costruire applicazioni complesse.
+\end{remark}
+
+\section*{Prerequisiti e Competenze Pregresse}
+Per affrontare il corso con successo sono richieste alcune competenze di base in ambito di programmazione e basi di dati:
+\begin{itemize}
+    \item \textbf{Java:} Necessario per scrivere applicazioni MapReduce su Hadoop. È richiesta una conoscenza di base (es. cicli e operazioni elementari sulle stringhe).
+    \item \textbf{Python:} Utilizzato per scrivere applicazioni su Spark. Anche in questo caso sono richieste operazioni di base (filtraggio, trasformazione dei dati e calcolo di statistiche).
+    \item \textbf{Database e SQL:} Utile per comprendere il modello relazionale e, in particolar modo, per interfacciarsi con le API di Spark SQL.
+\end{itemize}
+
+\section*{Programma e Argomenti del Corso}
+Il corso è strutturato per insegnare a scrivere applicazioni software (non solo l'architettura dei sistemi) ed è diviso in diversi macro-argomenti:
+
+\subsection*{Hadoop e MapReduce}
+Verrà studiata l'architettura base di Hadoop e il paradigma di programmazione MapReduce (in Java). 
+
+\begin{remark}[Perché studiare ancora MapReduce?]
+Sebbene oggi non sia il framework più performante, il professore sottolinea che esistono ancora moltissimi sistemi legacy basati su questo paradigma (in alcuni casi con 50 anni di dati storici archiviati, la cui migrazione richiederebbe settimane o mesi, un po' come accade per i vecchi software in COBOL). È quindi un'abilità fondamentale per un ingegnere dei dati saper mettere mano, leggere e aggiornare questo tipo di codice.
+\end{remark}
+
+\subsection*{Apache Spark}
+Spark è attualmente uno dei framework più utilizzati per l'analisi di enormi quantità di dati. Il corso esplorerà la sua architettura e insegnerà a scrivere applicazioni utilizzando due diversi approcci:
+\begin{itemize}
+    \item \textbf{RDD (Resilient Distributed Datasets):} La versione precedente delle API di Spark (scritta in Python/Java). Secondo il docente, gli RDD sono fondamentali da studiare non solo per via del codice legacy, ma anche perché permettono di comprendere esattamente quanti e quali dati viaggiano sulla rete, fattore chiave per valutare l'efficienza di un'applicazione Big Data.
+    \item \textbf{Spark SQL e DataFrames:} Le API più recenti. Permettono di utilizzare direttamente il linguaggio SQL per processare i dati. Spesso, conoscendo già l'SQL, questo approccio risulta molto più semplice ed è il più utilizzato oggi in produzione.
+\end{itemize}
+
+\subsection*{Librerie Avanzate: MLlib e Spark Streaming}
+\begin{itemize}
+    \item \textbf{MLlib (Machine Learning):} La libreria di machine learning scalabile di Apache Spark. Il professore precisa che l'obiettivo non è imparare a scrivere nuovi algoritmi di machine learning distribuiti da zero, ma imparare a usare quelli già presenti e parallelizzabili per analizzare grandi quantità di dati.
+    \item \textbf{Spark Streaming:} Strumenti per l'analisi di flussi continui di dati. La transizione concettuale è semplice: una volta compreso come analizzare i dati "in batch" con Spark, l'approccio allo streaming risulta identico; cambia unicamente la sorgente di input (che passa dall'essere un grande file statico a un flusso continuo).
+\end{itemize}
+
+\section*{Regole e Modalità d'Esame}
+L'esame consiste unicamente in una prova scritta erogata tramite piattaforma d'ateneo (Exam Platform con browser protetto \textit{Lockdown}), della durata di \textbf{1,5 ore (90 minuti)}. Per sostenere l'esame è necessario portare il proprio PC. 
+
+Il punteggio massimo è di \textbf{31 punti}, così strutturato:
+\begin{itemize}
+    \item \textbf{2 Esercizi di Programmazione (max 27 punti):} Basati sulla progettazione di programmi Hadoop/MapReduce e/o API Spark. Spesso un singolo programma richiederà di risolvere due sotto-problemi, ed è valutata l'abilità dello studente nel riutilizzare il codice in modo efficiente per entrambi.
+    \item \textbf{2 Domande Teoriche a risposta multipla (max 4 punti):} Vertono su tutti gli argomenti (architetture, RDD, HDFS, ecc.). Spesso queste domande presentano porzioni di codice di cui viene richiesto di prevedere l'output.
+\end{itemize}
+
+\begin{remark}[Esame a Libro Aperto]
+L'esame è "open book", ovvero è consentito consultare libri, appunti e materiale cartaceo stampato. \textbf{Tuttavia, non è permesso alcun dispositivo elettronico} (cellulari, tablet o altri PC) al di fuori di quello utilizzato per l'esame. Il docente avvisa severamente che qualsiasi tentativo di copiatura ("cheating") sarà sanzionato con l'annullamento dell'esame e la potenziale sospensione di un anno dagli appelli (con conseguente perdita di eventuali borse di studio).
+\end{remark}

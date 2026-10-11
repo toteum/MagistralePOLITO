@@ -1,0 +1,92 @@
+\chapter{Data Science e The Big Data Challenge}
+
+\section{Introduzione ai Big Data}
+Il concetto di \textbf{Big Data} ha molteplici definizioni, essendo un termine che si è evoluto rapidamente nel corso degli anni (spesso accompagnato da un forte \textit{hype} mediatico, come ironicamente illustrato in celebri vignette a tema). Tuttavia, da un punto di vista accademico e tecnologico, possiamo adottare la seguente definizione formale:
+
+\begin{definition}[Big Data]
+I Big Data sono dati la cui \textbf{scala, diversità e complessità} richiedono nuove architetture, tecniche, algoritmi e strumenti di analisi (\textit{analytics}) per poterli gestire ed estrarne valore e conoscenza nascosta.
+\end{definition}
+
+% FIGURA DA INSERIRE QUI
+% Fonte: Slide 1
+% Descrizione: Striscia a fumetti di Dilbert sull'hype dei Big Data.
+\begin{figure}[H]
+    \centering
+    % \includegraphics[width=0.7\textwidth]{dilbert_big_data}
+    \caption{L'hype mediatico attorno al concetto di Big Data.}
+    \label{fig:dilbert_bigdata}
+\end{figure}
+
+\section{Le Sfide dei Big Data}
+L'avvento dei Big Data introduce delle sfide significative che non possono essere affrontate con i sistemi tradizionali. Queste sfide si dividono in due macro-categorie:
+
+\subsection{Tecnologia e infrastruttura}
+La gestione di moli di dati così imponenti richiede nuovi paradigmi di programmazione e nuove architetture hardware/software. Il principio fondamentale che guida queste nuove tecnologie è:
+\begin{center}
+    \textit{"Transfer the processing power to the data"} \\
+    (Trasferire la potenza di calcolo verso i dati)
+\end{center}
+Invece di spostare enormi quantità di dati verso i server di calcolo (operazione lenta e costosa in termini di rete), si spostano gli algoritmi e il calcolo direttamente sui nodi dove i dati sono immagazzinati. L'ecosistema di riferimento per questo paradigma è \textbf{Apache Hadoop} e \textbf{Apache Spark}.
+
+% FIGURA DA INSERIRE QUI
+% Fonte: Slide 4
+% Descrizione: Logo dell'elefantino di Apache Hadoop.
+\begin{figure}[H]
+    \centering
+    % \includegraphics[width=0.3\textwidth]{hadoop_elephant}
+    \caption{L'ecosistema Apache Hadoop è una delle tecnologie fondanti per gestire le infrastrutture Big Data.}
+    \label{fig:hadoop_elephant}
+\end{figure}
+
+\subsection{Gestione e analisi dei dati}
+Oltre all'infrastruttura, c'è una nuova e forte enfasi sul "dato" in sé. Raccogliere i dati non basta: è necessario analizzarli per estrarne valore. Questa esigenza ha dato vita a una disciplina specifica: la \textbf{Data Science}.
+
+\section{Data Science}
+La Data Science è la disciplina che si occupa di \textit{"estrarre significato da grandissime quantità di dati"}. 
+È un campo fortemente multidisciplinare che unisce statistica, machine learning, data mining, visualizzazione dei dati e gestione dei database.
+
+\begin{remark}
+Il termine \textit{"Data Scientist"} è stato coniato originariamente da D.J. Patil (ex Chief Data Scientist degli Stati Uniti), contribuendo a definire una nuova figura professionale fondamentale nel panorama tecnologico moderno.
+\end{remark}
+
+% FIGURA DA INSERIRE QUI
+% Fonte: Slide 5
+% Descrizione: Mappa concettuale che mostra le varie discipline che compongono la Data Science (Statistic, Machine Learning, Data Mining, ecc.).
+\begin{figure}[H]
+    \centering
+    % \includegraphics[width=0.6\textwidth]{data_science_mindmap}
+    \caption{La natura multidisciplinare della Data Science.}
+    \label{fig:ds_mindmap}
+\end{figure}
+
+\section{Il Processo di Data Science (KDD)}
+Il processo di estrazione della conoscenza dai dati è formalmente noto come \textbf{KDD} (\textit{Knowledge Discovery in Databases}). 
+
+Il flusso di lavoro della Data Science si articola in una macro-pipeline composta da quattro fasi principali, disposte in sequenza logica:
+\begin{enumerate}
+    \item \textbf{Generation} (Generazione del dato)
+    \item \textbf{Acquisition} (Acquisizione)
+    \item \textbf{Storage} (Memorizzazione)
+    \item \textbf{Analysis} (Analisi)
+\end{enumerate}
+
+% FIGURA DA INSERIRE QUI
+% Fonte: Slide 6
+% Descrizione: I due schemi del processo KDD. Da un lato il processo lineare (Data -> Preprocessing -> Data Mining -> Knowledge), dall'altro il ciclo di feedback continuo con il mondo reale (Real World -> Raw Data -> Model -> Data Product -> Real World).
+\begin{figure}[H]
+    \centering
+    % \includegraphics[width=0.9\textwidth]{kdd_process}
+    \caption{Rappresentazione del processo KDD (Knowledge Discovery in Databases) e del ciclo di vita di un Data Product.}
+    \label{fig:kdd_process}
+\end{figure}
+
+\subsection{Fase 1: Generazione dei dati (Generation)}
+La prima fase del processo KDD riguarda il modo in cui i dati vengono creati nel mondo reale. Possiamo classificare la generazione dei dati in tre tipologie principali:
+
+\begin{itemize}
+    \item \textbf{Registrazione passiva (Passive recording):} Produce tipicamente \textbf{dati strutturati}. Esempi classici includono le transazioni bancarie e di trading, i registri degli acquisti nei negozi (shopping records) e gli archivi della pubblica amministrazione (government sector archives). L'utente non genera attivamente il dato, ma compie un'azione che viene passivamente registrata dal sistema.
+    
+    \item \textbf{Generazione attiva (Active generation):} Produce tipicamente \textbf{dati semi-strutturati o non strutturati}. Si tratta principalmente di contenuti generati direttamente dagli utenti (\textit{User-generated content}), come ad esempio i post, le foto e i video caricati sui social network.
+    
+    \item \textbf{Produzione automatica (Automatic production):} Riguarda dati generati in modo continuo e automatico da dispositivi. Questi dati sono spesso \textit{location-aware} (geolocalizzati), \textit{context-dependent} (dipendenti dal contesto) e generati da dispositivi altamente mobili (come smartphone, sensori IoT, smartwatch).
+\end{itemize}

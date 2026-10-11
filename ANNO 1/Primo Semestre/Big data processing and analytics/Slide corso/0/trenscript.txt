@@ -1,0 +1,1177 @@
+WEBVTT
+
+00:08:46.000 --> 00:08:48.000
+You will not use adobe.
+
+00:08:48.000 --> 00:08:50.000
+But there are.
+
+00:08:50.000 --> 00:09:01.000
+Systems. And so sometimes some of you probably need to change a piece of code breather. No using Mapreduce 10 years ago, or even more.
+
+00:09:01.000 --> 00:09:04.000
+Okay? In many bands.
+
+00:09:04.000 --> 00:09:15.000
+And other companies. There are still programs been in Kobol. I don't know if some of you have ever heard the word the programming language. Kobol.
+
+00:09:15.000 --> 00:09:22.000
+And this procedure were written in some cases 25, or also 30 years ago.
+
+00:09:22.000 --> 00:09:24.000
+Okay.
+
+00:09:24.000 --> 00:09:25.000
+And they.
+
+00:09:25.000 --> 00:09:28.000
+Situation is always the same.
+
+00:09:28.000 --> 00:09:33.000
+These functionalities work.
+
+00:09:33.000 --> 00:09:35.000
+Okay.
+
+00:09:35.000 --> 00:09:38.000
+And there is also another issue. You are a very big bank.
+
+00:09:38.000 --> 00:09:53.000
+Poletta related to the last 50 years. Because you need, you have to collect the data and store the information about all the bank translation and all the operations of the customers.
+
+00:09:53.000 --> 00:09:57.000
+And you want to use a pattern procedure or Rust.
+
+00:09:57.000 --> 00:09:59.000
+Base procedure.
+
+00:09:59.000 --> 00:10:03.000
+You need to rewrite the code, and probably you need also to beta.
+
+00:10:03.000 --> 00:10:08.000
+From the legacy system, legacy database in a new one.
+
+00:10:08.000 --> 00:10:13.000
+And if you have 50 years of data to move from one dB to another one,
+
+00:10:13.000 --> 00:10:20.000
+weeks or even more. Okay, so for this reason, if you can start from scratch,
+
+00:10:20.000 --> 00:10:23.000
+You are lucky, but usually,
+
+00:10:23.000 --> 00:10:27.000
+need to change and update the code written by someone else.
+
+00:10:27.000 --> 00:10:33.000
+For this reason, it may happen that some of you will still write or change
+
+00:10:33.000 --> 00:10:38.000
+I'm a producer application based on Hadoop. Even if it's clear that nowadays not best.
+
+00:10:38.000 --> 00:10:42.000
+Framework is not the best programming problem.
+
+00:10:42.000 --> 00:10:45.000
+And we will spend the majority of our time.
+
+00:10:45.000 --> 00:10:50.000
+On the Spark framework, Spark is nowadays one of the most
+
+00:10:50.000 --> 00:10:55.000
+Use frameworks for analyzing big amount of data.
+
+00:10:55.000 --> 00:10:58.000
+So we will start with, um…
+
+00:10:58.000 --> 00:11:03.000
+There is APIs based on RDDs, and the Stock SQL.
+
+00:11:03.000 --> 00:11:11.000
+Data frames. I will show you how you can write a Spark application to a nice big amount of data using both APIs.
+
+00:11:11.000 --> 00:11:16.000
+Again, also here I will tell you when we will cover this part, that nowadays,
+
+00:11:16.000 --> 00:11:19.000
+Usually…
+
+00:11:19.000 --> 00:11:22.000
+We use the Spark SQL APIs.
+
+00:11:22.000 --> 00:11:26.000
+Of course, you should be already proficient with the SQL language.
+
+00:11:26.000 --> 00:11:29.000
+And with the Spark SQL APIs, you can
+
+00:11:29.000 --> 00:11:34.000
+We use the SQL English to write the code that you are interested in.
+
+00:11:34.000 --> 00:11:38.000
+Differently with RDs, the former the
+
+00:11:38.000 --> 00:11:40.000
+Previous version of the APIs.
+
+00:11:40.000 --> 00:11:46.000
+You have to write a code based on Python or Java.
+
+00:11:46.000 --> 00:11:50.000
+You use something that's in SQL language, so sometimes it's easy to use the
+
+00:11:50.000 --> 00:11:56.000
+The other approach, okay, usually it's easier to use the other approach. But we'll show again also how to run.
+
+00:11:56.000 --> 00:12:01.000
+A Spark application based on this, because, again, we already have many application based on RDDs.
+
+00:12:01.000 --> 00:12:04.000
+So you need to be able to record written,
+
+00:12:04.000 --> 00:12:08.000
+using this API and also change it if you need it.
+
+00:12:08.000 --> 00:12:12.000
+And also because with AMDs, you can better understand.
+
+00:12:12.000 --> 00:12:15.000
+The amount of data that you are sending on the network, that is a
+
+00:12:15.000 --> 00:12:18.000
+Key point, if you want to write an efficient
+
+00:12:18.000 --> 00:12:21.000
+Big data application.
+
+00:12:21.000 --> 00:12:23.000
+Um…
+
+00:12:23.000 --> 00:12:27.000
+Spark contains also a machine learning library.
+
+00:12:27.000 --> 00:12:36.000
+A very, very big.
+
+00:12:36.000 --> 00:12:43.000
+Okay, the camera, I think there is two because also here sometimes is.
+
+00:12:43.000 --> 00:12:46.000
+Clearing.
+
+00:12:46.000 --> 00:12:55.000
+For the mic, I don't know how I can do…
+
+00:12:55.000 --> 00:13:02.000
+Let me check.
+
+00:13:02.000 --> 00:13:07.000
+Probably I should disable the…
+
+00:13:07.000 --> 00:13:21.000
+the Wi-Fi.
+
+00:13:21.000 --> 00:13:32.000
+Is it better now? Or at all?
+
+00:13:32.000 --> 00:13:36.000
+I don't know what else I can do.
+
+00:13:36.000 --> 00:13:56.000
+Can you hear me better? Here's like in this way.
+
+00:13:56.000 --> 00:14:08.000
+In this way…
+
+00:14:08.000 --> 00:14:10.000
+The output input is the comma.
+
+00:14:10.000 --> 00:14:32.000
+I have no other idea.
+
+00:14:32.000 --> 00:14:43.000
+No.
+
+00:14:43.000 --> 00:14:52.000
+Okay.
+
+00:14:52.000 --> 00:14:58.000
+Unfortunately, don't have our ideas, so I think we can even enjoy it.
+
+00:14:58.000 --> 00:15:08.000
+I'm sorry.
+
+00:15:08.000 --> 00:15:10.000
+Okay, um…
+
+00:15:10.000 --> 00:15:13.000
+I explained that in the…
+
+00:15:13.000 --> 00:15:19.000
+Spark system in the Spark framework, we have also the machine learning library.
+
+00:15:19.000 --> 00:15:25.000
+On each side of the machine learning algorithms are available, I will, uh,
+
+00:15:25.000 --> 00:15:29.000
+Show that only some algorithms can be parallelized using
+
+00:15:29.000 --> 00:15:32.000
+A big data approach.
+
+00:15:32.000 --> 00:15:34.000
+We are not going to.
+
+00:15:34.000 --> 00:15:43.000
+Cover how to write a new machine learning algorithm using beta frameworks. I wish all you can use problems that are already available.
+
+00:15:43.000 --> 00:15:46.000
+Inside this library. And finally,
+
+00:15:46.000 --> 00:15:50.000
+In the Spark environment, you can also analyze a stream of data.
+
+00:15:50.000 --> 00:15:53.000
+So, analyzing, uh…
+
+00:15:53.000 --> 00:15:55.000
+Relatively big…
+
+00:15:55.000 --> 00:16:00.000
+input stream of data, and I will show you how you can write programs to analyze stream of data, but
+
+00:16:00.000 --> 00:16:07.000
+It's very easy if you learn how to write a specification to analyze big amount of data often using a batch approach.
+
+00:16:07.000 --> 00:16:10.000
+Then you can really use the same approach,
+
+00:16:10.000 --> 00:16:13.000
+to analyze a stream of data. You simply change
+
+00:16:13.000 --> 00:16:18.000
+The input. You specify that the input is no longer a big input file, but the input is a stream.
+
+00:16:18.000 --> 00:16:20.000
+And that works.
+
+00:16:20.000 --> 00:16:25.000
+Okay.
+
+00:16:25.000 --> 00:16:27.000
+So, as you can see,
+
+00:16:27.000 --> 00:16:30.000
+Four topics are related to
+
+00:16:30.000 --> 00:16:33.000
+How to or main related to how to write?
+
+00:16:33.000 --> 00:16:36.000
+Applications, software.
+
+00:16:36.000 --> 00:16:38.000
+Okay, I also show you…
+
+00:16:38.000 --> 00:16:44.000
+The architecture, so I will discuss, for example, what is the Lambda architecture.
+
+00:16:44.000 --> 00:16:50.000
+So how you can design a system based on these frameworks to analyze big amount of data of flood and also
+
+00:16:50.000 --> 00:16:55.000
+But then the main focus is how…
+
+00:16:55.000 --> 00:17:00.000
+Can we write prompts using these frameworks and these program paradigms to?
+
+00:17:00.000 --> 00:17:03.000
+Analyze big amount of data.
+
+00:17:03.000 --> 00:17:08.000
+As I mentioned before, I will see the sizes during.
+
+00:17:08.000 --> 00:17:10.000
+the hours during the lectures.
+
+00:17:10.000 --> 00:17:17.000
+So if you solve all the exercises that are published and they will publish more exercises.
+
+00:17:17.000 --> 00:17:22.000
+On the webpage of the course. If you try to solve the previous jams, if you attend the lab activities,
+
+00:17:22.000 --> 00:17:25.000
+I'm confident that you can…
+
+00:17:25.000 --> 00:17:28.000
+Be ready for the exam at the end of the course.
+
+00:17:28.000 --> 00:17:32.000
+Okay? But you must show as many exercises as possible.
+
+00:17:32.000 --> 00:17:37.000
+In order to learn also which are the patterns to solve specific.
+
+00:17:37.000 --> 00:17:40.000
+Tasks.
+
+00:17:40.000 --> 00:17:46.000
+Use it with the video frameworks, you cannot solve very complex
+
+00:17:46.000 --> 00:17:50.000
+You analyze big amount of data efficiently.
+
+00:17:50.000 --> 00:17:52.000
+But the attack are usually very important.
+
+00:17:52.000 --> 00:18:02.000
+Compute the number of purchases of each item. Identify the item that is associated with a number of purchases.
+
+00:18:02.000 --> 00:18:06.000
+or preprocess the data before applying a machine learning algorithm.
+
+00:18:06.000 --> 00:18:11.000
+So usually you write complex applications.
+
+00:18:11.000 --> 00:18:16.000
+But you need to know the patterns that are needed to perform these operations.
+
+00:18:16.000 --> 00:18:19.000
+Efficiently. Okay?
+
+00:18:19.000 --> 00:18:24.000
+During the lab activities, you have to write code.
+
+00:18:24.000 --> 00:18:26.000
+To solve a simple or…
+
+00:18:26.000 --> 00:18:28.000
+Medium complex task.
+
+00:18:28.000 --> 00:18:31.000
+using MapReduce and Hadoop in the first part.
+
+00:18:31.000 --> 00:18:33.000
+For the first apps.
+
+00:18:33.000 --> 00:18:37.000
+In the other five, six laps,
+
+00:18:37.000 --> 00:18:39.000
+You will use Park.
+
+00:18:39.000 --> 00:18:57.000
+Okay.
+
+00:18:57.000 --> 00:19:16.000
+Okay, now I'm using the mic of my PC.
+
+00:19:16.000 --> 00:19:18.000
+Is it better in this way or no?
+
+00:19:18.000 --> 00:19:25.000
+For those who are online.
+
+00:19:25.000 --> 00:19:29.000
+Okay, so probably something related to the mic.
+
+00:19:29.000 --> 00:19:31.000
+Okay, I use the…
+
+00:19:31.000 --> 00:19:34.000
+The mic of my PC.
+
+00:19:34.000 --> 00:19:37.000
+And it should work better, ok.
+
+00:19:37.000 --> 00:19:42.000
+So MapReduce for Hadoop.
+
+00:19:42.000 --> 00:19:44.000
+He's available only in Java.
+
+00:19:44.000 --> 00:19:47.000
+So, you must write code using Java.
+
+00:19:47.000 --> 00:19:51.000
+If you have never attended courses related to Java.
+
+00:19:51.000 --> 00:19:55.000
+It may happen for those who did not attend the
+
+00:19:55.000 --> 00:19:58.000
+the bachelor degree here at Politanico Torino.
+
+00:19:58.000 --> 00:20:01.000
+Uh, on the webpage of the course at the end.
+
+00:20:01.000 --> 00:20:04.000
+In the additional material section,
+
+00:20:04.000 --> 00:20:07.000
+There is a link to some slides and some, uh…
+
+00:20:07.000 --> 00:20:11.000
+Lectures of a colleague of mine.
+
+00:20:11.000 --> 00:20:16.000
+Focus only on the subset of slides that I specified there.
+
+00:20:16.000 --> 00:20:22.000
+At the end, you only need to know the basic concepts, so how to write a loop operation.
+
+00:20:22.000 --> 00:20:29.000
+How to apply some basic operation based on strings, so identify if a string contains another string.
+
+00:20:29.000 --> 00:20:31.000
+And few other basic…
+
+00:20:31.000 --> 00:20:38.000
+So we don't need to write, as I mentioned before, you cannot write complex application using MapReduce already.
+
+00:20:38.000 --> 00:20:47.000
+So also regarding Java, you only need to know the basic concept, but then if you have questions, any doubts, send me an email, we can set up a meeting and I can try to
+
+00:20:47.000 --> 00:20:52.000
+To provide you the basic concepts that are needed to attend the first part of the course.
+
+00:20:52.000 --> 00:20:54.000
+Okay?
+
+00:20:54.000 --> 00:20:57.000
+Then, regarding Spark.
+
+00:20:57.000 --> 00:21:03.000
+You can use the language that you prefer, theoretically, more or less, you can use Python.
+
+00:21:03.000 --> 00:21:05.000
+Java, Scala,
+
+00:21:05.000 --> 00:21:07.000
+And theoretically, also R.
+
+00:21:07.000 --> 00:21:11.000
+In this course, we are going to use Python, and you should be already
+
+00:21:11.000 --> 00:21:15.000
+proficient with Python, more or less.
+
+00:21:15.000 --> 00:21:17.000
+But again, also here we don't use very
+
+00:21:17.000 --> 00:21:20.000
+Advanced functionalities of Python.
+
+00:21:20.000 --> 00:21:25.000
+We use basic methods that are used to filter the data, transform the data.
+
+00:21:25.000 --> 00:21:28.000
+And compute the high-level statistics.
+
+00:21:28.000 --> 00:21:30.000
+Hey.
+
+00:21:30.000 --> 00:21:36.000
+Then, mainly when I'm going to introduce the Spark SQL APIs.
+
+00:21:36.000 --> 00:21:38.000
+In that case, we…
+
+00:21:38.000 --> 00:21:44.000
+Use the SQL language, but again, the SQL language is something that you should be already proficient with.
+
+00:21:44.000 --> 00:21:47.000
+Then, if you have questions, if for some reasons.
+
+00:21:47.000 --> 00:21:49.000
+You don't remember, uh…
+
+00:21:49.000 --> 00:21:51.000
+Something about the SQL language.
+
+00:21:51.000 --> 00:21:54.000
+Again, I can share with you some slides, but
+
+00:21:54.000 --> 00:21:59.000
+You are also tending now the data science and database technology course.
+
+00:21:59.000 --> 00:22:06.000
+There you are going to analyze the extended SQL language, so with the basic SQL language.
+
+00:22:06.000 --> 00:22:12.000
+The basic methods you should be already familiar, so I'm confident that you can
+
+00:22:12.000 --> 00:22:19.000
+You can address the task based on the SQL language that we are going to use here easily.
+
+00:22:19.000 --> 00:22:24.000
+Okay, all the material is on the web page of the course.
+
+00:22:24.000 --> 00:22:29.000
+Probably we also upload a zip file with all the material on the teaching portal.
+
+00:22:29.000 --> 00:22:37.000
+But the main reference is this webpage.
+
+00:22:37.000 --> 00:22:42.000
+There, I applaud the slides, exercises, lab activities,
+
+00:22:42.000 --> 00:23:01.000
+And in the future, in the next weeks,
+
+00:23:01.000 --> 00:23:08.000
+So here I have already uploaded all the slides.
+
+00:23:08.000 --> 00:23:11.000
+Also, all the exercises with the solutions, but please
+
+00:23:11.000 --> 00:23:15.000
+First, try to solve the exercises.
+
+00:23:15.000 --> 00:23:34.000
+And then check the solutions.
+
+00:23:34.000 --> 00:23:37.000
+For the lab activities, I will publish the…
+
+00:23:37.000 --> 00:23:39.000
+Problem specification…
+
+00:23:39.000 --> 00:23:41.000
+One week at a time.
+
+00:23:41.000 --> 00:23:44.000
+And finally, in the previous exam sessions,
+
+00:23:44.000 --> 00:23:47.000
+In the previous exam examples,
+
+00:23:47.000 --> 00:23:50.000
+I will applaud many previous examples.
+
+00:23:50.000 --> 00:23:52.000
+At least the exams of the last.
+
+00:23:52.000 --> 00:23:54.000
+40 years, okay?
+
+00:23:54.000 --> 00:24:01.000
+Again, at the beginning, probably we'll only publish the problem specification and then the solution will be uploaded later.
+
+00:24:01.000 --> 00:24:03.000
+In order to be sure that you don't
+
+00:24:03.000 --> 00:24:05.000
+Check immediately the solution.
+
+00:24:05.000 --> 00:24:08.000
+Because if you analyze immediately the solution.
+
+00:24:08.000 --> 00:24:11.000
+Usually, you think something like,
+
+00:24:11.000 --> 00:24:14.000
+Okay, this course is easy.
+
+00:24:14.000 --> 00:24:17.000
+Okay, because at the end is not very complex, as I mentioned before.
+
+00:24:17.000 --> 00:24:25.000
+But first try to solve the exercise and then check the solution. Only in that way you will really understand it.
+
+00:24:25.000 --> 00:24:27.000
+It is easy or not.
+
+00:24:27.000 --> 00:24:30.000
+I'm confident that
+
+00:24:30.000 --> 00:24:35.000
+If you, as I said before, you solve all the exercises that I publish.
+
+00:24:35.000 --> 00:24:37.000
+On the webpage of the course.
+
+00:24:37.000 --> 00:24:40.000
+If you will also solve all the previous exams.
+
+00:24:40.000 --> 00:24:44.000
+And you attend the lab activities, or at least you try to solve them.
+
+00:24:44.000 --> 00:24:48.000
+If you are in the lab, it's better for you because we can provide you a feedback.
+
+00:24:48.000 --> 00:24:51.000
+But if you prefer to solve also the lab activities at home.
+
+00:24:51.000 --> 00:24:53.000
+It's not an issue for me.
+
+00:24:53.000 --> 00:24:58.000
+The important thing is that you have to try to solve all the exercises that
+
+00:24:58.000 --> 00:25:08.000
+Including the lab that I'm going to upload on the webpage of the course. In this way, I'm sure that you will pass also with a good mark the exam.
+
+00:25:08.000 --> 00:25:11.000
+Obviously, the goal is not to pass the exam.
+
+00:25:11.000 --> 00:25:14.000
+The goal should be to learn something useful.
+
+00:25:14.000 --> 00:25:17.000
+For you, okay? But I also know that, obviously,
+
+00:25:17.000 --> 00:25:19.000
+You want to pass the exam.
+
+00:25:19.000 --> 00:25:21.000
+Probably also with a good one.
+
+00:25:21.000 --> 00:25:25.000
+Okay.
+
+00:25:25.000 --> 00:25:35.000
+If you check on the web page of the course, the one available on the teaching portal, you'll find also the statistics about the percentage of students who pass the exam.
+
+00:25:35.000 --> 00:25:38.000
+And the results.
+
+00:25:38.000 --> 00:25:41.000
+And usually the mark, the average mark.
+
+00:25:41.000 --> 00:25:45.000
+is on the right. So the average mark for the students who pass the exam is
+
+00:25:45.000 --> 00:25:49.000
+Between 26 and 27, more or less.
+
+00:25:49.000 --> 00:25:53.000
+Okay. And more or less, 60…
+
+00:25:53.000 --> 00:25:57.000
+365% of the students passed the exam.
+
+00:25:57.000 --> 00:26:01.000
+During the first year.
+
+00:26:01.000 --> 00:26:03.000
+But, you must.
+
+00:26:03.000 --> 00:26:05.000
+Solve many exercises.
+
+00:26:05.000 --> 00:26:07.000
+Okay.
+
+00:26:07.000 --> 00:26:11.000
+Another important thing, pay attention that
+
+00:26:11.000 --> 00:26:14.000
+The majority of you is already aware of this.
+
+00:26:14.000 --> 00:26:18.000
+But pay attention that you can fail an exam.
+
+00:26:18.000 --> 00:26:25.000
+So you are being selected. There is an evaluation at the beginning.
+
+00:26:25.000 --> 00:26:28.000
+But this does not mean that.
+
+00:26:28.000 --> 00:26:32.000
+you will achieve…
+
+00:26:32.000 --> 00:26:35.000
+The title, the master degree title.
+
+00:26:35.000 --> 00:26:38.000
+Okay, if you don't do your best.
+
+00:26:38.000 --> 00:26:40.000
+to pass the exams and learn things.
+
+00:26:40.000 --> 00:26:44.000
+Okay, I mentioned this only because
+
+00:26:44.000 --> 00:26:47.000
+Mainly in different countries, for instance, in France.
+
+00:26:47.000 --> 00:26:52.000
+I know that is very complex to be admitted to a top-level university.
+
+00:26:52.000 --> 00:26:56.000
+But then, if you are admitted there.
+
+00:26:56.000 --> 00:27:03.000
+That was the important thing. Then, even if you, you pass the exam only with 18 over 30 is not an issue.
+
+00:27:03.000 --> 00:27:07.000
+Someone will hire you only because you
+
+00:27:07.000 --> 00:27:12.000
+Obtain the master title in a top-level university.
+
+00:27:12.000 --> 00:27:15.000
+Because in France there is a different approach.
+
+00:27:15.000 --> 00:27:20.000
+Only top students are selected in top universities.
+
+00:27:20.000 --> 00:27:22.000
+Okay, here we have also selection.
+
+00:27:22.000 --> 00:27:28.000
+So some of your colleagues who plan to attend the computer science.
+
+00:27:28.000 --> 00:27:30.000
+It's not here, because…
+
+00:27:30.000 --> 00:27:35.000
+The requirements were not achieved by these students.
+
+00:27:35.000 --> 00:27:38.000
+But then, to pass the exam.
+
+00:27:38.000 --> 00:27:40.000
+You need to study a lot.
+
+00:27:40.000 --> 00:27:45.000
+Okay, and you can fail itself. Pay attention mainly for the scholarship.
+
+00:27:45.000 --> 00:27:48.000
+For the fellowship, call them as you prefer.
+
+00:27:48.000 --> 00:27:50.000
+So, you need to plan.
+
+00:27:50.000 --> 00:27:57.000
+Better than in other, probably, universities, at least outside Italy.
+
+00:27:57.000 --> 00:27:59.000
+You need to plan.
+
+00:27:59.000 --> 00:28:01.000
+The exams that you want to attend,
+
+00:28:01.000 --> 00:28:04.000
+Take and pay attention that…
+
+00:28:04.000 --> 00:28:09.000
+You need to pass them, but it's not easy. You can fail them.
+
+00:28:09.000 --> 00:28:12.000
+And if, uh, at the end of June.
+
+00:28:12.000 --> 00:28:14.000
+You come to my office and you tell me, please.
+
+00:28:14.000 --> 00:28:19.000
+Give me 18 because otherwise I cannot have a diesel scholarship.
+
+00:28:19.000 --> 00:28:22.000
+It means that you did not plan properly.
+
+00:28:22.000 --> 00:28:24.000
+Your study of potential determined.
+
+00:28:24.000 --> 00:28:28.000
+Okay, so pay attention to that.
+
+00:28:28.000 --> 00:28:31.000
+You must spend a lot of your time.
+
+00:28:31.000 --> 00:28:35.000
+Also, Tom to prepare for the exams.
+
+00:28:35.000 --> 00:28:38.000
+For each credit.
+
+00:28:38.000 --> 00:28:40.000
+10 hours.
+
+00:28:40.000 --> 00:28:42.000
+Here in the classroom or in the lab.
+
+00:28:42.000 --> 00:28:48.000
+But 15 hours of personal study at all.
+
+00:28:48.000 --> 00:28:53.000
+So, one credit is equal to 25 hours.
+
+00:28:53.000 --> 00:28:55.000
+Pan, in which we are working together.
+
+00:28:55.000 --> 00:28:58.000
+and 15 hours per credit,
+
+00:28:58.000 --> 00:29:02.000
+In which you are working by yourself to study, solve exercises,
+
+00:29:02.000 --> 00:29:05.000
+In order to be ready for the exam.
+
+00:29:05.000 --> 00:29:11.000
+Okay?
+
+00:29:11.000 --> 00:29:19.000
+All the material is available on the webpage of the course, as I mentioned before, on the mines.polito.it webpage.
+
+00:29:19.000 --> 00:29:23.000
+I also stream the lectures, as you can see.
+
+00:29:23.000 --> 00:29:26.000
+And they also share their recorded version of the lecture.
+
+00:29:26.000 --> 00:29:29.000
+Usually, at the end of the day or the day,
+
+00:29:29.000 --> 00:29:32.000
+After the lecture, okay?
+
+00:29:32.000 --> 00:29:34.000
+Since today we…
+
+00:29:34.000 --> 00:29:43.000
+And at the 7 PM, probably I will publish them tomorrow morning.
+
+00:29:43.000 --> 00:29:46.000
+Okay, there are also some reference books, but
+
+00:29:46.000 --> 00:29:52.000
+The slides and the exercises that they publish on the webpage of the course should be sufficient to
+
+00:29:52.000 --> 00:29:55.000
+To learn the concept that they want to share with you.
+
+00:29:55.000 --> 00:29:59.000
+Okay. The exam is based only on a written exam.
+
+00:29:59.000 --> 00:30:05.000
+There are no homewards, no points for the lab activities.
+
+00:30:05.000 --> 00:30:07.000
+Only a final written example.
+
+00:30:07.000 --> 00:30:11.000
+Overall, 31 points.
+
+00:30:11.000 --> 00:30:16.000
+27 points for the programming part.
+
+00:30:16.000 --> 00:30:20.000
+And 4 points associated with
+
+00:30:20.000 --> 00:30:21.000
+True multiple choice questions.
+
+00:30:21.000 --> 00:30:24.000
+Related to the overall topics of the course.
+
+00:30:24.000 --> 00:30:39.000
+Okay, also in the multiple choice question.
+
+00:30:39.000 --> 00:30:42.000
+So today, Zoom is not…
+
+00:30:42.000 --> 00:30:51.000
+Hmm…
+
+00:30:51.000 --> 00:30:57.000
+Okay, sorry, now you should see the slides again.
+
+00:30:57.000 --> 00:31:00.000
+Um…
+
+00:31:00.000 --> 00:31:02.000
+Okay, as I mentioned,
+
+00:31:02.000 --> 00:31:09.000
+There are four points for the two multiple choice questions, but frequently also in the multiple choice questions, you have something like a piece of code.
+
+00:31:09.000 --> 00:31:13.000
+And I ask you to select the output of this piece of code.
+
+00:31:13.000 --> 00:31:16.000
+Okay, so I don't…
+
+00:31:16.000 --> 00:31:18.000
+Include, usually, questions like,
+
+00:31:18.000 --> 00:31:23.000
+What is an RDD with four possible definition of an RDD?
+
+00:31:23.000 --> 00:31:26.000
+The questions are usually related.
+
+00:31:26.000 --> 00:31:31.000
+To something that is, again, related with the code or the execution of the application.
+
+00:31:31.000 --> 00:31:37.000
+Okay, or given these spark streaming application support that this is the input of the Spark streaming application.
+
+00:31:37.000 --> 00:31:40.000
+What is the L? Or given these three,
+
+00:31:40.000 --> 00:31:44.000
+Different applications, Spark applications,
+
+00:31:44.000 --> 00:31:46.000
+Select the correct answer.
+
+00:31:46.000 --> 00:31:56.000
+A is equivalent to B, but it's not equivalent to C, or A is equivalent to C, but not to B, or all the application are equivalent. So something like that, in which you show me that you learn
+
+00:31:56.000 --> 00:32:04.000
+The basic concept related to the big data frameworks and the big data concept, ok.
+
+00:32:04.000 --> 00:32:12.000
+For the programming part, there are two exercises, usually 7 points for the MapReduce application based on Hadoop.
+
+00:32:12.000 --> 00:32:16.000
+And 20, uh, no, sorry, 19 points.
+
+00:32:16.000 --> 00:32:20.000
+For the Spark application.
+
+00:32:20.000 --> 00:32:25.000
+The Spark application is based on one single program to solve two subtasks.
+
+00:32:25.000 --> 00:32:27.000
+So I ask you to…
+
+00:32:27.000 --> 00:32:31.000
+solve a problem in which there are two subtasks using one single program.
+
+00:32:31.000 --> 00:32:38.000
+And you should show me that you are able to reuse something that can be used to solve both tasks more efficiently.
+
+00:32:38.000 --> 00:32:40.000
+Okay?
+
+00:32:40.000 --> 00:32:46.000
+But as I mentioned, I'm going to publish in the next week also the next weeks.
+
+00:32:46.000 --> 00:32:48.000
+Also, some previous exams.
+
+00:32:48.000 --> 00:32:50.000
+So, you can share the…
+
+00:32:50.000 --> 00:32:56.000
+The structure also there, but this is the basic structure of the exam.
+
+00:32:56.000 --> 00:32:59.000
+The exam is based on the
+
+00:32:59.000 --> 00:33:01.000
+Exam Polito platform.
+
+00:33:01.000 --> 00:33:05.000
+Probably some of you already used this platform.
+
+00:33:05.000 --> 00:33:10.000
+The modal/exam platform during the bachelor, PR Polytechnically Torino.
+
+00:33:10.000 --> 00:33:12.000
+You need to use your own PC.
+
+00:33:12.000 --> 00:33:17.000
+So currently, if we don't change something in the next weeks,
+
+00:33:17.000 --> 00:33:24.000
+Currently, the exam will be in a classroom like this one, so you need to have your own laptop.
+
+00:33:24.000 --> 00:33:30.000
+If you don't have a laptop compatible with this environment, let me know before the exam, and I will try to
+
+00:33:30.000 --> 00:33:36.000
+To share with you a lot of the department, ok.
+
+00:33:36.000 --> 00:33:38.000
+Uh, in this platform,
+
+00:33:38.000 --> 00:33:46.000
+We use the exam platform together with something that is called Lockdown Browser that theoretically should not allow you to
+
+00:33:46.000 --> 00:33:51.000
+Talk with someone else to have connection with someone else. I know that.
+
+00:33:51.000 --> 00:33:55.000
+Unfortunately, it's not perfect, this system.
+
+00:33:55.000 --> 00:33:57.000
+But theoretically,
+
+00:33:57.000 --> 00:34:00.000
+With this system, you should not be able to…
+
+00:34:00.000 --> 00:34:03.000
+Send messages or connect to internet, or do something like that.
+
+00:34:03.000 --> 00:34:08.000
+Okay. The exam last 90 minutes.
+
+00:34:08.000 --> 00:34:10.000
+It is open book.
+
+00:34:10.000 --> 00:34:16.000
+But currently, unfortunately, I don't have an efficient way to share with you your own
+
+00:34:16.000 --> 00:34:19.000
+nodes using the electronic version of your nodes.
+
+00:34:19.000 --> 00:34:23.000
+So you have to use paper material or you can.
+
+00:34:23.000 --> 00:34:25.000
+Print all the slides.
+
+00:34:25.000 --> 00:34:30.000
+It's not the best thing for the environment, but if you want, you can print all the slides, you can, uh,
+
+00:34:30.000 --> 00:34:34.000
+Use all the books that you are interested in, you can write.
+
+00:34:34.000 --> 00:34:37.000
+By hand you are not whatever you want, so the exam is open book.
+
+00:34:37.000 --> 00:34:41.000
+Okay. But again…
+
+00:34:41.000 --> 00:34:43.000
+This does not mean that.
+
+00:34:43.000 --> 00:34:46.000
+You can decide that for, uh…
+
+00:34:46.000 --> 00:34:52.000
+14 weeks, you do nothing, and then at the exam, you simply open the book or the notes, and you solve the exercises.
+
+00:34:52.000 --> 00:34:56.000
+Because even if it is open book is not sufficient.
+
+00:34:56.000 --> 00:34:58.000
+Okay.
+
+00:34:58.000 --> 00:35:05.000
+Some examples are not already available, but will be available soon on the webpage of the course.
+
+00:35:05.000 --> 00:35:10.000
+Obviously during the exam, you cannot use electronic devices except the PC that you are using to
+
+00:35:10.000 --> 00:35:16.000
+To take the exam and you cannot chat with your colleagues or any other.
+
+00:35:16.000 --> 00:35:18.000
+external.
+
+00:35:18.000 --> 00:35:23.000
+Okay?
+
+00:35:23.000 --> 00:35:29.000
+Any question about the overall structure of the course or the exam?
+
+00:35:29.000 --> 00:35:31.000
+The structure of the sum, no?
+
+00:35:31.000 --> 00:35:36.000
+Okay.
+
+00:35:36.000 --> 00:35:40.000
+Please remember that shifting is something that
+
+00:35:40.000 --> 00:35:48.000
+You must not do, okay?
+
+00:35:48.000 --> 00:35:50.000
+There is also Additionally commission.
+
+00:35:50.000 --> 00:35:54.000
+If some of you during the exam.
+
+00:35:54.000 --> 00:35:56.000
+Use the, uh…
+
+00:35:56.000 --> 00:36:03.000
+Mobile phone, or in some way create a connection with someone else outside the class.
+
+00:36:03.000 --> 00:36:08.000
+to support you and if we identify you, if we.
+
+00:36:08.000 --> 00:36:10.000
+Understand that you are cheating.
+
+00:36:10.000 --> 00:36:13.000
+In that way, in that case,
+
+00:36:13.000 --> 00:36:16.000
+We will inform the shipping commission.
+
+00:36:16.000 --> 00:36:18.000
+And depending on the…
+
+00:36:18.000 --> 00:36:23.000
+Kind of cheating operation that you applied.
+
+00:36:23.000 --> 00:36:27.000
+You can also potentially
+
+00:36:27.000 --> 00:36:30.000
+Be banned for 1 year.
+
+00:36:30.000 --> 00:36:32.000
+The vacant sums.
+
+00:36:32.000 --> 00:36:34.000
+Okay, so it means that
+
+00:36:34.000 --> 00:36:38.000
+In some cases, for one year, you can no longer take exams.
+
+00:36:38.000 --> 00:36:43.000
+And it also means that you cannot pass the exams, so you cannot.
+
+00:36:43.000 --> 00:36:46.000
+At the digital scholarship.
+
+00:36:46.000 --> 00:36:49.000
+So pay attention that…
+
+00:36:49.000 --> 00:36:51.000
+If you try to cheat,
+
+00:36:51.000 --> 00:36:54.000
+You can try to do that, but
+
+00:36:54.000 --> 00:36:57.000
+There are consequences if we
+
+00:36:57.000 --> 00:36:59.000
+Find someone that is cheating.
+
+00:36:59.000 --> 00:37:04.000
+Okay, in some cases, simply please don't do it again next time.
+
+00:37:04.000 --> 00:37:07.000
+But in some other cases, you can also be banned.
+
+00:37:07.000 --> 00:37:11.000
+For one year, no exams for one.
+
+00:37:11.000 --> 00:37:14.000
+Okay.
+
+00:37:14.000 --> 00:37:18.000
+And moreover, cheating is not fair.
+
+00:37:18.000 --> 00:37:21.000
+With respect to your colleagues.
+
+00:37:21.000 --> 00:37:23.000
+With respect to those who are not chilling.
+
+00:37:23.000 --> 00:37:25.000
+Okay, so please.
+
+00:37:25.000 --> 00:37:29.000
+This is very important.

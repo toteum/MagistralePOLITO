@@ -1,0 +1,43 @@
+\babel@toc {italian}{}\relax 
+\babel@toc {italian}{}\relax 
+\contentsline {chapter}{\numberline {1}Data Science e The Big Data Challenge}{5}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Introduzione ai Big Data}{5}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Le Sfide dei Big Data}{5}{section.1.2}%
+\contentsline {subsection}{\numberline {1.2.1}Tecnologia e infrastruttura}{5}{subsection.1.2.1}%
+\contentsline {subsection}{\numberline {1.2.2}Gestione e analisi dei dati}{6}{subsection.1.2.2}%
+\contentsline {section}{\numberline {1.3}Data Science}{6}{section.1.3}%
+\contentsline {section}{\numberline {1.4}Il Processo di Data Science (KDD)}{6}{section.1.4}%
+\contentsline {subsection}{\numberline {1.4.1}Fase 1: Generazione dei dati (Generation)}{6}{subsection.1.4.1}%
+\contentsline {chapter}{\numberline {2}Data Warehouse: Introduzione e Architetture}{8}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Supporto alle decisioni aziendali}{8}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}Perché mantenere i dati separati?}{8}{subsection.2.1.1}%
+\contentsline {section}{\numberline {2.2}Struttura e analisi dei dati}{9}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Rappresentazione multidimensionale}{9}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}Rappresentazione relazionale: Il Modello a Stella}{9}{subsection.2.2.2}%
+\contentsline {section}{\numberline {2.3}Architetture per Data Warehouse}{10}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}Elementi costitutivi}{10}{subsection.2.3.1}%
+\contentsline {subsection}{\numberline {2.3.2}Tipologie di Server OLAP}{10}{subsection.2.3.2}%
+\contentsline {subsection}{\numberline {2.3.3}Architettura a due livelli}{11}{subsection.2.3.3}%
+\contentsline {subsection}{\numberline {2.3.4}Architettura a tre livelli}{11}{subsection.2.3.4}%
+\contentsline {chapter}{\numberline {3}Progettazione del Data Warehouse}{12}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Fattori di rischio}{12}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Approcci alla progettazione}{12}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Ciclo di vita della progettazione di un Data Mart}{12}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}Analisi dei requisiti}{13}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.3.2}Progettazione concettuale}{13}{subsection.3.3.2}%
+\contentsline {subsubsection}{DFM: Costrutti avanzati}{13}{section*.8}%
+\contentsline {subsection}{\numberline {3.3.3}Sparsità dei dati}{14}{subsection.3.3.3}%
+\contentsline {subsection}{\numberline {3.3.4}Progettazione logica e ROLAP}{14}{subsection.3.3.4}%
+\contentsline {subsubsection}{Schema a stella (Star Schema)}{14}{section*.9}%
+\contentsline {subsubsection}{Schema a fiocco di neve (Snowflake Schema)}{15}{section*.10}%
+\contentsline {subsubsection}{Implementazione logica degli archi multipli}{15}{section*.11}%
+\contentsline {subsection}{\numberline {3.3.5}Progettazione fisica}{15}{subsection.3.3.5}%
+\contentsline {chapter}{\numberline {4}Analisi dei Data Warehouse}{16}{chapter.4}%
+\contentsline {chapter}{\numberline {5}Progettazione fisica e alimentazione dei Data Warehouse}{17}{chapter.5}%
+\contentsline {chapter}{\numberline {6}Conceptual Schema: Textual Formalism}{18}{chapter.6}%
+\contentsline {chapter}{\numberline {7}Data Lakes}{19}{chapter.7}%
+\contentsline {chapter}{\numberline {8}Data Mining Process}{20}{chapter.8}%
+\contentsline {chapter}{\numberline {9}Data Preparation}{21}{chapter.9}%
+\contentsline {chapter}{\numberline {10}Data Mining: Association Rules}{22}{chapter.10}%
+\contentsline {chapter}{\numberline {11}Data Mining: Classificazione}{23}{chapter.11}%
+\contentsline {chapter}{\numberline {12}Data Mining: Clustering}{24}{chapter.12}%

@@ -1,0 +1,2472 @@
+
+00:37:29.000 --> 00:37:35.000
+Okay, so now that I told you that you must not cheat, you can fail the exams.
+
+00:37:35.000 --> 00:37:38.000
+Let us start with the content of the course.
+
+00:37:38.000 --> 00:37:42.000
+Okay.
+
+00:37:42.000 --> 00:37:46.000
+Um, okay, uh, let us…
+
+00:37:46.000 --> 00:37:49.000
+Analyze something about big data, a very…
+
+00:37:49.000 --> 00:37:51.000
+Brief introduction at the beginning.
+
+00:37:51.000 --> 00:37:53.000
+What is the meaning of weak data?
+
+00:37:53.000 --> 00:37:57.000
+There are different meanings associated with big data.
+
+00:37:57.000 --> 00:38:01.000
+Here we have two…
+
+00:38:01.000 --> 00:38:05.000
+What clouds associated with the term big data.
+
+00:38:05.000 --> 00:38:08.000
+In both clouds, we have
+
+00:38:08.000 --> 00:38:10.000
+Something like petabytes.
+
+00:38:10.000 --> 00:38:13.000
+Here, and also here somewhere, we have, uh…
+
+00:38:13.000 --> 00:38:16.000
+petabytes, I don't find it now, but…
+
+00:38:16.000 --> 00:38:19.000
+The idea is that big data is usually associated with
+
+00:38:19.000 --> 00:38:21.000
+Big amount of data.
+
+00:38:21.000 --> 00:38:24.000
+Many, many.
+
+00:38:24.000 --> 00:38:27.000
+Data in large collection.
+
+00:38:27.000 --> 00:38:29.000
+Then we have the term.
+
+00:38:29.000 --> 00:38:32.000
+Storage.
+
+00:38:32.000 --> 00:38:37.000
+We have big amount of data, we must store this data somewhere using an efficient
+
+00:38:37.000 --> 00:38:41.000
+and effective approach.
+
+00:38:41.000 --> 00:38:45.000
+Then we have Analytics.
+
+00:38:45.000 --> 00:38:50.000
+You store the data, but then the final goal is to extract value.
+
+00:38:50.000 --> 00:38:52.000
+from the dead.
+
+00:38:52.000 --> 00:38:55.000
+So, usually we need death analytics.
+
+00:38:55.000 --> 00:38:59.000
+Methodologies, approaches to analyze the data.
+
+00:38:59.000 --> 00:39:02.000
+this big amounts of data and extract useful knowledge.
+
+00:39:02.000 --> 00:39:04.000
+And value from the data.
+
+00:39:04.000 --> 00:39:08.000
+Uh, then we have somewhere databases.
+
+00:39:08.000 --> 00:39:14.000
+You need databases or something similar to a database to store this big amount of data efficiently.
+
+00:39:14.000 --> 00:39:17.000
+I will show you already today that usually
+
+00:39:17.000 --> 00:39:23.000
+When you need to store a big amount of data, you don't use a traditional relational database.
+
+00:39:23.000 --> 00:39:26.000
+But you use frequently a distributed file system.
+
+00:39:26.000 --> 00:39:29.000
+Okay, or you use a NoSQL database.
+
+00:39:29.000 --> 00:39:36.000
+But usually in the bottom also when you are using a NoSQL database, frequently you have a distributed file system.
+
+00:39:36.000 --> 00:39:39.000
+In which you can store, using a distributed approach.
+
+00:39:39.000 --> 00:39:43.000
+this big amount of data.
+
+00:39:43.000 --> 00:39:46.000
+Then we have the term technologies.
+
+00:39:46.000 --> 00:39:55.000
+Because you need new technologies to analyze this big amount of data, to store them and analyze them efficiently.
+
+00:39:55.000 --> 00:40:01.000
+And finally, I want to highlight also internet.
+
+00:40:01.000 --> 00:40:05.000
+So, frequently, big data is associated with internet or, uh,
+
+00:40:05.000 --> 00:40:07.000
+The web in general.
+
+00:40:07.000 --> 00:40:11.000
+But the reason is mainly related to the fact that
+
+00:40:11.000 --> 00:40:16.000
+The main industries that at the beginning.
+
+00:40:16.000 --> 00:40:20.000
+developed these technologies are the big techs, like, uh,
+
+00:40:20.000 --> 00:40:23.000
+Google, Facebook,
+
+00:40:23.000 --> 00:40:25.000
+Or, uh…
+
+00:40:25.000 --> 00:40:27.000
+What's the name to Meta today?
+
+00:40:27.000 --> 00:40:35.000
+But you can have big amount of data and you need a nice big amount of data, even if you're not working for one of these.
+
+00:40:35.000 --> 00:40:39.000
+Big tax. If you are, as I mentioned before, a bank,
+
+00:40:39.000 --> 00:40:43.000
+In that case, you already have big amount of data that you collected in the past.
+
+00:40:43.000 --> 00:40:52.000
+And nowadays you are interested in analyzing this big amount of data to solve some task that you did not solve in the past, for instance.
+
+00:40:52.000 --> 00:40:54.000
+If you have, uh…
+
+00:40:54.000 --> 00:40:59.000
+An industrial plant and you are collecting many data from sensors. Each sensor sends
+
+00:40:59.000 --> 00:41:01.000
+A small amount of debt on the network.
+
+00:41:01.000 --> 00:41:05.000
+But then if you collect all the data collected by using this same source.
+
+00:41:05.000 --> 00:41:07.000
+You have a big collection of data.
+
+00:41:07.000 --> 00:41:12.000
+And again, you can apply these frameworks to analyze this big amount of data.
+
+00:41:12.000 --> 00:41:15.000
+So there are different sources that I'm going to show you also in the next slides.
+
+00:41:15.000 --> 00:41:19.000
+That can provide you.
+
+00:41:19.000 --> 00:41:22.000
+a large amount of debt, okay?
+
+00:41:22.000 --> 00:41:24.000
+So at the beginning, internet is
+
+00:41:24.000 --> 00:41:29.000
+The main domain in which Big Data Frameworks were designed and used.
+
+00:41:29.000 --> 00:41:34.000
+But nowadays they are used more or less everywhere.
+
+00:41:34.000 --> 00:41:39.000
+Uh, related to this, I want to show you an example.
+
+00:41:39.000 --> 00:41:45.000
+It's not the, the best big data framework, sorry, application example.
+
+00:41:45.000 --> 00:41:51.000
+But I like this example for a reason that I'm going to explain in a few seconds.
+
+00:41:51.000 --> 00:41:54.000
+So, many years ago.
+
+00:41:54.000 --> 00:41:56.000
+16 years ago,
+
+00:41:56.000 --> 00:41:58.000
+Some of the researchers.
+
+00:41:58.000 --> 00:42:01.000
+of the Google company.
+
+00:42:01.000 --> 00:42:03.000
+decided to solve a task.
+
+00:42:03.000 --> 00:42:06.000
+Try to predict in real time.
+
+00:42:06.000 --> 00:42:09.000
+If we have a flu outbreak.
+
+00:42:09.000 --> 00:42:11.000
+Okay?
+
+00:42:11.000 --> 00:42:15.000
+What happens if we don't use this approach?
+
+00:42:15.000 --> 00:42:19.000
+It simply happens that someone, for instance, in the US,
+
+00:42:19.000 --> 00:42:22.000
+This Center for Disease.
+
+00:42:22.000 --> 00:42:26.000
+collects information about who is affected by a flu.
+
+00:42:26.000 --> 00:42:29.000
+Okay.
+
+00:42:29.000 --> 00:42:33.000
+You have a flu, you go to the…
+
+00:42:33.000 --> 00:42:36.000
+Physician to the doctor, and you ask him or her.
+
+00:42:36.000 --> 00:42:39.000
+What you have to do, okay?
+
+00:42:39.000 --> 00:42:42.000
+And this doctor or the physician call it as you prefer.
+
+00:42:42.000 --> 00:42:47.000
+Sense and information to this center, providing the information that.
+
+00:42:47.000 --> 00:42:50.000
+Paolo Garza is affected by the flu, ok, or
+
+00:42:50.000 --> 00:42:53.000
+For privacy reason, one more…
+
+00:42:53.000 --> 00:42:56.000
+of my patient is affected by the flu.
+
+00:42:56.000 --> 00:43:01.000
+Okay. And then this Center for Disease in the US.
+
+00:43:01.000 --> 00:43:05.000
+Computes some statistics to understand when we have the peak.
+
+00:43:05.000 --> 00:43:09.000
+Because this is useful for
+
+00:43:09.000 --> 00:43:12.000
+Many reasons.
+
+00:43:12.000 --> 00:43:16.000
+If we apply this traditional approach.
+
+00:43:16.000 --> 00:43:19.000
+More or less, you have the information about the peak.
+
+00:43:19.000 --> 00:43:25.000
+From 1 to 2 weeks later compared to the exact
+
+00:43:25.000 --> 00:43:27.000
+Moment in which you had the pit.
+
+00:43:27.000 --> 00:43:29.000
+Okay?
+
+00:43:29.000 --> 00:43:37.000
+So the research that Google decided to implement an algorithm that someone is automatically able to predict.
+
+00:43:37.000 --> 00:43:40.000
+The number of people affected by flu.
+
+00:43:40.000 --> 00:43:44.000
+Now, not tomorrow, not in the next few weeks, but now.
+
+00:43:44.000 --> 00:43:50.000
+Okay. And this is also called now casting. So we are not trying to forecast.
+
+00:43:50.000 --> 00:43:55.000
+something, but we are trying to explain now, in this specific.
+
+00:43:55.000 --> 00:43:57.000
+Moment at, uh…
+
+00:43:57.000 --> 00:44:02.000
+5 PM, how many people in Italy or in the US in this case,
+
+00:44:02.000 --> 00:44:05.000
+are affected by the flu, okay?
+
+00:44:05.000 --> 00:44:10.000
+So this is the first difference compared to other approaches that we have used in the past.
+
+00:44:10.000 --> 00:44:15.000
+We can use big data and algorithms based on big data to perform forecast.
+
+00:44:15.000 --> 00:44:17.000
+But we can also use them.
+
+00:44:17.000 --> 00:44:22.000
+to solve the now casting task.
+
+00:44:22.000 --> 00:44:26.000
+The main reason for which I'm showing you this example is Anali.
+
+00:44:26.000 --> 00:44:31.000
+Suppose that you are the researcher at Google.
+
+00:44:31.000 --> 00:44:36.000
+And I ask you to solve this class.
+
+00:44:36.000 --> 00:44:38.000
+I don't ask you to tell me what is the
+
+00:44:38.000 --> 00:44:41.000
+algorithm that you plan to use, or…
+
+00:44:41.000 --> 00:44:45.000
+the content of the piece of code that you plan to use. But the question is,
+
+00:44:45.000 --> 00:44:49.000
+Which are the data that you can use to solve this task.
+
+00:44:49.000 --> 00:44:51.000
+Then we will focus on the algorithm.
+
+00:44:51.000 --> 00:44:53.000
+But the first question is,
+
+00:44:53.000 --> 00:44:58.000
+Which are the data that you can use to solve this task?
+
+00:44:58.000 --> 00:45:00.000
+I want to…
+
+00:45:00.000 --> 00:45:04.000
+Show on a dashboard the number of people that are
+
+00:45:04.000 --> 00:45:06.000
+affect the null,
+
+00:45:06.000 --> 00:45:10.000
+By default.
+
+00:45:10.000 --> 00:45:16.000
+You are at Google, you are a search at Google, you have access to all the data available.
+
+00:45:16.000 --> 00:45:18.000
+At Google, in the Google, uh,
+
+00:45:18.000 --> 00:45:22.000
+Data Center, which are the data?
+
+00:45:22.000 --> 00:45:25.000
+That you can use to solve this task.
+
+00:45:25.000 --> 00:45:29.000
+Okay, some of you mentioned the Google, uh,
+
+00:45:29.000 --> 00:45:31.000
+Search queries.
+
+00:45:31.000 --> 00:45:34.000
+Right?
+
+00:45:34.000 --> 00:45:36.000
+Why?
+
+00:45:36.000 --> 00:45:39.000
+This is the correct answer.
+
+00:45:39.000 --> 00:45:43.000
+Why the queries of the user?
+
+00:45:43.000 --> 00:45:45.000
+The query that you…
+
+00:45:45.000 --> 00:45:54.000
+Write on Google, on the Google search engine can be useful to solve this task.
+
+00:45:54.000 --> 00:45:57.000
+Because when people are affected by something.
+
+00:45:57.000 --> 00:46:00.000
+Even if probably is not the best approach,
+
+00:46:00.000 --> 00:46:04.000
+We immediately asked on a search engine.
+
+00:46:04.000 --> 00:46:06.000
+Hi, yeah, I'm affected by the flu.
+
+00:46:06.000 --> 00:46:10.000
+Why should I do this here? Should I do something or not?
+
+00:46:10.000 --> 00:46:13.000
+Okay.
+
+00:46:13.000 --> 00:46:19.000
+So, using an algorithm that is not simply counting the number of occurrences of the term flu, but
+
+00:46:19.000 --> 00:46:21.000
+Something very similar.
+
+00:46:21.000 --> 00:46:27.000
+We can try to now pass the number of people that are affected by flu.
+
+00:46:27.000 --> 00:46:30.000
+Okay.
+
+00:46:30.000 --> 00:46:34.000
+I like this example for the following reason.
+
+00:46:34.000 --> 00:46:38.000
+The researcher at Google decided to use this data.
+
+00:46:38.000 --> 00:46:40.000
+To solve this task. But…
+
+00:46:40.000 --> 00:46:43.000
+debate about the queries of the user.
+
+00:46:43.000 --> 00:46:46.000
+were already available in Google. From day one,
+
+00:46:46.000 --> 00:46:49.000
+When Larry Page and, uh…
+
+00:46:49.000 --> 00:46:51.000
+Brain.
+
+00:46:51.000 --> 00:46:55.000
+founded the company, they started collecting.
+
+00:46:55.000 --> 00:47:00.000
+The queries of the users, because these are useful to provide better answers to your
+
+00:47:00.000 --> 00:47:04.000
+Questions, okay? Your questions.
+
+00:47:04.000 --> 00:47:06.000
+So the idea is that…
+
+00:47:06.000 --> 00:47:08.000
+To be a smart,
+
+00:47:08.000 --> 00:47:11.000
+Dev engineer or data scientist.
+
+00:47:11.000 --> 00:47:15.000
+You must try to understand, how can I use the data that I already have.
+
+00:47:15.000 --> 00:47:23.000
+To solve new tasks, I started collecting the data for a specific purpose. In Google, I started collecting the queries of the users.
+
+00:47:23.000 --> 00:47:25.000
+to provide better answers to the users.
+
+00:47:25.000 --> 00:47:31.000
+Can I use the same data to solve a different task? Yes, like in this case, I can use them to solve a different task.
+
+00:47:31.000 --> 00:47:33.000
+Okay, and the same thing.
+
+00:47:33.000 --> 00:47:36.000
+in any other component. You are in a bank,
+
+00:47:36.000 --> 00:47:41.000
+In a bank, you must store the information about all the bank transactions.
+
+00:47:41.000 --> 00:47:45.000
+Can we use the same data to solve nowadays a different task?
+
+00:47:45.000 --> 00:47:47.000
+If you are able to do that, that's fine.
+
+00:47:47.000 --> 00:47:51.000
+It's a good thing for you and for the company.
+
+00:47:51.000 --> 00:47:53.000
+If you have a very good idea.
+
+00:47:53.000 --> 00:47:57.000
+But you don't have the data, and you need to start collecting the data.
+
+00:47:57.000 --> 00:48:02.000
+Probably to have a big amount of data you need, let me
+
+00:48:02.000 --> 00:48:06.000
+Guess a number. To put it, you need six months.
+
+00:48:06.000 --> 00:48:10.000
+To collect the data that are needed to test your algorithm,
+
+00:48:10.000 --> 00:48:13.000
+Probably in 6 months,
+
+00:48:13.000 --> 00:48:15.000
+You are already out of the market.
+
+00:48:15.000 --> 00:48:17.000
+Okay, so pay attention that…
+
+00:48:17.000 --> 00:48:20.000
+If you need to collect from scratch your data,
+
+00:48:20.000 --> 00:48:25.000
+And we are talking about big amount of data, terabytes and petabytes and petabytes of data.
+
+00:48:25.000 --> 00:48:28.000
+Uh, the time that you need.
+
+00:48:28.000 --> 00:48:32.000
+To collect this amount of data, probably…
+
+00:48:32.000 --> 00:48:34.000
+It's too long.
+
+00:48:34.000 --> 00:48:36.000
+Okay.
+
+00:48:36.000 --> 00:48:41.000
+So for this reason, from my point of view, this is a very good example because
+
+00:48:41.000 --> 00:48:44.000
+If I like the fact that you must try to understand.
+
+00:48:44.000 --> 00:48:47.000
+How to use the data that you already have.
+
+00:48:47.000 --> 00:48:50.000
+To solve new tasks. That is the smart…
+
+00:48:50.000 --> 00:48:52.000
+And interesting, uh…
+
+00:48:52.000 --> 00:48:55.000
+activity from my point of view, or a data scientist,
+
+00:48:55.000 --> 00:48:57.000
+Or also a data engineer.
+
+00:48:57.000 --> 00:49:03.000
+Okay? Then sometimes you need to collect new data because if you don't have them, you will invest time also.
+
+00:49:03.000 --> 00:49:07.000
+On that part of the task. But…
+
+00:49:07.000 --> 00:49:11.000
+In a very…
+
+00:49:11.000 --> 00:49:13.000
+Now everything is evolving very, very quick.
+
+00:49:13.000 --> 00:49:15.000
+Even more than in the past.
+
+00:49:15.000 --> 00:49:18.000
+So six months for collecting data,
+
+00:49:18.000 --> 00:49:20.000
+In the computer,
+
+00:49:20.000 --> 00:49:24.000
+environment in the computer domain, computer engineering, computer science engineering.
+
+00:49:24.000 --> 00:49:26.000
+Is a very, very…
+
+00:49:26.000 --> 00:49:30.000
+long amount of time. So sometimes this means that.
+
+00:49:30.000 --> 00:49:36.000
+Maybe you have a very good idea, but you don't have the data and you cannot, uh,
+
+00:49:36.000 --> 00:49:40.000
+You cannot show to someone else that your idea is good.
+
+00:49:40.000 --> 00:49:42.000
+Okay.
+
+00:49:42.000 --> 00:49:47.000
+Um…
+
+00:49:47.000 --> 00:49:50.000
+Okay.
+
+00:49:50.000 --> 00:49:59.000
+I was thinking that nowadays probably you are not going to use Google anymore, more or less, probably you use directly ChatGPT or another system like that.
+
+00:49:59.000 --> 00:50:05.000
+But again, also in that case, you are query and someone is restoring the information about the.
+
+00:50:05.000 --> 00:50:09.000
+your queries, okay?
+
+00:50:09.000 --> 00:50:17.000
+Um, okay, something about the input. The input sometimes is associated with internet, as I already mentioned, so you can collect data from
+
+00:50:17.000 --> 00:50:23.000
+Web pages from emails, from Twitter, from.
+
+00:50:23.000 --> 00:50:28.000
+The social network that you prefer. Here are some numbers that I collected some years ago.
+
+00:50:28.000 --> 00:50:33.000
+But the amount of data that we have available on internet is
+
+00:50:33.000 --> 00:50:35.000
+B. Very, very big.
+
+00:50:35.000 --> 00:50:40.000
+Okay. There is one step that I'm not going to cover in this course.
+
+00:50:40.000 --> 00:50:45.000
+Usually, when you want a nice big amount of data, the first step is the one in which you collect the data,
+
+00:50:45.000 --> 00:50:48.000
+And you store them in a single data center.
+
+00:50:48.000 --> 00:50:51.000
+Using more than one server, but in a single data server.
+
+00:50:51.000 --> 00:50:53.000
+Data Center.
+
+00:50:53.000 --> 00:50:57.000
+I'm not going to show you in this course how to collect the data.
+
+00:50:57.000 --> 00:51:02.000
+and store them in the data center. So it will always support that you already have a data center,
+
+00:51:02.000 --> 00:51:05.000
+And in the distributed file system.
+
+00:51:05.000 --> 00:51:09.000
+That you have in the data center, you already have this big amount of data that you want to analyze.
+
+00:51:09.000 --> 00:51:14.000
+Okay, except for the last part when I'm going to cover Spark streaming.
+
+00:51:14.000 --> 00:51:19.000
+In that case, I support that you are analyzing a stream of data.
+
+00:51:19.000 --> 00:51:24.000
+Um, okay, other sources, satellite images, they are also big.
+
+00:51:24.000 --> 00:51:30.000
+Higher resolution images that you can use, for instance, to identify burned areas or flooded areas.
+
+00:51:30.000 --> 00:51:32.000
+Uh, some other…
+
+00:51:32.000 --> 00:51:34.000
+Health or medical domains.
+
+00:51:34.000 --> 00:51:41.000
+Also in this case, you have big amount of data.
+
+00:51:41.000 --> 00:51:45.000
+Mobile phones, every time that, uh…
+
+00:51:45.000 --> 00:51:47.000
+You have a mobile phone on,
+
+00:51:47.000 --> 00:51:51.000
+Someone is probably collecting your position.
+
+00:51:51.000 --> 00:51:53.000
+Okay, even if you have the
+
+00:51:53.000 --> 00:51:56.000
+GPS off, turn off.
+
+00:51:56.000 --> 00:51:58.000
+At least the company.
+
+00:51:58.000 --> 00:52:05.000
+The telecommunition company that you are using knows more or less your position because you are connected to
+
+00:52:05.000 --> 00:52:10.000
+The network of this company, and so maybe that they don't know that you are in a
+
+00:52:10.000 --> 00:52:13.000
+Room number 6, but they know that you are
+
+00:52:13.000 --> 00:52:15.000
+As polytechnically sorry, more or less.
+
+00:52:15.000 --> 00:52:19.000
+Okay. Or if you are connected to the Wi-Fi,
+
+00:52:19.000 --> 00:52:22.000
+The location of the Wi-Fi
+
+00:52:22.000 --> 00:52:24.000
+is known by someone.
+
+00:52:24.000 --> 00:52:27.000
+So…
+
+00:52:27.000 --> 00:52:30.000
+Also, these smartphone are generating big amount of data.
+
+00:52:30.000 --> 00:52:38.000
+Nowadays. Again, if you consider one smartphone at a time, the amount of data that the smartphone is generating is.
+
+00:52:38.000 --> 00:52:40.000
+Je mold.
+
+00:52:40.000 --> 00:52:44.000
+But if we collect data from, uh,
+
+00:52:44.000 --> 00:52:46.000
+Billions of customers,
+
+00:52:46.000 --> 00:52:49.000
+If you are a big telco company.
+
+00:52:49.000 --> 00:52:54.000
+At the end, in your data center, you have big amount of data.
+
+00:52:54.000 --> 00:53:00.000
+Uh, also log files.
+
+00:53:00.000 --> 00:53:02.000
+Can generally become out of data?
+
+00:53:02.000 --> 00:53:05.000
+Lock files can be associated with, uh,
+
+00:53:05.000 --> 00:53:11.000
+Web servers associated with the web pages that we have in the internet.
+
+00:53:11.000 --> 00:53:16.000
+But they can also be associated with something else. For instance, if you have an industrial plant.
+
+00:53:16.000 --> 00:53:18.000
+And you have many sensors.
+
+00:53:18.000 --> 00:53:25.000
+In the industrial plant, then you can collect this data. And again, each sensor sends small amount of data, the temperature or
+
+00:53:25.000 --> 00:53:28.000
+Uh, something else associated with the
+
+00:53:28.000 --> 00:53:33.000
+collect and measure, but at the end in the data center you have big amount of data.
+
+00:53:33.000 --> 00:53:37.000
+Internet of Things, you have many sensors.
+
+00:53:37.000 --> 00:53:43.000
+Everywhere. And again, if you collect all this data, at the end, you can have big amount of data too.
+
+00:53:43.000 --> 00:53:47.000
+to be a novice.
+
+00:53:47.000 --> 00:53:49.000
+So, different sources.
+
+00:53:49.000 --> 00:53:52.000
+As I mentioned before, try to understand
+
+00:53:52.000 --> 00:53:55.000
+Which are the data that you already have?
+
+00:53:55.000 --> 00:54:01.000
+And try to identify new tasks to be solved using those data.
+
+00:54:01.000 --> 00:54:05.000
+The big data domain is usually associated with
+
+00:54:05.000 --> 00:54:11.000
+These of the big data context, at the beginning, we had only 3Ds.
+
+00:54:11.000 --> 00:54:13.000
+Volume, variety, and velocity.
+
+00:54:13.000 --> 00:54:18.000
+Then someone else proposed also veracity in value.
+
+00:54:18.000 --> 00:54:23.000
+And then if you search on internet, or if you ask ChatGPT.
+
+00:54:23.000 --> 00:54:26.000
+Probably you find also other Bs. But these are the main.
+
+00:54:26.000 --> 00:54:29.000
+V is associated with Big Beta.
+
+00:54:29.000 --> 00:54:31.000
+So let us start with the…
+
+00:54:31.000 --> 00:54:33.000
+Oops.
+
+00:54:33.000 --> 00:54:37.000
+With the first one, volume,
+
+00:54:37.000 --> 00:54:40.000
+Usually big data is associated with big amount of debt.
+
+00:54:40.000 --> 00:54:43.000
+Okay, so for this reason, we have this bit.
+
+00:54:43.000 --> 00:54:45.000
+Where big is not.
+
+00:54:45.000 --> 00:54:48.000
+Define it…
+
+00:54:48.000 --> 00:54:51.000
+Officially with a number, but usually
+
+00:54:51.000 --> 00:54:54.000
+If you have some petabytes of data, we can start
+
+00:54:54.000 --> 00:54:56.000
+Considering how our dataset
+
+00:54:56.000 --> 00:54:58.000
+Big deficits, okay?
+
+00:54:58.000 --> 00:55:00.000
+But obviously it depends also
+
+00:55:00.000 --> 00:55:05.000
+On the resources that you have. If you have one single server,
+
+00:55:05.000 --> 00:55:08.000
+10 terabytes of data probably are already big for you.
+
+00:55:08.000 --> 00:55:12.000
+If you have 100 servers in your data center,
+
+00:55:12.000 --> 00:55:18.000
+Petabytes of data, okay, so it depends also on the context.
+
+00:55:18.000 --> 00:55:24.000
+Variety. In the previous slides, I showed that the input can be something generated by a sensor.
+
+00:55:24.000 --> 00:55:28.000
+A textual file associated with a log file of a web server,
+
+00:55:28.000 --> 00:55:30.000
+can be a satellite image.
+
+00:55:30.000 --> 00:55:32.000
+Can be…
+
+00:55:32.000 --> 00:55:35.000
+Some data sent…
+
+00:55:35.000 --> 00:55:38.000
+by a smartphone. So we have different data sources.
+
+00:55:38.000 --> 00:55:41.000
+Theoretically, a big data framework.
+
+00:55:41.000 --> 00:55:44.000
+Must be able to manage easily different.
+
+00:55:44.000 --> 00:55:46.000
+Input data types.
+
+00:55:46.000 --> 00:55:51.000
+So, this system must be able to analyze images, textual documents,
+
+00:55:51.000 --> 00:55:54.000
+Graphs.
+
+00:55:54.000 --> 00:55:56.000
+So, different data sources.
+
+00:55:56.000 --> 00:56:00.000
+At the end, this is not 100% true.
+
+00:56:00.000 --> 00:56:03.000
+So usually before applying your, uh,
+
+00:56:03.000 --> 00:56:09.000
+Big data framework, your program based on MapReduce or Spark.
+
+00:56:09.000 --> 00:56:12.000
+Or before training a deep learning network.
+
+00:56:12.000 --> 00:56:18.000
+You must transform your data from something that is not a vector into something that is a vector or a matrix.
+
+00:56:18.000 --> 00:56:20.000
+Okay.
+
+00:56:20.000 --> 00:56:22.000
+Support that you have a textual document.
+
+00:56:22.000 --> 00:56:25.000
+Or a collection of textual documents.
+
+00:56:25.000 --> 00:56:29.000
+Usually, the first step is the following. You analyze one textual document at a time.
+
+00:56:29.000 --> 00:56:33.000
+And you transform its textual documents into vectors.
+
+00:56:33.000 --> 00:56:41.000
+First approach, in this vector, you have one cell or one column you prefer, for each word.
+
+00:56:41.000 --> 00:56:46.000
+And then you have the value 1 or 0. If the word occurs in the input document or not.
+
+00:56:46.000 --> 00:56:49.000
+Okay, this is the…
+
+00:56:49.000 --> 00:56:52.000
+Approach that we use the
+
+00:56:52.000 --> 00:56:54.000
+Up to 10 years ago.
+
+00:56:54.000 --> 00:57:01.000
+Nowadays, someone train a deep learning model that is able to transform your textual document.
+
+00:57:01.000 --> 00:57:04.000
+Into a vector again, that is called embedding.
+
+00:57:04.000 --> 00:57:07.000
+But at the end, also the embedding is a matter.
+
+00:57:07.000 --> 00:57:10.000
+Where the meaning of each column of each cell.
+
+00:57:10.000 --> 00:57:13.000
+Is unknown or is not human readable.
+
+00:57:13.000 --> 00:57:17.000
+But at the end, you have a specific number of
+
+00:57:17.000 --> 00:57:19.000
+Elements of cells.
+
+00:57:19.000 --> 00:57:23.000
+And in each one you have a number. And this number is used to represent
+
+00:57:23.000 --> 00:57:25.000
+The presence of something,
+
+00:57:25.000 --> 00:57:28.000
+concept that the system learn automatically.
+
+00:57:28.000 --> 00:57:30.000
+But again, you are transforming.
+
+00:57:30.000 --> 00:57:32.000
+Ah, textbook document into…
+
+00:57:32.000 --> 00:57:36.000
+event. And then when you have all these vectors associated with the input documents,
+
+00:57:36.000 --> 00:57:40.000
+You train your deep learning algorithm to solve.
+
+00:57:40.000 --> 00:57:45.000
+the task that you are interested in. You want to solve the sentiment analysis task, for instance.
+
+00:57:45.000 --> 00:57:50.000
+Okay, you start from the embeddings and then you train a model that will return for each.
+
+00:57:50.000 --> 00:57:55.000
+documents, or better, from each embedding of each document, the class label.
+
+00:57:55.000 --> 00:57:59.000
+Also, the sentiment.
+
+00:57:59.000 --> 00:58:01.000
+Associated with the docker, okay?
+
+00:58:01.000 --> 00:58:03.000
+The same thing if you are analyzing an image.
+
+00:58:03.000 --> 00:58:10.000
+If you want to analyze an image that is a matrix at the end of pixels with numbers, in each pixel, you have
+
+00:58:10.000 --> 00:58:14.000
+Usually three values, if you are using the RGB system.
+
+00:58:14.000 --> 00:58:21.000
+But before applying a neural network, you need to someone transform this matrix into a vector.
+
+00:58:21.000 --> 00:58:23.000
+The simplest approach?
+
+00:58:23.000 --> 00:58:27.000
+The first row of the matrix is associated with the first
+
+00:58:27.000 --> 00:58:29.000
+input.
+
+00:58:29.000 --> 00:58:31.000
+North of the nectar.
+
+00:58:31.000 --> 00:58:34.000
+Then the values associated with
+
+00:58:34.000 --> 00:58:43.000
+The second role are associated with the next input of the network and so on and so forth. But again, you are transforming something that is not a vector into a vector.
+
+00:58:43.000 --> 00:58:46.000
+Okay, the only exception is…
+
+00:58:46.000 --> 00:58:50.000
+Nowadays, we have approaches that are able to analyze.
+
+00:58:50.000 --> 00:58:55.000
+And trying graph neural networks directly on a graph.
+
+00:58:55.000 --> 00:59:01.000
+But otherwise, usually you need to transform this variety of input data sets and data types.
+
+00:59:01.000 --> 00:59:07.000
+Into that we have predefined approaches to apply this transformation.
+
+00:59:07.000 --> 00:59:12.000
+Um, dam velocity is one of the other 3Ds proposed at the beginning.
+
+00:59:12.000 --> 00:59:15.000
+Velocity is mainly associated with
+
+00:59:15.000 --> 00:59:18.000
+The goal of analyzing a stream of input data.
+
+00:59:18.000 --> 00:59:22.000
+Okay, frequently you have input streams and you want to arrive them.
+
+00:59:22.000 --> 00:59:29.000
+Pay only attention that you can analyze also millions of events in few milliseconds using
+
+00:59:29.000 --> 00:59:35.000
+These primord, but we cannot send on the network if you are collecting the data from outside your data center.
+
+00:59:35.000 --> 00:59:40.000
+You cannot send on the network one terabyte of data in one millisecond.
+
+00:59:40.000 --> 00:59:42.000
+Okay, so usually,
+
+00:59:42.000 --> 00:59:45.000
+Velocity means I can analyze millions of events.
+
+00:59:45.000 --> 00:59:52.000
+In few milliseconds, but it does not mean that you can send and analyze terabytes of data in few milliseconds.
+
+00:59:52.000 --> 00:59:54.000
+Okay.
+
+00:59:54.000 --> 00:59:56.000
+Uh, then the other…
+
+00:59:56.000 --> 01:00:00.000
+Two V's here are veracity or the quality of the data.
+
+01:00:00.000 --> 01:00:08.000
+Probably you already know that if you're trying to train any machine learning algorithm, a deep learning algorithm or a shallow algorithm based on
+
+01:00:08.000 --> 01:00:13.000
+Decision three is random forest or any other algorithm that you will learn.
+
+01:00:13.000 --> 01:00:16.000
+In the data science and database technology course.
+
+01:00:16.000 --> 01:00:25.000
+If you have not already attended the Introduction to Data Science and Visualization during the previous year.
+
+01:00:25.000 --> 01:00:28.000
+If the input
+
+01:00:28.000 --> 01:00:30.000
+He's noisy.
+
+01:00:30.000 --> 01:00:33.000
+Also, the output will not be good.
+
+01:00:33.000 --> 01:00:39.000
+Okay, so usually the sentence that is associated with this part is garbage in.
+
+01:00:39.000 --> 01:00:42.000
+Garbage out. So pay attention that
+
+01:00:42.000 --> 01:00:48.000
+Usually, you have noise in the data, you need to clean your data before training a model.
+
+01:00:48.000 --> 01:00:51.000
+And obviously, if you have already this problem when you have a small amount of data.
+
+01:00:51.000 --> 01:00:56.000
+When you increase the amount of data to terabytes and petabytes of data.
+
+01:00:56.000 --> 01:00:58.000
+The problem is even more relevant.
+
+01:00:58.000 --> 01:01:02.000
+So the first step usually is the data cleaning part.
+
+01:01:02.000 --> 01:01:04.000
+You must clean your data.
+
+01:01:04.000 --> 01:01:09.000
+Then you must also transform your life in order to obtain the vectors if the input is not a vector.
+
+01:01:09.000 --> 01:01:11.000
+You need to spend a lot of time.
+
+01:01:11.000 --> 01:01:14.000
+On this part, on the quality of the data,
+
+01:01:14.000 --> 01:01:16.000
+And the data collection.
+
+01:01:16.000 --> 01:01:20.000
+Usually in a data science pipeline.
+
+01:01:20.000 --> 01:01:26.000
+From 60 to 70% of the time is focused on data cleaning and data transformation.
+
+01:01:26.000 --> 01:01:32.000
+And only 30% of the time or even less, is focused on selecting the
+
+01:01:32.000 --> 01:01:37.000
+Best model for your task in analyzing the output of the results of your models.
+
+01:01:37.000 --> 01:01:41.000
+Okay, so it's very important also to manage
+
+01:01:41.000 --> 01:01:43.000
+This part properly. And finally,
+
+01:01:43.000 --> 01:01:48.000
+The value part. If you implement a…
+
+01:01:48.000 --> 01:01:51.000
+An algorithm that is very efficient.
+
+01:01:51.000 --> 01:01:53.000
+Um…
+
+01:01:53.000 --> 01:01:57.000
+It's all fantastic to think that is interesting.
+
+01:01:57.000 --> 01:01:59.000
+But nobody is interesting.
+
+01:01:59.000 --> 01:02:02.000
+In that task, in that problem.
+
+01:02:02.000 --> 01:02:04.000
+You are wasting your time.
+
+01:02:04.000 --> 01:02:09.000
+Okay, so value does not mean something that is associated with money.
+
+01:02:09.000 --> 01:02:14.000
+Not only with money. You must be able to provide some value.
+
+01:02:14.000 --> 01:02:19.000
+If you implement an algorithm that is able to analyze automatically satellite images to identify.
+
+01:02:19.000 --> 01:02:22.000
+areas affected by a flood.
+
+01:02:22.000 --> 01:02:26.000
+That is a bug because someone
+
+01:02:26.000 --> 01:02:28.000
+As a benefit by this algorithm.
+
+01:02:28.000 --> 01:02:30.000
+But if you implement something that
+
+01:02:30.000 --> 01:02:36.000
+Nobody is interested in, in that case, you are only wasting your time. So for this reason also the value.
+
+01:02:36.000 --> 01:02:38.000
+V is important.
+
+01:02:38.000 --> 01:02:43.000
+Okay.
+
+01:02:43.000 --> 01:02:48.000
+Why we need big data frameworks? Because we already had in the past.
+
+01:02:48.000 --> 01:02:52.000
+Efficient databases, relational databases, for instance,
+
+01:02:52.000 --> 01:02:57.000
+We already had the NoSQL databases, at least in part,
+
+01:02:57.000 --> 01:02:59.000
+We already had them.
+
+01:02:59.000 --> 01:03:03.000
+You already had the high-performance computing.
+
+01:03:03.000 --> 01:03:05.000
+Why we need the…
+
+01:03:05.000 --> 01:03:07.000
+Hadoop or Spark or Apache Flink.
+
+01:03:07.000 --> 01:03:12.000
+The reason is related to the amount of data that you want to announce. This is the
+
+01:03:12.000 --> 01:03:16.000
+The main reason. For instance, here I report some statistics.
+
+01:03:16.000 --> 01:03:18.000
+Related to…
+
+01:03:18.000 --> 01:03:21.000
+2012?
+
+01:03:21.000 --> 01:03:23.000
+This is…
+
+01:03:23.000 --> 01:03:26.000
+The information about the amount of data,
+
+01:03:26.000 --> 01:03:29.000
+process every day by Google in 20…
+
+01:03:29.000 --> 01:03:31.000
+But, okay?
+
+01:03:31.000 --> 01:03:35.000
+More than 100 petabytes per day.
+
+01:03:35.000 --> 01:03:40.000
+And in Facebook, only 10 petabytes per day.
+
+01:03:40.000 --> 01:03:43.000
+14 years ago. Nowadays, probably.
+
+01:03:43.000 --> 01:03:46.000
+is different. Take…
+
+01:03:46.000 --> 01:03:49.000
+Suppose that you are at Google again.
+
+01:03:49.000 --> 01:03:51.000
+And, uh, your crawler…
+
+01:03:51.000 --> 01:03:55.000
+Is collecting the information about the content of the webpages.
+
+01:03:55.000 --> 01:03:58.000
+We already have the content of these web pages in
+
+01:03:58.000 --> 01:04:01.000
+The Google data center.
+
+01:04:01.000 --> 01:04:04.000
+Support that we have 10 billion web pages and the
+
+01:04:04.000 --> 01:04:10.000
+size in terms of bytes, of each of these web pages, on average,
+
+01:04:10.000 --> 01:04:12.000
+20 kilobytes.
+
+01:04:12.000 --> 01:04:14.000
+Okay?
+
+01:04:14.000 --> 01:04:16.000
+But this means that the collection.
+
+01:04:16.000 --> 01:04:23.000
+The collection containing these 10 billion web pages, the content of this 10 billion webpages,
+
+01:04:23.000 --> 01:04:27.000
+is more or less 200 elements.
+
+01:04:27.000 --> 01:04:35.000
+And suppose that we don't have a very efficient RDS, we have a traditional RDS, not an SSD.
+
+01:04:35.000 --> 01:04:39.000
+And we want to simply, using a single server, we want to read.
+
+01:04:39.000 --> 01:04:45.000
+this data. So we have this 200 terabytes of data in one single R disk.
+
+01:04:45.000 --> 01:04:48.000
+inside one single cell. And I want to simply…
+
+01:04:48.000 --> 01:04:51.000
+Write a program that reads the first line,
+
+01:04:51.000 --> 01:04:53.000
+And then reads the second line.
+
+01:04:53.000 --> 01:04:57.000
+And then the third line, without applying any analysis, without
+
+01:04:57.000 --> 01:05:00.000
+doing anything. So, we read the data from the
+
+01:05:00.000 --> 01:05:06.000
+are these we store one line at a time in the main memory, and then we read the next one.
+
+01:05:06.000 --> 01:05:08.000
+To perform this operation.
+
+01:05:08.000 --> 01:05:11.000
+You need more or less 15 days.
+
+01:05:11.000 --> 01:05:13.000
+Even if you have a…
+
+01:05:13.000 --> 01:05:17.000
+A new artist, a more efficient artist.
+
+01:05:17.000 --> 01:05:21.000
+Also, with an SSD, you need more or less 4 days,
+
+01:05:21.000 --> 01:05:24.000
+Only to read the data.
+
+01:05:24.000 --> 01:05:27.000
+Without extracting any value from the data.
+
+01:05:27.000 --> 01:05:30.000
+Okay, so this means that one single server
+
+01:05:30.000 --> 01:05:36.000
+is not sufficient. We need a different approach when the volume is the one associated with the big data.
+
+01:05:36.000 --> 01:05:39.000
+Okay.
+
+01:05:39.000 --> 01:05:43.000
+Uh, the second reason is related to failures.
+
+01:05:43.000 --> 01:05:45.000
+Okay.
+
+01:05:45.000 --> 01:05:49.000
+If you have 1 single server,
+
+01:05:49.000 --> 01:05:51.000
+Probably it depends on.
+
+01:05:51.000 --> 01:05:54.000
+How much lucky you are, but usually.
+
+01:05:54.000 --> 01:05:59.000
+Uh, you can run the server for 3 years without any issues.
+
+01:05:59.000 --> 01:06:01.000
+More or less is a…
+
+01:06:01.000 --> 01:06:03.000
+An average value.
+
+01:06:03.000 --> 01:06:09.000
+But if you have big amount of data, I told you in the previous slide that one server is not sufficient.
+
+01:06:09.000 --> 01:06:11.000
+So you need to use more than once.
+
+01:06:11.000 --> 01:06:14.000
+This means that if you use 10 servers.
+
+01:06:14.000 --> 01:06:17.000
+Probably you will have 1 failure more or less.
+
+01:06:17.000 --> 01:06:19.000
+Every 3 months.
+
+01:06:19.000 --> 01:06:21.000
+If you have a larger
+
+01:06:21.000 --> 01:06:28.000
+data center, and you have 100 servers, you have one failure every 10 days.
+
+01:06:28.000 --> 01:06:33.000
+If you have 1,000 servers because you have a very, very large data center.
+
+01:06:33.000 --> 01:06:37.000
+Probably every day you have at least one thing.
+
+01:06:37.000 --> 01:06:38.000
+So there is at least one of these.
+
+01:06:38.000 --> 01:06:40.000
+1,000 server,
+
+01:06:40.000 --> 01:06:42.000
+With some issues, okay?
+
+01:06:42.000 --> 01:06:46.000
+So, we need a system and a framework, a new framework.
+
+01:06:46.000 --> 01:06:49.000
+It is able to manage easily.
+
+01:06:49.000 --> 01:06:51.000
+That failures.
+
+01:06:51.000 --> 01:06:56.000
+I will show you that with MapReduce and the Spark and all the big data frameworks.
+
+01:06:56.000 --> 01:06:58.000
+Hadoop and the other big data frameworks.
+
+01:06:58.000 --> 01:07:03.000
+You don't need to care about failures. If there is a failure in a specific server,
+
+01:07:03.000 --> 01:07:06.000
+The system will automatically reassign.
+
+01:07:06.000 --> 01:07:08.000
+The same task to a different set.
+
+01:07:08.000 --> 01:07:12.000
+You don't need to catch an exception in your program and decide how to manage
+
+01:07:12.000 --> 01:07:14.000
+The failure in a specific cell.
+
+01:07:14.000 --> 01:07:17.000
+The system will perform this operation automatically.
+
+01:07:17.000 --> 01:07:19.000
+Okay.
+
+01:07:19.000 --> 01:07:24.000
+The other issue is related to the network. Nowadays we have very fast networks.
+
+01:07:24.000 --> 01:07:31.000
+But again, if you need to send the terabytes of data from one server to another, even if they are connected in the same data center,
+
+01:07:31.000 --> 01:07:33.000
+You need Taha, okay?
+
+01:07:33.000 --> 01:07:36.000
+So for this reason, we need…
+
+01:07:36.000 --> 01:07:42.000
+Frameworks and new programming paradigms that are able to reduce the amount of data that we send on it.
+
+01:07:42.000 --> 01:07:48.000
+Every time that, uh, we will solve together an exercise based on MapReduce for Hadoop or Spark.
+
+01:07:48.000 --> 01:07:50.000
+I will ask you…
+
+01:07:50.000 --> 01:07:54.000
+How many data are we sending on the net?
+
+01:07:54.000 --> 01:07:58.000
+Because if you don't pay attention to the amount of data that you're sending on the network.
+
+01:07:58.000 --> 01:08:00.000
+The efficiency of your application will be
+
+01:08:00.000 --> 01:08:03.000
+Very bad.
+
+01:08:03.000 --> 01:08:05.000
+Your application will be very slow, ok.
+
+01:08:05.000 --> 01:08:09.000
+Um, so the basic idea that is used in the
+
+01:08:09.000 --> 01:08:12.000
+Big data frameworks is that
+
+01:08:12.000 --> 01:08:15.000
+The data are big, but the code is usually small.
+
+01:08:15.000 --> 01:08:19.000
+So instead of sending the data to the servers in which we have the code,
+
+01:08:19.000 --> 01:08:22.000
+We send the code to the server.
+
+01:08:22.000 --> 01:08:24.000
+This is called data locality.
+
+01:08:24.000 --> 01:08:30.000
+And this is the basic idea, the basic concept associated with all big data principles.
+
+01:08:30.000 --> 01:08:32.000
+There nowadays, if you use
+
+01:08:32.000 --> 01:08:35.000
+Spark, we have very high level APIs.
+
+01:08:35.000 --> 01:08:38.000
+And if you don't pay attention.
+
+01:08:38.000 --> 01:08:41.000
+You don't understand that you are sending a lot of different.
+
+01:08:41.000 --> 01:08:46.000
+But also with the Spark, you need to pay attention to data local.
+
+01:08:46.000 --> 01:08:50.000
+Okay? Also, for this reason, as I already mentioned before.
+
+01:08:50.000 --> 01:08:56.000
+I think that starting with MapReduce for Hadoop, even if Hadoop is not nowadays the best framework for doing this.
+
+01:08:56.000 --> 01:09:00.000
+is very useful because I will show you that with MapReduce, you have only
+
+01:09:00.000 --> 01:09:02.000
+Two functions, map and regions.
+
+01:09:02.000 --> 01:09:05.000
+With these basic two building blocks.
+
+01:09:05.000 --> 01:09:08.000
+You must solve the task.
+
+01:09:08.000 --> 01:09:14.000
+And in this way, you can more easily understand when you are sending it on the network and the amount of data that you're sending on the network.
+
+01:09:14.000 --> 01:09:17.000
+Then when you will solve problems using Spark.
+
+01:09:17.000 --> 01:09:21.000
+I will tell you, okay, we have this operation filter.
+
+01:09:21.000 --> 01:09:26.000
+Is field presenting it on the network or not? If you have to implement the filter transformation.
+
+01:09:26.000 --> 01:09:29.000
+using MapReduce.
+
+01:09:29.000 --> 01:09:36.000
+What is the solution? And is the solution sending that on the network? If the answer is yes, if the MapReduce solution is sending that on the network,
+
+01:09:36.000 --> 01:09:38.000
+Also, the spark…
+
+01:09:38.000 --> 01:09:41.000
+method that you're using sends that on the net.
+
+01:09:41.000 --> 01:09:45.000
+Okay.
+
+01:09:45.000 --> 01:09:51.000
+Um, the other solution or better, the better, the basic solution that is used by
+
+01:09:51.000 --> 01:09:55.000
+DB data primers is, as I mentioned before, exploit data locality.
+
+01:09:55.000 --> 01:09:59.000
+So at the beginning, you have this big collection of data.
+
+01:09:59.000 --> 01:10:07.000
+This big collection of data is split in partitions, blocks, and each block is stored in a different server. Each of these is a server.
+
+01:10:07.000 --> 01:10:10.000
+With part of your data.
+
+01:10:10.000 --> 01:10:13.000
+Okay? Now, in this way,
+
+01:10:13.000 --> 01:10:17.000
+Each server analyzes a smaller amount of data.
+
+01:10:17.000 --> 01:10:22.000
+And since we have, and this is a small running example, four servers.
+
+01:10:22.000 --> 01:10:25.000
+We can analyze more data.
+
+01:10:25.000 --> 01:10:30.000
+More efficiently. The amount of data that is analyzed by one single server.
+
+01:10:30.000 --> 01:10:33.000
+in a specific timeframe.
+
+01:10:33.000 --> 01:10:35.000
+Uh, with 4 sellers, we can analyze.
+
+01:10:35.000 --> 01:10:38.000
+4 times the…
+
+01:10:38.000 --> 01:10:40.000
+the same amount of data.
+
+01:10:40.000 --> 01:10:43.000
+times four, okay?
+
+01:10:43.000 --> 01:10:45.000
+So this is the basic idea.
+
+01:10:45.000 --> 01:10:49.000
+Each server analyzes a part of the data.
+
+01:10:49.000 --> 01:10:53.000
+Returns a local statistic, a local result.
+
+01:10:53.000 --> 01:11:01.000
+And then somehow we need to combine together these local results.
+
+01:11:01.000 --> 01:11:05.000
+To compute the final global result.
+
+01:11:05.000 --> 01:11:10.000
+No communication between the servers at the beginning, only at the end.
+
+01:11:10.000 --> 01:11:15.000
+So this means that, as we are going to analyze better later.
+
+01:11:15.000 --> 01:11:22.000
+You cannot solve all problems using the big data approach.
+
+01:11:22.000 --> 01:11:25.000
+So, you cannot solve all the problem efficiently.
+
+01:11:25.000 --> 01:11:29.000
+If you need to have a global view on your data to make a decision,
+
+01:11:29.000 --> 01:11:32.000
+You cannot use a big data frame.
+
+01:11:32.000 --> 01:11:38.000
+But I will clarify it with a running example.
+
+01:11:38.000 --> 01:11:43.000
+Okay, so in the past we had the single node architecture approach.
+
+01:11:43.000 --> 01:11:48.000
+If the data are small, small enough to be stored in the main memory of the server,
+
+01:11:48.000 --> 01:11:53.000
+Shallow machine learning or basic mathematical or statistical approaches can use this approach.
+
+01:11:53.000 --> 01:12:00.000
+I store all the data in the main memory, and then I use the CPU to run my program to compute the analysis that I'm interested in.
+
+01:12:00.000 --> 01:12:03.000
+Then more or less, um.
+
+01:12:03.000 --> 01:12:10.000
+30 years ago, or 35 years ago, more or less, someone proposed something that is called data mining.
+
+01:12:10.000 --> 01:12:14.000
+The data mining ideas that the data are bigger than the main memory.
+
+01:12:14.000 --> 01:12:17.000
+So I need to use the R disk.
+
+01:12:17.000 --> 01:12:21.000
+And then I applaud one block at a time from these are risks in the main memory.
+
+01:12:21.000 --> 01:12:26.000
+I compute a local statistic associated with this first block and then
+
+01:12:26.000 --> 01:12:31.000
+I applaud the second block in the main memory. I compute local statistics for the second block.
+
+01:12:31.000 --> 01:12:37.000
+And I update the intermediate results that I have in the main menu. And at the end of this operation,
+
+01:12:37.000 --> 01:12:40.000
+Refitted for each block, you have the final result.
+
+01:12:40.000 --> 01:12:43.000
+Also in this case, usually you need to use.
+
+01:12:43.000 --> 01:12:46.000
+An approach that is incremental.
+
+01:12:46.000 --> 01:12:52.000
+Because you must be able to increment, incrementally update the result, analyzing 1 block at a time.
+
+01:12:52.000 --> 01:12:56.000
+In the Big Data Framework, we are doing something similar, but we are using more cell.
+
+01:12:56.000 --> 01:12:59.000
+Each server analyzes a block of the data.
+
+01:12:59.000 --> 01:13:03.000
+returns a local result, and then we combine these intermediate results.
+
+01:13:03.000 --> 01:13:09.000
+Just lock our results. But in order to be able to do something like this.
+
+01:13:09.000 --> 01:13:13.000
+The function associated with the program that we are executing.
+
+01:13:13.000 --> 01:13:15.000
+must satisfy some constraints.
+
+01:13:15.000 --> 01:13:18.000
+Usually, it must be commutative and associative.
+
+01:13:18.000 --> 01:13:20.000
+Or at least a short thing.
+
+01:13:20.000 --> 01:13:24.000
+Otherwise, you cannot solve efficiently.
+
+01:13:24.000 --> 01:13:26.000
+Your problem using a big data frame.
+
+01:13:26.000 --> 01:13:30.000
+Okay.
+
+01:13:30.000 --> 01:13:33.000
+A big data framework is not the solution for everything.
+
+01:13:33.000 --> 01:13:36.000
+Okay. Sometimes.
+
+01:13:36.000 --> 01:13:43.000
+You need to simply sample part of your data and apply a centralized approach.
+
+01:13:43.000 --> 01:13:45.000
+Um, okay, so in the
+
+01:13:45.000 --> 01:13:51.000
+Big data frameworks, usually you have a data frame, sorry, a data center in this data center, you have.
+
+01:13:51.000 --> 01:13:54.000
+Many servers.
+
+01:13:54.000 --> 01:13:58.000
+Again, we need to pay attention also to the
+
+01:13:58.000 --> 01:14:00.000
+type of servers that we are going to use.
+
+01:14:00.000 --> 01:14:03.000
+Option number one, you use the…
+
+01:14:03.000 --> 01:14:06.000
+Top-level servers, you spend the…
+
+01:14:06.000 --> 01:14:10.000
+I don't know, 30,000 euros?
+
+01:14:10.000 --> 01:14:12.000
+For each server, because you…
+
+01:14:12.000 --> 01:14:16.000
+By the best server with the best GPU.
+
+01:14:16.000 --> 01:14:20.000
+And you need the 30,000 euros for each cell.
+
+01:14:20.000 --> 01:14:24.000
+Okay? Is this a good idea if you want to
+
+01:14:24.000 --> 01:14:31.000
+Analyze big amount of data, and you want to perform simple tasks like count the number of occurrences of each word.
+
+01:14:31.000 --> 01:14:35.000
+Or select the records where we have the word error.
+
+01:14:35.000 --> 01:14:37.000
+The answer is no.
+
+01:14:37.000 --> 01:14:39.000
+Okay.
+
+01:14:39.000 --> 01:14:44.000
+You need a high-performance computing and so you need a server with a GPU.
+
+01:14:44.000 --> 01:14:47.000
+If you need to perform many floating point operations per second.
+
+01:14:47.000 --> 01:14:50.000
+If you need to simply filter records,
+
+01:14:50.000 --> 01:14:52.000
+And the input is a big file.
+
+01:14:52.000 --> 01:14:57.000
+You don't need the best CPU, and you don't need a GPU.
+
+01:14:57.000 --> 01:15:01.000
+You need an RDS that is fast, fast enough to upload.
+
+01:15:01.000 --> 01:15:03.000
+Very quickly the data in the main memory.
+
+01:15:03.000 --> 01:15:07.000
+And then you need a standard CPU that is able to
+
+01:15:07.000 --> 01:15:12.000
+Apply this very simple operation, filter data, compute some simple statistics.
+
+01:15:12.000 --> 01:15:20.000
+So the basic idea proposed by Google when they started analyzing solution based on big data frameworks.
+
+01:15:20.000 --> 01:15:23.000
+Watch the following. We need to have an architecture
+
+01:15:23.000 --> 01:15:29.000
+Where the servers that you use are called commodity servers, or something that theoretically I can buy.
+
+01:15:29.000 --> 01:15:33.000
+In our supermarket or something like that. It's not 100% true because
+
+01:15:33.000 --> 01:15:35.000
+In 2012,
+
+01:15:35.000 --> 01:15:40.000
+In Google, the amount of main memory of the servers that they were using in Google,
+
+01:15:40.000 --> 01:15:44.000
+We're already 32 gigabytes. Nowadays, 32 gigabytes
+
+01:15:44.000 --> 01:15:48.000
+It's not a very big amount of memory, but
+
+01:15:48.000 --> 01:15:50.000
+14 years ago,
+
+01:15:50.000 --> 01:15:53.000
+It was not really something that could buy at.
+
+01:15:53.000 --> 01:15:59.000
+1,000 in a supermarket, okay? But the basic idea is we don't need the top level server.
+
+01:15:59.000 --> 01:16:02.000
+We need something with a good artist.
+
+01:16:02.000 --> 01:16:04.000
+And something tomorrow I need to…
+
+01:16:04.000 --> 01:16:08.000
+to buy a new server because the one that I have is not working.
+
+01:16:08.000 --> 01:16:12.000
+I don't need to spend a thousand and thousands and thousands.
+
+01:16:12.000 --> 01:16:14.000
+of yours, okay?
+
+01:16:14.000 --> 01:16:19.000
+So in a big data architecture, usually you have many servers.
+
+01:16:19.000 --> 01:16:24.000
+Each one with a very high speed RVs.
+
+01:16:24.000 --> 01:16:26.000
+Uh, relatively…
+
+01:16:26.000 --> 01:16:29.000
+Large, but not too large amount of main memory.
+
+01:16:29.000 --> 01:16:34.000
+Nowadays, usually 128 megabytes, sorry, gigabytes.
+
+01:16:34.000 --> 01:16:38.000
+Are sufficient and a medium level CPU.
+
+01:16:38.000 --> 01:16:40.000
+But we have many of these servers.
+
+01:16:40.000 --> 01:16:46.000
+In Rex. And we have also network that should be a local network efficient in order.
+
+01:16:46.000 --> 01:16:51.000
+To send efficiently data from one server to another. You must limit the amount of data that you're sending on the network.
+
+01:16:51.000 --> 01:16:53.000
+But sometimes you need to send it on the network.
+
+01:16:53.000 --> 01:16:55.000
+Okay.
+
+01:16:55.000 --> 01:17:00.000
+This is the basic idea of a data center when you want to run a
+
+01:17:00.000 --> 01:17:04.000
+Big data framework. We have, as you can see here,
+
+01:17:04.000 --> 01:17:08.000
+Many servers, or even better here, many servers.
+
+01:17:08.000 --> 01:17:10.000
+Usually you have also many connections.
+
+01:17:10.000 --> 01:17:15.000
+All the servers in the same rack are usually connected by
+
+01:17:15.000 --> 01:17:20.000
+A direct connection, so usually there is a connection between the first server and the second one, the first and the third one.
+
+01:17:20.000 --> 01:17:22.000
+And blah blah blah, and usually there is a
+
+01:17:22.000 --> 01:17:24.000
+connection between the ranks.
+
+01:17:24.000 --> 01:17:27.000
+Okay.
+
+01:17:27.000 --> 01:17:30.000
+Um…
+
+01:17:30.000 --> 01:17:35.000
+This is the basic idea. We need servers that are not high performance.
+
+01:17:35.000 --> 01:17:41.000
+Computer, otherwise you need to spend too much.
+
+01:17:41.000 --> 01:17:44.000
+Now, based on this idea.
+
+01:17:44.000 --> 01:17:47.000
+We can also understand better how we can scale.
+
+01:17:47.000 --> 01:17:51.000
+With respect to the data.
+
+01:17:51.000 --> 01:17:57.000
+So, we need to be able to scale with respect to the amount of data. We need to be able to
+
+01:17:57.000 --> 01:18:27.000
+Scale with respect to the amount of
+
+01:19:46.000 --> 01:19:53.000
+So vertical scalability or horizontal scalability. In the vertical scalability approach, the idea is that
+
+01:19:53.000 --> 01:19:56.000
+If you need to analyze more data, if you need to manage more users,
+
+01:19:56.000 --> 01:20:01.000
+You increase.
+
+01:20:01.000 --> 01:20:03.000
+The efficiency.
+
+01:20:03.000 --> 01:20:06.000
+And the characteristics of yourself.
+
+01:20:06.000 --> 01:20:10.000
+I need to analyze more data or I need to
+
+01:20:10.000 --> 01:20:12.000
+Return the result more quickly.
+
+01:20:12.000 --> 01:20:14.000
+I changed the SCPU.
+
+01:20:14.000 --> 01:20:18.000
+I need to store in the main memory more data.
+
+01:20:18.000 --> 01:20:21.000
+I buy, uh…
+
+01:20:21.000 --> 01:20:23.000
+More main memory.
+
+01:20:23.000 --> 01:20:29.000
+Okay, I need to read the data more quickly from there, this I buy new RVs.
+
+01:20:29.000 --> 01:20:35.000
+But obviously, if you use this approach, you cannot scale linearly with the amount of data.
+
+01:20:35.000 --> 01:20:40.000
+And with the amount of users that you want to manage. And moreover, you have a physical constraint.
+
+01:20:40.000 --> 01:20:44.000
+I want a PC with 10TB of main memory.
+
+01:20:44.000 --> 01:20:50.000
+As soon as possible. Nowadays, at least with the current technologies, you cannot have one single server with 20 terabytes.
+
+01:20:50.000 --> 01:20:54.000
+Of, uh, main memory. Even if you are able to pay enough.
+
+01:20:54.000 --> 01:20:56.000
+Okay.
+
+01:20:56.000 --> 01:20:58.000
+And moreover, the cost
+
+01:20:58.000 --> 01:21:02.000
+is not increasing linearly with the amount of main memory that you buy.
+
+01:21:02.000 --> 01:21:04.000
+If you need the…
+
+01:21:04.000 --> 01:21:07.000
+128 gigabytes.
+
+01:21:07.000 --> 01:21:09.000
+You pay X,
+
+01:21:09.000 --> 01:21:15.000
+If you need 256, you don't pay two time steps. Usually,
+
+01:21:15.000 --> 01:21:19.000
+The price increase is not linear.
+
+01:21:19.000 --> 01:21:25.000
+So, the other approach that is the one that is used in the big data domain is the horizontal scalability approach.
+
+01:21:25.000 --> 01:21:28.000
+It is also used in the NoSQL databases.
+
+01:21:28.000 --> 01:21:30.000
+Instead, instead of…
+
+01:21:30.000 --> 01:21:35.000
+Changing the CPU or the RDisk of a server, I simply buy
+
+01:21:35.000 --> 01:21:38.000
+One more server, or two more cells.
+
+01:21:38.000 --> 01:21:41.000
+If nowaday to analyze 1TB of data.
+
+01:21:41.000 --> 01:21:45.000
+I need 10 seconds and I have two shelters.
+
+01:21:45.000 --> 01:21:49.000
+If I want to analyze the same amount of data in 5 seconds,
+
+01:21:49.000 --> 01:21:54.000
+What is the solution? I buy two other servers now with four servers, I can obtain.
+
+01:21:54.000 --> 01:21:56.000
+In the same time, sorry, in…
+
+01:21:56.000 --> 01:22:01.000
+50% of the time, the same result that they obtained before.
+
+01:22:01.000 --> 01:22:04.000
+This is the basic idea of the horizontal scalability.
+
+01:22:04.000 --> 01:22:09.000
+And since this data frames are based in this architecture are based on
+
+01:22:09.000 --> 01:22:13.000
+Commodity Server is not very expensive to buy.
+
+01:22:13.000 --> 01:22:16.000
+more servers with these characteristics.
+
+01:22:16.000 --> 01:22:21.000
+And moreover, nowadays, frequently you use cloud services.
+
+01:22:21.000 --> 01:22:24.000
+Okay. And so you can ask on demand, more or less.
+
+01:22:24.000 --> 01:22:27.000
+To include more servers,
+
+01:22:27.000 --> 01:22:29.000
+In your, uh, environment.
+
+01:22:29.000 --> 01:22:31.000
+And so you can parallelize easily.
+
+01:22:31.000 --> 01:22:34.000
+The execution of your application, you can increase
+
+01:22:34.000 --> 01:22:40.000
+the efficiency of your application and moreover, in the cloud environment, you can also specify something like
+
+01:22:40.000 --> 01:22:44.000
+During the night, I need to analyze more data, please.
+
+01:22:44.000 --> 01:22:46.000
+Give me more sellers.
+
+01:22:46.000 --> 01:22:52.000
+Virtual service. During the day, I need less servers. Okay, reduce the amount of servers that are associated with my
+
+01:22:52.000 --> 01:22:56.000
+application, and in this way, you can also pay differently
+
+01:22:56.000 --> 01:23:02.000
+Uh, during the peak hours or in other hours, ok.
+
+01:23:02.000 --> 01:23:05.000
+Okay, that's all for this first part. Now we have a break.
+
+01:23:05.000 --> 01:23:08.000
+There may not in this way.
+
+01:23:08.000 --> 01:23:12.000
+I will try to conclude this slightly before 7.
+
+01:23:12.000 --> 01:23:16.000
+But please more or less 10 minutes.
+
+01:23:16.000 --> 01:23:27.000
+We have a respirator.
+
+01:23:27.000 --> 01:23:34.000
+Okay, let us resume the lecture.
+
+01:23:34.000 --> 01:23:38.000
+Okay, one important information that I did not provide you before.
+
+01:23:38.000 --> 01:23:43.000
+And some of you asked me about it during the break.
+
+01:23:43.000 --> 01:23:46.000
+is that when we use the…
+
+01:23:46.000 --> 01:23:48.000
+Data frames.
+
+01:23:48.000 --> 01:23:53.000
+data center. In an architecture like the one that I showed here,
+
+01:23:53.000 --> 01:23:56.000
+And we want to exploit the horizontal scalability.
+
+01:23:56.000 --> 01:23:59.000
+The server should be.
+
+01:23:59.000 --> 01:24:03.000
+Always correct with the same characteristics. So, theoretically.
+
+01:24:03.000 --> 01:24:09.000
+The service that you have in these data center must all be characterized by the same CPU.
+
+01:24:09.000 --> 01:24:12.000
+The same are these, the same amount of main memory.
+
+01:24:12.000 --> 01:24:21.000
+Otherwise, if one server is faster than another, then when you execute in parallel your application, you have a bottleneck associated with the slowest
+
+01:24:21.000 --> 01:24:23.000
+That's sad, okay?
+
+01:24:23.000 --> 01:24:27.000
+And also, the scalability that we achieve using the
+
+01:24:27.000 --> 01:24:29.000
+Horizontal scalability is linear.
+
+01:24:29.000 --> 01:24:35.000
+With respect to the number of servers that we have, if and only if all the servers have the same characteristics.
+
+01:24:35.000 --> 01:24:41.000
+So this is important and relevant.
+
+01:24:41.000 --> 01:24:46.000
+If you need to analyze big amount of data, if you have a data-intensive workload.
+
+01:24:46.000 --> 01:24:53.000
+In that case, you need a big data framework. In that case, you need to use an horizontal scalability approach.
+
+01:24:53.000 --> 01:25:00.000
+And you don't need the high-performance computing, you don't need the GPUs, usually.
+
+01:25:00.000 --> 01:25:03.000
+Differently, if you need to perform.
+
+01:25:03.000 --> 01:25:08.000
+Many floating point operation per second, in that case, probably.
+
+01:25:08.000 --> 01:25:11.000
+You don't need a big data framework. Probably you need
+
+01:25:11.000 --> 01:25:13.000
+And high-performance computing system.
+
+01:25:13.000 --> 01:25:15.000
+Okay?
+
+01:25:15.000 --> 01:25:21.000
+When you have a big data framework, usually the question is not how many floating point operation per seconds you are able to do.
+
+01:25:21.000 --> 01:25:23.000
+The question usually is,
+
+01:25:23.000 --> 01:25:29.000
+How many data are you able to analyze in one second or in one minute or something like that?
+
+01:25:29.000 --> 01:25:31.000
+Okay.
+
+01:25:31.000 --> 01:25:33.000
+Um…
+
+01:25:33.000 --> 01:25:41.000
+Obviously, when you need to write a program, if you have a single server and you don't have a distributed application, it is easier.
+
+01:25:41.000 --> 01:25:49.000
+When you have a big data framework, like in this case, and you have more than one server, they start running your application in parallel.
+
+01:25:49.000 --> 01:25:52.000
+And you have also some challenges, ok.
+
+01:25:52.000 --> 01:25:57.000
+The scheduling of the application, so which server are used to run your application?
+
+01:25:57.000 --> 01:26:02.000
+Uh, what happens if I have an issue in a server, a failure in a server?
+
+01:26:02.000 --> 01:26:05.000
+And so on and so forth. But the.
+
+01:26:05.000 --> 01:26:09.000
+Good news is that if you use a big data framework.
+
+01:26:09.000 --> 01:26:11.000
+You must not care about this.
+
+01:26:11.000 --> 01:26:13.000
+You only care about…
+
+01:26:13.000 --> 01:26:19.000
+What you want to do, what is the goal of your program? But you don't need to care about the schedule because there is already
+
+01:26:19.000 --> 01:26:21.000
+Specific component in the framework.
+
+01:26:21.000 --> 01:26:25.000
+That is in charge of scheduling the execution of your application.
+
+01:26:25.000 --> 01:26:27.000
+As I already mentioned during the first part.
+
+01:26:27.000 --> 01:26:31.000
+You don't need to manage failures. If there is a failure,
+
+01:26:31.000 --> 01:26:34.000
+A server has an issue during the execution of your application.
+
+01:26:34.000 --> 01:26:41.000
+You don't need to catch an exception. The system automatically reassigns the same task to another server that you have in the dataset.
+
+01:26:41.000 --> 01:26:45.000
+So, um.
+
+01:26:45.000 --> 01:26:47.000
+This first part.
+
+01:26:47.000 --> 01:26:51.000
+is not complex or better is managed, is supported by the system.
+
+01:26:51.000 --> 01:26:55.000
+You only need to focus on what you want to do.
+
+01:26:55.000 --> 01:27:02.000
+is somehow similar to the SQL language. When you write an SQL query, you specify, you declare what you want to do.
+
+01:27:02.000 --> 01:27:07.000
+I want to extract the user ID from the table students.
+
+01:27:07.000 --> 01:27:09.000
+You don't need to specify, at least at the beginning,
+
+01:27:09.000 --> 01:27:11.000
+If you want to use an index,
+
+01:27:11.000 --> 01:27:13.000
+Or how you want to implement the projection.
+
+01:27:13.000 --> 01:27:16.000
+The system already has.
+
+01:27:16.000 --> 01:27:19.000
+The functionalities to implement the projection efficiently.
+
+01:27:19.000 --> 01:27:24.000
+Here is the saying, you will write a Java or a Spark application.
+
+01:27:24.000 --> 01:27:28.000
+using the MapReduce or the Spark APIs.
+
+01:27:28.000 --> 01:27:34.000
+For instance, you want to filter the content of the input file. In Spark, you have a method that is called filter.
+
+01:27:34.000 --> 01:27:36.000
+That's all. You specify that you want to filter the data.
+
+01:27:36.000 --> 01:27:42.000
+You don't need to specify how to parallelize the filter operation. It's already implemented in the frame.
+
+01:27:42.000 --> 01:27:44.000
+Okay.
+
+01:27:44.000 --> 01:27:49.000
+Another issue is the distributed storage of the data.
+
+01:27:49.000 --> 01:27:52.000
+In each channel, you have part of the data.
+
+01:27:52.000 --> 01:27:56.000
+So we need a distributed file system specifically designed for big data.
+
+01:27:56.000 --> 01:28:00.000
+And I will show you that in the Adoo framework, we have the distributed first system of Hadoop.
+
+01:28:00.000 --> 01:28:03.000
+These are specifically designed to efficiently store.
+
+01:28:03.000 --> 01:28:06.000
+and raise big amounts of data.
+
+01:28:06.000 --> 01:28:09.000
+Then you have the network bottleneck.
+
+01:28:09.000 --> 01:28:11.000
+As I mentioned before, if you send
+
+01:28:11.000 --> 01:28:15.000
+A large amount of data on the network, even if you are in the same data center.
+
+01:28:15.000 --> 01:28:20.000
+You need a lot of time, so you must reduce the amount of data that you're sending on the net.
+
+01:28:20.000 --> 01:28:22.000
+This is the only
+
+01:28:22.000 --> 01:28:24.000
+Challenge that I mentioned here,
+
+01:28:24.000 --> 01:28:28.000
+That he is related to your ability to write a good
+
+01:28:28.000 --> 01:28:30.000
+Big data program.
+
+01:28:30.000 --> 01:28:33.000
+A good MapReduce base or Spark-based application.
+
+01:28:33.000 --> 01:28:36.000
+You must always ask yourself,
+
+01:28:36.000 --> 01:28:44.000
+If you are sending data on the network or not, and the amount of data that you're sending on the network.
+
+01:28:44.000 --> 01:28:46.000
+Obviously, there are already
+
+01:28:46.000 --> 01:28:49.000
+frameworks and systems that can be used to
+
+01:28:49.000 --> 01:28:53.000
+Analyze using a distributed approach data in general.
+
+01:28:53.000 --> 01:28:55.000
+But as I mentioned before, if we…
+
+01:28:55.000 --> 01:29:02.000
+Are considering high-performance computing. In that case, we are interested in analyzing usually small amounts of data.
+
+01:29:02.000 --> 01:29:04.000
+or relatively small amount of data,
+
+01:29:04.000 --> 01:29:06.000
+Uh… .
+
+01:29:06.000 --> 01:29:09.000
+Executing many floating point operation per seconds.
+
+01:29:09.000 --> 01:29:14.000
+But you don't have to analyze big amount of data, so it's not the best approach for that reason.
+
+01:29:14.000 --> 01:29:21.000
+A distributed database can be used to execute SQL queries in a distributed environment, but again,
+
+01:29:21.000 --> 01:29:26.000
+Usually also the relational distributed databases are not able to manage
+
+01:29:26.000 --> 01:29:30.000
+The petabytes and petabytes of data efficiently.
+
+01:29:30.000 --> 01:29:36.000
+So the basic idea is that we already have environments and frameworks that can be used to analyze in a distributed way.
+
+01:29:36.000 --> 01:29:39.000
+data or execute programs in a distributed approach.
+
+01:29:39.000 --> 01:29:41.000
+But they are not designed.
+
+01:29:41.000 --> 01:29:47.000
+For managing big amount of data. This is the main difference.
+
+01:29:47.000 --> 01:29:53.000
+So the challenges are some of the challenges that I already mentioned before. How can we distribute the execution of our application?
+
+01:29:53.000 --> 01:30:00.000
+How can we store efficiently terabytes of data using a distributed approach? How can we manage failures?
+
+01:30:00.000 --> 01:30:02.000
+How can we manage network bottleneck?
+
+01:30:02.000 --> 01:30:07.000
+But all these frameworks, these big data frameworks are specifically designed for addressing.
+
+01:30:07.000 --> 01:30:12.000
+all these challenges.
+
+01:30:12.000 --> 01:30:22.000
+Typical big data problems, you iterate over all this data using something similar to a full scan, so.
+
+01:30:22.000 --> 01:30:24.000
+You read one record at a time,
+
+01:30:24.000 --> 01:30:31.000
+Given one record at a time, the system using a distributed and parallel approach extracts some information.
+
+01:30:31.000 --> 01:30:34.000
+From each input record,
+
+01:30:34.000 --> 01:30:37.000
+Then, this…
+
+01:30:37.000 --> 01:30:41.000
+Local results extracted from each record is sent in the network.
+
+01:30:41.000 --> 01:30:44.000
+And then there is someone in charge of computing the final result.
+
+01:30:44.000 --> 01:30:48.000
+Okay, one important thing that I will discuss…
+
+01:30:48.000 --> 01:30:51.000
+Today, later, is that
+
+01:30:51.000 --> 01:30:54.000
+From each input element, you must extract something.
+
+01:30:54.000 --> 01:30:57.000
+And this something must be small.
+
+01:30:57.000 --> 01:30:59.000
+Otherwise, you're sent to…
+
+01:30:59.000 --> 01:31:07.000
+You send a lot of death on the net.
+
+01:31:07.000 --> 01:31:13.000
+Okay.

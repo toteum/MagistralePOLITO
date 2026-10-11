@@ -1,0 +1,53 @@
+\babel@toc {italian}{}\relax 
+\babel@toc {italian}{}\relax 
+\contentsline {chapter}{\numberline {1}Introduzione ai Big Data}{6}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Che cosa sono i Big Data?}{6}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Fonti e Generatori di Big Data}{6}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Le "V" dei Big Data}{7}{section.1.3}%
+\contentsline {section}{\numberline {1.4}Framework Big Data: Motivazioni e Sfide}{7}{section.1.4}%
+\contentsline {subsection}{\numberline {1.4.1}Perché abbiamo bisogno di nuovi framework?}{7}{subsection.1.4.1}%
+\contentsline {subsection}{\numberline {1.4.2}Il principio della Data Locality}{7}{subsection.1.4.2}%
+\contentsline {subsection}{\numberline {1.4.3}Architettura dei Data Center e Scalabilità}{8}{subsection.1.4.3}%
+\contentsline {subsection}{\numberline {1.4.4}Le sfide tecniche}{8}{subsection.1.4.4}%
+\contentsline {subsection}{\numberline {1.4.5}Il problema tipico nei Big Data}{8}{subsection.1.4.5}%
+\contentsline {chapter}{\numberline {2}Big Data Architectures}{9}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Introduzione alle Architetture Big Data}{9}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}Quando utilizzare un'architettura Big Data}{9}{subsection.2.1.1}%
+\contentsline {section}{\numberline {2.2}La Lambda Architecture}{9}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Definizioni a confronto}{10}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}Il Modello dei Dati nella Lambda Architecture}{10}{subsection.2.2.2}%
+\contentsline {subsection}{\numberline {2.2.3}Requisiti dell'Architettura}{11}{subsection.2.2.3}%
+\contentsline {chapter}{\numberline {3}Hadoop e MapReduce}{12}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Introduzione al Framework Hadoop}{12}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Il Principio della Data Locality}{13}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Campi di Applicazione di MapReduce}{13}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Il Paradigma di Programmazione MapReduce}{14}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}Struttura Dati: Coppie Chiave-Valore}{14}{subsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.4.2}Le Fasi di Elaborazione}{14}{subsection.3.4.2}%
+\contentsline {section}{\numberline {3.5}Esempio Pratico: Il Problema del Word Count}{14}{section.3.5}%
+\contentsline {chapter}{\numberline {4}Sviluppo di Applicazioni MapReduce in Hadoop}{16}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Il Ruolo del Framework e dello Sviluppatore}{16}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Architettura di un Programma MapReduce}{16}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Definizione delle Classi}{16}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}Istanze e Terminologia}{17}{subsection.4.2.2}%
+\contentsline {subsection}{\numberline {4.2.3}Il Driver come Entry Point}{17}{subsection.4.2.3}%
+\contentsline {section}{\numberline {4.3}Gestione dell'Output Intermedio e Finale}{17}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Dati Intermedi (Transient Data)}{17}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.3.2}Dati Finali}{17}{subsection.4.3.2}%
+\contentsline {section}{\numberline {4.4}Lettura dei Dati: La classe InputFormat}{18}{section.4.4}%
+\contentsline {section}{\numberline {4.5}Parallelismo ed Esecuzione: Task e Input Split}{18}{section.4.5}%
+\contentsline {subsection}{\numberline {4.5.1}Grado di Parallelismo della fase di Map}{18}{subsection.4.5.1}%
+\contentsline {section}{\numberline {4.6}Tipi di Dato in MapReduce}{19}{section.4.6}%
+\contentsline {subsection}{\numberline {4.6.1}Tipi di Dato Personalizzati (Personalized Data Types)}{19}{subsection.4.6.1}%
+\contentsline {subsection}{\numberline {4.6.2}Tipi di Dato Personalizzati (Personalized Data Types)}{19}{subsection.4.6.2}%
+\contentsline {section}{\numberline {4.7}Implementazione del Reducer}{19}{section.4.7}%
+\contentsline {subsection}{\numberline {4.7.1}Esempio: Word Count Reducer}{20}{subsection.4.7.1}%
+\contentsline {section}{\numberline {4.8}L'Uso esclusivo del Map: Map-Only Job}{20}{section.4.8}%
+\contentsline {section}{\numberline {4.9}Ottimizzazione del Traffico di Rete: Il Combiner}{21}{section.4.9}%
+\contentsline {subsection}{\numberline {4.9.1}Implementazione del Combiner}{21}{subsection.4.9.1}%
+\contentsline {section}{\numberline {4.10}Ottimizzazione Avanzata: L'In-Mapper Combiner}{22}{section.4.10}%
+\contentsline {subsection}{\numberline {4.10.1}Workflow dell'In-Mapper Combiner}{22}{subsection.4.10.1}%
+\contentsline {subsection}{\numberline {4.10.2}Considerazioni Critiche sulle Prestazioni e Memoria Principale}{22}{subsection.4.10.2}%
+\contentsline {section}{\numberline {4.11}Gestione del Contesto e Statistiche}{22}{section.4.11}%
+\contentsline {subsection}{\numberline {4.11.1}Condivisione di Parametri globali}{22}{subsection.4.11.1}%
+\contentsline {subsection}{\numberline {4.11.2}Contatori (Counters)}{23}{subsection.4.11.2}%
