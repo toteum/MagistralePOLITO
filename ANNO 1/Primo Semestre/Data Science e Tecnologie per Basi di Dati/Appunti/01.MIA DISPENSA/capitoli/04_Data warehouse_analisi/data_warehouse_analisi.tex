@@ -1,2 +1,376 @@
-\chapter{Analisi dei Data Warehouse}
+\chapter{Analisi dei Dati in Ambienti OLAP ed Estensioni SQL}
 
+\section{Operazioni di analisi dei dati nel Data Warehouse}
+Sul data warehouse creato attraverso la progettazione logica, si presenta la necessità di effettuare delle analisi. Tali analisi possono essere concepite come delle vere e proprie azioni di navigazione dei dati, che ci permettono di esplorare le gerarchie definite sulle diverse dimensioni. In un contesto decisionale, diventa inoltre fondamentale presentare il dato con un certo criterio di ordinamento per comprendere il suo posizionamento rispetto ad altri dati di riferimento (come ad esempio in una classifica). 
+
+Tra le operazioni principali troviamo:
+\begin{itemize}
+    \item \textbf{Calcolo di funzioni aggregate}: effettuate lungo una o più dimensioni. Il supporto non si limita alle classiche somme o conteggi, ma si estende a funzioni avanzate necessarie per le analisi economiche (es. calcolo della media mobile, calcolo di mediane, individuazione di una top ten).
+    \item \textbf{Operazioni di confronto}: essenziali per confrontare l'andamento degli affari, ad esempio calcolando il rapporto tra un totale parziale (l'incasso di un singolo negozio) e un totale complessivo (l'incasso di tutti i negozi in una città), oppure confrontando le vendite in mesi diversi. Queste operazioni sono difficili da eseguire con il solo SQL standard.
+    \item \textbf{Analisi mediante Data Mining}: utilizzo di tecniche algoritmiche per estrarre pattern dai dati.
+\end{itemize}
+
+\section{Strumenti di interfaccia per l'interrogazione}
+Per interrogare il data warehouse, l'utente ha a disposizione diverse tipologie di interfacce:
+
+\subsection{Ambiente controllato di query}
+In questo ambiente vengono predisposte ricerche complesse e procedure specifiche di analisi con una struttura prefissata e solitamente parametrica (es. l'utente può inserire un intervallo di date o una categoria di prodotti). 
+Si utilizzano strumenti in cui è necessario lo sviluppo di codice ad hoc (es. \textit{stored procedures}, applicazioni, viste materializzate con join e aggregazioni predefinite). Sono disponibili strumenti flessibili per la gestione della reportistica che permettono di definire il layout grafico, la periodicità di pubblicazione e le liste di distribuzione del documento.
+
+\subsection{Ambiente di query ad hoc}
+Si tratta di un ambiente che permette la definizione di interrogazioni OLAP arbitrarie, progettate sul momento dall'utente, spesso tramite interfacce \textit{point and click} (dove i click dell'utente generano automaticamente il codice SQL sottostante). 
+Spesso l'interfaccia si basa sul paradigma del foglio elettronico (\textit{spreadsheet}). Una sessione di lavoro OLAP in questo ambiente è caratterizzata da raffinamenti successivi: l'utente parte da una query generale e la modifica iterativamente per esplorare il dato in profondità. Questo ambiente è fondamentale quando i report predefiniti non sono sufficienti per rispondere a domande decisionali impreviste.
+
+\section{Analisi OLAP e Navigazione Multidimensionale}
+Le operazioni di ricerca disponibili per navigare i dati multidimensionali prendono il nome di operazioni OLAP. Possono essere combinate tra loro nella stessa interrogazione e utilizzate per raffinamenti successivi.
+
+\subsection{Roll up}
+Effettuare un'operazione di \textit{roll up} significa ridurre il livello di dettaglio dei dati (passando da un dato più specifico a uno più generale). Viene eseguita principalmente interagendo con l'operatore \texttt{GROUP BY}. Il roll up si ottiene in due modi:
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{capitoli/04_Data warehouse_analisi/images/roll_up_schema.png}    
+    \caption{Rappresentazione visiva dell'operazione di Roll up: aggregazione dei dati da un livello più fine a uno più generale.}
+    \label{fig:roll-up}
+\end{figure}
+
+\begin{enumerate}
+    \item \textbf{Risalendo una gerarchia}: si cambia il livello di raggruppamento navigando la dimensione verso l'esterno. Ad esempio, passando da un aggregato calcolato per singolo \textit{Negozio} a uno calcolato per \textit{Città}. (Passaggio da \texttt{GROUP BY negozio, mese} a \texttt{GROUP BY città, mese}).
+    
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.75\textwidth]{capitoli/04_Data warehouse_analisi/images/roll_up_hierarchy.png} 
+        \caption{Esempio di Roll up risalendo la gerarchia temporale: aggregazione delle vendite mensili nelle varie città per ottenere le vendite trimestrali.}
+        \label{fig:roll-up-hierarchy}
+    \end{figure}
+
+    \item \textbf{Eliminando una dimensione}: si rimuove un attributo dal raggruppamento. Ad esempio, passando da \texttt{GROUP BY prodotto, città} a \texttt{GROUP BY prodotto}. Eliminando la città, nel gruppo del prodotto convergeranno tutte le tuple associate a quel prodotto in qualsiasi città.
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.75\textwidth]{capitoli/04_Data warehouse_analisi/images/roll_up_dimension.png}
+        \caption{Esempio di Roll up eliminando una dimensione: aggregazione delle vendite per prodotto, sommando le vendite in tutte le città.}
+        \label{fig:roll-up-dimension}
+    \end{figure}
+
+\end{enumerate}
+
+
+
+
+
+
+
+\subsection{Drill down}
+È l'operazione inversa rispetto al roll up e consiste nell'aumentare il livello di dettaglio dei dati. Diventa utile, ad esempio, quando, analizzando un macrofenomeno (es. le vendite annuali), si nota uno scostamento significativo e si decide di scendere nel dettaglio per capirne la causa.
+Si ottiene mediante:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.3\textwidth]{capitoli/04_Data warehouse_analisi/images/drill_down_schema.png}
+    \caption{Rappresentazione visiva dell'operazione di Drill down: esplorazione dei dati da un livello più generale a uno più specifico.}
+    \label{fig:drill-down}
+\end{figure}
+
+\begin{enumerate}
+    \item \textbf{Discesa in una gerarchia}: ad esempio passando da un raggruppamento per \textit{Città e Mese} a uno per \textit{Negozio e Mese}. Il negozio è un dato più specifico.
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.75\textwidth]{capitoli/04_Data warehouse_analisi/images/drill_down_hierarchy.png}
+        \caption{Esempio di Drill down risalendo la gerarchia temporale: discesa dalle vendite trimestrali alle vendite mensili per le varie città.}
+        \label{fig:drill-down-hierarchy}
+    \end{figure}
+    
+    \item \textbf{Aggiunta di una dimensione}: inserendo un nuovo attributo nel raggruppamento. Ad esempio da \texttt{GROUP BY città} a \texttt{GROUP BY città, prodotto}.
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.75\textwidth]{capitoli/04_Data warehouse_analisi/images/drill_down_dimension.png}  
+        \caption{Esempio di Drill down aggiungendo una dimensione: discesa dalle vendite aggregate per città alle vendite dettagliate per città e prodotto.}
+        \label{fig:drill-down-dimension}
+    \end{figure}
+
+\end{enumerate}
+
+\begin{osservazione}[Sparsità dei dati]
+Come precisato dal professore, aumentando il livello di dettaglio (con il drill down) i dati tendono a diventare molto più \textbf{sparsi}. Nella visualizzazione tabellare inizieranno a comparire molte "celle vuote" (valori nulli), poiché scendendo nel dettaglio è meno probabile che uno specifico evento (es. la vendita di quel preciso prodotto, in quel preciso negozio, in quel giorno) si sia verificato.
+\end{osservazione}
+
+% FIGURA ORIGINALE DA RECUPERARE DALLE SLIDE
+% Slide di provenienza: 13, 14, 15
+% Tipo: diagramma e tabelle
+% Descrizione: Rappresentazione dell'operazione di Drill down con l'evidenza delle celle vuote (sparsità del dato).
+% Punto di inserimento: qui
+% File da inserire: drill_down_schema
+
+\subsection{Slice and dice}
+Quest'operazione consiste nel ridurre il volume dei dati per focalizzare l'attenzione su un sottoinsieme specifico. Tradotto in linguaggio SQL, corrisponde all'aggiunta di predicati di selezione nella clausola \texttt{WHERE}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{capitoli/04_Data warehouse_analisi/images/slice_dice_schema.png}
+    \caption{Rappresentazione visiva dell'operazione di Slice and Dice: selezione di un sottoinsieme specifico dei dati mediante predicati di filtraggio.}
+    \label{fig:slice-dice}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Slice (fetta)}: l'uso di un predicato di uguaglianza che seleziona una singola coordinata di una dimensione (es. \texttt{Anno = 2005}). Nella visualizzazione a ipercubo, si "affetta" il cubo prendendo solo uno strato.
+    
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.75\textwidth]{capitoli/04_Data warehouse_analisi/images/slice_schema.png}
+        \caption{Esempio di Slice: selezione dei dati relativi all'anno 1998, evidenziando solo lo strato corrispondente nell'ipercubo.}
+        \label{fig:slice}
+    \end{figure}
+
+    \item \textbf{Dice (dado/cubetto)}: una combinazione congiunta (in \texttt{AND}) di più predicati su dimensioni diverse (es. \texttt{Categoria = 'Alimentari' AND Città = 'Torino'}). Si restringe l'analisi a uno specifico "microcubo" di dati.
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.75\textwidth]{capitoli/04_Data warehouse_analisi/images/dice_schema.png}
+        \caption{Esempio di Dice: selezione dei dati relativi alla categoria 'Eletronics' vendite superiori a 60 dollari nella regione 'North-West', nell'anno 1997, evidenziando solo il microcubo corrispondente nell'ipercubo.}
+        \label{fig:dice}
+    \end{figure}
+
+\end{itemize}
+
+
+\subsection{Pivot}
+Il \textit{Pivot} permette di riorganizzare l'orientamento della struttura multidimensionale dei dati senza variarne il livello di dettaglio (non si fa aggregazione). È essenzialmente uno scambio o una riorganizzazione delle righe e delle colonne nella visualizzazione a griglia. L'utilità fondamentale del pivot, come specificato dal professore, risiede nel facilitare significativamente la lettura e il confronto visivo dei dati, mettendo colonne adiacenti per poter fare paragoni "a colpo d'occhio".
+
+% FIGURA ORIGINALE DA RECUPERARE DALLE SLIDE
+% Slide di provenienza: 22, 23, 24
+% Tipo: tabella
+% Descrizione: Esempio di riorganizzazione Pivot delle tabelle (spostamento degli anni dalle righe alle colonne).
+% Punto di inserimento: qui
+% File da inserire: pivot_schema
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{capitoli/04_Data warehouse_analisi/images/pivot_schema.png}
+    \caption{Ipercubo dei dati dopo l'operazione di Pivot.}
+    \label{fig:pivot}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{capitoli/04_Data warehouse_analisi/images/pivot_schema_2.png}
+    \caption{Esempio di riorganizzazione Pivot delle tabelle: spostamento degli anni dalle righe alle colonne per facilitare il confronto visivo dei dati.}
+    \label{fig:pivot-2}
+\end{figure}
+
+\section{Estensioni del linguaggio SQL}
+Le funzionalità descritte (come medie mobili, totali parziali verso totali cumulativi e classifiche) risultano difficili e molto inefficienti da programmare in SQL standard. SQL è un linguaggio \textbf{dichiarativo}: l'utente specifica \textit{cosa} gli serve, ma non \textit{come} il DBMS debba estrarlo. Questo lo differenzia dai linguaggi procedurali (come il C) in cui il programmatore detta i passaggi in sequenza. 
+
+Nel DBMS, un modulo chiamato ottimizzatore decide il piano di esecuzione basandosi sull'algebra relazionale. In una query standard:
+\begin{verbatim}
+SELECT X, Y FROM M, T WHERE <condizione> GROUP BY X
+\end{verbatim}
+La sequenza logica di esecuzione è:
+\begin{enumerate}
+    \item \texttt{FROM}: lettura delle tabelle.
+    \item \texttt{WHERE}: applicazione dei predicati e join.
+    \item \texttt{GROUP BY}: raggruppamento e collassamento dei dati.
+    \item \textbf{\texttt{SELECT}}: estrazione, proiezione degli attributi e visualizzazione.
+\end{enumerate}
+
+\textbf{Motivazione dell'estensione:} Per poter estendere le funzionalità del linguaggio senza alterare e invalidare l'efficienza dei motori SQL esistenti, lo standard ANSI ha introdotto le nuove funzionalità analitiche (SQL-99/SQL3) all'interno della clausola \texttt{SELECT}. Essendo l'ultima istruzione ad essere eseguita, le estensioni ricevono in input i dati \textit{già preparati} dalla query sottostante (già letti, filtrati ed eventualmente già aggregati). 
+
+\section{Le Finestre di Calcolo (Window Functions)}
+La prima estensione fondamentale è la \textbf{finestra di calcolo}, introdotta dalla parola chiave \texttt{OVER}. 
+A differenza del \texttt{GROUP BY} standard, che accorpa (\textit{collassa}) $N$ tuple in un'unica tupla generica di output, la finestra di calcolo \textbf{non collassa i dati}. Se riceve 10 tuple in input, produrrà 10 tuple in output, aggiungendo a ciascuna il valore dell'aggregato calcolato.
+
+\subsection{Elementi della clausola OVER}
+Una finestra di calcolo si inserisce nella \texttt{SELECT} e si compone di tre elementi opzionali, racchiusi tra parentesi tonde:
+\begin{verbatim}
+FUNZIONE_DI_AGGREGAZIONE(Attributo) OVER (
+    [PARTITION BY ...]
+    [ORDER BY ...]
+    [FINESTRA_DI_AGGREGAZIONE]
+)
+\end{verbatim}
+
+\begin{enumerate}
+    \item \textbf{Partizionamento (\texttt{PARTITION BY})}: divide le righe in sottogruppi logici. L'aggregato (ad es. la somma) si azzera ogni volta che cambia il valore dell'attributo di partizione (es. si calcola separatamente per ogni città). Se omesso, tutta l'estrazione costituisce un'unica grande partizione.
+    \item \textbf{Ordinamento (\texttt{ORDER BY})}: applica un criterio di ordinamento (\texttt{ASC} o \texttt{DESC}) separatamente all'interno di ogni partizione. È fondamentale per dare senso a richieste sequenziali come la media mobile (se voglio i "mesi precedenti", i mesi devono essere in ordine).
+    \item \textbf{Finestra di aggregazione (Window clause)}: definisce il sottoinsieme di righe della partizione (rispetto alla riga attualmente processata) su cui calcolare l'aggregato.
+\end{enumerate}
+
+\subsection{Definizione dell'intervallo: Fisico vs Logico}
+La porzione di righe su cui calcolare l'aggregato può essere definita in due modi:
+\begin{itemize}
+    \item \textbf{Intervallo Fisico (\texttt{ROWS})}: si basa esclusivamente sul conteggio fisico delle righe (es. la riga corrente e le due righe precedenti posizionalmente). 
+    \begin{itemize}
+        \item \textit{Sintassi es.}: \texttt{ROWS 2 PRECEDING} (la riga corrente e le 2 precedenti).
+        \item \textit{Sintassi es.}: \texttt{ROWS UNBOUNDED PRECEDING} (dall'inizio della partizione alla riga corrente).
+    \end{itemize}
+    È adatto quando i dati non presentano interruzioni nella sequenza, ed è possibile specificare più chiavi di ordinamento.
+    
+    \item \textbf{Intervallo Logico (\texttt{RANGE})}: l'intervallo è definito in base al \textit{valore} assunto dalla chiave di ordinamento (che deve essere di tipo numerico o temporale). 
+    \begin{itemize}
+        \item \textit{Sintassi es.}: \texttt{RANGE 2 MONTH PRECEDING} (il mese corrente e i due mesi precedenti come concetto logico).
+    \end{itemize}
+    \textbf{Differenza sostanziale:} Come precisato a lezione, se il dato è \textit{sparso} e presenta un "buco" temporale (es. mancano i dati di aprile, passando direttamente da marzo a maggio), il raggruppamento logico per "2 mesi precedenti" a maggio includerà solo marzo (poiché aprile manca e febbraio è fuori range logico). Il raggruppamento fisico, invece, prenderà testardamente i due record precedenti disponibili nella tabella a prescindere dal loro effettivo valore temporale (prendendo marzo e febbraio). Il professore consiglia, ove i dati possano presentare lacune non note a priori, di prediligere l'intervallo logico per evitare errori semantici.
+\end{itemize}
+
+\subsection{Applicazioni Pratiche ed Esempi}
+
+Data una base dati \texttt{Vendite(Città, Mese, Importo)} dove la coppia (Città, Mese) funge da chiave primaria (un solo record per combinazione):
+
+\textbf{Esempio 1: Calcolo della media mobile}\\
+Richiesta: Visualizzare per ogni città e mese l'importo e la media mobile dell'importo rispetto al mese corrente e ai due mesi precedenti, separatamente per città.
+\begin{verbatim}
+SELECT Città, Mese, Importo, 
+       AVG(Importo) OVER (
+           PARTITION BY Città 
+           ORDER BY Mese 
+           ROWS 2 PRECEDING
+       ) AS MediaMobile
+FROM Vendite;
+\end{verbatim}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{capitoli/04_Data warehouse_analisi/images/media_mobile.png}
+    \caption{Esempio di calcolo della media mobile per ogni città e mese, considerando il mese corrente e i due mesi precedenti.}
+    \label{fig:media-mobile}
+\end{figure}
+
+\textit{Spiegazione:} Non serve \texttt{GROUP BY} esterna perché i dati di base hanno già la granularità voluta. La finestra partiziona per città (calcolo isolato per ogni città), ordina per mese (necessario per scandire il tempo) e prende le 2 righe precedenti + la corrente. Nei mesi in cui la finestra è "incompleta" (es. gennaio non ha mesi precedenti), la media viene calcolata solo sulle righe disponibili.
+
+\textbf{Esempio 2: Calcolo dei totali cumulativi}\\
+Richiesta: Somma cumulativa delle vendite al trascorrere dei mesi, azzerata per ogni città.
+\begin{verbatim}
+SELECT Città, Mese, Importo, 
+       SUM(Importo) OVER (
+           PARTITION BY Città 
+           ORDER BY Mese 
+           ROWS UNBOUNDED PRECEDING
+       ) AS SommaCumul
+FROM Vendite;
+\end{verbatim}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{capitoli/04_Data warehouse_analisi/images/somma_cumulativa.png}
+    \caption{Esempio di calcolo dei totali cumulativi delle vendite per ogni città al trascorrere dei mesi.}
+    \label{fig:somma-cumulativa}
+\end{figure}
+
+\textit{Spiegazione:} L'istruzione \texttt{ROWS UNBOUNDED PRECEDING} raccoglie per ogni riga processata tutte le righe dall'inizio della sua partizione (città) fino a essa. Il totale cresce progressivamente.
+
+\textbf{Esempio 3: Confronto tra dato dettagliato e macro-aggregato}\\
+Le finestre di calcolo permettono di evitare la riscrittura del codice e l'uso di query nidificate o \textit{table functions}, permettendo di leggere la tabella una sola volta.
+Richiesta: Visualizzare importo corrente, importo totale per città, e importo totale assoluto di tutte le città.
+\begin{verbatim}
+SELECT Città, Mese, Importo, 
+       SUM(Importo) OVER (PARTITION BY Città) AS ImpTotaleCitta,
+       SUM(Importo) OVER () AS ImpComplessivoAssoluto
+FROM Vendite;
+\end{verbatim}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{capitoli/04_Data warehouse_analisi/images/confronto_dato_macro.png}
+    \caption{Esempio di confronto tra dato dettagliato e macro-aggregato:   visualizzazione dell'importo corrente, dell'importo totale per città e dell'importo totale assoluto di tutte le città.} 
+    \label{fig:confronto-dato-macro}
+\end{figure}
+
+\textit{Spiegazione:} Se omettiamo \texttt{ORDER BY} e la finestra di aggregazione, il default applica la funzione di aggregazione sull'intera partizione. Se si utilizza la parentesi \texttt{OVER ()} completamente vuota, la funzione opera su \textit{tutti i dati} estratti dalla \texttt{FROM} e \texttt{WHERE}.
+Questo permette di calcolare indici in un colpo solo, es. la percentuale di incasso rispetto al totale della città: \texttt{(Importo / SUM(Importo) OVER (PARTITION BY Città)) * 100}.
+
+\section{Integrazione delle Finestre di Calcolo con la clausola GROUP BY}
+La vera potenza analitica si ottiene combinando il raggruppamento standard \texttt{GROUP BY} con le funzioni \texttt{OVER}.
+Bisogna ricordare due regole fondamentali esposte dal professore:
+\begin{enumerate}
+    \item \textbf{Visibilità degli attributi:} Se c'è una \texttt{GROUP BY}, gli unici attributi accessibili nella \texttt{SELECT} (e conseguentemente dentro la clausola \texttt{OVER}) sono gli attributi di raggruppamento. Se nella finestra serve partizionare per \textit{Regione}, ma la query aggrega per \textit{Città e Mese}, bisogna forzatamente aggiungere \textit{Regione} alla clausola \texttt{GROUP BY}.
+    \item \textbf{Argomenti delle funzioni finestra:} L'input della finestra \textbf{non è più la riga cruda della tabella}, ma la riga pre-aggregata. Pertanto, come argomento della media mobile o del cumulativo non si scriverà più l'attributo semplice \texttt{Importo}, ma l'aggregato calcolato dalla \texttt{GROUP BY}, ovvero \texttt{SUM(Importo)}.
+\end{enumerate}
+
+\begin{osservazione}[Uso degli Alias]
+L'alias assegnato nella SELECT (es. \texttt{SUM(Importo) AS TotMese}) non può mai essere riutilizzato all'interno delle clausole \texttt{OVER} o dei calcoli paralleli nella stessa SELECT. Questo perché l'etichetta (\textit{label}) diventa disponibile per il database solo all'ultimo istante, ed è utilizzabile esclusivamente nella clausola finale di \texttt{ORDER BY} generale per riordinare la visualizzazione a schermo. All'interno della query, va sempre ridigitato \texttt{SUM(Importo)}.
+\end{osservazione}
+
+\textbf{Esempio Avanzato:}
+Sia dato uno schema:
+\texttt{Vendite(SK, TK, ImportoGiornaliero)}, 
+\texttt{Supermercato(SK, Città, Regione, Provincia)}, 
+\texttt{Tempo(TK, Data, Mese, Anno, Semestre)}.
+
+Richiesta: Per ogni città e semestre estrarre l'importo delle vendite. A fianco, calcolare l'incasso cumulativo al trascorrere dei semestri calcolato separatamente per ogni Regione.
+\begin{verbatim}
+SELECT S.Città, T.Semestre, 
+       SUM(V.ImportoGiornaliero) AS ImportoMese,
+       SUM( SUM(V.ImportoGiornaliero) ) OVER (
+           PARTITION BY S.Regione 
+           ORDER BY T.Semestre 
+           ROWS UNBOUNDED PRECEDING
+       ) AS IncassoCumulRegione
+FROM Vendite V, Supermercato S, Tempo T
+WHERE V.SK = S.SK AND V.TK = T.TK
+GROUP BY S.Città, T.Semestre, S.Regione;
+\end{verbatim}
+\textit{Passaggi Logici:} 
+\begin{itemize}
+    \item Effettuiamo i JOIN tra la tabella dei fatti e le dimensioni.
+    \item Effettuiamo un raggruppamento per \texttt{Città} e \texttt{Semestre} per calcolare le vendite al livello di dettaglio richiesto. Aggiungiamo \texttt{Regione} alla \texttt{GROUP BY} per poterla utilizzare nella \texttt{PARTITION BY}. (Il professore sottolinea che aggregare per \texttt{Città, Semestre, Regione} non altera i gruppi rispetto ad aggregare per \texttt{Città, Semestre} dato che la città implica la regione).
+    \item La prima \texttt{SUM(V.ImportoGiornaliero)} opera a livello di \texttt{GROUP BY} e collassa i record giornalieri restituendo il totale semestrale per la città.
+    \item La \texttt{SUM} più esterna (con la clausola \texttt{OVER}) prende in input quei totali semestrali e li somma in modo cumulato, tenendo traccia dell'ordinamento temporale.
+\end{itemize}
+
+\section{Funzioni di Ranking (Classifiche)}
+Le funzioni per ricavare la posizione in un ordinamento (\textit{ranking}) si utilizzano sempre all'interno della clausola \texttt{OVER}. Sono disponibili due funzioni distinte, che differiscono per la gestione dei casi di "pari merito":
+\begin{itemize}
+    \item \texttt{RANK()}: in caso di valori identici, assegna la stessa posizione a entrambi i record, ma lascia "buchi" nella sequenza successiva. Se due record sono a pari merito in posizione 1, il record immediatamente successivo sarà in posizione 3.
+    \item \texttt{DENSE\_RANK()}: assegna la stessa posizione in caso di pari merito, ma \textbf{non lascia buchi}. Dopo due posizioni 1, il successivo assume la posizione 2. (Da utilizzare in contesti in cui non è ammissibile saltare scaglioni, es. graduatorie di concorso senza limiti fisici di posto).
+\end{itemize}
+
+\textbf{Esempio d'uso:} Assegnare una graduatoria alle coppie (Città, Semestre) in base agli incassi massimi (in ordine decrescente), separatamente per ogni regione.
+\begin{verbatim}
+SELECT S.Città, T.Semestre, SUM(V.ImportoGiornaliero),
+       RANK() OVER (
+           PARTITION BY S.Regione 
+           ORDER BY SUM(V.ImportoGiornaliero) DESC
+       ) AS GraduatoriaRegionale
+FROM Vendite V, Supermercato S, Tempo T
+WHERE V.SK = S.SK AND V.TK = T.TK
+GROUP BY S.Città, T.Semestre, S.Regione
+ORDER BY S.Regione, GraduatoriaRegionale;
+\end{verbatim}
+L'\texttt{ORDER BY} finale, che sfrutta la label \texttt{GraduatoriaRegionale}, è necessario per ordinare \textit{l'output visivo}. Senza di esso, a livello logico la graduatoria è stata calcolata correttamente ed associata ai record, ma il risultato verrebbe stampato a schermo in ordine sparso.
+
+\section{Estensioni della clausola GROUP BY}
+Per necessità di reportistica complessa, spesso è utile generare all'interno della stessa \textit{query} totali generali e totali parziali a vari livelli della gerarchia. Lo standard SQL-99 ha introdotto tre operatori per la clausola \texttt{GROUP BY}, permettendo di ottenere risultati di più raggruppamenti con un solo passaggio (evitando letture multiple del database, risparmiando su JOIN e ordinamenti).
+Il raggruppamento genererà nella tabella finale righe in cui alcuni campi sono valorizzati a \texttt{NULL}. Quel \texttt{NULL} va interpretato come l'indicatore che, per quella specifica riga, la dimensione è stata aggregata (è un totale).
+
+\subsection{L'operatore ROLLUP}
+Calcola le aggregazioni eliminando un attributo alla volta procedendo \textbf{da destra verso sinistra}. Pertanto, l'ordine con cui si indicano gli attributi in \texttt{ROLLUP} è fondamentale e dipende dalla logica di aggregazione richiesta.
+\begin{verbatim}
+GROUP BY ROLLUP (Città, Mese, Prodotto)
+\end{verbatim}
+Questa clausola calcolerà l'unione di quattro raggruppamenti distinti:
+\begin{enumerate}
+    \item Raggruppamento per \texttt{(Città, Mese, Prodotto)}
+    \item Raggruppamento per \texttt{(Città, Mese)} (tolto Prodotto)
+    \item Raggruppamento per \texttt{(Città)} (tolto Mese)
+    \item Totale complessivo aggregato \texttt{()} (tolta Città)
+\end{enumerate}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{capitoli/04_Data warehouse_analisi/images/rollup_schema.png}
+    \caption{Esempio di aggregazioni calcolate con l'operatore R    OLLUP: da un raggruppamento dettagliato a uno più generale, fino al totale complessivo.}
+    \label{fig:rollup}
+\end{figure}
+
+\subsection{L'operatore CUBE}
+Se il \texttt{ROLLUP} analizza solo il percorso lineare destra-sinistra, il \texttt{CUBE} calcola \textbf{tutte le possibili combinazioni} (sottoinsiemi) degli attributi indicati. Nel caso di \texttt{CUBE(A, B, C)}, genererà: \texttt{(A,B,C), (A,B), (B,C), (A,C), (A), (B), (C), ()}. In questo caso l'ordine degli attributi tra le parentesi è ininfluente. Il calcolo sfrutta efficacemente l'ordinamento e la proprietà distributiva degli aggregati pre-calcolati (usando i subtotali di \texttt{(A,B)} per calcolare \texttt{(A)} ecc.).
+
+\subsection{L'operatore GROUPING SETS}
+Consente di definire in modo totalmente esplicito quali specifici livelli di aggregazione si desiderano ottenere, separandoli con una virgola (le parentesi tonde si usano se il singolo raggruppamento è composto da più attributi).
+\begin{verbatim}
+GROUP BY GROUPING SETS ((Città, Mese), (Mese), (Prodotto))
+\end{verbatim}
+In questo caso, verranno calcolati solo ed esclusivamente questi 3 gruppi (anche disgiunti). Questa istruzione restituisce di fatto l'unione dei risultati di tre distinte query \texttt{GROUP BY} in un'operazione sola molto più efficiente.

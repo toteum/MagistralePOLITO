@@ -1,92 +1,160 @@
-\chapter{Data Science e The Big Data Challenge}
+\chapter{Introduzione alla Data Science e ai Big Data}
 
-\section{Introduzione ai Big Data}
-Il concetto di \textbf{Big Data} ha molteplici definizioni, essendo un termine che si è evoluto rapidamente nel corso degli anni (spesso accompagnato da un forte \textit{hype} mediatico, come ironicamente illustrato in celebri vignette a tema). Tuttavia, da un punto di vista accademico e tecnologico, possiamo adottare la seguente definizione formale:
+\section{L'Evoluzione dei Sistemi di Gestione dei Dati}
+La scelta del sistema di gestione di basi di dati (DBMS) dipende non solo dal volume di dati da memorizzare, ma soprattutto dall'obiettivo dell'analisi e da come questi dati devono essere processati. 
 
-\begin{definition}[Big Data]
-I Big Data sono dati la cui \textbf{scala, diversità e complessità} richiedono nuove architetture, tecniche, algoritmi e strumenti di analisi (\textit{analytics}) per poterli gestire ed estrarne valore e conoscenza nascosta.
-\end{definition}
+\subsection{Sistemi Transazionali vs Sistemi Decisionali}
+I database tradizionali (relazionali) sono progettati per supportare le attività ordinarie e operative. Ad esempio, le operazioni bancarie come il prelievo a uno sportello bancomat sono ripetitive e molto specifiche: il sistema deve identificare il cliente, verificare il saldo e autorizzare o meno la transazione. In questo contesto operativo (sistemi transazionali), è fondamentale garantire che un'operazione, se interrotta (es. mancata erogazione di contante), venga annullata per non generare errori nel saldo.
 
-% FIGURA DA INSERIRE QUI
-% Fonte: Slide 1
-% Descrizione: Striscia a fumetti di Dilbert sull'hype dei Big Data.
+Se ci spostiamo su un sistema per il supporto decisionale, l'obiettivo cambia radicalmente. Un responsabile dei prodotti assicurativi di una grande banca non esegue query ripetitive su singoli clienti, ma interrogazioni complesse (spesso in SQL) su volumi di dati significativi, aggregando informazioni su base mensile e su diverse filiali per valutare l'andamento delle vendite rispetto al budget. L'originalità e la specificità delle query in ambito \textit{analytics} richiedono un'architettura di database profondamente diversa rispetto a quella transazionale. 
+
+\subsection{Il Linguaggio SQL e i Sistemi Interni}
+Il linguaggio SQL è un linguaggio \textit{dichiarativo}: l'utente specifica \textit{cosa} vuole ottenere (es. l'elenco dei clienti con saldo superiore a 50.000 euro) senza indicare \textit{come} il sistema debba eseguire la ricerca. È il motore interno del DBMS che traduce questa richiesta dichiarativa in una sequenza di operazioni procedurali (es. scansione sequenziale o accesso tramite indice). 
+Oggi l'evoluzione tecnologica ci impone di non utilizzare la stessa tecnologia per ogni problema. Accanto ai tradizionali sistemi relazionali, si utilizzano diffusamente sistemi NoSQL e Data Lake, ottimizzati per gestire dati strutturati, semi-strutturati e non strutturati, a seconda dei requisiti specifici dell'applicazione.
+
+\section{Il Contesto dei Big Data}
+Oggi la nostra capacità di generare dati è notevolmente superiore rispetto al passato. I dati raccolti, tuttavia, se meramente storicizzati rappresentano solo un costo di infrastruttura. Il valore si genera quando si è in grado di processarli ed estrarne conoscenza.
+
+\subsection{Chi genera i Big Data?}
+La generazione dei dati può essere classificata in base al grado di partecipazione dell'utente e alla tecnologia impiegata:
+\begin{itemize}
+    \item \textbf{Generazione passiva (Log files e sistemi transazionali):} Riguarda tracce di operazioni che l'utente compie e che vengono storicizzate di default, come i pagamenti con carta di credito o i file di log di un server web o di uno smartphone. Questi log, ad esempio, descrivono la maggior parte delle abitudini quotidiane di un utente, rappresentando una risorsa fondamentale (e ponendo questioni di privacy).
+    \item \textbf{Generazione attiva (User Generated Content):} L'utente diventa un produttore attivo di informazioni (post, foto, video su social network, dati di geolocalizzazione). 
+    \item \textbf{Produzione automatica (Internet of Things e Sensori):} Sensori, smart meter e dispositivi IoT generano campionamenti in modo continuo e automatico. Questo permette di creare modelli \textit{data-driven} di fenomeni che prima venivano studiati solo attraverso modelli fisici (es. il degrado di un motore industriale monitorato dai suoi sensori).
+\end{itemize}
+
+% FIGURA ORIGINALE DA RECUPERARE DALLE SLIDE
+% Slide di provenienza: 5
+% Tipo: Immagini a confronto
+% Descrizione: Confronto tra l'elezione del Papa nel 2005 (pochi dispositivi) e nel 2013 (folla illuminata da smartphone e tablet).
+% Punto di inserimento: Inserire per illustrare il passaggio da utenti passivi a generatori attivi di dati.
+% File da inserire: fig_pope_election_2005_2013.jpg
 \begin{figure}[H]
     \centering
-    % \includegraphics[width=0.7\textwidth]{dilbert_big_data}
-    \caption{L'hype mediatico attorno al concetto di Big Data.}
-    \label{fig:dilbert_bigdata}
+    \includegraphics[width=0.85\textwidth]{capitoli/01_Data Science_introduzione/images/fig_pope_election_2005_2013.png}
+    \caption{L'evoluzione nella generazione dei dati: da un pubblico passivo nel 2005 a utenti generatori attivi di contenuti (video, foto, streaming) nel 2013.}
+    \label{fig:pope-election}
 \end{figure}
 
-\section{Le Sfide dei Big Data}
-L'avvento dei Big Data introduce delle sfide significative che non possono essere affrontate con i sistemi tradizionali. Queste sfide si dividono in due macro-categorie:
+\subsection{Le 5 V dei Big Data}
+Il termine "Big Data" definisce dati la cui scala, diversità e complessità richiedono nuove architetture e algoritmi per estrarne valore. Essi sono caratterizzati dalle "5 V":
 
-\subsection{Tecnologia e infrastruttura}
-La gestione di moli di dati così imponenti richiede nuovi paradigmi di programmazione e nuove architetture hardware/software. Il principio fondamentale che guida queste nuove tecnologie è:
-\begin{center}
-    \textit{"Transfer the processing power to the data"} \\
-    (Trasferire la potenza di calcolo verso i dati)
-\end{center}
-Invece di spostare enormi quantità di dati verso i server di calcolo (operazione lenta e costosa in termini di rete), si spostano gli algoritmi e il calcolo direttamente sui nodi dove i dati sono immagazzinati. L'ecosistema di riferimento per questo paradigma è \textbf{Apache Hadoop} e \textbf{Apache Spark}.
-
-% FIGURA DA INSERIRE QUI
-% Fonte: Slide 4
-% Descrizione: Logo dell'elefantino di Apache Hadoop.
-\begin{figure}[H]
-    \centering
-    % \includegraphics[width=0.3\textwidth]{hadoop_elephant}
-    \caption{L'ecosistema Apache Hadoop è una delle tecnologie fondanti per gestire le infrastrutture Big Data.}
-    \label{fig:hadoop_elephant}
-\end{figure}
-
-\subsection{Gestione e analisi dei dati}
-Oltre all'infrastruttura, c'è una nuova e forte enfasi sul "dato" in sé. Raccogliere i dati non basta: è necessario analizzarli per estrarne valore. Questa esigenza ha dato vita a una disciplina specifica: la \textbf{Data Science}.
-
-\section{Data Science}
-La Data Science è la disciplina che si occupa di \textit{"estrarre significato da grandissime quantità di dati"}. 
-È un campo fortemente multidisciplinare che unisce statistica, machine learning, data mining, visualizzazione dei dati e gestione dei database.
-
-\begin{remark}
-Il termine \textit{"Data Scientist"} è stato coniato originariamente da D.J. Patil (ex Chief Data Scientist degli Stati Uniti), contribuendo a definire una nuova figura professionale fondamentale nel panorama tecnologico moderno.
-\end{remark}
-
-% FIGURA DA INSERIRE QUI
-% Fonte: Slide 5
-% Descrizione: Mappa concettuale che mostra le varie discipline che compongono la Data Science (Statistic, Machine Learning, Data Mining, ecc.).
-\begin{figure}[H]
-    \centering
-    % \includegraphics[width=0.6\textwidth]{data_science_mindmap}
-    \caption{La natura multidisciplinare della Data Science.}
-    \label{fig:ds_mindmap}
-\end{figure}
-
-\section{Il Processo di Data Science (KDD)}
-Il processo di estrazione della conoscenza dai dati è formalmente noto come \textbf{KDD} (\textit{Knowledge Discovery in Databases}). 
-
-Il flusso di lavoro della Data Science si articola in una macro-pipeline composta da quattro fasi principali, disposte in sequenza logica:
 \begin{enumerate}
-    \item \textbf{Generation} (Generazione del dato)
-    \item \textbf{Acquisition} (Acquisizione)
-    \item \textbf{Storage} (Memorizzazione)
-    \item \textbf{Analysis} (Analisi)
+    \item \textbf{Volume:} La quantità di dati cresce esponenzialmente. Molti algoritmi predittivi sono addestrati per funzionare bene proprio perché ricevono moli immense di dati in input. Un'interruzione di questo volume porta a un drastico calo di accuratezza. 
+    \textit{Esempio:} Durante la pandemia di COVID-19, la drastica riduzione dei voli aerei ha privato i modelli meteorologici dei dati raccolti dai sensori a bordo degli aerei, peggiorando temporaneamente le previsioni meteo.
+    
+    \item \textbf{Velocity (Velocità):} Riguarda il tasso di generazione dei dati (streaming data). Una generazione veloce impone una conseguente velocità di elaborazione (\textit{near real-time processing}) per restituire l'output in tempo utile.
+    \textit{Esempio:} Nelle app di navigazione GPS, i dati sul traffico vengono aggiornati costantemente dalle posizioni condivise dagli utenti. L'applicativo deve aggregare e processare rapidamente questi flussi per suggerire percorsi alternativi istantaneamente.
+    
+    \item \textbf{Variety (Varietà):} Nelle applicazioni reali i dati provengono da flussi profondamente eterogenei (dati numerici, serie storiche, testi, audio, video) e presentano disallineamenti temporali e spaziali (granularità diverse).
+    \textit{Esempio (Emergency Management):} In un sistema di gestione delle emergenze, i dati di input combinano flussi video differiti da droni, rilevazioni meteo continue da sensori IoT, immagini satellitari e messaggi testuali/geolocalizzati dai social media (i cui picchi di pubblicazione dipendono dalle abitudini degli utenti e non sono costanti nel tempo).
+    
+    \item \textbf{Veracity (Veracità):} È la sfida legata alla qualità, affidabilità e precisione del dato. Poiché la velocità di generazione è elevatissima, vi è un'alta probabilità di raccogliere dati "sporchi". Appellandosi al principio "Garbage In, Garbage Out", se si forniscono dati di scarsa qualità a un modello, i risultati saranno inaffidabili. Identificare anomalie e pulire i dati è uno dei compiti più onerosi (spesso richiede il 70-80\% del tempo del progetto).
+    
+    \item \textbf{Value (Valore):} L'obiettivo ultimo è tradurre i dati immagazzinati in un vantaggio. Questo vantaggio non è solo economico o di business, ma anche sociale (es. migliorare un servizio al cittadino o salvare vite in situazioni di rischio). Trasformare i bit in valore richiede l'immaginazione e la progettazione umana per combinare le tecnologie corrette.
 \end{enumerate}
 
-% FIGURA DA INSERIRE QUI
-% Fonte: Slide 6
-% Descrizione: I due schemi del processo KDD. Da un lato il processo lineare (Data -> Preprocessing -> Data Mining -> Knowledge), dall'altro il ciclo di feedback continuo con il mondo reale (Real World -> Raw Data -> Model -> Data Product -> Real World).
+\section{Il Processo di Knowledge Discovery from Data (KDD) e Data Science}
+La Data Science si occupa dell'intero ciclo di vita del dato, dalla sua generazione fino alla trasformazione in conoscenza. Questo processo iterativo è noto come \textbf{KDD (Knowledge Discovery in Databases)} ed è composto dalle seguenti fasi logiche.
+
+% FIGURA ORIGINALE DA RECUPERARE DALLE SLIDE
+% Slide di provenienza: 20
+% Tipo: Flowchart
+% Descrizione: Diagramma concettuale del Knowledge Discovery Process (Data -> Preprocessing -> Trasformazione -> Data Mining -> Valutazione -> Conoscenza).
+% Punto di inserimento: Dopo la definizione del KDD.
+% File da inserire: fig_kdd_process.jpg
 \begin{figure}[H]
     \centering
-    % \includegraphics[width=0.9\textwidth]{kdd_process}
-    \caption{Rappresentazione del processo KDD (Knowledge Discovery in Databases) e del ciclo di vita di un Data Product.}
-    \label{fig:kdd_process}
+    \includegraphics[width=0.95\textwidth]{capitoli/01_Data Science_introduzione/images/kdd_process1.png}
+    \caption{Fasi del processo iterativo di Knowledge Discovery from Data (KDD).}
+    \label{fig:kdd-process}
 \end{figure}
 
-\subsection{Fase 1: Generazione dei dati (Generation)}
-La prima fase del processo KDD riguarda il modo in cui i dati vengono creati nel mondo reale. Possiamo classificare la generazione dei dati in tre tipologie principali:
-
+\subsection{Generazione e Acquisizione}
+I dati generati devono essere acquisiti dal sistema tramite due approcci principali:
 \begin{itemize}
-    \item \textbf{Registrazione passiva (Passive recording):} Produce tipicamente \textbf{dati strutturati}. Esempi classici includono le transazioni bancarie e di trading, i registri degli acquisti nei negozi (shopping records) e gli archivi della pubblica amministrazione (government sector archives). L'utente non genera attivamente il dato, ma compie un'azione che viene passivamente registrata dal sistema.
-    
-    \item \textbf{Generazione attiva (Active generation):} Produce tipicamente \textbf{dati semi-strutturati o non strutturati}. Si tratta principalmente di contenuti generati direttamente dagli utenti (\textit{User-generated content}), come ad esempio i post, le foto e i video caricati sui social network.
-    
-    \item \textbf{Produzione automatica (Automatic production):} Riguarda dati generati in modo continuo e automatico da dispositivi. Questi dati sono spesso \textit{location-aware} (geolocalizzati), \textit{context-dependent} (dipendenti dal contesto) e generati da dispositivi altamente mobili (come smartphone, sensori IoT, smartwatch).
+    \item \textbf{Pull-based:} Il sistema si attiva per recuperare i dati. Ad esempio, lo sviluppo di un \textit{web crawler} che preleva da social network solo i post pubblici contenenti uno specifico hashtag di interesse.
+    \item \textbf{Push-based:} I dati vengono inviati al sistema dal generatore. Ad esempio, applicazioni di videosorveglianza o raccolte \textit{clickstream}. Le applicazioni \textit{clickstream} tracciano i clic dell'utente durante la navigazione web (es. su un e-commerce), permettendo di profilarne gli interessi, la fascia oraria di attività e i comportamenti d'acquisto per alimentare sistemi di raccomandazione.
 \end{itemize}
+Durante la trasmissione su canali di rete, si attua un primissimo livello di pre-processing (es. filtro on-the-fly di misurazioni fisicamente impossibili, come 200°C rilevati nella stanza da un sensore guasto) per evitare di intasare lo storage con dati palesemente errati.
+
+\subsection{Memorizzazione (Storage)}
+A causa del volume e della varietà dei dati, una singola organizzazione utilizzerà contemporaneamente DBMS relazionali (per le transazioni aziendali strutturate) e sistemi NoSQL (documentali, key-value, colonnari o a grafo) ospitati su file system distribuiti o Data Lake, per memorizzare dati non strutturati.
+
+\subsection{Pre-processing e Preparazione del Dato}
+Si stima che un Data Scientist spenda l'80-90\% del proprio tempo in questa fase, ben prima di scrivere il codice per l'algoritmo. Le sfide principali includono:
+\begin{itemize}
+    \item \textbf{Data Cleaning:} Ridurre il rumore, rimuovere gli outlier e risolvere inconsistenze.
+    \item \textbf{Data Integration e Trasformazione:} Reconciliare dati da fonti diverse e allineare la granularità. Ad esempio, se un braccio robotico emette dati al millisecondo, ma l'usura meccanica è apprezzabile solo su scala mensile, il dato al millisecondo va aggregato prima di alimentare l'algoritmo di manutenzione predittiva, altrimenti la mole immensa di dati non porterà a un modello accurato.
+\end{itemize}
+
+\subsection{L'Analisi e le Tipologie di Algoritmi}
+Una volta che i dati sono puliti e preparati, si applicano modelli matematici per estrarre informazioni potenzialmente utili e precedentemente ignote. A seconda dell'obiettivo, le analisi si dividono in:
+\begin{itemize}
+    \item \textbf{Descrittive (Characterization):} Raggruppano o descrivono i dati esistenti senza fare previsioni sul futuro. Rispondono alla domanda "Come sono composti i miei dati?".
+    \item \textbf{Predittive:} Inferiscono regole dai dati passati per etichettare o calcolare un valore su dati futuri.
+    \item \textbf{Prescrittive:} Combinano un algoritmo predittivo con una tecnica di ottimizzazione matematica. Non si limitano a prevedere un problema, ma prescrivono un'azione. 
+    \textit{Esempio (Bike Sharing / EV Charging):} In un sistema di bike sharing, l'algoritmo predittivo calcola che, alle 18:00, la stazione X sarà vuota e la stazione Y sarà piena. Il livello prescrittivo prende questi input e calcola il percorso ottimo per i furgoni della manutenzione al fine di ribilanciare proattivamente le biciclette sul territorio.
+\end{itemize}
+
+\section{Tecniche di Machine Learning e Data Mining}
+Le tecniche di estrazione automatica utilizzano algoritmi che generano modelli astratti (pattern). La scelta dell'algoritmo dipende fortemente dal tipo di dato, dalla complessità del problema e dalla necessità di interpretare il risultato.
+
+\subsection{Regole di Associazione (Association Rules)}
+Estraggono correlazioni frequenti all'interno di un database transazionale. Questa tecnica ammette dati di input di lunghezza variabile (es. scontrini con un numero di articoli diverso).
+
+\textit{Il caso Walmart:} Negli anni '90, per ottimizzare il layout dei grandi magazzini riducendo i tempi di permanenza alla ricerca dei prodotti, fu introdotta la tecnica delle regole di associazione (grazie ai ricercatori IBM). Il primo step fu il \textit{pre-processing}: dallo scontrino fiscale reale (che contiene prezzo, quantità, sconti e nome esatto del prodotto) si estraggono solo le \textit{categorie} degli oggetti acquistati.
+Dal database sintetizzato emerse la famosa regola: \texttt{Pannolini} $\Rightarrow$ \texttt{Birra}. Questa indicava un forte tasso di acquisto congiunto di questi due articoli nei carrelli, portando alla decisione commerciale di avvicinarli sugli scaffali. Oggi le regole di associazione sono alla base dei sistemi di raccomandazione ("Spesso comprati insieme") e dell'analisi cross-selling.
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|l|}
+        \hline
+        \textbf{TID (ID Transazione)} & \textbf{Items (Oggetti acquistati)} \\
+        \hline
+        1 & Pane, Coca-Cola, Latte \\
+        2 & Birra, Pane \\
+        3 & Birra, Coca-Cola, Pannolini, Latte \\
+        4 & Birra, Pane, Pannolini, Latte \\
+        5 & Coca-Cola, Pannolini, Latte \\
+        \hline
+    \end{tabular}
+    \caption{Esempio semplificato di Database Transazionale per regole di associazione.}
+    \label{tab:assoc-rules}
+\end{table}
+
+\subsection{Classificazione (Algoritmi Supervised)}
+La classificazione si utilizza per prevedere un'etichetta categorica. Richiede un dataset di addestramento (\textit{training set}) annotato. 
+L'algoritmo apprende dai dati storici annotati le relazioni tra gli attributi (ad es. il testo di un documento) e la relativa etichetta. Una volta addestrato, il modello può assegnare autonomamente l'etichetta a nuovi oggetti.
+\textit{Esempio:} Uno strumento automatico che smista le pratiche e le richieste ricevute dai cittadini verso l'ufficio comunale di competenza, leggendo il contenuto del documento.
+A seconda del caso d'uso, un classificatore può essere nativamente interpretabile (come un Albero di Decisione o un insieme di regole) oppure opaco (come una Rete Neurale profonda).
+
+\subsection{Clustering (Algoritmi Unsupervised)}
+A differenza della classificazione, il clustering è una tecnica \textit{non supervisionata}: non richiede un dataset preventivamente annotato da esperti. Il suo obiettivo è raggruppare (partizionare) gli oggetti in base a una metrica di distanza o similarità matematica; oggetti simili finiscono nello stesso cluster, oggetti dissimili in cluster separati.
+\textit{Esempio:} In ambito marketing, gli algoritmi di clustering analizzano i pattern di consumo, il tempo di navigazione e le caratteristiche demografiche per segmentare la clientela in gruppi (es. studenti, professionisti, famiglie). Ogni cluster riceverà campagne promozionali mirate, superando l'approccio \textit{broadcast} generalista.
+
+\subsection{Altre Tecniche}
+\begin{itemize}
+    \item \textbf{Regressione:} Specializzazione predittiva dove l'output atteso è un valore numerico continuo, non una classe (es. previsione del mercato azionario).
+    \item \textbf{Sequence Mining:} Utilizza criteri di ordinamento spaziale e/o temporale (es. pattern ricorrenti nelle proteine).
+    \item \textbf{Outlier Detection:} Tecniche finalizzate a individuare anomalie o deviazioni pesanti rispetto alla distribuzione normale, utilizzate pesantemente per identificare intrusioni informatiche (Network Intrusion Detection) o frodi bancarie.
+\end{itemize}
+
+\section{Sfide Aperte, Rappresentatività e Impatto Sociale}
+Un progetto di Data Science fallisce se i dati non rappresentano in modo accurato e imparziale il dominio applicativo reale. 
+
+\subsection{Bias nei Dati e Modelli Parziali}
+I modelli data-driven imparano esattamente dai dati che vengono forniti in input. Se il dataset è parziale, il modello apprenderà un pattern distorto e potrà generare discriminazioni. 
+\textit{Il caso Amazon (2013):} Amazon tentò di automatizzare un filtro per i CV candidati usando algoritmi addestrati sugli assunti dei 10 anni precedenti. Siccome il dataset storico rifletteva un settore a forte dominanza maschile, l'algoritmo dedusse arbitrariamente (e in modo discriminatorio) che le donne non fossero adatte per fare carriera tecnica nell'azienda e iniziò a scartare i CV femminili. Non è l'algoritmo a discriminare intenzionalmente, ma l'algoritmo ha semplicemente appreso la parzialità latente nel dato (bias).
+Per mitigare questi problemi si adottano tecniche di fine-tuning o si integrano i dataset reali con \textbf{dati sintetici} accuratamente calibrati, per bilanciare le classi e aumentare la rappresentatività del modello prima del training.
+
+\subsection{Monitoraggio e Concept Drift}
+Le distribuzioni dei dati possono evolvere nel tempo, richiedendo manutenzione e aggiornamento del modello. 
+\textit{Esempio (Il Golden Retriever):} Supponiamo di addestrare una rete per riconoscere le razze canine. Nel set di addestramento, quasi tutte le foto dei Golden Retriever hanno come sfondo un prato verde o mostrano il cane con un guinzaglio. Il modello funzionerà bene in laboratorio. Messo in produzione, il sistema riceverà foto di Golden Retriever sul divano, fallendo la classificazione. In realtà il modello non aveva imparato l'anatomia del cane, bensì aveva correlato "sfondo verde + guinzaglio = Golden Retriever". Quando si registra una deriva delle distribuzioni dei dati operativi (Concept Drift), è necessario eseguire un riaddestramento (o fine-tuning) utilizzando campioni di scenari aggiornati.
+
+\subsection{Explainable AI (XAI) e Interpretabilità}
+Con il proliferare di modelli \textit{Black Box} (come le reti neurali), spesso accuratissimi ma internamente incomprensibili, è nata l'esigenza dell'Interpretabilità (Explainable AI), cruciale per applicazioni ad alto rischio (European AI Act) o ambito clinico.
+C'è un noto \textit{trade-off} in letteratura tra l'accuratezza di un modello e la sua nativa interpretabilità. Tuttavia, fornire spiegazioni (almeno a livello locale su singole previsioni) è fondamentale.
+
+\textit{Il caso Polmonite e Asma:} Un gruppo di ricercatori americani studiò un dataset clinico per prevedere la probabilità di decesso in pazienti con polmonite. L'algoritmo interpretabile (rule-based) generato dal sistema produsse una regola apparentemente folle: \textit{"I pazienti asmatici hanno minori probabilità di morire di polmonite rispetto ai non asmatici"}.
+Grazie all'interpretabilità, fu facile scoprire il bias del dataset originario: negli ospedali americani studiati, un paziente asmatico ai primi sintomi di polmonite veniva immediatamente ricoverato in terapia intensiva, abbattendo il tasso di mortalità grazie a un trattamento ultra-intensivo tempestivo. Se i ricercatori avessero usato una rete neurale opaca, il sistema avrebbe appreso la stessa correlazione latente e avrebbe raccomandato, in fase produttiva, di de-prioritizzare le cure verso i pazienti asmatici con polmonite, provocando esiti letali. Questo sottolinea come l'interpretabilità sia l'unico scudo umano contro modelli tecnicamente performanti ma addestrati su distribuzioni di contesto parziali.

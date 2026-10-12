@@ -303,8 +303,8 @@ INPUT C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex\latex\lm\ts1lmr.fd
 INPUT C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex\latex\lm\ts1lmr.fd
 INPUT C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex\latex\lm\ts1lmr.fd
 INPUT C:\Users\toteu\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\ts1-lmr10.tfm
-INPUT C:\Users\toteu\AppData\Local\Programs\MiKTeX\fonts\enc\dvips\lm\lm-ts1.enc
 INPUT C:\Users\toteu\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\ec-lmbx12.tfm
+INPUT C:\Users\toteu\AppData\Local\Programs\MiKTeX\fonts\enc\dvips\lm\lm-ts1.enc
 INPUT .\capitoli\01_Data Science_introduzione\data_science_introduzione.tex
 INPUT .\capitoli\01_Data Science_introduzione\data_science_introduzione.tex
 OUTPUT capitoli\01_Data Science_introduzione\data_science_introduzione.aux
@@ -314,39 +314,283 @@ INPUT capitoli\01_Data Science_introduzione\data_science_introduzione.tex
 INPUT C:\Users\toteu\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\ec-lmr17.tfm
 INPUT C:\Users\toteu\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\ec-lmbx12.tfm
 INPUT C:\Users\toteu\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\ec-lmri10.tfm
+INPUT .\capitoli\01_Data Science_introduzione\images\fig_pope_election_2005_2013.png
+INPUT .\capitoli\01_Data Science_introduzione\images\fig_pope_election_2005_2013.png
+INPUT .\capitoli\01_Data Science_introduzione\images\fig_pope_election_2005_2013.png
+INPUT .\capitoli\01_Data Science_introduzione\images\fig_pope_election_2005_2013.png
+INPUT .\capitoli\01_Data Science_introduzione\images\fig_pope_election_2005_2013.png
+INPUT .\capitoli\01_Data Science_introduzione\images\fig_pope_election_2005_2013.png
+INPUT .\capitoli\01_Data Science_introduzione\images\fig_pope_election_2005_2013.png
+INPUT .\capitoli\01_Data Science_introduzione\images\kdd_process1.png
+INPUT .\capitoli\01_Data Science_introduzione\images\kdd_process1.png
+INPUT .\capitoli\01_Data Science_introduzione\images\kdd_process1.png
+INPUT .\capitoli\01_Data Science_introduzione\images\kdd_process1.png
+INPUT .\capitoli\01_Data Science_introduzione\images\kdd_process1.png
+INPUT .\capitoli\01_Data Science_introduzione\images\kdd_process1.png
+INPUT .\capitoli\01_Data Science_introduzione\images\kdd_process1.png
+INPUT C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex\latex\lm\t1lmtt.fd
+INPUT C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex\latex\lm\t1lmtt.fd
+INPUT C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex\latex\lm\t1lmtt.fd
+INPUT C:\Users\toteu\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\ec-lmtt10.tfm
+INPUT C:\Users\toteu\AppData\Local\Programs\MiKTeX\fonts\enc\dvips\lm\lm-mathsy.enc
 INPUT .\capitoli\02_Data warehouse_introduzione\data_warehouse_introduzione.tex
 INPUT .\capitoli\02_Data warehouse_introduzione\data_warehouse_introduzione.tex
 OUTPUT capitoli\02_Data warehouse_introduzione\data_warehouse_introduzione.aux
 INPUT .\capitoli\02_Data warehouse_introduzione\data_warehouse_introduzione.tex
 INPUT .\capitoli\02_Data warehouse_introduzione\data_warehouse_introduzione.tex
 INPUT capitoli\02_Data warehouse_introduzione\data_warehouse_introduzione.tex
+INPUT .\capitoli\02_Data warehouse_introduzione\images\ipercubo_multidimensionale.png
+INPUT .\capitoli\02_Data warehouse_introduzione\images\ipercubo_multidimensionale.png
+INPUT .\capitoli\02_Data warehouse_introduzione\images\ipercubo_multidimensionale.png
+INPUT .\capitoli\02_Data warehouse_introduzione\images\ipercubo_multidimensionale.png
+INPUT .\capitoli\02_Data warehouse_introduzione\images\ipercubo_multidimensionale.png
+INPUT .\capitoli\02_Data warehouse_introduzione\images\ipercubo_multidimensionale.png
+INPUT C:\Users\toteu\AppData\Local\Programs\MiKTeX\fonts\enc\dvips\lm\lm-rm.enc
+INPUT .\capitoli\02_Data warehouse_introduzione\images\modello_a_stella.png
+INPUT .\capitoli\02_Data warehouse_introduzione\images\modello_a_stella.png
+INPUT .\capitoli\02_Data warehouse_introduzione\images\modello_a_stella.png
+INPUT .\capitoli\02_Data warehouse_introduzione\images\modello_a_stella.png
+INPUT .\capitoli\02_Data warehouse_introduzione\images\modello_a_stella.png
+INPUT .\capitoli\02_Data warehouse_introduzione\images\modello_a_stella.png
 INPUT C:\Users\toteu\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\ec-lmr8.tfm
 INPUT C:\Users\toteu\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\ec-lmr6.tfm
-INPUT C:\Users\toteu\AppData\Local\Programs\MiKTeX\fonts\enc\dvips\lm\lm-rm.enc
 INPUT C:\Users\toteu\AppData\Local\Programs\MiKTeX\fonts\enc\dvips\lm\lm-mathit.enc
-INPUT C:\Users\toteu\AppData\Local\Programs\MiKTeX\fonts\enc\dvips\lm\lm-mathsy.enc
+INPUT .\capitoli\02_Data warehouse_introduzione\images\architettura_elementi_costitutivi.png
+INPUT .\capitoli\02_Data warehouse_introduzione\images\architettura_elementi_costitutivi.png
+INPUT .\capitoli\02_Data warehouse_introduzione\images\architettura_elementi_costitutivi.png
+INPUT .\capitoli\02_Data warehouse_introduzione\images\architettura_elementi_costitutivi.png
+INPUT .\capitoli\02_Data warehouse_introduzione\images\architettura_elementi_costitutivi.png
+INPUT .\capitoli\02_Data warehouse_introduzione\images\architettura_elementi_costitutivi.png
+INPUT .\capitoli\02_Data warehouse_introduzione\images\architettura_2_livelli.png
+INPUT .\capitoli\02_Data warehouse_introduzione\images\architettura_2_livelli.png
+INPUT .\capitoli\02_Data warehouse_introduzione\images\architettura_2_livelli.png
+INPUT .\capitoli\02_Data warehouse_introduzione\images\architettura_2_livelli.png
+INPUT .\capitoli\02_Data warehouse_introduzione\images\architettura_2_livelli.png
+INPUT .\capitoli\02_Data warehouse_introduzione\images\architettura_2_livelli.png
+INPUT .\capitoli\02_Data warehouse_introduzione\images\architettura_3_livelli.png
+INPUT .\capitoli\02_Data warehouse_introduzione\images\architettura_3_livelli.png
+INPUT .\capitoli\02_Data warehouse_introduzione\images\architettura_3_livelli.png
+INPUT .\capitoli\02_Data warehouse_introduzione\images\architettura_3_livelli.png
+INPUT .\capitoli\02_Data warehouse_introduzione\images\architettura_3_livelli.png
+INPUT .\capitoli\02_Data warehouse_introduzione\images\architettura_3_livelli.png
+INPUT .\capitoli\02_Data warehouse_introduzione\images\architettura_3_livelli.png
 INPUT .\capitoli\03_Data warehouse_progettazione concettuale e logica\data_warehouse_progettazione_concettuale_e_logica.tex
 INPUT .\capitoli\03_Data warehouse_progettazione concettuale e logica\data_warehouse_progettazione_concettuale_e_logica.tex
 OUTPUT capitoli\03_Data warehouse_progettazione concettuale e logica\data_warehouse_progettazione_concettuale_e_logica.aux
 INPUT .\capitoli\03_Data warehouse_progettazione concettuale e logica\data_warehouse_progettazione_concettuale_e_logica.tex
 INPUT .\capitoli\03_Data warehouse_progettazione concettuale e logica\data_warehouse_progettazione_concettuale_e_logica.tex
 INPUT capitoli\03_Data warehouse_progettazione concettuale e logica\data_warehouse_progettazione_concettuale_e_logica.tex
-INPUT C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex\latex\lm\t1lmtt.fd
-INPUT C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex\latex\lm\t1lmtt.fd
-INPUT C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex\latex\lm\t1lmtt.fd
-INPUT C:\Users\toteu\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\ec-lmtt10.tfm
+INPUT .\capitoli\03_Data warehouse_progettazione concettuale e logica\images\approccio_bottom_up.png
+INPUT .\capitoli\03_Data warehouse_progettazione concettuale e logica\images\approccio_bottom_up.png
+INPUT .\capitoli\03_Data warehouse_progettazione concettuale e logica\images\approccio_bottom_up.png
+INPUT .\capitoli\03_Data warehouse_progettazione concettuale e logica\images\approccio_bottom_up.png
+INPUT .\capitoli\03_Data warehouse_progettazione concettuale e logica\images\approccio_bottom_up.png
+INPUT .\capitoli\03_Data warehouse_progettazione concettuale e logica\images\approccio_bottom_up.png
+INPUT .\capitoli\03_Data warehouse_progettazione concettuale e logica\images\approccio_bottom_up.png
+INPUT .\capitoli\03_Data warehouse_progettazione concettuale e logica\images\dfm_base_vendita.png
+INPUT .\capitoli\03_Data warehouse_progettazione concettuale e logica\images\dfm_base_vendita.png
+INPUT .\capitoli\03_Data warehouse_progettazione concettuale e logica\images\dfm_base_vendita.png
+INPUT .\capitoli\03_Data warehouse_progettazione concettuale e logica\images\dfm_base_vendita.png
+INPUT .\capitoli\03_Data warehouse_progettazione concettuale e logica\images\dfm_base_vendita.png
+INPUT .\capitoli\03_Data warehouse_progettazione concettuale e logica\images\dfm_base_vendita.png
+INPUT .\capitoli\03_Data warehouse_progettazione concettuale e logica\images\dfm_base_vendita.png
+INPUT .\capitoli\03_Data warehouse_progettazione concettuale e logica\images\dfm_vs_er.png
+INPUT .\capitoli\03_Data warehouse_progettazione concettuale e logica\images\dfm_vs_er.png
+INPUT .\capitoli\03_Data warehouse_progettazione concettuale e logica\images\dfm_vs_er.png
+INPUT .\capitoli\03_Data warehouse_progettazione concettuale e logica\images\dfm_vs_er.png
+INPUT .\capitoli\03_Data warehouse_progettazione concettuale e logica\images\dfm_vs_er.png
+INPUT .\capitoli\03_Data warehouse_progettazione concettuale e logica\images\dfm_vs_er.png
+INPUT .\capitoli\03_Data warehouse_progettazione concettuale e logica\images\dfm_vs_er.png
+INPUT .\capitoli\03_Data warehouse_progettazione concettuale e logica\images\dfm_costrutti_avanzati.png
+INPUT .\capitoli\03_Data warehouse_progettazione concettuale e logica\images\dfm_costrutti_avanzati.png
+INPUT .\capitoli\03_Data warehouse_progettazione concettuale e logica\images\dfm_costrutti_avanzati.png
+INPUT .\capitoli\03_Data warehouse_progettazione concettuale e logica\images\dfm_costrutti_avanzati.png
+INPUT .\capitoli\03_Data warehouse_progettazione concettuale e logica\images\dfm_costrutti_avanzati.png
+INPUT .\capitoli\03_Data warehouse_progettazione concettuale e logica\images\dfm_costrutti_avanzati.png
+INPUT .\capitoli\03_Data warehouse_progettazione concettuale e logica\images\dfm_costrutti_avanzati.png
+INPUT .\capitoli\03_Data warehouse_progettazione concettuale e logica\images\sparsita.png
+INPUT .\capitoli\03_Data warehouse_progettazione concettuale e logica\images\sparsita.png
+INPUT .\capitoli\03_Data warehouse_progettazione concettuale e logica\images\sparsita.png
+INPUT .\capitoli\03_Data warehouse_progettazione concettuale e logica\images\sparsita.png
+INPUT .\capitoli\03_Data warehouse_progettazione concettuale e logica\images\sparsita.png
+INPUT .\capitoli\03_Data warehouse_progettazione concettuale e logica\images\sparsita.png
+INPUT .\capitoli\03_Data warehouse_progettazione concettuale e logica\images\sparsita.png
+INPUT .\capitoli\03_Data warehouse_progettazione concettuale e logica\images\star_schema.png
+INPUT .\capitoli\03_Data warehouse_progettazione concettuale e logica\images\star_schema.png
+INPUT .\capitoli\03_Data warehouse_progettazione concettuale e logica\images\star_schema.png
+INPUT .\capitoli\03_Data warehouse_progettazione concettuale e logica\images\star_schema.png
+INPUT .\capitoli\03_Data warehouse_progettazione concettuale e logica\images\star_schema.png
+INPUT .\capitoli\03_Data warehouse_progettazione concettuale e logica\images\star_schema.png
+INPUT .\capitoli\03_Data warehouse_progettazione concettuale e logica\images\star_schema.png
+INPUT .\capitoli\03_Data warehouse_progettazione concettuale e logica\images\snowflake_schema.png
+INPUT .\capitoli\03_Data warehouse_progettazione concettuale e logica\images\snowflake_schema.png
+INPUT .\capitoli\03_Data warehouse_progettazione concettuale e logica\images\snowflake_schema.png
+INPUT .\capitoli\03_Data warehouse_progettazione concettuale e logica\images\snowflake_schema.png
+INPUT .\capitoli\03_Data warehouse_progettazione concettuale e logica\images\snowflake_schema.png
+INPUT .\capitoli\03_Data warehouse_progettazione concettuale e logica\images\snowflake_schema.png
+INPUT .\capitoli\03_Data warehouse_progettazione concettuale e logica\images\snowflake_schema.png
+INPUT .\capitoli\03_Data warehouse_progettazione concettuale e logica\images\archi_multipli.png
+INPUT .\capitoli\03_Data warehouse_progettazione concettuale e logica\images\archi_multipli.png
+INPUT .\capitoli\03_Data warehouse_progettazione concettuale e logica\images\archi_multipli.png
+INPUT .\capitoli\03_Data warehouse_progettazione concettuale e logica\images\archi_multipli.png
+INPUT .\capitoli\03_Data warehouse_progettazione concettuale e logica\images\archi_multipli.png
+INPUT .\capitoli\03_Data warehouse_progettazione concettuale e logica\images\archi_multipli.png
+INPUT .\capitoli\03_Data warehouse_progettazione concettuale e logica\images\archi_multipli.png
+INPUT .\capitoli\03_Data warehouse_progettazione concettuale e logica\images\junk_dimension.png
+INPUT .\capitoli\03_Data warehouse_progettazione concettuale e logica\images\junk_dimension.png
+INPUT .\capitoli\03_Data warehouse_progettazione concettuale e logica\images\junk_dimension.png
+INPUT .\capitoli\03_Data warehouse_progettazione concettuale e logica\images\junk_dimension.png
+INPUT .\capitoli\03_Data warehouse_progettazione concettuale e logica\images\junk_dimension.png
+INPUT .\capitoli\03_Data warehouse_progettazione concettuale e logica\images\junk_dimension.png
+INPUT .\capitoli\03_Data warehouse_progettazione concettuale e logica\images\junk_dimension.png
 INPUT .\capitoli\04_Data warehouse_analisi\data_warehouse_analisi.tex
 INPUT .\capitoli\04_Data warehouse_analisi\data_warehouse_analisi.tex
 OUTPUT capitoli\04_Data warehouse_analisi\data_warehouse_analisi.aux
 INPUT .\capitoli\04_Data warehouse_analisi\data_warehouse_analisi.tex
 INPUT .\capitoli\04_Data warehouse_analisi\data_warehouse_analisi.tex
 INPUT capitoli\04_Data warehouse_analisi\data_warehouse_analisi.tex
+INPUT .\capitoli\04_Data warehouse_analisi\images\roll_up_schema.png
+INPUT .\capitoli\04_Data warehouse_analisi\images\roll_up_schema.png
+INPUT .\capitoli\04_Data warehouse_analisi\images\roll_up_schema.png
+INPUT .\capitoli\04_Data warehouse_analisi\images\roll_up_schema.png
+INPUT .\capitoli\04_Data warehouse_analisi\images\roll_up_schema.png
+INPUT .\capitoli\04_Data warehouse_analisi\images\roll_up_schema.png
+INPUT .\capitoli\04_Data warehouse_analisi\images\roll_up_schema.png
+INPUT .\capitoli\04_Data warehouse_analisi\images\roll_up_hierarchy.png
+INPUT .\capitoli\04_Data warehouse_analisi\images\roll_up_hierarchy.png
+INPUT .\capitoli\04_Data warehouse_analisi\images\roll_up_hierarchy.png
+INPUT .\capitoli\04_Data warehouse_analisi\images\roll_up_hierarchy.png
+INPUT .\capitoli\04_Data warehouse_analisi\images\roll_up_hierarchy.png
+INPUT .\capitoli\04_Data warehouse_analisi\images\roll_up_hierarchy.png
+INPUT .\capitoli\04_Data warehouse_analisi\images\roll_up_hierarchy.png
+INPUT .\capitoli\04_Data warehouse_analisi\images\roll_up_dimension.png
+INPUT .\capitoli\04_Data warehouse_analisi\images\roll_up_dimension.png
+INPUT .\capitoli\04_Data warehouse_analisi\images\roll_up_dimension.png
+INPUT .\capitoli\04_Data warehouse_analisi\images\roll_up_dimension.png
+INPUT .\capitoli\04_Data warehouse_analisi\images\roll_up_dimension.png
+INPUT .\capitoli\04_Data warehouse_analisi\images\roll_up_dimension.png
+INPUT .\capitoli\04_Data warehouse_analisi\images\roll_up_dimension.png
+INPUT .\capitoli\04_Data warehouse_analisi\images\drill_down_schema.png
+INPUT .\capitoli\04_Data warehouse_analisi\images\drill_down_schema.png
+INPUT .\capitoli\04_Data warehouse_analisi\images\drill_down_schema.png
+INPUT .\capitoli\04_Data warehouse_analisi\images\drill_down_schema.png
+INPUT .\capitoli\04_Data warehouse_analisi\images\drill_down_schema.png
+INPUT .\capitoli\04_Data warehouse_analisi\images\drill_down_schema.png
+INPUT .\capitoli\04_Data warehouse_analisi\images\drill_down_schema.png
+INPUT .\capitoli\04_Data warehouse_analisi\images\drill_down_hierarchy.png
+INPUT .\capitoli\04_Data warehouse_analisi\images\drill_down_hierarchy.png
+INPUT .\capitoli\04_Data warehouse_analisi\images\drill_down_hierarchy.png
+INPUT .\capitoli\04_Data warehouse_analisi\images\drill_down_hierarchy.png
+INPUT .\capitoli\04_Data warehouse_analisi\images\drill_down_hierarchy.png
+INPUT .\capitoli\04_Data warehouse_analisi\images\drill_down_hierarchy.png
+INPUT .\capitoli\04_Data warehouse_analisi\images\drill_down_hierarchy.png
+INPUT .\capitoli\04_Data warehouse_analisi\images\drill_down_dimension.png
+INPUT .\capitoli\04_Data warehouse_analisi\images\drill_down_dimension.png
+INPUT .\capitoli\04_Data warehouse_analisi\images\drill_down_dimension.png
+INPUT .\capitoli\04_Data warehouse_analisi\images\drill_down_dimension.png
+INPUT .\capitoli\04_Data warehouse_analisi\images\drill_down_dimension.png
+INPUT .\capitoli\04_Data warehouse_analisi\images\drill_down_dimension.png
+INPUT .\capitoli\04_Data warehouse_analisi\images\drill_down_dimension.png
+INPUT .\capitoli\04_Data warehouse_analisi\images\slice_dice_schema.png
+INPUT .\capitoli\04_Data warehouse_analisi\images\slice_dice_schema.png
+INPUT .\capitoli\04_Data warehouse_analisi\images\slice_dice_schema.png
+INPUT .\capitoli\04_Data warehouse_analisi\images\slice_dice_schema.png
+INPUT .\capitoli\04_Data warehouse_analisi\images\slice_dice_schema.png
+INPUT .\capitoli\04_Data warehouse_analisi\images\slice_dice_schema.png
+INPUT .\capitoli\04_Data warehouse_analisi\images\slice_dice_schema.png
+INPUT .\capitoli\04_Data warehouse_analisi\images\slice_schema.png
+INPUT .\capitoli\04_Data warehouse_analisi\images\slice_schema.png
+INPUT .\capitoli\04_Data warehouse_analisi\images\slice_schema.png
+INPUT .\capitoli\04_Data warehouse_analisi\images\slice_schema.png
+INPUT .\capitoli\04_Data warehouse_analisi\images\slice_schema.png
+INPUT .\capitoli\04_Data warehouse_analisi\images\slice_schema.png
+INPUT .\capitoli\04_Data warehouse_analisi\images\slice_schema.png
+INPUT .\capitoli\04_Data warehouse_analisi\images\dice_schema.png
+INPUT .\capitoli\04_Data warehouse_analisi\images\dice_schema.png
+INPUT .\capitoli\04_Data warehouse_analisi\images\dice_schema.png
+INPUT .\capitoli\04_Data warehouse_analisi\images\dice_schema.png
+INPUT .\capitoli\04_Data warehouse_analisi\images\dice_schema.png
+INPUT .\capitoli\04_Data warehouse_analisi\images\dice_schema.png
+INPUT .\capitoli\04_Data warehouse_analisi\images\dice_schema.png
+INPUT .\capitoli\04_Data warehouse_analisi\images\pivot_schema.png
+INPUT .\capitoli\04_Data warehouse_analisi\images\pivot_schema.png
+INPUT .\capitoli\04_Data warehouse_analisi\images\pivot_schema.png
+INPUT .\capitoli\04_Data warehouse_analisi\images\pivot_schema.png
+INPUT .\capitoli\04_Data warehouse_analisi\images\pivot_schema.png
+INPUT .\capitoli\04_Data warehouse_analisi\images\pivot_schema.png
+INPUT .\capitoli\04_Data warehouse_analisi\images\pivot_schema.png
+INPUT .\capitoli\04_Data warehouse_analisi\images\pivot_schema_2.png
+INPUT .\capitoli\04_Data warehouse_analisi\images\pivot_schema_2.png
+INPUT .\capitoli\04_Data warehouse_analisi\images\pivot_schema_2.png
+INPUT .\capitoli\04_Data warehouse_analisi\images\pivot_schema_2.png
+INPUT .\capitoli\04_Data warehouse_analisi\images\pivot_schema_2.png
+INPUT .\capitoli\04_Data warehouse_analisi\images\pivot_schema_2.png
+INPUT .\capitoli\04_Data warehouse_analisi\images\pivot_schema_2.png
+INPUT C:\Users\toteu\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\ec-lmtk10.tfm
+INPUT .\capitoli\04_Data warehouse_analisi\images\media_mobile.png
+INPUT .\capitoli\04_Data warehouse_analisi\images\media_mobile.png
+INPUT .\capitoli\04_Data warehouse_analisi\images\media_mobile.png
+INPUT .\capitoli\04_Data warehouse_analisi\images\media_mobile.png
+INPUT .\capitoli\04_Data warehouse_analisi\images\media_mobile.png
+INPUT .\capitoli\04_Data warehouse_analisi\images\media_mobile.png
+INPUT .\capitoli\04_Data warehouse_analisi\images\media_mobile.png
+INPUT .\capitoli\04_Data warehouse_analisi\images\somma_cumulativa.png
+INPUT .\capitoli\04_Data warehouse_analisi\images\somma_cumulativa.png
+INPUT .\capitoli\04_Data warehouse_analisi\images\somma_cumulativa.png
+INPUT .\capitoli\04_Data warehouse_analisi\images\somma_cumulativa.png
+INPUT .\capitoli\04_Data warehouse_analisi\images\somma_cumulativa.png
+INPUT .\capitoli\04_Data warehouse_analisi\images\somma_cumulativa.png
+INPUT .\capitoli\04_Data warehouse_analisi\images\somma_cumulativa.png
+INPUT .\capitoli\04_Data warehouse_analisi\images\confronto_dato_macro.png
+INPUT .\capitoli\04_Data warehouse_analisi\images\confronto_dato_macro.png
+INPUT .\capitoli\04_Data warehouse_analisi\images\confronto_dato_macro.png
+INPUT .\capitoli\04_Data warehouse_analisi\images\confronto_dato_macro.png
+INPUT .\capitoli\04_Data warehouse_analisi\images\confronto_dato_macro.png
+INPUT .\capitoli\04_Data warehouse_analisi\images\confronto_dato_macro.png
+INPUT .\capitoli\04_Data warehouse_analisi\images\confronto_dato_macro.png
+INPUT .\capitoli\04_Data warehouse_analisi\images\rollup_schema.png
+INPUT .\capitoli\04_Data warehouse_analisi\images\rollup_schema.png
+INPUT .\capitoli\04_Data warehouse_analisi\images\rollup_schema.png
+INPUT .\capitoli\04_Data warehouse_analisi\images\rollup_schema.png
+INPUT .\capitoli\04_Data warehouse_analisi\images\rollup_schema.png
+INPUT .\capitoli\04_Data warehouse_analisi\images\rollup_schema.png
+INPUT .\capitoli\04_Data warehouse_analisi\images\rollup_schema.png
 INPUT .\capitoli\05_Data warehouse_progettazione fisica e alimentazione\data_warehouse_progettazione_fisica_e_alimentazione.tex
 INPUT .\capitoli\05_Data warehouse_progettazione fisica e alimentazione\data_warehouse_progettazione_fisica_e_alimentazione.tex
 OUTPUT capitoli\05_Data warehouse_progettazione fisica e alimentazione\data_warehouse_progettazione_fisica_e_alimentazione.aux
 INPUT .\capitoli\05_Data warehouse_progettazione fisica e alimentazione\data_warehouse_progettazione_fisica_e_alimentazione.tex
 INPUT .\capitoli\05_Data warehouse_progettazione fisica e alimentazione\data_warehouse_progettazione_fisica_e_alimentazione.tex
 INPUT capitoli\05_Data warehouse_progettazione fisica e alimentazione\data_warehouse_progettazione_fisica_e_alimentazione.tex
+INPUT .\capitoli\05_Data warehouse_progettazione fisica e alimentazione\images\def_vista_v3.png
+INPUT .\capitoli\05_Data warehouse_progettazione fisica e alimentazione\images\def_vista_v3.png
+INPUT .\capitoli\05_Data warehouse_progettazione fisica e alimentazione\images\def_vista_v3.png
+INPUT .\capitoli\05_Data warehouse_progettazione fisica e alimentazione\images\def_vista_v3.png
+INPUT .\capitoli\05_Data warehouse_progettazione fisica e alimentazione\images\def_vista_v3.png
+INPUT .\capitoli\05_Data warehouse_progettazione fisica e alimentazione\images\def_vista_v3.png
+INPUT .\capitoli\05_Data warehouse_progettazione fisica e alimentazione\images\reticolo_viste.png
+INPUT .\capitoli\05_Data warehouse_progettazione fisica e alimentazione\images\reticolo_viste.png
+INPUT .\capitoli\05_Data warehouse_progettazione fisica e alimentazione\images\reticolo_viste.png
+INPUT .\capitoli\05_Data warehouse_progettazione fisica e alimentazione\images\reticolo_viste.png
+INPUT .\capitoli\05_Data warehouse_progettazione fisica e alimentazione\images\reticolo_viste.png
+INPUT .\capitoli\05_Data warehouse_progettazione fisica e alimentazione\images\reticolo_viste.png
+INPUT .\capitoli\05_Data warehouse_progettazione fisica e alimentazione\images\grafici_scelta_viste.png
+INPUT .\capitoli\05_Data warehouse_progettazione fisica e alimentazione\images\grafici_scelta_viste.png
+INPUT .\capitoli\05_Data warehouse_progettazione fisica e alimentazione\images\grafici_scelta_viste.png
+INPUT .\capitoli\05_Data warehouse_progettazione fisica e alimentazione\images\grafici_scelta_viste.png
+INPUT .\capitoli\05_Data warehouse_progettazione fisica e alimentazione\images\grafici_scelta_viste.png
+INPUT .\capitoli\05_Data warehouse_progettazione fisica e alimentazione\images\grafici_scelta_viste.png
+INPUT .\capitoli\05_Data warehouse_progettazione fisica e alimentazione\images\schemi_pulitura.png
+INPUT .\capitoli\05_Data warehouse_progettazione fisica e alimentazione\images\schemi_pulitura.png
+INPUT .\capitoli\05_Data warehouse_progettazione fisica e alimentazione\images\schemi_pulitura.png
+INPUT .\capitoli\05_Data warehouse_progettazione fisica e alimentazione\images\schemi_pulitura.png
+INPUT .\capitoli\05_Data warehouse_progettazione fisica e alimentazione\images\schemi_pulitura.png
+INPUT .\capitoli\05_Data warehouse_progettazione fisica e alimentazione\images\schemi_pulitura.png
+INPUT .\capitoli\05_Data warehouse_progettazione fisica e alimentazione\images\diagrammi_caricamento.png
+INPUT .\capitoli\05_Data warehouse_progettazione fisica e alimentazione\images\diagrammi_caricamento.png
+INPUT .\capitoli\05_Data warehouse_progettazione fisica e alimentazione\images\diagrammi_caricamento.png
+INPUT .\capitoli\05_Data warehouse_progettazione fisica e alimentazione\images\diagrammi_caricamento.png
+INPUT .\capitoli\05_Data warehouse_progettazione fisica e alimentazione\images\diagrammi_caricamento.png
+INPUT .\capitoli\05_Data warehouse_progettazione fisica e alimentazione\images\diagrammi_caricamento.png
 INPUT .\capitoli\06_Conceptual schema_textual formalism\conceptual_schema_textual_formalism.tex
 INPUT .\capitoli\06_Conceptual schema_textual formalism\conceptual_schema_textual_formalism.tex
 OUTPUT capitoli\06_Conceptual schema_textual formalism\conceptual_schema_textual_formalism.aux
@@ -441,9 +685,13 @@ INPUT C:\Users\toteu\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmr12.p
 INPUT C:\Users\toteu\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmr12.pfb
 INPUT C:\Users\toteu\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmr17.pfb
 INPUT C:\Users\toteu\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmr17.pfb
+INPUT C:\Users\toteu\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmr8.pfb
+INPUT C:\Users\toteu\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmr8.pfb
 INPUT C:\Users\toteu\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmri10.pfb
 INPUT C:\Users\toteu\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmri10.pfb
 INPUT C:\Users\toteu\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmsy10.pfb
 INPUT C:\Users\toteu\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmsy10.pfb
+INPUT C:\Users\toteu\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmtk10.pfb
+INPUT C:\Users\toteu\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmtk10.pfb
 INPUT C:\Users\toteu\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmtt10.pfb
 INPUT C:\Users\toteu\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmtt10.pfb

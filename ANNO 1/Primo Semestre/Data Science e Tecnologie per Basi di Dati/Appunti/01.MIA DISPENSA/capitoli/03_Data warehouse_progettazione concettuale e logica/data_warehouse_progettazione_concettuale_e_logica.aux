@@ -1,32 +1,62 @@
 \relax 
 \providecommand\hyper@newdestlabel[2]{}
-\@writefile{toc}{\contentsline {chapter}{\numberline {3}Progettazione del Data Warehouse}{12}{chapter.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {3}Progettazione di un Data Warehouse}{21}{chapter.3}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {3.1}Fattori di rischio}{12}{section.3.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {3.2}Approcci alla progettazione}{12}{section.3.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {3.3}Ciclo di vita della progettazione di un Data Mart}{12}{section.3.3}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {3.1}{\ignorespaces Fasi della progettazione di un data mart.}}{13}{figure.3.1}\protected@file@percent }
-\newlabel{fig:fasi_progettazione}{{3.1}{13}{Fasi della progettazione di un data mart}{figure.3.1}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.1}Analisi dei requisiti}{13}{subsection.3.3.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.2}Progettazione concettuale}{13}{subsection.3.3.2}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {3.2}{\ignorespaces Esempio di Dimensional Fact Model per le vendite.}}{13}{figure.3.2}\protected@file@percent }
-\newlabel{fig:dfm_base}{{3.2}{13}{Esempio di Dimensional Fact Model per le vendite}{figure.3.2}{}}
-\@writefile{toc}{\contentsline {subsubsection}{DFM: Costrutti avanzati}{13}{section*.8}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {3.3}{\ignorespaces Costrutti avanzati: rappresentazione dell'arco multiplo nel DFM.}}{14}{figure.3.3}\protected@file@percent }
-\newlabel{fig:dfm_arco_multiplo}{{3.3}{14}{Costrutti avanzati: rappresentazione dell'arco multiplo nel DFM}{figure.3.3}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.3}Sparsità dei dati}{14}{subsection.3.3.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.4}Progettazione logica e ROLAP}{14}{subsection.3.3.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Schema a stella (Star Schema)}{14}{section*.9}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {3.4}{\ignorespaces Schema a stella (Star Schema).}}{14}{figure.3.4}\protected@file@percent }
-\newlabel{fig:star_schema}{{3.4}{14}{Schema a stella (Star Schema)}{figure.3.4}{}}
-\@writefile{toc}{\contentsline {subsubsection}{Schema a fiocco di neve (Snowflake Schema)}{15}{section*.10}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Implementazione logica degli archi multipli}{15}{section*.11}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.5}Progettazione fisica}{15}{subsection.3.3.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3.1}Fattori di Rischio e Approcci alla Progettazione}{21}{section.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1.1}Fattori di rischio}{21}{subsection.3.1.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1.2}Approcci: Top-Down vs Bottom-Up}{22}{subsection.3.1.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Approccio Top-Down}{22}{section*.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Approccio Bottom-Up}{22}{section*.9}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.1}{\ignorespaces Approccio Bottom-Up: si parte da un data mart specifico e si procede all'integrazione con altri data mart per formare il data warehouse completo.}}{22}{figure.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3.2}Analisi dei Requisiti}{22}{section.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.1}Requisiti Applicativi}{23}{subsection.3.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.2}Requisiti Strutturali}{23}{subsection.3.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3.3}Progettazione Concettuale: Dimensional Fact Model (DFM)}{23}{section.3.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.1}Elementi Base del DFM}{24}{subsection.3.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Le Gerarchie e le Dipendenze Funzionali}{24}{section*.10}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.2}{\ignorespaces Esempio di Dimensional Fact Model per le vendite, con dimensioni (Negozio, Prodotto, Data), gerarchie (es. Negozio $\rightarrow $ Città) e misure (Qta, Incasso).}}{24}{figure.3.2}\protected@file@percent }
+\newlabel{fig:dfm-base}{{3.2}{24}{Esempio di Dimensional Fact Model per le vendite, con dimensioni (Negozio, Prodotto, Data), gerarchie (es. Negozio $\rightarrow $ Città) e misure (Qta, Incasso)}{figure.3.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.2}Confronto: DFM vs Modello ER}{25}{subsection.3.3.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.3}{\ignorespaces Confronto tra la notazione compatta del DFM (a sinistra) e la complessità di un modello ER equivalente (a destra) dove tutte le dipendenze funzionali sono esplicitate in tabelle separate.}}{25}{figure.3.3}\protected@file@percent }
+\newlabel{fig:dfm-vs-er}{{3.3}{25}{Confronto tra la notazione compatta del DFM (a sinistra) e la complessità di un modello ER equivalente (a destra) dove tutte le dipendenze funzionali sono esplicitate in tabelle separate}{figure.3.3}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.4}Misure e Operatori di Aggregazione}{25}{section.3.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4.1}Classificazione delle Misure}{25}{subsection.3.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4.2}Operatori di Aggregazione}{26}{subsection.3.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3.5}Costrutti Avanzati nel DFM}{26}{section.3.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.5.1}Attributi Descrittivi e Gerarchie Condivise}{26}{subsection.3.5.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.5.2}L'Arco Multiplo}{27}{subsection.3.5.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.5.3}L'Attributo Configurazione}{27}{subsection.3.5.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.4}{\ignorespaces Rappresentazione di un arco multiplo (a sinistra) e di un attributo configurazione (a destra) nel Dimensional Fact Model.}}{27}{figure.3.4}\protected@file@percent }
+\newlabel{fig:dfm-costrutti-avanzati}{{3.4}{27}{Rappresentazione di un arco multiplo (a sinistra) e di un attributo configurazione (a destra) nel Dimensional Fact Model}{figure.3.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.5.4}Schemi di Fatto Vuoti}{27}{subsection.3.5.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3.6}La Rappresentazione del Tempo (Slowly Changing Dimensions)}{28}{section.3.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.6.1}Rappresentazione di Tipo 1 (Sovrascrittura)}{28}{subsection.3.6.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.6.2}Rappresentazione di Tipo 2 (Nuova Istanza)}{28}{subsection.3.6.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.6.3}Rappresentazione di Tipo 3 (Campionamento Temporale)}{28}{subsection.3.6.3}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {3.1}{\ignorespaces Esempio di gestione di una variazione dimensionale con il Tipo 3}}{28}{table.3.1}\protected@file@percent }
+\newlabel{tab:scd-tipo3}{{3.1}{28}{Esempio di gestione di una variazione dimensionale con il Tipo 3}{table.3.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.7}Dimensionamento del Data Warehouse: Carico di Lavoro e Volume dei Dati}{29}{section.3.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.7.1}La Sparsità dei Dati}{29}{subsection.3.7.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.5}{\ignorespaces Esempio di sparsità dei dati: la matrice teorica (a sinistra) mostra tutte le combinazioni possibili, mentre la matrice reale (a destra) evidenzia solo le combinazioni effettivamente verificatesi.}}{29}{figure.3.5}\protected@file@percent }
+\newlabel{fig:sparsita}{{3.5}{29}{Esempio di sparsità dei dati: la matrice teorica (a sinistra) mostra tutte le combinazioni possibili, mentre la matrice reale (a destra) evidenzia solo le combinazioni effettivamente verificatesi}{figure.3.5}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.8}Progettazione Logica: Il Modello Relazionale per il Data Warehouse}{29}{section.3.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.8.1}Lo Schema a Stella (Star Schema)}{29}{subsection.3.8.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.6}{\ignorespaces Struttura di uno Schema a Stella (Star Schema): il fatto centrale è circondato da tabelle dimensionali completamente denormalizzate.}}{30}{figure.3.6}\protected@file@percent }
+\newlabel{fig:star-schema}{{3.6}{30}{Struttura di uno Schema a Stella (Star Schema): il fatto centrale è circondato da tabelle dimensionali completamente denormalizzate}{figure.3.6}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.8.2}Lo Schema a Fiocco di Neve (Snowflake Schema)}{30}{subsection.3.8.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.7}{\ignorespaces Struttura di uno Schema a Fiocco di Neve (Snowflake Schema): la gerarchia geografica è separata dalla tabella Negozio, richiedendo un join aggiuntivo per ricostruire l'informazione.}}{31}{figure.3.7}\protected@file@percent }
+\newlabel{fig:snowflake-schema}{{3.7}{31}{Struttura di uno Schema a Fiocco di Neve (Snowflake Schema): la gerarchia geografica è separata dalla tabella Negozio, richiedendo un join aggiuntivo per ricostruire l'informazione}{figure.3.7}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.8.3}Traduzione Logica degli Archi Multipli}{31}{subsection.3.8.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.8}{\ignorespaces Traduzione logica di un arco multiplo: a sinistra la soluzione con Bridge Table, a destra la soluzione Push Down.}}{32}{figure.3.8}\protected@file@percent }
+\newlabel{fig:archi-multipli}{{3.8}{32}{Traduzione logica di un arco multiplo: a sinistra la soluzione con Bridge Table, a destra la soluzione Push Down}{figure.3.8}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.8.4}Dimensioni Degeneri e Junk Dimension}{32}{subsection.3.8.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.9}{\ignorespaces Esempio di Junk Dimension: le dimensioni degeneri "Tipo Spedizione" e "Flag Stato" vengono combinate in un'unica tabella dimensionale, riducendo il numero di join nella Tabella dei Fatti.}}{33}{figure.3.9}\protected@file@percent }
+\newlabel{fig:junk-dimension}{{3.9}{33}{Esempio di Junk Dimension: le dimensioni degeneri "Tipo Spedizione" e "Flag Stato" vengono combinate in un'unica tabella dimensionale, riducendo il numero di join nella Tabella dei Fatti}{figure.3.9}{}}
 \@setckpt{capitoli/03_Data warehouse_progettazione concettuale e logica/data_warehouse_progettazione_concettuale_e_logica}{
-\setcounter{page}{16}
+\setcounter{page}{34}
 \setcounter{equation}{0}
-\setcounter{enumi}{3}
+\setcounter{enumi}{2}
 \setcounter{enumii}{0}
 \setcounter{enumiii}{0}
 \setcounter{enumiv}{0}
@@ -34,25 +64,25 @@
 \setcounter{mpfootnote}{0}
 \setcounter{part}{0}
 \setcounter{chapter}{3}
-\setcounter{section}{3}
-\setcounter{subsection}{5}
+\setcounter{section}{8}
+\setcounter{subsection}{4}
 \setcounter{subsubsection}{0}
 \setcounter{paragraph}{0}
 \setcounter{subparagraph}{0}
-\setcounter{figure}{4}
-\setcounter{table}{0}
+\setcounter{figure}{9}
+\setcounter{table}{1}
 \setcounter{parentequation}{0}
 \setcounter{lstnumber}{1}
 \setcounter{float@type}{8}
 \setcounter{section@level}{2}
-\setcounter{Item}{11}
+\setcounter{Item}{27}
 \setcounter{Hfootnote}{0}
 \setcounter{bookmark@seq@number}{0}
 \setcounter{definizione}{0}
 \setcounter{teorema}{0}
 \setcounter{esempio}{0}
 \setcounter{definition}{0}
-\setcounter{example}{1}
-\setcounter{remark}{2}
+\setcounter{example}{0}
+\setcounter{remark}{0}
 \setcounter{lstlisting}{0}
 }
