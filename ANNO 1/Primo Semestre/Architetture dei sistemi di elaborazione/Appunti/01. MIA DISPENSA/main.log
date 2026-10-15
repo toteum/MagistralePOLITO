@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.6.16)  15 OCT 2026 12:18
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.6.16)  15 OCT 2026 22:45
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -946,22 +946,62 @@ Overfull \hbox (10.22894pt too wide) in paragraph at lines 196--196
 
  (capitoli/09_cache_memories/09_cache_memories.tex
 Capitolo 9.
+<capitoli/09_cache_memories/images/von_neumann_architecture.png, id=763, 322.20375pt x 325.215pt>
+File: capitoli/09_cache_memories/images/von_neumann_architecture.png Graphic file (type png)
+<use capitoli/09_cache_memories/images/von_neumann_architecture.png>
+Package pdftex.def Info: capitoli/09_cache_memories/images/von_neumann_architecture.png  used on input line 17.
+(pdftex.def)             Requested size: 175.26622pt x 176.90866pt.
 [56
 
 
 
 
-] [57] [58] [59] [60] [61] [62] [63]
-Overfull \hbox (7.39326pt too wide) in paragraph at lines 321--322
+]
+<capitoli/09_cache_memories/images/harvard_architecture.png, id=768, 711.65875pt x 744.7825pt>
+File: capitoli/09_cache_memories/images/harvard_architecture.png Graphic file (type png)
+<use capitoli/09_cache_memories/images/harvard_architecture.png>
+Package pdftex.def Info: capitoli/09_cache_memories/images/harvard_architecture.png  used on input line 26.
+(pdftex.def)             Requested size: 175.26622pt x 183.42224pt.
+ [57 <./capitoli/09_cache_memories/images/von_neumann_architecture.png> <./capitoli/09_cache_memories/images/harvard_architecture.png>]
+<capitoli/09_cache_memories/images/memory_hierarchy.png, id=778, 912.40875pt x 480.29437pt>
+File: capitoli/09_cache_memories/images/memory_hierarchy.png Graphic file (type png)
+<use capitoli/09_cache_memories/images/memory_hierarchy.png>
+Package pdftex.def Info: capitoli/09_cache_memories/images/memory_hierarchy.png  used on input line 54.
+(pdftex.def)             Requested size: 350.53915pt x 184.5218pt.
+ [58 <./capitoli/09_cache_memories/images/memory_hierarchy.png>]
+<capitoli/09_cache_memories/images/cache_organization.png, id=789, 797.98125pt x 412.54124pt>
+File: capitoli/09_cache_memories/images/cache_organization.png Graphic file (type png)
+<use capitoli/09_cache_memories/images/cache_organization.png>
+Package pdftex.def Info: capitoli/09_cache_memories/images/cache_organization.png  used on input line 104.
+(pdftex.def)             Requested size: 350.53915pt x 181.22284pt.
+ [59]
+<capitoli/09_cache_memories/images/cpu_address.png, id=797, 352.81813pt x 75.28125pt>
+File: capitoli/09_cache_memories/images/cpu_address.png Graphic file (type png)
+<use capitoli/09_cache_memories/images/cpu_address.png>
+Package pdftex.def Info: capitoli/09_cache_memories/images/cpu_address.png  used on input line 127.
+(pdftex.def)             Requested size: 175.26622pt x 37.39699pt.
+ [60 <./capitoli/09_cache_memories/images/cache_organization.png> <./capitoli/09_cache_memories/images/cpu_address.png>]
+<capitoli/09_cache_memories/images/cache_lookup.png, id=809, 587.69562pt x 473.26813pt>
+File: capitoli/09_cache_memories/images/cache_lookup.png Graphic file (type png)
+<use capitoli/09_cache_memories/images/cache_lookup.png>
+Package pdftex.def Info: capitoli/09_cache_memories/images/cache_lookup.png  used on input line 148.
+(pdftex.def)             Requested size: 306.71924pt x 246.9963pt.
+<capitoli/09_cache_memories/images/cache_positioning.png, id=810, 1033.8625pt x 684.5575pt>
+File: capitoli/09_cache_memories/images/cache_positioning.png Graphic file (type png)
+<use capitoli/09_cache_memories/images/cache_positioning.png>
+Package pdftex.def Info: capitoli/09_cache_memories/images/cache_positioning.png  used on input line 163.
+(pdftex.def)             Requested size: 306.71924pt x 203.0917pt.
+ [61 <./capitoli/09_cache_memories/images/cache_lookup.png>] [62 <./capitoli/09_cache_memories/images/cache_positioning.png (PNG copy)>] [63] [64] [65] [66]
+Overfull \hbox (7.39326pt too wide) in paragraph at lines 372--373
 []\T1/lmr/bx/n/10.95 (-20) Slide 9 e 10 - Or-ga-niz-za-zio-ne In-ter-na\T1/lmr/m/n/10.95 (-20) : Sche-ma dei bloc-chi Da-ta Ar-ray e Tag/Directory
  []
 
-[64]) [65]
+[67]) [68]
 \openout2 = `capitoli/10_branch_prediction/10_branch_prediction.aux'.
 
  (capitoli/10_branch_prediction/10_branch_prediction.tex
 Capitolo 10.
-) [66
+) [69
 
 
 
@@ -971,7 +1011,7 @@ Capitolo 10.
 
  (capitoli/11_dyn_scheduling/11_dyn_scheduling.tex
 Capitolo 11.
-) [67
+) [70
 
 
 
@@ -981,7 +1021,7 @@ Capitolo 11.
 
  (capitoli/12_hdwr_speculation/12_hdwr_speculation.tex
 Capitolo 12.
-) [68
+) [71
 
 
 
@@ -991,7 +1031,7 @@ Capitolo 12.
 
  (capitoli/13_mult_issue_proc/13_mult_issue_proc.tex
 Capitolo 13.
-) [69
+) [72
 
 
 
@@ -1001,7 +1041,7 @@ Capitolo 13.
 
  (capitoli/14_Exmpl_i7_A8/14_Exmpl_i7_A8.tex
 Capitolo 14.
-) [70
+) [73
 
 
 
@@ -1011,7 +1051,7 @@ Capitolo 14.
 
  (capitoli/15_vliw/15_vliw.tex
 Capitolo 15.
-) [71
+) [74
 
 
 
@@ -1021,14 +1061,14 @@ Capitolo 15.
 
  (capitoli/16_tlp/16_tlp.tex
 Capitolo 16.
-) [72
+) [75
 
 
 
 
 ]
 Capitolo 17.
-[73
+[76
 
 
 
@@ -1037,27 +1077,27 @@ Capitolo 17.
 
  (ESERCIZI/ex1/ex1.tex
 Capitolo 18.
-[74
+[77
 
 
-] [75] [76] [77]) [78] [79] (main.aux (capitoli/introduzione/introduzione.aux) (capitoli/01_computer_design_introduction/01_computer_design_introduction.aux) (capitoli/02_intro_to_instruction-set/02_intro_to_instruction-set.aux) (capitoli/03_RISC-V_Introduction/03_RISC-V_Introduction.aux) (capitoli/04_gem5/04_gem5.aux) (capitoli/05_pipelining_base/05_pipelining_base.aux) (capitoli/06_pipelining_multicycle/06_pipelining_multicycle.aux) (capitoli/07_pipelining_exceptions/07_pipelining_exceptions.aux) (capitoli/08_ILP/08_ILP.aux) (capitoli/09_cache_memories/09_cache_memories.aux) (capitoli/10_branch_prediction/10_branch_prediction.aux) (capitoli/11_dyn_scheduling/11_dyn_scheduling.aux) (capitoli/12_hdwr_speculation/12_hdwr_speculation.aux) (capitoli/13_mult_issue_proc/13_mult_issue_proc.aux) (capitoli/14_Exmpl_i7_A8/14_Exmpl_i7_A8.aux) (capitoli/15_vliw/15_vliw.aux) (capitoli/16_tlp/16_tlp.aux) (ESERCIZI/ex1/ex1.aux))
+] [78] [79] [80]) [81] [82] (main.aux (capitoli/introduzione/introduzione.aux) (capitoli/01_computer_design_introduction/01_computer_design_introduction.aux) (capitoli/02_intro_to_instruction-set/02_intro_to_instruction-set.aux) (capitoli/03_RISC-V_Introduction/03_RISC-V_Introduction.aux) (capitoli/04_gem5/04_gem5.aux) (capitoli/05_pipelining_base/05_pipelining_base.aux) (capitoli/06_pipelining_multicycle/06_pipelining_multicycle.aux) (capitoli/07_pipelining_exceptions/07_pipelining_exceptions.aux) (capitoli/08_ILP/08_ILP.aux) (capitoli/09_cache_memories/09_cache_memories.aux) (capitoli/10_branch_prediction/10_branch_prediction.aux) (capitoli/11_dyn_scheduling/11_dyn_scheduling.aux) (capitoli/12_hdwr_speculation/12_hdwr_speculation.aux) (capitoli/13_mult_issue_proc/13_mult_issue_proc.aux) (capitoli/14_Exmpl_i7_A8/14_Exmpl_i7_A8.aux) (capitoli/15_vliw/15_vliw.aux) (capitoli/16_tlp/16_tlp.aux) (ESERCIZI/ex1/ex1.aux))
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 21630 strings out of 467871
- 432365 string characters out of 5418376
- 829942 words of memory out of 5000000
- 49330 multiletter control sequences out of 15000+600000
+ 21696 strings out of 467871
+ 435621 string characters out of 5418376
+ 830764 words of memory out of 5000000
+ 49386 multiletter control sequences out of 15000+600000
  720764 words of font info for 251 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  80i,12n,83p,1123b,1402s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx10.pfb><C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx8.pfb><C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmex10.pfb><C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi10.pfb><C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi8.pfb><C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr12.pfb><C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr17.pfb><C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr6.pfb><C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr8.pfb><C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri10.pfb><C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy8.pfb><C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtk10.pfb><C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb>
-Output written on main.pdf (80 pages, 6951922 bytes).
+Output written on main.pdf (83 pages, 8094988 bytes).
 PDF statistics:
- 1529 PDF objects out of 1728 (max. 8388607)
- 427 named destinations out of 1000 (max. 500000)
- 53055 words of extra memory for PDF output out of 61914 (max. 10000000)
+ 1564 PDF objects out of 1728 (max. 8388607)
+ 437 named destinations out of 1000 (max. 500000)
+ 53090 words of extra memory for PDF output out of 61914 (max. 10000000)
 

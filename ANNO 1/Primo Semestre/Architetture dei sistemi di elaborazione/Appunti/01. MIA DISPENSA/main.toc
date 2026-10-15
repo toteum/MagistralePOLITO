@@ -118,51 +118,51 @@
 \contentsline {chapter}{\numberline {9}Memorie Cache}{56}{chapter.9}%
 \contentsline {section}{\numberline {9.1}Introduzione e Motivazione}{56}{section.9.1}%
 \contentsline {subsection}{\numberline {9.1.1}Architettura di Von Neumann vs Harvard}{56}{subsection.9.1.1}%
-\contentsline {section}{\numberline {9.2}Gerarchia delle Memorie e Principio di Località}{56}{section.9.2}%
-\contentsline {subsection}{\numberline {9.2.1}Principio di Località}{57}{subsection.9.2.1}%
-\contentsline {subsection}{\numberline {9.2.2}Prestazioni e Hit Ratio}{57}{subsection.9.2.2}%
-\contentsline {section}{\numberline {9.3}Organizzazione Interna della Cache}{58}{section.9.3}%
-\contentsline {subsection}{\numberline {9.3.1}Ricerca di un blocco dati nella Cache}{58}{subsection.9.3.1}%
-\contentsline {subsection}{\numberline {9.3.2}Posizionamento della Cache nel Sistema}{59}{subsection.9.3.2}%
-\contentsline {section}{\numberline {9.4}Tecniche di Mappatura (Mapping)}{59}{section.9.4}%
-\contentsline {subsection}{\numberline {9.4.1}Mappatura Diretta (Direct Mapping)}{59}{subsection.9.4.1}%
-\contentsline {subsection}{\numberline {9.4.2}Mappatura Associativa agli Insiemi (Set Associative)}{60}{subsection.9.4.2}%
-\contentsline {subsection}{\numberline {9.4.3}Mappatura Completamente Associativa (Fully Associative)}{60}{subsection.9.4.3}%
-\contentsline {section}{\numberline {9.5}Algoritmi di Rimpiazzamento}{60}{section.9.5}%
-\contentsline {subsection}{\numberline {9.5.1}Approccio FIFO con Seconda Chance (Clock Bit)}{61}{subsection.9.5.1}%
-\contentsline {subsection}{\numberline {9.5.2}Algoritmo pseudo-LRU (pLRU)}{61}{subsection.9.5.2}%
-\contentsline {section}{\numberline {9.6}Gestione delle Scritture e Coerenza}{61}{section.9.6}%
-\contentsline {subsection}{\numberline {9.6.1}Aggiornamento della Memoria Principale}{61}{subsection.9.6.1}%
-\contentsline {subsection}{\numberline {9.6.2}Coerenza della Memoria (Multiprocessore) e Protocollo MESI}{62}{subsection.9.6.2}%
-\contentsline {section}{\numberline {9.7}Esempi Calcolati e Strutturazione Fisica}{62}{section.9.7}%
-\contentsline {subsection}{\numberline {9.7.1}Esempio 1: Cache Direct Mapped}{62}{subsection.9.7.1}%
-\contentsline {subsection}{\numberline {9.7.2}Esempio 2: Cache Set-Associative in un Layout di Memoria Misto}{63}{subsection.9.7.2}%
-\contentsline {subsection}{\numberline {9.7.3}Esempio 3: Cache Associativa a 4-vie}{64}{subsection.9.7.3}%
-\contentsline {chapter}{\numberline {10}Branch prediction}{66}{chapter.10}%
-\contentsline {chapter}{\numberline {11}Dynamic scheduling}{67}{chapter.11}%
-\contentsline {chapter}{\numberline {12}Hardware speculation}{68}{chapter.12}%
-\contentsline {chapter}{\numberline {13}Sistemi di ingresso e uscita}{69}{chapter.13}%
-\contentsline {section}{\numberline {13.1}Periferiche}{69}{section.13.1}%
-\contentsline {section}{\numberline {13.2}Interrupt}{69}{section.13.2}%
-\contentsline {section}{\numberline {13.3}Accesso diretto alla memoria}{69}{section.13.3}%
-\contentsline {chapter}{\numberline {14}Esercizi}{70}{chapter.14}%
-\contentsline {section}{\numberline {14.1}Esercizi svolti}{70}{section.14.1}%
-\contentsline {section}{\numberline {14.2}Esercizi da svolgere}{70}{section.14.2}%
-\contentsline {chapter}{\numberline {15}VLIW}{71}{chapter.15}%
-\contentsline {chapter}{\numberline {16}Riepilogo}{72}{chapter.16}%
-\contentsline {chapter}{\numberline {17}ESERCIZI}{73}{chapter.17}%
-\contentsline {chapter}{\numberline {18}Esercitazione: Analisi delle Prestazioni e Pipeline}{74}{chapter.18}%
-\contentsline {section}{\numberline {18.1}Definizione dell'Architettura del Processore}{74}{section.18.1}%
-\contentsline {section}{\numberline {18.2}Analisi del Codice Assembly}{75}{section.18.2}%
-\contentsline {section}{\numberline {18.3}Calcolo dei Colpi di Clock}{75}{section.18.3}%
-\contentsline {subsection}{\numberline {18.3.1}Fase di Inizializzazione (Fuori dal ciclo)}{76}{subsection.18.3.1}%
-\contentsline {subsection}{\numberline {18.3.2}Tracciamento di una Iterazione del Ciclo (\texttt {loop})}{76}{subsection.18.3.2}%
-\contentsline {subsubsection}{Caricamento dati e Somma FP}{76}{section*.19}%
-\contentsline {subsubsection}{Completamento Fuori Ordine ed Eccezioni Imprecise}{77}{section*.20}%
-\contentsline {subsubsection}{Store del risultato FP e Stalli Strutturali}{77}{section*.21}%
-\contentsline {subsubsection}{Moltiplicazione e Divisione}{77}{section*.22}%
-\contentsline {subsubsection}{Istruzioni intere e Salto (\texttt {Branch})}{77}{section*.23}%
-\contentsline {subsection}{\numberline {18.3.3}Calcolo del Tempo Totale di Esecuzione}{78}{subsection.18.3.3}%
-\contentsline {section}{\numberline {18.4}Analisi degli Hazard (Domande Teoriche)}{78}{section.18.4}%
-\contentsline {subsection}{\numberline {18.4.1}Hazard sul registro \texttt {x7}}{78}{subsection.18.4.1}%
-\contentsline {subsection}{\numberline {18.4.2}Hazard sul registro \texttt {F6}}{79}{subsection.18.4.2}%
+\contentsline {section}{\numberline {9.2}Gerarchia delle Memorie e Principio di Località}{57}{section.9.2}%
+\contentsline {subsection}{\numberline {9.2.1}Principio di Località}{58}{subsection.9.2.1}%
+\contentsline {subsection}{\numberline {9.2.2}Prestazioni e Hit Ratio}{59}{subsection.9.2.2}%
+\contentsline {section}{\numberline {9.3}Organizzazione Interna della Cache}{59}{section.9.3}%
+\contentsline {subsection}{\numberline {9.3.1}Ricerca di un blocco dati nella Cache}{60}{subsection.9.3.1}%
+\contentsline {subsection}{\numberline {9.3.2}Posizionamento della Cache nel Sistema}{61}{subsection.9.3.2}%
+\contentsline {section}{\numberline {9.4}Tecniche di Mappatura (Mapping)}{62}{section.9.4}%
+\contentsline {subsection}{\numberline {9.4.1}Mappatura Diretta (Direct Mapping)}{62}{subsection.9.4.1}%
+\contentsline {subsection}{\numberline {9.4.2}Mappatura Associativa agli Insiemi (Set Associative)}{62}{subsection.9.4.2}%
+\contentsline {subsection}{\numberline {9.4.3}Mappatura Completamente Associativa (Fully Associative)}{63}{subsection.9.4.3}%
+\contentsline {section}{\numberline {9.5}Algoritmi di Rimpiazzamento}{63}{section.9.5}%
+\contentsline {subsection}{\numberline {9.5.1}Approccio FIFO con Seconda Chance (Clock Bit)}{63}{subsection.9.5.1}%
+\contentsline {subsection}{\numberline {9.5.2}Algoritmo pseudo-LRU (pLRU)}{64}{subsection.9.5.2}%
+\contentsline {section}{\numberline {9.6}Gestione delle Scritture e Coerenza}{64}{section.9.6}%
+\contentsline {subsection}{\numberline {9.6.1}Aggiornamento della Memoria Principale}{64}{subsection.9.6.1}%
+\contentsline {subsection}{\numberline {9.6.2}Coerenza della Memoria (Multiprocessore) e Protocollo MESI}{65}{subsection.9.6.2}%
+\contentsline {section}{\numberline {9.7}Esempi Calcolati e Strutturazione Fisica}{65}{section.9.7}%
+\contentsline {subsection}{\numberline {9.7.1}Esempio 1: Cache Direct Mapped}{65}{subsection.9.7.1}%
+\contentsline {subsection}{\numberline {9.7.2}Esempio 2: Cache Set-Associative in un Layout di Memoria Misto}{66}{subsection.9.7.2}%
+\contentsline {subsection}{\numberline {9.7.3}Esempio 3: Cache Associativa a 4-vie}{67}{subsection.9.7.3}%
+\contentsline {chapter}{\numberline {10}Branch prediction}{69}{chapter.10}%
+\contentsline {chapter}{\numberline {11}Dynamic scheduling}{70}{chapter.11}%
+\contentsline {chapter}{\numberline {12}Hardware speculation}{71}{chapter.12}%
+\contentsline {chapter}{\numberline {13}Sistemi di ingresso e uscita}{72}{chapter.13}%
+\contentsline {section}{\numberline {13.1}Periferiche}{72}{section.13.1}%
+\contentsline {section}{\numberline {13.2}Interrupt}{72}{section.13.2}%
+\contentsline {section}{\numberline {13.3}Accesso diretto alla memoria}{72}{section.13.3}%
+\contentsline {chapter}{\numberline {14}Esercizi}{73}{chapter.14}%
+\contentsline {section}{\numberline {14.1}Esercizi svolti}{73}{section.14.1}%
+\contentsline {section}{\numberline {14.2}Esercizi da svolgere}{73}{section.14.2}%
+\contentsline {chapter}{\numberline {15}VLIW}{74}{chapter.15}%
+\contentsline {chapter}{\numberline {16}Riepilogo}{75}{chapter.16}%
+\contentsline {chapter}{\numberline {17}ESERCIZI}{76}{chapter.17}%
+\contentsline {chapter}{\numberline {18}Esercitazione: Analisi delle Prestazioni e Pipeline}{77}{chapter.18}%
+\contentsline {section}{\numberline {18.1}Definizione dell'Architettura del Processore}{77}{section.18.1}%
+\contentsline {section}{\numberline {18.2}Analisi del Codice Assembly}{78}{section.18.2}%
+\contentsline {section}{\numberline {18.3}Calcolo dei Colpi di Clock}{78}{section.18.3}%
+\contentsline {subsection}{\numberline {18.3.1}Fase di Inizializzazione (Fuori dal ciclo)}{79}{subsection.18.3.1}%
+\contentsline {subsection}{\numberline {18.3.2}Tracciamento di una Iterazione del Ciclo (\texttt {loop})}{79}{subsection.18.3.2}%
+\contentsline {subsubsection}{Caricamento dati e Somma FP}{79}{section*.19}%
+\contentsline {subsubsection}{Completamento Fuori Ordine ed Eccezioni Imprecise}{80}{section*.20}%
+\contentsline {subsubsection}{Store del risultato FP e Stalli Strutturali}{80}{section*.21}%
+\contentsline {subsubsection}{Moltiplicazione e Divisione}{80}{section*.22}%
+\contentsline {subsubsection}{Istruzioni intere e Salto (\texttt {Branch})}{80}{section*.23}%
+\contentsline {subsection}{\numberline {18.3.3}Calcolo del Tempo Totale di Esecuzione}{81}{subsection.18.3.3}%
+\contentsline {section}{\numberline {18.4}Analisi degli Hazard (Domande Teoriche)}{81}{section.18.4}%
+\contentsline {subsection}{\numberline {18.4.1}Hazard sul registro \texttt {x7}}{81}{subsection.18.4.1}%
+\contentsline {subsection}{\numberline {18.4.2}Hazard sul registro \texttt {F6}}{82}{subsection.18.4.2}%

@@ -11,7 +11,23 @@ Il costo energetico e temporale del calcolo odierno risiede prevalentemente nel 
 Per comprendere l'integrazione della memoria nel sistema, è fondamentale richiamare la differenza tra le architetture di base:
 \begin{itemize}
     \item \textbf{Architettura Von Neumann}: Dati e istruzioni (codice, sub-routine, funzioni) risiedono in una singola memoria unificata. Il processore accede alla stessa memoria per prelevare sia il codice da eseguire sia i dati da elaborare.
+    
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.4\textwidth]{capitoli/09_cache_memories/images/von_neumann_architecture.png}
+        \caption{Architettura di Von Neumann: un unico spazio di memoria per dati e istruzioni.}
+        \label{fig: von_neumann}
+    \end{figure}
+    
     \item \textbf{Architettura Harvard}: Prevede memorie fisicamente separate per i dati e per il codice. Il processore può accedere simultaneamente alle due memorie attraverso bus distinti.
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.4\textwidth]{capitoli/09_cache_memories/images/harvard_architecture.png}
+        \caption{Architettura di Harvard: memorie separate per dati e istruzioni.}
+        \label{fig: harvard}
+    \end{figure}
+
 \end{itemize}
 Nei sistemi moderni e specialmente nei processori RISC (come RISC-V e ARM) che implementano una pipeline, l'architettura Harvard è essenziale al livello della cache (Cache L1 Dati e Cache L1 Istruzioni separate). Ciò permette di eseguire contemporaneamente il fetch di un'istruzione e la lettura/scrittura di un dato, evitando conflitti strutturali che costringerebbero la pipeline a stallare.
 
@@ -32,6 +48,13 @@ Analizzando il sistema partendo dall'interno verso l'esterno, troviamo:
 % Descrizione: Diagramma dei livelli di memoria per dispositivi mobili, laptop e server, con relativi tempi di accesso e capacità.
 % Punto di inserimento: In questo punto, a supporto della classificazione dei livelli di memoria.
 % File da inserire: fig_memory_levels
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{capitoli/09_cache_memories/images/memory_hierarchy.png}
+    \caption{Gerarchia delle memorie: tempi di accesso e capacità per dispositivi mobili, laptop e server.}
+    \label{fig: memory_hierarchy}
+\end{figure}
 
 L'assunzione alla base dell'architettura gerarchica è il \textbf{principio di inclusività}: tutte le informazioni contenute nei registri dovrebbero trovarsi nella cache L1; tutte le informazioni della cache L1 devono essere contenute nella cache L2, e così via fino alla memoria principale. Se un dato non è in L1 (situazione di \textit{miss}), il sistema lo cerca in L2, poi in L3, con un progressivo e drastico calo delle prestazioni a ogni salto.
 
@@ -76,6 +99,13 @@ Come quasi tutti i dispositivi digitali, la cache è divisa in una parte dedicat
 % Punto di inserimento: Qui, per illustrare visivamente la divisione in linee.
 % File da inserire: fig_cache_org
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{capitoli/09_cache_memories/images/cache_organization.png}
+    \caption{Organizzazione interna della cache: array dei dati e array di direttorio con tag e bit di validità.}
+    \label{fig: cache_organization}
+\end{figure}
+
 Oltre ai dati e al tag, ogni linea di cache contiene alcuni bit di controllo fondamentali:
 \begin{itemize}
     \item \textbf{Bit di Validità (V - Validity bit)}: Indica se il dato presente nella linea è valido. All'accensione del sistema (power-on) o in caso di reset, la memoria cache contiene valori casuali (dati "sporchi"). Per evitare che la CPU legga informazioni scorrette, il bit V viene inizializzato a 0. Quando un blocco di memoria valido viene caricato nella linea, V viene settato a 1.
@@ -92,6 +122,13 @@ Per comprendere se un dato è presente in cache, la logica di controllo riceve l
 % Punto di inserimento: Qui.
 % File da inserire: fig_cpu_address
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\textwidth]{capitoli/09_cache_memories/images/cpu_address.png}
+    \caption{Scomposizione dell'indirizzo della CPU in Tag, Index e Offset per la ricerca nella cache.}
+    \label{fig: cpu_address}
+\end{figure}
+
 \begin{enumerate}
     \item \textbf{Offset}: Sono i bit meno significativi dell'indirizzo. Servono per individuare il byte specifico all'interno della linea di cache. Se una linea è ampia $2^n$ byte, l'offset sarà composto da $n$ bit. Questo campo non viene salvato nel direttorio, poiché indica solo una posizione relativa all'interno del blocco dati già caricato.
     \item \textbf{Indice (Index)}: Determina a quale linea (o insieme di linee, detto \textit{set}) della cache accedere. Se la cache possiede $2^m$ insiemi, l'indice utilizzerà $m$ bit.
@@ -106,6 +143,13 @@ Il procedimento di ricerca avviene in questo modo:
     \item Se corrispondono, si ha un \textbf{Hit} (e l'offset estrae il byte richiesto); se non corrispondono, si ha un \textbf{Miss}.
 \end{enumerate}
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{capitoli/09_cache_memories/images/cache_lookup.png}
+    \caption{Procedura di ricerca di un dato nella cache: utilizzo dell'Indice, verifica del Bit di Validità e confronto del Tag.}
+    \label{fig: cache_lookup}
+\end{figure}
+
 \begin{remark}[Dimensione Reale della Cache]
 Quando un costruttore vende una cache, ad esempio, da 64 KB, si riferisce unicamente alla capacità dell'Array dei Dati. La dimensione fisica reale implementata sul chip è molto più grande, poiché a ogni linea va sommato lo spazio per salvare il Tag, il bit V e il bit D, moltiplicato per il numero totale di linee.
 \end{remark}
@@ -113,6 +157,13 @@ Quando un costruttore vende una cache, ad esempio, da 64 KB, si riferisce unicam
 \subsection{Posizionamento della Cache nel Sistema}
 La cache viene collocata logicamente tra la CPU e il bus di sistema, piuttosto che tra il bus e la memoria principale.
 Questo posizionamento strategico comporta che, in caso di \textit{hit}, il processore legga o scriva il dato senza alcun transito di informazioni sul bus di sistema. Ciò riduce drasticamente il carico sul bus, lasciandolo libero per periferiche e DMA, e risulta indispensabile nelle architetture multiprocessore per permettere ad ogni core di lavorare indipendentemente sui propri dati.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{capitoli/09_cache_memories/images/cache_positioning.png}
+    \caption{Posizionamento della cache tra CPU e bus di sistema, riducendo il traffico sul bus in caso di hit.}
+    \label{fig: cache_positioning}
+\end{figure}
 
 \section{Tecniche di Mappatura (Mapping)}
 Il meccanismo di mapping definisce in quale linea della cache un determinato blocco di memoria principale deve essere posizionato. Questo processo deve essere rapido e richiedere un hardware a basso costo.

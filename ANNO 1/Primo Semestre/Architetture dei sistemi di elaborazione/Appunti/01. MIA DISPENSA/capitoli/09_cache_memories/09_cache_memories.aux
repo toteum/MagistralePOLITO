@@ -6,28 +6,42 @@
 \newlabel{ch:memorie-cache}{{9}{56}{Memorie Cache}{chapter.9}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {9.1}Introduzione e Motivazione}{56}{section.9.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {9.1.1}Architettura di Von Neumann vs Harvard}{56}{subsection.9.1.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {9.2}Gerarchia delle Memorie e Principio di Località}{56}{section.9.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {9.2.1}Principio di Località}{57}{subsection.9.2.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {9.2.2}Prestazioni e Hit Ratio}{57}{subsection.9.2.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {9.3}Organizzazione Interna della Cache}{58}{section.9.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {9.3.1}Ricerca di un blocco dati nella Cache}{58}{subsection.9.3.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {9.3.2}Posizionamento della Cache nel Sistema}{59}{subsection.9.3.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {9.4}Tecniche di Mappatura (Mapping)}{59}{section.9.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {9.4.1}Mappatura Diretta (Direct Mapping)}{59}{subsection.9.4.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {9.4.2}Mappatura Associativa agli Insiemi (Set Associative)}{60}{subsection.9.4.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {9.4.3}Mappatura Completamente Associativa (Fully Associative)}{60}{subsection.9.4.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {9.5}Algoritmi di Rimpiazzamento}{60}{section.9.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {9.5.1}Approccio FIFO con Seconda Chance (Clock Bit)}{61}{subsection.9.5.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {9.5.2}Algoritmo pseudo-LRU (pLRU)}{61}{subsection.9.5.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {9.6}Gestione delle Scritture e Coerenza}{61}{section.9.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {9.6.1}Aggiornamento della Memoria Principale}{61}{subsection.9.6.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {9.6.2}Coerenza della Memoria (Multiprocessore) e Protocollo MESI}{62}{subsection.9.6.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {9.7}Esempi Calcolati e Strutturazione Fisica}{62}{section.9.7}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {9.7.1}Esempio 1: Cache Direct Mapped}{62}{subsection.9.7.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {9.7.2}Esempio 2: Cache Set-Associative in un Layout di Memoria Misto}{63}{subsection.9.7.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {9.7.3}Esempio 3: Cache Associativa a 4-vie}{64}{subsection.9.7.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {9.1}{\ignorespaces Architettura di Von Neumann: un unico spazio di memoria per dati e istruzioni.}}{57}{figure.9.1}\protected@file@percent }
+\newlabel{fig: von_neumann}{{9.1}{57}{Architettura di Von Neumann: un unico spazio di memoria per dati e istruzioni}{figure.9.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9.2}{\ignorespaces Architettura di Harvard: memorie separate per dati e istruzioni.}}{57}{figure.9.2}\protected@file@percent }
+\newlabel{fig: harvard}{{9.2}{57}{Architettura di Harvard: memorie separate per dati e istruzioni}{figure.9.2}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {9.2}Gerarchia delle Memorie e Principio di Località}{57}{section.9.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {9.3}{\ignorespaces Gerarchia delle memorie: tempi di accesso e capacità per dispositivi mobili, laptop e server.}}{58}{figure.9.3}\protected@file@percent }
+\newlabel{fig: memory_hierarchy}{{9.3}{58}{Gerarchia delle memorie: tempi di accesso e capacità per dispositivi mobili, laptop e server}{figure.9.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.2.1}Principio di Località}{58}{subsection.9.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.2.2}Prestazioni e Hit Ratio}{59}{subsection.9.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {9.3}Organizzazione Interna della Cache}{59}{section.9.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {9.4}{\ignorespaces Organizzazione interna della cache: array dei dati e array di direttorio con tag e bit di validità.}}{60}{figure.9.4}\protected@file@percent }
+\newlabel{fig: cache_organization}{{9.4}{60}{Organizzazione interna della cache: array dei dati e array di direttorio con tag e bit di validità}{figure.9.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.3.1}Ricerca di un blocco dati nella Cache}{60}{subsection.9.3.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {9.5}{\ignorespaces Scomposizione dell'indirizzo della CPU in Tag, Index e Offset per la ricerca nella cache.}}{60}{figure.9.5}\protected@file@percent }
+\newlabel{fig: cpu_address}{{9.5}{60}{Scomposizione dell'indirizzo della CPU in Tag, Index e Offset per la ricerca nella cache}{figure.9.5}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9.6}{\ignorespaces Procedura di ricerca di un dato nella cache: utilizzo dell'Indice, verifica del Bit di Validità e confronto del Tag.}}{61}{figure.9.6}\protected@file@percent }
+\newlabel{fig: cache_lookup}{{9.6}{61}{Procedura di ricerca di un dato nella cache: utilizzo dell'Indice, verifica del Bit di Validità e confronto del Tag}{figure.9.6}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.3.2}Posizionamento della Cache nel Sistema}{61}{subsection.9.3.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {9.7}{\ignorespaces Posizionamento della cache tra CPU e bus di sistema, riducendo il traffico sul bus in caso di hit.}}{62}{figure.9.7}\protected@file@percent }
+\newlabel{fig: cache_positioning}{{9.7}{62}{Posizionamento della cache tra CPU e bus di sistema, riducendo il traffico sul bus in caso di hit}{figure.9.7}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {9.4}Tecniche di Mappatura (Mapping)}{62}{section.9.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.4.1}Mappatura Diretta (Direct Mapping)}{62}{subsection.9.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.4.2}Mappatura Associativa agli Insiemi (Set Associative)}{62}{subsection.9.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.4.3}Mappatura Completamente Associativa (Fully Associative)}{63}{subsection.9.4.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {9.5}Algoritmi di Rimpiazzamento}{63}{section.9.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.5.1}Approccio FIFO con Seconda Chance (Clock Bit)}{63}{subsection.9.5.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.5.2}Algoritmo pseudo-LRU (pLRU)}{64}{subsection.9.5.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {9.6}Gestione delle Scritture e Coerenza}{64}{section.9.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.6.1}Aggiornamento della Memoria Principale}{64}{subsection.9.6.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.6.2}Coerenza della Memoria (Multiprocessore) e Protocollo MESI}{65}{subsection.9.6.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {9.7}Esempi Calcolati e Strutturazione Fisica}{65}{section.9.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.7.1}Esempio 1: Cache Direct Mapped}{65}{subsection.9.7.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.7.2}Esempio 2: Cache Set-Associative in un Layout di Memoria Misto}{66}{subsection.9.7.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.7.3}Esempio 3: Cache Associativa a 4-vie}{67}{subsection.9.7.3}\protected@file@percent }
 \@setckpt{capitoli/09_cache_memories/09_cache_memories}{
-\setcounter{page}{66}
+\setcounter{page}{69}
 \setcounter{equation}{0}
 \setcounter{enumi}{4}
 \setcounter{enumii}{0}
@@ -42,7 +56,7 @@
 \setcounter{subsubsection}{0}
 \setcounter{paragraph}{0}
 \setcounter{subparagraph}{0}
-\setcounter{figure}{0}
+\setcounter{figure}{7}
 \setcounter{table}{0}
 \setcounter{parentequation}{0}
 \setcounter{lstnumber}{1}
