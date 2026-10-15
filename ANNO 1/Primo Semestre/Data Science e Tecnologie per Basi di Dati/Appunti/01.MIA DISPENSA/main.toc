@@ -1,114 +1,169 @@
 \babel@toc {italian}{}\relax 
 \babel@toc {italian}{}\relax 
-\contentsline {chapter}{\numberline {1}Introduzione alla Data Science e ai Big Data}{6}{chapter.1}%
-\contentsline {section}{\numberline {1.1}L'Evoluzione dei Sistemi di Gestione dei Dati}{6}{section.1.1}%
-\contentsline {subsection}{\numberline {1.1.1}Sistemi Transazionali vs Sistemi Decisionali}{6}{subsection.1.1.1}%
-\contentsline {subsection}{\numberline {1.1.2}Il Linguaggio SQL e i Sistemi Interni}{6}{subsection.1.1.2}%
-\contentsline {section}{\numberline {1.2}Il Contesto dei Big Data}{7}{section.1.2}%
-\contentsline {subsection}{\numberline {1.2.1}Chi genera i Big Data?}{7}{subsection.1.2.1}%
-\contentsline {subsection}{\numberline {1.2.2}Le 5 V dei Big Data}{7}{subsection.1.2.2}%
-\contentsline {section}{\numberline {1.3}Il Processo di Knowledge Discovery from Data (KDD) e Data Science}{8}{section.1.3}%
-\contentsline {subsection}{\numberline {1.3.1}Generazione e Acquisizione}{9}{subsection.1.3.1}%
-\contentsline {subsection}{\numberline {1.3.2}Memorizzazione (Storage)}{9}{subsection.1.3.2}%
-\contentsline {subsection}{\numberline {1.3.3}Pre-processing e Preparazione del Dato}{9}{subsection.1.3.3}%
-\contentsline {subsection}{\numberline {1.3.4}L'Analisi e le Tipologie di Algoritmi}{9}{subsection.1.3.4}%
-\contentsline {section}{\numberline {1.4}Tecniche di Machine Learning e Data Mining}{10}{section.1.4}%
-\contentsline {subsection}{\numberline {1.4.1}Regole di Associazione (Association Rules)}{10}{subsection.1.4.1}%
-\contentsline {subsection}{\numberline {1.4.2}Classificazione (Algoritmi Supervised)}{10}{subsection.1.4.2}%
-\contentsline {subsection}{\numberline {1.4.3}Clustering (Algoritmi Unsupervised)}{10}{subsection.1.4.3}%
-\contentsline {subsection}{\numberline {1.4.4}Altre Tecniche}{11}{subsection.1.4.4}%
-\contentsline {section}{\numberline {1.5}Sfide Aperte, Rappresentatività e Impatto Sociale}{11}{section.1.5}%
-\contentsline {subsection}{\numberline {1.5.1}Bias nei Dati e Modelli Parziali}{11}{subsection.1.5.1}%
-\contentsline {subsection}{\numberline {1.5.2}Monitoraggio e Concept Drift}{11}{subsection.1.5.2}%
-\contentsline {subsection}{\numberline {1.5.3}Explainable AI (XAI) e Interpretabilità}{11}{subsection.1.5.3}%
-\contentsline {chapter}{\numberline {2}Introduzione ai Sistemi Decisionali e Data Warehouse}{13}{chapter.2}%
-\contentsline {section}{\numberline {2.1}Il Supporto alle Decisioni Aziendali}{13}{section.2.1}%
-\contentsline {subsection}{\numberline {2.1.1}La Business Intelligence}{13}{subsection.2.1.1}%
-\contentsline {section}{\numberline {2.2}Il Data Warehouse: Definizione e Motivazioni}{14}{section.2.2}%
-\contentsline {subsection}{\numberline {2.2.1}Perché mantenere i dati separati?}{14}{subsection.2.2.1}%
-\contentsline {section}{\numberline {2.3}Struttura e Analisi dei Dati: Il Modello Multidimensionale}{15}{section.2.3}%
-\contentsline {subsection}{\numberline {2.3.1}Esempio applicativo: Catena di Supermercati}{15}{subsection.2.3.1}%
-\contentsline {subsection}{\numberline {2.3.2}Rappresentazione Relazionale: Il Modello a Stella}{16}{subsection.2.3.2}%
-\contentsline {subsection}{\numberline {2.3.3}Dimensionamento del Data Warehouse: Calcolo della Tabella dei Fatti}{16}{subsection.2.3.3}%
-\contentsline {section}{\numberline {2.4}Strumenti di Analisi e Presentazione}{17}{section.2.4}%
-\contentsline {section}{\numberline {2.5}Architetture per Data Warehouse}{17}{section.2.5}%
-\contentsline {subsection}{\numberline {2.5.1}Data Warehouse e Data Mart}{18}{subsection.2.5.1}%
-\contentsline {subsection}{\numberline {2.5.2}Server per Data Warehouse}{18}{subsection.2.5.2}%
-\contentsline {subsection}{\numberline {2.5.3}Il Processo ETL (Extraction, Transformation, Loading) e i Metadati}{19}{subsection.2.5.3}%
-\contentsline {subsection}{\numberline {2.5.4}Tipologie di Architetture: 2 Livelli e 3 Livelli}{19}{subsection.2.5.4}%
-\contentsline {chapter}{\numberline {3}Progettazione di un Data Warehouse}{21}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Fattori di Rischio e Approcci alla Progettazione}{21}{section.3.1}%
-\contentsline {subsection}{\numberline {3.1.1}Fattori di rischio}{21}{subsection.3.1.1}%
-\contentsline {subsection}{\numberline {3.1.2}Approcci: Top-Down vs Bottom-Up}{22}{subsection.3.1.2}%
-\contentsline {subsubsection}{Approccio Top-Down}{22}{section*.8}%
-\contentsline {subsubsection}{Approccio Bottom-Up}{22}{section*.9}%
-\contentsline {section}{\numberline {3.2}Analisi dei Requisiti}{22}{section.3.2}%
-\contentsline {subsection}{\numberline {3.2.1}Requisiti Applicativi}{23}{subsection.3.2.1}%
-\contentsline {subsection}{\numberline {3.2.2}Requisiti Strutturali}{23}{subsection.3.2.2}%
-\contentsline {section}{\numberline {3.3}Progettazione Concettuale: Dimensional Fact Model (DFM)}{23}{section.3.3}%
-\contentsline {subsection}{\numberline {3.3.1}Elementi Base del DFM}{24}{subsection.3.3.1}%
-\contentsline {subsubsection}{Le Gerarchie e le Dipendenze Funzionali}{24}{section*.10}%
-\contentsline {subsection}{\numberline {3.3.2}Confronto: DFM vs Modello ER}{25}{subsection.3.3.2}%
-\contentsline {section}{\numberline {3.4}Misure e Operatori di Aggregazione}{25}{section.3.4}%
-\contentsline {subsection}{\numberline {3.4.1}Classificazione delle Misure}{25}{subsection.3.4.1}%
-\contentsline {subsection}{\numberline {3.4.2}Operatori di Aggregazione}{26}{subsection.3.4.2}%
-\contentsline {section}{\numberline {3.5}Costrutti Avanzati nel DFM}{26}{section.3.5}%
-\contentsline {subsection}{\numberline {3.5.1}Attributi Descrittivi e Gerarchie Condivise}{26}{subsection.3.5.1}%
-\contentsline {subsection}{\numberline {3.5.2}L'Arco Multiplo}{27}{subsection.3.5.2}%
-\contentsline {subsection}{\numberline {3.5.3}L'Attributo Configurazione}{27}{subsection.3.5.3}%
-\contentsline {subsection}{\numberline {3.5.4}Schemi di Fatto Vuoti}{27}{subsection.3.5.4}%
-\contentsline {section}{\numberline {3.6}La Rappresentazione del Tempo (Slowly Changing Dimensions)}{28}{section.3.6}%
-\contentsline {subsection}{\numberline {3.6.1}Rappresentazione di Tipo 1 (Sovrascrittura)}{28}{subsection.3.6.1}%
-\contentsline {subsection}{\numberline {3.6.2}Rappresentazione di Tipo 2 (Nuova Istanza)}{28}{subsection.3.6.2}%
-\contentsline {subsection}{\numberline {3.6.3}Rappresentazione di Tipo 3 (Campionamento Temporale)}{28}{subsection.3.6.3}%
-\contentsline {section}{\numberline {3.7}Dimensionamento del Data Warehouse: Carico di Lavoro e Volume dei Dati}{29}{section.3.7}%
-\contentsline {subsection}{\numberline {3.7.1}La Sparsità dei Dati}{29}{subsection.3.7.1}%
-\contentsline {section}{\numberline {3.8}Progettazione Logica: Il Modello Relazionale per il Data Warehouse}{29}{section.3.8}%
-\contentsline {subsection}{\numberline {3.8.1}Lo Schema a Stella (Star Schema)}{29}{subsection.3.8.1}%
-\contentsline {subsection}{\numberline {3.8.2}Lo Schema a Fiocco di Neve (Snowflake Schema)}{30}{subsection.3.8.2}%
-\contentsline {subsection}{\numberline {3.8.3}Traduzione Logica degli Archi Multipli}{31}{subsection.3.8.3}%
-\contentsline {subsection}{\numberline {3.8.4}Dimensioni Degeneri e Junk Dimension}{32}{subsection.3.8.4}%
-\contentsline {chapter}{\numberline {4}Analisi dei Dati in Ambienti OLAP ed Estensioni SQL}{34}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Operazioni di analisi dei dati nel Data Warehouse}{34}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Strumenti di interfaccia per l'interrogazione}{34}{section.4.2}%
-\contentsline {subsection}{\numberline {4.2.1}Ambiente controllato di query}{34}{subsection.4.2.1}%
-\contentsline {subsection}{\numberline {4.2.2}Ambiente di query ad hoc}{35}{subsection.4.2.2}%
-\contentsline {section}{\numberline {4.3}Analisi OLAP e Navigazione Multidimensionale}{35}{section.4.3}%
-\contentsline {subsection}{\numberline {4.3.1}Roll up}{35}{subsection.4.3.1}%
-\contentsline {subsection}{\numberline {4.3.2}Drill down}{37}{subsection.4.3.2}%
-\contentsline {subsection}{\numberline {4.3.3}Slice and dice}{38}{subsection.4.3.3}%
-\contentsline {subsection}{\numberline {4.3.4}Pivot}{40}{subsection.4.3.4}%
-\contentsline {section}{\numberline {4.4}Estensioni del linguaggio SQL}{41}{section.4.4}%
-\contentsline {section}{\numberline {4.5}Le Finestre di Calcolo (Window Functions)}{41}{section.4.5}%
-\contentsline {subsection}{\numberline {4.5.1}Elementi della clausola OVER}{41}{subsection.4.5.1}%
-\contentsline {subsection}{\numberline {4.5.2}Definizione dell'intervallo: Fisico vs Logico}{42}{subsection.4.5.2}%
-\contentsline {subsection}{\numberline {4.5.3}Applicazioni Pratiche ed Esempi}{42}{subsection.4.5.3}%
-\contentsline {section}{\numberline {4.6}Integrazione delle Finestre di Calcolo con la clausola GROUP BY}{44}{section.4.6}%
-\contentsline {section}{\numberline {4.7}Funzioni di Ranking (Classifiche)}{45}{section.4.7}%
-\contentsline {section}{\numberline {4.8}Estensioni della clausola GROUP BY}{46}{section.4.8}%
-\contentsline {subsection}{\numberline {4.8.1}L'operatore ROLLUP}{46}{subsection.4.8.1}%
-\contentsline {subsection}{\numberline {4.8.2}L'operatore CUBE}{47}{subsection.4.8.2}%
-\contentsline {subsection}{\numberline {4.8.3}L'operatore GROUPING SETS}{47}{subsection.4.8.3}%
-\contentsline {chapter}{\numberline {5}Progettazione Fisica e Alimentazione del Data Warehouse}{48}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Progettazione Fisica}{48}{section.5.1}%
-\contentsline {subsection}{\numberline {5.1.1}Caratteristiche del carico di lavoro nel Data Warehouse}{48}{subsection.5.1.1}%
-\contentsline {subsection}{\numberline {5.1.2}Viste Materializzate}{48}{subsection.5.1.2}%
-\contentsline {subsubsection}{Definizione e Differenza con le Viste Logiche}{48}{section*.11}%
-\contentsline {subsubsection}{Creazione di una Vista Materializzata}{49}{section*.12}%
-\contentsline {subsubsection}{Il Reticolo Multidimensionale}{49}{section*.13}%
-\contentsline {subsubsection}{Il Problema della Scelta delle Viste}{50}{section*.14}%
-\contentsline {subsection}{\numberline {5.1.3}Altre Strutture Fisiche: Indici e Parallelismo}{51}{subsection.5.1.3}%
-\contentsline {section}{\numberline {5.2}Alimentazione del Data Warehouse (Processo ETL)}{52}{section.5.2}%
-\contentsline {subsection}{\numberline {5.2.1}Estrazione (Extraction)}{52}{subsection.5.2.1}%
-\contentsline {subsubsection}{Le sfide dell'Estrazione Incrementale}{52}{section*.15}%
-\contentsline {subsubsection}{Tecniche per l'estrazione incrementale}{53}{section*.16}%
-\contentsline {subsection}{\numberline {5.2.2}Pulitura (Data Cleansing)}{54}{subsection.5.2.2}%
-\contentsline {subsection}{\numberline {5.2.3}Trasformazione}{54}{subsection.5.2.3}%
-\contentsline {subsection}{\numberline {5.2.4}Caricamento (Loading)}{55}{subsection.5.2.4}%
-\contentsline {chapter}{\numberline {6}Conceptual Schema: Textual Formalism}{56}{chapter.6}%
-\contentsline {chapter}{\numberline {7}Data Lakes}{57}{chapter.7}%
-\contentsline {chapter}{\numberline {8}Data Mining Process}{58}{chapter.8}%
-\contentsline {chapter}{\numberline {9}Data Preparation}{59}{chapter.9}%
-\contentsline {chapter}{\numberline {10}Data Mining: Association Rules}{60}{chapter.10}%
-\contentsline {chapter}{\numberline {11}Data Mining: Classificazione}{61}{chapter.11}%
-\contentsline {chapter}{\numberline {12}Data Mining: Clustering}{62}{chapter.12}%
+\contentsline {chapter}{\numberline {1}Introduzione alla Data Science e ai Big Data}{7}{chapter.1}%
+\contentsline {section}{\numberline {1.1}L'Evoluzione dei Sistemi di Gestione dei Dati}{7}{section.1.1}%
+\contentsline {subsection}{\numberline {1.1.1}Sistemi Transazionali vs Sistemi Decisionali}{7}{subsection.1.1.1}%
+\contentsline {subsection}{\numberline {1.1.2}Il Linguaggio SQL e i Sistemi Interni}{7}{subsection.1.1.2}%
+\contentsline {section}{\numberline {1.2}Il Contesto dei Big Data}{8}{section.1.2}%
+\contentsline {subsection}{\numberline {1.2.1}Chi genera i Big Data?}{8}{subsection.1.2.1}%
+\contentsline {subsection}{\numberline {1.2.2}Le 5 V dei Big Data}{8}{subsection.1.2.2}%
+\contentsline {section}{\numberline {1.3}Il Processo di Knowledge Discovery from Data (KDD) e Data Science}{9}{section.1.3}%
+\contentsline {subsection}{\numberline {1.3.1}Generazione e Acquisizione}{10}{subsection.1.3.1}%
+\contentsline {subsection}{\numberline {1.3.2}Memorizzazione (Storage)}{10}{subsection.1.3.2}%
+\contentsline {subsection}{\numberline {1.3.3}Pre-processing e Preparazione del Dato}{10}{subsection.1.3.3}%
+\contentsline {subsection}{\numberline {1.3.4}L'Analisi e le Tipologie di Algoritmi}{10}{subsection.1.3.4}%
+\contentsline {section}{\numberline {1.4}Tecniche di Machine Learning e Data Mining}{11}{section.1.4}%
+\contentsline {subsection}{\numberline {1.4.1}Regole di Associazione (Association Rules)}{11}{subsection.1.4.1}%
+\contentsline {subsection}{\numberline {1.4.2}Classificazione (Algoritmi Supervised)}{11}{subsection.1.4.2}%
+\contentsline {subsection}{\numberline {1.4.3}Clustering (Algoritmi Unsupervised)}{11}{subsection.1.4.3}%
+\contentsline {subsection}{\numberline {1.4.4}Altre Tecniche}{12}{subsection.1.4.4}%
+\contentsline {section}{\numberline {1.5}Sfide Aperte, Rappresentatività e Impatto Sociale}{12}{section.1.5}%
+\contentsline {subsection}{\numberline {1.5.1}Bias nei Dati e Modelli Parziali}{12}{subsection.1.5.1}%
+\contentsline {subsection}{\numberline {1.5.2}Monitoraggio e Concept Drift}{12}{subsection.1.5.2}%
+\contentsline {subsection}{\numberline {1.5.3}Explainable AI (XAI) e Interpretabilità}{12}{subsection.1.5.3}%
+\contentsline {chapter}{\numberline {2}Introduzione ai Sistemi Decisionali e Data Warehouse}{14}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Il Supporto alle Decisioni Aziendali}{14}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}La Business Intelligence}{14}{subsection.2.1.1}%
+\contentsline {section}{\numberline {2.2}Il Data Warehouse: Definizione e Motivazioni}{15}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Perché mantenere i dati separati?}{15}{subsection.2.2.1}%
+\contentsline {section}{\numberline {2.3}Struttura e Analisi dei Dati: Il Modello Multidimensionale}{16}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}Esempio applicativo: Catena di Supermercati}{16}{subsection.2.3.1}%
+\contentsline {subsection}{\numberline {2.3.2}Rappresentazione Relazionale: Il Modello a Stella}{17}{subsection.2.3.2}%
+\contentsline {subsection}{\numberline {2.3.3}Dimensionamento del Data Warehouse: Calcolo della Tabella dei Fatti}{17}{subsection.2.3.3}%
+\contentsline {section}{\numberline {2.4}Strumenti di Analisi e Presentazione}{18}{section.2.4}%
+\contentsline {section}{\numberline {2.5}Architetture per Data Warehouse}{18}{section.2.5}%
+\contentsline {subsection}{\numberline {2.5.1}Data Warehouse e Data Mart}{19}{subsection.2.5.1}%
+\contentsline {subsection}{\numberline {2.5.2}Server per Data Warehouse}{19}{subsection.2.5.2}%
+\contentsline {subsection}{\numberline {2.5.3}Il Processo ETL (Extraction, Transformation, Loading) e i Metadati}{20}{subsection.2.5.3}%
+\contentsline {subsection}{\numberline {2.5.4}Tipologie di Architetture: 2 Livelli e 3 Livelli}{20}{subsection.2.5.4}%
+\contentsline {chapter}{\numberline {3}Progettazione di un Data Warehouse}{22}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Fattori di Rischio e Approcci alla Progettazione}{22}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}Fattori di rischio}{22}{subsection.3.1.1}%
+\contentsline {subsection}{\numberline {3.1.2}Approcci: Top-Down vs Bottom-Up}{23}{subsection.3.1.2}%
+\contentsline {subsubsection}{Approccio Top-Down}{23}{section*.8}%
+\contentsline {subsubsection}{Approccio Bottom-Up}{23}{section*.9}%
+\contentsline {section}{\numberline {3.2}Analisi dei Requisiti}{23}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Requisiti Applicativi}{24}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}Requisiti Strutturali}{24}{subsection.3.2.2}%
+\contentsline {section}{\numberline {3.3}Progettazione Concettuale: Dimensional Fact Model (DFM)}{24}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}Elementi Base del DFM}{25}{subsection.3.3.1}%
+\contentsline {subsubsection}{Le Gerarchie e le Dipendenze Funzionali}{25}{section*.10}%
+\contentsline {subsection}{\numberline {3.3.2}Confronto: DFM vs Modello ER}{26}{subsection.3.3.2}%
+\contentsline {section}{\numberline {3.4}Misure e Operatori di Aggregazione}{26}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}Classificazione delle Misure}{26}{subsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.4.2}Operatori di Aggregazione}{27}{subsection.3.4.2}%
+\contentsline {section}{\numberline {3.5}Costrutti Avanzati nel DFM}{27}{section.3.5}%
+\contentsline {subsection}{\numberline {3.5.1}Attributi Descrittivi e Gerarchie Condivise}{27}{subsection.3.5.1}%
+\contentsline {subsection}{\numberline {3.5.2}L'Arco Multiplo}{28}{subsection.3.5.2}%
+\contentsline {subsection}{\numberline {3.5.3}L'Attributo Configurazione}{28}{subsection.3.5.3}%
+\contentsline {subsection}{\numberline {3.5.4}Schemi di Fatto Vuoti}{28}{subsection.3.5.4}%
+\contentsline {section}{\numberline {3.6}La Rappresentazione del Tempo (Slowly Changing Dimensions)}{29}{section.3.6}%
+\contentsline {subsection}{\numberline {3.6.1}Rappresentazione di Tipo 1 (Sovrascrittura)}{29}{subsection.3.6.1}%
+\contentsline {subsection}{\numberline {3.6.2}Rappresentazione di Tipo 2 (Nuova Istanza)}{29}{subsection.3.6.2}%
+\contentsline {subsection}{\numberline {3.6.3}Rappresentazione di Tipo 3 (Campionamento Temporale)}{29}{subsection.3.6.3}%
+\contentsline {section}{\numberline {3.7}Dimensionamento del Data Warehouse: Carico di Lavoro e Volume dei Dati}{30}{section.3.7}%
+\contentsline {subsection}{\numberline {3.7.1}La Sparsità dei Dati}{30}{subsection.3.7.1}%
+\contentsline {section}{\numberline {3.8}Progettazione Logica: Il Modello Relazionale per il Data Warehouse}{30}{section.3.8}%
+\contentsline {subsection}{\numberline {3.8.1}Lo Schema a Stella (Star Schema)}{30}{subsection.3.8.1}%
+\contentsline {subsection}{\numberline {3.8.2}Lo Schema a Fiocco di Neve (Snowflake Schema)}{31}{subsection.3.8.2}%
+\contentsline {subsection}{\numberline {3.8.3}Traduzione Logica degli Archi Multipli}{32}{subsection.3.8.3}%
+\contentsline {subsection}{\numberline {3.8.4}Dimensioni Degeneri e Junk Dimension}{33}{subsection.3.8.4}%
+\contentsline {chapter}{\numberline {4}Analisi dei Dati in Ambienti OLAP ed Estensioni SQL}{35}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Operazioni di analisi dei dati nel Data Warehouse}{35}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Strumenti di interfaccia per l'interrogazione}{35}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Ambiente controllato di query}{35}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}Ambiente di query ad hoc}{36}{subsection.4.2.2}%
+\contentsline {section}{\numberline {4.3}Analisi OLAP e Navigazione Multidimensionale}{36}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Roll up}{36}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.3.2}Drill down}{38}{subsection.4.3.2}%
+\contentsline {subsection}{\numberline {4.3.3}Slice and dice}{39}{subsection.4.3.3}%
+\contentsline {subsection}{\numberline {4.3.4}Pivot}{41}{subsection.4.3.4}%
+\contentsline {section}{\numberline {4.4}Estensioni del linguaggio SQL}{42}{section.4.4}%
+\contentsline {section}{\numberline {4.5}Le Finestre di Calcolo (Window Functions)}{42}{section.4.5}%
+\contentsline {subsection}{\numberline {4.5.1}Elementi della clausola OVER}{42}{subsection.4.5.1}%
+\contentsline {subsection}{\numberline {4.5.2}Definizione dell'intervallo: Fisico vs Logico}{43}{subsection.4.5.2}%
+\contentsline {subsection}{\numberline {4.5.3}Applicazioni Pratiche ed Esempi}{43}{subsection.4.5.3}%
+\contentsline {section}{\numberline {4.6}Integrazione delle Finestre di Calcolo con la clausola GROUP BY}{45}{section.4.6}%
+\contentsline {section}{\numberline {4.7}Funzioni di Ranking (Classifiche)}{46}{section.4.7}%
+\contentsline {section}{\numberline {4.8}Estensioni della clausola GROUP BY}{47}{section.4.8}%
+\contentsline {subsection}{\numberline {4.8.1}L'operatore ROLLUP}{47}{subsection.4.8.1}%
+\contentsline {subsection}{\numberline {4.8.2}L'operatore CUBE}{48}{subsection.4.8.2}%
+\contentsline {subsection}{\numberline {4.8.3}L'operatore GROUPING SETS}{48}{subsection.4.8.3}%
+\contentsline {chapter}{\numberline {5}Progettazione Fisica e Alimentazione del Data Warehouse}{49}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Progettazione Fisica}{49}{section.5.1}%
+\contentsline {subsection}{\numberline {5.1.1}Caratteristiche del carico di lavoro nel Data Warehouse}{49}{subsection.5.1.1}%
+\contentsline {subsection}{\numberline {5.1.2}Viste Materializzate}{49}{subsection.5.1.2}%
+\contentsline {subsubsection}{Definizione e Differenza con le Viste Logiche}{49}{section*.11}%
+\contentsline {subsubsection}{Creazione di una Vista Materializzata}{50}{section*.12}%
+\contentsline {subsubsection}{Il Reticolo Multidimensionale}{50}{section*.13}%
+\contentsline {subsubsection}{Il Problema della Scelta delle Viste}{51}{section*.14}%
+\contentsline {subsection}{\numberline {5.1.3}Altre Strutture Fisiche: Indici e Parallelismo}{52}{subsection.5.1.3}%
+\contentsline {section}{\numberline {5.2}Alimentazione del Data Warehouse (Processo ETL)}{53}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}Estrazione (Extraction)}{53}{subsection.5.2.1}%
+\contentsline {subsubsection}{Le sfide dell'Estrazione Incrementale}{53}{section*.15}%
+\contentsline {subsubsection}{Tecniche per l'estrazione incrementale}{54}{section*.16}%
+\contentsline {subsection}{\numberline {5.2.2}Pulitura (Data Cleansing)}{55}{subsection.5.2.2}%
+\contentsline {subsection}{\numberline {5.2.3}Trasformazione}{55}{subsection.5.2.3}%
+\contentsline {subsection}{\numberline {5.2.4}Caricamento (Loading)}{56}{subsection.5.2.4}%
+\contentsline {chapter}{\numberline {6}Estensioni al Linguaggio SQL in Oracle per l'Analisi dei Dati}{57}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Le Finestre di Calcolo}{57}{section.6.1}%
+\contentsline {subsection}{\numberline {6.1.1}Raggruppamento a livello fisico (\texttt {ROWS})}{57}{subsection.6.1.1}%
+\contentsline {paragraph}{Esempio di raggruppamento fisico}{57}{section*.17}%
+\contentsline {subsection}{\numberline {6.1.2}Raggruppamento a livello logico (\texttt {RANGE})}{58}{subsection.6.1.2}%
+\contentsline {paragraph}{Esempio di raggruppamento logico}{58}{section*.18}%
+\contentsline {section}{\numberline {6.2}Funzioni di Ranking}{59}{section.6.2}%
+\contentsline {subsection}{\numberline {6.2.1}\texttt {RANK} e \texttt {DENSE\_RANK}}{59}{subsection.6.2.1}%
+\contentsline {paragraph}{Esempio: Classifica di vendita degli articoli}{59}{section*.19}%
+\contentsline {subsection}{\numberline {6.2.2}Doppio Ranking}{60}{subsection.6.2.2}%
+\contentsline {paragraph}{Esempio di doppio ranking}{60}{section*.20}%
+\contentsline {subsection}{\numberline {6.2.3}Selezione Top-N nel Ranking (Utilizzo di Table Function)}{60}{subsection.6.2.3}%
+\contentsline {section}{\numberline {6.3}Ulteriori Funzioni per Finestre di Calcolo}{61}{section.6.3}%
+\contentsline {subsection}{\numberline {6.3.1}\texttt {ROW\_NUMBER}}{61}{subsection.6.3.1}%
+\contentsline {paragraph}{Esempio}{61}{section*.21}%
+\contentsline {subsection}{\numberline {6.3.2}\texttt {CUME\_DIST}}{61}{subsection.6.3.2}%
+\contentsline {paragraph}{Esempio esplicativo}{62}{section*.22}%
+\contentsline {subsection}{\numberline {6.3.3}\texttt {NTILE(n)}}{62}{subsection.6.3.3}%
+\contentsline {paragraph}{Esempio}{62}{section*.23}%
+\contentsline {chapter}{\numberline {7}Data Lakes}{63}{chapter.7}%
+\contentsline {chapter}{\numberline {8}Data Mining Process}{64}{chapter.8}%
+\contentsline {chapter}{\numberline {9}Data Preparation}{65}{chapter.9}%
+\contentsline {chapter}{\numberline {10}Data Mining: Association Rules}{66}{chapter.10}%
+\contentsline {chapter}{\numberline {11}Data Mining: Classificazione}{67}{chapter.11}%
+\contentsline {chapter}{\numberline {12}Data Mining: Clustering}{68}{chapter.12}%
+\contentsline {chapter}{\numberline {13}ESERCIZI}{69}{chapter.13}%
+\contentsline {chapter}{\numberline {14}Interrogazioni Analitiche in SQL Esteso: Esercitazione Pratica}{70}{chapter.14}%
+\contentsline {section}{\numberline {14.1}Osservazione preliminare: Ordinamento e selezione degli ultimi elementi}{70}{section.14.1}%
+\contentsline {section}{\numberline {14.2}Analisi dello Schema del Data Warehouse}{70}{section.14.2}%
+\contentsline {subsection}{\numberline {14.2.1}Gerarchie e particolarità delle Dimensioni}{71}{subsection.14.2.1}%
+\contentsline {section}{\numberline {14.3}Esercizio 1: Calcolo di aggregati e Ranking Globale}{71}{section.14.3}%
+\contentsline {subsection}{\numberline {14.3.1}Testo della richiesta}{71}{subsection.14.3.1}%
+\contentsline {subsection}{\numberline {14.3.2}Ragionamento e Passaggi Logici}{71}{subsection.14.3.2}%
+\contentsline {subsection}{\numberline {14.3.3}Codice SQL}{72}{subsection.14.3.3}%
+\contentsline {section}{\numberline {14.4}Esercizio 2: Ranking con Partizionamento}{72}{section.14.4}%
+\contentsline {subsection}{\numberline {14.4.1}Testo della richiesta}{72}{subsection.14.4.1}%
+\contentsline {subsection}{\numberline {14.4.2}Ragionamento e Passaggi Logici}{72}{subsection.14.4.2}%
+\contentsline {paragraph}{Il concetto semantico del Rank rispetto al raggruppamento:}{73}{section*.24}%
+\contentsline {subsection}{\numberline {14.4.3}Codice SQL}{73}{subsection.14.4.3}%
+\contentsline {section}{\numberline {14.5}Esercizio 3: Ranking Multi-Dimensionale}{73}{section.14.5}%
+\contentsline {subsection}{\numberline {14.5.1}Testo della richiesta}{73}{subsection.14.5.1}%
+\contentsline {subsection}{\numberline {14.5.2}Ragionamento e Passaggi Logici}{74}{subsection.14.5.2}%
+\contentsline {subsection}{\numberline {14.5.3}Codice SQL}{74}{subsection.14.5.3}%
+\contentsline {section}{\numberline {14.6}Esercizio 4: Calcolo dell'Incasso Cumulativo (Running Total)}{74}{section.14.6}%
+\contentsline {subsection}{\numberline {14.6.1}Testo della richiesta}{74}{subsection.14.6.1}%
+\contentsline {subsection}{\numberline {14.6.2}Ragionamento e Passaggi Logici}{75}{subsection.14.6.2}%
+\contentsline {paragraph}{Interpretazione fisica e temporale (Approfondimento in Lezione):}{75}{section*.25}%
+\contentsline {subsection}{\numberline {14.6.3}Codice SQL}{75}{subsection.14.6.3}%
+\contentsline {chapter}{\numberline {15}Progettazione di un Data Warehouse: Caso Studio Magazzini}{77}{chapter.15}%
+\contentsline {section}{\numberline {15.1}Metodologia di Progettazione}{77}{section.15.1}%
+\contentsline {section}{\numberline {15.2}Analisi delle Specifiche e Identificazione dei Fatti}{78}{section.15.2}%
+\contentsline {section}{\numberline {15.3}Progettazione Concettuale: Schema a Stella}{78}{section.15.3}%
+\contentsline {subsection}{\numberline {15.3.1}Fatto 1: Uso dei Magazzini}{78}{subsection.15.3.1}%
+\contentsline {subsubsection}{Identificazione delle Metriche}{78}{section*.26}%
+\contentsline {subsubsection}{Identificazione delle Dimensioni e Gerarchie}{79}{section*.27}%
+\contentsline {subsection}{\numberline {15.3.2}Fatto 2: Stima dei Costi delle Polizze}{80}{subsection.15.3.2}%
+\contentsline {subsubsection}{Identificazione delle Metriche}{80}{section*.28}%
+\contentsline {subsubsection}{Identificazione delle Dimensioni}{80}{section*.29}%
+\contentsline {section}{\numberline {15.4}Verifica del Carico di Lavoro (Query Tipiche)}{81}{section.15.4}%
+\contentsline {section}{\numberline {15.5}Progettazione Logica: Dallo Schema Concettuale alle Tabelle}{81}{section.15.5}%
+\contentsline {subsection}{\numberline {15.5.1}Dimensioni Condivise (Conformed Dimensions)}{81}{subsection.15.5.1}%
+\contentsline {subsection}{\numberline {15.5.2}Definizione delle Tabelle Relazionali}{82}{subsection.15.5.2}%

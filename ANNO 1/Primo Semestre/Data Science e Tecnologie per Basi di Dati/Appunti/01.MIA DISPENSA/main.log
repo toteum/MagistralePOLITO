@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.6.16)  12 OCT 2026 15:26
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.6.16)  15 OCT 2026 16:55
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -477,7 +477,7 @@ File: t1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 \c@definition=\count351
 \c@example=\count352
 \c@remark=\count353
-) (main.aux (capitoli/introduzione/introduzione.aux) (capitoli/01_Data Science_introduzione/data_science_introduzione.aux) (capitoli/02_Data warehouse_introduzione/data_warehouse_introduzione.aux) (capitoli/03_Data warehouse_progettazione concettuale e logica/data_warehouse_progettazione_concettuale_e_logica.aux) (capitoli/04_Data warehouse_analisi/data_warehouse_analisi.aux) (capitoli/05_Data warehouse_progettazione fisica e alimentazione/data_warehouse_progettazione_fisica_e_alimentazione.aux) (capitoli/06_Conceptual schema_textual formalism/conceptual_schema_textual_formalism.aux) (capitoli/07_Data lakes/data_lakes.aux) (capitoli/08_Data mining process/data_mining_process.aux) (capitoli/09_Data preparation/data_preparation.aux) (capitoli/10_Data mining_association rules/data_mining_association_rules.aux) (capitoli/11_Data mining_classificazione/data_mining_classificazione.aux) (capitoli/12_Data mining_clustering/data_mining_clustering.aux))
+) (main.aux (capitoli/introduzione/introduzione.aux) (capitoli/01_Data Science_introduzione/data_science_introduzione.aux) (capitoli/02_Data warehouse_introduzione/data_warehouse_introduzione.aux) (capitoli/03_Data warehouse_progettazione concettuale e logica/data_warehouse_progettazione_concettuale_e_logica.aux) (capitoli/04_Data warehouse_analisi/data_warehouse_analisi.aux) (capitoli/05_Data warehouse_progettazione fisica e alimentazione/data_warehouse_progettazione_fisica_e_alimentazione.aux) (capitoli/06_Data warehouse in Oracle/Data_warehouse_in_Oracle.aux) (capitoli/07_Data lakes/data_lakes.aux) (capitoli/08_Data mining process/data_mining_process.aux) (capitoli/09_Data preparation/data_preparation.aux) (capitoli/10_Data mining_association rules/data_mining_association_rules.aux) (capitoli/11_Data mining_classificazione/data_mining_classificazione.aux) (capitoli/12_Data mining_clustering/data_mining_clustering.aux) (ESERCIZI/SQL Esteso/sql_esteso.aux) (ESERCIZI/Progettazione di un data warehouse/progettazione_di_un_data_warehouse.aux))
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 7.
@@ -625,47 +625,11 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.42 ...p-Down vs Bottom-Up}{22}{subsection.3.1.2}
+l.42 ...p-Down vs Bottom-Up}{23}{subsection.3.1.2}
                                                   % [1
 
-] [2])
-\tf@toc=\write3
-\openout3 = `main.toc'.
-
- [3]
-\openout2 = `capitoli/introduzione/introduzione.aux'.
-
- (capitoli/introduzione/introduzione.tex
-LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 11.
- (C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex/latex/lm\ts1lmr.fd
-File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-) [4
-
-
-{C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ts1.enc}]) [5]
-\openout2 = `"capitoli/01_Data Science_introduzione/data_science_introduzione.aux"'.
-
- (capitoli/01_Data Science_introduzione/data_science_introduzione.tex
-Capitolo 1.
-[6
-
-
-
-
-]
-<capitoli/01_Data Science_introduzione/images/fig_pope_election_2005_2013.png, id=252, 851.18pt x 393.47pt>
-File: capitoli/01_Data Science_introduzione/images/fig_pope_election_2005_2013.png Graphic file (type png)
-<use capitoli/01_Data Science_introduzione/images/fig_pope_election_2005_2013.png>
-Package pdftex.def Info: capitoli/01_Data Science_introduzione/images/fig_pope_election_2005_2013.png  used on input line 34.
-(pdftex.def)             Requested size: 372.4491pt x 172.17271pt.
- [7 <./capitoli/01_Data Science_introduzione/images/fig_pope_election_2005_2013.png>]
-<capitoli/01_Data Science_introduzione/images/kdd_process1.png, id=261, 474.27188pt x 196.23312pt>
-File: capitoli/01_Data Science_introduzione/images/kdd_process1.png Graphic file (type png)
-<use capitoli/01_Data Science_introduzione/images/kdd_process1.png>
-Package pdftex.def Info: capitoli/01_Data Science_introduzione/images/kdd_process1.png  used on input line 68.
-(pdftex.def)             Requested size: 416.26231pt x 172.23651pt.
- [8 <./capitoli/01_Data Science_introduzione/images/kdd_process1.png>] [9]
-LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 107.
+] [2]
+LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 110.
  (C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmtt.fd
 File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
@@ -673,277 +637,325 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `lmtt' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
- [10{C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc}]) [11] [12]
+ [3])
+\tf@toc=\write3
+\openout3 = `main.toc'.
+
+ [4]
+\openout2 = `capitoli/introduzione/introduzione.aux'.
+
+ (capitoli/introduzione/introduzione.tex
+LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 11.
+ (C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex/latex/lm\ts1lmr.fd
+File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+) [5
+
+
+{C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ts1.enc}]) [6]
+\openout2 = `"capitoli/01_Data Science_introduzione/data_science_introduzione.aux"'.
+
+ (capitoli/01_Data Science_introduzione/data_science_introduzione.tex
+Capitolo 1.
+[7
+
+
+
+
+]
+<capitoli/01_Data Science_introduzione/images/fig_pope_election_2005_2013.png, id=341, 851.18pt x 393.47pt>
+File: capitoli/01_Data Science_introduzione/images/fig_pope_election_2005_2013.png Graphic file (type png)
+<use capitoli/01_Data Science_introduzione/images/fig_pope_election_2005_2013.png>
+Package pdftex.def Info: capitoli/01_Data Science_introduzione/images/fig_pope_election_2005_2013.png  used on input line 34.
+(pdftex.def)             Requested size: 372.4491pt x 172.17271pt.
+ [8 <./capitoli/01_Data Science_introduzione/images/fig_pope_election_2005_2013.png>]
+<capitoli/01_Data Science_introduzione/images/kdd_process1.png, id=350, 474.27188pt x 196.23312pt>
+File: capitoli/01_Data Science_introduzione/images/kdd_process1.png Graphic file (type png)
+<use capitoli/01_Data Science_introduzione/images/kdd_process1.png>
+Package pdftex.def Info: capitoli/01_Data Science_introduzione/images/kdd_process1.png  used on input line 68.
+(pdftex.def)             Requested size: 416.26231pt x 172.23651pt.
+ [9 <./capitoli/01_Data Science_introduzione/images/kdd_process1.png>] [10] [11{C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc}]) [12] [13]
 \openout2 = `"capitoli/02_Data warehouse_introduzione/data_warehouse_introduzione.aux"'.
 
  (capitoli/02_Data warehouse_introduzione/data_warehouse_introduzione.tex
 Capitolo 2.
-[13
+[14
 
 
 
 
-] [14]
-<capitoli/02_Data warehouse_introduzione/images/ipercubo_multidimensionale.png, id=300, 1434.35875pt x 898.35625pt>
+] [15]
+<capitoli/02_Data warehouse_introduzione/images/ipercubo_multidimensionale.png, id=388, 1434.35875pt x 898.35625pt>
 File: capitoli/02_Data warehouse_introduzione/images/ipercubo_multidimensionale.png Graphic file (type png)
 <use capitoli/02_Data warehouse_introduzione/images/ipercubo_multidimensionale.png>
 Package pdftex.def Info: capitoli/02_Data warehouse_introduzione/images/ipercubo_multidimensionale.png  used on input line 73.
 (pdftex.def)             Requested size: 306.71924pt x 192.10103pt.
- [15{C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc} <./capitoli/02_Data warehouse_introduzione/images/ipercubo_multidimensionale.png (PNG copy)>]
-<capitoli/02_Data warehouse_introduzione/images/modello_a_stella.png, id=307, 701.62125pt x 227.85126pt>
+ [16{C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc} <./capitoli/02_Data warehouse_introduzione/images/ipercubo_multidimensionale.png (PNG copy)>]
+<capitoli/02_Data warehouse_introduzione/images/modello_a_stella.png, id=395, 701.62125pt x 227.85126pt>
 File: capitoli/02_Data warehouse_introduzione/images/modello_a_stella.png Graphic file (type png)
 <use capitoli/02_Data warehouse_introduzione/images/modello_a_stella.png>
 Package pdftex.def Info: capitoli/02_Data warehouse_introduzione/images/modello_a_stella.png  used on input line 106.
 (pdftex.def)             Requested size: 350.53915pt x 113.83842pt.
- [16 <./capitoli/02_Data warehouse_introduzione/images/modello_a_stella.png>] [17{C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc}]
-<capitoli/02_Data warehouse_introduzione/images/architettura_elementi_costitutivi.png, id=322, 935.495pt x 489.32813pt>
+ [17 <./capitoli/02_Data warehouse_introduzione/images/modello_a_stella.png>] [18{C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc}]
+<capitoli/02_Data warehouse_introduzione/images/architettura_elementi_costitutivi.png, id=411, 935.495pt x 489.32813pt>
 File: capitoli/02_Data warehouse_introduzione/images/architettura_elementi_costitutivi.png Graphic file (type png)
 <use capitoli/02_Data warehouse_introduzione/images/architettura_elementi_costitutivi.png>
 Package pdftex.def Info: capitoli/02_Data warehouse_introduzione/images/architettura_elementi_costitutivi.png  used on input line 176.
 (pdftex.def)             Requested size: 394.35236pt x 206.27798pt.
- [18 <./capitoli/02_Data warehouse_introduzione/images/architettura_elementi_costitutivi.png>]
-<capitoli/02_Data warehouse_introduzione/images/architettura_2_livelli.png, id=330, 960.58875pt x 556.0775pt>
+ [19 <./capitoli/02_Data warehouse_introduzione/images/architettura_elementi_costitutivi.png>]
+<capitoli/02_Data warehouse_introduzione/images/architettura_2_livelli.png, id=418, 960.58875pt x 556.0775pt>
 File: capitoli/02_Data warehouse_introduzione/images/architettura_2_livelli.png Graphic file (type png)
 <use capitoli/02_Data warehouse_introduzione/images/architettura_2_livelli.png>
 Package pdftex.def Info: capitoli/02_Data warehouse_introduzione/images/architettura_2_livelli.png  used on input line 225.
 (pdftex.def)             Requested size: 350.53915pt x 202.9284pt.
- [19]
-<capitoli/02_Data warehouse_introduzione/images/architettura_3_livelli.png, id=340, 965.6075pt x 533.49312pt>
+ [20]
+<capitoli/02_Data warehouse_introduzione/images/architettura_3_livelli.png, id=428, 965.6075pt x 533.49312pt>
 File: capitoli/02_Data warehouse_introduzione/images/architettura_3_livelli.png Graphic file (type png)
 <use capitoli/02_Data warehouse_introduzione/images/architettura_3_livelli.png>
 Package pdftex.def Info: capitoli/02_Data warehouse_introduzione/images/architettura_3_livelli.png  used on input line 250.
 (pdftex.def)             Requested size: 262.90604pt x 145.24985pt.
-) [20 <./capitoli/02_Data warehouse_introduzione/images/architettura_2_livelli.png> <./capitoli/02_Data warehouse_introduzione/images/architettura_3_livelli.png>]
+) [21 <./capitoli/02_Data warehouse_introduzione/images/architettura_2_livelli.png> <./capitoli/02_Data warehouse_introduzione/images/architettura_3_livelli.png>]
 \openout2 = `"capitoli/03_Data warehouse_progettazione concettuale e logica/data_warehouse_progettazione_concettuale_e_logica.aux"'.
 
  (capitoli/03_Data warehouse_progettazione concettuale e logica/data_warehouse_progettazione_concettuale_e_logica.tex
 Capitolo 3.
-[21
+[22
 
 
 
 
 ]
-<capitoli/03_Data warehouse_progettazione concettuale e logica/images/approccio_bottom_up.png, id=356, 1684.2925pt x 999.735pt>
+<capitoli/03_Data warehouse_progettazione concettuale e logica/images/approccio_bottom_up.png, id=444, 1684.2925pt x 999.735pt>
 File: capitoli/03_Data warehouse_progettazione concettuale e logica/images/approccio_bottom_up.png Graphic file (type png)
 <use capitoli/03_Data warehouse_progettazione concettuale e logica/images/approccio_bottom_up.png>
 Package pdftex.def Info: capitoli/03_Data warehouse_progettazione concettuale e logica/images/approccio_bottom_up.png  used on input line 39.
 (pdftex.def)             Requested size: 328.6292pt x 195.06195pt.
- [22 <./capitoli/03_Data warehouse_progettazione concettuale e logica/images/approccio_bottom_up.png (PNG copy)>]
+ [23 <./capitoli/03_Data warehouse_progettazione concettuale e logica/images/approccio_bottom_up.png (PNG copy)>]
 Overfull \hbox (9.47328pt too wide) in paragraph at lines 73--73
 []\T1/lmr/bx/n/14.4 (-20) Progettazione Con-cet-tua-le: Di-men-sio-nal Fact Mo-del (DFM) 
  []
 
-[23]
-<capitoli/03_Data warehouse_progettazione concettuale e logica/images/dfm_base_vendita.png, id=371, 912.40875pt x 484.81125pt>
+[24]
+<capitoli/03_Data warehouse_progettazione concettuale e logica/images/dfm_base_vendita.png, id=460, 912.40875pt x 484.81125pt>
 File: capitoli/03_Data warehouse_progettazione concettuale e logica/images/dfm_base_vendita.png Graphic file (type png)
 <use capitoli/03_Data warehouse_progettazione concettuale e logica/images/dfm_base_vendita.png>
 Package pdftex.def Info: capitoli/03_Data warehouse_progettazione concettuale e logica/images/dfm_base_vendita.png  used on input line 104.
 (pdftex.def)             Requested size: 262.90604pt x 139.68915pt.
- [24 <./capitoli/03_Data warehouse_progettazione concettuale e logica/images/dfm_base_vendita.png (PNG copy)>]
-<capitoli/03_Data warehouse_progettazione concettuale e logica/images/dfm_vs_er.png, id=379, 1976.38374pt x 1069.9975pt>
+ [25 <./capitoli/03_Data warehouse_progettazione concettuale e logica/images/dfm_base_vendita.png (PNG copy)>]
+<capitoli/03_Data warehouse_progettazione concettuale e logica/images/dfm_vs_er.png, id=467, 1976.38374pt x 1069.9975pt>
 File: capitoli/03_Data warehouse_progettazione concettuale e logica/images/dfm_vs_er.png Graphic file (type png)
 <use capitoli/03_Data warehouse_progettazione concettuale e logica/images/dfm_vs_er.png>
 Package pdftex.def Info: capitoli/03_Data warehouse_progettazione concettuale e logica/images/dfm_vs_er.png  used on input line 120.
 (pdftex.def)             Requested size: 416.26231pt x 225.35918pt.
- [25 <./capitoli/03_Data warehouse_progettazione concettuale e logica/images/dfm_vs_er.png (PNG copy)>] [26]
-<capitoli/03_Data warehouse_progettazione concettuale e logica/images/dfm_costrutti_avanzati.png, id=392, 1033.8625pt x 199.24437pt>
+ [26 <./capitoli/03_Data warehouse_progettazione concettuale e logica/images/dfm_vs_er.png (PNG copy)>] [27]
+<capitoli/03_Data warehouse_progettazione concettuale e logica/images/dfm_costrutti_avanzati.png, id=480, 1033.8625pt x 199.24437pt>
 File: capitoli/03_Data warehouse_progettazione concettuale e logica/images/dfm_costrutti_avanzati.png Graphic file (type png)
 <use capitoli/03_Data warehouse_progettazione concettuale e logica/images/dfm_costrutti_avanzati.png>
 Package pdftex.def Info: capitoli/03_Data warehouse_progettazione concettuale e logica/images/dfm_costrutti_avanzati.png  used on input line 202.
 (pdftex.def)             Requested size: 394.35236pt x 75.99942pt.
- [27 <./capitoli/03_Data warehouse_progettazione concettuale e logica/images/dfm_costrutti_avanzati.png>]
+ [28 <./capitoli/03_Data warehouse_progettazione concettuale e logica/images/dfm_costrutti_avanzati.png>]
 Overfull \hbox (11.7834pt too wide) in paragraph at lines 242--251
  [][] 
  []
 
-[28]
-<capitoli/03_Data warehouse_progettazione concettuale e logica/images/sparsita.png, id=405, 1011.78pt x 351.3125pt>
+[29]
+<capitoli/03_Data warehouse_progettazione concettuale e logica/images/sparsita.png, id=493, 1011.78pt x 351.3125pt>
 File: capitoli/03_Data warehouse_progettazione concettuale e logica/images/sparsita.png Graphic file (type png)
 <use capitoli/03_Data warehouse_progettazione concettuale e logica/images/sparsita.png>
 Package pdftex.def Info: capitoli/03_Data warehouse_progettazione concettuale e logica/images/sparsita.png  used on input line 273.
 (pdftex.def)             Requested size: 306.71924pt x 106.49884pt.
- [29 <./capitoli/03_Data warehouse_progettazione concettuale e logica/images/sparsita.png>]
-<capitoli/03_Data warehouse_progettazione concettuale e logica/images/star_schema.png, id=412, 632.86438pt x 508.90125pt>
+ [30 <./capitoli/03_Data warehouse_progettazione concettuale e logica/images/sparsita.png>]
+<capitoli/03_Data warehouse_progettazione concettuale e logica/images/star_schema.png, id=501, 632.86438pt x 508.90125pt>
 File: capitoli/03_Data warehouse_progettazione concettuale e logica/images/star_schema.png Graphic file (type png)
 <use capitoli/03_Data warehouse_progettazione concettuale e logica/images/star_schema.png>
 Package pdftex.def Info: capitoli/03_Data warehouse_progettazione concettuale e logica/images/star_schema.png  used on input line 300.
 (pdftex.def)             Requested size: 328.6292pt x 264.26521pt.
-<capitoli/03_Data warehouse_progettazione concettuale e logica/images/snowflake_schema.png, id=413, 745.28438pt x 560.59438pt>
+<capitoli/03_Data warehouse_progettazione concettuale e logica/images/snowflake_schema.png, id=502, 745.28438pt x 560.59438pt>
 File: capitoli/03_Data warehouse_progettazione concettuale e logica/images/snowflake_schema.png Graphic file (type png)
 <use capitoli/03_Data warehouse_progettazione concettuale e logica/images/snowflake_schema.png>
 Package pdftex.def Info: capitoli/03_Data warehouse_progettazione concettuale e logica/images/snowflake_schema.png  used on input line 314.
 (pdftex.def)             Requested size: 328.6292pt x 247.18407pt.
- [30 <./capitoli/03_Data warehouse_progettazione concettuale e logica/images/star_schema.png>]
-<capitoli/03_Data warehouse_progettazione concettuale e logica/images/archi_multipli.png, id=421, 941.01563pt x 443.15562pt>
+ [31 <./capitoli/03_Data warehouse_progettazione concettuale e logica/images/star_schema.png>]
+<capitoli/03_Data warehouse_progettazione concettuale e logica/images/archi_multipli.png, id=509, 941.01563pt x 443.15562pt>
 File: capitoli/03_Data warehouse_progettazione concettuale e logica/images/archi_multipli.png Graphic file (type png)
 <use capitoli/03_Data warehouse_progettazione concettuale e logica/images/archi_multipli.png>
 Package pdftex.def Info: capitoli/03_Data warehouse_progettazione concettuale e logica/images/archi_multipli.png  used on input line 337.
 (pdftex.def)             Requested size: 328.6292pt x 154.76192pt.
- [31 <./capitoli/03_Data warehouse_progettazione concettuale e logica/images/snowflake_schema.png>]
-<capitoli/03_Data warehouse_progettazione concettuale e logica/images/junk_dimension.png, id=430, 487.8225pt x 352.31625pt>
+ [32 <./capitoli/03_Data warehouse_progettazione concettuale e logica/images/snowflake_schema.png>]
+<capitoli/03_Data warehouse_progettazione concettuale e logica/images/junk_dimension.png, id=518, 487.8225pt x 352.31625pt>
 File: capitoli/03_Data warehouse_progettazione concettuale e logica/images/junk_dimension.png Graphic file (type png)
 <use capitoli/03_Data warehouse_progettazione concettuale e logica/images/junk_dimension.png>
 Package pdftex.def Info: capitoli/03_Data warehouse_progettazione concettuale e logica/images/junk_dimension.png  used on input line 353.
 (pdftex.def)             Requested size: 328.6292pt x 237.34625pt.
-) [32 <./capitoli/03_Data warehouse_progettazione concettuale e logica/images/archi_multipli.png>] [33 <./capitoli/03_Data warehouse_progettazione concettuale e logica/images/junk_dimension.png>]
+) [33 <./capitoli/03_Data warehouse_progettazione concettuale e logica/images/archi_multipli.png>] [34 <./capitoli/03_Data warehouse_progettazione concettuale e logica/images/junk_dimension.png>]
 \openout2 = `"capitoli/04_Data warehouse_analisi/data_warehouse_analisi.aux"'.
 
  (capitoli/04_Data warehouse_analisi/data_warehouse_analisi.tex
 Capitolo 4.
-[34
+[35
 
 
 
 
 ]
-<capitoli/04_Data warehouse_analisi/images/roll_up_schema.png, id=449, 409.53pt x 315.1775pt>
+<capitoli/04_Data warehouse_analisi/images/roll_up_schema.png, id=537, 409.53pt x 315.1775pt>
 File: capitoli/04_Data warehouse_analisi/images/roll_up_schema.png Graphic file (type png)
 <use capitoli/04_Data warehouse_analisi/images/roll_up_schema.png>
 Package pdftex.def Info: capitoli/04_Data warehouse_analisi/images/roll_up_schema.png  used on input line 33.
 (pdftex.def)             Requested size: 219.08614pt x 168.61589pt.
-<capitoli/04_Data warehouse_analisi/images/roll_up_hierarchy.png, id=450, 621.82312pt x 492.84125pt>
+<capitoli/04_Data warehouse_analisi/images/roll_up_hierarchy.png, id=538, 621.82312pt x 492.84125pt>
 File: capitoli/04_Data warehouse_analisi/images/roll_up_hierarchy.png Graphic file (type png)
 <use capitoli/04_Data warehouse_analisi/images/roll_up_hierarchy.png>
 Package pdftex.def Info: capitoli/04_Data warehouse_analisi/images/roll_up_hierarchy.png  used on input line 43.
 (pdftex.def)             Requested size: 328.6292pt x 260.46011pt.
- [35 <./capitoli/04_Data warehouse_analisi/images/roll_up_schema.png>]
-<capitoli/04_Data warehouse_analisi/images/roll_up_dimension.png, id=458, 1264.725pt x 931.48pt>
+ [36 <./capitoli/04_Data warehouse_analisi/images/roll_up_schema.png>]
+<capitoli/04_Data warehouse_analisi/images/roll_up_dimension.png, id=547, 1264.725pt x 931.48pt>
 File: capitoli/04_Data warehouse_analisi/images/roll_up_dimension.png Graphic file (type png)
 <use capitoli/04_Data warehouse_analisi/images/roll_up_dimension.png>
 Package pdftex.def Info: capitoli/04_Data warehouse_analisi/images/roll_up_dimension.png  used on input line 52.
 (pdftex.def)             Requested size: 328.6292pt x 242.03696pt.
- [36 <./capitoli/04_Data warehouse_analisi/images/roll_up_hierarchy.png> <./capitoli/04_Data warehouse_analisi/images/roll_up_dimension.png (PNG copy)>]
-<capitoli/04_Data warehouse_analisi/images/drill_down_schema.png, id=468, 405.01312pt x 347.79938pt>
+ [37 <./capitoli/04_Data warehouse_analisi/images/roll_up_hierarchy.png> <./capitoli/04_Data warehouse_analisi/images/roll_up_dimension.png (PNG copy)>]
+<capitoli/04_Data warehouse_analisi/images/drill_down_schema.png, id=556, 405.01312pt x 347.79938pt>
 File: capitoli/04_Data warehouse_analisi/images/drill_down_schema.png Graphic file (type png)
 <use capitoli/04_Data warehouse_analisi/images/drill_down_schema.png>
 Package pdftex.def Info: capitoli/04_Data warehouse_analisi/images/drill_down_schema.png  used on input line 71.
 (pdftex.def)             Requested size: 131.45302pt x 112.88486pt.
-<capitoli/04_Data warehouse_analisi/images/drill_down_hierarchy.png, id=469, 630.85687pt x 343.78438pt>
+<capitoli/04_Data warehouse_analisi/images/drill_down_hierarchy.png, id=557, 630.85687pt x 343.78438pt>
 File: capitoli/04_Data warehouse_analisi/images/drill_down_hierarchy.png Graphic file (type png)
 <use capitoli/04_Data warehouse_analisi/images/drill_down_hierarchy.png>
 Package pdftex.def Info: capitoli/04_Data warehouse_analisi/images/drill_down_hierarchy.png  used on input line 81.
 (pdftex.def)             Requested size: 328.6292pt x 179.08888pt.
-<capitoli/04_Data warehouse_analisi/images/drill_down_dimension.png, id=470, 635.87563pt x 343.2825pt>
+<capitoli/04_Data warehouse_analisi/images/drill_down_dimension.png, id=558, 635.87563pt x 343.2825pt>
 File: capitoli/04_Data warehouse_analisi/images/drill_down_dimension.png Graphic file (type png)
 <use capitoli/04_Data warehouse_analisi/images/drill_down_dimension.png>
 Package pdftex.def Info: capitoli/04_Data warehouse_analisi/images/drill_down_dimension.png  used on input line 90.
 (pdftex.def)             Requested size: 328.6292pt x 177.4184pt.
- [37 <./capitoli/04_Data warehouse_analisi/images/drill_down_schema.png> <./capitoli/04_Data warehouse_analisi/images/drill_down_hierarchy.png>]
-<capitoli/04_Data warehouse_analisi/images/slice_dice_schema.png, id=481, 428.09938pt x 286.06876pt>
+ [38 <./capitoli/04_Data warehouse_analisi/images/drill_down_schema.png> <./capitoli/04_Data warehouse_analisi/images/drill_down_hierarchy.png>]
+<capitoli/04_Data warehouse_analisi/images/slice_dice_schema.png, id=569, 428.09938pt x 286.06876pt>
 File: capitoli/04_Data warehouse_analisi/images/slice_dice_schema.png Graphic file (type png)
 <use capitoli/04_Data warehouse_analisi/images/slice_dice_schema.png>
 Package pdftex.def Info: capitoli/04_Data warehouse_analisi/images/slice_dice_schema.png  used on input line 113.
 (pdftex.def)             Requested size: 219.08614pt x 146.39948pt.
-<capitoli/04_Data warehouse_analisi/images/slice_schema.png, id=482, 627.84563pt x 419.06563pt>
+<capitoli/04_Data warehouse_analisi/images/slice_schema.png, id=570, 627.84563pt x 419.06563pt>
 File: capitoli/04_Data warehouse_analisi/images/slice_schema.png Graphic file (type png)
 <use capitoli/04_Data warehouse_analisi/images/slice_schema.png>
 Package pdftex.def Info: capitoli/04_Data warehouse_analisi/images/slice_schema.png  used on input line 123.
 (pdftex.def)             Requested size: 328.6292pt x 219.34772pt.
- [38 <./capitoli/04_Data warehouse_analisi/images/drill_down_dimension.png> <./capitoli/04_Data warehouse_analisi/images/slice_dice_schema.png>]
-<capitoli/04_Data warehouse_analisi/images/dice_schema.png, id=491, 1262.7175pt x 1087.06125pt>
+ [39 <./capitoli/04_Data warehouse_analisi/images/drill_down_dimension.png> <./capitoli/04_Data warehouse_analisi/images/slice_dice_schema.png>]
+<capitoli/04_Data warehouse_analisi/images/dice_schema.png, id=579, 1262.7175pt x 1087.06125pt>
 File: capitoli/04_Data warehouse_analisi/images/dice_schema.png Graphic file (type png)
 <use capitoli/04_Data warehouse_analisi/images/dice_schema.png>
 Package pdftex.def Info: capitoli/04_Data warehouse_analisi/images/dice_schema.png  used on input line 132.
 (pdftex.def)             Requested size: 328.6292pt x 282.91124pt.
- [39 <./capitoli/04_Data warehouse_analisi/images/slice_schema.png> <./capitoli/04_Data warehouse_analisi/images/dice_schema.png (PNG copy)>]
-<capitoli/04_Data warehouse_analisi/images/pivot_schema.png, id=499, 456.70625pt x 179.67125pt>
+ [40 <./capitoli/04_Data warehouse_analisi/images/slice_schema.png> <./capitoli/04_Data warehouse_analisi/images/dice_schema.png (PNG copy)>]
+<capitoli/04_Data warehouse_analisi/images/pivot_schema.png, id=587, 456.70625pt x 179.67125pt>
 File: capitoli/04_Data warehouse_analisi/images/pivot_schema.png Graphic file (type png)
 <use capitoli/04_Data warehouse_analisi/images/pivot_schema.png>
 Package pdftex.def Info: capitoli/04_Data warehouse_analisi/images/pivot_schema.png  used on input line 152.
 (pdftex.def)             Requested size: 328.6292pt x 129.28915pt.
-<capitoli/04_Data warehouse_analisi/images/pivot_schema_2.png, id=500, 277.035pt x 444.66125pt>
+<capitoli/04_Data warehouse_analisi/images/pivot_schema_2.png, id=588, 277.035pt x 444.66125pt>
 File: capitoli/04_Data warehouse_analisi/images/pivot_schema_2.png Graphic file (type png)
 <use capitoli/04_Data warehouse_analisi/images/pivot_schema_2.png>
 Package pdftex.def Info: capitoli/04_Data warehouse_analisi/images/pivot_schema_2.png  used on input line 159.
 (pdftex.def)             Requested size: 219.08614pt x 351.6517pt.
- [40 <./capitoli/04_Data warehouse_analisi/images/pivot_schema.png> <./capitoli/04_Data warehouse_analisi/images/pivot_schema_2.png>]
+ [41 <./capitoli/04_Data warehouse_analisi/images/pivot_schema.png> <./capitoli/04_Data warehouse_analisi/images/pivot_schema_2.png>]
 LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10.95> not available
 (Font)              Font shape `T1/lmtt/b/n' tried instead on input line 176.
- [41]
-<capitoli/04_Data warehouse_analisi/images/media_mobile.png, id=520, 822.57312pt x 470.25688pt>
+ [42]
+<capitoli/04_Data warehouse_analisi/images/media_mobile.png, id=609, 822.57312pt x 470.25688pt>
 File: capitoli/04_Data warehouse_analisi/images/media_mobile.png Graphic file (type png)
 <use capitoli/04_Data warehouse_analisi/images/media_mobile.png>
 Package pdftex.def Info: capitoli/04_Data warehouse_analisi/images/media_mobile.png  used on input line 236.
 (pdftex.def)             Requested size: 328.6292pt x 187.8698pt.
- [42]
-<capitoli/04_Data warehouse_analisi/images/somma_cumulativa.png, id=527, 808.52063pt x 461.22313pt>
+ [43]
+<capitoli/04_Data warehouse_analisi/images/somma_cumulativa.png, id=615, 808.52063pt x 461.22313pt>
 File: capitoli/04_Data warehouse_analisi/images/somma_cumulativa.png Graphic file (type png)
 <use capitoli/04_Data warehouse_analisi/images/somma_cumulativa.png>
 Package pdftex.def Info: capitoli/04_Data warehouse_analisi/images/somma_cumulativa.png  used on input line 257.
 (pdftex.def)             Requested size: 328.6292pt x 187.46996pt.
- [43 <./capitoli/04_Data warehouse_analisi/images/media_mobile.png> <./capitoli/04_Data warehouse_analisi/images/somma_cumulativa.png>]
-<capitoli/04_Data warehouse_analisi/images/confronto_dato_macro.png, id=536, 799.48688pt x 451.6875pt>
+ [44 <./capitoli/04_Data warehouse_analisi/images/media_mobile.png> <./capitoli/04_Data warehouse_analisi/images/somma_cumulativa.png>]
+<capitoli/04_Data warehouse_analisi/images/confronto_dato_macro.png, id=624, 799.48688pt x 451.6875pt>
 File: capitoli/04_Data warehouse_analisi/images/confronto_dato_macro.png Graphic file (type png)
 <use capitoli/04_Data warehouse_analisi/images/confronto_dato_macro.png>
 Package pdftex.def Info: capitoli/04_Data warehouse_analisi/images/confronto_dato_macro.png  used on input line 276.
 (pdftex.def)             Requested size: 328.6292pt x 185.66862pt.
- [44 <./capitoli/04_Data warehouse_analisi/images/confronto_dato_macro.png>]
+ [45 <./capitoli/04_Data warehouse_analisi/images/confronto_dato_macro.png>]
 Overfull \hbox (28.24039pt too wide) in paragraph at lines 296--301
 \T1/lmtt/m/n/10.95 Supermercato(SK, Città, Regione, Provincia)\T1/lmr/m/n/10.95 (-20) , \T1/lmtt/m/n/10.95 Tempo(TK, Data, Mese, Anno, Semestre)\T1/lmr/m/n/10.95 (-20) . 
  []
 
-[45]
-<capitoli/04_Data warehouse_analisi/images/rollup_schema.png, id=549, 553.06625pt x 431.11063pt>
+[46]
+<capitoli/04_Data warehouse_analisi/images/rollup_schema.png, id=637, 553.06625pt x 431.11063pt>
 File: capitoli/04_Data warehouse_analisi/images/rollup_schema.png Graphic file (type png)
 <use capitoli/04_Data warehouse_analisi/images/rollup_schema.png>
 Package pdftex.def Info: capitoli/04_Data warehouse_analisi/images/rollup_schema.png  used on input line 363.
 (pdftex.def)             Requested size: 328.6292pt x 256.16206pt.
- [46]) [47 <./capitoli/04_Data warehouse_analisi/images/rollup_schema.png>]
+ [47]) [48 <./capitoli/04_Data warehouse_analisi/images/rollup_schema.png>]
 \openout2 = `"capitoli/05_Data warehouse_progettazione fisica e alimentazione/data_warehouse_progettazione_fisica_e_alimentazione.aux"'.
 
  (capitoli/05_Data warehouse_progettazione fisica e alimentazione/data_warehouse_progettazione_fisica_e_alimentazione.tex
 Capitolo 5.
-[48
+[49
 
 
 
 
 ]
-<capitoli/05_Data warehouse_progettazione fisica e alimentazione/images/def_vista_v3.png, id=570, 593.71812pt x 207.77625pt>
+<capitoli/05_Data warehouse_progettazione fisica e alimentazione/images/def_vista_v3.png, id=658, 593.71812pt x 207.77625pt>
 File: capitoli/05_Data warehouse_progettazione fisica e alimentazione/images/def_vista_v3.png Graphic file (type png)
 <use capitoli/05_Data warehouse_progettazione fisica e alimentazione/images/def_vista_v3.png>
 Package pdftex.def Info: capitoli/05_Data warehouse_progettazione fisica e alimentazione/images/def_vista_v3.png  used on input line 38.
 (pdftex.def)             Requested size: 306.71924pt x 107.3436pt.
-<capitoli/05_Data warehouse_progettazione fisica e alimentazione/images/reticolo_viste.png, id=571, 660.96938pt x 367.87437pt>
+<capitoli/05_Data warehouse_progettazione fisica e alimentazione/images/reticolo_viste.png, id=659, 660.96938pt x 367.87437pt>
 File: capitoli/05_Data warehouse_progettazione fisica e alimentazione/images/reticolo_viste.png Graphic file (type png)
 <use capitoli/05_Data warehouse_progettazione fisica e alimentazione/images/reticolo_viste.png>
 Package pdftex.def Info: capitoli/05_Data warehouse_progettazione fisica e alimentazione/images/reticolo_viste.png  used on input line 59.
 (pdftex.def)             Requested size: 372.4491pt x 207.29929pt.
- [49 <./capitoli/05_Data warehouse_progettazione fisica e alimentazione/images/def_vista_v3.png>]
-<capitoli/05_Data warehouse_progettazione fisica e alimentazione/images/grafici_scelta_viste.png, id=580, 1507.13063pt x 888.31876pt>
+ [50 <./capitoli/05_Data warehouse_progettazione fisica e alimentazione/images/def_vista_v3.png>]
+<capitoli/05_Data warehouse_progettazione fisica e alimentazione/images/grafici_scelta_viste.png, id=668, 1507.13063pt x 888.31876pt>
 File: capitoli/05_Data warehouse_progettazione fisica e alimentazione/images/grafici_scelta_viste.png Graphic file (type png)
 <use capitoli/05_Data warehouse_progettazione fisica e alimentazione/images/grafici_scelta_viste.png>
 Package pdftex.def Info: capitoli/05_Data warehouse_progettazione fisica e alimentazione/images/grafici_scelta_viste.png  used on input line 88.
 (pdftex.def)             Requested size: 394.35236pt x 232.43488pt.
- [50 <./capitoli/05_Data warehouse_progettazione fisica e alimentazione/images/reticolo_viste.png>] [51 <./capitoli/05_Data warehouse_progettazione fisica e alimentazione/images/grafici_scelta_viste.png>] [52] [53]
-<capitoli/05_Data warehouse_progettazione fisica e alimentazione/images/schemi_pulitura.png, id=612, 588.69937pt x 459.7175pt>
+ [51 <./capitoli/05_Data warehouse_progettazione fisica e alimentazione/images/reticolo_viste.png>] [52 <./capitoli/05_Data warehouse_progettazione fisica e alimentazione/images/grafici_scelta_viste.png>] [53] [54]
+<capitoli/05_Data warehouse_progettazione fisica e alimentazione/images/schemi_pulitura.png, id=701, 588.69937pt x 459.7175pt>
 File: capitoli/05_Data warehouse_progettazione fisica e alimentazione/images/schemi_pulitura.png Graphic file (type png)
 <use capitoli/05_Data warehouse_progettazione fisica e alimentazione/images/schemi_pulitura.png>
 Package pdftex.def Info: capitoli/05_Data warehouse_progettazione fisica e alimentazione/images/schemi_pulitura.png  used on input line 231.
 (pdftex.def)             Requested size: 328.6292pt x 256.62633pt.
- [54 <./capitoli/05_Data warehouse_progettazione fisica e alimentazione/images/schemi_pulitura.png>]
-<capitoli/05_Data warehouse_progettazione fisica e alimentazione/images/diagrammi_caricamento.png, id=620, 1318.42563pt x 423.5825pt>
+ [55 <./capitoli/05_Data warehouse_progettazione fisica e alimentazione/images/schemi_pulitura.png>]
+<capitoli/05_Data warehouse_progettazione fisica e alimentazione/images/diagrammi_caricamento.png, id=708, 1318.42563pt x 423.5825pt>
 File: capitoli/05_Data warehouse_progettazione fisica e alimentazione/images/diagrammi_caricamento.png Graphic file (type png)
 <use capitoli/05_Data warehouse_progettazione fisica e alimentazione/images/diagrammi_caricamento.png>
 Package pdftex.def Info: capitoli/05_Data warehouse_progettazione fisica e alimentazione/images/diagrammi_caricamento.png  used on input line 262.
 (pdftex.def)             Requested size: 438.17227pt x 140.77155pt.
-) [55 <./capitoli/05_Data warehouse_progettazione fisica e alimentazione/images/diagrammi_caricamento.png>]
-\openout2 = `"capitoli/06_Conceptual schema_textual formalism/conceptual_schema_textual_formalism.aux"'.
+) [56 <./capitoli/05_Data warehouse_progettazione fisica e alimentazione/images/diagrammi_caricamento.png>]
+\openout2 = `"capitoli/06_Data warehouse in Oracle/Data_warehouse_in_Oracle.aux"'.
 
- (capitoli/06_Conceptual schema_textual formalism/conceptual_schema_textual_formalism.tex
+ (capitoli/06_Data warehouse in Oracle/Data_warehouse_in_Oracle.tex
 Capitolo 6.
-) [56
+LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <12> not available
+(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 22.
+[57
 
 
 
 
-]
+] (C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.sty
+File: lstlang1.sty 2025/11/14 1.11b listings language file
+)
+LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10> not available
+(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 38.
+ [58]
+Overfull \hbox (18.05896pt too wide) in paragraph at lines 105--117
+ [][] 
+ []
+
+[59] [60] [61]) [62]
 \openout2 = `"capitoli/07_Data lakes/data_lakes.aux"'.
 
  (capitoli/07_Data lakes/data_lakes.tex
 Capitolo 7.
-) [57
+) [63
 
 
 
@@ -953,7 +965,7 @@ Capitolo 7.
 
  (capitoli/08_Data mining process/data_mining_process.tex
 Capitolo 8.
-) [58
+) [64
 
 
 
@@ -963,7 +975,7 @@ Capitolo 8.
 
  (capitoli/09_Data preparation/data_preparation.tex
 Capitolo 9.
-) [59
+) [65
 
 
 
@@ -973,7 +985,7 @@ Capitolo 9.
 
  (capitoli/10_Data mining_association rules/data_mining_association_rules.tex
 Capitolo 10.
-) [60
+) [66
 
 
 
@@ -983,7 +995,7 @@ Capitolo 10.
 
  (capitoli/11_Data mining_classificazione/data_mining_classificazione.tex
 Capitolo 11.
-) [61
+) [67
 
 
 
@@ -993,29 +1005,63 @@ Capitolo 11.
 
  (capitoli/12_Data mining_clustering/data_mining_clustering.tex
 Capitolo 12.
-) [62
+) [68
 
 
 
 
-] (main.aux (capitoli/introduzione/introduzione.aux) (capitoli/01_Data Science_introduzione/data_science_introduzione.aux) (capitoli/02_Data warehouse_introduzione/data_warehouse_introduzione.aux) (capitoli/03_Data warehouse_progettazione concettuale e logica/data_warehouse_progettazione_concettuale_e_logica.aux) (capitoli/04_Data warehouse_analisi/data_warehouse_analisi.aux) (capitoli/05_Data warehouse_progettazione fisica e alimentazione/data_warehouse_progettazione_fisica_e_alimentazione.aux) (capitoli/06_Conceptual schema_textual formalism/conceptual_schema_textual_formalism.aux) (capitoli/07_Data lakes/data_lakes.aux) (capitoli/08_Data mining process/data_mining_process.aux) (capitoli/09_Data preparation/data_preparation.aux) (capitoli/10_Data mining_association rules/data_mining_association_rules.aux) (capitoli/11_Data mining_classificazione/data_mining_classificazione.aux) (capitoli/12_Data mining_clustering/data_mining_clustering.aux))
+]
+Capitolo 13.
+[69
+
+
+
+]
+\openout2 = `"ESERCIZI/SQL Esteso/sql_esteso.aux"'.
+
+ (ESERCIZI/SQL Esteso/sql_esteso.tex
+Capitolo 14.
+
+Overfull \hbox (44.6925pt too wide) in paragraph at lines 21--22
+[]\T1/lmr/bx/n/10.95 (-20) Fatturato \T1/lmr/m/n/10.95 (-20) (\T1/lmtt/m/n/10.95 CodTempo\T1/lmr/m/n/10.95 (-20) , \T1/lmtt/m/n/10.95 CodCliente\T1/lmr/m/n/10.95 (-20) , \T1/lmtt/m/n/10.95 CodCatArticolo\T1/lmr/m/n/10.95 (-20) , \T1/lmtt/m/n/10.95 CodAgente\T1/lmr/m/n/10.95 (-20) , \T1/lmtt/m/n/10.95 TotFatturato\T1/lmr/m/n/10.95 (-20) , \T1/lmtt/m/n/10.95 NumArticoli\T1/lmr/m/n/10.95 (-20) ,
+ []
+
+[70
+
+
+]
+Overfull \hbox (14.93034pt too wide) in paragraph at lines 30--31
+[]\T1/lmr/bx/n/10.95 (-20) Dimensione Ca-te-go-ria: \T1/lmr/m/n/10.95 (-20) Que-sta ta-bel-la pos-sie-de un so-lo at-tri-bu-to de-scrit-ti-vo (\T1/lmtt/m/n/10.95 Categoria\T1/lmr/m/n/10.95 (-20) )
+ []
+
+[71] [72] [73] [74] [75]) [76]
+\openout2 = `"ESERCIZI/Progettazione di un data warehouse/progettazione_di_un_data_warehouse.aux"'.
+
+ (ESERCIZI/Progettazione di un data warehouse/progettazione_di_un_data_warehouse.tex
+Capitolo 15.
+[77
+
+
+
+
+] [78] [79] [80] [81] [82]) [83] (main.aux (capitoli/introduzione/introduzione.aux) (capitoli/01_Data Science_introduzione/data_science_introduzione.aux) (capitoli/02_Data warehouse_introduzione/data_warehouse_introduzione.aux) (capitoli/03_Data warehouse_progettazione concettuale e logica/data_warehouse_progettazione_concettuale_e_logica.aux) (capitoli/04_Data warehouse_analisi/data_warehouse_analisi.aux) (capitoli/05_Data warehouse_progettazione fisica e alimentazione/data_warehouse_progettazione_fisica_e_alimentazione.aux) (capitoli/06_Data warehouse in Oracle/Data_warehouse_in_Oracle.aux) (capitoli/07_Data lakes/data_lakes.aux) (capitoli/08_Data mining process/data_mining_process.aux) (capitoli/09_Data preparation/data_preparation.aux) (capitoli/10_Data mining_association rules/data_mining_association_rules.aux) (capitoli/11_Data mining_classificazione/data_mining_classificazione.aux) (capitoli/12_Data mining_clustering/data_mining_clustering.aux) (ESERCIZI/SQL Esteso/sql_esteso.aux) (ESERCIZI/Progettazione di un data warehouse/progettazione_di_un_data_warehouse.aux))
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 21288 strings out of 467871
- 437287 string characters out of 5418376
- 830883 words of memory out of 5000000
- 49229 multiletter control sequences out of 15000+600000
- 703429 words of font info for 224 fonts, out of 8000000 for 9000
+ 22235 strings out of 467871
+ 451009 string characters out of 5418376
+ 1085427 words of memory out of 5000000
+ 49881 multiletter control sequences out of 15000+600000
+ 708598 words of font info for 241 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 80i,9n,83p,1124b,1272s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx10.pfb><C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi10.pfb><C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr12.pfb><C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr17.pfb><C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr8.pfb><C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri10.pfb><C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtk10.pfb><C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb>
-Output written on main.pdf (63 pages, 9147257 bytes).
+ 80i,9n,83p,1124b,2652s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx10.pfb><C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi10.pfb><C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr12.pfb><C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr17.pfb><C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr6.pfb><C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr8.pfb><C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri10.pfb><C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtk10.pfb><C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb>
+Output written on main.pdf (84 pages, 9295527 bytes).
 PDF statistics:
- 1083 PDF objects out of 1200 (max. 8388607)
- 276 named destinations out of 1000 (max. 500000)
- 40941 words of extra memory for PDF output out of 42996 (max. 10000000)
+ 1621 PDF objects out of 1728 (max. 8388607)
+ 524 named destinations out of 1000 (max. 500000)
+ 44861 words of extra memory for PDF output out of 51595 (max. 10000000)
 

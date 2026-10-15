@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.6.16)  8 OCT 2026 19:05
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.6.16)  15 OCT 2026 12:18
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -477,7 +477,7 @@ File: t1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 \c@definition=\count351
 \c@example=\count352
 \c@remark=\count353
-) (main.aux (capitoli/introduzione/introduzione.aux) (capitoli/01_computer_design_introduction/01_computer_design_introduction.aux) (capitoli/02_intro_to_instruction-set/02_intro_to_instruction-set.aux) (capitoli/03_RISC-V_Introduction/03_RISC-V_Introduction.aux) (capitoli/04_gem5/04_gem5.aux) (capitoli/05_pipelining_base/05_pipelining_base.aux) (capitoli/06_pipelining_multicycle/06_pipelining_multicycle.aux) (capitoli/07_pipelining_exceptions/07_pipelining_exceptions.aux) (capitoli/08_ILP/08_ILP.aux) (capitoli/09_cache_memories/09_cache_memories.aux) (capitoli/10_branch_prediction/10_branch_prediction.aux) (capitoli/11_dyn_scheduling/11_dyn_scheduling.aux) (capitoli/12_hdwr_speculation/12_hdwr_speculation.aux) (capitoli/13_mult_issue_proc/13_mult_issue_proc.aux) (capitoli/14_Exmpl_i7_A8/14_Exmpl_i7_A8.aux) (capitoli/15_vliw/15_vliw.aux) (capitoli/16_tlp/16_tlp.aux))
+) (main.aux (capitoli/introduzione/introduzione.aux) (capitoli/01_computer_design_introduction/01_computer_design_introduction.aux) (capitoli/02_intro_to_instruction-set/02_intro_to_instruction-set.aux) (capitoli/03_RISC-V_Introduction/03_RISC-V_Introduction.aux) (capitoli/04_gem5/04_gem5.aux) (capitoli/05_pipelining_base/05_pipelining_base.aux) (capitoli/06_pipelining_multicycle/06_pipelining_multicycle.aux) (capitoli/07_pipelining_exceptions/07_pipelining_exceptions.aux) (capitoli/08_ILP/08_ILP.aux) (capitoli/09_cache_memories/09_cache_memories.aux) (capitoli/10_branch_prediction/10_branch_prediction.aux) (capitoli/11_dyn_scheduling/11_dyn_scheduling.aux) (capitoli/12_hdwr_speculation/12_hdwr_speculation.aux) (capitoli/13_mult_issue_proc/13_mult_issue_proc.aux) (capitoli/14_Exmpl_i7_A8/14_Exmpl_i7_A8.aux) (capitoli/15_vliw/15_vliw.aux) (capitoli/16_tlp/16_tlp.aux) (ESERCIZI/ex1/ex1.aux))
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 7.
@@ -625,7 +625,7 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.43 ...e Complemento a Due}{20}{subsection.3.2.1}
+l.43 ...e Complemento a Due}{21}{subsection.3.2.1}
                                                   % [1
 
 ]
@@ -637,48 +637,48 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `lmtt' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
- [2])
+ [2] [3])
 \tf@toc=\write3
 \openout3 = `main.toc'.
 
- [3]
+ [4]
 \openout2 = `capitoli/introduzione/introduzione.aux'.
 
  (capitoli/introduzione/introduzione.tex
 LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 9.
  (C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex/latex/lm\ts1lmr.fd
 File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-) [4
+) [5
 
 
-{C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ts1.enc}{C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc}{C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc}{C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}]) [5]
+{C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ts1.enc}{C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc}{C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc}{C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}]) [6]
 \openout2 = `capitoli/01_computer_design_introduction/01_computer_design_introduction.aux'.
 
  (capitoli/01_computer_design_introduction/01_computer_design_introduction.tex
 Capitolo 1.
-[6
+[7
 
 
 
 
 ]
-<capitoli/01_computer_design_introduction/images/image.png, id=286, 1395.2125pt x 961.5925pt>
+<capitoli/01_computer_design_introduction/images/image.png, id=350, 1395.2125pt x 961.5925pt>
 File: capitoli/01_computer_design_introduction/images/image.png Graphic file (type png)
 <use capitoli/01_computer_design_introduction/images/image.png>
 Package pdftex.def Info: capitoli/01_computer_design_introduction/images/image.png  used on input line 49.
 (pdftex.def)             Requested size: 394.35236pt x 271.78244pt.
- [7 <./capitoli/01_computer_design_introduction/images/image.png (PNG copy)>]
-<capitoli/01_computer_design_introduction/images/bathtube.png, id=296, 858.70813pt x 507.8975pt>
+ [8 <./capitoli/01_computer_design_introduction/images/image.png (PNG copy)>]
+<capitoli/01_computer_design_introduction/images/bathtube.png, id=360, 858.70813pt x 507.8975pt>
 File: capitoli/01_computer_design_introduction/images/bathtube.png Graphic file (type png)
 <use capitoli/01_computer_design_introduction/images/bathtube.png>
 Package pdftex.def Info: capitoli/01_computer_design_introduction/images/bathtube.png  used on input line 79.
 (pdftex.def)             Requested size: 262.90604pt x 155.50137pt.
- [8 <./capitoli/01_computer_design_introduction/images/bathtube.png>] [9] [10{C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathex.enc}] [11]) [12]
+ [9 <./capitoli/01_computer_design_introduction/images/bathtube.png>] [10] [11{C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathex.enc}] [12]) [13]
 \openout2 = `capitoli/02_intro_to_instruction-set/02_intro_to_instruction-set.aux'.
 
  (capitoli/02_intro_to_instruction-set/02_intro_to_instruction-set.tex
 Capitolo 2.
-[13
+[14
 
 
 
@@ -688,12 +688,12 @@ Overfull \hbox (3.62091pt too wide) in paragraph at lines 36--37
 []\T1/lmr/bx/n/10.95 (-20) Registro-Registro (Load-Store)\T1/lmr/m/n/10.95 (-20) : \T1/lmtt/m/n/10.95 load R1, A\T1/lmr/m/n/10.95 (-20) , \T1/lmtt/m/n/10.95 load R2, B\T1/lmr/m/n/10.95 (-20) , \T1/lmtt/m/n/10.95 add R3, R1, R2\T1/lmr/m/n/10.95 (-20) , \T1/lmtt/m/n/10.95 store
  []
 
-[14]
+[15]
 Overfull \hbox (24.27786pt too wide) in paragraph at lines 65--74
  [][] 
  []
 
-[15]
+[16]
 Underfull \hbox (badness 10000) in paragraph at lines 111--111
 []|\T1/lmr/bx/n/10.95 (+20) Compare and
  []
@@ -703,235 +703,235 @@ Underfull \hbox (badness 10000) in paragraph at lines 111--111
 []|\T1/lmr/m/n/10.95 (+20) RISC-V, PA-
  []
 
-<capitoli/02_intro_to_instruction-set/images/data.png, id=361, 909.89937pt x 465.23813pt>
+<capitoli/02_intro_to_instruction-set/images/data.png, id=425, 909.89937pt x 465.23813pt>
 File: capitoli/02_intro_to_instruction-set/images/data.png Graphic file (type png)
 <use capitoli/02_intro_to_instruction-set/images/data.png>
 Package pdftex.def Info: capitoli/02_intro_to_instruction-set/images/data.png  used on input line 142.
 (pdftex.def)             Requested size: 350.53915pt x 179.23436pt.
-[16] [17 <./capitoli/02_intro_to_instruction-set/images/data.png>]
-<capitoli/02_intro_to_instruction-set/images/image.png, id=375, 749.80125pt x 494.34688pt>
+[17] [18 <./capitoli/02_intro_to_instruction-set/images/data.png>]
+<capitoli/02_intro_to_instruction-set/images/image.png, id=440, 749.80125pt x 494.34688pt>
 File: capitoli/02_intro_to_instruction-set/images/image.png Graphic file (type png)
 <use capitoli/02_intro_to_instruction-set/images/image.png>
 Package pdftex.def Info: capitoli/02_intro_to_instruction-set/images/image.png  used on input line 178.
 (pdftex.def)             Requested size: 394.35236pt x 260.00366pt.
-) [18 <./capitoli/02_intro_to_instruction-set/images/image.png>]
+) [19 <./capitoli/02_intro_to_instruction-set/images/image.png>]
 \openout2 = `capitoli/03_RISC-V_Introduction/03_RISC-V_Introduction.aux'.
 
  (capitoli/03_RISC-V_Introduction/03_RISC-V_Introduction.tex
 Capitolo 3.
-[19
+[20
 
 
 
 
 ]
-<capitoli/03_RISC-V_Introduction/images/riscv_length.png, id=391, 858.20625pt x 157.08687pt>
+<capitoli/03_RISC-V_Introduction/images/riscv_length.png, id=455, 858.20625pt x 157.08687pt>
 File: capitoli/03_RISC-V_Introduction/images/riscv_length.png Graphic file (type png)
 <use capitoli/03_RISC-V_Introduction/images/riscv_length.png>
 Package pdftex.def Info: capitoli/03_RISC-V_Introduction/images/riscv_length.png  used on input line 51.
 (pdftex.def)             Requested size: 306.71924pt x 56.14134pt.
-<capitoli/03_RISC-V_Introduction/images/complemento_due.png, id=392, 1563.8425pt x 581.17125pt>
+<capitoli/03_RISC-V_Introduction/images/complemento_due.png, id=456, 1563.8425pt x 581.17125pt>
 File: capitoli/03_RISC-V_Introduction/images/complemento_due.png Graphic file (type png)
 <use capitoli/03_RISC-V_Introduction/images/complemento_due.png>
 Package pdftex.def Info: capitoli/03_RISC-V_Introduction/images/complemento_due.png  used on input line 72.
 (pdftex.def)             Requested size: 350.53915pt x 130.27014pt.
- [20 <./capitoli/03_RISC-V_Introduction/images/riscv_length.png>]
-<capitoli/03_RISC-V_Introduction/images/ieee754_format.png, id=400, 682.04813pt x 490.83376pt>
+ [21 <./capitoli/03_RISC-V_Introduction/images/riscv_length.png>]
+<capitoli/03_RISC-V_Introduction/images/ieee754_format.png, id=464, 682.04813pt x 490.83376pt>
 File: capitoli/03_RISC-V_Introduction/images/ieee754_format.png Graphic file (type png)
 <use capitoli/03_RISC-V_Introduction/images/ieee754_format.png>
 Package pdftex.def Info: capitoli/03_RISC-V_Introduction/images/ieee754_format.png  used on input line 90.
 (pdftex.def)             Requested size: 219.08614pt x 157.66168pt.
-<capitoli/03_RISC-V_Introduction/images/riscv_extensions_table.png, id=401, 635.87563pt x 650.43pt>
+<capitoli/03_RISC-V_Introduction/images/riscv_extensions_table.png, id=465, 635.87563pt x 650.43pt>
 File: capitoli/03_RISC-V_Introduction/images/riscv_extensions_table.png Graphic file (type png)
 <use capitoli/03_RISC-V_Introduction/images/riscv_extensions_table.png>
 Package pdftex.def Info: capitoli/03_RISC-V_Introduction/images/riscv_extensions_table.png  used on input line 110.
 (pdftex.def)             Requested size: 306.71924pt x 313.75111pt.
- [21 <./capitoli/03_RISC-V_Introduction/images/complemento_due.png (PNG copy)> <./capitoli/03_RISC-V_Introduction/images/ieee754_format.png>]
+ [22 <./capitoli/03_RISC-V_Introduction/images/complemento_due.png (PNG copy)> <./capitoli/03_RISC-V_Introduction/images/ieee754_format.png>]
 LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10.95> not available
 (Font)              Font shape `T1/lmtt/b/n' tried instead on input line 118.
-<capitoli/03_RISC-V_Introduction/images/riscv_registers_abi.png, id=409, 1087.06125pt x 481.8pt>
+<capitoli/03_RISC-V_Introduction/images/riscv_registers_abi.png, id=473, 1087.06125pt x 481.8pt>
 File: capitoli/03_RISC-V_Introduction/images/riscv_registers_abi.png Graphic file (type png)
 <use capitoli/03_RISC-V_Introduction/images/riscv_registers_abi.png>
 Package pdftex.def Info: capitoli/03_RISC-V_Introduction/images/riscv_registers_abi.png  used on input line 132.
 (pdftex.def)             Requested size: 394.35236pt x 174.78586pt.
- [22 <./capitoli/03_RISC-V_Introduction/images/riscv_extensions_table.png>] [23 <./capitoli/03_RISC-V_Introduction/images/riscv_registers_abi.png>]
-<capitoli/03_RISC-V_Introduction/images/riscv_formats.png, id=427, 820.56563pt x 218.8175pt>
+ [23 <./capitoli/03_RISC-V_Introduction/images/riscv_extensions_table.png>] [24 <./capitoli/03_RISC-V_Introduction/images/riscv_registers_abi.png>]
+<capitoli/03_RISC-V_Introduction/images/riscv_formats.png, id=492, 820.56563pt x 218.8175pt>
 File: capitoli/03_RISC-V_Introduction/images/riscv_formats.png Graphic file (type png)
 <use capitoli/03_RISC-V_Introduction/images/riscv_formats.png>
 Package pdftex.def Info: capitoli/03_RISC-V_Introduction/images/riscv_formats.png  used on input line 169.
 (pdftex.def)             Requested size: 394.35236pt x 105.15808pt.
- [24 <./capitoli/03_RISC-V_Introduction/images/riscv_formats.png>]) [25]
+ [25 <./capitoli/03_RISC-V_Introduction/images/riscv_formats.png>]) [26]
 \openout2 = `capitoli/04_gem5/04_gem5.aux'.
 
  (capitoli/04_gem5/04_gem5.tex
 Capitolo 4.
-<capitoli/04_gem5/images/riscv_pipeline.png, id=447, 772.8875pt x 650.43pt>
+<capitoli/04_gem5/images/riscv_pipeline.png, id=511, 772.8875pt x 650.43pt>
 File: capitoli/04_gem5/images/riscv_pipeline.png Graphic file (type png)
 <use capitoli/04_gem5/images/riscv_pipeline.png>
 Package pdftex.def Info: capitoli/04_gem5/images/riscv_pipeline.png  used on input line 29.
 (pdftex.def)             Requested size: 262.90604pt x 221.25244pt.
-[26
+[27
 
 
 
 
 ]
-<capitoli/04_gem5/images/riscv_vs_8086.png, id=458, 729.22438pt x 393.47pt>
+<capitoli/04_gem5/images/riscv_vs_8086.png, id=522, 729.22438pt x 393.47pt>
 File: capitoli/04_gem5/images/riscv_vs_8086.png Graphic file (type png)
 <use capitoli/04_gem5/images/riscv_vs_8086.png>
 Package pdftex.def Info: capitoli/04_gem5/images/riscv_vs_8086.png  used on input line 56.
 (pdftex.def)             Requested size: 350.53915pt x 189.13962pt.
- [27 <./capitoli/04_gem5/images/riscv_pipeline.png>]
-<capitoli/04_gem5/images/ase_studio_interface.png, id=467, 926.46124pt x 418.56375pt>
+ [28 <./capitoli/04_gem5/images/riscv_pipeline.png>]
+<capitoli/04_gem5/images/ase_studio_interface.png, id=531, 926.46124pt x 418.56375pt>
 File: capitoli/04_gem5/images/ase_studio_interface.png Graphic file (type png)
 <use capitoli/04_gem5/images/ase_studio_interface.png>
 Package pdftex.def Info: capitoli/04_gem5/images/ase_studio_interface.png  used on input line 99.
 (pdftex.def)             Requested size: 394.35236pt x 178.16505pt.
- [28 <./capitoli/04_gem5/images/riscv_vs_8086.png>]
+ [29 <./capitoli/04_gem5/images/riscv_vs_8086.png>]
 LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <12> not available
 (Font)              Font shape `T1/lmtt/b/n' tried instead on input line 116.
- [29 <./capitoli/04_gem5/images/ase_studio_interface.png>]) [30]
+ [30 <./capitoli/04_gem5/images/ase_studio_interface.png>]) [31]
 \openout2 = `capitoli/05_pipelining_base/05_pipelining_base.aux'.
 
  (capitoli/05_pipelining_base/05_pipelining_base.tex
 Capitolo 5.
-<capitoli/05_pipelining_base/images/overlapping_fdew.png, id=492, 1205.50375pt x 696.6025pt>
+<capitoli/05_pipelining_base/images/overlapping_fdew.png, id=556, 1205.50375pt x 696.6025pt>
 File: capitoli/05_pipelining_base/images/overlapping_fdew.png Graphic file (type png)
 <use capitoli/05_pipelining_base/images/overlapping_fdew.png>
 Package pdftex.def Info: capitoli/05_pipelining_base/images/overlapping_fdew.png  used on input line 12.
 (pdftex.def)             Requested size: 219.08614pt x 126.59477pt.
-[31
+[32
 
 
 
 
  <./capitoli/05_pipelining_base/images/overlapping_fdew.png (PNG copy)>]
-<capitoli/05_pipelining_base/images/datapath_unpipelined.png, id=499, 799.98875pt x 456.70625pt>
+<capitoli/05_pipelining_base/images/datapath_unpipelined.png, id=563, 799.98875pt x 456.70625pt>
 File: capitoli/05_pipelining_base/images/datapath_unpipelined.png Graphic file (type png)
 <use capitoli/05_pipelining_base/images/datapath_unpipelined.png>
 Package pdftex.def Info: capitoli/05_pipelining_base/images/datapath_unpipelined.png  used on input line 56.
 (pdftex.def)             Requested size: 394.35236pt x 225.13298pt.
- [32]
-<capitoli/05_pipelining_base/images/datapath_pipelined.png, id=509, 768.37062pt x 397.98688pt>
+ [33]
+<capitoli/05_pipelining_base/images/datapath_pipelined.png, id=573, 768.37062pt x 397.98688pt>
 File: capitoli/05_pipelining_base/images/datapath_pipelined.png Graphic file (type png)
 <use capitoli/05_pipelining_base/images/datapath_pipelined.png>
 Package pdftex.def Info: capitoli/05_pipelining_base/images/datapath_pipelined.png  used on input line 91.
 (pdftex.def)             Requested size: 394.35236pt x 204.26411pt.
- [33 <./capitoli/05_pipelining_base/images/datapath_unpipelined.png>]
-<capitoli/05_pipelining_base/images/evolution_in_time.png, id=517, 672.01062pt x 410.03188pt>
+ [34 <./capitoli/05_pipelining_base/images/datapath_unpipelined.png>]
+<capitoli/05_pipelining_base/images/evolution_in_time.png, id=581, 672.01062pt x 410.03188pt>
 File: capitoli/05_pipelining_base/images/evolution_in_time.png Graphic file (type png)
 <use capitoli/05_pipelining_base/images/evolution_in_time.png>
 Package pdftex.def Info: capitoli/05_pipelining_base/images/evolution_in_time.png  used on input line 101.
 (pdftex.def)             Requested size: 394.35236pt x 240.61534pt.
- [34 <./capitoli/05_pipelining_base/images/datapath_pipelined.png> <./capitoli/05_pipelining_base/images/evolution_in_time.png>]
-<capitoli/05_pipelining_base/images/impossible_forwarding.png, id=527, 1503.6175pt x 937.5025pt>
+ [35 <./capitoli/05_pipelining_base/images/datapath_pipelined.png> <./capitoli/05_pipelining_base/images/evolution_in_time.png>]
+<capitoli/05_pipelining_base/images/impossible_forwarding.png, id=591, 1503.6175pt x 937.5025pt>
 File: capitoli/05_pipelining_base/images/impossible_forwarding.png Graphic file (type png)
 <use capitoli/05_pipelining_base/images/impossible_forwarding.png>
 Package pdftex.def Info: capitoli/05_pipelining_base/images/impossible_forwarding.png  used on input line 136.
 (pdftex.def)             Requested size: 262.90604pt x 163.92233pt.
-<capitoli/05_pipelining_base/images/bubble_stall.png, id=528, 787.44188pt x 416.05438pt>
+<capitoli/05_pipelining_base/images/bubble_stall.png, id=592, 787.44188pt x 416.05438pt>
 File: capitoli/05_pipelining_base/images/bubble_stall.png Graphic file (type png)
 <use capitoli/05_pipelining_base/images/bubble_stall.png>
 Package pdftex.def Info: capitoli/05_pipelining_base/images/bubble_stall.png  used on input line 137.
 (pdftex.def)             Requested size: 262.90604pt x 138.90453pt.
- [35]
-<capitoli/05_pipelining_base/images/lost_cycles.png, id=538, 780.41562pt x 296.60812pt>
+ [36]
+<capitoli/05_pipelining_base/images/lost_cycles.png, id=603, 780.41562pt x 296.60812pt>
 File: capitoli/05_pipelining_base/images/lost_cycles.png Graphic file (type png)
 <use capitoli/05_pipelining_base/images/lost_cycles.png>
 Package pdftex.def Info: capitoli/05_pipelining_base/images/lost_cycles.png  used on input line 148.
 (pdftex.def)             Requested size: 262.90604pt x 99.92213pt.
- [36 <./capitoli/05_pipelining_base/images/impossible_forwarding.png> <./capitoli/05_pipelining_base/images/bubble_stall.png> <./capitoli/05_pipelining_base/images/lost_cycles.png>]
-<capitoli/05_pipelining_base/images/early_branch.png, id=548, 772.8875pt x 431.11063pt>
+ [37 <./capitoli/05_pipelining_base/images/impossible_forwarding.png> <./capitoli/05_pipelining_base/images/bubble_stall.png> <./capitoli/05_pipelining_base/images/lost_cycles.png>]
+<capitoli/05_pipelining_base/images/early_branch.png, id=612, 772.8875pt x 431.11063pt>
 File: capitoli/05_pipelining_base/images/early_branch.png Graphic file (type png)
 <use capitoli/05_pipelining_base/images/early_branch.png>
 Package pdftex.def Info: capitoli/05_pipelining_base/images/early_branch.png  used on input line 167.
 (pdftex.def)             Requested size: 262.90604pt x 146.64803pt.
-) [37 <./capitoli/05_pipelining_base/images/early_branch.png>]
+) [38 <./capitoli/05_pipelining_base/images/early_branch.png>]
 \openout2 = `capitoli/06_pipelining_multicycle/06_pipelining_multicycle.aux'.
 
  (capitoli/06_pipelining_multicycle/06_pipelining_multicycle.tex
 Capitolo 6.
-<capitoli/06_pipelining_multicycle/images/fp_pipeline_extension.png, id=557, 568.1225pt x 381.425pt>
+<capitoli/06_pipelining_multicycle/images/fp_pipeline_extension.png, id=621, 568.1225pt x 381.425pt>
 File: capitoli/06_pipelining_multicycle/images/fp_pipeline_extension.png Graphic file (type png)
 <use capitoli/06_pipelining_multicycle/images/fp_pipeline_extension.png>
 Package pdftex.def Info: capitoli/06_pipelining_multicycle/images/fp_pipeline_extension.png  used on input line 26.
 (pdftex.def)             Requested size: 350.53915pt x 235.35196pt.
-[38
+[39
 
 
 
 
-] [39 <./capitoli/06_pipelining_multicycle/images/fp_pipeline_extension.png>]
-<capitoli/06_pipelining_multicycle/images/fp_pipelined_units.png, id=572, 766.865pt x 399.4925pt>
+] [40 <./capitoli/06_pipelining_multicycle/images/fp_pipeline_extension.png>]
+<capitoli/06_pipelining_multicycle/images/fp_pipelined_units.png, id=636, 766.865pt x 399.4925pt>
 File: capitoli/06_pipelining_multicycle/images/fp_pipelined_units.png Graphic file (type png)
 <use capitoli/06_pipelining_multicycle/images/fp_pipelined_units.png>
 Package pdftex.def Info: capitoli/06_pipelining_multicycle/images/fp_pipelined_units.png  used on input line 79.
 (pdftex.def)             Requested size: 394.35236pt x 205.4392pt.
- [40 <./capitoli/06_pipelining_multicycle/images/fp_pipelined_units.png>]
-<capitoli/06_pipelining_multicycle/images/register_file_hazards.png, id=580, 1590.94376pt x 702.625pt>
+ [41 <./capitoli/06_pipelining_multicycle/images/fp_pipelined_units.png>]
+<capitoli/06_pipelining_multicycle/images/register_file_hazards.png, id=644, 1590.94376pt x 702.625pt>
 File: capitoli/06_pipelining_multicycle/images/register_file_hazards.png Graphic file (type png)
 <use capitoli/06_pipelining_multicycle/images/register_file_hazards.png>
 Package pdftex.def Info: capitoli/06_pipelining_multicycle/images/register_file_hazards.png  used on input line 96.
 (pdftex.def)             Requested size: 350.53915pt x 154.80312pt.
- [41 <./capitoli/06_pipelining_multicycle/images/register_file_hazards.png (PNG copy)>]) [42]
+ [42 <./capitoli/06_pipelining_multicycle/images/register_file_hazards.png (PNG copy)>]) [43]
 \openout2 = `capitoli/07_pipelining_exceptions/07_pipelining_exceptions.aux'.
 
  (capitoli/07_pipelining_exceptions/07_pipelining_exceptions.tex
 Capitolo 7.
-[43
+[44
 
 
 
 
-] [44] [45]
+] [45] [46]
 Overfull \hbox (39.55151pt too wide) in paragraph at lines 123--132
  [][] 
  []
 
-<capitoli/07_pipelining_exceptions/images/contemporary_exceptions.png, id=626, 655.44875pt x 224.33812pt>
+<capitoli/07_pipelining_exceptions/images/contemporary_exceptions.png, id=690, 655.44875pt x 224.33812pt>
 File: capitoli/07_pipelining_exceptions/images/contemporary_exceptions.png Graphic file (type png)
 <use capitoli/07_pipelining_exceptions/images/contemporary_exceptions.png>
 Package pdftex.def Info: capitoli/07_pipelining_exceptions/images/contemporary_exceptions.png  used on input line 144.
 (pdftex.def)             Requested size: 350.53915pt x 119.97691pt.
-[46]
-<capitoli/07_pipelining_exceptions/images/exception_order.png, id=633, 578.66188pt x 127.97812pt>
+[47]
+<capitoli/07_pipelining_exceptions/images/exception_order.png, id=697, 578.66188pt x 127.97812pt>
 File: capitoli/07_pipelining_exceptions/images/exception_order.png Graphic file (type png)
 <use capitoli/07_pipelining_exceptions/images/exception_order.png>
 Package pdftex.def Info: capitoli/07_pipelining_exceptions/images/exception_order.png  used on input line 157.
 (pdftex.def)             Requested size: 350.53915pt x 77.5256pt.
- [47 <./capitoli/07_pipelining_exceptions/images/contemporary_exceptions.png> <./capitoli/07_pipelining_exceptions/images/exception_order.png>]) [48]
+ [48 <./capitoli/07_pipelining_exceptions/images/contemporary_exceptions.png> <./capitoli/07_pipelining_exceptions/images/exception_order.png>]) [49]
 \openout2 = `capitoli/08_ILP/08_ILP.aux'.
 
  (capitoli/08_ILP/08_ILP.tex
 Capitolo 8.
-<capitoli/08_ILP/images/basic_block_generic.png, id=647, 313.67188pt x 129.98563pt>
+<capitoli/08_ILP/images/basic_block_generic.png, id=711, 313.67188pt x 129.98563pt>
 File: capitoli/08_ILP/images/basic_block_generic.png Graphic file (type png)
 <use capitoli/08_ILP/images/basic_block_generic.png>
 Package pdftex.def Info: capitoli/08_ILP/images/basic_block_generic.png  used on input line 33.
 (pdftex.def)             Requested size: 175.26622pt x 72.63277pt.
-[49
+[50
 
 
 
 
 ]
-<capitoli/08_ILP/images/basic_block_example.png, id=653, 665.48625pt x 453.19313pt>
+<capitoli/08_ILP/images/basic_block_example.png, id=717, 665.48625pt x 453.19313pt>
 File: capitoli/08_ILP/images/basic_block_example.png Graphic file (type png)
 <use capitoli/08_ILP/images/basic_block_example.png>
 Package pdftex.def Info: capitoli/08_ILP/images/basic_block_example.png  used on input line 52.
 (pdftex.def)             Requested size: 306.71924pt x 208.87936pt.
- [50 <./capitoli/08_ILP/images/basic_block_generic.png> <./capitoli/08_ILP/images/basic_block_example.png>]
-<capitoli/08_ILP/images/non_rescheduling_example.png, id=664, 1526.70375pt x 662.475pt>
+ [51 <./capitoli/08_ILP/images/basic_block_generic.png> <./capitoli/08_ILP/images/basic_block_example.png>]
+<capitoli/08_ILP/images/non_rescheduling_example.png, id=728, 1526.70375pt x 662.475pt>
 File: capitoli/08_ILP/images/non_rescheduling_example.png Graphic file (type png)
 <use capitoli/08_ILP/images/non_rescheduling_example.png>
 Package pdftex.def Info: capitoli/08_ILP/images/non_rescheduling_example.png  used on input line 107.
 (pdftex.def)             Requested size: 219.08614pt x 95.06071pt.
-<capitoli/08_ILP/images/rescheduling_example.png, id=665, 652.4375pt x 303.1325pt>
+<capitoli/08_ILP/images/rescheduling_example.png, id=729, 652.4375pt x 303.1325pt>
 File: capitoli/08_ILP/images/rescheduling_example.png Graphic file (type png)
 <use capitoli/08_ILP/images/rescheduling_example.png>
 Package pdftex.def Info: capitoli/08_ILP/images/rescheduling_example.png  used on input line 108.
 (pdftex.def)             Requested size: 219.08614pt x 101.79169pt.
- [51] [52 <./capitoli/08_ILP/images/non_rescheduling_example.png (PNG copy)> <./capitoli/08_ILP/images/rescheduling_example.png>] [53]
+ [52] [53 <./capitoli/08_ILP/images/non_rescheduling_example.png (PNG copy)> <./capitoli/08_ILP/images/rescheduling_example.png>] [54]
 Overfull \hbox (21.72641pt too wide) in paragraph at lines 196--196
 []\T1/lmtt/m/n/10.95 fadd.d f6, f0, f8   <-- Legge f6 per future operazioni (Output dep.) e lo scrive[] 
  []
@@ -941,22 +941,27 @@ Overfull \hbox (10.22894pt too wide) in paragraph at lines 196--196
 []\T1/lmtt/m/n/10.95 fmul.d f6, f10, f8  <-- Antidipendenza su f8 (letto sopra) e Output dep. su f6[] 
  []
 
-) [54]
+) [55]
 \openout2 = `capitoli/09_cache_memories/09_cache_memories.aux'.
 
  (capitoli/09_cache_memories/09_cache_memories.tex
 Capitolo 9.
-) [55
+[56
 
 
 
 
-]
+] [57] [58] [59] [60] [61] [62] [63]
+Overfull \hbox (7.39326pt too wide) in paragraph at lines 321--322
+[]\T1/lmr/bx/n/10.95 (-20) Slide 9 e 10 - Or-ga-niz-za-zio-ne In-ter-na\T1/lmr/m/n/10.95 (-20) : Sche-ma dei bloc-chi Da-ta Ar-ray e Tag/Directory
+ []
+
+[64]) [65]
 \openout2 = `capitoli/10_branch_prediction/10_branch_prediction.aux'.
 
  (capitoli/10_branch_prediction/10_branch_prediction.tex
 Capitolo 10.
-) [56
+) [66
 
 
 
@@ -966,7 +971,7 @@ Capitolo 10.
 
  (capitoli/11_dyn_scheduling/11_dyn_scheduling.tex
 Capitolo 11.
-) [57
+) [67
 
 
 
@@ -976,7 +981,7 @@ Capitolo 11.
 
  (capitoli/12_hdwr_speculation/12_hdwr_speculation.tex
 Capitolo 12.
-) [58
+) [68
 
 
 
@@ -986,7 +991,7 @@ Capitolo 12.
 
  (capitoli/13_mult_issue_proc/13_mult_issue_proc.tex
 Capitolo 13.
-) [59
+) [69
 
 
 
@@ -996,7 +1001,7 @@ Capitolo 13.
 
  (capitoli/14_Exmpl_i7_A8/14_Exmpl_i7_A8.tex
 Capitolo 14.
-) [60
+) [70
 
 
 
@@ -1006,7 +1011,7 @@ Capitolo 14.
 
  (capitoli/15_vliw/15_vliw.tex
 Capitolo 15.
-) [61
+) [71
 
 
 
@@ -1016,29 +1021,43 @@ Capitolo 15.
 
  (capitoli/16_tlp/16_tlp.tex
 Capitolo 16.
-) [62
+) [72
 
 
 
 
-] (main.aux (capitoli/introduzione/introduzione.aux) (capitoli/01_computer_design_introduction/01_computer_design_introduction.aux) (capitoli/02_intro_to_instruction-set/02_intro_to_instruction-set.aux) (capitoli/03_RISC-V_Introduction/03_RISC-V_Introduction.aux) (capitoli/04_gem5/04_gem5.aux) (capitoli/05_pipelining_base/05_pipelining_base.aux) (capitoli/06_pipelining_multicycle/06_pipelining_multicycle.aux) (capitoli/07_pipelining_exceptions/07_pipelining_exceptions.aux) (capitoli/08_ILP/08_ILP.aux) (capitoli/09_cache_memories/09_cache_memories.aux) (capitoli/10_branch_prediction/10_branch_prediction.aux) (capitoli/11_dyn_scheduling/11_dyn_scheduling.aux) (capitoli/12_hdwr_speculation/12_hdwr_speculation.aux) (capitoli/13_mult_issue_proc/13_mult_issue_proc.aux) (capitoli/14_Exmpl_i7_A8/14_Exmpl_i7_A8.aux) (capitoli/15_vliw/15_vliw.aux) (capitoli/16_tlp/16_tlp.aux))
+]
+Capitolo 17.
+[73
+
+
+
+]
+\openout2 = `ESERCIZI/ex1/ex1.aux'.
+
+ (ESERCIZI/ex1/ex1.tex
+Capitolo 18.
+[74
+
+
+] [75] [76] [77]) [78] [79] (main.aux (capitoli/introduzione/introduzione.aux) (capitoli/01_computer_design_introduction/01_computer_design_introduction.aux) (capitoli/02_intro_to_instruction-set/02_intro_to_instruction-set.aux) (capitoli/03_RISC-V_Introduction/03_RISC-V_Introduction.aux) (capitoli/04_gem5/04_gem5.aux) (capitoli/05_pipelining_base/05_pipelining_base.aux) (capitoli/06_pipelining_multicycle/06_pipelining_multicycle.aux) (capitoli/07_pipelining_exceptions/07_pipelining_exceptions.aux) (capitoli/08_ILP/08_ILP.aux) (capitoli/09_cache_memories/09_cache_memories.aux) (capitoli/10_branch_prediction/10_branch_prediction.aux) (capitoli/11_dyn_scheduling/11_dyn_scheduling.aux) (capitoli/12_hdwr_speculation/12_hdwr_speculation.aux) (capitoli/13_mult_issue_proc/13_mult_issue_proc.aux) (capitoli/14_Exmpl_i7_A8/14_Exmpl_i7_A8.aux) (capitoli/15_vliw/15_vliw.aux) (capitoli/16_tlp/16_tlp.aux) (ESERCIZI/ex1/ex1.aux))
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 21436 strings out of 467871
- 429397 string characters out of 5418376
- 829247 words of memory out of 5000000
- 49272 multiletter control sequences out of 15000+600000
- 707233 words of font info for 230 fonts, out of 8000000 for 9000
+ 21630 strings out of 467871
+ 432365 string characters out of 5418376
+ 829942 words of memory out of 5000000
+ 49330 multiletter control sequences out of 15000+600000
+ 720764 words of font info for 251 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 80i,11n,83p,1123b,1402s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx10.pfb><C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx8.pfb><C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmex10.pfb><C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi10.pfb><C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi8.pfb><C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr12.pfb><C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr17.pfb><C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr6.pfb><C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr8.pfb><C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri10.pfb><C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtk10.pfb><C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb>
-Output written on main.pdf (63 pages, 6857989 bytes).
+ 80i,12n,83p,1123b,1402s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx10.pfb><C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx8.pfb><C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmex10.pfb><C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi10.pfb><C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi8.pfb><C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr12.pfb><C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr17.pfb><C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr6.pfb><C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr8.pfb><C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri10.pfb><C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy8.pfb><C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtk10.pfb><C:/Users/toteu/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb>
+Output written on main.pdf (80 pages, 6951922 bytes).
 PDF statistics:
- 1240 PDF objects out of 1440 (max. 8388607)
- 338 named destinations out of 1000 (max. 500000)
- 44623 words of extra memory for PDF output out of 51595 (max. 10000000)
+ 1529 PDF objects out of 1728 (max. 8388607)
+ 427 named destinations out of 1000 (max. 500000)
+ 53055 words of extra memory for PDF output out of 61914 (max. 10000000)
 

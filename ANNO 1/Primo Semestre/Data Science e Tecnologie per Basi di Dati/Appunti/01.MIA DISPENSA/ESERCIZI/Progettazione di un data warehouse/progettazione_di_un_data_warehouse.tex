@@ -1,0 +1,218 @@
+\chapter{Progettazione di un Data Warehouse: Caso Studio Magazzini}
+
+Il presente capitolo illustra il processo completo di progettazione di uno schema concettuale e logico per un Data Warehouse, partendo da un caso di studio aziendale. L'obiettivo didattico è applicare i concetti teorici per trasformare le specifiche di un committente in un modello dati ottimizzato per l'analisi (OLAP), partendo dall'ipotesi di avere a disposizione un database transazionale (OLTP) di origine da cui estrarre e aggregare le informazioni.
+
+\section{Metodologia di Progettazione}
+
+Prima di affrontare il caso di studio specifico, è fondamentale fissare i passi metodologici necessari per passare dalla richiesta del committente allo schema logico finale. La progettazione si articola nei seguenti punti:
+
+\begin{enumerate}
+    \item \textbf{Identificazione dei fatti di interesse e delle misure:} Un "fatto" rappresenta il nucleo dell'analisi aziendale. Le misure (o metriche) sono le grandezze numeriche che descrivono il fatto. Nel Data Warehouse, queste metriche sono solitamente espresse tramite operatori aggregabili (come somme o conteggi). Si evita, di norma, di memorizzare valori come le medie dirette, preferendo memorizzare numeratore e denominatore (es. totale e conteggio) poiché la media non è facilmente riaggregabile al variare della cardinalità.
+    \item \textbf{Identificazione delle dimensioni e dei livelli minimi di aggregazione:} Le dimensioni rappresentano le prospettive (o assi) lungo le quali si vogliono "tagliare" o aggregare le metriche. Il livello minimo di aggregazione determina la granularità della tabella dei fatti (la \textit{fact table}): definisce il livello di dettaglio massimo a cui i dati saranno analizzabili.
+    \item \textbf{Definizione delle gerarchie:} All'interno di ogni dimensione, gli attributi sono organizzati in gerarchie che rappresentano relazioni di tipo $1:N$ (ad esempio, una città appartiene a una sola provincia, ma una provincia contiene più città). Comprendere queste gerarchie è vitale per costruire correttamente i rami del nostro modello concettuale.
+    \item \textbf{Costruzione dello schema concettuale:} Trasformazione dei requisiti in un modello grafico (es. \textit{Star Schema} o schema a stella), che evidenzia la fact table centrale e i rami dimensionali, gestendo casistiche particolari come relazioni molti-a-molti (gestite tramite doppi archi e tabelle ponte) o "dimensioni degeneri" (che non necessitano di una tabella dimensionale a sé stante).
+    \item \textbf{Definizione dello schema logico:} Traduzione dello schema concettuale in tabelle relazionali, ponendo particolare attenzione alla formattazione degli attributi (specialmente quelli temporali) per far sì che le gerarchie, che si perdono nel passaggio allo schema logico, vengano implicitamente preservate all'interno dei dati.
+    \item \textbf{Stima del carico di lavoro e verifica:} Controllo della validità del modello rispetto alle interrogazioni (\textit{query}) tipiche fornite dal committente, assicurandosi che il livello di aggregazione sia sufficiente per rispondere alle richieste senza essere inutilmente eccessivo.
+\end{enumerate}
+
+\section{Analisi delle Specifiche e Identificazione dei Fatti}
+
+Il problema in esame riguarda una grande ditta italiana di elettrodomestici con magazzini distribuiti sul territorio nazionale. La dirigenza ha due necessità analitiche principali:
+\begin{itemize}
+    \item \textbf{Analisi dell'uso dei magazzini:} Capire la percentuale di utilizzo in funzione della dislocazione geografica per decidere su ampliamenti, ridimensionamenti o affitti a terzi.
+    \item \textbf{Stima dei costi delle polizze assicurative:} Analizzare la copertura contro furti e danni, i cui premi si basano sulla quantità media giornaliera di prodotti presenti e sul loro valore complessivo, per le diverse categorie e modelli.
+\end{itemize}
+
+Leggendo le specifiche, emerge subito un'entità geografica di base: \textit{l'Italia}. Tuttavia, poiché tutti i magazzini si trovano in Italia, la Nazione rappresenta una \textbf{dimensione universo}. Mappare questa dimensione sarebbe ridondante: non faremmo mai aggregazioni per nazione in questo contesto, poiché il valore sarebbe sempre e solo "Italia". Pertanto, la scartiamo fin dall'inizio.
+
+Sembra che ci troviamo di fronte a due fatti semanticamente distinti: l'occupazione fisica dello spazio e la valorizzazione dei prodotti per le assicurazioni. L'approccio più sicuro è modellarli inizialmente come due \textit{fact table} separate. Successivamente, se scoprissimo che condividono esattamente le stesse dimensioni allo stesso livello di granularità, potremmo valutarne l'unione per questioni di ottimizzazione; tuttavia, mantenerle separate all'inizio è la scelta metodologica corretta.
+
+\section{Progettazione Concettuale: Schema a Stella}
+
+\subsection{Fatto 1: Uso dei Magazzini}
+
+Il primo fatto di interesse riguarda le superfici. Il testo specifica che l'azienda vuole analizzare "la percentuale giornaliera di superficie libera rispetto alla superficie totale disponibile".
+
+\subsubsection{Identificazione delle Metriche}
+Le misure da tracciare nella fact table sono due:
+\begin{itemize}
+    \item \textbf{Superficie libera:} È il dato che varia dinamicamente e descrive l'effettivo spazio vuoto.
+    \item \textbf{Superficie totale disponibile:} Questo è un punto di attenzione cruciale. In molti casi, la capienza totale di un magazzino è un dato statico (o che varia molto raramente); se così fosse, sarebbe molto più efficiente modellarla come attributo della dimensione \textit{Magazzino}, risparmiando spazio (non la si traccerebbe ogni giorno per ogni magazzino). Tuttavia, le specifiche affermano esplicitamente: \textit{"La superficie totale disponibile per ogni magazzino può variare di giorno in giorno, in quanto alcune aree possono essere affittate a terzi o essere inagibili"}. Poiché varia giornalmente, \textbf{deve obbligatoriamente essere una metrica} tracciata giorno per giorno nella fact table.
+\end{itemize}
+
+\subsubsection{Identificazione delle Dimensioni e Gerarchie}
+Le aggregazioni richieste per il Fatto 1 si basano su due dimensioni principali:
+
+\textbf{1. Dimensione Spaziale (Luogo)} \\
+L'analisi deve avvenire "in funzione del magazzino e del luogo in cui esso si trova (città, provincia, regione)".
+Il livello minimo di aggregazione è chiaramente il \textbf{Magazzino}. Un magazzino non si divide su più città. La gerarchia è lineare (relazione $1:N$):
+\[\text{Magazzino} \rightarrow \text{Città} \rightarrow \text{Provincia} \rightarrow \text{Regione}\]
+
+\textbf{2. Dimensione Temporale} \\
+L'analisi deve essere possibile a livello di singola \textbf{Data} (livello minimo), ma anche aggregabile per Mese, Trimestre, Quadrimestre, Semestre e Anno.
+Costruire la gerarchia temporale richiede attenzione affinché ogni attributo mantenga una relazione univoca verso il livello superiore. Se indicassimo il "Mese" semplicemente con un numero da 1 a 12, non sapremmo a quale anno appartiene, rompendo la gerarchia logica in fase di traduzione tabellare.
+
+Per preservare la gerarchia, i dati devono essere formattati includendo l'eredità del padre. Ad esempio:
+\begin{itemize}
+    \item Data: 12-10-2026
+    \item Mese: 10-2026
+    \item Trimestre: 3-2026 (indica il terzo trimestre dell'anno)
+    \item Anno: 2026
+\end{itemize}
+
+La struttura gerarchica del tempo presenta alcune diramazioni dal Mese in poi:
+\begin{itemize}
+    \item \textbf{Dal Mese al Trimestre:} Esiste una relazione $1:N$ diretta (un mese appartiene a un solo trimestre).
+    \item \textbf{Dal Mese al Quadrimestre:} Esiste una relazione $1:N$ diretta (un mese appartiene a un solo quadrimestre).
+    \item \textbf{Tra Trimestre e Quadrimestre:} \textbf{Non esiste} alcuna gerarchia. Un quadrimestre non è formato da un numero intero di trimestri. Quindi Mese diverge in due rami separati.
+    \item \textbf{Dal Trimestre al Semestre:} Due trimestri compongono esattamente un semestre, quindi esiste una freccia gerarchica tra Trimestre e Semestre.
+    \item \textbf{Verso l'Anno:} Quadrimestre e Semestre convergono entrambi nell'Anno.
+\end{itemize}
+
+\textit{Osservazione aggiuntiva:} Come spiegato a lezione, si crea in questo modo un'abbondanza di dati ripetuti. In un database relazionale normale si ricaverebbe il mese dalla data per via programmatica. In un Data Warehouse questa ridondanza è voluta per accelerare le aggregazioni in lettura tramite indici. Inoltre, se fosse richiesto fare analisi comparative mensili prescindendo dall'anno (es. "Tutti gli incassi di ottobre di ogni anno"), sarebbe necessario aggiungere una dimensione "Mese dell'anno" (valori 1-12) collegata direttamente alla Data e non dipendente dall'Anno.
+
+% FIGURA ORIGINALE DA RECUPERARE DALLE SLIDE
+% Slide di provenienza: Da appunti lavagna virtuale della registrazione (costruzione Star Schema Fatto 1)
+% Tipo: Schema concettuale a stella
+% Descrizione: Diagramma con fact table centrale "Uso Magazzini" con metriche (superficie libera, superficie totale). Due rami dimensionali: Luogo (Magazzino -> Città -> Provincia -> Regione) e Tempo con le biforcazioni su Trimestre e Quadrimestre spiegate nel testo.
+% Punto di inserimento: Qui
+\begin{figure}[H]
+    \centering
+    % Sostituire il segnaposto con il percorso effettivo dell'immagine
+    %\includegraphics[width=0.7\textwidth]{schema_fatto1_placeholder}
+    \caption{Schema concettuale a stella per il fatto "Uso Magazzini", con evidenza della gerarchia temporale divergente.}
+    \label{fig:star_schema_1}
+\end{figure}
+
+
+\subsection{Fatto 2: Stima dei Costi delle Polizze}
+
+Il secondo obiettivo riguarda la valutazione del contenuto dei magazzini per scopi assicurativi.
+
+\subsubsection{Identificazione delle Metriche}
+I premi assicurativi sono calcolati considerando il numero di prodotti presenti e il loro valore complessivo.
+Poiché l'analisi mira a descrivere queste quantità su base aggregata per tipologia e data, le metriche della \textit{fact table} saranno:
+\begin{itemize}
+    \item \textbf{Numero di prodotti:} Conteggio aggregato dei prodotti presenti nel magazzino in un determinato giorno, per un determinato modello.
+    \item \textbf{Valore prodotti:} Il valore economico aggregato associato a tale quantità.
+\end{itemize}
+Il database OLTP di origine conterrà verosimilmente le tracce del singolo prodotto identificato dal suo numero di serie, ma in fase di estrazione verso il Data Warehouse aggregheremo questi dati in un unico record (tupla) per Magazzino, Data e Modello. Le richieste parlano di valutazioni medie, ma nel modello di base salviamo somme e conti da cui deriveremo le medie a livello logico/applicativo.
+
+\subsubsection{Identificazione delle Dimensioni}
+Leggendo i requisiti, notiamo che l'analisi dei prodotti deve avvenire in funzione di:
+\begin{itemize}
+    \item \textbf{Tempo (singola data):} La dimensione temporale è la medesima del Fatto 1.
+    \item \textbf{Luogo (magazzino):} La dimensione spaziale è la medesima del Fatto 1.
+    \item \textbf{Prodotto (modello e categoria):} Viene introdotta una nuova dimensione legata al bene fisico. Il livello minimo di aggregazione richiesto non è il singolo oggetto specifico, ma il \textbf{Modello} (es. Computer Acer modello Y). I modelli sono poi raggruppati in \textbf{Categorie} (es. scope elettriche, impastatrici).
+\end{itemize}
+
+\textbf{Modellazione della relazione Modello - Categoria:}
+Durante la lezione è stato posto un quesito fondamentale su come modellare la relazione tra Modello e Categoria. Sono state prospettate due opzioni grafiche e logiche:
+\begin{itemize}
+    \item \textit{Opzione A (Rappresentazione orizzontale o con doppio arco - Molti a Molti):} Implica che un modello possa possedere simultaneamente più categorie o caratteristiche non mutualmente esclusive (come un \textit{one-hot encoding} se le opzioni sono poche e note, o una tabella ponte se sono illimitate).
+    \item \textit{Opzione B (Gerarchia Lineare $1:N$):} Implica che a un modello sia assegnata una e una sola categoria.
+\end{itemize}
+Nel nostro dominio di riferimento, un modello di elettrodomestico appartiene tipicamente a una singola categoria funzionale. Esiste quindi una corrispondenza $1:N$ (una categoria racchiude molti modelli, ma un modello ha una sola categoria). Pertanto, la modellazione corretta è quella lineare gerarchica:
+\[\text{Modello} \rightarrow \text{Categoria}\]
+
+% FIGURA ORIGINALE DA RECUPERARE DALLE SLIDE
+% Slide di provenienza: Da appunti lavagna virtuale della registrazione (costruzione Star Schema Fatto 2)
+% Tipo: Schema concettuale a stella
+% Descrizione: Diagramma con fact table centrale "Prodotti" con metriche (numero prodotti, valore prodotti). Tre rami dimensionali: Tempo, Luogo (identici al Fatto 1) e Prodotto (Modello -> Categoria).
+% Punto di inserimento: Qui
+\begin{figure}[H]
+    \centering
+    % Sostituire il segnaposto con il percorso effettivo dell'immagine
+    %\includegraphics[width=0.7\textwidth]{schema_fatto2_placeholder}
+    \caption{Schema concettuale a stella per il fatto "Prodotti". Le dimensioni Tempo e Luogo sono in comune con la fact table precedente.}
+    \label{fig:star_schema_2}
+\end{figure}
+
+\section{Verifica del Carico di Lavoro (Query Tipiche)}
+
+Un passaggio cruciale post-progettazione concettuale è la validazione del modello tramite il confronto con le interrogazioni frequenti fornite dal committente (slide "Interrogazioni frequenti"). Questa operazione serve per accertarsi che:
+1. I livelli minimi di aggregazione (la granularità) scelti permettano di rispondere alle domande.
+2. Non vi siano dimensioni o livelli inseriti inutilmente (sovra-raffinamento).
+
+Analizzando brevemente alcune richieste:
+\begin{itemize}
+    \item \textit{Query a:} Parla di "coppia (magazzino, data)". Il nostro livello minimo per spazio e tempo lo supporta. Cita inoltre la "settimana precedente". La "settimana" non era esplicitamente definita nella gerarchia temporale prima di questa riga; pertanto è un attributo che deve essere gestito e inserito nella gerarchia della Data (divergente rispetto al mese, in quanto le settimane si sovrappongono ai mesi).
+    \item \textit{Query b, c, d, e, f:} Chiedono aggregazioni per città, provincia, regione a livello di mese o semestre. Poiché tutte queste dimensioni risiedono a livelli gerarchici superiori rispetto al nostro livello minimo, il sistema sarà perfettamente in grado di effettuare il raggruppamento (GROUP BY) partendo dai livelli minimi (magazzino e data).
+\end{itemize}
+Tutte le informazioni, comprese le suddivisioni per modello, risultano coperte dalle fact table ipotizzate.
+
+\section{Progettazione Logica: Dallo Schema Concettuale alle Tabelle}
+
+L'ultimo passo è il passaggio al modello relazionale. Nello schema logico avremo un insieme di tabelle collegate tra loro dalle chiavi.
+Una \textit{fact table} si costruisce componendo una chiave primaria (Primary Key) multi-attributo formata dalle chiavi esterne (Foreign Key) che puntano ai livelli minimi delle dimensioni, seguite dai campi delle metriche.
+
+Un principio cardine affrontato a lezione riguarda gli identificativi (ID). Definiremo una chiave surrogata (un ID numerico incrementale) per ogni dimensione al suo livello minimo. Questo ID avrà una corrispondenza $1:1$ con il valore del livello di aggregazione minimo, ma garantirà un'efficienza drastica nelle operazioni di \textit{join} rispetto all'uso di stringhe di testo come chiavi primarie.
+
+\subsection{Dimensioni Condivise (Conformed Dimensions)}
+Osservando i due schemi a stella generati, emerge un dato fondamentale: le gerarchie "Luogo" e "Tempo" sono identiche per entrambi i fatti. Condividono sia il significato semantico sia i valori sottostanti (i magazzini aziendali e i giorni di calendario sono gli stessi).
+Invece di duplicare queste dimensioni, le creeremo una volta sola, realizzando delle \textbf{dimensioni conformate}. Il Data Warehouse finale sarà composto da $5$ tabelle totali (2 Fact Table e 3 Tabelle Dimensionali), collegate come descritto di seguito.
+
+\subsection{Definizione delle Tabelle Relazionali}
+
+\textbf{1. Tabella Dimensionale: Tempo} \\
+Raccoglie l'intera gerarchia temporale. La gerarchia, come precedentemente discusso, viene incorporata nel valore delle colonne (es. il campo trimestre conterrà "1-2026", non solo "1").
+\begin{verbatim}
+Tempo (
+    ID_tempo (PK),
+    data,
+    settimana_anno,
+    mese,
+    trimestre,
+    quadrimestre,
+    semestre,
+    anno
+)
+\end{verbatim}
+
+\textbf{2. Tabella Dimensionale: Magazzino} \\
+Raccoglie la dislocazione geografica.
+\begin{verbatim}
+Magazzino (
+    ID_magazzino (PK),
+    nome_magazzino,
+    città,
+    provincia,
+    regione
+)
+\end{verbatim}
+
+\textbf{3. Tabella Dimensionale: Prodotto} \\
+Raccoglie le caratteristiche del bene.
+\begin{verbatim}
+Prodotto (
+    ID_modello (PK),
+    nome_modello,
+    categoria
+)
+\end{verbatim}
+
+\textbf{4. Fact Table 1: Uso Magazzini} \\
+La chiave primaria è composta dalle chiavi esterne delle dimensioni coinvolte nel Fatto 1.
+\begin{verbatim}
+F_Uso_Magazzini (
+    ID_magazzino (PK, FK),
+    ID_tempo (PK, FK),
+    superficie_libera,
+    superficie_totale
+)
+\end{verbatim}
+
+\textbf{5. Fact Table 2: Prodotti (Polizze)} \\
+La chiave primaria include anche la dimensione Prodotto, poiché in uno stesso giorno, in uno stesso magazzino, convivono più modelli di elettrodomestici.
+\begin{verbatim}
+F_Prodotti_Polizze (
+    ID_magazzino (PK, FK),
+    ID_tempo (PK, FK),
+    ID_modello (PK, FK),
+    numero_prodotti,
+    valore_prodotti
+)
+\end{verbatim}
+
+In base ai dati volumetrici forniti nelle slide (es. 10 anni di dati storici, $\sim$500 magazzini, $\sim$100 modelli), sarà poi possibile, in una fase successiva di amministrazione del database, stimare la cardinalità (numero di righe) di ciascuna di queste tabelle per definire requisiti di storage e prestazioni.
+

@@ -1,4 +1,331 @@
-\chapter{Gerarchia di memoria}
-\section{Memoria cache}
-\section{Memoria virtuale}
-\section{Memoria principale e secondaria}
+\chapter{Memorie Cache}
+\label{ch:memorie-cache}
+
+\section{Introduzione e Motivazione}
+Le memorie cache sono memorie di piccole dimensioni ma ad altissima velocità, interposte tra il processore e la memoria principale.
+La necessità fondamentale di introdurre questa gerarchia deriva dall'enorme divario prestazionale tra il processore e la memoria. Attualmente, le prestazioni dei processori rispetto a quelle della memoria principale differiscono di un fattore di circa 1000. In termini pratici, nel tempo in cui il processore è in grado di eseguire migliaia di operazioni, la memoria principale è in grado di fornire una sola istruzione. Senza un sistema per mantenere dati e codice pronti e accessibili velocemente, il processore passerebbe la maggior parte del tempo in stallo, vanificando qualsiasi ottimizzazione architetturale, inclusa la pipeline. 
+
+Il costo energetico e temporale del calcolo odierno risiede prevalentemente nel trasferimento delle informazioni: elaborare un dato, per quanto l'operazione sia complessa, costa in termini di potenza circa mille volte meno rispetto al trasferire quel dato dalla memoria al processore.
+
+\subsection{Architettura di Von Neumann vs Harvard}
+Per comprendere l'integrazione della memoria nel sistema, è fondamentale richiamare la differenza tra le architetture di base:
+\begin{itemize}
+    \item \textbf{Architettura Von Neumann}: Dati e istruzioni (codice, sub-routine, funzioni) risiedono in una singola memoria unificata. Il processore accede alla stessa memoria per prelevare sia il codice da eseguire sia i dati da elaborare.
+    \item \textbf{Architettura Harvard}: Prevede memorie fisicamente separate per i dati e per il codice. Il processore può accedere simultaneamente alle due memorie attraverso bus distinti.
+\end{itemize}
+Nei sistemi moderni e specialmente nei processori RISC (come RISC-V e ARM) che implementano una pipeline, l'architettura Harvard è essenziale al livello della cache (Cache L1 Dati e Cache L1 Istruzioni separate). Ciò permette di eseguire contemporaneamente il fetch di un'istruzione e la lettura/scrittura di un dato, evitando conflitti strutturali che costringerebbero la pipeline a stallare.
+
+\section{Gerarchia delle Memorie e Principio di Località}
+Tra la memoria di immagazzinamento di massa (Hard Disk/SSD) e il processore, viene interposta una gerarchia di memorie per garantire un accesso rapido alle informazioni. 
+
+Analizzando il sistema partendo dall'interno verso l'esterno, troviamo:
+\begin{enumerate}
+    \item \textbf{Registri della CPU}: Elementi di memoria interni (flip-flop) a cui la CPU accede alla massima frequenza di sistema (centinaia di picosecondi). La loro capacità è molto limitata, tipicamente intorno a un kilobyte (es. 32 registri da 32 bit più i registri di controllo).
+    \item \textbf{Cache L1 (Livello 1)}: Memoria molto veloce (accesso in 1-2 nanosecondi) e di dimensioni ridotte (es. 64 KB). Tipicamente divisa in Dati e Istruzioni.
+    \item \textbf{Cache L2 (Livello 2) e L3 (Livello 3)}: Memorie progressivamente più grandi (da centinaia di KB a diversi MB) ma via via più lente.
+    \item \textbf{Memoria Principale (RAM)}: Memoria di lavoro capiente (diversi GB), ma con tempi di accesso lenti, nell'ordine dei 50-100 nanosecondi.
+\end{enumerate}
+
+% FIGURA ORIGINALE DA RECUPERARE DALLE SLIDE
+% Slide di provenienza: 4
+% Tipo: diagramma
+% Descrizione: Diagramma dei livelli di memoria per dispositivi mobili, laptop e server, con relativi tempi di accesso e capacità.
+% Punto di inserimento: In questo punto, a supporto della classificazione dei livelli di memoria.
+% File da inserire: fig_memory_levels
+
+L'assunzione alla base dell'architettura gerarchica è il \textbf{principio di inclusività}: tutte le informazioni contenute nei registri dovrebbero trovarsi nella cache L1; tutte le informazioni della cache L1 devono essere contenute nella cache L2, e così via fino alla memoria principale. Se un dato non è in L1 (situazione di \textit{miss}), il sistema lo cerca in L2, poi in L3, con un progressivo e drastico calo delle prestazioni a ogni salto.
+
+\begin{remark}[Inizializzazione nei Simulatori]
+Quando si analizzano le prestazioni tramite un simulatore, le prime fasi di avvio (es. la routine \texttt{\_start}) comportano numerosi \textit{cache miss} poiché la cache è inizialmente vuota. Per valutare il tempo reale di un algoritmo, è opportuno sottrarre i colpi di clock dell'inizializzazione (circa 208 cicli in alcuni simulatori) o assicurarsi di iniziare il conteggio dal \texttt{main}, operando una lettura preliminare dei dati per caricarli in cache.
+\end{remark}
+
+\subsection{Principio di Località}
+L'efficacia della cache si basa sulla località dei riferimenti osservata nell'esecuzione della maggior parte dei programmi. Si manifesta in due forme:
+\begin{itemize}
+    \item \textbf{Località Temporale}: Se al tempo $t$ un programma accede a una determinata cella di memoria, è altamente probabile che acceda nuovamente alla stessa cella in un istante prossimo $t_0 + \Delta t$. Per questo motivo, quando un dato viene letto, esso viene mantenuto in cache.
+    \item \textbf{Località Spaziale}: Se al tempo $t_0$ il programma accede all'indirizzo $x$, è molto probabile che a breve accederà agli indirizzi contigui $x \pm e$ (ad esempio, gli elementi successivi di un vettore). Per sfruttare questa proprietà, quando si verifica un \textit{miss}, la cache non carica dalla memoria soltanto il byte richiesto, ma l'intera \textbf{linea di cache} (es. 32 o 64 byte contigui).
+\end{itemize}
+
+\subsection{Prestazioni e Hit Ratio}
+Per quantificare le prestazioni del sistema di memoria, si definiscono i seguenti parametri:
+\begin{itemize}
+    \item $h$: \textbf{Hit ratio} (tasso di successo), ovvero la percentuale di volte in cui il dato richiesto viene trovato in cache.
+    \item $C$: Tempo di accesso alla cache.
+    \item $M$: Tempo di accesso alla memoria principale (in caso di \textit{miss}).
+\end{itemize}
+
+Il tempo medio di accesso alla memoria ($t_{\text{ave}}$) si calcola come:
+\[t_{\text{ave}} = h \cdot C + (1 - h) \cdot M\]
+
+Valori normali di $h$ si attestano sull'80\%-90\% ($0.8 - 0.9$).
+Se, per esempio, abbiamo un hit ratio dell'80\% ($h=0.8$), un tempo di accesso alla cache di 2 ns ($2 \times 10^{-9}$ s) e un tempo di accesso alla RAM ipotizzato, per enfatizzare il ritardo, a $50 \mu$s, il calcolo sarà:
+\[T_{\text{avg}} = 0.8 \times (2 \cdot 10^{-9}) + 0.2 \times (50 \cdot 10^{-6}) \approx 10.001 \mu s\]
+Si nota come anche una piccola frazione di miss ($0.2$) domini completamente il tempo medio di accesso a causa dell'enorme scarto temporale tra $C$ e $M$.
+
+\section{Organizzazione Interna della Cache}
+Come quasi tutti i dispositivi digitali, la cache è divisa in una parte dedicata ai dati e una parte di controllo. Più specificamente, una memoria cache è strutturata in \textbf{linee} (o blocchi) ed è costituita da due componenti principali:
+\begin{enumerate}
+    \item \textbf{Array dei Dati (Data Array)}: Contiene i blocchi di memoria effettivi caricati dalla memoria principale. Ogni linea contiene una quantità $B$ di byte (es. 4, 32 o 128 byte).
+    \item \textbf{Array di Direttorio (Tag Array)}: Contiene le informazioni necessarie per identificare univocamente da quale indirizzo della memoria principale provengono i dati salvati nella linea corrispondente.
+\end{enumerate}
+
+% FIGURA ORIGINALE DA RECUPERARE DALLE SLIDE
+% Slide di provenienza: 9 e 10
+% Tipo: diagramma
+% Descrizione: Diagramma dell'organizzazione interna della cache con array dei dati, array di direttorio, tag, e bit di validità.
+% Punto di inserimento: Qui, per illustrare visivamente la divisione in linee.
+% File da inserire: fig_cache_org
+
+Oltre ai dati e al tag, ogni linea di cache contiene alcuni bit di controllo fondamentali:
+\begin{itemize}
+    \item \textbf{Bit di Validità (V - Validity bit)}: Indica se il dato presente nella linea è valido. All'accensione del sistema (power-on) o in caso di reset, la memoria cache contiene valori casuali (dati "sporchi"). Per evitare che la CPU legga informazioni scorrette, il bit V viene inizializzato a 0. Quando un blocco di memoria valido viene caricato nella linea, V viene settato a 1.
+    \item \textbf{Dirty bit (D)}: Ricorda se il blocco caricato in cache è stato modificato rispetto alla copia presente nella memoria principale (utilizzato nelle politiche di \textit{write-back}). Se D = 1, i byte in cache sono più recenti e dovranno essere riscritti in memoria principale prima che la linea venga sovrascritta.
+\end{itemize}
+
+\subsection{Ricerca di un blocco dati nella Cache}
+Per comprendere se un dato è presente in cache, la logica di controllo riceve l'indirizzo a 32 bit generato dalla CPU (indirizzo di memoria) e lo suddivide in tre campi: \textbf{Tag}, \textbf{Indice (Index)} e \textbf{Offset}.
+
+% FIGURA ORIGINALE DA RECUPERARE DALLE SLIDE
+% Slide di provenienza: 15
+% Tipo: schema
+% Descrizione: Schema della scomposizione dell'indirizzo della CPU in Tag, Index e Offset.
+% Punto di inserimento: Qui.
+% File da inserire: fig_cpu_address
+
+\begin{enumerate}
+    \item \textbf{Offset}: Sono i bit meno significativi dell'indirizzo. Servono per individuare il byte specifico all'interno della linea di cache. Se una linea è ampia $2^n$ byte, l'offset sarà composto da $n$ bit. Questo campo non viene salvato nel direttorio, poiché indica solo una posizione relativa all'interno del blocco dati già caricato.
+    \item \textbf{Indice (Index)}: Determina a quale linea (o insieme di linee, detto \textit{set}) della cache accedere. Se la cache possiede $2^m$ insiemi, l'indice utilizzerà $m$ bit.
+    \item \textbf{Tag}: Costituisce la parte più significativa dell'indirizzo ed è l'effettiva informazione che viene salvata nell'array di direttorio. La sua dimensione è data dai restanti bit: $32 - (n + m)$. 
+\end{enumerate}
+
+Il procedimento di ricerca avviene in questo modo:
+\begin{enumerate}
+    \item La cache usa l'Indice per selezionare la riga (set) corrispondente.
+    \item Controlla il Bit di Validità di quella riga. Se $V=0$, si ha immediatamente un \textit{miss}.
+    \item Se $V=1$, confronta il Tag memorizzato nel direttorio della riga con il campo Tag dell'indirizzo richiesto.
+    \item Se corrispondono, si ha un \textbf{Hit} (e l'offset estrae il byte richiesto); se non corrispondono, si ha un \textbf{Miss}.
+\end{enumerate}
+
+\begin{remark}[Dimensione Reale della Cache]
+Quando un costruttore vende una cache, ad esempio, da 64 KB, si riferisce unicamente alla capacità dell'Array dei Dati. La dimensione fisica reale implementata sul chip è molto più grande, poiché a ogni linea va sommato lo spazio per salvare il Tag, il bit V e il bit D, moltiplicato per il numero totale di linee.
+\end{remark}
+
+\subsection{Posizionamento della Cache nel Sistema}
+La cache viene collocata logicamente tra la CPU e il bus di sistema, piuttosto che tra il bus e la memoria principale.
+Questo posizionamento strategico comporta che, in caso di \textit{hit}, il processore legga o scriva il dato senza alcun transito di informazioni sul bus di sistema. Ciò riduce drasticamente il carico sul bus, lasciandolo libero per periferiche e DMA, e risulta indispensabile nelle architetture multiprocessore per permettere ad ogni core di lavorare indipendentemente sui propri dati.
+
+\section{Tecniche di Mappatura (Mapping)}
+Il meccanismo di mapping definisce in quale linea della cache un determinato blocco di memoria principale deve essere posizionato. Questo processo deve essere rapido e richiedere un hardware a basso costo.
+
+\subsection{Mappatura Diretta (Direct Mapping)}
+Nella mappatura diretta, ogni blocco di memoria $i$ viene associato staticamente e univocamente a una linea (o set) $k$ della cache mediante l'operazione di modulo:
+\[k = i \bmod N\]
+dove $N$ è il numero totale di linee della cache.
+
+In termini hardware, questa operazione non richiede una reale divisione, poiché il calcolo corrisponde semplicemente al prelievo dei bit meno significativi (l'Indice) dell'indirizzo del blocco.
+
+\textbf{Vantaggi:} Il meccanismo è facilissimo da implementare in hardware. \\
+\textbf{Svantaggi (Problema del Thrashing):} Se il programma accede frequentemente a due indirizzi di memoria che, pur differendo nei bit più alti, presentano gli stessi bit di indice (es. l'indirizzo $4$ e l'indirizzo $12$ modulo $8$ restituiscono entrambi la posizione $4$), essi competeranno per la stessa unica riga della cache. Ad ogni lettura ci sarà un \textit{miss} che obbligherà il sistema a sfrattare il dato precedente, abbattendo le prestazioni.
+
+\subsection{Mappatura Associativa agli Insiemi (Set Associative)}
+Per arginare il problema della competizione per le righe, la cache viene divisa in un numero $S$ di \textbf{insiemi (Set)}, ognuno dei quali contiene un numero $W$ di linee detto \textbf{vie (Ways)}. 
+Si definisce quindi l'equazione:
+\[S = \frac{N}{W}\]
+dove $N$ è il numero totale di linee. Un blocco di memoria $i$ viene ora associato al set $k$:
+\[k = i \bmod S\]
+Una volta calcolato il set $k$, il blocco di memoria può essere salvato in \textit{qualsiasi} delle $W$ linee disponibili in quel set. Se abbiamo una cache a 2 vie ($W=2$), l'indirizzo $4$ e l'indirizzo $12$ calcoleranno lo stesso indice, ma potranno convivere tranquillamente occupando le due linee del medesimo set.
+
+% FIGURA ORIGINALE DA RECUPERARE DALLE SLIDE
+% Slide di provenienza: 28 e 29
+% Tipo: diagramma
+% Descrizione: Diagrammi rappresentativi del Mapping Associativo agli Insiemi e relativo esempio di allocazione di blocchi multipli nello stesso set.
+% Punto di inserimento: Qui.
+% File da inserire: fig_set_associative
+
+\textbf{Effetti dell'Associatività sull'Indirizzo:}
+Aumentare l'associatività a parità di dimensione della cache (Array Dati fisso) comporta che il numero di Set ($S$) diminuisca.
+Di conseguenza:
+\begin{itemize}
+    \item La dimensione del campo \textbf{Indice} diminuisce (perché ci sono meno set da indicizzare).
+    \item La dimensione del campo \textbf{Tag} aumenta (per compensare i bit persi dall'indice).
+    \item Poiché il campo Tag si allunga e va salvato per ciascuna delle $N$ linee (le linee restano invariate in numero assoluto), \textbf{la dimensione fisica reale della memoria di controllo aumenta}.
+\end{itemize}
+
+\subsection{Mappatura Completamente Associativa (Fully Associative)}
+In questo caso, l'Indice viene eliminato del tutto. Un blocco di memoria può risiedere in \textit{qualsiasi} linea della cache. 
+Questo schema offre la massima flessibilità e minimizza gli scarti forzati (no conflitti di set), ma richiede un hardware estremamente complesso, poiché al momento della ricerca la CPU deve confrontare simultaneamente il Tag con \textit{tutte} le linee della cache (memoria CAM - Content Addressable Memory). Il campo Tag in questo caso copre quasi tutto l'indirizzo, escluso l'Offset.
+
+\section{Algoritmi di Rimpiazzamento}
+Quando si ha un \textit{miss} e tutte le vie del Set calcolato sono già occupate da dati validi, è necessario scegliere quale blocco sfrattare per fare spazio al nuovo dato. Le strategie principali sono:
+\begin{itemize}
+    \item \textbf{LRU (Least Recently Used)}: Rimpiazza la linea usata meno di recente. Richiede di memorizzare la "storia" degli accessi (es. tramite contatori), risultando costoso in termini di bit addizionali e logica.
+    \item \textbf{FIFO (First-In First-Out)}: Rimuove semplicemente il dato entrato per primo (il più vecchio), a prescindere da quanto frequentemente venga usato. 
+    \item \textbf{LFU (Least Frequently Used)}: Teoreticamente il più efficace, guarda alla frequenza di utilizzo assoluta, ma molto complesso da implementare.
+    \item \textbf{Random}: Semplice ed efficace, sostituzione casuale.
+\end{itemize}
+
+\subsection{Approccio FIFO con Seconda Chance (Clock Bit)}
+Per mitigare il problema del FIFO puro, che potrebbe espellere un dato molto vecchio ma costantemente utilizzato, si adotta spesso una politica con "Seconda Opportunità". Si associa a ogni linea un \textbf{Clock bit} che viene settato a $1$ qualora vi sia un "hit" su quella riga (ovvero il dato viene riutilizzato).
+Quando il sistema deve espellere una riga, un puntatore circolare esamina le vie in ordine d'ingresso:
+\begin{itemize}
+    \item Se il Clock bit è $1$, il sistema lo porta a $0$, non espelle il dato (dandogli una seconda chance), e fa avanzare il puntatore.
+    \item Se il Clock bit è $0$, il dato viene sfrattato.
+\end{itemize}
+
+\subsection{Algoritmo pseudo-LRU (pLRU)}
+Poiché un vero algoritmo LRU richiederebbe, per un'architettura a 4 vie, 8 bit di storia per ogni Set (diventando troppo costoso in hardware), si adotta una sua approssimazione efficiente basata su un albero binario decisionale, aggiungendo soli 3 bit di storia ($a_0, b_0, b_1$) per set (nel caso di 4 vie).
+
+% FIGURA ORIGINALE DA RECUPERARE DALLE SLIDE
+% Slide di provenienza: 36 (fino a 45 per i vari passaggi A-E)
+% Tipo: diagramma
+% Descrizione: Funzionamento dell'algoritmo pLRU passo-passo con l'inserimento degli elementi A, B, C, D, E nell'albero binario.
+% Punto di inserimento: Qui.
+% File da inserire: fig_plru_tree
+
+I bit indicano il percorso nell'albero per trovare la "foglia" (via) usata meno di recente. Quando una via viene scritta o letta, i bit sul percorso che conducono a essa vengono invertiti, indicando di "non andare più da quella parte" per il prossimo rimpiazzo.
+Ad esempio, se i 3 bit partono da stato `0 0 0`, e vengono generati miss consecutivi (A, B, C, D):
+\begin{enumerate}
+    \item Arriva il dato \textbf{A}: l'albero suggerisce la via 0. Il dato viene allocato e i nodi attraversati invertono stato.
+    \item Arriva il dato \textbf{B}: i nodi ora puntano alla via 1.
+    \item Arriva \textbf{C}: le inversioni precedenti fanno deviare la radice verso l'altro ramo, puntando alla via 2.
+    \item Arriva \textbf{D}: viene indicata la via 3.
+\end{enumerate}
+È molto più compatto, anche se in certi pattern anomali di lettura potrebbe finire col preservare elementi non necessari.
+
+\section{Gestione delle Scritture e Coerenza}
+
+\subsection{Aggiornamento della Memoria Principale}
+Quando il processore scrive un dato in cache, sorge il problema di quando aggiornare la memoria principale per allinearla al nuovo valore.
+Le due soluzioni sono:
+\begin{itemize}
+    \item \textbf{Write-Back}: Il dato viene aggiornato in memoria principale \textit{esclusivamente} nel momento in cui la linea corrispondente deve essere sfrattata dalla cache. Per ricordare che il dato è stato alterato rispetto alla RAM, la linea imposta a $1$ il suo \textbf{Dirty bit}. \\
+    \textbf{Pro}: Riduce enormemente gli accessi e l'occupazione del bus.\\
+    \textbf{Contro}: Sfrattare un dato costa tempo aggiuntivo (deve essere fisicamente riscritto in RAM). In sistemi multiprocessore, genera problemi di coerenza.
+    \item \textbf{Write-Through}: Ogni singola operazione di scrittura viene propagata \textit{immediatamente} sia sulla cache che sulla memoria principale. \\
+    \textbf{Pro}: La memoria è sempre aggiornata e coerente.\\
+    \textbf{Contro}: Abbassa le prestazioni impegnando il bus, anche se limitato dal fatto che le letture statisticamente superano di molto le scritture.
+\end{itemize}
+
+Inoltre, se la scrittura del processore avviene su un indirizzo non presente in cache (\textbf{write miss}), si può decidere se:
+\begin{itemize}
+    \item \textbf{Write-allocate}: Caricare l'intero blocco dalla memoria alla cache, modificarlo in cache e mantenerlo lì. Usato tipicamente col \textit{Write-back}.
+    \item \textbf{No write-allocate}: Inviare il dato direttamente in memoria senza caricarlo in cache. Usato solitamente col \textit{Write-through}.
+\end{itemize}
+
+\subsection{Coerenza della Memoria (Multiprocessore) e Protocollo MESI}
+In architetture HPC (High Performance Computing) e nei classici sistemi cluster o multicore che condividono la memoria centrale (e una o più cache di basso livello, es. L3 condivisa tra processori aventi L1 e L2 private), il \textit{Write-back} fa sì che il core $A$ abbia un dato aggiornato nella sua cache L1 privata che il core $B$ non vede, causando letture corrotte (incoerenza).
+
+Per mantenere la coerenza, ogni linea di cache, in aggiunta ai bit V e D, traccia il suo stato di condivisione. Il protocollo più celebre è il \textbf{MESI}:
+\begin{itemize}
+    \item \textbf{M - Modified}: La linea è stata modificata dal core locale ed è posseduta in modo esclusivo (il dato in RAM non è aggiornato).
+    \item \textbf{E - Exclusive}: La linea è coerente con la RAM ed è presente esclusivamente in questa singola cache locale.
+    \item \textbf{S - Shared}: La linea è stata letta ma non modificata; anche altre cache la possiedono e i valori combaciano tutti con la RAM.
+    \item \textbf{I - Invalid}: Se il core $A$ scrive su un blocco che in precedenza era condiviso (Shared), invia sul bus un segnale che forza il blocco corrispondente in tutte le altre cache a marcare la linea come Invalida. Se il core $B$ chiederà il dato, dovrà prima costringere il core $A$ ad aggiornare la memoria o passargli direttamente il nuovo valore.
+\end{itemize}
+
+\section{Esempi Calcolati e Strutturazione Fisica}
+
+In questa sezione si illustrano esplicitamente i calcoli atti a dimensionare tag, indice e offset, necessari per risalire alla reale grandezza fisica di una memoria cache in aggiunta all'array dei dati.
+
+\subsection{Esempio 1: Cache Direct Mapped}
+Assumiamo le seguenti caratteristiche:
+\begin{itemize}
+    \item Capacità Array Dati: 64 kB
+    \item Mappatura: Direct Mapping
+    \item Dimensione linea/blocco: 4 Byte 
+    \item Indirizzi su 32 bit
+\end{itemize}
+
+\textbf{Procedimento:}
+\begin{enumerate}
+    \item \textbf{Calcolo dell'Offset}: Poiché ogni linea contiene 4 Byte ($2^2$), servono \textbf{2 bit} di Offset per indirizzare i singoli byte all'interno del blocco.
+    \item \textbf{Calcolo dell'Indice}: Il numero di linee totali è la dimensione totale diviso la capacità della singola linea:
+    \[ \frac{64 \text{ kB}}{4 \text{ Byte}} = \frac{2^6 \cdot 2^{10}}{2^2} = 2^{14} \text{ linee (16k linee)} \]
+    L'Indice richiederà quindi \textbf{14 bit}.
+    \item \textbf{Calcolo del Tag}: Si sottraggono i bit di Indice e Offset dall'indirizzo:
+    \[ 32 - 14 - 2 = \textbf{16 bit} \text{ per il Tag} \]
+\end{enumerate}
+
+La dimensione reale fisica di questa cache non è 64 kB, bensì bisogna sommare ad ogni blocco (linea) di 4 Byte (32 bit) anche la dimensione del Tag (16 bit), tralasciando per semplicità i bit V e D:
+\[ \text{Capacità Totale} = 2^{14} \text{ linee} \times (32 \text{ bit dati} + 16 \text{ bit tag}) = 2^{14} \times 48 \text{ bit} = 768 \text{ kbit} \]
+Dividendo per 8, otteniamo \textbf{96 kByte}, un valore sensibilmente superiore al dato nominale (64 kB).
+
+\subsection{Esempio 2: Cache Set-Associative in un Layout di Memoria Misto}
+Consideriamo il seguente scenario, tipico di sistemi embedded, in cui il processore richiede il calcolo dei parametri di una cache con queste specifiche:
+\begin{itemize}
+    \item Capacità Array Dati: 4 KB
+    \item Mappatura: 2-vie Set Associative (Associatività = 2)
+    \item Lettura da memoria: 32 Byte per operazione. La linea di cache conterrà quindi blocchi di 32 Byte.
+    \item Indirizzi su 32 bit
+\end{itemize}
+
+% FIGURA ORIGINALE DA RECUPERARE DALLE SLIDE
+% Slide di provenienza: 61 a 73 (Animazione layout di memoria, codice Assembly e passaggi calcolo cache)
+% Tipo: codice ed evoluzione schema
+% Descrizione: Rappresentazione dello spazio di indirizzamento frammentato (Flash, vuoto, RAM) associato al calcolo passo passo di Offset, Index e Tag.
+% Punto di inserimento: Qui.
+% File da inserire: fig_example2_memory_layout
+
+\textbf{Procedimento:}
+\begin{enumerate}
+    \item \textbf{Offset}: Per contenere 32 Byte, l'Offset necessita di \textbf{5 bit} ($2^5 = 32$).
+    \item \textbf{Linee totali e Indice}: Calcoliamo il numero totale di linee:
+    \[ \frac{4 \text{ KB}}{32 \text{ Byte}} = \frac{4096}{32} = 128 \text{ linee totali} \]
+    Siccome la cache è a 2 vie, le linee vengono raggruppate in insiemi (Set) da due.
+    \[ \text{Numero di Set} = \frac{128 \text{ linee}}{2} = 64 \text{ Set} \]
+    Per indirizzare 64 Set ($2^6$) servono \textbf{6 bit} di Indice.
+    \item \textbf{Tag}: Sottraiamo Indice e Offset:
+    \[ 32 - 5 - 6 = \textbf{21 bit} \text{ per il Tag} \]
+\end{enumerate}
+La memoria extra aggiunta per il salvataggio dei Tag sarà pari a:
+\[ 128 \text{ linee (totali)} \times 21 \text{ bit} = 2688 \text{ bit} = 336 \text{ Byte} \]
+Sommando la logica supplementare a una cache già molto piccola come in questo esempio, l'incremento di percentuale dello spazio richiesto è piuttosto gestibile, sebbene sia richiesto un bit V per ognuna delle 128 linee.
+
+\subsection{Esempio 3: Cache Associativa a 4-vie}
+Parametri:
+\begin{itemize}
+    \item Dati: 4 KB
+    \item Mappatura: 4-vie Set Associative
+    \item Linea: 32 Byte
+    \item Indirizzo: 32 bit
+\end{itemize}
+
+\textbf{Procedimento:}
+\begin{enumerate}
+    \item \textbf{Offset}: $2^5 = 32$ $\rightarrow$ \textbf{5 bit}.
+    \item \textbf{Linee totali}: $4\text{KB}/32 = 128$ linee totali.
+    \item \textbf{Indice}: 128 linee / 4 vie = 32 Set ($2^5$). Indice = \textbf{5 bit}.
+    \item \textbf{Tag}: $32 - (5 + 5) = \textbf{22 bit}$.
+\end{enumerate}
+
+Calcolo dell'area logica di controllo (Direttorio):
+\begin{itemize}
+    \item Tag Bits totali: $128 \times 22 = 2816$ bit.
+    \item Bit di Validità (V): $128$ bit.
+    \item Dirty bits (D): $128$ bit.
+    \item Bits per il pLRU Replacement: l'algoritmo pseudo-LRU per 4 vie richiede 3 bit per Set. Pertanto i 32 Set avrebbero $32 \times 3 = 96$ bit. \\
+    \textit{Nota: nelle slide, un'approssimazione indica prudenzialmente 2 bit per linea, ottenendo $128 \times 2 = 256$ bit. Adotteremo per coerenza il risultato didattico fornito dal professore nelle slide per il calcolo finale.}
+\end{itemize}
+
+\textbf{Dimensione totale memoria cache}:
+\[ 4 \text{ KB} + \text{Bit di Controllo} \]
+\[ 32768 \text{ bit (Dati)} + 2816 (\text{Tag}) + 128 (\text{V}) + 128 (\text{D}) + 256 (\text{pLRU}) = 35584 \text{ bit} = 4448 \text{ Byte} \]
+
+\vspace{1cm}
+\hrule
+\vspace{0.5cm}
+
+\section*{Immagini da recuperare}
+\begin{itemize}
+    \item \textbf{Slide 4 - Diagramma dei livelli di memoria}: Grafico a blocchi rappresentante gerarchia per Mobile, Laptop e Server. Da inserire nella Sezione "Gerarchia delle Memorie".
+    \item \textbf{Slide 9 e 10 - Organizzazione Interna}: Schema dei blocchi Data Array e Tag/Directory Array, incluse V e D flag. Da inserire nella Sezione "Organizzazione Interna della Cache".
+    \item \textbf{Slide 15 - Scomposizione CPU Address}: Rettangolo raffigurante i 32 bit suddivisi in Tag, Index e Offset. Da posizionare in "Ricerca di un blocco dati nella Cache".
+    \item \textbf{Slide 28 e 29 - Set Associative Mapping}: Mappatura dei blocchi di memoria su cache suddivisa a insiemi e vie, mostrato con frecce illustrative. Da inserire sotto "Mappatura Associativa agli Insiemi".
+    \item \textbf{Slide 36 a 45 - Pseudo-LRU (pLRU)}: Evoluzione temporale (sequenza A-E) di un albero binario a 3 nodi decisionali. Da inserire sotto "Algoritmo pseudo-LRU".
+    \item \textbf{Slide 61 a 73 - Schema layout di Memoria Misto}: Sequenza animata/strutturata che illustra il calcolo dei bit per tag/index e layout della memoria segmentata associato al codice assembly. Da inserire in "Esempio 2".
+\end{itemize}
+
+\section*{Problemi da verificare}
+\begin{itemize}
+    \item \textbf{Calcolo dei bit di storia per pLRU (Esempio 3)}: Nelle slide (Slide 74) è riportato il dato ``LRU Replacement = 2-bits per line = 256 bits''. L'algoritmo pLRU ad albero binario spiegato nella Sezione 5.2, implementato per una cache a 4 vie, necessiterebbe di 3 bit totali per ciascuno dei 32 set (quindi 96 bit e non 256). Si consiglia di verificare col docente se la dicitura ``2-bits per line'' fa riferimento ad un algoritmo di history replacement diverso dall'albero binario, o se si tratti di un arrotondamento cautelativo generico per il design.
+\end{itemize}

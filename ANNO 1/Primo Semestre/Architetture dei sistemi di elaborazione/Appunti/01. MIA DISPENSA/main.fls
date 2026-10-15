@@ -225,6 +225,9 @@ INPUT capitoli\15_vliw\15_vliw.aux
 INPUT .\capitoli\16_tlp\16_tlp.aux
 INPUT .\capitoli\16_tlp\16_tlp.aux
 INPUT capitoli\16_tlp\16_tlp.aux
+INPUT .\ESERCIZI\ex1\ex1.aux
+INPUT .\ESERCIZI\ex1\ex1.aux
+INPUT ESERCIZI\ex1\ex1.aux
 OUTPUT main.aux
 INPUT C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex\latex\microtype\mt-cmr.cfg
 INPUT C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex\latex\microtype\mt-cmr.cfg
@@ -597,6 +600,7 @@ OUTPUT capitoli\09_cache_memories\09_cache_memories.aux
 INPUT .\capitoli\09_cache_memories\09_cache_memories.tex
 INPUT .\capitoli\09_cache_memories\09_cache_memories.tex
 INPUT capitoli\09_cache_memories\09_cache_memories.tex
+INPUT C:\Users\toteu\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\ec-lmbx6.tfm
 INPUT .\capitoli\10_branch_prediction\10_branch_prediction.tex
 INPUT .\capitoli\10_branch_prediction\10_branch_prediction.tex
 OUTPUT capitoli\10_branch_prediction\10_branch_prediction.aux
@@ -639,6 +643,15 @@ OUTPUT capitoli\16_tlp\16_tlp.aux
 INPUT .\capitoli\16_tlp\16_tlp.tex
 INPUT .\capitoli\16_tlp\16_tlp.tex
 INPUT capitoli\16_tlp\16_tlp.tex
+INPUT .\ESERCIZI\ex1\ex1.tex
+INPUT .\ESERCIZI\ex1\ex1.tex
+OUTPUT ESERCIZI\ex1\ex1.aux
+INPUT .\ESERCIZI\ex1\ex1.tex
+INPUT .\ESERCIZI\ex1\ex1.tex
+INPUT ESERCIZI\ex1\ex1.tex
+INPUT C:\Users\toteu\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\rm-lmbx10.tfm
+INPUT C:\Users\toteu\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\rm-lmbx8.tfm
+INPUT C:\Users\toteu\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\rm-lmbx6.tfm
 INPUT main.aux
 INPUT .\capitoli\introduzione\introduzione.aux
 INPUT .\capitoli\introduzione\introduzione.aux
@@ -691,6 +704,9 @@ INPUT capitoli\15_vliw\15_vliw.aux
 INPUT .\capitoli\16_tlp\16_tlp.aux
 INPUT .\capitoli\16_tlp\16_tlp.aux
 INPUT capitoli\16_tlp\16_tlp.aux
+INPUT .\ESERCIZI\ex1\ex1.aux
+INPUT .\ESERCIZI\ex1\ex1.aux
+INPUT ESERCIZI\ex1\ex1.aux
 INPUT C:\Users\toteu\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmbx10.pfb
 INPUT C:\Users\toteu\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmbx10.pfb
 INPUT C:\Users\toteu\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmbx12.pfb
@@ -717,6 +733,8 @@ INPUT C:\Users\toteu\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmri10.
 INPUT C:\Users\toteu\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmri10.pfb
 INPUT C:\Users\toteu\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmsy10.pfb
 INPUT C:\Users\toteu\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmsy10.pfb
+INPUT C:\Users\toteu\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmsy8.pfb
+INPUT C:\Users\toteu\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmsy8.pfb
 INPUT C:\Users\toteu\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmtk10.pfb
 INPUT C:\Users\toteu\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmtk10.pfb
 INPUT C:\Users\toteu\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmtt10.pfb

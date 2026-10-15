@@ -192,9 +192,9 @@ INPUT capitoli\04_Data warehouse_analisi\data_warehouse_analisi.aux
 INPUT .\capitoli\05_Data warehouse_progettazione fisica e alimentazione\data_warehouse_progettazione_fisica_e_alimentazione.aux
 INPUT .\capitoli\05_Data warehouse_progettazione fisica e alimentazione\data_warehouse_progettazione_fisica_e_alimentazione.aux
 INPUT capitoli\05_Data warehouse_progettazione fisica e alimentazione\data_warehouse_progettazione_fisica_e_alimentazione.aux
-INPUT .\capitoli\06_Conceptual schema_textual formalism\conceptual_schema_textual_formalism.aux
-INPUT .\capitoli\06_Conceptual schema_textual formalism\conceptual_schema_textual_formalism.aux
-INPUT capitoli\06_Conceptual schema_textual formalism\conceptual_schema_textual_formalism.aux
+INPUT .\capitoli\06_Data warehouse in Oracle\Data_warehouse_in_Oracle.aux
+INPUT .\capitoli\06_Data warehouse in Oracle\Data_warehouse_in_Oracle.aux
+INPUT capitoli\06_Data warehouse in Oracle\Data_warehouse_in_Oracle.aux
 INPUT .\capitoli\07_Data lakes\data_lakes.aux
 INPUT .\capitoli\07_Data lakes\data_lakes.aux
 INPUT capitoli\07_Data lakes\data_lakes.aux
@@ -213,6 +213,12 @@ INPUT capitoli\11_Data mining_classificazione\data_mining_classificazione.aux
 INPUT .\capitoli\12_Data mining_clustering\data_mining_clustering.aux
 INPUT .\capitoli\12_Data mining_clustering\data_mining_clustering.aux
 INPUT capitoli\12_Data mining_clustering\data_mining_clustering.aux
+INPUT .\ESERCIZI\SQL Esteso\sql_esteso.aux
+INPUT .\ESERCIZI\SQL Esteso\sql_esteso.aux
+INPUT ESERCIZI\SQL Esteso\sql_esteso.aux
+INPUT .\ESERCIZI\Progettazione di un data warehouse\progettazione_di_un_data_warehouse.aux
+INPUT .\ESERCIZI\Progettazione di un data warehouse\progettazione_di_un_data_warehouse.aux
+INPUT ESERCIZI\Progettazione di un data warehouse\progettazione_di_un_data_warehouse.aux
 OUTPUT main.aux
 INPUT C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex\latex\microtype\mt-cmr.cfg
 INPUT C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex\latex\microtype\mt-cmr.cfg
@@ -290,6 +296,10 @@ INPUT C:\Users\toteu\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\lmmi10.tf
 INPUT C:\Users\toteu\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\lmsy10.tfm
 INPUT C:\Users\toteu\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\symbols\msam10.tfm
 INPUT C:\Users\toteu\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\symbols\msbm10.tfm
+INPUT C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex\latex\lm\t1lmtt.fd
+INPUT C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex\latex\lm\t1lmtt.fd
+INPUT C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex\latex\lm\t1lmtt.fd
+INPUT C:\Users\toteu\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\ec-lmtt10.tfm
 OUTPUT main.toc
 INPUT .\capitoli\introduzione\introduzione.tex
 INPUT .\capitoli\introduzione\introduzione.tex
@@ -328,10 +338,6 @@ INPUT .\capitoli\01_Data Science_introduzione\images\kdd_process1.png
 INPUT .\capitoli\01_Data Science_introduzione\images\kdd_process1.png
 INPUT .\capitoli\01_Data Science_introduzione\images\kdd_process1.png
 INPUT .\capitoli\01_Data Science_introduzione\images\kdd_process1.png
-INPUT C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex\latex\lm\t1lmtt.fd
-INPUT C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex\latex\lm\t1lmtt.fd
-INPUT C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex\latex\lm\t1lmtt.fd
-INPUT C:\Users\toteu\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\ec-lmtt10.tfm
 INPUT C:\Users\toteu\AppData\Local\Programs\MiKTeX\fonts\enc\dvips\lm\lm-mathsy.enc
 INPUT .\capitoli\02_Data warehouse_introduzione\data_warehouse_introduzione.tex
 INPUT .\capitoli\02_Data warehouse_introduzione\data_warehouse_introduzione.tex
@@ -591,12 +597,19 @@ INPUT .\capitoli\05_Data warehouse_progettazione fisica e alimentazione\images\d
 INPUT .\capitoli\05_Data warehouse_progettazione fisica e alimentazione\images\diagrammi_caricamento.png
 INPUT .\capitoli\05_Data warehouse_progettazione fisica e alimentazione\images\diagrammi_caricamento.png
 INPUT .\capitoli\05_Data warehouse_progettazione fisica e alimentazione\images\diagrammi_caricamento.png
-INPUT .\capitoli\06_Conceptual schema_textual formalism\conceptual_schema_textual_formalism.tex
-INPUT .\capitoli\06_Conceptual schema_textual formalism\conceptual_schema_textual_formalism.tex
-OUTPUT capitoli\06_Conceptual schema_textual formalism\conceptual_schema_textual_formalism.aux
-INPUT .\capitoli\06_Conceptual schema_textual formalism\conceptual_schema_textual_formalism.tex
-INPUT .\capitoli\06_Conceptual schema_textual formalism\conceptual_schema_textual_formalism.tex
-INPUT capitoli\06_Conceptual schema_textual formalism\conceptual_schema_textual_formalism.tex
+INPUT .\capitoli\06_Data warehouse in Oracle\Data_warehouse_in_Oracle.tex
+INPUT .\capitoli\06_Data warehouse in Oracle\Data_warehouse_in_Oracle.tex
+OUTPUT capitoli\06_Data warehouse in Oracle\Data_warehouse_in_Oracle.aux
+INPUT .\capitoli\06_Data warehouse in Oracle\Data_warehouse_in_Oracle.tex
+INPUT .\capitoli\06_Data warehouse in Oracle\Data_warehouse_in_Oracle.tex
+INPUT capitoli\06_Data warehouse in Oracle\Data_warehouse_in_Oracle.tex
+INPUT C:\Users\toteu\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\ec-lmtk10.tfm
+INPUT C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex\latex\listings\lstlang1.sty
+INPUT C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex\latex\listings\lstlang1.sty
+INPUT C:\Users\toteu\AppData\Local\Programs\MiKTeX\tex\latex\listings\lstlang1.sty
+INPUT C:\Users\toteu\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\ec-lmr10.tfm
+INPUT C:\Users\toteu\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\ec-lmtt10.tfm
+INPUT C:\Users\toteu\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\ec-lmtk10.tfm
 INPUT .\capitoli\07_Data lakes\data_lakes.tex
 INPUT .\capitoli\07_Data lakes\data_lakes.tex
 OUTPUT capitoli\07_Data lakes\data_lakes.aux
@@ -633,6 +646,18 @@ OUTPUT capitoli\12_Data mining_clustering\data_mining_clustering.aux
 INPUT .\capitoli\12_Data mining_clustering\data_mining_clustering.tex
 INPUT .\capitoli\12_Data mining_clustering\data_mining_clustering.tex
 INPUT capitoli\12_Data mining_clustering\data_mining_clustering.tex
+INPUT .\ESERCIZI\SQL Esteso\sql_esteso.tex
+INPUT .\ESERCIZI\SQL Esteso\sql_esteso.tex
+OUTPUT ESERCIZI\SQL Esteso\sql_esteso.aux
+INPUT .\ESERCIZI\SQL Esteso\sql_esteso.tex
+INPUT .\ESERCIZI\SQL Esteso\sql_esteso.tex
+INPUT ESERCIZI\SQL Esteso\sql_esteso.tex
+INPUT .\ESERCIZI\Progettazione di un data warehouse\progettazione_di_un_data_warehouse.tex
+INPUT .\ESERCIZI\Progettazione di un data warehouse\progettazione_di_un_data_warehouse.tex
+OUTPUT ESERCIZI\Progettazione di un data warehouse\progettazione_di_un_data_warehouse.aux
+INPUT .\ESERCIZI\Progettazione di un data warehouse\progettazione_di_un_data_warehouse.tex
+INPUT .\ESERCIZI\Progettazione di un data warehouse\progettazione_di_un_data_warehouse.tex
+INPUT ESERCIZI\Progettazione di un data warehouse\progettazione_di_un_data_warehouse.tex
 INPUT main.aux
 INPUT .\capitoli\introduzione\introduzione.aux
 INPUT .\capitoli\introduzione\introduzione.aux
@@ -652,9 +677,9 @@ INPUT capitoli\04_Data warehouse_analisi\data_warehouse_analisi.aux
 INPUT .\capitoli\05_Data warehouse_progettazione fisica e alimentazione\data_warehouse_progettazione_fisica_e_alimentazione.aux
 INPUT .\capitoli\05_Data warehouse_progettazione fisica e alimentazione\data_warehouse_progettazione_fisica_e_alimentazione.aux
 INPUT capitoli\05_Data warehouse_progettazione fisica e alimentazione\data_warehouse_progettazione_fisica_e_alimentazione.aux
-INPUT .\capitoli\06_Conceptual schema_textual formalism\conceptual_schema_textual_formalism.aux
-INPUT .\capitoli\06_Conceptual schema_textual formalism\conceptual_schema_textual_formalism.aux
-INPUT capitoli\06_Conceptual schema_textual formalism\conceptual_schema_textual_formalism.aux
+INPUT .\capitoli\06_Data warehouse in Oracle\Data_warehouse_in_Oracle.aux
+INPUT .\capitoli\06_Data warehouse in Oracle\Data_warehouse_in_Oracle.aux
+INPUT capitoli\06_Data warehouse in Oracle\Data_warehouse_in_Oracle.aux
 INPUT .\capitoli\07_Data lakes\data_lakes.aux
 INPUT .\capitoli\07_Data lakes\data_lakes.aux
 INPUT capitoli\07_Data lakes\data_lakes.aux
@@ -673,6 +698,12 @@ INPUT capitoli\11_Data mining_classificazione\data_mining_classificazione.aux
 INPUT .\capitoli\12_Data mining_clustering\data_mining_clustering.aux
 INPUT .\capitoli\12_Data mining_clustering\data_mining_clustering.aux
 INPUT capitoli\12_Data mining_clustering\data_mining_clustering.aux
+INPUT .\ESERCIZI\SQL Esteso\sql_esteso.aux
+INPUT .\ESERCIZI\SQL Esteso\sql_esteso.aux
+INPUT ESERCIZI\SQL Esteso\sql_esteso.aux
+INPUT .\ESERCIZI\Progettazione di un data warehouse\progettazione_di_un_data_warehouse.aux
+INPUT .\ESERCIZI\Progettazione di un data warehouse\progettazione_di_un_data_warehouse.aux
+INPUT ESERCIZI\Progettazione di un data warehouse\progettazione_di_un_data_warehouse.aux
 INPUT C:\Users\toteu\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmbx10.pfb
 INPUT C:\Users\toteu\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmbx10.pfb
 INPUT C:\Users\toteu\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmbx12.pfb
@@ -685,6 +716,8 @@ INPUT C:\Users\toteu\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmr12.p
 INPUT C:\Users\toteu\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmr12.pfb
 INPUT C:\Users\toteu\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmr17.pfb
 INPUT C:\Users\toteu\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmr17.pfb
+INPUT C:\Users\toteu\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmr6.pfb
+INPUT C:\Users\toteu\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmr6.pfb
 INPUT C:\Users\toteu\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmr8.pfb
 INPUT C:\Users\toteu\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmr8.pfb
 INPUT C:\Users\toteu\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmri10.pfb

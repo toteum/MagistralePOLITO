@@ -1,0 +1,169 @@
+\chapter{Esercitazione: Analisi delle Prestazioni e Pipeline}
+
+In questo capitolo analizziamo un esercizio completo, tipico di una prova d'esame, che richiede di valutare le prestazioni di un frammento di codice assembly in esecuzione su una specifica architettura di processore. L'obiettivo è calcolare il numero esatto di colpi di clock necessari per l'esecuzione del programma, analizzando il comportamento della pipeline, le dipendenze tra i dati (hazard) e le relative penalità (stalli).
+
+\section{Definizione dell'Architettura del Processore}
+
+Il sistema di riferimento per questo esercizio è un processore RISC-V con architettura RV32G, dotato di supporto per le operazioni in virgola mobile (Floating-Point, FP) a singola precisione. Le caratteristiche specifiche delle unità funzionali e della pipeline sono le seguenti:
+
+\begin{itemize}
+    \item \textbf{ALU Intera (Integer ALU):} Richiede 1 colpo di clock per completare l'operazione nella fase di esecuzione (Execute).
+    \item \textbf{Memoria Dati (Data memory):} L'accesso richiede 1 colpo di clock. Si assume, per semplicità, che tutti i dati siano presenti in cache (nessun miss).
+    \item \textbf{Unità Moltiplicatore FP:} È un'unità dotata di pipeline (pipelined) strutturata in 8 stadi.
+    \item \textbf{Unità Aritmetica FP (Somma/Sottrazione):} È dotata di pipeline strutturata in 4 stadi.
+    \item \textbf{Unità Divisore FP:} \textbf{Non} è dotata di pipeline e richiede 8 colpi di clock per completare un'operazione. Questo significa che, finché l'operazione di divisione non è conclusa, l'unità non può accettare nuove istruzioni.
+    \item \textbf{Branch Delay Slot:} Presente (1 colpo di clock), ma \textbf{disabilitato}. Di conseguenza, i salti genereranno una penalità se presi.
+    \item \textbf{Forwarding:} Abilitato. I dati calcolati possono essere passati direttamente alle istruzioni successive senza attendere la scrittura nel banco registri (fase di Write Back).
+    \item \textbf{Esecuzione Fuori Ordine (Out-of-Order):} È possibile completare la fase di Execute (EXE) delle istruzioni in modalità "fuori ordine". Questo permette ad alcune istruzioni di avanzare e accedere alla memoria o calcolare indirizzi anche se le istruzioni precedenti sono in stallo.
+\end{itemize}
+
+\section{Analisi del Codice Assembly}
+
+Il programma da analizzare esegue un ciclo iterativo (loop) che elabora cento elementi per volta, leggendo da tre vettori in memoria (\texttt{V1}, \texttt{V2}, \texttt{V3}), eseguendo operazioni aritmetiche su di essi e salvando i risultati in altri tre vettori (\texttt{V4}, \texttt{V5}, \texttt{V6}). Le operazioni logiche del ciclo sono:
+\begin{enumerate}
+    \item Somma: \texttt{v4[i] = v1[i] + v2[i]}
+    \item Moltiplicazione: \texttt{v5[i] = v2[i] * v3[i]}
+    \item Divisione: \texttt{v6[i] = v1[i] / v3[i]}
+\end{enumerate}
+
+Di seguito è riportato il codice assembly corrispondente:
+
+\begin{verbatim}
+.text
+main:
+    addi  x7, x0, 100       # Inizializza il contatore del ciclo a 100
+    la    x1, V1            # Carica l'indirizzo base del vettore V1
+    la    x2, V2            # Carica l'indirizzo base del vettore V2
+    la    x3, V3            # Carica l'indirizzo base del vettore V3
+    la    x4, V4            # Carica l'indirizzo base del vettore V4
+    la    x5, V5            # Carica l'indirizzo base del vettore V5
+    la    x6, V6            # Carica l'indirizzo base del vettore V6
+
+loop:
+    flw   f1, 0(x1)         # Carica v1[i]
+    flw   f2, 0(x2)         # Carica v2[i]
+    fadd.s f4, f1, f2       # f4 = v1[i] + v2[i]
+    flw   f3, 0(x3)         # Carica v3[i]
+    fsw   f4, 0(x4)         # Salva il risultato della somma in V4
+    fmul.s f5, f2, f3       # f5 = v2[i] * v3[i]
+    fsw   f5, 0(x5)         # Salva il risultato della moltiplicazione in V5
+    fdiv.s f6, f1, f3       # f6 = v1[i] / v3[i]
+    fsw   f6, 0(x6)         # Salva il risultato della divisione in V6
+    
+    # Aggiornamento degli indici (4 byte per numero FP a singola precisione)
+    addi  x1, x1, 4         
+    addi  x2, x2, 4         
+    addi  x3, x3, 4         
+    addi  x4, x4, 4         
+    addi  x5, x5, 4         
+    addi  x6, x6, 4         
+    
+    addi  x7, x7, -1        # Decrementa il contatore del ciclo
+    bnez  x7, loop          # Salta a 'loop' se x7 è diverso da zero
+    nop                     # Istruzione vuota
+\end{verbatim}
+
+\section{Calcolo dei Colpi di Clock}
+
+Il nostro obiettivo è tracciare il percorso di queste istruzioni all'interno della pipeline (composta tipicamente dalle fasi: Fetch, Decode, Execute, Memory, Write Back) per contare il totale dei colpi di clock richiesti.
+
+% FIGURA ORIGINALE DA RECUPERARE DALLE SLIDE
+% Slide di provenienza: Slide con la Tabella (Question 1)
+% Tipo: Tabella / Griglia temporale
+% Descrizione: Griglia per il tracciamento dei cicli di clock delle istruzioni nella pipeline.
+% Punto di inserimento: Qui, per visualizzare il tracciamento temporale spiegato di seguito.
+% File da inserire: placeholder_griglia_pipeline.png
+
+\begin{figure}[H]
+    \centering
+    % \includegraphics[width=1\textwidth]{placeholder_griglia_pipeline.png}
+    \vspace{4cm} % Spazio provvisorio
+    \caption{Griglia temporale (diagramma di Gantt della pipeline) per il tracciamento dell'esecuzione delle singole istruzioni (da recuperare dalle slide).}
+    \label{fig:griglia-pipeline}
+\end{figure}
+
+\subsection{Fase di Inizializzazione (Fuori dal ciclo)}
+Prima del ciclo, il programma esegue le istruzioni di inizializzazione. Dobbiamo calcolare il loro peso in termini di cicli di clock.
+
+\begin{itemize}
+    \item \textbf{Prima istruzione (\texttt{addi x7, x0, 100}):} Essendo la prima istruzione dopo il reset, deve attraversare tutte le 5 fasi della pipeline senza sovrapposizioni. Il suo contributo diretto è di \textbf{5 colpi di clock}. Va ricordato che queste somme sui registri interi utilizzano la ALU intera e richiedono un solo ciclo nella fase di Execute.
+    \item \textbf{Istruzioni \texttt{la} (Load Address):} Il professore fa notare che le direttive \texttt{la} sono \textit{pseudo-istruzioni}. Il compilatore le traduce in due istruzioni macchina reali. Poiché non generano dipendenze complesse tra loro e il forwarding è abilitato, possiamo considerare che ogni pseudo-istruzione \texttt{la} aggiunga \textbf{2 colpi di clock} alla latenza complessiva della pipeline.
+    \item Avendo 6 istruzioni \texttt{la}, il loro costo totale è $6 \times 2 = 12$ cicli.
+\end{itemize}
+
+Il totale della fase di inizializzazione è pertanto:
+\[ \text{Cicli Inizializzazione} = 5 + 12 = 17 \text{ colpi di clock} \]
+
+\subsection{Tracciamento di una Iterazione del Ciclo (\texttt{loop})}
+La parte fondamentale dell'esercizio consiste nel valutare gli stalli all'interno del corpo del ciclo. Analizziamo le istruzioni critiche e le loro interazioni.
+
+\subsubsection{Caricamento dati e Somma FP}
+Le prime due istruzioni sono load (\texttt{flw f1...} e \texttt{flw f2...}). Esse fluiscono regolarmente nella pipeline.
+La terza istruzione è \texttt{fadd.s f4, f1, f2}. Questa operazione presenta una dipendenza di dato RAW (Read After Write) con l'istruzione precedente: richiede \texttt{f2}, che è stato appena letto dalla memoria. 
+\begin{itemize}
+    \item Poiché il dato da memoria è disponibile solo alla fine dello stadio \textit{Memory} della load, la \texttt{fadd.s} non può avviare la fase di \textit{Execute} e deve \textbf{stallare per 1 colpo di clock}.
+    \item Dopo lo stallo, l'unità aritmetica FP impiega 4 stadi di Execute.
+\end{itemize}
+
+\subsubsection{Completamento Fuori Ordine ed Eccezioni Imprecise}
+La quarta istruzione è \texttt{flw f3, 0(x3)}. Il professore evidenzia un punto architetturale cruciale: questa istruzione non ha dipendenze. Essendo consentito il completamento "fuori ordine" per la fase EXE, questa istruzione può calcolare il suo indirizzo di memoria superando idealmente il blocco della somma precedente.
+Tuttavia, bisogna fare attenzione alla scrittura nel banco registri (Write Back). Se permettessimo la scrittura in memoria/registri fuori ordine, andremmo incontro al problema delle \textbf{eccezioni imprecise}: se l'istruzione precedente (\texttt{fadd.s}) dovesse generare un'eccezione, il processore si fermerebbe, ma lo stato architetturale risulterebbe alterato (perché \texttt{f3} è già stato sovrascritto dalla load). In questo specifico caso, trattandosi di una Load, il professore sceglie di far avanzare l'istruzione in modo che non contribuisca a ritardi aggiuntivi (costo 0 colpi di clock supplementari rispetto al flusso), rendendo il dato disponibile per le istruzioni future.
+
+\subsubsection{Store del risultato FP e Stalli Strutturali}
+L'istruzione successiva è \texttt{fsw f4, 0(x4)}. Qui si verificano due problemi distinti:
+\begin{enumerate}
+    \item \textbf{Stallo per dipendenza (RAW):} L'istruzione deve attendere che \texttt{f4} sia calcolato dalla \texttt{fadd.s} precedente. Pertanto si ferma nella pipeline in attesa del dato.
+    \item \textbf{Stallo Strutturale:} Anche quando il dato è pronto, l'istruzione non può accedere allo stadio di \textit{Memory} contemporaneamente all'istruzione precedente se quest'ultima la sta occupando (priorità all'istruzione più vecchia).
+\end{enumerate}
+Il professore osserva che la fase di Execute per la store (che serve unicamente a calcolare l'indirizzo base + offset) può essere svolta prima, calcolando l'indirizzo in anticipo, permettendo così di sbloccare parzialmente la fase di \textit{Decode} per le istruzioni successive e migliorando le prestazioni complessive.
+
+\subsubsection{Moltiplicazione e Divisione}
+L'istruzione \texttt{fmul.s f5, f2, f3} utilizza registri (\texttt{f2} e \texttt{f3}) ormai pronti (il dato \texttt{f3} subisce \textit{forwarding} appena prelevato dalla cache). Entra regolarmente nella sua unità dedicata, che è in pipeline e impiega 8 stadi per l'esecuzione.
+La store successiva (\texttt{fsw f5}) dovrà inevitabilmente stallare in attesa della fine degli 8 stadi di esecuzione della moltiplicazione.
+
+Arriviamo alla divisione: \texttt{fdiv.s f6, f1, f3}. Durante la lezione, il professore corregge un errore logico: pur avendo operandi indipendenti e già pronti, la divisione \textbf{deve stallare in fase di decodifica} perché la store precedente sta occupando la pipeline. Una volta superato questo blocco, entra nell'unità di divisione, che richiederà \textbf{8 colpi di clock}. 
+Essendo l'unità di divisione non in pipeline, bloccherà la fase di Execute per quel tipo di operazione. Anche qui, la successiva \texttt{fsw f6} genererà numerosi stalli in attesa del risultato (\texttt{f6}).
+
+\subsubsection{Istruzioni intere e Salto (\texttt{Branch})}
+Le 6 istruzioni \texttt{addi} intere per l'aggiornamento degli indici si susseguono regolarmente contribuendo a riempire i "buchi" lasciati dai lunghi stalli delle operazioni FP precedenti.
+L'aggiornamento del contatore è l'istruzione \texttt{addi x7, x7, -1}.
+A seguire troviamo il salto condizionato: \texttt{bnez x7, loop}.
+
+Qui si presenta un hazard fondamentale: il salto ha bisogno di valutare il valore di \texttt{x7}, che viene calcolato dall'istruzione immediatamente precedente. Il processore valuta i salti nello stadio di \textit{Decode}. Di conseguenza, il salto \textbf{deve stallare per 1 colpo di clock} per permettere all'istruzione \texttt{addi} di terminare l'Execute e fornire il dato tramite forwarding.
+Inoltre, poiché il \textit{branch delay slot} è \textbf{disabilitato}, quando il salto viene effettivamente "preso" (taken), l'istruzione successiva che è già stata fetchata (la \texttt{nop} o l'istruzione sottostante) deve essere "scartata" (flushata), causando la \textbf{perdita di 1 ulteriore colpo di clock}. 
+
+Il professore sceglie didatticamente di attribuire la "colpa" di questo colpo di clock perso direttamente all'istruzione di salto, che contribuirà quindi con \textbf{2 colpi di clock totali} al tempo di esecuzione di ogni singola iterazione.
+
+\subsection{Calcolo del Tempo Totale di Esecuzione}
+Svolgendo la tracciatura completa nella griglia temporale (Gantt), il professore determina che \textbf{una singola iterazione completa del ciclo costa esattamente 28 colpi di clock}.
+
+Per calcolare il totale del programma (costituito da 100 iterazioni), la formula è:
+\[ \text{Cicli Ciclo Totali} = 100 \times 28 = 2800 \text{ colpi di clock} \]
+
+Tuttavia, occorre fare una precisazione vitale per l'ultima iterazione. Durante l'iterazione numero 100, la condizione del salto fallisce (il salto \textit{non} viene preso perché \texttt{x7} diviene 0). In questa specifica iterazione non si verifica il "flush" dell'istruzione successiva, pertanto si \textbf{risparmia un colpo di clock}.
+Il calcolo corretto per le iterazioni diventa quindi:
+\[ \text{Cicli Ciclo Effettivi} = (99 \times 28) + (1 \times 27) = 2800 - 1 = 2799 \]
+In alternativa, si possono calcolare i cicli per 100 iterazioni (2800) e sottrarre alla fine 1 ciclo.
+
+Sommando la fase di inizializzazione iniziale (17 cicli), otteniamo il risultato finale:
+\begin{align*}
+\text{Totale Cicli} &= \text{Fase Inizializzazione} + \text{Iterazioni del loop} - \text{Risparmio ultimo salto} \\
+\text{Totale Cicli} &= 17 + 2800 - 1 = \mathbf{2816 \text{ colpi di clock}}
+\end{align*}
+\textit{Nota: Durante la spiegazione orale, il professore nomina la cifra 2817 sommando 17 e 2800, specificando immediatamente dopo che "verrebbe un colpo di clock in meno" per via dell'ultimo salto non preso, confermando il numero 2816 finale.}
+
+\section{Analisi degli Hazard (Domande Teoriche)}
+
+A completamento dell'esercizio, vengono proposte due domande teoriche sull'architettura. Entrambe si basano sull'individuazione di specifici hazard presenti nel codice.
+
+\subsection{Hazard sul registro \texttt{x7}}
+\textbf{Domanda:} Considerando le istruzioni \texttt{addi x7, x7, -1} e \texttt{bnez x7, loop}, che tipo di hazard è causato dall'uso del registro \texttt{x7} e come viene risolto?
+
+\textbf{Risposta:} Si tratta di un \textbf{Hazard sui Dati di tipo RAW (Read After Write)}. L'istruzione di salto (\texttt{bnez}) deve leggere il contenuto del registro \texttt{x7} per prendere la decisione sul branch, ma tale valore viene scritto (modificato) dall'istruzione immediatamente precedente (\texttt{addi}). 
+\textbf{Risoluzione:} L'hazard viene risolto inserendo uno \textbf{stallo (stall/bubble)} nella pipeline. Nello specifico, poiché il salto valuta la condizione in fase di Decodifica, deve arrestarsi (stallare) finché l'istruzione \texttt{addi} non conclude la fase di Execute e inoltra (forwarding) il nuovo valore aggiornato.
+
+\subsection{Hazard sul registro \texttt{F6}}
+\textbf{Domanda:} Considerando le istruzioni \texttt{fdiv.s f6, f1, f3} e \texttt{fsw f6, 0(x6)}, che tipo di hazard è causato dall'uso del registro \texttt{f6} e come viene risolto?
+
+\textbf{Risposta:} Si tratta anch'esso di un \textbf{Hazard sui Dati di tipo RAW (Read After Write)}. L'istruzione di store (\texttt{fsw}) deve salvare in memoria il dato contenuto in \texttt{f6}, ma questo dato è il risultato dell'istruzione di divisione FP precedente, che richiede ben 8 colpi di clock per completarsi.
+\textbf{Risoluzione:} L'hazard si risolve tramite lo \textbf{stallo del processore}. L'istruzione di store deve rimanere bloccata all'interno della pipeline (dopo aver eventualmente calcolato l'indirizzo in fase di Execute) e attendere passivamente per diversi colpi di clock la conclusione degli 8 stadi dell'unità di divisione FP. Solo una volta ottenuto il dato tramite forwarding, la store potrà accedere alla fase di Memory per eseguire il salvataggio fisico del dato.

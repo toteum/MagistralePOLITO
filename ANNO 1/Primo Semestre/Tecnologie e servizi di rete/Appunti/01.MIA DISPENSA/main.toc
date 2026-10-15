@@ -1,0 +1,139 @@
+\babel@toc {italian}{}\relax 
+\babel@toc {italian}{}\relax 
+\contentsline {chapter}{\numberline {1}Introduzione a Tecnologie e Servizi di Rete}{4}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Inquadramento del Corso e Docenti}{4}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Programma e Argomenti Trattati}{4}{section.1.2}%
+\contentsline {subsection}{\numberline {1.2.1}I Fondamenti: IPv4, IPv6 e Reti Locali}{4}{subsection.1.2.1}%
+\contentsline {subsection}{\numberline {1.2.2}Servizi e Tecnologie Avanzate}{5}{subsection.1.2.2}%
+\contentsline {subsection}{\numberline {1.2.3}Traffic Pattern Analysis}{5}{subsection.1.2.3}%
+\contentsline {section}{\numberline {1.3}Organizzazione Pratica e Laboratori}{5}{section.1.3}%
+\contentsline {section}{\numberline {1.4}Modalità d'Esame}{6}{section.1.4}%
+\contentsline {paragraph}{Consigli per la preparazione:}{6}{section*.2}%
+\contentsline {section}{\numberline {1.5}Regole di Comunicazione}{6}{section.1.5}%
+\contentsline {chapter}{\numberline {2}Indirizzamento IPv4 e Routing}{8}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Il Protocollo IP: Concetti Fondamentali}{8}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Indirizzamento IPv4}{8}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}L'Indirizzo IP e le Interfacce di Rete}{8}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}Parte di Rete e Parte di Host}{9}{subsection.2.2.2}%
+\contentsline {subsection}{\numberline {2.2.3}Indirizzi Speciali}{9}{subsection.2.2.3}%
+\contentsline {subsection}{\numberline {2.2.4}Classful Addressing (Approccio Storico)}{10}{subsection.2.2.4}%
+\contentsline {subsection}{\numberline {2.2.5}CIDR: Classless InterDomain Routing e Netmask}{11}{subsection.2.2.5}%
+\contentsline {subsection}{\numberline {2.2.6}Dimensionamento delle Sottoreti (Subnetting)}{12}{subsection.2.2.6}%
+\contentsline {section}{\numberline {2.3}Il Routing IP}{12}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}Longest Prefix Matching (LPM)}{12}{subsection.2.3.1}%
+\contentsline {subsection}{\numberline {2.3.2}Struttura della Tabella di Routing}{13}{subsection.2.3.2}%
+\contentsline {subsection}{\numberline {2.3.3}Esempio Pratico e Ottimizzazione (Route Aggregation)}{14}{subsection.2.3.3}%
+\contentsline {chapter}{\numberline {3}Esercitazioni su IPv4: Indirizzamento, Routing e Cattura Pacchetti}{16}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Calcolo di Netmask e Prefissi di Rete}{16}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}Metodo basato sulle potenze del 2}{16}{subsection.3.1.1}%
+\contentsline {subsection}{\numberline {3.1.2}Tabella riassuntiva di calcolo}{17}{subsection.3.1.2}%
+\contentsline {section}{\numberline {3.2}Verifica della Validità di un Prefisso di Rete}{17}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Analisi degli Errori di Configurazione}{18}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Pianificazione dell'Indirizzamento IP (Subnetting)}{19}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}Regole e calcolo dei requisiti}{19}{subsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.4.2}Approcci all'allocazione}{20}{subsection.3.4.2}%
+\contentsline {section}{\numberline {3.5}Tabelle di Routing e Aggregazione delle Rotte}{21}{section.3.5}%
+\contentsline {subsection}{\numberline {3.5.1}Impatto della pianificazione sull'aggregazione}{21}{subsection.3.5.1}%
+\contentsline {section}{\numberline {3.6}Analisi del Traffico di Rete e Protocolli ARP, DNS, ICMP}{23}{section.3.6}%
+\contentsline {subsection}{\numberline {3.6.1}Ping verso un indirizzo IP nella stessa LAN}{23}{subsection.3.6.1}%
+\contentsline {subsection}{\numberline {3.6.2}Ping verso un Nome a Dominio}{23}{subsection.3.6.2}%
+\contentsline {subsection}{\numberline {3.6.3}Impatto dello Switch Ethernet}{24}{subsection.3.6.3}%
+\contentsline {subsection}{\numberline {3.6.4}Risoluzione DNS con Errori di Configurazione: L'Asimmetria}{24}{subsection.3.6.4}%
+\contentsline {chapter}{\numberline {4}Comunicazione Multicast in IPv4}{25}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Introduzione al Multicast}{25}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Confronto con Broadcast e Unicast}{25}{subsection.4.1.1}%
+\contentsline {subsection}{\numberline {4.1.2}Principi di Funzionamento e Vantaggi}{25}{subsection.4.1.2}%
+\contentsline {section}{\numberline {4.2}Indirizzamento Multicast a Livello IP}{26}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Le Classi di Indirizzi e la Classe D}{26}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}Indirizzi Riservati e Ambiti d'Uso}{26}{subsection.4.2.2}%
+\contentsline {section}{\numberline {4.3}Gestione dei Gruppi a Livello Locale: IGMP}{27}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Iscrizione e Abbandono di un Gruppo}{27}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.3.2}Il Problema dell'Abbandono Silenzioso e le Query del Router}{28}{subsection.4.3.2}%
+\contentsline {section}{\numberline {4.4}Multicast a Livello di Collegamento (IEEE 802)}{28}{section.4.4}%
+\contentsline {subsection}{\numberline {4.4.1}Mappatura degli Indirizzi da IPv4 a MAC}{28}{subsection.4.4.1}%
+\contentsline {subsubsection}{Significato tecnico del byte iniziale e collisioni}{29}{section*.3}%
+\contentsline {subsection}{\numberline {4.4.2}Comportamento delle Schede di Rete (NIC)}{29}{subsection.4.4.2}%
+\contentsline {subsection}{\numberline {4.4.3}Gestione del Multicast negli Switch: IGMP Snooping vs Flooding}{29}{subsection.4.4.3}%
+\contentsline {section}{\numberline {4.5}Multicast su Scala Geografica}{30}{section.4.5}%
+\contentsline {subsection}{\numberline {4.5.1}Protocolli di Routing Multicast}{30}{subsection.4.5.1}%
+\contentsline {section}{\numberline {4.6}Esempi Applicativi e Stato di Adozione}{30}{section.4.6}%
+\contentsline {subsection}{\numberline {4.6.1}Multicast DNS (mDNS) per la Scoperta dei Servizi}{30}{subsection.4.6.1}%
+\contentsline {subsection}{\numberline {4.6.2}Limiti del Multicast e Scarsa Adozione su Scala Globale}{31}{subsection.4.6.2}%
+\contentsline {subsection}{\numberline {4.6.3}Incompatibilità con il Protocollo TCP}{32}{subsection.4.6.3}%
+\contentsline {chapter}{\numberline {5}Il Protocollo IPv6}{33}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Motivazioni e cenni storici}{33}{section.5.1}%
+\contentsline {subsection}{\numberline {5.1.1}Il problema dell'esaurimento degli indirizzi IPv4}{33}{subsection.5.1.1}%
+\contentsline {subsection}{\numberline {5.1.2}Soluzioni temporanee (Interim solutions) per IPv4}{34}{subsection.5.1.2}%
+\contentsline {subsection}{\numberline {5.1.3}Il problema della scalabilità del routing}{34}{subsection.5.1.3}%
+\contentsline {section}{\numberline {5.2}Indirizzamento IPv6}{35}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}Perché 128 bit?}{35}{subsection.5.2.1}%
+\contentsline {subsection}{\numberline {5.2.2}Notazione degli indirizzi IPv6}{35}{subsection.5.2.2}%
+\contentsline {subsection}{\numberline {5.2.3}Struttura e Principi di Routing}{36}{subsection.5.2.3}%
+\contentsline {section}{\numberline {5.3}Spazio di Indirizzamento e Tipologie di Indirizzi}{36}{section.5.3}%
+\contentsline {subsection}{\numberline {5.3.1}Indirizzi Multicast}{36}{subsection.5.3.1}%
+\contentsline {subsection}{\numberline {5.3.2}Indirizzi Unicast}{37}{subsection.5.3.2}%
+\contentsline {subsubsection}{Global Unicast Addresses (\texttt {2000::/3})}{37}{section*.4}%
+\contentsline {subsubsection}{Indirizzi Privati e Locali}{38}{section*.5}%
+\contentsline {subsubsection}{Indirizzi Speciali}{38}{section*.6}%
+\contentsline {subsection}{\numberline {5.3.3}Indirizzi Anycast}{39}{subsection.5.3.3}%
+\contentsline {section}{\numberline {5.4}Modifiche all'Architettura dei Protocolli}{39}{section.5.4}%
+\contentsline {section}{\numberline {5.5}Formato del Pacchetto (Header IPv6)}{39}{section.5.5}%
+\contentsline {subsection}{\numberline {5.5.1}Campi Eliminati rispetto a IPv4}{40}{subsection.5.5.1}%
+\contentsline {subsection}{\numberline {5.5.2}Campi Presenti (Mantenuti o Rinominati)}{40}{subsection.5.5.2}%
+\contentsline {subsection}{\numberline {5.5.3}La Novità: Il campo Flow Label (20 bit)}{41}{subsection.5.5.3}%
+\contentsline {subsection}{\numberline {5.5.4}Gli Extension Headers (Chaining)}{41}{subsection.5.5.4}%
+\contentsline {section}{\numberline {5.6}Interfacciamento con il Livello Data Link}{41}{section.5.6}%
+\contentsline {subsection}{\numberline {5.6.1}Indirizzamento Multicast a livello MAC}{42}{subsection.5.6.1}%
+\contentsline {section}{\numberline {5.7}ICMPv6 e Neighbor Discovery}{42}{section.5.7}%
+\contentsline {subsection}{\numberline {5.7.1}Sostituzione di ARP: Neighbor Solicitation e Advertisement}{42}{subsection.5.7.1}%
+\contentsline {subsection}{\numberline {5.7.2}Sostituzione di IGMP: Multicast Group Management}{43}{subsection.5.7.2}%
+\contentsline {section}{\numberline {5.8}Autoconfigurazione dei Dispositivi}{43}{section.5.8}%
+\contentsline {subsection}{\numberline {5.8.1}Generazione dell'Interface ID}{43}{subsection.5.8.1}%
+\contentsline {subsection}{\numberline {5.8.2}Ottenimento del Prefisso (Router Discovery)}{44}{subsection.5.8.2}%
+\contentsline {subsection}{\numberline {5.8.3}ICMP Redirect (Ottimizzazione First Hop)}{46}{subsection.5.8.3}%
+\contentsline {subsection}{\numberline {5.8.4}Duplicate Address Detection (DAD)}{47}{subsection.5.8.4}%
+\contentsline {subsection}{\numberline {5.8.5}Indirizzi con Scope (Scoped Addresses)}{47}{subsection.5.8.5}%
+\contentsline {chapter}{\numberline {6}Transizione da IPv4 a IPv6}{49}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Principi Generali e Obiettivi}{49}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Fasi di Adozione e Stato Attuale}{50}{section.6.2}%
+\contentsline {subsection}{\numberline {6.2.1}Siamo pronti per lo switch-off?}{51}{subsection.6.2.1}%
+\contentsline {section}{\numberline {6.3}Approccio Dual Stack: Funzionamento e Limiti}{52}{section.6.3}%
+\contentsline {section}{\numberline {6.4}Soluzioni basate su Tunneling (Fase Transitoria)}{52}{section.6.4}%
+\contentsline {subsection}{\numberline {6.4.1}Come scoprire il Tunnel Endpoint: La soluzione storica 6to4}{53}{subsection.6.4.1}%
+\contentsline {section}{\numberline {6.5}Soluzioni Scalabili "Carrier-Grade"}{54}{section.6.5}%
+\contentsline {subsection}{\numberline {6.5.1}Il ruolo fondamentale del NAT}{54}{subsection.6.5.1}%
+\contentsline {subsection}{\numberline {6.5.2}DS-Lite (Dual-Stack Lite)}{55}{subsection.6.5.2}%
+\contentsline {subsection}{\numberline {6.5.3}A+P (Address plus Port)}{56}{subsection.6.5.3}%
+\contentsline {subsection}{\numberline {6.5.4}MAP-E e MAP-T (Stateless A+P)}{57}{subsection.6.5.4}%
+\contentsline {section}{\numberline {6.6}Connettività da host IPv6-only verso server IPv4}{58}{section.6.6}%
+\contentsline {subsection}{\numberline {6.6.1}NAT64 e DNS64}{58}{subsection.6.6.1}%
+\contentsline {subsection}{\numberline {6.6.2}464XLAT e Accesso IPv6-only}{59}{subsection.6.6.2}%
+\contentsline {chapter}{\numberline {7}Reti Wireless e Reti Cellulari}{61}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Introduzione alle Reti Wireless}{61}{section.7.1}%
+\contentsline {subsection}{\numberline {7.1.1}Architettura e Modalità Operative}{61}{subsection.7.1.1}%
+\contentsline {subsection}{\numberline {7.1.2}Caratteristiche e Problematiche del Link Wireless}{61}{subsection.7.1.2}%
+\contentsline {subsection}{\numberline {7.1.3}Qualità del Segnale: SNR, BER e Rate Adaptation}{62}{subsection.7.1.3}%
+\contentsline {subsection}{\numberline {7.1.4}Il Problema del Terminale Nascosto (Hidden Terminal)}{62}{subsection.7.1.4}%
+\contentsline {section}{\numberline {7.2}Wireless LAN: Lo Standard IEEE 802.11 (Wi-Fi)}{63}{section.7.2}%
+\contentsline {subsection}{\numberline {7.2.1}Scansione dei Canali e Associazione}{63}{subsection.7.2.1}%
+\contentsline {subsection}{\numberline {7.2.2}Accesso Multiplo: CSMA/CA e RTS/CTS}{63}{subsection.7.2.2}%
+\contentsline {subsubsection}{Meccanismo RTS/CTS per la Riserva del Canale}{64}{section*.7}%
+\contentsline {subsection}{\numberline {7.2.3}Il Formato del Frame 802.11 e gli Indirizzi MAC}{64}{subsection.7.2.3}%
+\contentsline {subsection}{\numberline {7.2.4}Mobilità nativa e Power Management}{64}{subsection.7.2.4}%
+\contentsline {section}{\numberline {7.3}Reti Cellulari: Architettura Base}{65}{section.7.3}%
+\contentsline {subsection}{\numberline {7.3.1}Copertura, Forme delle Celle e Settorizzazione}{65}{subsection.7.3.1}%
+\contentsline {subsection}{\numberline {7.3.2}Accesso Multiplo e Riuso delle Frequenze (Cluster)}{65}{subsection.7.3.2}%
+\contentsline {subsection}{\numberline {7.3.3}Power Control e Problematiche FDD}{66}{subsection.7.3.3}%
+\contentsline {subsection}{\numberline {7.3.4}Mobilità: Roaming, Location Updating, Paging}{66}{subsection.7.3.4}%
+\contentsline {section}{\numberline {7.4}Evoluzione delle Generazioni Mobile (1G $\rightarrow $ 5G)}{66}{section.7.4}%
+\contentsline {section}{\numberline {7.5}Approfondimento sul GSM (2G)}{67}{section.7.5}%
+\contentsline {subsection}{\numberline {7.5.1}Componenti dell'Architettura GSM}{67}{subsection.7.5.1}%
+\contentsline {subsection}{\numberline {7.5.2}Livello Fisico GSM: FDD, FDMA/TDMA e Timing Advance}{67}{subsection.7.5.2}%
+\contentsline {subsection}{\numberline {7.5.3}Struttura del Burst GSM e Stealing Bits}{68}{subsection.7.5.3}%
+\contentsline {section}{\numberline {7.6}Approfondimento: LTE (4G) e l'Evoluzione All-IP}{68}{section.7.6}%
+\contentsline {subsection}{\numberline {7.6.1}Architettura e Componenti EPS}{68}{subsection.7.6.1}%
+\contentsline {subsection}{\numberline {7.6.2}Tunneling IP e i Bearer LTE}{69}{subsection.7.6.2}%
+\contentsline {subsection}{\numberline {7.6.3}Scheduling e Livello Fisico (OFDMA)}{69}{subsection.7.6.3}%
+\contentsline {subsection}{\numberline {7.6.4}Mobilità in LTE: Home Routed Roaming}{70}{subsection.7.6.4}%
+\contentsline {subsection}{\numberline {7.6.5}Handover Inter-eNodeB tramite interfaccia X2}{70}{subsection.7.6.5}%
+\contentsline {chapter}{\numberline {8}LAN VLAN}{71}{chapter.8}%

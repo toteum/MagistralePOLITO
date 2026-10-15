@@ -1,0 +1,242 @@
+\chapter{Interrogazioni Analitiche in SQL Esteso: Esercitazione Pratica}
+
+Questo capitolo è dedicato allo svolgimento di una serie di interrogazioni analitiche utilizzando le estensioni di SQL (come quelle supportate da Oracle), con particolare attenzione all'utilizzo delle funzioni di finestra (\textit{window functions}) per il calcolo di ranking e incassi cumulativi.
+
+\section{Osservazione preliminare: Ordinamento e selezione degli ultimi elementi}
+Prima di affrontare l'esercitazione sul Data Warehouse, è utile fare una considerazione tecnica emersa durante la lezione riguardo alla selezione degli ultimi elementi di una classifica (ad esempio, gli ultimi 10 elementi). 
+
+Un approccio per ottenere questo risultato consiste nell'ordinare i dati in modo inverso rispetto al criterio logico della classifica (ad esempio, se la classifica normalmente è decrescente, si ordinano i dati in modo crescente, o viceversa) e successivamente estrarre i primi 10 record. Dal punto di vista del motore di ricerca e del recupero del dato, questo metodo è molto efficiente e corretto. Tuttavia, bisogna prestare attenzione alla \textbf{visualizzazione}: estraendo i record con un ordinamento inverso, l'elenco risulterà capovolto (es. l'elemento in decima posizione apparirà per primo, seguito dal nono, dall'ottavo, e così via). 
+
+La logica di recupero dei dati è quindi separata dalla logica di visualizzazione. Se c'è la necessità di conoscere la posizione assoluta (il \textit{rank} esatto) di quegli elementi all'interno della totalità dei dati, sarà necessario effettuare un calcolo aggiuntivo sul numero totale dei record (o sui valori distinti assunti dall'attributo di ranking).
+
+\section{Analisi dello Schema del Data Warehouse}
+Le interrogazioni che andremo a risolvere si basano su uno schema di Data Warehouse strutturato secondo il Dimensional Fact Model. Lo schema è composto da una tabella dei fatti centrale e da quattro dimensioni.
+
+Le tabelle a disposizione sono le seguenti:
+\begin{itemize}
+    \item \textbf{Cliente} (\texttt{CodCliente}, \texttt{Cliente}, \texttt{Provincia}, \texttt{Regione})
+    \item \textbf{Categoria} (\texttt{CodCat}, \texttt{Categoria})
+    \item \textbf{Agente} (\texttt{CodAgente}, \texttt{Agente}, \texttt{Agenzia})
+    \item \textbf{Tempo} (\texttt{CodTempo}, \texttt{Mese}, \texttt{Trimestre}, \texttt{Semestre}, \texttt{Anno})
+    \item \textbf{Fatturato} (\texttt{CodTempo}, \texttt{CodCliente}, \texttt{CodCatArticolo}, \texttt{CodAgente}, \texttt{TotFatturato}, \texttt{NumArticoli}, \texttt{TotSconto})
+\end{itemize}
+
+\subsection{Gerarchie e particolarità delle Dimensioni}
+È fondamentale analizzare le gerarchie presenti all'interno delle dimensioni prima di procedere con le interrogazioni:
+\begin{itemize}
+    \item \textbf{Dimensione Cliente:} Presenta la gerarchia canonica in cui a ogni cliente è associata una sola provincia, e ogni provincia appartiene a una sola regione.
+    \item \textbf{Dimensione Tempo:} Segue una gerarchia rigida in cui dato un mese esiste un solo trimestre, che a sua volta è collegato univocamente a un semestre e, infine, all'anno.
+    \item \textbf{Dimensione Agente:} Ogni agente è associato a una e una sola agenzia, mentre la stessa agenzia gestisce più agenti.
+    \item \textbf{Dimensione Categoria:} Questa tabella possiede un solo attributo descrittivo (\texttt{Categoria}) oltre alla chiave. Nella teoria del Data Warehousing, una dimensione con un solo attributo viene definita \textbf{dimensione degenere} (\textit{Junk Dimension}). Tuttavia, in questo schema è stata modellata come una tabella dimensionale tradizionale: questa scelta progettuale è giustificata dall'ipotesi che, in futuro, si possano aggiungere nuovi attributi o creare nuove gerarchie associate alla categoria.
+\end{itemize}
+
+La tabella dei fatti \textbf{Fatturato} ha una chiave primaria composta dai codici delle quattro dimensioni (\texttt{CodTempo}, \texttt{CodCliente}, \texttt{CodCatArticolo}, \texttt{CodAgente}). Le \textbf{metriche} su cui possiamo eseguire i calcoli sono tre: il totale del fatturato (\texttt{TotFatturato}), il numero degli articoli venduti (\texttt{NumArticoli}) e il totale dello sconto (\texttt{TotSconto}).
+
+% ==========================================
+% ESERCIZIO 1
+% ==========================================
+\section{Esercizio 1: Calcolo di aggregati e Ranking Globale}
+
+\subsection{Testo della richiesta}
+Visualizzare per ogni categoria di articoli:
+\begin{enumerate}
+    \item la categoria;
+    \item la quantità totale fatturata per la categoria in esame;
+    \item il fatturato totale associato alla categoria in esame;
+    \item il rank della categoria in funzione della quantità totale fatturata;
+    \item il rank della categoria in funzione del fatturato totale.
+\end{enumerate}
+
+\subsection{Ragionamento e Passaggi Logici}
+Per rispondere alla query, dobbiamo incrociare i dati tra la tabella dei fatti \texttt{Fatturato} e la dimensione \texttt{Categoria}. La condizione di join sarà \texttt{Fatturato.CodCatArticolo = Categoria.CodCat}.
+
+Poiché la richiesta richiede dati aggregati "per ogni categoria", è necessario applicare un'operazione di raggruppamento (\texttt{GROUP BY Categoria}). Le metriche base sono facilmente ricavabili applicando la funzione \texttt{SUM()} agli attributi \texttt{NumArticoli} (per la quantità totale) e \texttt{TotFatturato}.
+
+Il calcolo del \textit{rank} richiede l'utilizzo delle funzioni di finestra (\texttt{RANK() OVER}). 
+È importante chiederci se sia necessario partizionare i dati. In questo specifico caso, \textbf{non serve il partizionamento} (\texttt{PARTITION BY}). Il motivo risiede nel fatto che la query base genera un singolo record per ogni categoria. Pertanto, noi vogliamo assegnare una posizione in classifica a ciascuna categoria calcolata rispetto a \textit{tutte} le altre. Non essendoci un livello gerarchico superiore a "categoria" nel nostro schema rispetto al quale calcolare classifiche separate, la finestra di calcolo si applica all'intero set di dati raggruppato.
+
+Viene richiesto di calcolare il rank due volte, con due criteri di ordinamento diversi:
+\begin{itemize}
+    \item \texttt{ORDER BY SUM(NumArticoli) DESC}: per assegnare la prima posizione alla categoria con la maggiore quantità di articoli venduti. L'uso di \texttt{DESC} assicura che il valore più alto abbia rank 1.
+    \item \texttt{ORDER BY SUM(TotFatturato) DESC}: per calcolare la classifica in base al ricavo.
+\end{itemize}
+
+\subsection{Codice SQL}
+\begin{lstlisting}[language=SQL, basicstyle=\ttfamily\small, keywordstyle=\color{blue}, stringstyle=\color{red}, commentstyle=\color{green!60!black}]
+SELECT 
+    C.Categoria,
+    SUM(F.NumArticoli) AS QuantitaTotale,
+    SUM(F.TotFatturato) AS FatturatoTotale,
+    RANK() OVER (
+        ORDER BY SUM(F.NumArticoli) DESC
+    ) AS RankPerQuantita,
+    RANK() OVER (
+        ORDER BY SUM(F.TotFatturato) DESC
+    ) AS RankPerFatturato
+FROM 
+    Fatturato F, 
+    Categoria C
+WHERE 
+    F.CodCatArticolo = C.CodCat
+GROUP BY 
+    C.Categoria;
+\end{lstlisting}
+
+% ==========================================
+% ESERCIZIO 2
+% ==========================================
+\section{Esercizio 2: Ranking con Partizionamento}
+
+\subsection{Testo della richiesta}
+Visualizzare per ogni provincia:
+\begin{enumerate}
+    \item la provincia;
+    \item la regione della provincia;
+    \item il fatturato totale associato alla provincia;
+    \item il rank della provincia in funzione del fatturato totale, separato per regione.
+\end{enumerate}
+
+\subsection{Ragionamento e Passaggi Logici}
+Le informazioni geografiche (Provincia e Regione) si trovano nella dimensione \texttt{Cliente}. Bisognerà quindi effettuare un join tra \texttt{Fatturato} e \texttt{Cliente} tramite l'attributo \texttt{CodCliente}.
+
+La query richiede di considerare l'aggregazione a livello di provincia. È necessario usare la clausola \texttt{GROUP BY Provincia}. 
+Sorge spontanea una domanda: possiamo inserire anche la \texttt{Regione} nella clausola \texttt{SELECT} e nel \texttt{GROUP BY}? La risposta è \textbf{sì}. Data una provincia, esiste infatti una e una sola regione di appartenenza (relazione funzionale $N:1$). Inserire \texttt{Regione} nel \texttt{GROUP BY} non altera la granularità del risultato (che rimane a livello di provincia), ma permette di proiettare la regione nella selezione.
+
+\paragraph{Il concetto semantico del Rank rispetto al raggruppamento:}
+Durante la lezione il professore ha precisato un dettaglio semantico. Quando eseguiamo un \texttt{GROUP BY} su un singolo attributo (es. solo per provincia), possiamo dire di "assegnare il rank all'attributo Provincia". Quando però raggruppiamo per più attributi congiuntamente, l'espressione più formalmente corretta è "assegnare un rank ad ogni record generato dalla query", poiché la riga rappresenta la combinazione degli attributi raggruppati.
+
+Il calcolo del rank in questo esercizio introduce la clausola \texttt{PARTITION BY}. Viene esplicitamente richiesto che il rank sia "separato per regione". Ciò significa che per ogni regione si aprirà una nuova finestra di calcolo, e all'interno di quella regione la provincia con il fatturato più alto assumerà rank 1.
+
+\subsection{Codice SQL}
+\begin{lstlisting}[language=SQL, basicstyle=\ttfamily\small, keywordstyle=\color{blue}, stringstyle=\color{red}, commentstyle=\color{green!60!black}]
+SELECT 
+    C.Provincia,
+    C.Regione,
+    SUM(F.TotFatturato) AS FatturatoTotale,
+    RANK() OVER (
+        PARTITION BY C.Regione
+        ORDER BY SUM(F.TotFatturato) DESC
+    ) AS RankProvinciaPerRegione
+FROM 
+    Fatturato F, 
+    Cliente C
+WHERE 
+    C.CodCliente = F.CodCliente
+GROUP BY 
+    C.Provincia, 
+    C.Regione;
+\end{lstlisting}
+
+% ==========================================
+% ESERCIZIO 3
+% ==========================================
+\section{Esercizio 3: Ranking Multi-Dimensionale}
+
+\subsection{Testo della richiesta}
+Visualizzare per ogni provincia e mese:
+\begin{enumerate}
+    \item la provincia;
+    \item la regione della provincia;
+    \item il mese;
+    \item il fatturato totale associato alla provincia nel mese in esame;
+    \item il rank della provincia in funzione del fatturato totale, separato per mese.
+\end{enumerate}
+
+\subsection{Ragionamento e Passaggi Logici}
+Questa query estende la precedente aggiungendo la dimensione temporale. L'interrogazione richiederà di unire tre tabelle: \texttt{Fatturato}, \texttt{Cliente} e \texttt{Tempo}.
+
+Le entità fondamentali su cui basare il raggruppamento dettate dalla query sono \textbf{Provincia} e \textbf{Mese}. Come best-practice suggerita, quando si costruisce il raggruppamento, è utile inserire prima questi due attributi principali e aggiungere solo successivamente le eventuali dipendenze funzionali, come la \texttt{Regione}. Nonostante in SQL l'ordine degli attributi nel \texttt{GROUP BY} sia ininfluente sull'esecuzione, scriverli in questo modo aiuta lo sviluppatore ad avere ben chiara la granularità concettuale della query.
+
+Il rank richiesto deve essere ricalcolato separatamente in ogni diverso periodo temporale. Di conseguenza, la finestra di calcolo deve essere definita indicando \texttt{PARTITION BY Mese}.
+
+\subsection{Codice SQL}
+\begin{lstlisting}[language=SQL, basicstyle=\ttfamily\small, keywordstyle=\color{blue}, stringstyle=\color{red}, commentstyle=\color{green!60!black}]
+SELECT 
+    C.Provincia,
+    T.Mese,
+    C.Regione,
+    SUM(F.TotFatturato) AS FatturatoTotale,
+    RANK() OVER (
+        PARTITION BY T.Mese
+        ORDER BY SUM(F.TotFatturato) DESC
+    ) AS RankProvinciaPerMese
+FROM 
+    Fatturato F, 
+    Cliente C, 
+    Tempo T
+WHERE 
+    C.CodCliente = F.CodCliente 
+    AND F.CodTempo = T.CodTempo
+GROUP BY 
+    C.Provincia, 
+    T.Mese, 
+    C.Regione;
+\end{lstlisting}
+
+% ==========================================
+% ESERCIZIO 4
+% ==========================================
+\section{Esercizio 4: Calcolo dell'Incasso Cumulativo (Running Total)}
+
+\subsection{Testo della richiesta}
+Visualizzare per ogni regione e mese:
+\begin{enumerate}
+    \item la regione;
+    \item il mese;
+    \item il fatturato totale associato alla regione nel mese in esame;
+    \item l'incasso cumulativo al trascorrere dei mesi, separato per ogni regione;
+    \item l'incasso cumulativo al trascorrere dei mesi, separato per ogni anno e regione.
+\end{enumerate}
+
+\subsection{Ragionamento e Passaggi Logici}
+Questa interrogazione sposta il focus dalle classifiche alle \textbf{somme cumulative} nel tempo, che si realizzano combinando la funzione di aggregazione \texttt{SUM()} con una finestra basata sull'istruzione \texttt{ROWS UNBOUNDED PRECEDING}.
+
+Per prima cosa, eseguiamo i join necessari (\texttt{Fatturato}, \texttt{Cliente}, \texttt{Tempo}) e definiamo la clausola \texttt{GROUP BY}. Gli attributi di raggruppamento principali sono \texttt{Regione} e \texttt{Mese}. Tuttavia, prestando attenzione all'ultima richiesta, notiamo che ci serve differenziare il calcolo cumulativo anche per \textbf{Anno}. Sappiamo che ogni \texttt{Mese} definisce univocamente un \texttt{Anno}; pertanto, dobbiamo obbligatoriamente aggiungere l'attributo \texttt{Anno} nel \texttt{GROUP BY} affinché esso diventi disponibile nella \texttt{SELECT} (e conseguentemente nella \texttt{PARTITION BY}).
+
+Vediamo nel dettaglio i due incassi cumulativi richiesti:
+\begin{itemize}
+    \item \textbf{Incasso cumulativo separato per regione:}
+    La formula richiede di sommare progressivamente i valori aggregati mensili. Si scrive \texttt{SUM(SUM(TotFatturato))}. Il partizionamento avviene solo rispetto a \texttt{Regione}. L'ordinamento, affinché l'accumulazione abbia senso cronologico, si effettua con \texttt{ORDER BY Mese}. Per sommare tutto dalla prima registrazione disponibile in quella partizione fino al mese corrente, si aggiunge la direttiva \texttt{ROWS UNBOUNDED PRECEDING}.
+    
+    \item \textbf{Incasso cumulativo separato per regione e per anno:}
+    La logica è identica, ma in questo caso si richiede che all'inizio di ogni nuovo anno accertato il contatore "si azzeri". Per implementare questo comportamento, è sufficiente aggiungere l'attributo temporale alla partizione: \texttt{PARTITION BY Regione, Anno}. In questo modo, gennaio non sommerà i mesi dell'anno precedente, perché inizierà una nuova partizione.
+\end{itemize}
+
+\paragraph{Interpretazione fisica e temporale (Approfondimento in Lezione):}
+Rispondendo alla perplessità di uno studente su come visualizzare mentalmente le due colonne generate in tempo reale, il professore ha fornito la seguente delucidazione. Supponiamo di avere un Data Warehouse popolato con i dati degli anni compresi tra il 2024 e il 2026:
+\begin{itemize}
+    \item La colonna del \textit{primo cumulativo} (solo per regione) presenterà un unico blocco che cresce costantemente per ogni regione. A Gennaio 2024 avremo l'incasso di un mese. A Febbraio 2024 la somma di due. Arrivando a Gennaio 2025, in questa colonna troveremo la somma di \textbf{tutti i 12 mesi del 2024 più Gennaio 2025}. 
+    \item La colonna del \textit{secondo cumulativo} (regione e anno), invece, una volta raggiunto l'inizio del nuovo anno (Gennaio 2025), perderà memoria del 2024. Il suo valore coinciderà esclusivamente con l'incasso di Gennaio 2025 per poi riniziare ad accumulare fino a Dicembre 2025.
+\end{itemize}
+Infine, sui mesi futuri non conclusi o senza registrazioni (es. un presunto "Ottobre 2026" se non sono state effettuate vendite), i dati semplicemente non saranno generati, poiché il sistema lavora interrogando i record con granularità mensile fisicamente memorizzati nel Data Warehouse fino a quel momento.
+
+\subsection{Codice SQL}
+\begin{lstlisting}[language=SQL, basicstyle=\ttfamily\small, keywordstyle=\color{blue}, stringstyle=\color{red}, commentstyle=\color{green!60!black}]
+SELECT 
+    C.Regione,
+    T.Anno,
+    T.Mese,
+    SUM(F.TotFatturato) AS FatturatoMese,
+    SUM(SUM(F.TotFatturato)) OVER (
+        PARTITION BY C.Regione
+        ORDER BY T.Mese
+        ROWS UNBOUNDED PRECEDING
+    ) AS CumulativoStoricoPerRegione,
+    SUM(SUM(F.TotFatturato)) OVER (
+        PARTITION BY C.Regione, T.Anno
+        ORDER BY T.Mese
+        ROWS UNBOUNDED PRECEDING
+    ) AS CumulativoAnnuoPerRegione
+FROM 
+    Fatturato F, 
+    Cliente C, 
+    Tempo T
+WHERE 
+    F.CodCliente = C.CodCliente
+    AND F.CodTempo = T.CodTempo
+GROUP BY 
+    C.Regione, 
+    T.Anno, 
+    T.Mese;
+\end{lstlisting}
+

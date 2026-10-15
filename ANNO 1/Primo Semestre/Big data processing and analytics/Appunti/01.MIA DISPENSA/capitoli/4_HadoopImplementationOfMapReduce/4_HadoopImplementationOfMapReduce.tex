@@ -1,228 +1,680 @@
-\chapter{Sviluppo di Applicazioni MapReduce in Hadoop}
-\label{cap:mapreduce-sviluppo}
+\chapter{Sviluppo di applicazioni MapReduce in Hadoop}
+\label{cap:hadoop-mapreduce}
 
-Per implementare ed eseguire un'applicazione basata sul paradigma MapReduce all'interno dell'ecosistema Hadoop, è necessario utilizzare il linguaggio di programmazione Java e interfacciarsi con le API (Application Programming Interface) fornite dal framework. 
-Lo sviluppo di un programma MapReduce richiede la definizione di tre componenti fondamentali, ciascuna implementata attraverso una specifica classe Java: la classe Driver, la classe Mapper e la classe Reducer.
+Questo capitolo illustra come implementare programmi MapReduce utilizzando il framework Hadoop. L'obiettivo principale di Hadoop è astrarre la complessità dei sistemi distribuiti: il progettista o sviluppatore deve concentrarsi unicamente sulla definizione logica delle funzioni di \textit{Map} e \textit{Reduce}, mentre il framework gestisce autonomamente l'esecuzione distribuita, la parallelizzazione, la fase di \textit{shuffle and sort}, lo scheduling dei task e la sincronizzazione.
 
-\section{Il Ruolo del Framework e dello Sviluppatore}
-\label{sec:framework-developer}
+Le API di MapReduce in Hadoop sono scritte in Java. Sebbene in framework più recenti come Spark sia diffuso l'utilizzo di Python, per Hadoop la scrittura nativa e più performante avviene in Java.
 
-Nello sviluppo di applicazioni MapReduce, vi è una netta separazione delle responsabilità tra lo sviluppatore e il framework Hadoop. 
-Il compito principale dei progettisti e degli sviluppatori è concentrarsi esclusivamente sulla definizione della logica applicativa, ovvero sull'implementazione delle funzioni di Map e di Reduce (spesso indicate come $m$ e $r$). 
+\section{Architettura di un'applicazione MapReduce e Terminologia}
 
-Lo sviluppatore \textbf{non deve gestire in alcun modo l'esecuzione distribuita}. È il framework Hadoop a coordinare in totale autonomia l'intera esecuzione del programma MapReduce. Nello specifico, Hadoop si occupa di:
+Un programma Hadoop MapReduce è costituito da tre componenti logiche fondamentali, ciascuna implementata tramite una specifica classe Java:
 \begin{itemize}
-    \item Gestire l'esecuzione parallela delle fasi di map e di reduce.
-    \item Eseguire automaticamente la fase intermedia di \emph{shuffle and sort}.
-    \item Gestire lo scheduling dei vari subtask sui nodi del cluster.
-    \item Occuparsi della sincronizzazione tra i processi.
+    \item \textbf{Driver}: la classe che configura l'applicazione e ne gestisce il flusso di esecuzione.
+    \item \textbf{Mapper}: la classe responsabile della fase di \textit{map}.
+    \item \textbf{Reducer}: la classe responsabile della fase di \textit{reduce}.
 \end{itemize}
 
-\section{Architettura di un Programma MapReduce}
-
-Il framework impone una precisa distinzione terminologica e concettuale tra le classi (che definiscono la logica del programma) e le loro istanze (gli oggetti effettivamente eseguiti in parallelo sul cluster).
-
-\subsection{Definizione delle Classi}
+Per comprendere a fondo il funzionamento del framework, è cruciale chiarire la terminologia utilizzata, in particolare la distinzione tra classi e istanze (oggetti):
 \begin{itemize}
-    \item \textbf{Driver class:} È la classe principale (spesso contenente il metodo \texttt{main}) in cui si forniscono le informazioni relative al flusso di lavoro (workflow) dell'applicazione. Al suo interno viene configurato il \emph{Job} MapReduce, specificando quali classi utilizzare per le fasi di map e reduce, i percorsi dei dati di input e output e altre proprietà di esecuzione.
-    \item \textbf{Mapper class:} È la classe dedicata all'implementazione della \emph{map phase}. Lo sviluppatore deve scrivere la logica di elaborazione all'interno del metodo \texttt{map}.
-    \item \textbf{Reducer class:} È la classe dedicata all'implementazione della \emph{reduce phase}. La logica di aggregazione viene definita sovrascrivendo il metodo \texttt{reduce}.
+    \item \textbf{Job}: rappresenta l'esecuzione (o \textit{run}) completa del programma MapReduce su un determinato dataset.
+    \item \textbf{Task}: è l'esecuzione di un singolo Mapper (Map task) o di un singolo Reducer (Reduce task) su una porzione specifica di dati. In un Job vi sono solitamente decine o centinaia di task eseguiti in parallelo.
+    \item \textbf{Driver, Mapper, Reducer (senza il suffisso "class")}: indicano le singole \textit{istanze} (oggetti) delle rispettive classi create a runtime dal sistema. Ad esempio, il sistema crea numerosi oggetti Mapper, ognuno per analizzare una porzione diversa di dati.
+    \item \textbf{Input split}: è una porzione di dimensione fissa dei dati di input. Logicamente, il file di input viene diviso in "split". Generalmente, uno split corrisponde più o meno alla dimensione di un blocco di HDFS (es. 128 MB). La corrispondenza non è perfetta al 100\% perché lo split deve tenere conto dei record (es. righe di testo) che iniziano in un blocco e finiscono nel blocco successivo. 
 \end{itemize}
 
-\subsection{Istanze e Terminologia}
-Quando il codice viene mandato in esecuzione, il sistema crea diverse istanze di queste classi. Nel gergo di Hadoop:
+\subsection{Il livello di parallelizzazione}
+Il numero di istanze della classe Mapper (i \textit{Mapper task}) creati dal sistema è \textbf{esattamente uguale al numero di input split}. 
+Se un file è diviso in 10 blocchi su HDFS, Hadoop creerà 10 istanze del Mapper, assegnando ciascuna a un server in cui risiede fisicamente quel blocco di dati per evitare trasferimenti di rete (concetto di \textit{data locality}). Questa rappresenta la massima parallelizzazione ottenibile senza spostare i dati.
+
+\section{Componenti e Flusso dei Dati}
+
+\subsection{Il Driver}
+Il Driver contiene il metodo \texttt{main()}, che funge da punto di ingresso (entry point) dell'applicazione. Viene eseguito sulla macchina client (non sui nodi del cluster) e ha il compito di:
 \begin{itemize}
-    \item Il termine \textbf{Driver} si riferisce all'oggetto istanziato dalla Driver class.
-    \item Il termine \textbf{Mapper} (senza ulteriori specificazioni) indica un'istanza della Mapper class. Ogni Mapper è incaricato di analizzare una specifica porzione dei dati di input.
-    \item Il termine \textbf{Reducer} indica un'istanza della Reducer class. Ciascun Reducer gestisce la fase di aggregazione per uno specifico sottoinsieme di chiavi generate dalla fase di map.
+    \item Leggere gli argomenti passati da riga di comando.
+    \item Configurare il Job (definire i percorsi di input/output, i formati, e i tipi di dato previsti).
+    \item Dichiarare le classi utilizzate per il Mapper e il Reducer.
+    \item Sottomettere il Job al cluster Hadoop e attenderne il completamento.
 \end{itemize}
-Infine, un \textbf{Job} rappresenta l'esecuzione vera e propria (la \emph{run}) dell'applicazione MapReduce sul cluster Hadoop.
 
-\subsection{Il Driver come Entry Point}
-La classe Driver contiene il metodo \texttt{main()}, che accetta gli argomenti passati da riga di comando. Esso rappresenta l'\emph{entry point} (punto di ingresso) dell'applicazione. All'interno del Driver, il codice configura il Job e, infine, lo sottomette al cluster Hadoop per l'esecuzione effettiva.
+\subsection{Il Mapper}
+Il Mapper "implementa" la fase di map e viene eseguito direttamente sui nodi del cluster. All'interno della classe, il metodo fondamentale è \texttt{map(...)}. 
+Esso riceve in input una coppia \((chiave, valore)\) letta dallo split e viene \textbf{invocato una volta per ogni singola coppia}. Analizza i dati e produce in output un insieme (da 0 a N) di coppie intermedie \((chiave, valore)\).
+I risultati intermedi prodotti dal Mapper \textbf{non vengono salvati su HDFS}, ma nel file system locale (disco fisso) del server in cui il Mapper è in esecuzione, al fine di velocizzare le operazioni ed evitare la latenza di replicazione di HDFS.
 
-\section{Gestione dell'Output Intermedio e Finale}
+\subsection{Il Reducer e il partizionamento dei dati (Shuffle and Sort)}
+Tra la fase di map e la fase di reduce, il sistema raggruppa tutti i risultati intermedi. I dati vengono ordinati in base alla chiave e inviati attraverso la rete ai nodi che eseguono le istanze del Reducer.
+I dati vengono distribuiti applicando una funzione di \textit{hash} sulla chiave: tutte le coppie che condividono la stessa chiave finiranno inevitabilmente alla stessa istanza del Reducer.
 
-Durante l'esecuzione delle fasi di MapReduce, vi è una profonda differenza nel modo in cui vengono memorizzati i risultati generati dai Mapper e quelli generati dai Reducer.
+\begin{remark}[La scelta del numero di Reducer]
+Mentre il numero di Mapper è scelto automaticamente dal sistema in base al numero di split, \textbf{il numero di Reducer deve essere esplicitamente specificato nel Driver dallo sviluppatore}.
+Il sistema non può sapere a priori quante chiavi distinte produrrà la fase di map. Lo sviluppatore deve impostare un numero ragionevole per parallelizzare la fase di reduce.
+\begin{itemize}
+    \item \textit{Assegnare troppi Reducer}: Se si impostano 200 Reducer per un problema che genera solo 100 chiavi distinte (es. 100 parole uniche), il sistema creerà 200 istanze. Di queste, 100 rimarranno vuote e verranno distrutte subito, sprecando risorse e causando un sovraccarico (overhead) inutile per lo scheduling.
+    \item \textit{La funzione di Hash e lo sbilanciamento (Data Skew)}: La funzione di hash standard cerca di distribuire le chiavi uniformemente tra i Reducer. Tuttavia, se una chiave ha una frequenza anomala (es. la parola "Paolo" compare milioni di volte, mentre "Luca" solo 4 volte), il Reducer a cui viene assegnato "Paolo" diventerà un collo di bottiglia e impiegherà molto più tempo degli altri. In questi rari casi, lo sviluppatore può definire una funzione di partizionamento personalizzata.
+\end{itemize}
+\end{remark}
 
-\subsection{Dati Intermedi (Transient Data)}
-Il metodo map del Mapper viene invocato su ogni singola coppia chiave-valore di input e genera un insieme di coppie chiave-valore intermedie. È fondamentale notare che questi risultati intermedi \textbf{sono transitori e non vengono salvati sull'HDFS}. Essi vengono memorizzati esclusivamente sul \emph{file system locale} del nodo (computing server) che li ha prodotti o elaborati.
-Successivamente, questi dati intermedi vengono aggregati tramite la procedura di \emph{shuffle and sort}, che genera per ogni singola chiave distinta una coppia formata dalla chiave stessa e dalla relativa lista di valori: \texttt{(key, [list of values])}.
+Il metodo \texttt{reduce(...)} del Reducer viene \textbf{invocato una sola volta per ogni chiave distinta}, ricevendo come input la chiave e la lista iterabile di tutti i valori a essa associati. 
+L'output finale prodotto dal Reducer viene, questa volta, scritto nel distributed file system (es. HDFS). Poiché HDFS replica ogni blocco (di default 3 copie) per tolleranza ai guasti, questa fase di scrittura finale genererà traffico di rete.
 
-\subsection{Dati Finali}
-Il metodo reduce viene applicato proprio su queste coppie \texttt{(key, [list of values])} aggregate. Al contrario dei dati intermedi, le coppie chiave-valore emesse in output dai Reducer rappresentano il risultato finale dell'applicazione MapReduce e \textbf{vengono memorizzate in modo permanente all'interno dell'HDFS}.
-
-\section{Lettura dei Dati: La classe InputFormat}
-\label{sec:inputformat}
-
-Il punto di partenza di un programma MapReduce è l'acquisizione dei dati in ingresso. L'input dell'applicazione è solitamente costituito da un file (o da un'intera cartella) residente all'interno dell'HDFS (Hadoop Distributed File System). Tuttavia, il metodo map del Mapper non legge file testuali grezzi, ma richiede in ingresso un flusso strutturato come un insieme di coppie chiave-valore \texttt{(key, value)}.
-
-Per colmare questa distanza interviene la classe astratta \texttt{org.apache.hadoop.mapreduce.InputFormat}. Le classi che estendono \texttt{InputFormat} hanno un duplice compito:
-\begin{enumerate}
-    \item Descrivere le specifiche del formato di input per l'applicazione MapReduce e processare i file di ingresso.
-    \item Leggere i dati di input e \textbf{"trasformare logicamente"} il file HDFS in un insieme di coppie chiave-valore che possano essere fornite direttamente alle istanze dei Mapper.
-\end{enumerate}
-
-\section{Parallelismo ed Esecuzione: Task e Input Split}
-
-Per comprendere come Hadoop parallelizza l'elaborazione, è fondamentale introdurre il concetto di \textbf{Input Split}. 
-Quando si elabora un dataset di grandi dimensioni, questo non viene letto per intero da un singolo processo. Il dataset (memorizzato nell'HDFS - Hadoop Distributed File System) è fisicamente suddiviso in blocchi (Data Blocks). 
-
-L'Input Split è una partizione logica dei dati di input che deve essere elaborata da una singola istanza Mapper. Generalmente, vi è una corrispondenza uno-a-uno tra un Input Split e un blocco fisico memorizzato nel file system distribuito.
-
+% FIGURA ORIGINALE DA RECUPERARE DALLE SLIDE
+% Slide di provenienza: Da 16 a 22 (Animazione "MapReduce data flow with a single reducer") e 23-25 ("MapReduce data flow with multiple reducers")
+% Tipo: diagramma strutturale
+% Descrizione: Diagramma che mostra i nodi che leggono gli input split (blu), l'invio dei risultati intermedi ordinati attraverso la rete (frecce verso il/i reducer) e il consolidamento finale del Reducer.
+% Punto di inserimento: In questa sezione che descrive l'interazione tra Mapper e Reducer.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{capitoli/4_HadoopImplementationOfMapReduce/images/mapreduce-architecture.png}
-    \caption{Architettura di un'applicazione MapReduce in Hadoop.}
+    %\includegraphics[width=0.9\textwidth]{placeholder_data_flow.png}
+    \caption{Flusso dei dati in MapReduce: generazione degli input split, elaborazione nei Mapper sui nodi locali, fase di shuffle and sort attraverso la rete, ed esecuzione dei Reducer.}
+    \label{fig:mapreduce-data-flow}
 \end{figure}
 
-\subsection{Grado di Parallelismo della fase di Map}
-Il numero di istanze della classe Mapper (ovvero il numero di task di map) che il sistema crea in parallelo è esattamente \textbf{uguale al numero di Input Split}.
-Se, ad esempio, il file di input è suddiviso logicamente in 10 blocchi, il sistema istanzierà 10 Mapper. Ognuna di queste istanze prenderà in carico uno split. 
+\section{Tipi di Dato (Data Types) in Hadoop}
 
-Questo rappresenta il \textbf{massimo parallelismo ottenibile senza dover inviare dati attraverso la rete} (network shuffle). L'elaborazione in questa fase è puramente locale al nodo che detiene il blocco di dati. Ciascun task analizza un sottoinsieme delle coppie chiave-valore di input e genera un sottoinsieme delle coppie chiave-valore intermedie.
-
-
-
-\section{Tipi di Dato in MapReduce}
-
-Le coppie chiave-valore scambiate tra Mapper e Reducer non utilizzano i tipi di dato base standard di Java (come \texttt{String}, \texttt{Integer}, ecc.). Hadoop definisce dei propri tipi di dato di base, ottimizzati per la \textbf{serializzazione di rete} (network serialization), poiché i dati intermedi devono viaggiare attraverso il cluster.
-
-Tra i tipi principali (che implementano l'interfaccia \texttt{Writable}) troviamo:
+I programmi Hadoop non utilizzano i tipi base nativi di Java (come \texttt{String}, \texttt{int}, \texttt{long}, \texttt{float}) come chiavi o valori direttamente nelle firme dei metodi \texttt{map} e \texttt{reduce}. Per questioni di efficienza nel trasferimento dei dati sulla rete (serializzazione/deserializzazione), Hadoop definisce delle classi \textit{wrapper} specifiche, dette \textbf{Writable}:
 \begin{itemize}
-    \item \texttt{org.apache.hadoop.io.Text}: l'equivalente della classe \texttt{String} in Java.
-    \item \texttt{org.apache.hadoop.io.IntWritable}: l'equivalente della classe \texttt{Integer}.
-    \item \texttt{org.apache.hadoop.io.LongWritable}: l'equivalente della classe \texttt{Long}.
-    \item \texttt{org.apache.hadoop.io.FloatWritable}: l'equivalente della classe \texttt{Float}.
+    \item \texttt{org.apache.hadoop.io.Text}: corrisponde a \texttt{String}.
+    \item \texttt{org.apache.hadoop.io.IntWritable}: corrisponde a \texttt{Integer}.
+    \item \texttt{org.apache.hadoop.io.LongWritable}: corrisponde a \texttt{Long}.
+    \item \texttt{org.apache.hadoop.io.FloatWritable}: corrisponde a \texttt{Float}.
 \end{itemize}
 
-\subsection{Tipi di Dato Personalizzati (Personalized Data Types)}
-A volte i tipi di dato base non sono sufficienti a modellare l'informazione. Ad esempio, si potrebbe voler trasmettere come valore non un singolo intero, ma una struttura complessa composta da una coppia di numeri, coordinate o altri dati aggregati. In questi casi, il framework permette allo sviluppatore di definire \textbf{tipi di dato personalizzati}, creando classi apposite che implementano i meccanismi di serializzazione richiesti da Hadoop.
+Ogni classe utilizzata come \textbf{valore} deve implementare l'interfaccia \texttt{Writable}.
+Ogni classe utilizzata come \textbf{chiave} deve implementare l'interfaccia \texttt{WritableComparable}. La chiave non solo deve essere serializzata, ma deve anche poter essere \textit{comparata} e \textit{ordinata} durante la fase cruciale di shuffle and sort, affinché le chiavi identiche vengano raggruppate.
 
-\subsection{Tipi di Dato Personalizzati (Personalized Data Types)}
+\section{Formati di Input e Output}
 
-Oltre ai tipi predefiniti da Hadoop (come \texttt{Text} o \texttt{IntWritable}, ottimizzati per la serializzazione di rete), gli sviluppatori hanno la possibilità di definire nuovi \textbf{tipi di dato personalizzati} per modellare informazioni e strutture complesse.
+Prima che i dati arrivino al Mapper, il file su HDFS deve essere diviso e tradotto in coppie chiave-valore. Questo è gestito dalla classe astratta \texttt{InputFormat}, che valida il formato del file, divide i dati in Input Split e fornisce un \texttt{RecordReader} per l'estrazione delle coppie.
 
-Ciò si ottiene creando classi che implementano le interfacce \texttt{org.apache.hadoop.io.Writable} e/o \texttt{org.apache.hadoop.io.WritableComparable}. 
-A questo proposito, il professore evidenzia un requisito tecnico vitale e categorico: se il tipo di dato personalizzato deve essere utilizzato \textbf{come chiave} (key part), non basta estendere la semplice interfaccia \texttt{Writable}, ma \textbf{è obbligatorio implementare anche i metodi associati a \texttt{WritableComparable}}.
-Se si omette l'implementazione di questi due metodi di comparazione, il sistema non è in grado di gestire i dati e genererà un errore a runtime durante l'esecuzione. Il framework vi avviserà indicando l'impossibilità di calcolare l'hash della chiave (``\emph{I don't know how to hash the key}'') e di memorizzare correttamente le coppie chiave-valore (``\emph{I don't know how to store the pairs}'').
+Esistono implementazioni predefinite di \texttt{InputFormat} molto utilizzate, specialmente per i file testuali:
 
-\section{Implementazione del Reducer}
+\begin{itemize}
+    \item \textbf{\texttt{TextInputFormat}}: È il formato standard per i file di testo. Il file viene diviso per righe (usando il ritorno a capo). 
+    \begin{itemize}
+        \item \textbf{Chiave}: l'offset (posizione in byte) della riga all'interno del file. Il tipo di dato è \texttt{LongWritable}.
+        \item \textbf{Valore}: il contenuto dell'intera riga. Il tipo di dato è \texttt{Text}.
+    \end{itemize}
+    Spesso, all'interno del metodo map, l'offset (la chiave) viene ignorato perché non contiene informazioni semanticamente utili per l'analisi.
 
-La classe che implementa il Reducer deve estendere la classe generica \texttt{org.apache.hadoop.mapreduce.Reducer}. Questa classe richiede la definizione di quattro parametri di tipo (generics) che corrispondono alle firme dei dati in ingresso e in uscita:
-\begin{enumerate}
-    \item \texttt{Input key type} (Tipo della chiave intermedia proveniente dal Mapper).
-    \item \texttt{Input value type} (Tipo del valore intermedio).
-    \item \texttt{Output key type} (Tipo della chiave finale emessa).
-    \item \texttt{Output value type} (Tipo del valore finale emesso).
-\end{enumerate}
+    \item \textbf{\texttt{KeyValueTextInputFormat}}: Utilizzato per file in cui ogni riga contiene già implicitamente una coppia chiave-valore, divisa da un separatore (di default una tabulazione \texttt{\textbackslash t}).
+    \begin{itemize}
+        \item \textbf{Chiave}: il testo precedente al separatore. Il tipo di dato è \texttt{Text}.
+        \item \textbf{Valore}: il testo successivo al separatore. Il tipo di dato è \texttt{Text}.
+    \end{itemize}
+\end{itemize}
 
-Lo sviluppatore deve sovrascrivere il metodo \texttt{reduce(...)}. Questo metodo viene chiamato \textbf{automaticamente dal framework per ogni singola chiave} e per la relativa lista di valori generata dall'aggregazione degli output di tutti i Mapper.
-Il metodo processa i dati usando codice Java standard e, al termine dell'aggregazione, emette le coppie chiave-valore finali utilizzando l'oggetto \texttt{Context} tramite il metodo \texttt{context.write(key, value)}.
+\begin{remark}[Attenzione ai tipi di dato con KeyValueTextInputFormat]
+Durante la lezione il professore ha sottolineato un errore comune: con \texttt{KeyValueTextInputFormat}, \textbf{sia la chiave che il valore sono di tipo \texttt{Text}}. Se il testo precedente al separatore è un numero (es. \texttt{10125\textbackslash tMister John}), la chiave generata sarà l'oggetto \texttt{Text} contenente la stringa "10125", non un intero. Bisogna prestare attenzione quando si scrive il codice del Mapper, per evitare errori di \textit{type mismatch}.
+\end{remark}
 
-\subsection{Esempio: Word Count Reducer}
-Di seguito è illustrata l'implementazione del metodo \texttt{reduce} per il classico problema del Word Count:
+\begin{itemize}
+    \item \textbf{\texttt{SequenceFileInputFormat}}: Un formato per file binari sequenziali, ottimizzato per framework Big Data.
+\end{itemize}
 
-\begin{lstlisting}[language=Java, caption={Implementazione del metodo reduce per il Word Count}, label={lst:wordcount-reducer}]
-/* Implementazione del metodo reduce */
-protected void reduce(
-    Text key, // Input key type (la parola)
-    Iterable<IntWritable> values, // Input value type (lista di occorrenze)
-    Context context) throws IOException, InterruptedException {
-    
-    int occurrences = 0;
-    
-    // Itera sull'insieme dei valori e li somma
-    for (IntWritable value : values) {
-        occurrences = occurrences + value.get();
+% FIGURA ORIGINALE DA RECUPERARE DALLE SLIDE
+% Slide di provenienza: 40-41 ("Getting Data to the Mapper")
+% Tipo: diagramma concettuale
+% Descrizione: Mostra la trasformazione dal file su HDFS -> InputFormat -> InputSplits -> RecordReader -> Mapper (coppie K,V).
+% Punto di inserimento: Alla fine della spiegazione degli InputFormat.
+\begin{figure}[H]
+    \centering
+    %\includegraphics[width=0.85\textwidth]{placeholder_inputformat.png}
+    \caption{Processo di acquisizione dei dati: l'InputFormat definisce gli split e il RecordReader genera le coppie chiave-valore passate al Mapper.}
+    \label{fig:input-format}
+\end{figure}
+
+Parallelamente, la classe \texttt{OutputFormat} (es. \texttt{TextOutputFormat}) definisce come salvare i risultati su HDFS. Il formato di default crea file di testo in cui la chiave e il valore sono separati da un tab, rendendoli perfettamente leggibili da un successivo job configurato con \texttt{KeyValueTextInputFormat}.
+
+\section{Struttura base del codice Hadoop: Word Count Example}
+
+Analizziamo ora la struttura del codice Java attraverso il classico problema del conteggio delle parole (Word Count). L'obiettivo è calcolare le occorrenze di ogni parola in un file testuale.
+
+\subsection{Implementazione del Driver}
+
+Il Driver eredita da \texttt{Configured} e implementa \texttt{Tool}. Lo sviluppatore si concentra sul metodo \texttt{run()}, dove imposta il lavoro.
+
+\begin{lstlisting}[language=Java, caption=Struttura del Driver per il Word Count]
+public class WordCount extends Configured implements Tool {
+    @Override
+    public int run(String[] args) throws Exception {
+        int numberOfReducers = Integer.parseInt(args[0]);
+        Path inputPath = new Path(args[1]);
+        Path outputDir = new Path(args[2]);
+
+        Configuration conf = this.getConf();
+        Job job = Job.getInstance(conf);
+        job.setJobName("WordCounter");
+
+        // Impostazione dei path
+        FileInputFormat.addInputPath(job, inputPath);
+        FileOutputFormat.setOutputPath(job, outputDir);
+
+        // Classi per i formati
+        job.setInputFormatClass(TextInputFormat.class);
+        job.setOutputFormatClass(TextOutputFormat.class);
+
+        // Collegamento delle classi e del Driver
+        job.setJarByClass(WordCount.class);
+        job.setMapperClass(WordCountMapper.class);
+        job.setReducerClass(WordCountReducer.class);
+
+        // Tipi di output del MAPPER (fondamentale specificarli)
+        job.setMapOutputKeyClass(Text.class);
+        job.setMapOutputValueClass(IntWritable.class);
+
+        // Tipi di output del REDUCER
+        job.setOutputKeyClass(Text.class);
+        job.setOutputValueClass(IntWritable.class);
+
+        // Numero di reducer desiderati
+        job.setNumReduceTasks(numberOfReducers);
+
+        return job.waitForCompletion(true) ? 0 : 1;
     }
-    
-    // Emette il numero totale di occorrenze per la parola corrente
-    context.write(key, new IntWritable(occurrences));
-} // Fine metodo reduce
+
+    public static void main(String args[]) throws Exception {
+        int res = ToolRunner.run(new Configuration(), new WordCount(), args);
+        System.exit(res);
+    }
+}
 \end{lstlisting}
-Come si evince dal codice, per ogni parola (la \texttt{key}), il framework fornisce un iteratore ai valori (gli "1" emessi dai mapper). Il reducer li somma e produce il totale finale.
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{capitoli/4_HadoopImplementationOfMapReduce/images/reduce-phase.png}
-    \caption{Esecuzione della fase di reduce.}
-\end{figure}
+Il metodo \texttt{setMapOutputKeyClass} e il corrispettivo per il value sono essenziali: il sistema non può ricavare automaticamente questi tipi generici a runtime (per via della \textit{type erasure} in Java). Non è invece necessario specificare esplicitamente i tipi in input al Reducer, poiché corrispondono esattamente all'output del Mapper.
 
-\section{L'Uso esclusivo del Map: Map-Only Job}
+\subsection{Implementazione del Mapper}
 
-Esistono applicazioni pratiche in cui l'aggregazione dei dati (fase di reduce) non è necessaria. L'obiettivo potrebbe essere semplicemente quello di filtrare dati, pulire un dataset o trasformare i record riga per riga. 
+La classe estende \texttt{Mapper<ChiaveIn, ValoreIn, ChiaveOut, ValoreOut>}. Per l'input file testuale di default, le chiavi in ingresso sono \texttt{LongWritable} (offset) e i valori \texttt{Text} (riga di testo).
 
-Il professore illustra un caso d'uso: supponiamo di avere un file di log proveniente da sensori, con il formato \texttt{<sensor\_ID> <date>}. Tuttavia, il dataset è sporco e alcune righe presentano formati errati (es. solo l'ID del sensore senza la data, oppure un'anomalia come "Paolo 50").
-Se la riga è corretta o utile ai fini della nostra analisi (es. fa parte del risultato che vogliamo conservare), dobbiamo emetterla così com'è. Se la riga è malformata o inutile, la ignoriamo non restituendo nulla.
+\begin{lstlisting}[language=Java, caption=Struttura del Mapper per il Word Count]
+class WordCountMapper extends Mapper<
+    LongWritable, Text,   // Input: Offset riga, Contenuto riga
+    Text, IntWritable> {  // Output: Parola, Contatore (1)
+    
+    protected void map(LongWritable key, Text value, Context context) 
+        throws IOException, InterruptedException {
+        
+        // Spezza la riga (value) in parole usando gli spazi come delimitatore
+        String[] words = value.toString().split("\\s+");
 
-In questo scenario, non stiamo aggregando valori considerando più righe contemporaneamente. Stiamo solo decidendo, riga per riga, se un dato è utile o meno. Per questo scopo è sufficiente un \textbf{Map-Only Job}.
-In un Map-Only Job viene eseguita esclusivamente la fase di map; il framework salta del tutto le fasi di shuffle, sort e reduce. L'output generato dalle istanze dei Mapper viene scritto direttamente nella cartella di destinazione (output folder).
-Questo approccio ottimizza notevolmente l'esecuzione, poiché \textbf{evita di inviare enormi moli di dati sulla rete} (network traffic) verso Reducer che, di fatto, non dovrebbero compiere alcuna aggregazione.
+        for(String word : words) {
+            String cleanedWord = word.toLowerCase();
+            // Emette (parola, 1) tramite l'oggetto context
+            context.write(new Text(cleanedWord), new IntWritable(1));
+        }
+    }
+}
+\end{lstlisting}
+L'oggetto \texttt{Context} rappresenta la connessione con l'esecuzione nel cluster e mette a disposizione il metodo \texttt{write} per emettere le coppie prodotte.
 
-\section{Ottimizzazione del Traffico di Rete: Il Combiner}
+\subsection{Implementazione del Reducer}
 
-Durante l'esecuzione standard di un programma MapReduce, tutte le coppie emesse dai Mapper vengono inviate via rete ai Reducer. Se consideriamo il problema del Word Count su un testo enorme, l'invio di innumerevoli coppie del tipo \texttt{("parola", 1)} genererà una pesante congestione della rete. 
+La classe estende \texttt{Reducer<ChiaveIn, ValoreIn, ChiaveOut, ValoreOut>}. Nel nostro esempio, l'input riceve l'output del Mapper (\texttt{Text}, \texttt{IntWritable}).
 
-Come si può ridurre la mole di dati scambiata sulla rete? La soluzione offerta da Hadoop è il \textbf{Combiner}. 
-Il Combiner agisce come un "Mini-Reducer" locale. Viene eseguito sullo stesso nodo del Mapper e aggrega preliminarmente l'output del Mapper *prima* che questo venga trasmesso sulla rete. Nel Word Count, invece di mandare cento coppie \texttt{("parola", 1)}, il Combiner le sommerà localmente inviando alla rete una singola coppia \texttt{("parola", 100)}. L'informazione semantica resta la medesima, ma il traffico di rete viene drasticamente ridotto, incrementando l'efficienza.
+\begin{lstlisting}[language=Java, caption=Struttura del Reducer per il Word Count]
+class WordCountReducer extends Reducer<
+    Text, IntWritable,   // Input: Parola, lista di conteggi (1)
+    Text, IntWritable> { // Output: Parola, Somma totale
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{capitoli/4_HadoopImplementationOfMapReduce/images/combiner.png}
-    \caption{Esecuzione del Combiner per ridurre il traffico di rete.}
-\end{figure}
+    protected void reduce(Text key, Iterable<IntWritable> values, Context context) 
+        throws IOException, InterruptedException {
+        
+        int occurrences = 0;
 
-\subsection{Implementazione del Combiner}
-Spesso, la logica di aggregazione del Combiner è identica a quella del Reducer. Nel caso del Word Count, non è necessario scrivere due classi diverse. Si può istruire il Driver a usare la classe del Reducer anche come Combiner tramite il comando:
+        // Scorre la lista di valori per quella specifica chiave e li somma
+        for (IntWritable value : values) {
+            occurrences = occurrences + value.get();
+        }
+
+        // Emette la parola e la sua frequenza totale
+        context.write(key, new IntWritable(occurrences));
+    }
+}
+\end{lstlisting}
+
+\section{Ottimizzazione delle Prestazioni: Il Combiner}
+\label{sec:combiner}
+
+Nel problema Word Count appena visto, se un Mapper trova la parola "Hadoop" mille volte nel suo blocco, produrrà mille coppie \texttt{(Hadoop, 1)} che verranno interamente inviate sulla rete verso il Reducer. Per limitare questa congestione, Hadoop permette di utilizzare un \textbf{Combiner} (o mini-reducer locale).
+
+Il Combiner esegue una pre-aggregazione dei risultati intermedi all'interno dello stesso server del Mapper, prima della fase di \textit{shuffle}. Così, le mille coppie verranno aggregate localmente nella singola coppia \texttt{(Hadoop, 1000)} prima di viaggiare sulla rete.
+
+\begin{remark}[Condizioni per l'uso del Combiner]
+\textbf{La funzione applicata dal Combiner deve essere associativa e commutativa} (come la somma o la ricerca del massimo). La media matematica, ad esempio, non lo è. Se si applica una funzione non adeguata, il sistema non restituirà alcun errore, ma il risultato finale sarà semplicemente sbagliato.
+Inoltre, \textbf{l'esecuzione del Combiner non è garantita}. Il framework decide a runtime se eseguirlo o meno (a seconda delle statistiche interne su disco/RAM). Pertanto, la logica dell'applicazione (e soprattutto del Reducer) deve essere costruita in modo che il risultato finale sia corretto a prescindere dall'esecuzione del Combiner. Questo implica anche che i tipi di dato in output dal Combiner debbano coincidere strettamente con i tipi di dato in output dal Mapper.
+\end{remark}
+
+\subsection{Perché nel Word Count si sommano i valori anziché contarli?}
+Durante la lezione è stata posta l'attenzione sul perché nel Reducer (e nel Combiner) del Word Count si effettui la somma dei valori (\texttt{occurrences += value.get()}) e non si incrementi semplicemente un contatore (\texttt{occurrences++}) per ogni elemento dell'iteratore.
+Senza il Combiner, ricevendo \texttt{(Hadoop, [1, 1, 1])}, iterare e contare con \texttt{+1} produrrebbe correttamente il risultato 3. Ma se il Combiner entra in azione, il Reducer potrebbe ricevere \texttt{(Hadoop, [2, 1])}. Se si contassero solo gli elementi nell'iterabile, il Reducer restituirebbe erroneamente \texttt{(Hadoop, 2)}. Sommandone i valori, invece, si ottiene correttamente 3, garantendo la coerenza del programma indipendentemente dal passaggio per il Combiner.
+
+\subsection{Implementazione e Dichiarazione}
+Per abilitare il Combiner, bisogna istruire il Driver aggiungendo:
+\begin{lstlisting}[language=Java]
+job.setCombinerClass(WordCountCombiner.class);
+\end{lstlisting}
+
+Il Combiner estende la classe base astratta \texttt{Reducer}. Poiché nella quasi totalità dei casi (come nel Word Count) l'operazione da compiere localmente è identica a quella globale (una somma parziale vs una somma totale), si usa comunemente \textbf{la stessa classe del Reducer per implementare il Combiner}. Si può quindi omettere la creazione della classe \texttt{WordCountCombiner} e indicare:
 \begin{lstlisting}[language=Java]
 job.setCombinerClass(WordCountReducer.class);
 \end{lstlisting}
-Nella stragrande maggioranza dei casi (il 99\% delle applicazioni Hadoop), la medesima classe implementa in modo sicuro ed efficiente sia il Combiner che il Reducer (a patto che l'operazione matematica sottostante sia commutativa e associativa).
+Questo riduce il codice da mantenere ed è la pratica del 99\% delle applicazioni Hadoop.
 
-\section{Ottimizzazione Avanzata: L'In-Mapper Combiner}
+% FIGURA ORIGINALE DA RECUPERARE DALLE SLIDE
+% Slide di provenienza: 80 e 81 ("Word count example without combiner" e "Word count example with combiner")
+% Tipo: Diagrammi di flusso paralleli
+% Descrizione: Due schemi che confrontano l'output K,V dal mapper al reducer, con e senza il blocco intermedio del Combiner che esegue un'aggregazione locale, riducendo l'arità dei dati trasferiti.
+% Punto di inserimento: Fine della spiegazione sul Combiner.
+\begin{figure}[H]
+    \centering
+    %\includegraphics[width=0.9\textwidth]{placeholder_combiner_comparison.png}
+    \caption{Confronto del flusso dati: a sinistra l'invio diretto delle coppie, a destra l'effetto di pre-aggregazione introdotto dall'utilizzo di un Combiner a livello di nodo.}
+    \label{fig:combiner-comparison}
+\end{figure}
 
-Un'ulteriore evoluzione, volta a ottimizzare in maniera ancor più aggressiva l'esecuzione, è rappresentata dall'approccio \textbf{In-Mapper Combiner}. 
-L'idea alla base è quella di eseguire l'aggregazione direttamente all'interno della logica del Mapper, sfruttando variabili di stato interne (in-mapper variables).
+\section{Creazione di Tipi di Dato Personalizzati}
 
-Per implementare questa logica si sfruttano due metodi accessori della classe Mapper (e Reducer):
+Spesso il valore da emettere è un dato complesso (es. due numeri, o un intero e una stringa). È necessario definire tipi di dato (\textit{Data Type}) personalizzati.
+Se il tipo personalizzato funge da \textbf{valore}, deve implementare l'interfaccia \texttt{Writable}. Vanno ridefiniti obbligatoriamente i metodi \texttt{write(DataOutput out)} (per la serializzazione sulla rete) e \texttt{readFields(DataInput in)} (per la deserializzazione nel nodo di destinazione).
+
+Esempio di classe complessa per immagazzinare una somma e un contatore (ad es. per il calcolo della media):
+\begin{lstlisting}[language=Java]
+public class SumAndCountWritable implements org.apache.hadoop.io.Writable {
+    private float sum = 0;
+    private int count = 0;
+    
+    // Metodi getter e setter omessi per brevita'
+
+    @Override
+    public void write(DataOutput out) throws IOException {
+        out.writeFloat(sum);
+        out.writeInt(count);
+    }
+
+    @Override
+    public void readFields(DataInput in) throws IOException {
+        sum = in.readFloat();
+        count = in.readInt();
+    }
+
+    @Override
+    public String toString() {
+        return "sum=" + sum + ",count=" + count;
+    }
+}
+\end{lstlisting}
+
+\begin{remark}[Ordine di Lettura e Scrittura]
+Un dettaglio fondamentale, evidenziato dal professore, riguarda l'implementazione dei metodi \texttt{write} e \texttt{readFields}. L'ordine in cui le variabili vengono serializzate in byte nel metodo \texttt{write} deve essere \textbf{scrupolosamente identico} all'ordine con cui vengono lette nel \texttt{readFields}.
+La rete invia solo uno stream continuo di byte, senza metadati che descrivono i tipi interni. Se si scrive prima il \texttt{float} e poi l'\texttt{int}, e nel metodo di deserializzazione si invertissero le chiamate leggendo prima un \texttt{int} e poi il \texttt{float}, \textbf{Java non restituirebbe alcun errore o eccezione a runtime}. I byte verrebbero mal interpretati silenziosamente producendo un risultato totalmente incorretto.
+\end{remark}
+
+Il metodo \texttt{toString()} viene ridefinito perché l'\texttt{OutputFormat} di Hadoop (ad esempio il \texttt{TextOutputFormat}) invoca questo metodo al momento di scrivere il file finale. Senza di esso, per gli oggetti Java non primari, verrebbe stampato l'identificativo esadecimale del puntatore della cella di memoria, che risulta inutile ai fini dell'applicazione.
+
+Se il tipo personalizzato deve essere usato come \textbf{chiave}, esso deve implementare l'interfaccia \texttt{WritableComparable}. Oltre ai metodi visti, si devono implementare:
 \begin{itemize}
-    \item \texttt{setup(...)}: Metodo invocato dal framework \textbf{una sola volta} per ciascun task, prima che inizino le ripetute chiamate al metodo \texttt{map}/\texttt{reduce}.
-    \item \texttt{cleanup(...)}: Metodo invocato dal framework \textbf{una sola volta} per ciascun task, dopo che tutti i record di input sono stati processati.
+    \item \texttt{compareTo()}: essenziale per lo \textit{shuffle and sort}.
+    \item \texttt{hashCode()}: fondamentale affinché la funzione di partizionamento assegni gli oggetti uguali allo stesso Reducer.
 \end{itemize}
 
-\subsection{Workflow dell'In-Mapper Combiner}
-Il flusso di lavoro si sviluppa come segue:
+\section{Condivisione di Parametri e Contatori}
+
+\subsection{Passare parametri al Mapper e al Reducer}
+La firma dei metodi \texttt{map} e \texttt{reduce} è fissa. Per passare piccoli parametri configurabili (es. una soglia numerica fornita come argomento riga di comando), si sfrutta l'oggetto \texttt{Configuration}.
+Nel \textbf{Driver}, il parametro viene memorizzato sotto forma di stringa \textbf{prima} di instanziare il Job:
+\begin{lstlisting}[language=Java]
+Configuration conf = this.getConf();
+conf.set("soglia_temperatura", "50"); 
+// ATTENZIONE: Questo va fatto prima di Job.getInstance(conf)
+Job job = Job.getInstance(conf);
+\end{lstlisting}
+
+Nel \textbf{Mapper} (o Reducer), il parametro viene recuperato in sola lettura dall'oggetto contesto:
+\begin{lstlisting}[language=Java]
+String sogliaStr = context.getConfiguration().get("soglia_temperatura");
+int soglia = Integer.parseInt(sogliaStr);
+\end{lstlisting}
+Tale approccio permette solo la condivisione di poche e piccole stringhe, non per scambiare grandi moli di dati.
+
+\subsection{I Contatori (Counters)}
+I \textbf{Counters} sono interi usati per calcolare statistiche globali (ad es. contare il numero di record malformati in cui manca un campo) senza dover scrivere ulteriori job MapReduce separati. Se il programma incontrasse una riga errata e lanciasse un'eccezione, l'intero Job fallirebbe sprecando tutto il tempo impiegato in precedenza. Identificare, isolare la riga ed incrementare un contatore di errore è un design pattern molto comune.
+
+Si definiscono nel Driver tramite \texttt{enum} di Java (es. \texttt{COUNTERS.ERROR\_COUNT}), inizializzandosi implicitamente a zero.
+Nei metodi \texttt{map} o \texttt{reduce}, si richiamano in questo modo:
+\begin{lstlisting}[language=Java]
+context.getCounter(COUNTERS.ERROR_COUNT).increment(1);
+\end{lstlisting}
+
+\begin{remark}[Natura incrementale dei Counter]
+I metodi \texttt{map} e \texttt{reduce} in esecuzione sui nodi \textbf{possono solo invocare l'incremento} del Counter (\texttt{increment(N)}), non possono mai "impostarlo" (\texttt{set(10)}). Avendo istanze indipendenti del Mapper in esecuzione concorrente, non si può prevedere uno stato sincronizzato in tempo reale del valore del contatore. Hadoop raccoglierà gli incrementi da tutti i nodi asincronamente e calcolerà il valore globale.
+Il valore finale definitivo del Counter si potrà quindi estrarre e leggere in sicurezza \textbf{solo nel Driver}, al termine dell'esecuzione del Job, sfruttando \texttt{job.getCounters().findCounter(...).getValue()}.
+\end{remark}
+
+\section{Job "Map-Only" e ottimizzazioni avanzate}
+
+\subsection{Map-Only Job}
+Alcuni algoritmi richiedono semplicemente il filtraggio del dataset o una mappatura 1:1, analizzando le righe in totale indipendenza. Un esempio è "restituisci il nome e l'età per gli utenti maggiori di 47 anni". 
+In questi casi, non vi è necessità di aggregare informazioni definendo "gruppi", il che rende superflua la fase di Reduce e l'oneroso trasferimento sulla rete dello \textit{shuffle and sort}.
+Per implementare un \textbf{Map-Only job}, occorre configurare esplicitamente il numero di reducer a zero all'interno del Driver:
+\begin{lstlisting}[language=Java]
+job.setNumReduceTasks(0);
+\end{lstlisting}
+L'output della fase di Map verrà direttamente memorizzato nel distributed file system (con file tipicamente nominati \texttt{part-m-00000} anziché \texttt{part-r-00000}).
+Il professore ha inoltre fatto notare che azzerare il numero di reducer nel Driver è \textbf{un'eccellente tecnica di debugging}: permette allo sviluppatore di verificare facilmente l'output esatto emesso dal Mapper e isolare eventuali bug prima che passino alla logica del Reducer.
+
+\subsection{In-Mapper Combiner: un passo oltre il Combiner}
+Mentre il Combiner classico prevede l'istanziamento di un'ulteriore classe dedicata che comunica col Mapper, un'ottimizzazione più avanzata è l'\textbf{In-Mapper Combiner}. L'aggregazione viene svolta nativamente \textit{all'interno} del Mapper sfruttando variabili di istanza in memoria RAM e l'intero ciclo di vita della classe, attraverso l'overriding di due metodi aggiuntivi:
+\begin{itemize}
+    \item \texttt{setup(Context context)}: Viene invocato \textbf{una sola volta per ciascuna istanza del Mapper task} (all'inizio, analogo a un costruttore). Viene usato per inizializzare un dizionario associativo/array (\textit{hash map}) in memoria per mantenere i contatori locali di ciascuna chiave.
+    \item \texttt{cleanup(Context context)}: Viene invocato \textbf{una sola volta al termine} dell'esecuzione del Mapper, per inviare (tramite \texttt{context.write()}) i risultati consolidati in rete.
+\end{itemize}
+
+Nel metodo \texttt{map()}, lo sviluppatore non emette più le coppie, bensì si limita ad aggiornare le strutture dati pre-inizializzate nel metodo \texttt{setup}.
+
+\begin{remark}[Rischio dell'In-Mapper Combiner: Memoria limitata]
+L'uso dell'In-Mapper Combiner annulla il costo di serializzazione e instanziamento logico tra Mapper e Combiner, risultando incredibilmente rapido. Tuttavia, tutto il raggruppamento avviene nella memoria Heap di Java. La memoria RAM standard di un'istanza Mapper ammonta spesso a 1GB.
+Se il numero di "chiavi distinte" del blocco input elaborato è smisurato (e l'array associativo dovesse assumere dimensioni abnormi), si incorrerà in un inevitabile \textbf{Out Of Memory Error}, causando l'uccisione (kill) completa dell'applicazione da parte di Hadoop. L'In-Mapper Combiner andrebbe usato unicamente se c'è garanzia che la struttura statistica da mantenere in memoria occupi spazi gestibili dal framework.
+\end{remark}
+
+
+
+
+
+\section{Pattern di Ottimizzazione e Filtraggio in MapReduce}
+
+Ora esploreremo alcune tecniche avanzate e design pattern molto comuni per l'ottimizzazione e la gestione dei job MapReduce. In particolare, analizzeremo come implementare un \textit{In-Mapper Combiner} per ottimizzare l'uso della rete e come strutturare un job di puro filtraggio (Map-Only) gestendo il passaggio dinamico di parametri dal Driver ai nodi di calcolo.
+
+\section{Ottimizzazione tramite In-Mapper Combiner (Esercizio 9)}
+
+Il problema del Word Count, che abbiamo già affrontato utilizzando una classe Combiner tradizionale, può essere risolto in modo ancora più efficiente utilizzando un approccio chiamato \textbf{In-Mapper Combiner}. 
+
+L'obiettivo rimane lo stesso: dato in input un file testuale non strutturato, vogliamo calcolare il numero di occorrenze di ciascuna parola. Tuttavia, invece di delegare la pre-aggregazione a una classe Combiner separata, eseguiamo questa operazione direttamente all'interno della classe Mapper, risparmiando l'overhead legato all'istanziazione di ulteriori oggetti e riducendo il traffico di rete.
+
+\subsection{Funzionamento dell'In-Mapper Combiner}
+In un'implementazione MapReduce standard (o con un Combiner tradizionale), il metodo \texttt{map} emette una coppia chiave-valore \((word, 1)\) per ogni singola parola letta. Nel pattern In-Mapper Combiner, invece, modifichiamo il ciclo di vita del Mapper sfruttando i metodi di inizializzazione e chiusura:
+
 \begin{enumerate}
-    \item \textbf{Inizializzazione}: Nel metodo \texttt{setup} del Mapper, si inizializzano delle strutture dati locali (es. una mappa in memoria o delle \emph{in-mapper variables}) per mantenere le statistiche o le aggregazioni parziali.
-    \item \textbf{Aggiornamento}: Nel metodo \texttt{map}, invece di emettere le coppie con \texttt{context.write}, si aggiornano semplicemente le strutture dati interne. In questa fase, \textbf{nessuna coppia viene emessa}.
-    \item \textbf{Emissione finale}: Una volta elaborati tutti i record di competenza del Mapper, il framework chiama il metodo \texttt{cleanup}. Al suo interno, si leggono i risultati aggregati presenti nelle variabili locali e li si emette sotto forma di coppie chiave-valore.
+    \item \textbf{Metodo \texttt{setup}}: Viene invocato una sola volta per ciascuna \textit{istanza} della classe Mapper (all'avvio della gestione di un input split). Qui inizializziamo una variabile locale, tipicamente un array associativo come una \texttt{HashMap}, che utilizzeremo per mantenere le statistiche locali (in questo caso, il conteggio parziale delle parole).
+    \item \textbf{Metodo \texttt{map}}: Viene invocato per ogni riga di input. Invece di emettere coppie con il metodo \texttt{context.write}, estraiamo le parole e aggiorniamo le frequenze direttamente nella \texttt{HashMap} locale in memoria.
+    \item \textbf{Metodo \texttt{cleanup}}: Viene invocato una sola volta al termine dell'elaborazione di tutte le righe assegnate a quella specifica istanza del Mapper. Qui iteriamo sulle voci della \texttt{HashMap} ed emettiamo le coppie \((word, local\_count)\).
 \end{enumerate}
 
-\subsection{Considerazioni Critiche sulle Prestazioni e Memoria Principale}
-Sebbene l'In-Mapper Combiner consenta di migliorare sensibilmente le prestazioni globali dell'applicazione (evitando l'istanziazione continua di oggetti e chiamate ripetute all'API di emissione), introduce una limitazione fondamentale sollevata dal professore: \textbf{il consumo della memoria principale (RAM)}.
+In questo modo, l'output generato alla fine della fase di Map è equivalente a quello che produrrebbe un Combiner tradizionale, ma ottenuto in modo più diretto. Il Reducer, di conseguenza, non subisce alcuna modifica e continuerà ad aggregare i conteggi parziali ricevuti per calcolare il risultato globale.
 
-A ogni task Mapper è allocata una quantità limitata e predefinita di memoria principale. Poiché le variabili interne di aggregazione crescono a mano a mano che vengono scoperte nuove chiavi, \textbf{le strutture dati in-mapper devono rimanere di dimensioni ridotte}. Se lo spazio occupato dalle variabili locali supera il limite massimo di RAM assegnato al task Mapper, si causerà un errore di tipo Out-Of-Memory, provocando il fallimento del task. 
+\subsection{Limiti e Gestione della Memoria Principale}
+Come sottolineato dal professore, sebbene questo approccio sia più efficiente, richiede un'attenzione particolare all'uso della \textbf{memoria principale (RAM)}. 
 
-\section{Gestione del Contesto e Statistiche}
+Le variabili locali utilizzate per memorizzare le statistiche (la \texttt{HashMap}) devono essere sufficientemente piccole da poter risiedere nella memoria principale del server in cui è in esecuzione l'istanza del Mapper. Generalmente, a ogni istanza del Mapper è assegnato circa 1 GB di memoria principale.
 
-\subsection{Condivisione di Parametri globali}
-In alcuni casi, è necessario condividere piccoli parametri o proprietà di configurazione che rimangono costanti durante tutta l'esecuzione del programma. Questo si ottiene definendo coppie \texttt{(property-name, property-value)}.
+È fondamentale chiedersi: \textit{qual è la dimensione massima di questa struttura dati nel caso peggiore?}
+Nel problema del Word Count, la dimensione massima della \texttt{HashMap} corrisponde al \textbf{numero massimo di parole distinte} presenti nello split di input gestito dal Mapper.
+Se analizziamo un documento in inglese, il vocabolario tipico è di circa 20.000 - 30.000 parole distinte. Memorizzare 30.000 stringhe associate a un numero intero richiede uno spazio irrisorio, ben al di sotto del gigabyte a disposizione; pertanto, in questo scenario non si verificheranno errori.
+
+Tuttavia, se il dominio del problema prevedesse, ad esempio, 1 miliardo di parole o chiavi distinte all'interno di un singolo split, la \texttt{HashMap} saturerebbe la memoria, causando un \texttt{OutOfMemoryError} a runtime. È sufficiente che una sola istanza del Mapper vada in errore di memoria per causare il fallimento (kill) dell'intera applicazione MapReduce, costringendo a ricominciare l'elaborazione da zero.
+Se si prevede che i dati non possano essere contenuti nella memoria principale, è obbligatorio scartare l'In-Mapper Combiner e utilizzare la soluzione standard basata sulla classe Combiner.
+
+\subsection{Esempio di Dati (Toy Example)}
+Consideriamo il seguente file di input, presentato nelle slide per l'esercizio 9:
+
+\begin{verbatim}
+Toy example
+file for Hadoop.
+Hadoop running
+example.
+\end{verbatim}
+
+L'output finale, calcolato combinando i conteggi parziali, sarà la lista delle parole con le rispettive frequenze globali:
+\begin{verbatim}
+(example, 2)
+(file, 1)
+(for, 1)
+(hadoop, 2)
+(running, 1)
+(toy, 1)
+\end{verbatim}
+
+\subsection{Analisi dell'Implementazione Java}
+
+Analizziamo ora il codice Java che implementa l'In-Mapper Combiner per il Word Count.
+
+\subsubsection{La Classe Driver}
+Nella classe Driver, la configurazione è pressoché identica a quella di un normale Word Count, ma con una differenza fondamentale: \textbf{non viene specificata alcuna classe Combiner}.
+
+\begin{lstlisting}[language=Java]
+// Configurazione del job MapReduce
+Job job = Job.getInstance(conf); 
+job.setJobName("Exercise #9 - Word Count - in-mapper combiner");
+
+// Set input/output format
+job.setInputFormatClass(TextInputFormat.class);
+job.setOutputFormatClass(TextOutputFormat.class);
+
+// Set map class e i tipi di output del map
+job.setMapperClass(MapperBigData.class);
+job.setMapOutputKeyClass(Text.class);
+job.setMapOutputValueClass(IntWritable.class);
+
+// Set reduce class e i tipi di output del reduce
+job.setReducerClass(ReducerBigData.class);
+job.setOutputKeyClass(Text.class);
+job.setOutputValueClass(IntWritable.class);
+
+job.setNumReduceTasks(numberOfReducers);
+\end{lstlisting}
+
+\subsubsection{La Classe Mapper}
+La classe Mapper contiene il cuore logico dell'In-Mapper Combiner.
+
+\begin{lstlisting}[language=Java]
+class MapperBigData extends Mapper<LongWritable, Text, Text, IntWritable> {
+
+    // Variabile locale per mantenere le statistiche
+    HashMap<String, Integer> wordsCounts;
+
+    @Override
+    protected void setup(Context context) { 
+        // Inizializzazione della variabile all'avvio del Mapper
+        wordsCounts = new HashMap<String, Integer>(); 
+    }
+
+    @Override
+    protected void map(LongWritable key, Text value, Context context) 
+            throws IOException, InterruptedException {
+        Integer currentFreq;
+        
+        // Estrazione delle parole ignorando gli spazi multipli
+        String[] words = value.toString().split("\\s+");
+
+        for (String word : words) {
+            String cleanedWord = word.toLowerCase(); // Normalizzazione
+            currentFreq = wordsCounts.get(cleanedWord);
+
+            if (currentFreq == null) { 
+                // Prima occorrenza della parola in questo split
+                wordsCounts.put(new String(cleanedWord), new Integer(1));
+            } else { 
+                // Incremento delle occorrenze
+                currentFreq = currentFreq + 1;
+                wordsCounts.put(new String(cleanedWord), new Integer(currentFreq));
+            }
+        }
+        // NOTA: Nessuna invocazione di context.write() all'interno del map!
+    }
+
+    @Override
+    protected void cleanup(Context context) 
+            throws IOException, InterruptedException {
+        // Al termine dell'elaborazione, emettiamo i dati pre-aggregati
+        for (Entry<String, Integer> pair : wordsCounts.entrySet()) {
+            context.write(new Text(pair.getKey()), new IntWritable(pair.getValue()));
+        }
+    }
+}
+\end{lstlisting}
+Come si nota, i dati vengono emessi sulla rete verso i Reducer soltanto nel momento in cui il metodo \texttt{cleanup} viene chiamato dal framework Hadoop.
+
+\subsubsection{La Classe Reducer}
+Come anticipato, la classe Reducer non subisce alcuna alterazione rispetto al Word Count classico, poiché riceve in input coppie dello stesso tipo, pre-aggregate.
+\begin{lstlisting}[language=Java]
+class ReducerBigData extends Reducer<Text, IntWritable, Text, IntWritable> { 
+    @Override 
+    protected void reduce(Text key, Iterable<IntWritable> values, Context context) 
+            throws IOException, InterruptedException {
+        int occurrances = 0;
+        for (IntWritable value : values) {
+            occurrances = occurrances + value.get();
+        }
+        context.write(key, new IntWritable(occurrances));
+    } 
+}
+\end{lstlisting}
+
+\section{Filtraggio dei Dati e Passaggio Dinamico di Parametri (Esercizio 12)}
+
+Un altro design pattern fondamentale riguarda il puro filtraggio dei dati basato su condizioni fornite dinamicamente dall'utente. 
+Consideriamo un problema in cui riceviamo in input una collezione di file testuali strutturati contenenti i valori giornalieri di PM10 per un insieme di sensori. 
+
+Il formato di ogni riga è:
+\begin{verbatim}
+sensorId,date\tPM10 value (ug/m3)\n
+\end{verbatim}
+
+L'obiettivo è restituire solo i record in cui il valore di PM10 è strettamente inferiore a una specifica \textbf{soglia fornita dall'utente come parametro a riga di comando}.
+
+\subsection{Il Pattern di Filtraggio (Map-Only Job)}
+Analizzando il problema logico, notiamo che:
 \begin{itemize}
-    \item \textbf{Nel Driver:} Lo sviluppatore recupera l'oggetto di configurazione e imposta le proprietà:
-    \begin{lstlisting}[language=Java]
-Configuration conf = this.getConf();
-conf.set("property-name", "value");
-    \end{lstlisting}
-    \item \textbf{Nel Mapper/Reducer:} L'oggetto \texttt{Context} permette di accedere in sola lettura a queste proprietà:
-    \begin{lstlisting}[language=Java]
-String val = context.getConfiguration().get("property-name");
-    \end{lstlisting}
+    \item Ogni riga può essere valutata indipendentemente dalle altre.
+    \item Non c'è necessità di aggregare o raggruppare record provenienti da sensori o date differenti.
 \end{itemize}
-È fondamentale notare che i Mapper e i Reducer \textbf{non possono modificare} i valori di queste proprietà durante l'esecuzione.
 
-\subsection{Contatori (Counters)}
-I Counters sono numeri interi gestiti direttamente dal framework, utili per raccogliere ed esporre statistiche diagnostiche sull'andamento dei Job, Mappers e Reducers. 
-Hadoop fornisce una serie di \textbf{built-in counters} (contatori predefiniti) che tracciano metriche base (es. record in lettura, byte scritti).
+Quando l'elaborazione non richiede raggruppamento (grouping) né aggregazione, i Reducer sono inutili e rappresentano un overhead di rete e di computazione. La soluzione ottimale è utilizzare un \textbf{Map-Only Job}, impostando il numero di task reducer a zero (\texttt{job.setNumReduceTasks(0)}). 
 
-Inoltre, lo sviluppatore può definire \textbf{contatori personalizzati} per tenere traccia di logiche di business specifiche. Riprendendo l'esempio dei file di log dei sensori malformati discusso dal professore, se incontriamo una riga incompleta (senza la data), potremmo non solo scartarla, ma anche incrementare un contatore personalizzato (es. "Linee Malformate"). A fine elaborazione, potremo leggere questo contatore per calcolare semplici statistiche sulla qualità dei dati di input.
+In un Map-Only job, l'output emesso dal metodo \texttt{map} non passa attraverso la fase di shuffle and sort, ma viene scritto direttamente nell'HDFS.
+
+Riguardo al formato dell'output, il professore ha illustrato diverse alternative implementative, tutte ugualmente valide ma con differenze formali:
+\begin{enumerate}
+    \item \textbf{Chiave e Valore estratti dal testo}: Possiamo emettere come chiave \texttt{sensorId,date} e come valore il \texttt{PM10}. Questa è la soluzione adottata nel codice finale dell'esercizio.
+    \item \textbf{Chiave vuota e Valore linea intera}: Emettere una stringa vuota come chiave e l'intera riga originale come valore.
+    \item \textbf{NullWritable e Valore linea intera}: È possibile utilizzare \texttt{NullWritable} come chiave. Si tratta di un tipo di dato predefinito in Hadoop che rappresenta il valore nullo in forma serializzata. È l'oggetto più piccolo definibile nel framework, persino più leggero di una stringa vuota, e risulta particolarmente utile quando la logica non richiede una vera e propria chiave da associare al valore emesso.
+\end{enumerate}
+
+\subsection{Passaggio di Parametri tramite l'Oggetto Configuration}
+La soglia di filtraggio non è nota a priori (hardcoded), ma viene passata all'applicazione tramite gli argomenti (\texttt{args}). Questo pone un problema: la classe Driver riceve gli argomenti, ma è la classe Mapper (che viene eseguita su cluster remoti) a dover applicare il filtro.
+
+Per condividere piccole quantità di informazioni dal Driver ai task (Mapper o Reducer), si utilizza l'oggetto \texttt{Configuration}. Il meccanismo prevede la definizione di una \textbf{proprietà personalizzata} (personalized property) all'interno del Driver, che i task potranno successivamente recuperare.
+
+Le proprietà personalizzate supportano esclusivamente valori di tipo \texttt{String}, per cui anche un valore numerico come $21.5$ o $21$ dovrà essere scritto e letto come testo, e convertito (cast) solo dal Mapper.
+
+\subsubsection{Attenzione: L'Ordine di Inizializzazione della Configuration}
+Il professore ha richiamato l'attenzione su un errore logico estremamente comune e insidioso, dimostrato eseguendo l'applicazione passo-passo.
+
+Se si definisce la proprietà personalizzata \textit{dopo} aver creato l'istanza del \texttt{Job}, in questo modo:
+\begin{lstlisting}[language=Java]
+Configuration conf = this.getConf();
+Job job = Job.getInstance(conf); // Creazione del Job
+conf.set("maxThreshold", args[2]); // ERRORE! Impostazione successiva
+\end{lstlisting}
+
+Il Mapper \textbf{non troverà} la proprietà. Questo accade perché l'invocazione di \texttt{Job.getInstance(conf)} crea il Job e contestualmente \textbf{genera una copia} dell'oggetto \texttt{Configuration}. Le modifiche successive fatte all'oggetto \texttt{conf} originale nel Driver non si rifletteranno nella copia passata ai Mapper.
+
+In questo scenario di errore:
+\begin{itemize}
+    \item Il metodo \texttt{context.getConfiguration().get("maxThreshold")} nel Mapper restituirà \texttt{null}.
+    \item La conversione \texttt{Float.parseFloat(null)} fallirà in modo silenzioso in background sui nodi.
+    \item L'applicazione terminerà creando la cartella di output, ma questa \textbf{risulterà completamente vuota}, senza che sulla console vengano stampati errori o eccezioni visibili (se non si ispezionano i log approfonditi dei container).
+\end{itemize}
+
+La regola fondamentale è: \textbf{tutte le proprietà personalizzate devono essere definite sull'oggetto Configuration prima di istanziare l'oggetto Job}.
+
+\subsection{Esempio di Dati}
+Consideriamo l'input dell'esercizio 12 fornito sulle slide:
+\begin{verbatim}
+s1,2016-01-01   20.5
+s2,2016-01-01   60.2
+s1,2016-01-02   30.1
+s2,2016-01-02   20.4
+s1,2016-01-03   55.5
+s2,2016-01-03   52.5
+\end{verbatim}
+Se passiamo al programma una soglia (\textit{threshold}) pari a $21$, l'output conterrà esclusivamente le righe relative ai valori $20.5$ e $20.4$, essendo gli unici strettamente minori di $21$:
+\begin{verbatim}
+s1,2016-01-01   20.5
+s2,2016-01-02   20.4
+\end{verbatim}
+
+\subsection{Analisi dell'Implementazione Java}
+
+Esaminiamo la soluzione implementativa per questo problema di filtraggio parametrico.
+
+\subsubsection{La Classe Driver}
+La classe Driver imposta il parametro e definisce il job come Map-Only. Sfrutta inolte il \texttt{KeyValueTextInputFormat}, un input format molto utile quando i dati in input sono separati da un tab (\texttt{\textbackslash t}). Questo formato divide in automatico la stringa prima del tab (la pone nella chiave) e la stringa dopo il tab (la pone nel valore).
+
+\begin{lstlisting}[language=Java]
+public int run(String[] args) throws Exception {
+    Path inputPath = new Path(args[0]);
+    Path outputDir = new Path(args[1]);
+
+    Configuration conf = this.getConf();
+
+    // 1. DEFINIZIONE DELLA PROPRIETA' (PRIMA DEL JOB)
+    // Inviamo la soglia presa da riga di comando ai mapper
+    conf.set("maxThreshold", args[2]);
+
+    // 2. CREAZIONE DEL JOB (Crea una copia della configurazione)
+    Job job = Job.getInstance(conf);
+    job.setJobName("Exercise 12");
+
+    FileInputFormat.addInputPath(job, inputPath);
+    FileOutputFormat.setOutputPath(job, outputDir);
+
+    job.setJarByClass(DriverBigData.class);
+
+    // Utilizzo del KeyValueTextInputFormat
+    job.setInputFormatClass(KeyValueTextInputFormat.class);
+    job.setOutputFormatClass(TextOutputFormat.class);
+
+    job.setMapperClass(MapperBigData.class);
+    job.setMapOutputKeyClass(Text.class);
+    job.setMapOutputValueClass(FloatWritable.class);
+
+    // IMPOSTAZIONE MAP-ONLY JOB
+    job.setNumReduceTasks(0);
+
+    return job.waitForCompletion(true) ? 0 : 1;
+}
+\end{lstlisting}
+
+\subsubsection{La Classe Mapper}
+Anche in questo caso viene sfruttato il metodo \texttt{setup}. Piuttosto che richiedere e parsare l'oggetto \texttt{Configuration} per ogni singola riga analizzata dal metodo \texttt{map} (che introdurrebbe un'inefficienza notevole visto che la soglia è costante), il valore viene estratto una volta sola all'avvio del task.
+
+\begin{lstlisting}[language=Java]
+class MapperBigData extends Mapper<Text, Text, Text, FloatWritable> {
+
+    float threshold;
+
+    @Override
+    protected void setup(Context context) { 
+        // Recupero la soglia una volta sola per l'intero split
+        // Viene letto come stringa e convertito in float
+        threshold = Float.parseFloat(context.getConfiguration().get("maxThreshold")); 
+    }
+
+    @Override
+    protected void map(Text key, Text value, Context context) 
+            throws IOException, InterruptedException {
+        
+        float measure;
+        
+        // Il value contiene il valore PM10 grazie al KeyValueTextInputFormat
+        measure = Float.parseFloat(value.toString());
+
+        // Filtraggio: se rispetta la condizione, emettiamo il record
+        if (measure < threshold) {
+            context.write(new Text(key), new FloatWritable(measure));
+        }
+        // Se non rispetta la condizione, il metodo termina senza emettere nulla.
+    }
+}
+\end{lstlisting}
+Poiché i Reducer sono impostati a $0$, l'output emesso da \texttt{context.write} nel Mapper viene scritto direttamente in formato testuale all'interno dei file di output in HDFS (ad esempio \texttt{part-m-00000}), producendo esattamente il risultato atteso.

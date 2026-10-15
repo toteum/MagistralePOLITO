@@ -1,0 +1,67 @@
+\relax 
+\providecommand\hyper@newdestlabel[2]{}
+\@writefile{toc}{\contentsline {chapter}{\numberline {4}Comunicazione Multicast in IPv4}{25}{chapter.4}\protected@file@percent }
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\@writefile{toc}{\contentsline {section}{\numberline {4.1}Introduzione al Multicast}{25}{section.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.1}Confronto con Broadcast e Unicast}{25}{subsection.4.1.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.2}Principi di Funzionamento e Vantaggi}{25}{subsection.4.1.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4.1}{\ignorespaces Principio di instradamento Multicast: la sorgente invia un singolo pacchetto, che viene duplicato dai router unicamente sui percorsi necessari per raggiungere le destinazioni.}}{26}{figure.4.1}\protected@file@percent }
+\newlabel{fig:multicast-tree}{{4.1}{26}{Principio di instradamento Multicast: la sorgente invia un singolo pacchetto, che viene duplicato dai router unicamente sui percorsi necessari per raggiungere le destinazioni}{figure.4.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.2}Indirizzamento Multicast a Livello IP}{26}{section.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.1}Le Classi di Indirizzi e la Classe D}{26}{subsection.4.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.2}Indirizzi Riservati e Ambiti d'Uso}{26}{subsection.4.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4.3}Gestione dei Gruppi a Livello Locale: IGMP}{27}{section.4.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4.2}{\ignorespaces Schema di funzionamento del protocollo IGMP: gli host inviano messaggi di join e leave ai router per iscriversi o abbandonare un gruppo Multicast.}}{27}{figure.4.2}\protected@file@percent }
+\newlabel{fig:igmp-join-leave}{{4.2}{27}{Schema di funzionamento del protocollo IGMP: gli host inviano messaggi di join e leave ai router per iscriversi o abbandonare un gruppo Multicast}{figure.4.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.1}Iscrizione e Abbandono di un Gruppo}{27}{subsection.4.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.2}Il Problema dell'Abbandono Silenzioso e le Query del Router}{28}{subsection.4.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4.4}Multicast a Livello di Collegamento (IEEE 802)}{28}{section.4.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.1}Mappatura degli Indirizzi da IPv4 a MAC}{28}{subsection.4.4.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4.3}{\ignorespaces Costruzione di un indirizzo MAC Multicast a partire da un indirizzo IP di Classe D (RFC 7042).}}{29}{figure.4.3}\protected@file@percent }
+\newlabel{fig:mac-mapping}{{4.3}{29}{Costruzione di un indirizzo MAC Multicast a partire da un indirizzo IP di Classe D (RFC 7042)}{figure.4.3}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Significato tecnico del byte iniziale e collisioni}{29}{section*.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.2}Comportamento delle Schede di Rete (NIC)}{29}{subsection.4.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.3}Gestione del Multicast negli Switch: IGMP Snooping vs Flooding}{29}{subsection.4.4.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4.4}{\ignorespaces Schema di funzionamento dell'IGMP Snooping: lo switch "sbircia" i messaggi IGMP per costruire una mappa delle porte interessate a ciascun gruppo Multicast, inoltrando i pacchetti solo dove necessario.}}{30}{figure.4.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4.5}Multicast su Scala Geografica}{30}{section.4.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5.1}Protocolli di Routing Multicast}{30}{subsection.4.5.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4.6}Esempi Applicativi e Stato di Adozione}{30}{section.4.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.6.1}Multicast DNS (mDNS) per la Scoperta dei Servizi}{30}{subsection.4.6.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4.5}{\ignorespaces Esempio di funzionamento del protocollo mDNS: un host invia una query Multicast per scoprire i servizi disponibili, e i dispositivi che offrono tali servizi rispondono al gruppo.}}{31}{figure.4.5}\protected@file@percent }
+\newlabel{fig:mdns}{{4.5}{31}{Esempio di funzionamento del protocollo mDNS: un host invia una query Multicast per scoprire i servizi disponibili, e i dispositivi che offrono tali servizi rispondono al gruppo}{figure.4.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.6.2}Limiti del Multicast e Scarsa Adozione su Scala Globale}{31}{subsection.4.6.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.6.3}Incompatibilità con il Protocollo TCP}{32}{subsection.4.6.3}\protected@file@percent }
+\@setckpt{capitoli/01f - IPv4Multicast/main}{
+\setcounter{page}{33}
+\setcounter{equation}{0}
+\setcounter{enumi}{3}
+\setcounter{enumii}{0}
+\setcounter{enumiii}{0}
+\setcounter{enumiv}{0}
+\setcounter{footnote}{0}
+\setcounter{mpfootnote}{0}
+\setcounter{part}{0}
+\setcounter{chapter}{4}
+\setcounter{section}{6}
+\setcounter{subsection}{3}
+\setcounter{subsubsection}{0}
+\setcounter{paragraph}{0}
+\setcounter{subparagraph}{0}
+\setcounter{figure}{5}
+\setcounter{table}{0}
+\setcounter{parentequation}{0}
+\setcounter{lstnumber}{1}
+\setcounter{float@type}{8}
+\setcounter{section@level}{2}
+\setcounter{Item}{31}
+\setcounter{Hfootnote}{0}
+\setcounter{bookmark@seq@number}{0}
+\setcounter{definizione}{0}
+\setcounter{teorema}{0}
+\setcounter{esempio}{0}
+\setcounter{definition}{0}
+\setcounter{example}{0}
+\setcounter{remark}{0}
+\setcounter{lstlisting}{0}
+}

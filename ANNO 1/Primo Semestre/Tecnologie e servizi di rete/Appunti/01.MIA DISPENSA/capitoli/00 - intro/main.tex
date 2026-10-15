@@ -1,0 +1,75 @@
+\chapter{Introduzione a Tecnologie e Servizi di Rete}
+
+\section{Inquadramento del Corso e Docenti}
+Il corso di \emph{Tecnologie e Servizi di Rete} (abbreviato in TSR) ha come obiettivo l'approfondimento dei principi di progettazione delle tecnologie alla base delle moderne reti di calcolatori e delle soluzioni tecnologiche che permettono l'erogazione dei servizi su Internet.
+Non essendoci un unico protocollo alla base delle reti, la disciplina si caratterizza per un numero notevole di argomenti, tutti strettamente collegati tra loro, che coprono diversi livelli dell'architettura di rete.
+
+Il corso è tenuto principalmente dal Prof. Alessio Sacco, con la collaborazione del Prof. Guido Marchetto, il quale si occuperà esclusivamente di una parte specifica e limitata del programma (le reti cellulari). 
+
+\begin{itemize}
+    \item \textbf{Prof. Alessio Sacco}: Dipartimento di Automatica e Informatica. \\ Email: \texttt{alessio\_sacco@polito.it} (si presti attenzione all'uso dell'underscore e non del punto).
+    \item \textbf{Prof. Guido Marchetto}: Dipartimento di Automatica e Informatica. \\ Email: \texttt{guido.marchetto@polito.it}.
+\end{itemize}
+
+\section{Programma e Argomenti Trattati}
+Il materiale affrontato durante le lezioni è suddiviso in diverse macro-aree che partono dalle basi per arrivare alle applicazioni avanzate e all'analisi dei dati di rete. I protocolli fondamentali, come IP, sono stati ideati tra gli anni '80 (IPv4) e '90 (IPv6) e da allora le loro logiche di base non sono cambiate drasticamente; la vera evoluzione, e il focus di gran parte del corso, risiede nei servizi e nelle organizzazioni costruite \emph{sopra} questi protocolli.
+
+\subsection{I Fondamenti: IPv4, IPv6 e Reti Locali}
+Il corso inizia fornendo una base solida sul funzionamento di Internet, indispensabile per comprendere i servizi applicativi sovrastanti:
+\begin{itemize}
+    \item \textbf{Progettazione di reti IPv4 e IP Multicast}: Costituisce il punto di partenza. Sebbene sia un argomento già affrontato nei corsi di base (come Reti di Calcolatori), il professore sottolinea che sarà oggetto di un ripasso approfondito in quanto vengono introdotte nuove ottimizzazioni. È un errore comune, e spesso causa di bocciatura all'esame, trascurare questa parte credendo di conoscerla già a sufficienza.
+    \item \textbf{Protocollo IPv6 e progettazione di rete}: Viene studiata l'estensione e la nuova versione del protocollo IP, con particolare attenzione alle tecniche che ne permettono la convivenza con IPv4.
+    \item \textbf{Progettazione di reti locali Ethernet}: Un'estensione dei concetti di base per la realizzazione di reti locali (LAN).
+\end{itemize}
+
+\subsection{Servizi e Tecnologie Avanzate}
+Una volta compreso il funzionamento di base di Internet, il programma si sposta sulle tecnologie costruite al di sopra della rete:
+\begin{itemize}
+    \item \textbf{Principi di instradamento dinamico (Routing)}: Architettura di routing in Internet e funzionamento dei relativi protocolli.
+    \item \textbf{Virtual Private Networks (VPN)}: Tecniche e protocolli principali per la realizzazione di reti private virtuali, sia di tipo \emph{customer-provisioned} che \emph{provider-provisioned}.
+    \item \textbf{SDN/NFV e Content Delivery Networks (CDN)}: Paradigmi moderni per la gestione del traffico e la distribuzione dei contenuti.
+    \item \textbf{Architettura protocollare MPLS}.
+    \item \textbf{Quality of Service (QoS) sulle reti IP}: Tecniche per garantire determinati livelli di prestazioni.
+    \item \textbf{Reti Ottiche}.
+    \item \textbf{Reti Cellulari}: Dal GSM fino alle moderne architetture 5G (sezione trattata dal Prof. Marchetto).
+\end{itemize}
+
+\subsection{Traffic Pattern Analysis}
+L'ultimo argomento del corso, introdotto recentemente, riguarda l'analisi e la predizione dei \emph{pattern} di traffico. 
+Questa parte è ritenuta dal professore la più rilevante in prospettiva lavorativa, in quanto l'innovazione odierna non risiede tanto nella modifica dei protocolli di base, quanto nell'analisi della mole di dati generata dalla rete al fine di compiere operazioni di ottimizzazione.
+
+Il professore illustra questo concetto con degli esempi pratici: gli operatori di telecomunicazioni (come TIM o Vodafone), così come le grandi aziende del settore (Amazon, Google), collezionano dati per prevedere i picchi di utilizzo. Sapendo che ci sarà un evento di grande richiamo (come una partita di calcio importante, le Olimpiadi o il Festival di Sanremo), o un periodo di forti acquisti (come il Black Friday o il Natale), gli operatori ottimizzano la rete e accendono preventivamente un numero maggiore di macchine virtuali (VM) nel cloud, per poi spegnerle al termine dell'evento. 
+
+\section{Organizzazione Pratica e Laboratori}
+L'insegnamento è incentrato principalmente su lezioni in aula (circa 6 ore a settimana), affiancate da esercitazioni e laboratori. Tutto il materiale didattico, incluse le slide e le videolezioni registrate (sia dell'anno corrente che degli anni passati), viene caricato progressivamente sul portale della didattica.
+
+I \textbf{laboratori} costituiscono una parte fondamentale del corso. Vengono svolti su piattaforma virtuale (\emph{Crownlabs}, accessibile da browser) e si dividono in tre tematiche principali, affrontate dopo la relativa spiegazione in aula:
+\begin{enumerate}
+    \item \textbf{Configurazione IPv6}: Svolto tipicamente tra fine ottobre e novembre.
+    \item \textbf{Configurazione VPN}: Svolto intorno alla metà di novembre.
+    \item \textbf{Traffic Pattern Analysis}: Svolto al termine del corso, tra dicembre e gennaio.
+\end{enumerate}
+\textbf{Nota fondamentale per l'esame:} A differenza degli anni passati, gli argomenti e le pratiche affrontate in laboratorio costituiscono ora parte integrante del programma d'esame e saranno oggetto di specifiche domande.
+
+\section{Modalità d'Esame}
+L'esame consiste in una prova scritta al computer (sulla piattaforma di Ateneo) della durata di \textbf{1 ora}, basata su un quiz a risposta multipla. Non sono previste prove orali integrative.
+
+Le regole per il calcolo del punteggio sono le seguenti:
+\begin{itemize}
+    \item \textbf{33 domande} in totale.
+    \item \textbf{+1 punto} per ogni risposta corretta.
+    \item \textbf{-0,33 punti} per ogni risposta errata (penalità).
+    \item \textbf{0 punti} per ogni risposta non data.
+\end{itemize}
+Il punteggio totale massimo conseguibile è 33 (un punteggio uguale o superiore a 31 garantisce il 30 e lode). Il voto finale viene calcolato con classico arrotondamento all'intero più vicino (es. un 25,3 diventa 25; un 25,6 diventa 26).
+
+\paragraph{Consigli per la preparazione:} Il professore sconsiglia vivamente lo studio a memoria delle slide. Le domande dell'esame valutano primariamente la comprensione concettuale dei protocolli e delle tecnologie. La strategia migliore per superare l'esame è sforzarsi di capire le motivazioni e il "perché" dietro a ogni soluzione architetturale o protocollo, piuttosto che limitarsi a impararne le definizioni. Di conseguenza, in fase d'esame, a causa della penalità per le risposte errate, è preferibile valutare attentamente se rispondere o meno in caso di forte dubbio.
+
+\section{Regole di Comunicazione}
+Essendo i docenti titolari di più insegnamenti, per garantire una comunicazione efficiente è richiesto il rigoroso rispetto di alcune regole nella stesura delle email:
+\begin{itemize}
+    \item Firmare sempre la mail con \textbf{Nome, Cognome e Numero di Matricola}.
+    \item Indicare chiaramente il \textbf{nome del corso} ("Tecnologie e Servizi di Rete" o l'acronimo "TSR").
+    \item Disiscriversi tempestivamente dagli appelli d'esame o inviare una mail se non si riesce a partecipare, per facilitare l'organizzazione logistica (scelta dell'aula e stampa del materiale).
+    \item Il voto registrato a portale è definitivo. Non verranno prese in considerazione email che richiedano arrotondamenti speciali, orali integrativi per alzare il voto o appelli extra. Non vengono trattati casi speciali.
+\end{itemize}

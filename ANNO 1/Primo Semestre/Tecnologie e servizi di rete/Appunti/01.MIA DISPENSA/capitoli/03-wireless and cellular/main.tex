@@ -1,0 +1,325 @@
+\chapter{Reti Wireless e Reti Cellulari}
+
+\section{Introduzione alle Reti Wireless}
+Le tecnologie wireless rivestono un'importanza fondamentale nelle reti di calcolatori moderne, avendo ormai superato le connessioni cablate per numero di accessi e per la capacità di fornire connettività a banda larga anche in contesti domestici (ad esempio, tramite i router mobili o ``saponette'' 4G/5G).
+
+Due concetti chiave caratterizzano queste reti:
+\begin{itemize}
+    \item \textbf{Link wireless}: la comunicazione avviene attraverso l'etere, senza cavi fisici, introducendo sfide trasmissive peculiari.
+    \item \textbf{Mobilità}: i dispositivi wireless non sono necessariamente vincolati a una posizione fissa. La mobilità si declina in due forme: la \textit{nomadicità} (la possibilità di spostarsi e agganciarsi a reti diverse) e, aspetto cruciale per le reti cellulari, il \textit{supporto continuo alla mobilità} tramite la procedura di \textit{handover}, che garantisce il mantenimento del servizio (es. una chiamata in corso) pur cambiando antenna di riferimento.
+\end{itemize}
+
+\subsection{Architettura e Modalità Operative}
+Le reti wireless possono operare principalmente in due modalità:
+\begin{itemize}
+    \item \textbf{Infrastructure mode}: è la modalità più comune. I terminali (host mobili come laptop o smartphone) non comunicano mai direttamente tra loro, ma si collegano a delle stazioni base. Nelle reti Wi-Fi (Wireless LAN) queste stazioni prendono il nome di \textbf{Access Point (AP)}, mentre nelle reti cellulari sono chiamate \textbf{Base Station} o celle. Le antenne sono a loro volta interconnesse da un'infrastruttura cablata (core network) che fornisce l'accesso a Internet o alla rete dell'operatore.
+    \item \textbf{Ad-hoc mode}: i nodi formano una rete autoconfigurante comunicando punto-punto senza appoggiarsi a un'infrastruttura fissa. Sebbene supportata teoricamente (anche dal Wi-Fi), è poco utilizzata negli scenari comuni.
+\end{itemize}
+
+\subsection{Caratteristiche e Problematiche del Link Wireless}
+Il mezzo trasmissivo aereo (il link wireless) presenta caratteristiche e problematiche che non sussistono o sono trascurabili nelle reti cablate (come la fibra ottica o il doppino schermato):
+\begin{enumerate}
+    \item \textbf{Attenuazione del segnale}: la potenza del segnale decade molto più rapidamente rispetto a un cavo all'aumentare della distanza.
+    \item \textbf{Interferenze esterne}: il segnale viene disturbato da altre sorgenti elettromagnetiche. Un esempio tipico fornito dal professore è l'interferenza generata da un forno a microonde sulle reti Wi-Fi a 2.4 GHz, poiché le frequenze operative sono contigue o sovrapposte.
+    \item \textbf{Multipath Propagation (Fading)}: le antenne wireless utilizzate in questi contesti sono prevalentemente isotropiche (o con ampie aperture, es. 120 gradi), trasmettendo il segnale in più direzioni per raggiungere terminali in movimento. In presenza di ostacoli (es. i muri di una stanza), il segnale rimbalza. Il ricevitore viene quindi raggiunto non solo dall'onda diretta, ma da copie multiple del segnale, sfalsate nel tempo (ritardate) e nello spazio. Questo fenomeno, detto fading, distorce gravemente il segnale ricevuto.
+\end{enumerate}
+
+\subsection{Qualità del Segnale: SNR, BER e Rate Adaptation}
+Per valutare la bontà di una comunicazione wireless, si utilizzano due parametri fondamentali:
+\begin{itemize}
+    \item \textbf{SNR (Signal-to-Noise Ratio)}: il rapporto tra la potenza del segnale e il rumore. Un SNR alto indica un canale di buona qualità.
+    \item \textbf{BER (Bit Error Rate)}: la probabilità che un bit ricevuto sia errato (es. uno 0 interpretato come 1). Una BER bassa (es. $10^{-7}$) è sinonimo di ottima qualità.
+\end{itemize}
+
+Aumentare la potenza di trasmissione incrementerebbe l'SNR, riducendo di conseguenza la BER. Tuttavia, la potenza è vincolata da limiti hardware, normative sull'inquinamento elettromagnetico e necessità di risparmio energetico delle batterie. Dato un certo SNR che non possiamo modificare a piacere, come possiamo mantenere una BER accettabile? 
+La risposta risiede nell'adattamento del livello fisico, in particolare nella \textbf{Rate Adaptation}.
+
+% FIGURA ORIGINALE DA RECUPERARE DALLE SLIDE
+% Slide di provenienza: Grafico "SNR versus BER tradeoffs" (circa slide 7)
+% Tipo: Grafico con curve di modulazione
+% Descrizione: Curve che mostrano la relazione tra SNR (asse x) e BER (asse y) per tre tipi di modulazioni (BPSK, QAM16, QAM256).
+% Punto di inserimento: Immediatamente dopo la spiegazione del Rate Adaptation.
+% File da inserire: snr_ber_tradeoff.png
+\begin{figure}[H]
+    \centering
+    %\includegraphics[width=0.7\textwidth]{snr_ber_tradeoff.png}
+    \caption{Relazione tra SNR, BER e tecniche di modulazione.}
+    \label{fig:snr-ber}
+\end{figure}
+
+Il professore illustra il concetto di modulazione: trasformare i bit in forme d'onda. 
+Se il canale è ottimo (alto SNR, es. rumore assente o terminale vicino), la rete utilizza modulazioni ``aggressive'' e complesse come la \textbf{256-QAM}. In questa modulazione, un singolo tempo di simbolo trasporta molti bit (aumentando il \textit{bit rate}), ma le forme d'onda sono molto simili tra loro. 
+Se l'SNR diminuisce (il canale diventa rumoroso), il ricevitore fatica a distinguere queste forme d'onda simili, causando un'impennata della BER (es. al $10\%$, inaccettabile). In tali condizioni avverse, i dispositivi passano dinamicamente a modulazioni più semplici e robuste, come la \textbf{BPSK}, che trasportano un solo bit per simbolo. Il bit rate crolla, ma la probabilità di errore (BER) torna a livelli ottimali.
+
+\subsection{Il Problema del Terminale Nascosto (Hidden Terminal)}
+In uno scenario wireless, l'ascolto del canale non è sempre garanzia dell'assenza di trasmissioni.
+Consideriamo tre nodi: A, B (Access Point) e C. A e C sono posizionati ai lati opposti di B.
+A e C riescono a comunicare con B, ma non riescono a percepirsi a vicenda (o per via di un ostacolo fisico come una montagna, o perché la distanza tra A e C attenua il reciproco segnale a zero).
+Se A ascolta il canale, lo sente libero e trasmette verso B. C, non sentendo A, potrebbe ascoltare il canale, sentirlo libero e trasmettere verso B. I due segnali si scontreranno fisicamente presso B, generando una collisione. Né A né C sono in grado di rilevare questa collisione.
+
+\section{Wireless LAN: Lo Standard IEEE 802.11 (Wi-Fi)}
+La famiglia di standard IEEE 802.11 copre le reti Wireless LAN (Wi-Fi). 
+L'area di copertura di un Access Point prende il nome formale di \textbf{BSS (Basic Service Set)}. 
+
+Le reti Wi-Fi operano principalmente su frequenze intorno ai 2.4 GHz e 5 GHz (e recentemente 6 GHz).
+\begin{remark}[Rapporto Frequenza-Ostacoli]
+Il professore osserva che aumentare la frequenza (passando a 5 GHz) permette di incrementare notevolmente il bit rate, grazie a modulazioni più efficienti. Tuttavia, le alte frequenze subiscono un'attenuazione gravissima nell'attraversare gli ostacoli (muri portanti, solette). L'esempio citato è la residenza universitaria del campus in Uzbekistan (o il cambio di router in ambito domestico): con i 2.4 GHz il segnale attraversava agevolmente i muri spessi e il ferro, mentre il passaggio ai 5 GHz ha creato ampie zone non coperte. Per questo motivo, gli standard moderni come il Wi-Fi 6 (802.11ax) hanno ripristinato il supporto a entrambe le bande, garantendo flessibilità in base alla topologia.
+\end{remark}
+
+\subsection{Scansione dei Canali e Associazione}
+Gli Access Point suddividono lo spettro in \textit{canali}. All'ingresso in una rete, un dispositivo deve capire su quale canale operi l'AP desiderato.
+\begin{itemize}
+    \item \textbf{Passive Scanning (Scansione passiva)}: il terminale si mette in ascolto sui vari canali, aspettando che l'AP invii un \textbf{Beacon frame}. Questo è un pacchetto speciale trasmesso periodicamente che contiene il nome della rete (\textbf{SSID}) e l'indirizzo MAC dell'AP.
+    \item \textbf{Active Scanning (Scansione attiva)}: per non dover attendere, il terminale trasmette proattivamente un \textbf{Probe Request} in broadcast a livello 2. Gli AP in ascolto rispondono con una \textbf{Probe Response} contenente le informazioni della rete.
+\end{itemize}
+Una volta trovato l'AP, seguono l'autenticazione (ormai standardizzata con crittografia forte, poiché le reti libere sono deprecate) e l'acquisizione di un indirizzo IP tramite DHCP.
+
+\subsection{Accesso Multiplo: CSMA/CA e RTS/CTS}
+Nelle reti Wi-Fi non è possibile usare il protocollo CSMA/CD di Ethernet (con \textit{Collision Detection}). Misurare le collisioni sul mezzo radio è quasi impossibile per l'elevatissima differenza di potenza tra il segnale in trasmissione (molto forte all'antenna locale) e il segnale in ricezione (attenuato dalla distanza). Il nodo verrebbe ``assordato'' dalla propria trasmissione.
+
+Si utilizza quindi il \textbf{CSMA/CA (Carrier Sense Multiple Access with Collision Avoidance)}:
+\begin{enumerate}
+    \item \textbf{Ascolto e trasmissione intera}: Il nodo ascolta il canale. Se è libero per un tempo prestabilito denominato \textbf{DIFS}, trasmette \textit{l'intero frame} senza mai interrompersi (non essendoci il CD).
+    \item \textbf{Backoff statistico}: Se il canale è occupato, il nodo non attende semplicemente che si liberi, ma avvia un contatore \textbf{random exponential backoff}. Questo timer scala \textit{esclusivamente} quando il canale torna libero, per distribuire statisticamente i tentativi di trasmissione e minimizzare la probabilità di collisioni simultanee.
+    \item \textbf{Acknowledge (ACK) esplicito}: Poiché il mittente non rileva le collisioni, serve una conferma di corretta ricezione. Il ricevitore, ricevuta la trama, aspetta un tempo brevissimo, il \textbf{SIFS} (molto minore del DIFS), e invia un ACK. Avendo un tempo di attesa minore (SIFS < DIFS), il ricevitore guadagna priorità assoluta di accesso al mezzo, impedendo ad altri nodi in attesa del DIFS di rubare il canale.
+\end{enumerate}
+
+\subsubsection{Meccanismo RTS/CTS per la Riserva del Canale}
+Il CSMA/CA standard non evita le collisioni causate dai terminali nascosti. Per risolverle, si abilita una modalità opzionale basata sui pacchetti speciali \textbf{RTS (Request To Send)} e \textbf{CTS (Clear To Send)}.
+
+% FIGURA ORIGINALE DA RECUPERARE DALLE SLIDE
+% Slide di provenienza: Diagramma temporale "Collision Avoidance: RTS-CTS exchange"
+% Tipo: Diagramma temporale
+% Descrizione: Mostra A e B che inviano RTS, la collisione, poi A invia RTS, l'AP risponde con CTS, A manda DATA e AP manda ACK. Mostra il differimento degli altri nodi.
+% Punto di inserimento: Prima di illustrare il funzionamento del RTS/CTS.
+% File da inserire: rts_cts_exchange.png
+\begin{figure}[H]
+    \centering
+    %\includegraphics[width=0.85\textwidth]{rts_cts_exchange.png}
+    \caption{Scambio di messaggi RTS/CTS per la riserva del canale.}
+    \label{fig:rts-cts}
+\end{figure}
+
+\textbf{Funzionamento:} Il mittente, invece di inviare la lunga trama dati, premette un piccolissimo pacchetto RTS. L'AP risponde con un CTS in broadcast.
+Il CTS ha due funzioni vitali:
+1. Autorizza il mittente a trasmettere i Dati.
+2. Contiene un campo "Duration" che impone a tutti gli altri nodi nella rete (incluso il terminale nascosto) di rimanere in silenzio per l'esatto tempo necessario a trasmettere la trama dati e ricevere l'ACK.
+\textbf{Vantaggi e Svantaggi:} Le collisioni avvengono solo sui minuscoli pacchetti RTS. Questo meccanismo, tuttavia, introduce un overhead. Ha senso utilizzarlo solo se la rete è molto congestionata o in presenza certa di terminali nascosti; in reti scariche, rallenta inutilmente la trasmissione.
+
+\subsection{Il Formato del Frame 802.11 e gli Indirizzi MAC}
+La particolarità più evidente della trama 802.11 è la presenza di ben \textbf{4 campi per gli indirizzi MAC}, sebbene normalmente se ne usino 3 in infrastruttura (il 4° è per reti ad-hoc).
+
+Nello scenario tipico (Host Wireless $\rightarrow$ Access Point $\rightarrow$ Router $\rightarrow$ Internet), a differenza di un cavo Ethernet, l'AP funge da ripetitore su un mezzo condiviso e necessita di essere indirizzato esplicitamente per processare il pacchetto. La trama sarà così popolata:
+\begin{itemize}
+    \item \textbf{Address 1 (Ricevitore radio)}: Indirizzo MAC dell'AP.
+    \item \textbf{Address 2 (Trasmittente radio)}: Indirizzo MAC dell'Host Wireless.
+    \item \textbf{Address 3 (Destinatario logico Ethernet)}: Indirizzo MAC del Router.
+\end{itemize}
+Quando l'AP riceve la trama 802.11, la normalizza estraendo l'Address 2 e l'Address 3 e imbustando il carico utile in una classica trama Ethernet 802.3 per l'inoltro sul cavo. Wireshark, su molti sistemi, maschera questa complessità mostrando all'utente la trama direttamente convertita in Ethernet, a meno di non porre la scheda radio in \textit{monitoring mode}.
+
+\subsection{Mobilità nativa e Power Management}
+Nel Wi-Fi, finché i vari AP afferiscono alla stessa subnet IP e sono collegati a switch di Livello 2 (es. rete universitaria eduroam), la mobilità è intrinsecamente supportata. Quando l'utente si sposta su un nuovo AP, lo switch retrostante rileva il nuovo traffico, aggiorna le tabelle di inoltro (MAC address learning) quasi istantaneamente, e le connessioni TCP non si interrompono.
+
+Per il \textbf{Power Management}, gli host 802.11 supportano il \textit{sleep mode}. Un nodo avvisa l'AP e spegne la radio fino al successivo Beacon frame. L'AP fa da buffer per i pacchetti destinati al nodo in sonno e, tramite il Beacon, lo informa della presenza di traffico, ordinandogli di rimanere sveglio per riceverlo, salvaguardando così la durata della batteria.
+
+\section{Reti Cellulari: Architettura Base}
+Le reti cellulari forniscono connettività geografica su larga scala suddividendo il territorio in aree dette \textbf{celle}, all'interno delle quali il supporto alla mobilità veloce (\textit{handover}) è garantito dalla rete.
+
+\subsection{Copertura, Forme delle Celle e Settorizzazione}
+Negli studi teorici le celle sono rappresentate come \textbf{esagoni} perfetti. 
+La copertura può avvenire ponendo antenne isotropiche al centro dell'esagono. Nella realtà, si preferisce raggruppare le antenne sui vertici condivisi da tre esagoni (utilizzando 3 antenne direzionali con apertura di 120°), minimizzando il numero di torri fisiche e i costi di infrastruttura.
+
+\begin{remark}[La forma reale della cella]
+Come mostrato dal professore con l'esempio di Hong Kong, nella pratica la forma delle celle è tutto fuorché geometrica. Essa dipende da:
+1. Potenza di emissione alla stazione base e altezza della torre.
+2. Guadagno direzionale dell'antenna.
+3. Morfologia del terreno (montagne, edifici) e fading.
+4. Condizioni atmosferiche (es. propagazione durante nevicate).
+\end{remark}
+
+\subsection{Accesso Multiplo e Riuso delle Frequenze (Cluster)}
+Per condividere il limitato spettro radio, le reti cellulari implementano tecniche come FDMA (frequenze), TDMA (tempo), CDMA (codici) e SDMA (spazio).
+L'SDMA, essenzialmente, si fonda sul \textbf{riuso spaziale delle frequenze}: siccome il segnale decade con la distanza, una determinata frequenza usata a Torino può essere riutilizzata a Milano senza interferenze.
+
+Su scala locale, le reti adottano i \textbf{Cluster}. Un cluster è un gruppo di $G$ celle adiacenti (es. $G=3$ o $G=7$) tra cui l'operatore ripartisce in modo mutuamente esclusivo \textit{tutte} le frequenze di cui dispone.
+Due celle di cluster adiacenti che usano la stessa frequenza sono dette \textbf{co-channel cells}.
+
+% FIGURA ORIGINALE DA RECUPERARE DALLE SLIDE
+% Slide di provenienza: "7-cell cluster"
+% Tipo: Schema geometrico a nido d'ape
+% Descrizione: Rappresentazione di celle esagonali raggruppate in cluster con G=7, evidenziando il riuso spaziale delle frequenze tra celle con lo stesso numero/colore.
+% Punto di inserimento: Subito dopo la definizione di cluster.
+% File da inserire: cluster_g7.png
+\begin{figure}[H]
+    \centering
+    %\includegraphics[width=0.6\textwidth]{cluster_g7.png}
+    \caption{Struttura a cluster con $G=7$ per il riuso delle frequenze.}
+    \label{fig:cluster-g7}
+\end{figure}
+
+Il dimensionamento della rete obbedisce a precisi trade-off:
+\begin{itemize}
+    \item \textbf{Aumentare la capacità (utenti servibili)}: si diminuisce il raggio della cella (R). Celle più piccole, a parità di $G$, consentono di piazzare più cluster e riutilizzare più spesso le stesse frequenze nella stessa area metropolitana, aumentando però i costi hardware (più antenne).
+    \item \textbf{Aumentare la qualità del segnale (minor interferenza)}: si aumenta la dimensione del cluster ($G$). Aumentando $G$, la distanza fisica tra due co-channel cells aumenta, riducendo le interferenze radio, ma diminuiscono le frequenze disponibili in ogni singola cella, abbassando la capacità del sistema.
+\end{itemize}
+
+L'operatore impiega tecniche come il \textbf{Cell Splitting} (uso di macrocelle in campagna e microcelle in centro città per distribuire il carico) e il \textbf{Cell Shaping}. Quest'ultimo consiste nel deformare l'area di copertura tramite antenne direzionali per seguire, ad esempio, autostrade o ferrovie. 
+Le celle si sovrappongono spesso con una logica "ad ombrello" (\textbf{Umbrella cells}): le microcelle catturano gli utenti fermi per liberare banda, mentre un utente in rapido movimento in auto viene agganciato alla macrocella sovrapposta, minimizzando le gravose richieste di handover continui.
+
+\subsection{Power Control e Problematiche FDD}
+I terminali devono adattare la potenza trasmissiva per risparmiare batteria e ridurre interferenze (Power control). 
+In molti standard si utilizza l'\textbf{FDD (Frequency Division Duplex)}, per cui il telefono trasmette (Uplink) su una frequenza $X$ e riceve (Downlink) su una frequenza $Y$. Di conseguenza, il terminale può attuare solo un controllo in \textbf{catena aperta (Open Loop)}: tara la propria potenza di trasmissione misurando la qualità del segnale in ricezione ($Y$), ma non avendo feedback sulle interferenze in Uplink ($X$), il controllo risulta approssimato.
+
+\subsection{Mobilità: Roaming, Location Updating, Paging}
+Per garantire il tracciamento degli utenti sulla rete geografica, le celle sono raggruppate in \textbf{Location Areas (LA)}, identificate da un \textbf{Location Area Identifier (LAI)}. 
+
+La gestione avviene in fasi coordinate:
+\begin{enumerate}
+    \item \textbf{Roaming e Location Updating}: L'antenna invia in broadcast continuo il proprio LAI. Il telefono memorizza l'ultimo LAI noto e viaggia in silenzio finché resta all'interno delle celle della stessa Location Area. Appena il telefono legge un LAI diverso da quello memorizzato, avvia proattivamente la procedura di \textbf{Location Updating}, avvisando il database centrale della rete della sua nuova posizione. (Questo riduce enormemente il traffico di segnalazione rispetto al notificare ogni singolo cambio di cella).
+    \item \textbf{Paging}: Quando arriva una telefonata, la rete conosce la Location Area dell'utente ma non l'antenna esatta (perché l'utente si è mosso in silenzio nella LA). Il BSC avvia il \textbf{Paging}: invia un messaggio di ricerca in broadcast a \textit{tutte} le celle appartenenti a quella LA. Il terminale, riconoscendo il proprio identificativo, risponde svelando in quale cella si trovi, permettendo l'instradamento finale della chiamata.
+\end{enumerate}
+
+\section{Evoluzione delle Generazioni Mobile (1G $\rightarrow$ 5G)}
+La lezione ripercorre sinteticamente l'evoluzione tecnologica:
+\begin{itemize}
+    \item \textbf{1G (TACS)}: Solo servizi vocali analogici, basato puramente su FDMA. Inefficiente, destinato all'utenza business.
+    \item \textbf{2G (GSM)}: Nasce la telefonia digitale a commutazione di circuito (FDMA + TDMA in Europa). Ha democratizzato il cellulare grazie a economie di scala e all'introduzione degli SMS (la \textit{killer application} degli anni '90). Negli Stati Uniti si impiegava invece l'IS-95 basato su CDMA.
+    \item \textbf{3G (UMTS)}: Basato su CDMA in tutto il mondo, ideato per portare dati e videochiamate. Economicamente un flop iniziale, progettato per portali proprietari chiusi ("bolla dot-com") e telefoni complessi e costosi. Non era ancora pensato per internet nativo.
+    \item \textbf{4G (LTE)}: Evoluzione radicale basata sul concetto \textbf{All-IP}. Architettura nativamente a pacchetto (Internet-centrica). Adotta OFDMA per i dati. Ha decretato il successo globale degli smartphone moderni. (Il Voice over LTE, VoLTE, porta la fonia sulla rete IP).
+    \item \textbf{5G}: Introduce concetti di Network Slicing, SDN (Software Defined Networking per il Control Plane) e NFV (Network Function Virtualization per il Data Plane) per supportare latenze ultra-basse in ambito industriale (robotica). 
+    \begin{remark}[Riflessione sul 5G commerciale]
+    Il professore precisa che il 5G venduto attualmente al mercato consumer è per lo più "Non-Stand-Alone" (NSA). Architetturalmente, la core network e la logica restano quasi totalmente 4G/LTE, mentre è stato aggiornato unicamente il livello fisico (modulazioni e radiofrequenze) per fornire maggiore banda. La rete vera e propria 5G "Stand-Alone" (SA) con le feature strutturali descritte è emergente e dedicata quasi esclusivamente al settore business per le comunicazioni ultra-low latency.
+    \end{remark}
+\end{itemize}
+
+\section{Approfondimento sul GSM (2G)}
+L'architettura GSM (commutazione di circuito) si divide in \textbf{Radio Access Network (BSS)} e \textbf{Core Network (NSS)}.
+
+% FIGURA ORIGINALE DA RECUPERARE DALLE SLIDE
+% Slide di provenienza: "GSM network architecture"
+% Tipo: Diagramma di rete a blocchi
+% Descrizione: Rappresenta MS, BSS (BTS+BSC), NSS (MSC, HLR, VLR, AuC, EIR).
+% Punto di inserimento: Prima dell'elenco delle componenti GSM.
+% File da inserire: gsm_architecture.png
+\begin{figure}[H]
+    \centering
+    %\includegraphics[width=0.85\textwidth]{gsm_architecture.png}
+    \caption{Architettura del sistema GSM e dei relativi sottosistemi BSS e NSS.}
+    \label{fig:gsm-arch}
+\end{figure}
+
+\subsection{Componenti dell'Architettura GSM}
+\begin{itemize}
+    \item \textbf{BSS (Base Station Subsystem)}: Contiene la \textbf{BTS (Base Transceiver Station)}, che è l'antenna fisica di ricetrasmissione. Più BTS sono governate dal \textbf{BSC (Base Station Controller)}. Il BSC è l'entità intelligente: emette i segnali di Paging, gestisce gli handover e attua la \textit{transcodifica}, adattando i campioni vocali ultracompressi a 13 kbps o 6.5 kbps della rete radio con i flussi telefonici classici a 64 kbps (PCM) della rete PSTN.
+    \item \textbf{NSS (Network and Switching Subsystem)}: Centrato sui commutatori di circuito, i \textbf{MSC (Mobile Switching Center)}. Contiene due database per la mobilità:
+        \begin{itemize}
+            \item \textbf{HLR (Home Location Register)}: database stabile che archivia i profili permanenti degli abbonati e le chiavi di autenticazione dell'operatore nativo.
+            \item \textbf{VLR (Visitor Location Register)}: database dinamico temporaneo presente presso gli MSC, che memorizza il LAI aggiornato e ospita i parametri degli utenti attualmente "in visita" in quell'area, permettendo il roaming.
+        \end{itemize}
+\end{itemize}
+
+\subsection{Livello Fisico GSM: FDD, FDMA/TDMA e Timing Advance}
+Il GSM impiega \textbf{FDD (Frequency Division Duplex)} su bande attorno ai 900 MHz e 1800 MHz.
+L'accesso multiplo unisce l'FDMA al \textbf{TDMA}. Una frequenza portante portante è suddivisa nel tempo in \textit{frame} contenenti \textbf{8 time slot}. Un canale fisico per l'utente è l'incrocio tra la frequenza X e un determinato slot (es. Slot 2).
+
+\textbf{Il trucco del mezzo ricetrasmettitore:} 
+In teoria l'FDD richiede che il telefono trasmetta e riceva simultaneamente, obbligando a integrare due costosi transceiver e due antenne indipendenti. Per miniaturizzare l'hardware, in GSM il telefono usa lo \textit{stesso} indice di time slot per l'Uplink e il Downlink, ma temporaneamente sfasati di 3 slot. Terminata la ricezione in Downlink, il telefono impiega il tempo di scarto per commutare l'unico hardware dalla modalità RX alla modalità TX prima che arrivi il proprio turno in Uplink.
+
+\textbf{Timing Advance (Anticipo di trasmissione):}
+A causa del ritardo di propagazione in etere (distanza antenna-terminale), i bit trasmessi allo "slot 0" da un cellulare lontano rischierebbero di arrivare alla BTS in ritardo, sbavando e collidendo con lo "slot 1" assegnato a un altro abbonato.
+La BTS misura costantemente questo ritardo di propagazione. Ordina quindi al terminale un parametro detto \textit{Timing Advance}: il cellulare \textit{anticipa artificialmente} l'inizio della trasmissione in modo che, al termine del viaggio nell'aria, i bit giungano perfettamente sincronizzati all'istante di apertura dello slot 0 presso l'antenna, eliminando l'interferenza inter-slot.
+
+\subsection{Struttura del Burst GSM e Stealing Bits}
+Nel GSM i bit non sono instradati a "pacchetti" (non hanno un header IP, non esiste indirizzo destinazione, il circuito è già pre-stabilito), ma viaggiano in blocchi formatati chiamati \textbf{burst}.
+
+Il \textbf{Regular Burst} (per i canali voce) include:
+\begin{itemize}
+    \item \textbf{Periodi di guardia} ai lati estremi: buffer temporali silenti per assorbire micro-errori del Timing Advance.
+    \item Sequenze di bit per sincronizzazione (equalizzazione del canale, per mitigare il multipath fading).
+    \item I \textbf{campioni vocali} dell'utente.
+    \item Gli \textbf{Stealing Bits} (Bit di rubata).
+\end{itemize}
+
+Il professore evidenzia l'importanza degli \textit{stealing bits}. Se la rete ravvisa un'estrema urgenza di ordinare un handover per evitare la caduta della chiamata e non ha a disposizione slot di controllo liberi nella super-trama, accende il "bit di rubata" in un normale slot voce. Questo segnala al terminale che il burst non contiene audio, bensì messaggi di segnalazione critica. L'utente perde una minuscola frazione audio di pochi millisecondi, ma il sistema salva l'integrità della connessione.
+
+\section{Approfondimento: LTE (4G) e l'Evoluzione All-IP}
+La rivoluzione di LTE (Long Term Evolution) risiede nel paradigma \textit{clean-slate}: l'abbandono della commutazione di circuito a favore della core network nativamente a pacchetto, denominata \textbf{EPC (Evolved Packet Core)}.
+
+\subsection{Architettura e Componenti EPS}
+In LTE, la Radio Access Network è definita \textbf{E-UTRAN}, e il core \textbf{EPC}.
+
+% FIGURA ORIGINALE DA RECUPERARE DALLE SLIDE
+% Slide di provenienza: "LTE Architecture"
+% Tipo: Diagramma a blocchi
+% Descrizione: Mostra la struttura E-UTRAN con eNodeB e l'EPC con MME, HSS, SGW, PGW, separando il Control Plane dal Data Plane.
+% Punto di inserimento: Dopo la menzione di E-UTRAN ed EPC.
+% File da inserire: lte_architecture.png
+\begin{figure}[H]
+    \centering
+    %\includegraphics[width=0.85\textwidth]{lte_architecture.png}
+    \caption{Architettura LTE: la rete E-UTRAN e la Core Network EPC a pacchetto.}
+    \label{fig:lte-arch}
+\end{figure}
+
+I nodi sono specializzati (distinzione tra \textit{Control Plane} e \textit{User/Data Plane}):
+\begin{itemize}
+    \item \textbf{eNodeB}: Antenna intelligente che integra le funzioni storicamente separate della BTS e della BSC, governando autonomamente le frequenze.
+    \item \textbf{MME (Mobility Management Entity)}: Nodo puramente logico di \textbf{Control Plane}. Smista le regole, autentica, rimpiazza i vecchi VLR e coordina la mobilità istruendo i router per la creazione dei tunnel IP.
+    \item \textbf{SGW (Serving Gateway)}: Router di \textbf{User Plane}, anello di congiunzione tra le stazioni radio e la core network interna. Punto formale per le intercettazioni legali (\textit{Lawful Intercept}).
+    \item \textbf{PGW (Packet Data Network Gateway)}: Router di confine. Fornisce l'indirizzo IP all'utente, gestisce il filtraggio dei pacchetti, funge da connettore con Internet e (soprattutto a causa dell'esaurimento di IPv4) implementa architetture di \textit{Large Scale NAT (Carrier Grade NAT)}. A molti smartphone odierni viene assegnato un indirizzo privato della subnet dell'operatore (es. 10.x.x.x) poi "nattato" sul PGW.
+    \item \textbf{HSS (Home Subscriber Server)}: Evoluzione dell'HLR, database dei profili per l'autenticazione.
+\end{itemize}
+
+\subsection{Tunneling IP e i Bearer LTE}
+Quando un terminale LTE effettua il roaming e si muove tra sottoreti, cambiare router comporterebbe la modifica dell'indirizzo IP, troncando inevitabilmente tutte le sessioni TCP aperte.
+LTE risolve la mobilità implementando un massiccio \textbf{Tunneling IP-in-IP} tramite protocollo \textbf{GTP (GPRS Tunneling Protocol)}.
+
+Alla registrazione in rete, l'MME orchestra la creazione del \textbf{Default Bearer}, un tunnel continuo, un \textit{pipe} logico che viaggia dal terminale, attraverso l'eNodeB, attraverso l'SGW, fino al PGW.
+Perché i tunnel semplificano la mobilità?
+Quando il telefono cambia area, l'indirizzo IP \textit{effettivo del telefono} fornito dal PGW resta inalterato. L'MME interviene solo sganciando il "bocchettone" (tunnel endpoint) alla vecchia eNodeB per riagganciarlo alla nuova eNodeB: ai livelli IP applicativi superiori, la topologia di rete non è mutata di una virgola, schermando la mobilità fisica agli occhi di Internet.
+
+La rete supporterebbe la QoS differenziata tramite \textbf{Dedicated Bearer} (es. per favorire Teams su WhatsApp). Tuttavia, a causa del principio formale della \textbf{Net Neutrality}, il traffico internet civile corre indistinto nel solo Default Bearer. L'unica rilevante eccezione per cui i gestori creano un Dedicated Bearer (con latenza garantita) è il traffico del \textbf{VoLTE (Voice over LTE)}, le chiamate vocali a pacchetto di proprietà dell'operatore.
+
+\subsection{Scheduling e Livello Fisico (OFDMA)}
+A differenza del blocco rigido del TDMA, LTE usa l'\textbf{OFDMA (Orthogonal Frequency-Division Multiple Access)}. OFDMA utilizza moltissime portanti strettissime, matematicamente ortogonali per evitare interferenze, aumentando drasticamente l'efficienza spettrale.
+
+Inoltre, il \textbf{scheduling è totalmente dinamico}. Ogni millisecondo, l'eNodeB analizza i buffer dei telefoni e alloca blocchi variabili di risorse nel reticolo di frequenze e time slot a seconda della lunghezza del pacchetto IP da inviare. Un telefono con un pacchetto pesante riceverà svariati slot contigui; un telefono con un ACK TCP ne riceverà uno. Gli algoritmi di scheduling (es. Proportional Fair) non sono normati dallo standard 3GPP: sono segreti industriali implementati dai vendor (Ericsson, Huawei) e rappresentano il vero core business dell'infrastruttura LTE.
+
+La sincronizzazione iniziale è critica in OFDMA:
+\begin{enumerate}
+    \item L'antenna irradia periodicamente (ogni 5 ms) il \textbf{Primary Sync Signal}.
+    \item Il telefono lo intercetta, si sincronizza temporaneamente al reticolo ed estrae il \textbf{Secondary Sync Signal}.
+    \item Da quest'ultimo deduce la cella, la larghezza del canale e, soprattutto, \textbf{l'identificativo dell'operatore}. (Fondamentale all'accensione del dispositivo per ignorare segnali decifrabili appartenenti a operatori concorrenti senza accordi di roaming).
+\end{enumerate}
+Per proteggere le trasmissioni radio, in base allo stack LTE del Data Plane, il livello \textit{Radio Link Control (RLC)} fornisce funzioni di Re-trasmissione affidabile (ACK al Livello 2) prima di inoltrare i pacchetti guasti all'TCP del Trasporto.
+
+\subsection{Mobilità in LTE: Home Routed Roaming}
+Il roaming all'estero sfrutta una logica di \textbf{Home Routed Roaming}.
+Quando accendiamo il telefono su una rete estera visitata (\textit{Visited Network}), il nostro smartphone ottiene risorse radio (spesso con IP locale privato), ma la configurazione impone che il traffico passi \textbf{sempre e comunque} dalla rete dell'operatore nativo (\textit{Home Network}).
+Il MME della rete estera contatta l'HSS in Italia. Una volta autorizzato, il MME estende il tunnel Bearer non verso il router PGW estero, bensì ordina la creazione di un \textit{External Bearer (S8)} tra l'SGW estero e il \textbf{PGW della Home Network in Italia}.
+Tutto il traffico esce perciò su internet in Italia. L'indirizzo IP del telefono appare al web come indirizzo italiano, motivo per cui applicazioni di streaming geo-bloccate (es. DAZN, RaiPlay) in genere non si avvedono del reale spostamento fisico all'estero del dispositivo (se connesso in dati mobili e non in Wi-Fi).
+
+\subsection{Handover Inter-eNodeB tramite interfaccia X2}
+L'handover è gestito interamente nel Data Plane tramite il link di comunicazione orizzontale \textbf{X2} che collega le antenne eNodeB adiacenti, aggirando colli di bottiglia nei server core.
+
+% FIGURA ORIGINALE DA RECUPERARE DALLE SLIDE
+% Slide di provenienza: "Handover between BSs in same cellular network"
+% Tipo: Diagramma temporale di flusso
+% Descrizione: Mostra la procedura di Handover: Messaggi su X2 tra Source e Target BS, redirezione del traffico radio e inoltro da Source a Target (punto 4), aggiornamento finale dell'MME/SGW (punto 5).
+% Punto di inserimento: Dopo la spiegazione dettagliata dei passi di Handover.
+% File da inserire: lte_handover_x2.png
+\begin{figure}[H]
+    \centering
+    %\includegraphics[width=0.9\textwidth]{lte_handover_x2.png}
+    \caption{Gestione logica e inoltro del traffico durante l'Handover su interfaccia X2 in rete LTE.}
+    \label{fig:lte-handover}
+\end{figure}
+
+Il flusso in sintesi (riferendosi alla Figura \ref{fig:lte-handover}):
+\begin{enumerate}
+    \item \textbf{Misurazione}: la Source Base Station rileva che la Target Base Station offre un segnale migliore e vi instaura un dialogo via interfaccia X2 (\textit{Handover Request}).
+    \item \textbf{Pre-allocazione}: la Target BS pre-alloca sul suo reticolo fisico slot e frequenze riservandole al terminale in arrivo, quindi risponde con l'\textit{Acknowledge}.
+    \item \textbf{Esecuzione in Aria}: La Source informa via radio l'utente (Mobile Terminal) di commuovere istantaneamente la sintonia verso le nuove frequenze Target assegnate.
+    \item \textbf{Inoltro Pacchetti (Forwarding)}: Durante il minuscolo blackout del cambio antenna, i pacchetti in arrivo da internet giungono alla vecchia Source BS. Anziché scartarli, la Source BS sfrutta l'interfaccia cablata X2 per inviare questi dati alla Target BS, che provvederà a consegnarli allo smartphone via radio, azzerando le perdite di pacchetti!
+    \item \textbf{Switch del Bearer (Aggiornamento rotte)}: Solo a connessione ripristinata, la Target BS avvisa l'MME che l'handover è compiuto. L'MME ordinerà all'SGW (il router superiore) di variare l'endpoint del tunnel, instrada i nuovi pacchetti non più alla Source BS ma direttamente alla Target BS. L'handover si conclude.
+\end{enumerate}

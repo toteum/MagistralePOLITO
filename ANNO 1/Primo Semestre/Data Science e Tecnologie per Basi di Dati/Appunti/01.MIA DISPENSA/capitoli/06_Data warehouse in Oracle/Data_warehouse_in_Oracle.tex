@@ -1,0 +1,240 @@
+\chapter{Estensioni al Linguaggio SQL in Oracle per l'Analisi dei Dati}
+
+Questo capitolo introduce le estensioni al linguaggio SQL introdotte nel DBMS Oracle per supportare le operazioni di Business Intelligence e l'analisi dei dati in ambito Data Warehouse. Gran parte di queste estensioni si rifà allo standard SQL, pur presentando alcune specificità sintattiche, in particolare per quanto riguarda la definizione delle finestre di aggregazione.
+
+Le funzionalità principali introdotte (funzioni OLAP) includono:
+\begin{itemize}
+    \item \textbf{Finestre di calcolo} (tramite la clausola \texttt{OVER} / \texttt{WINDOW});
+    \item \textbf{Funzioni di ranking} per la generazione di classifiche (\texttt{RANK}, \texttt{DENSE\_RANK}, ecc.);
+    \item \textbf{Estensione della clausola \texttt{GROUP BY}} (\texttt{ROLLUP}, \texttt{CUBE}, \texttt{GROUPING SETS}), che permette di generare raggruppamenti multipli con un singolo accesso ai dati.
+\end{itemize}
+
+\section{Le Finestre di Calcolo}
+
+La finestra di calcolo permette di eseguire aggregazioni e analisi su un sottoinsieme di righe correlate alla riga corrente, senza collassare il risultato in un'unica riga per gruppo (come invece accade con la \texttt{GROUP BY} tradizionale). 
+All'interno della finestra è possibile definire il partizionamento (\texttt{PARTITION BY}), l'ordinamento (\texttt{ORDER BY}) e l'ampiezza della finestra di aggregazione stessa.
+
+Per illustrare il funzionamento della finestra di aggregazione, consideriamo una tabella relativa alle vendite con il seguente schema:
+\texttt{VENDITE(Città, Data, Importo)}.
+
+Nella definizione della porzione di finestra su cui effettuare il calcolo, è possibile adottare due approcci distinti: il raggruppamento a livello fisico e quello a livello logico.
+
+\subsection{Raggruppamento a livello fisico (\texttt{ROWS})}
+
+Il raggruppamento fisico conta esplicitamente il numero di tuple (righe) da includere nella finestra, a prescindere dal valore che assumono gli attributi. Questo approccio è utile quando si ha la garanzia che i dati siano continui, ma non tiene conto di eventuali "buchi" nella sequenza temporale o logica.
+
+\paragraph{Esempio di raggruppamento fisico}
+\textit{Selezionare, separatamente per ogni città, per ogni data l'importo e la media dell'importo considerando la riga corrente e le due righe che la precedono.}
+
+In questo caso, calcoliamo una \textbf{media mobile}.
+Prima di scrivere la query, analizziamo i passaggi logici:
+\begin{enumerate}
+    \item \textbf{Partizionamento}: I dati vanno calcolati "separatamente per ogni città", quindi occorre partizionare rispetto all'attributo \texttt{Città}.
+    \item \textbf{Ordinamento}: È fondamentale ordinare i record per \texttt{Data}. Come sottolinea il professore, se non si effettuasse l'ordinamento, si rischierebbe di sommare una data di gennaio con una di dicembre, ottenendo un calcolo privo di senso logico.
+    \item \textbf{Finestra}: Si richiede la riga corrente e le due \textit{precedenti}. Usando un approccio fisico parliamo esplicitamente di "righe", da cui la sintassi \texttt{ROWS BETWEEN 2 PRECEDING AND CURRENT ROW}.
+\end{enumerate}
+
+\begin{lstlisting}[language=SQL, basicstyle=\small\ttfamily, keywordstyle=\bfseries\color{blue}, frame=single]
+SELECT Città, Data, Importo, 
+       AVG(Importo) OVER (
+           PARTITION BY Città
+           ORDER BY Data
+           ROWS BETWEEN 2 PRECEDING AND CURRENT ROW
+       ) AS MediaMobile
+FROM Vendite
+ORDER BY Città, Data;
+\end{lstlisting}
+\textit{Nota:} Nella query manca l'operatore \texttt{GROUP BY} tradizionale. Sulla finestra applichiamo direttamente \texttt{AVG(Importo)}. L'\texttt{ORDER BY} finale, esterno alla funzione finestra, serve unicamente per una migliore visualizzazione dei risultati a schermo.
+
+\subsection{Raggruppamento a livello logico (\texttt{RANGE})}
+
+Il raggruppamento logico, a differenza di quello fisico, valuta il \textit{valore} assunto dal campo di ordinamento (tipicamente una data o un numero) per definire l'intervallo. Se, ad esempio, un negozio rimane chiuso in una specifica data, e quindi manca il record, l'approccio logico non andrà a ripescare un giorno ancora precedente per arrivare a "due righe", ma si limiterà a considerare i record effettivamente presenti nell'intervallo temporale richiesto.
+
+\paragraph{Esempio di raggruppamento logico}
+\textit{Selezionare, separatamente per ogni città, per ogni data l'importo e la media dell'importo considerando la riga corrente e le vendite avvenute nei due giorni precedenti.}
+
+\begin{lstlisting}[language=SQL, basicstyle=\small\ttfamily, keywordstyle=\bfseries\color{blue}, frame=single]
+SELECT Città, Data, Importo, 
+       AVG(Importo) OVER (
+           PARTITION BY Città
+           ORDER BY Data
+           RANGE BETWEEN INTERVAL '2' DAY PRECEDING AND CURRENT ROW
+       ) AS MediaUltimi3Giorni
+FROM Vendite
+ORDER BY Città, Data;
+\end{lstlisting}
+La sintassi \texttt{RANGE BETWEEN INTERVAL '2' DAY PRECEDING AND CURRENT ROW} definisce un intervallo logico di tempo. Il professore precisa che, in Oracle, oltre a \texttt{DAY}, è possibile utilizzare anche \texttt{MONTH} e \texttt{YEAR}. L'inclusione di \texttt{CURRENT ROW} specifica che il calcolo della media comprende anche la riga corrente, valutando così gli ultimi 3 giorni complessivi (i 2 precedenti + quello attuale).
+
+\section{Funzioni di Ranking}
+
+Le funzioni di ranking permettono di associare ad ogni record una posizione all'interno di una classifica. Per i prossimi esempi, consideriamo il seguente schema relazionale che modella forniture aziendali:
+\begin{itemize}
+    \item \texttt{FRN(COD\_F, Nome, Sede\_F)}: Fornitori;
+    \item \texttt{ART(COD\_A, Tipo, Colore, Peso)}: Articoli;
+    \item \texttt{PRG(COD\_P, Nome, Sede\_P)}: Progetti;
+    \item \texttt{FAP(COD\_F, COD\_P, COD\_A, Q)}: Quantità \texttt{Q} di articolo fornita per un progetto da un fornitore.
+\end{itemize}
+
+\subsection{\texttt{RANK} e \texttt{DENSE\_RANK}}
+
+\paragraph{Esempio: Classifica di vendita degli articoli}
+\textit{Selezionare per ogni articolo la quantità totale fornita e il ranking in funzione delle quantità totali fornite per ogni articolo.}
+
+Poiché desideriamo una classifica generale di tutti gli articoli (i "top venduti"), non abbiamo bisogno di frammentare i dati: la finestra di calcolo \textbf{non richiederà un partizionamento}, ma soltanto un criterio di ordinamento.
+
+\begin{lstlisting}[language=SQL, basicstyle=\small\ttfamily, keywordstyle=\bfseries\color{blue}, frame=single]
+SELECT COD_A, SUM(Q) AS QTot,
+       RANK() OVER (
+           ORDER BY SUM(Q)
+       ) AS RankVendite
+FROM FAP
+GROUP BY COD_A;
+\end{lstlisting}
+
+\textbf{Osservazione sull'ordinamento:} Nel codice mostrato sulle slide, non è specificato \texttt{DESC} nell'\texttt{ORDER BY}. Il professore fa notare che un ordinamento naturale per una classifica di vendita sarebbe decrescente (il prodotto più venduto al primo posto). Tuttavia, non specificando nulla, il sistema ipotizza un ordinamento \textbf{ascendente} (\texttt{ASC}). Pertanto, il prodotto con la quantità minore otterrà la prima posizione.
+
+La differenza fondamentale tra \texttt{RANK} e \texttt{DENSE\_RANK} risiede nella gestione dei \textbf{pari merito}:
+\begin{itemize}
+    \item \textbf{\texttt{RANK}}: a parità di valore assegna la stessa posizione, ma salta le posizioni successive (es. due record al 3° posto portano il record successivo al 5° posto).
+    \item \textbf{\texttt{DENSE\_RANK}}: assegna la stessa posizione per i pari merito, ma \textit{non salta} le posizioni successive (es. due record al 3° posto, il successivo sarà al 4° posto).
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{Confronto dei risultati tra RANK() e DENSE\_RANK()}
+\begin{tabular}{lrr | r}
+\toprule
+\textbf{COD\_A} & \textbf{QTot} & \textbf{RankVendite (RANK)} & \textbf{DenseRankVendite (DENSE\_RANK)} \\
+\midrule
+A2 & 300  & 1 & 1 \\
+A5 & 1100 & 2 & 2 \\
+A4 & 1300 & 3 & 3 \\
+A6 & 1300 & 3 & 3 \\
+A1 & 1900 & 5 & 4 \\
+A3 & 4500 & 6 & 5 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Doppio Ranking}
+
+È possibile definire all'interno della medesima \texttt{SELECT} molteplici colonne di rank, calcolate rispetto a criteri di ordinamento differenti. Questo avviene perché la funzione genera semplicemente una nuova colonna aggiuntiva rispetto ai dati esistenti.
+
+\paragraph{Esempio di doppio ranking}
+\textit{Selezionare per ogni articolo il codice, il peso, la quantità totale fornita, il ranking in funzione del peso e il ranking in funzione della quantità totale fornita.}
+
+In questo caso, siccome vogliamo visualizzare anche il peso (attributo di \texttt{ART}) e calcolare la quantità (attributo di \texttt{FAP}), dobbiamo eseguire una \texttt{JOIN} tra le due tabelle.
+
+\begin{lstlisting}[language=SQL, basicstyle=\small\ttfamily, keywordstyle=\bfseries\color{blue}, frame=single]
+SELECT ART.COD_A, ART.Peso,
+       SUM(Q) AS QTot,
+       RANK() OVER (ORDER BY ART.Peso) AS R_Peso,
+       RANK() OVER (ORDER BY SUM(Q)) AS R_Vend
+FROM FAP, ART
+WHERE FAP.COD_A = ART.COD_A
+GROUP BY ART.COD_A, ART.Peso
+ORDER BY R_Peso;
+\end{lstlisting}
+
+\textbf{Osservazione sulla clausola \texttt{GROUP BY}:} L'attributo \texttt{Peso} è stato aggiunto alla \texttt{GROUP BY} poiché compare nella \texttt{SELECT} e non all'interno di una funzione di aggregazione. Tuttavia, come sottolineato a lezione, dato un articolo esiste uno e un solo peso associato; di conseguenza, l'aggiunta di questo attributo alla \texttt{GROUP BY} non altera in alcun modo la cardinalità o la semantica dei gruppi generati (si ha sempre un gruppo per ogni singolo prodotto).
+Inoltre, è importante distinguere l'ordinamento per il ranking dal partizionamento: \textit{ranking in funzione del peso} significa che il peso fa da criterio di ordinamento (\texttt{ORDER BY ART.Peso} all'interno della clausola \texttt{OVER}), non di partizionamento. 
+
+\begin{table}[H]
+\centering
+\caption{Risultato del doppio ranking}
+\begin{tabular}{lrrrr}
+\toprule
+\textbf{COD\_A} & \textbf{Peso} & \textbf{Qtot} & \textbf{R\_Peso} & \textbf{R\_Vend} \\
+\midrule
+A1 & 12 & 1900 & 1 & 5 \\
+A5 & 12 & 1100 & 1 & 2 \\
+A4 & 14 & 1300 & 3 & 3 \\
+A2 & 17 & 300  & 4 & 1 \\
+A3 & 17 & 4500 & 4 & 6 \\
+A6 & 19 & 1300 & 6 & 3 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Selezione Top-N nel Ranking (Utilizzo di Table Function)}
+
+Spesso l'obiettivo aziendale non è analizzare un intero listino di 30.000 prodotti, ma restringere l'attenzione ai "Top N" (es. i 2 articoli più venduti) per evitare sprechi di risorse e migliorare la leggibilità.
+
+Tuttavia, non è possibile filtrare direttamente il risultato di una funzione di rank inserendo una clausola del tipo \texttt{WHERE RankVendite <= 2} all'interno della stessa query. Il motivo, chiarito dal professore, risiede nell'\textbf{ordine di esecuzione delle istruzioni SQL}: la clausola \texttt{WHERE} valuta i record estratti prima della generazione delle colonne della \texttt{SELECT}, ma le funzioni finestra (come il rank) vengono processate proprio all'interno della \texttt{SELECT}.
+
+La soluzione consiste nell'utilizzare le \textbf{Table Function} (o \textit{inline views}): una tabella temporanea generata localmente e a runtime, fornendo un'istruzione SQL come sorgente dati all'interno della clausola \texttt{FROM} della query principale.
+
+\begin{lstlisting}[language=SQL, basicstyle=\small\ttfamily, keywordstyle=\bfseries\color{blue}, frame=single]
+SELECT * FROM
+  (
+   SELECT COD_A, SUM(Q),
+          RANK() OVER (ORDER BY SUM(Q)) AS RankVendite
+   FROM FAP
+   GROUP BY COD_A
+  )
+WHERE RankVendite <= 2;
+\end{lstlisting}
+
+Quando la query esterna elabora la clausola \texttt{FROM}, avvia l'esecuzione della sottointerrogazione. Questa genera una tabella virtuale provvista di tre colonne (tra cui \texttt{RankVendite}). A quel punto, la query esterna può regolarmente filtrare i dati applicando la \texttt{WHERE} sull'attributo precalcolato.
+
+\section{Ulteriori Funzioni per Finestre di Calcolo}
+
+Oltre alle tradizionali metriche di aggregazione e ai rank, Oracle rende disponibili ulteriori funzioni per caratterizzare e isolare i dati all'interno delle partizioni.
+
+\subsection{\texttt{ROW\_NUMBER}}
+La funzione \texttt{ROW\_NUMBER()} assegna un numero progressivo sequenziale ad ogni riga all'interno della partizione, basandosi sul criterio di ordinamento specificato.
+
+\paragraph{Esempio}
+\textit{Partizionare gli articoli in base alla tipologia ed enumerare in modo progressivo i dati all'interno di ogni partizione. All'interno di ogni partizione i dati sono ordinati in base al peso.}
+
+\begin{lstlisting}[language=SQL, basicstyle=\small\ttfamily, keywordstyle=\bfseries\color{blue}, frame=single]
+SELECT Tipo, Peso, 
+       ROW_NUMBER() OVER (
+           PARTITION BY Tipo
+           ORDER BY Peso
+       ) AS RowNumberPeso
+FROM ART;
+\end{lstlisting}
+
+\textbf{Differenza tra \texttt{ROW\_NUMBER} e \texttt{RANK}}: 
+L'aspetto più rilevante discusso in aula è il comportamento in caso di \textbf{pari merito}. A differenza di \texttt{RANK} e \texttt{DENSE\_RANK} (che assegnerebbero alle tuple con stesso peso il medesimo punteggio), \texttt{ROW\_NUMBER} non gestisce concettualmente i pari merito, ma forza un numero sequenziale. 
+Se avessimo l'obiettivo di selezionare un numero esatto e fisso di elementi (es. i primi 5 prodotti), un filtro \texttt{<= 5} su un \texttt{RANK} in presenza di più pari merito potrebbe restituirci più di 5 righe in totale (es. tre prodotti a pari merito al 3° posto). Utilizzando \texttt{ROW\_NUMBER}, si garantisce l'estrazione di esattamente 5 record, operando una discriminazione arbitraria tra gli ex aequo all'interno del gruppo.
+
+\subsection{\texttt{CUME\_DIST}}
+
+La funzione \texttt{CUME\_DIST} calcola la \textbf{funzione cumulativa di distribuzione} dei valori all'interno di un gruppo (partizione).
+Matematicamente, per ogni riga $x$, il valore di \texttt{CUME\_DIST} si ottiene come:
+\[
+\text{CUME\_DIST}(x) = \frac{\text{Numero di righe che precedono o hanno lo stesso valore di } x}{\text{Numero totale di righe nella partizione } (N)}
+\]
+
+\paragraph{Esempio esplicativo}
+Prendendo come riferimento una singola partizione generata per gli articoli di tipo "Vite" (contenente $N=10$ tuple totali), ordinate per peso:
+\begin{itemize}
+    \item Se esiste $1$ solo record con peso 12, il suo \texttt{CUME\_DIST} sarà $1/10 = 0.1$ (ovvero, il 10\% dei record ha un peso minore o uguale a 12).
+    \item Vi è $1$ record con peso 14. Cumulando il precedente si arriva alla seconda posizione: $2/10 = 0.2$.
+    \item Vi sono \textbf{quattro} record a pari merito con peso 16. La funzione valuta tutti i valori minori \textbf{o uguali}, includendo di fatto tutto il blocco dei pari merito. La posizione massima di questo blocco è la sesta su dieci. Pertanto, ad \textit{ognuno} di questi 4 record verrà assegnato il valore $6/10 = 0.6$.
+    \item I due record con peso 17 arrivano alla posizione 8 $\rightarrow$ $8/10 = 0.8$.
+    \item L'ultimo record di peso 20 copre il 100\% della partizione $\rightarrow$ $10/10 = 1$.
+\end{itemize}
+
+Questa funzione risulta estremamente utile per studiare la distribuzione statistica di una determinata metrica all'interno di sottogruppi aziendali.
+
+\subsection{\texttt{NTILE(n)}}
+
+La funzione \texttt{NTILE(n)} viene utilizzata per suddividere i record di ogni partizione in $n$ sottogruppi (detti anche bucket). La funzione associa ad ogni record l'identificificativo del sottogruppo di appartenenza.
+
+Oracle cerca di distribuire il numero di tuple in maniera omogenea. Se il numero totale di righe non è perfettamente divisibile per $n$, le dimensioni dei bucket avranno cardinalità il più possibile uniformi (con tolleranza $\pm 1$).
+
+\paragraph{Esempio}
+\textit{Partizionare in base alla tipologia, ordinare in base al peso, e suddividere in 3 sottogruppi.}
+\begin{lstlisting}[language=SQL, basicstyle=\small\ttfamily, keywordstyle=\bfseries\color{blue}, frame=single]
+SELECT Tipo, Peso, 
+       NTILE(3) OVER (
+           PARTITION BY Tipo
+           ORDER BY Peso
+       ) AS Ntile3Peso
+FROM ART;
+\end{lstlisting}
+
+Riprendendo la partizione "Vite" di $N=10$ tuple, per suddividerla in 3 gruppi occorrono dimensioni che, sommate, diano 10. Il motore SQL allocherà i primi 4 record al gruppo 1, i successivi 3 al gruppo 2 e gli ultimi 3 al gruppo 3. Ad ogni record viene assegnato l'identificativo 1, 2 o 3, permettendo facilmente selezioni basate su fasce (ad esempio, isolare il "terzo medio" dei dati). Se una partizione possiede meno tuple del valore $n$ (es. partizione "Barra" ha un solo record), verrà generato solamente il sottogruppo 1.

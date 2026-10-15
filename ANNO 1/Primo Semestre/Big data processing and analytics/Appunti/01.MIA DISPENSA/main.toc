@@ -25,29 +25,43 @@
 \contentsline {subsection}{\numberline {3.4.1}Struttura Dati: Coppie Chiave-Valore}{14}{subsection.3.4.1}%
 \contentsline {subsection}{\numberline {3.4.2}Le Fasi di Elaborazione}{14}{subsection.3.4.2}%
 \contentsline {section}{\numberline {3.5}Esempio Pratico: Il Problema del Word Count}{14}{section.3.5}%
-\contentsline {chapter}{\numberline {4}Sviluppo di Applicazioni MapReduce in Hadoop}{16}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Il Ruolo del Framework e dello Sviluppatore}{16}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Architettura di un Programma MapReduce}{16}{section.4.2}%
-\contentsline {subsection}{\numberline {4.2.1}Definizione delle Classi}{16}{subsection.4.2.1}%
-\contentsline {subsection}{\numberline {4.2.2}Istanze e Terminologia}{17}{subsection.4.2.2}%
-\contentsline {subsection}{\numberline {4.2.3}Il Driver come Entry Point}{17}{subsection.4.2.3}%
-\contentsline {section}{\numberline {4.3}Gestione dell'Output Intermedio e Finale}{17}{section.4.3}%
-\contentsline {subsection}{\numberline {4.3.1}Dati Intermedi (Transient Data)}{17}{subsection.4.3.1}%
-\contentsline {subsection}{\numberline {4.3.2}Dati Finali}{17}{subsection.4.3.2}%
-\contentsline {section}{\numberline {4.4}Lettura dei Dati: La classe InputFormat}{18}{section.4.4}%
-\contentsline {section}{\numberline {4.5}Parallelismo ed Esecuzione: Task e Input Split}{18}{section.4.5}%
-\contentsline {subsection}{\numberline {4.5.1}Grado di Parallelismo della fase di Map}{18}{subsection.4.5.1}%
-\contentsline {section}{\numberline {4.6}Tipi di Dato in MapReduce}{19}{section.4.6}%
-\contentsline {subsection}{\numberline {4.6.1}Tipi di Dato Personalizzati (Personalized Data Types)}{19}{subsection.4.6.1}%
-\contentsline {subsection}{\numberline {4.6.2}Tipi di Dato Personalizzati (Personalized Data Types)}{19}{subsection.4.6.2}%
-\contentsline {section}{\numberline {4.7}Implementazione del Reducer}{19}{section.4.7}%
-\contentsline {subsection}{\numberline {4.7.1}Esempio: Word Count Reducer}{20}{subsection.4.7.1}%
-\contentsline {section}{\numberline {4.8}L'Uso esclusivo del Map: Map-Only Job}{20}{section.4.8}%
-\contentsline {section}{\numberline {4.9}Ottimizzazione del Traffico di Rete: Il Combiner}{21}{section.4.9}%
-\contentsline {subsection}{\numberline {4.9.1}Implementazione del Combiner}{21}{subsection.4.9.1}%
-\contentsline {section}{\numberline {4.10}Ottimizzazione Avanzata: L'In-Mapper Combiner}{22}{section.4.10}%
-\contentsline {subsection}{\numberline {4.10.1}Workflow dell'In-Mapper Combiner}{22}{subsection.4.10.1}%
-\contentsline {subsection}{\numberline {4.10.2}Considerazioni Critiche sulle Prestazioni e Memoria Principale}{22}{subsection.4.10.2}%
-\contentsline {section}{\numberline {4.11}Gestione del Contesto e Statistiche}{22}{section.4.11}%
-\contentsline {subsection}{\numberline {4.11.1}Condivisione di Parametri globali}{22}{subsection.4.11.1}%
-\contentsline {subsection}{\numberline {4.11.2}Contatori (Counters)}{23}{subsection.4.11.2}%
+\contentsline {chapter}{\numberline {4}Sviluppo di applicazioni MapReduce in Hadoop}{16}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Architettura di un'applicazione MapReduce e Terminologia}{16}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Il livello di parallelizzazione}{17}{subsection.4.1.1}%
+\contentsline {section}{\numberline {4.2}Componenti e Flusso dei Dati}{17}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Il Driver}{17}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}Il Mapper}{17}{subsection.4.2.2}%
+\contentsline {subsection}{\numberline {4.2.3}Il Reducer e il partizionamento dei dati (Shuffle and Sort)}{17}{subsection.4.2.3}%
+\contentsline {section}{\numberline {4.3}Tipi di Dato (Data Types) in Hadoop}{18}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Formati di Input e Output}{18}{section.4.4}%
+\contentsline {section}{\numberline {4.5}Struttura base del codice Hadoop: Word Count Example}{19}{section.4.5}%
+\contentsline {subsection}{\numberline {4.5.1}Implementazione del Driver}{19}{subsection.4.5.1}%
+\contentsline {subsection}{\numberline {4.5.2}Implementazione del Mapper}{20}{subsection.4.5.2}%
+\contentsline {subsection}{\numberline {4.5.3}Implementazione del Reducer}{21}{subsection.4.5.3}%
+\contentsline {section}{\numberline {4.6}Ottimizzazione delle Prestazioni: Il Combiner}{21}{section.4.6}%
+\contentsline {subsection}{\numberline {4.6.1}Perché nel Word Count si sommano i valori anziché contarli?}{22}{subsection.4.6.1}%
+\contentsline {subsection}{\numberline {4.6.2}Implementazione e Dichiarazione}{22}{subsection.4.6.2}%
+\contentsline {section}{\numberline {4.7}Creazione di Tipi di Dato Personalizzati}{22}{section.4.7}%
+\contentsline {section}{\numberline {4.8}Condivisione di Parametri e Contatori}{23}{section.4.8}%
+\contentsline {subsection}{\numberline {4.8.1}Passare parametri al Mapper e al Reducer}{23}{subsection.4.8.1}%
+\contentsline {subsection}{\numberline {4.8.2}I Contatori (Counters)}{24}{subsection.4.8.2}%
+\contentsline {section}{\numberline {4.9}Job "Map-Only" e ottimizzazioni avanzate}{24}{section.4.9}%
+\contentsline {subsection}{\numberline {4.9.1}Map-Only Job}{24}{subsection.4.9.1}%
+\contentsline {subsection}{\numberline {4.9.2}In-Mapper Combiner: un passo oltre il Combiner}{24}{subsection.4.9.2}%
+\contentsline {section}{\numberline {4.10}Pattern di Ottimizzazione e Filtraggio in MapReduce}{25}{section.4.10}%
+\contentsline {section}{\numberline {4.11}Ottimizzazione tramite In-Mapper Combiner (Esercizio 9)}{25}{section.4.11}%
+\contentsline {subsection}{\numberline {4.11.1}Funzionamento dell'In-Mapper Combiner}{25}{subsection.4.11.1}%
+\contentsline {subsection}{\numberline {4.11.2}Limiti e Gestione della Memoria Principale}{26}{subsection.4.11.2}%
+\contentsline {subsection}{\numberline {4.11.3}Esempio di Dati (Toy Example)}{26}{subsection.4.11.3}%
+\contentsline {subsection}{\numberline {4.11.4}Analisi dell'Implementazione Java}{27}{subsection.4.11.4}%
+\contentsline {subsubsection}{La Classe Driver}{27}{section*.11}%
+\contentsline {subsubsection}{La Classe Mapper}{27}{section*.12}%
+\contentsline {subsubsection}{La Classe Reducer}{28}{section*.13}%
+\contentsline {section}{\numberline {4.12}Filtraggio dei Dati e Passaggio Dinamico di Parametri (Esercizio 12)}{28}{section.4.12}%
+\contentsline {subsection}{\numberline {4.12.1}Il Pattern di Filtraggio (Map-Only Job)}{29}{subsection.4.12.1}%
+\contentsline {subsection}{\numberline {4.12.2}Passaggio di Parametri tramite l'Oggetto Configuration}{29}{subsection.4.12.2}%
+\contentsline {subsubsection}{Attenzione: L'Ordine di Inizializzazione della Configuration}{29}{section*.14}%
+\contentsline {subsection}{\numberline {4.12.3}Esempio di Dati}{30}{subsection.4.12.3}%
+\contentsline {subsection}{\numberline {4.12.4}Analisi dell'Implementazione Java}{30}{subsection.4.12.4}%
+\contentsline {subsubsection}{La Classe Driver}{30}{section*.15}%
+\contentsline {subsubsection}{La Classe Mapper}{31}{section*.16}%

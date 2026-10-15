@@ -1,43 +1,60 @@
 \relax 
 \providecommand\hyper@newdestlabel[2]{}
-\@writefile{toc}{\contentsline {chapter}{\numberline {4}Sviluppo di Applicazioni MapReduce in Hadoop}{16}{chapter.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {4}Sviluppo di applicazioni MapReduce in Hadoop}{16}{chapter.4}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{cap:mapreduce-sviluppo}{{4}{16}{Sviluppo di Applicazioni MapReduce in Hadoop}{chapter.4}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.1}Il Ruolo del Framework e dello Sviluppatore}{16}{section.4.1}\protected@file@percent }
-\newlabel{sec:framework-developer}{{4.1}{16}{Il Ruolo del Framework e dello Sviluppatore}{section.4.1}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.2}Architettura di un Programma MapReduce}{16}{section.4.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.1}Definizione delle Classi}{16}{subsection.4.2.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.2}Istanze e Terminologia}{17}{subsection.4.2.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.3}Il Driver come Entry Point}{17}{subsection.4.2.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {4.3}Gestione dell'Output Intermedio e Finale}{17}{section.4.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.1}Dati Intermedi (Transient Data)}{17}{subsection.4.3.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.2}Dati Finali}{17}{subsection.4.3.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {4.4}Lettura dei Dati: La classe InputFormat}{18}{section.4.4}\protected@file@percent }
-\newlabel{sec:inputformat}{{4.4}{18}{Lettura dei Dati: La classe InputFormat}{section.4.4}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.5}Parallelismo ed Esecuzione: Task e Input Split}{18}{section.4.5}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {4.1}{\ignorespaces Architettura di un'applicazione MapReduce in Hadoop.}}{18}{figure.4.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.5.1}Grado di Parallelismo della fase di Map}{18}{subsection.4.5.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {4.6}Tipi di Dato in MapReduce}{19}{section.4.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.6.1}Tipi di Dato Personalizzati (Personalized Data Types)}{19}{subsection.4.6.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.6.2}Tipi di Dato Personalizzati (Personalized Data Types)}{19}{subsection.4.6.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {4.7}Implementazione del Reducer}{19}{section.4.7}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.7.1}Esempio: Word Count Reducer}{20}{subsection.4.7.1}\protected@file@percent }
-\newlabel{lst:wordcount-reducer}{{4.1}{20}{Implementazione del metodo reduce per il Word Count}{lstlisting.4.1}{}}
-\@writefile{lol}{\contentsline {lstlisting}{\numberline {4.1}Implementazione del metodo reduce per il Word Count}{20}{lstlisting.4.1}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {4.2}{\ignorespaces Esecuzione della fase di reduce.}}{20}{figure.4.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {4.8}L'Uso esclusivo del Map: Map-Only Job}{20}{section.4.8}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {4.9}Ottimizzazione del Traffico di Rete: Il Combiner}{21}{section.4.9}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {4.3}{\ignorespaces Esecuzione del Combiner per ridurre il traffico di rete.}}{21}{figure.4.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.9.1}Implementazione del Combiner}{21}{subsection.4.9.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {4.10}Ottimizzazione Avanzata: L'In-Mapper Combiner}{22}{section.4.10}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.10.1}Workflow dell'In-Mapper Combiner}{22}{subsection.4.10.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.10.2}Considerazioni Critiche sulle Prestazioni e Memoria Principale}{22}{subsection.4.10.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {4.11}Gestione del Contesto e Statistiche}{22}{section.4.11}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.11.1}Condivisione di Parametri globali}{22}{subsection.4.11.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.11.2}Contatori (Counters)}{23}{subsection.4.11.2}\protected@file@percent }
+\newlabel{cap:hadoop-mapreduce}{{4}{16}{Sviluppo di applicazioni MapReduce in Hadoop}{chapter.4}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.1}Architettura di un'applicazione MapReduce e Terminologia}{16}{section.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.1}Il livello di parallelizzazione}{17}{subsection.4.1.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4.2}Componenti e Flusso dei Dati}{17}{section.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.1}Il Driver}{17}{subsection.4.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.2}Il Mapper}{17}{subsection.4.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.3}Il Reducer e il partizionamento dei dati (Shuffle and Sort)}{17}{subsection.4.2.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4.1}{\ignorespaces Flusso dei dati in MapReduce: generazione degli input split, elaborazione nei Mapper sui nodi locali, fase di shuffle and sort attraverso la rete, ed esecuzione dei Reducer.}}{18}{figure.4.1}\protected@file@percent }
+\newlabel{fig:mapreduce-data-flow}{{4.1}{18}{Flusso dei dati in MapReduce: generazione degli input split, elaborazione nei Mapper sui nodi locali, fase di shuffle and sort attraverso la rete, ed esecuzione dei Reducer}{figure.4.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.3}Tipi di Dato (Data Types) in Hadoop}{18}{section.4.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4.4}Formati di Input e Output}{18}{section.4.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4.2}{\ignorespaces Processo di acquisizione dei dati: l'InputFormat definisce gli split e il RecordReader genera le coppie chiave-valore passate al Mapper.}}{19}{figure.4.2}\protected@file@percent }
+\newlabel{fig:input-format}{{4.2}{19}{Processo di acquisizione dei dati: l'InputFormat definisce gli split e il RecordReader genera le coppie chiave-valore passate al Mapper}{figure.4.2}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.5}Struttura base del codice Hadoop: Word Count Example}{19}{section.4.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5.1}Implementazione del Driver}{19}{subsection.4.5.1}\protected@file@percent }
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {4.1}Struttura del Driver per il Word Count}{19}{lstlisting.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5.2}Implementazione del Mapper}{20}{subsection.4.5.2}\protected@file@percent }
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {4.2}Struttura del Mapper per il Word Count}{20}{lstlisting.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5.3}Implementazione del Reducer}{21}{subsection.4.5.3}\protected@file@percent }
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {4.3}Struttura del Reducer per il Word Count}{21}{lstlisting.4.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4.6}Ottimizzazione delle Prestazioni: Il Combiner}{21}{section.4.6}\protected@file@percent }
+\newlabel{sec:combiner}{{4.6}{21}{Ottimizzazione delle Prestazioni: Il Combiner}{section.4.6}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.6.1}Perché nel Word Count si sommano i valori anziché contarli?}{22}{subsection.4.6.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.6.2}Implementazione e Dichiarazione}{22}{subsection.4.6.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4.3}{\ignorespaces Confronto del flusso dati: a sinistra l'invio diretto delle coppie, a destra l'effetto di pre-aggregazione introdotto dall'utilizzo di un Combiner a livello di nodo.}}{22}{figure.4.3}\protected@file@percent }
+\newlabel{fig:combiner-comparison}{{4.3}{22}{Confronto del flusso dati: a sinistra l'invio diretto delle coppie, a destra l'effetto di pre-aggregazione introdotto dall'utilizzo di un Combiner a livello di nodo}{figure.4.3}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.7}Creazione di Tipi di Dato Personalizzati}{22}{section.4.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4.8}Condivisione di Parametri e Contatori}{23}{section.4.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.8.1}Passare parametri al Mapper e al Reducer}{23}{subsection.4.8.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.8.2}I Contatori (Counters)}{24}{subsection.4.8.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4.9}Job "Map-Only" e ottimizzazioni avanzate}{24}{section.4.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.9.1}Map-Only Job}{24}{subsection.4.9.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.9.2}In-Mapper Combiner: un passo oltre il Combiner}{24}{subsection.4.9.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4.10}Pattern di Ottimizzazione e Filtraggio in MapReduce}{25}{section.4.10}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4.11}Ottimizzazione tramite In-Mapper Combiner (Esercizio 9)}{25}{section.4.11}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.11.1}Funzionamento dell'In-Mapper Combiner}{25}{subsection.4.11.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.11.2}Limiti e Gestione della Memoria Principale}{26}{subsection.4.11.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.11.3}Esempio di Dati (Toy Example)}{26}{subsection.4.11.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.11.4}Analisi dell'Implementazione Java}{27}{subsection.4.11.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{La Classe Driver}{27}{section*.11}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{La Classe Mapper}{27}{section*.12}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{La Classe Reducer}{28}{section*.13}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4.12}Filtraggio dei Dati e Passaggio Dinamico di Parametri (Esercizio 12)}{28}{section.4.12}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.12.1}Il Pattern di Filtraggio (Map-Only Job)}{29}{subsection.4.12.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.12.2}Passaggio di Parametri tramite l'Oggetto Configuration}{29}{subsection.4.12.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Attenzione: L'Ordine di Inizializzazione della Configuration}{29}{section*.14}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.12.3}Esempio di Dati}{30}{subsection.4.12.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.12.4}Analisi dell'Implementazione Java}{30}{subsection.4.12.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{La Classe Driver}{30}{section*.15}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{La Classe Mapper}{31}{section*.16}\protected@file@percent }
 \@setckpt{capitoli/4_HadoopImplementationOfMapReduce/4_HadoopImplementationOfMapReduce}{
-\setcounter{page}{24}
+\setcounter{page}{33}
 \setcounter{equation}{0}
 \setcounter{enumi}{3}
 \setcounter{enumii}{0}
@@ -47,18 +64,18 @@
 \setcounter{mpfootnote}{0}
 \setcounter{part}{0}
 \setcounter{chapter}{4}
-\setcounter{section}{11}
-\setcounter{subsection}{2}
+\setcounter{section}{12}
+\setcounter{subsection}{4}
 \setcounter{subsubsection}{0}
 \setcounter{paragraph}{0}
 \setcounter{subparagraph}{0}
 \setcounter{figure}{3}
 \setcounter{table}{0}
 \setcounter{parentequation}{0}
-\setcounter{lstnumber}{2}
+\setcounter{lstnumber}{28}
 \setcounter{float@type}{8}
-\setcounter{section@level}{2}
-\setcounter{Item}{20}
+\setcounter{section@level}{3}
+\setcounter{Item}{17}
 \setcounter{Hfootnote}{0}
 \setcounter{bookmark@seq@number}{0}
 \setcounter{definizione}{0}
@@ -66,6 +83,6 @@
 \setcounter{esempio}{0}
 \setcounter{definition}{0}
 \setcounter{example}{0}
-\setcounter{remark}{0}
-\setcounter{lstlisting}{1}
+\setcounter{remark}{6}
+\setcounter{lstlisting}{3}
 }

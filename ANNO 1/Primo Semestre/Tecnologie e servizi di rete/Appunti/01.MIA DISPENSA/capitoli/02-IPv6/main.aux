@@ -1,0 +1,108 @@
+\relax 
+\providecommand\hyper@newdestlabel[2]{}
+\@writefile{toc}{\contentsline {chapter}{\numberline {5}Il Protocollo IPv6}{33}{chapter.5}\protected@file@percent }
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\@writefile{toc}{\contentsline {section}{\numberline {5.1}Motivazioni e cenni storici}{33}{section.5.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1.1}Il problema dell'esaurimento degli indirizzi IPv4}{33}{subsection.5.1.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5.1}{\ignorespaces Stato dell'allocazione dei prefissi IPv4 e progressivo esaurimento dei blocchi IANA.}}{34}{figure.5.1}\protected@file@percent }
+\newlabel{fig:ipv4-pool}{{5.1}{34}{Stato dell'allocazione dei prefissi IPv4 e progressivo esaurimento dei blocchi IANA}{figure.5.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1.2}Soluzioni temporanee (Interim solutions) per IPv4}{34}{subsection.5.1.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1.3}Il problema della scalabilità del routing}{34}{subsection.5.1.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5.2}{\ignorespaces Crescita delle entry nelle tabelle di routing BGP dovuta alla frammentazione dei prefissi IPv4.}}{35}{figure.5.2}\protected@file@percent }
+\newlabel{fig:bgp-growth}{{5.2}{35}{Crescita delle entry nelle tabelle di routing BGP dovuta alla frammentazione dei prefissi IPv4}{figure.5.2}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.2}Indirizzamento IPv6}{35}{section.5.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2.1}Perché 128 bit?}{35}{subsection.5.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2.2}Notazione degli indirizzi IPv6}{35}{subsection.5.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2.3}Struttura e Principi di Routing}{36}{subsection.5.2.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5.3}{\ignorespaces Struttura dell'indirizzo IPv6 diviso tra Prefisso e Interface ID.}}{36}{figure.5.3}\protected@file@percent }
+\newlabel{fig:ipv6-struct}{{5.3}{36}{Struttura dell'indirizzo IPv6 diviso tra Prefisso e Interface ID}{figure.5.3}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.3}Spazio di Indirizzamento e Tipologie di Indirizzi}{36}{section.5.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.1}Indirizzi Multicast}{36}{subsection.5.3.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5.4}{\ignorespaces Struttura dell'indirizzo Multicast IPv6: FF | T Flag | Scope | Group ID.}}{37}{figure.5.4}\protected@file@percent }
+\newlabel{fig:ipv6-multicast-scope}{{5.4}{37}{Struttura dell'indirizzo Multicast IPv6: FF | T Flag | Scope | Group ID}{figure.5.4}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.5}{\ignorespaces Blocchi principali di indirizzi Multicast IPv6: Well-Known, Transient e Solicited-Node.}}{37}{figure.5.5}\protected@file@percent }
+\newlabel{fig:ipv6-multicast-structure}{{5.5}{37}{Blocchi principali di indirizzi Multicast IPv6: Well-Known, Transient e Solicited-Node}{figure.5.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.2}Indirizzi Unicast}{37}{subsection.5.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Global Unicast Addresses (\texttt  {2000::/3})}{37}{section*.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5.6}{\ignorespaces Struttura dell'indirizzo Global Unicast IPv6: Global Routing Prefix | Subnet ID | Interface ID.}}{38}{figure.5.6}\protected@file@percent }
+\newlabel{fig:ipv6-global-unicast}{{5.6}{38}{Struttura dell'indirizzo Global Unicast IPv6: Global Routing Prefix | Subnet ID | Interface ID}{figure.5.6}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Indirizzi Privati e Locali}{38}{section*.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Indirizzi Speciali}{38}{section*.6}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5.7}{\ignorespaces Tipologie di indirizzi IPv6 unicast.}}{39}{figure.5.7}\protected@file@percent }
+\newlabel{fig:ipv6-special-addresses}{{5.7}{39}{Tipologie di indirizzi IPv6 unicast}{figure.5.7}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.3}Indirizzi Anycast}{39}{subsection.5.3.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5.4}Modifiche all'Architettura dei Protocolli}{39}{section.5.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5.5}Formato del Pacchetto (Header IPv6)}{39}{section.5.5}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5.8}{\ignorespaces L'Header IPv6, semplificato e di dimensione fissa (40 byte).}}{40}{figure.5.8}\protected@file@percent }
+\newlabel{fig:ipv6-header}{{5.8}{40}{L'Header IPv6, semplificato e di dimensione fissa (40 byte)}{figure.5.8}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.5.1}Campi Eliminati rispetto a IPv4}{40}{subsection.5.5.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.5.2}Campi Presenti (Mantenuti o Rinominati)}{40}{subsection.5.5.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.5.3}La Novità: Il campo Flow Label (20 bit)}{41}{subsection.5.5.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.5.4}Gli Extension Headers (Chaining)}{41}{subsection.5.5.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5.9}{\ignorespaces Meccanismo di concatenamento (chaining) degli Extension Headers.}}{41}{figure.5.9}\protected@file@percent }
+\newlabel{fig:header-chain}{{5.9}{41}{Meccanismo di concatenamento (chaining) degli Extension Headers}{figure.5.9}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.6}Interfacciamento con il Livello Data Link}{41}{section.5.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.6.1}Indirizzamento Multicast a livello MAC}{42}{subsection.5.6.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5.7}ICMPv6 e Neighbor Discovery}{42}{section.5.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.7.1}Sostituzione di ARP: Neighbor Solicitation e Advertisement}{42}{subsection.5.7.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5.10}{\ignorespaces Processo di risoluzione degli indirizzi (Address Resolution) tramite Neighbor Solicitation.}}{42}{figure.5.10}\protected@file@percent }
+\newlabel{fig:nd-res}{{5.10}{42}{Processo di risoluzione degli indirizzi (Address Resolution) tramite Neighbor Solicitation}{figure.5.10}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.7.2}Sostituzione di IGMP: Multicast Group Management}{43}{subsection.5.7.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5.8}Autoconfigurazione dei Dispositivi}{43}{section.5.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.8.1}Generazione dell'Interface ID}{43}{subsection.5.8.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5.11}{\ignorespaces Generazione dell'Interface ID a partire dal MAC Address secondo lo standard EUI-64.}}{44}{figure.5.11}\protected@file@percent }
+\newlabel{fig:eui64}{{5.11}{44}{Generazione dell'Interface ID a partire dal MAC Address secondo lo standard EUI-64}{figure.5.11}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.12}{\ignorespaces Generazione dell'Interface ID con Privacy Extension (RFC 4941).}}{44}{figure.5.12}\protected@file@percent }
+\newlabel{fig:privacy-extension}{{5.12}{44}{Generazione dell'Interface ID con Privacy Extension (RFC 4941)}{figure.5.12}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.8.2}Ottenimento del Prefisso (Router Discovery)}{44}{subsection.5.8.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5.13}{\ignorespaces Messaggio di Router Solicitation (RS).}}{45}{figure.5.13}\protected@file@percent }
+\newlabel{fig:router-solicitation}{{5.13}{45}{Messaggio di Router Solicitation (RS)}{figure.5.13}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.14}{\ignorespaces Messaggio di Router Advertisement (RA).}}{45}{figure.5.14}\protected@file@percent }
+\newlabel{fig:router-advertisement}{{5.14}{45}{Messaggio di Router Advertisement (RA)}{figure.5.14}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.15}{\ignorespaces Opzione "Prefix Information" all'interno del Router Advertisement.}}{46}{figure.5.15}\protected@file@percent }
+\newlabel{fig:prefix-information}{{5.15}{46}{Opzione "Prefix Information" all'interno del Router Advertisement}{figure.5.15}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.16}{\ignorespaces Opzione "MTU" all'interno del Router Advertisement.}}{46}{figure.5.16}\protected@file@percent }
+\newlabel{fig:mtu-option}{{5.16}{46}{Opzione "MTU" all'interno del Router Advertisement}{figure.5.16}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.17}{\ignorespaces Opzione "Link Layer Address" all'interno del Router Advertisement.}}{46}{figure.5.17}\protected@file@percent }
+\newlabel{fig:link-layer-address}{{5.17}{46}{Opzione "Link Layer Address" all'interno del Router Advertisement}{figure.5.17}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.8.3}ICMP Redirect (Ottimizzazione First Hop)}{46}{subsection.5.8.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5.18}{\ignorespaces Formato del messaggio ICMP Redirect: Reserved, Target Address, Options e Destination Address.}}{47}{figure.5.18}\protected@file@percent }
+\newlabel{fig:icmp-redirect}{{5.18}{47}{Formato del messaggio ICMP Redirect: Reserved, Target Address, Options e Destination Address}{figure.5.18}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.8.4}Duplicate Address Detection (DAD)}{47}{subsection.5.8.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.8.5}Indirizzi con Scope (Scoped Addresses)}{47}{subsection.5.8.5}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5.19}{\ignorespaces Esempio di indirizzo IPv6 con Scope ID per risolvere ambiguità tra interfacce.}}{48}{figure.5.19}\protected@file@percent }
+\newlabel{fig:scoped-address}{{5.19}{48}{Esempio di indirizzo IPv6 con Scope ID per risolvere ambiguità tra interfacce}{figure.5.19}{}}
+\@setckpt{capitoli/02-IPv6/main}{
+\setcounter{page}{49}
+\setcounter{equation}{0}
+\setcounter{enumi}{4}
+\setcounter{enumii}{0}
+\setcounter{enumiii}{0}
+\setcounter{enumiv}{0}
+\setcounter{footnote}{0}
+\setcounter{mpfootnote}{0}
+\setcounter{part}{0}
+\setcounter{chapter}{5}
+\setcounter{section}{8}
+\setcounter{subsection}{5}
+\setcounter{subsubsection}{0}
+\setcounter{paragraph}{0}
+\setcounter{subparagraph}{0}
+\setcounter{figure}{19}
+\setcounter{table}{0}
+\setcounter{parentequation}{0}
+\setcounter{lstnumber}{1}
+\setcounter{float@type}{8}
+\setcounter{section@level}{2}
+\setcounter{Item}{49}
+\setcounter{Hfootnote}{0}
+\setcounter{bookmark@seq@number}{0}
+\setcounter{definizione}{0}
+\setcounter{teorema}{0}
+\setcounter{esempio}{0}
+\setcounter{definition}{0}
+\setcounter{example}{0}
+\setcounter{remark}{0}
+\setcounter{lstlisting}{0}
+}
